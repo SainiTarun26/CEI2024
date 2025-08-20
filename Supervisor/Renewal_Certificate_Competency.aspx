@@ -254,230 +254,223 @@
                 </div>
 
 
-                <div class="card-body">
 
-                    <div class="row">
-                        <div class="col-md-4"></div>
-                        <div class="col-md-4" style="text-align: center;">
-                            <label id="Label1" runat="server" visible="false" style="color: red; font-size: 1.125rem">
-                                Data Updated Successfully !!!.
+
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4" style="text-align: center;">
+                        <label id="Label1" runat="server" visible="false" style="color: red; font-size: 1.125rem">
+                            Data Updated Successfully !!!.
+                        </label>
+                        <label id="Label2" runat="server" visible="false" style="color: red; font-size: 1.125rem">
+                            Data Saved Successfully !!!.
+                        </label>
+                    </div>
+                </div>
+                <br />
+                <h7 class="card-title fw-semibold mb-4">Personal Details</h7>
+                <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                    <div class="row" style="margin-bottom: 15px;">
+                        <asp:HiddenField ID="hdnId" runat="server" />
+                        <div class="col-md-4" runat="server" visible="true">
+                            <label>
+                                Applicant Name
+          <samp style="color: red">* </samp>
                             </label>
-                            <label id="Label2" runat="server" visible="false" style="color: red; font-size: 1.125rem">
-                                Data Saved Successfully !!!.
+
+                            <asp:TextBox class="form-control" ID="txtname" runat="server" autocomplete="off" ReadOnly="true" onKeyPress="return alphabetKey(event);" TabIndex="1"
+                                Style="margin-left: 18px;">
+                            </asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="txtname" ValidationGroup="Submit" ForeColor="Red">Please Select</asp:RequiredFieldValidator>
+
+                        </div>
+
+                        <div class="col-md-4" runat="server" visible="true">
+                            <label>
+                                Father's Name
+          <samp style="color: red">* </samp>
                             </label>
+
+                            <asp:TextBox class="form-control" ID="txtFatherName" runat="server" autocomplete="off" ReadOnly="true" onKeyPress="return alphabetKey(event);" TabIndex="1"
+                                Style="margin-left: 18px;">
+                            </asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="txtFatherName" ValidationGroup="Submit" ForeColor="Red">Please Select</asp:RequiredFieldValidator>
+
+                        </div>
+
+                        <div class="col-md-4" runat="server" visible="true">
+                            <label>
+                                Date of Birth
+                               <samp style="color: red">* </samp>
+                            </label>
+
+                            <asp:TextBox class="form-control" ID="txtDOB" runat="server" autocomplete="off" ReadOnly="true" onKeyPress="return alphabetKey(event);" TabIndex="1"
+                                Style="margin-left: 18px;">
+                            </asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="txtDOB" ValidationGroup="Submit" ForeColor="Red">Please Select</asp:RequiredFieldValidator>
+
                         </div>
                     </div>
-                    <br />
-                    <h7 class="card-title fw-semibold mb-4">Personal Details</h7>
-                    <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-                        <div class="row" style="margin-bottom: 15px;">
-                            <asp:HiddenField ID="hdnId" runat="server" />
-                            <div class="col-md-4" runat="server" visible="true">
-                                <label>
-                                    Applicant Name
-          <samp style="color: red">* </samp>
-                                </label>
-
-                                <asp:TextBox class="form-control" ID="txtname" runat="server" autocomplete="off" ReadOnly="true" onKeyPress="return alphabetKey(event);" TabIndex="1"
-                                    Style="margin-left: 18px;">
-                                </asp:TextBox>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="txtname" ValidationGroup="Submit" ForeColor="Red">Please Select</asp:RequiredFieldValidator>
-
-                            </div>
-
-                            <div class="col-md-4" runat="server" visible="true">
-                                <label>
-                                    Father's Name
-          <samp style="color: red">* </samp>
-                                </label>
-
-                                <asp:TextBox class="form-control" ID="txtFatherName" runat="server" autocomplete="off" ReadOnly="true" onKeyPress="return alphabetKey(event);" TabIndex="1"
-                                    Style="margin-left: 18px;">
-                                </asp:TextBox>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="txtFatherName" ValidationGroup="Submit" ForeColor="Red">Please Select</asp:RequiredFieldValidator>
-
-                            </div>
-
-                            <div class="col-md-4" runat="server" visible="true">
-                                <label>
-                                    Date of Birth
-                               <samp style="color: red">* </samp>
-                                </label>
-
-                                <asp:TextBox class="form-control" ID="txtDOB" runat="server" autocomplete="off" ReadOnly="true" onKeyPress="return alphabetKey(event);" TabIndex="1"
-                                    Style="margin-left: 18px;">
-                                </asp:TextBox>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="txtDOB" ValidationGroup="Submit" ForeColor="Red">Please Select</asp:RequiredFieldValidator>
-
-                            </div>
-                        </div>
-                        <div class="row" style="margin-bottom: 15px;">
-                            <div class="col" runat="server" visible="true">
-                                <label>
-                                    Email
+                    <div class="row" style="margin-bottom: 15px;">
+                        <div class="col-md-4" runat="server" visible="true">
+                            <label>
+                                Email
          <samp style="color: red">* </samp>
-                                </label>
+                            </label>
 
-                                <asp:TextBox class="form-control" ID="txtEmail" runat="server" autocomplete="off" onkeyup="return ValidateEmail();" TabIndex="1"
-                                    Style="margin-left: 18px;">
-                                </asp:TextBox>
+                            <asp:TextBox class="form-control" ID="txtEmail" runat="server" autocomplete="off" onkeyup="return ValidateEmail();" TabIndex="1"
+                                Style="margin-left: 18px;">
+                            </asp:TextBox>
 
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="txtEmail" ValidationGroup="Submit" ForeColor="Red">Please Select</asp:RequiredFieldValidator>
-
-                            </div>
-                            <div class="col" runat="server" visible="true">
-                                <label>
-                                    Phone No.
-         <samp style="color: red">* </samp>
-                                </label>
-
-                                <asp:TextBox class="form-control" ID="txtPhone" runat="server" autocomplete="off" MaxLength="10" onkeypress="return isNumberKey(event)" onkeyup="return isvalidphoneno();" TabIndex="1"
-                                    Style="margin-left: 18px;">
-                                </asp:TextBox>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="txtPhone" ValidationGroup="Submit" ForeColor="Red">Please Select</asp:RequiredFieldValidator>
-
-                            </div>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="txtEmail" ValidationGroup="Submit" ForeColor="Red">Please Select</asp:RequiredFieldValidator>
 
                         </div>
-                        <div class="row" style="margin-bottom: 15px;">
-                            <div class="col-md-4" runat="server" visible="true">
-                                <label>
-                                    Aadhar Number
+                        <div class="col-md-4" runat="server" visible="true">
+                            <label>
+                                Phone No.
          <samp style="color: red">* </samp>
-                                </label>
+                            </label>
 
-                                <%-- <asp:TextBox class="form-control" ID="txtaadharno" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
-                                    Style="margin-left: 18px;">
-                                </asp:TextBox>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="txtaadharno" ValidationGroup="Submit" ForeColor="Red">Please Select</asp:RequiredFieldValidator>--%>
-                                <asp:TextBox CssClass="form-control uppercase" class="form-control" ID="txtaadharno" autocomplete="off" MaxLength="14" onkeypress="return isNumberKey(event)" oninput="formatAadhaarInput()" TabIndex="5" runat="server"> </asp:TextBox>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="txtaadharno"
-                                    CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
-                                <asp:RegularExpressionValidator ID="rgxAadhaar" runat="server" ControlToValidate="txtaadharno" ValidationExpression="^\d{4}\s?\d{4}\s?\d{4}$" ErrorMessage="Invalid Aadhaar number format." ForeColor="Red"></asp:RegularExpressionValidator>
+                            <asp:TextBox class="form-control" ID="txtPhone" runat="server" autocomplete="off" MaxLength="10" onkeypress="return isNumberKey(event)" onkeyup="return isvalidphoneno();" TabIndex="1"
+                                Style="margin-left: 18px;">
+                            </asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="txtPhone" ValidationGroup="Submit" ForeColor="Red">Please Select</asp:RequiredFieldValidator>
 
-                            </div>
-
-
-                            <div class="col-md-4" runat="server" visible="true">
-                                <label>
-                                    Age 
-          <samp style="color: red">* </samp>
-                                </label>
-
-                                <asp:TextBox class="form-control" ID="txtage" runat="server" autocomplete="off" ReadOnly="true" onKeyPress="return alphabetKey(event);" TabIndex="1"
-                                    Style="margin-left: 18px;">
-                                </asp:TextBox>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="txtage" ValidationGroup="Submit" ForeColor="Red">Please Select</asp:RequiredFieldValidator>
-
-                            </div>
-                            <div class="col-md-4" runat="server" id="Ifage55" visible="false">
-                                <label>
-                                    Date when applicant completed 55 years
-           <samp style="color: red">* </samp>
-                                </label>
-
-                                <asp:TextBox class="form-control" ID="txtage55" runat="server" autocomplete="off" ReadOnly="true" onKeyPress="return alphabetKey(event);" TabIndex="1"
-                                    Style="margin-left: 18px;">
-                                </asp:TextBox>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" ControlToValidate="txtage55" ValidationGroup="Submit" ForeColor="Red">Please Select</asp:RequiredFieldValidator>
-
-                            </div>
                         </div>
-                        <div class="row" style="margin-bottom: 15px;">
-                            <asp:HiddenField ID="HiddenField1" runat="server" />
-                            <div class="col" runat="server" visible="true">
-                                <label>
-                                    Present Address with Pincode
-                                       <samp style="color: red">* </samp>
-                                </label>
+                        <div class="col-md-4" runat="server" visible="true">
+                            <label>
+                                Aadhar Number
+                                    <samp style="color: red">* </samp>
+                            </label>
 
-                                <asp:TextBox class="form-control" ID="txtaddress" runat="server" autocomplete="off" ReadOnly="true" onKeyPress="return alphabetKey(event);" TabIndex="1"
-                                    Style="margin-left: 18px;">
-                                </asp:TextBox>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ControlToValidate="txtaddress" ValidationGroup="Submit" ForeColor="Red">Please Select</asp:RequiredFieldValidator>
+                            <%-- <asp:TextBox class="form-control" ID="txtaadharno" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
+                           Style="margin-left: 18px;">
+                       </asp:TextBox>
+                       <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="txtaadharno" ValidationGroup="Submit" ForeColor="Red">Please Select</asp:RequiredFieldValidator>--%>
+                            <asp:TextBox CssClass="form-control uppercase" class="form-control" ID="txtaadharno" autocomplete="off" MaxLength="14" onkeypress="return isNumberKey(event)" oninput="formatAadhaarInput()" TabIndex="5" runat="server"> </asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="txtaadharno"
+                                CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
+                            <asp:RegularExpressionValidator ID="rgxAadhaar" runat="server" ControlToValidate="txtaadharno" ValidationExpression="^\d{4}\s?\d{4}\s?\d{4}$" ErrorMessage="Invalid Aadhaar number format." ForeColor="Red"></asp:RegularExpressionValidator>
 
-                            </div>
-                            <div class="col" runat="server" visible="true">
-                                <label>
-                                    District        
+                        </div>
+                        <div class="col-md-4" runat="server" visible="true">
+                            <label>
+                                Age 
+                                    <samp style="color: red">* </samp>
+                            </label>
+
+                            <asp:TextBox class="form-control" ID="txtage" runat="server" autocomplete="off" ReadOnly="true" onKeyPress="return alphabetKey(event);" TabIndex="1"
+                                Style="margin-left: 18px;">
+                            </asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="txtage" ValidationGroup="Submit" ForeColor="Red">Please Select</asp:RequiredFieldValidator>
+
+                        </div>
+                        <div class="col-md-4" runat="server" id="Ifage55" visible="true">
+                            <label>
+                                Date when applicant completed 55 years
+                                    <samp style="color: red">* </samp>
+                            </label>
+
+                            <asp:TextBox class="form-control" ID="txtage55" runat="server" autocomplete="off" ReadOnly="true" onKeyPress="return alphabetKey(event);" TabIndex="1"
+                                Style="margin-left: 18px;">
+                            </asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" ControlToValidate="txtage55" ValidationGroup="Submit" ForeColor="Red">Please Select</asp:RequiredFieldValidator>
+
+                        </div>
+                        <div class="col-md-4" runat="server" visible="true">
+                            <label>
+                                Present Address with Pincode
+                                    <samp style="color: red">* </samp>
+                            </label>
+
+                            <asp:TextBox class="form-control" ID="txtaddress" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
+                                Style="margin-left: 18px;">
+                            </asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ControlToValidate="txtaddress" ValidationGroup="Submit" ForeColor="Red">Please Select</asp:RequiredFieldValidator>
+
+                        </div>
+                        <div class="col-md-4" runat="server" visible="true">
+                            <label>
+                                District        
          <samp style="color: red">* </samp>
-                                </label>
+                            </label>
 
-                                <asp:TextBox class="form-control" ID="txtDistrict" runat="server" autocomplete="off" ReadOnly="true" onKeyPress="return alphabetKey(event);" TabIndex="1"
-                                    Style="margin-left: 18px;">
-                                </asp:TextBox>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator24" runat="server" ControlToValidate="txtDistrict" ValidationGroup="Submit" ForeColor="Red">Please Select</asp:RequiredFieldValidator>
+                            <asp:TextBox class="form-control" ID="txtDistrict" runat="server" autocomplete="off" ReadOnly="true" onKeyPress="return alphabetKey(event);" TabIndex="1"
+                                Style="margin-left: 18px;">
+                            </asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator24" runat="server" ControlToValidate="txtDistrict" ValidationGroup="Submit" ForeColor="Red">Please Select</asp:RequiredFieldValidator>
 
-                            </div>
-                            <div class="col" runat="server" visible="true">
-                                <label>
-                                    Competency Certificate No. (Old)
-                                       <samp style="color: red">* </samp>
-                                </label>
-
-                                <asp:TextBox class="form-control" ID="txtcertificatenoOLD" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
-                                    Style="margin-left: 18px;">
-                                </asp:TextBox>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="txtcertificatenoOLD" ValidationGroup="Submit" ForeColor="Red">Please Select</asp:RequiredFieldValidator>
-
-                            </div>
-
-                            <div class="col" runat="server" visible="true">
-                                <label>
-                                    Competency Certificate No. (NEW)
-                <samp style="color: red">* </samp>
-                                </label>
-
-                                <asp:TextBox class="form-control" ID="txtcertificatenoNEW" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
-                                    Style="margin-left: 18px;">
-                                </asp:TextBox>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ControlToValidate="txtcertificatenoNEW" ValidationGroup="Submit" ForeColor="Red">Please Select</asp:RequiredFieldValidator>
-
-                            </div>
                         </div>
-                        <div class="row" style="margin-bottom: 15px;">
+                        <div class="col-md-4" runat="server" visible="true">
+                            <label>
+                                Competency Certificate No. (Old)
+                       <samp style="color: red">* </samp>
+                            </label>
 
+                            <asp:TextBox class="form-control" ID="txtcertificatenoOLD" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
+                                Style="margin-left: 18px;">
+                            </asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="txtcertificatenoOLD" ValidationGroup="Submit" ForeColor="Red">Please Select</asp:RequiredFieldValidator>
+
+                        </div>
+
+                        <div class="col-md-4" runat="server" visible="true">
+                            <label>
+                                Competency Certificate No. (NEW)
+                                    <samp style="color: red">* </samp>
+                            </label>
+
+                            <asp:TextBox class="form-control" ID="txtcertificatenoNEW" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
+                                Style="margin-left: 18px;">
+                            </asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ControlToValidate="txtcertificatenoNEW" ValidationGroup="Submit" ForeColor="Red">Please Select</asp:RequiredFieldValidator>
+
+                        </div>
+                        <div class="col-md-4">
                             <label>
                                 Date of Expiry
-                                <samp style="color: red">* </samp>
+     <samp style="color: red">* </samp>
                             </label>
 
                             <asp:TextBox class="form-control" ID="txtexpirydate" runat="server" autocomplete="off" ReadOnly="true" onKeyPress="return alphabetKey(event);" TabIndex="1"
                                 Style="margin-left: 18px;">
                             </asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ControlToValidate="txtexpirydate" ValidationGroup="Submit" ForeColor="Red">Please Select</asp:RequiredFieldValidator>
-
                         </div>
-                        <div class="row" style="margin-bottom: 15px;">
-                            <asp:HiddenField ID="HiddenField2" runat="server" />
-                            <div class="col-md-4" style="margin-top: 30px;">
-                                <label>
-                                    Is renewal application belated? If yes, mention delay period.
-       <samp style="color: red">*</samp>
-                                </label>
+                    </div>
+                    <div class="row" style="margin-bottom: 15px;">
+                    </div>
 
+                    <div class="row" style="margin-bottom: 15px;">
+                        <asp:HiddenField ID="HiddenField2" runat="server" />
+                        <div class="col-md-4">
+                            <label>
+                                Is renewal application belated? If yes, mention delay period. &nbsp; &nbsp;
+        <samp style="color: red">*</samp>
+                            </label>
 
-                                <%--  <div class="col-md-4">--%>
+                            <asp:RadioButtonList
+                                ID="rblbelated"
+                                runat="server"
+                                Enabled="false"
+                                RepeatDirection="Horizontal">
+                                <asp:ListItem Value="1" Text="Yes&nbsp; &nbsp;"></asp:ListItem>
+                                <asp:ListItem Value="0" Text="No&nbsp; &nbsp;"></asp:ListItem>
+                            </asp:RadioButtonList>
 
-                                <asp:RadioButtonList runat="server" Enabled="false" ID="rblbelated">
-                                    <asp:ListItem Value="1" Text="Yes"></asp:ListItem>
-                                    <asp:ListItem Value="0" Text="No"></asp:ListItem>
-                                </asp:RadioButtonList>
-
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator21" runat="server" ControlToValidate="rblbelated" ValidationGroup="Submit" ForeColor="Red">Please Select</asp:RequiredFieldValidator>
-
-                                <%--   </div>--%>
-                            </div>
+                            <asp:RequiredFieldValidator
+                                ID="RequiredFieldValidator21"
+                                runat="server"
+                                ControlToValidate="rblbelated"
+                                ValidationGroup="Submit"
+                                ForeColor="Red">
+        Please Select
+                            </asp:RequiredFieldValidator>
                         </div>
-
-
-
-
-
                         <div class="col-md-4" runat="server" visible="false" id="days">
                             <label>
-                                Mention Days
-                                       <samp style="color: red">* </samp>
+                                Delay days after Certificate Expiry
+               <samp style="color: red">* </samp>
                             </label>
 
                             <asp:TextBox class="form-control" ID="txtdays" runat="server" autocomplete="off" ReadOnly="true" onKeyPress="return alphabetKey(event);" TabIndex="1"
@@ -487,6 +480,12 @@
 
                         </div>
                     </div>
+
+
+
+
+
+
                 </div>
 
 
@@ -495,11 +494,11 @@
                     <div class="row" style="margin-bottom: 15px;">
                         <asp:HiddenField ID="HiddenField3" runat="server" />
 
-                        <div>
+                        <div class="col-md-3">
                             <label>
                                 Renewal Time 
                             </label>
-                            <asp:DropDownList ID="ddlRenewalTime" runat="server" OnSelectedIndexChanged="ddlRenewalTime_SelectedIndexChanged" AutoPostBack="true">
+                            <asp:DropDownList ID="ddlRenewalTime" CssClass="form-control" runat="server" OnSelectedIndexChanged="ddlRenewalTime_SelectedIndexChanged" AutoPostBack="true">
                                 <asp:ListItem Value="0" Text="Select"></asp:ListItem>
                                 <asp:ListItem Value="1" Text="1 Year"></asp:ListItem>
                                 <asp:ListItem Value="5" Text="5 Year"></asp:ListItem>
@@ -507,7 +506,7 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" InitialValue="0" ControlToValidate="ddlRenewalTime" ValidationGroup="Submit" ForeColor="Red">Please select</asp:RequiredFieldValidator>
 
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <label>
                                 GRN No.
             <samp style="color: red">* </samp>
@@ -520,7 +519,7 @@
 
                         </div>
 
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <label>
                                 Date of Challan
            <samp style="color: red">* </samp>
@@ -529,7 +528,7 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="txtdate" ValidationGroup="Submit" ForeColor="Red">Please Select Date</asp:RequiredFieldValidator>
 
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <label>
                                 Total Amount
          <samp style="color: red">* </samp>
@@ -584,7 +583,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-4" style="margin-top: 30px;">
+                        <div class="col-md-6" style="margin-top: 30px;">
                             <label>
                                 Whether there is any change of employer during the subsequent period to the last renewal
                                       <samp style="color: red">*</samp>
@@ -592,7 +591,7 @@
 
                             <div style="margin-top: 10px;">
 
-                                <asp:RadioButtonList runat="server" ID="RadioButtonList1">
+                                <asp:RadioButtonList runat="server" ID="RadioButtonList1" RepeatDirection="Horizontal">
                                     <asp:ListItem Value="1" Text="Yes"></asp:ListItem>
                                     <asp:ListItem Value="0" Text="No"></asp:ListItem>
                                 </asp:RadioButtonList>
@@ -603,170 +602,171 @@
                     </div>
 
                 </div>
-            </div>
+                <h7 class="card-title fw-semibold mb-4">Upload Documents</h7>
+                <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
 
-            <h7 class="card-title fw-semibold mb-4">Upload Documents</h7>
-            <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                    <div class="row">
+                        <table class="table table-bordered table-striped">
+                            <tbody>
+                                <tr>
+                                    <td style="margin-top: auto; margin-bottom: auto;">Certificate of Competency/Wireman Permit. <span style="color: red;">★</span>
+                                    </td>
+
+
+                                    <td>
+                                        <div class="form-group">
+                                            <label style="font-size: 9px;">
+                                                (PLEASE UPLOAD PDF ONLY NO MORE THAN 1MB)
+                                            </label>
+                                            <div class="input-group col-xs-12">
+                                                <asp:TextBox ID="CertificateofCompetency" runat="server" CssClass="form-control file-upload-info"
+                                                    Enabled="false" placeholder="Upload Document" Style="width: 85%;"></asp:TextBox>
+                                                <span class="input-group-append">
+                                                    <asp:Button ID="btnCertificate" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="CertificateDialog(); return false;" TabIndex="16" />
+                                                    <input type="file" id="Certificate" name="Certificate" accept=".pdf" style="display: none;" runat="server" onchange="CertificateDialogName()" />
+                                                </span>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="CertificateofCompetency" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
+                                            </div>
+
+                                        </div>
+                                    </td>
+
+
+                                </tr>
+                                <tr>
+                                    <td style="text-align: justify; padding-top: 20px !important;">Deposited Treasury Challan of fees, for the purpose in the Head of A/c: 0043-51-800-99-51-Other Receipt.<span style="color: red;">★</span>
+
+                                    </td>
+                                    <td>
+
+                                        <div class="form-group">
+                                            <label style="font-size: 9px;">
+                                                (PLEASE UPLOAD PDF ONLY NO MORE THAN 1MB)
+                                            </label>
+                                            <div class="input-group col-xs-12">
+                                                <asp:TextBox ID="txtChallan" runat="server" CssClass="form-control file-upload-info"
+                                                    Enabled="false" placeholder="Upload Document" Style="width: 85%;"></asp:TextBox>
+                                                <span class="input-group-append">
+                                                    <asp:Button ID="Button2" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="ChallanDialog(); return false;" TabIndex="16" />
+                                                    <input type="file" id="Challan" name="EquipCertificateInput" accept=".pdf" style="display: none;" runat="server" onchange="ChallanDialogName()" />
+                                                </span>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator" runat="server" ControlToValidate="txtChallan" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
+                                            </div>
+
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr runat="server" visible="false" id="MedicalCertificate">
+                                    <td style="margin-top: auto; margin-bottom: auto;">A Medical Fitness Certificate issued from Government/Government Approved Hospital, in case he is above
+                                     <br />
+                                        55 years of age on the date of submission of application.<span style="color: red;">★</span>
+
+                                    </td>
+                                    <td>
+
+                                        <div class="form-group">
+                                            <label style="font-size: 9px;">
+                                                (PLEASE UPLOAD PDF ONLY NO MORE THAN 1MB)
+                                            </label>
+                                            <div class="input-group col-xs-12">
+                                                <asp:TextBox ID="txtMedicalFitness" runat="server" CssClass="form-control file-upload-info"
+                                                    Enabled="false" placeholder="Upload Document" Style="width: 85%;"></asp:TextBox>
+                                                <span class="input-group-append">
+                                                    <asp:Button ID="btnMedicalFitness" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="MedicalDialog(); return false;" TabIndex="16" />
+                                                    <input type="file" id="MedicalFitness" name="MedicalFitness" accept=".pdf" style="display: none;" runat="server" onchange="MedicalDialogName()" />
+                                                </span>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtMedicalFitness" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
+                                            </div>
+
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr runat="server" visible="true">
+                                    <td style="margin-top: auto; margin-bottom: auto;">Undertaking for delay or non-working during cancel period, in case of expiry of the Certificate/Permit.
+                                     <span style="color: red;">★</span>
+                                    </td>
+                                    <td>
+
+                                        <div class="form-group">
+                                            <label style="font-size: 9px;">
+                                                (PLEASE UPLOAD PDF ONLY NO MORE THAN 1MB)
+                                            </label>
+
+                                            <input type="file" name="img[]" class="file-upload-default" />
+                                            <div class="input-group col-xs-12">
+                                                <asp:TextBox ID="txtUndertaking" runat="server" CssClass="form-control file-upload-info"
+                                                    Enabled="false" placeholder="Upload Document" Style="width: 85%;"></asp:TextBox>
+                                                <span class="input-group-append">
+                                                    <asp:Button ID="btnUndertaking" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="UndertakingDialog(); return false;" TabIndex="16" />
+                                                    <input type="file" id="Undertaking" name="Undertaking" accept=".pdf" style="display: none;" runat="server" onchange="UndertakingDialogName()" />
+                                                </span>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtUndertaking" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
+                                            </div>
+
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr runat="server" visible="true">
+                                    <td style="margin-top: auto; margin-bottom: auto;">Present working Status.
+                                     <span style="color: red;">★</span>
+                                    </td>
+                                    <td>
+
+                                        <div class="form-group">
+                                            <label style="font-size: 9px;">
+                                                (PLEASE UPLOAD PDF ONLY NO MORE THAN 1MB)
+                                            </label>
+
+                                            <input type="file" name="img[]" class="file-upload-default" />
+                                            <div class="input-group col-xs-12">
+                                                <asp:TextBox ID="txtPresentworkingStatus" runat="server" CssClass="form-control file-upload-info"
+                                                    Enabled="false" placeholder="Upload Document" Style="width: 85%;"></asp:TextBox>
+                                                <span class="input-group-append">
+                                                    <asp:Button ID="btnPresentworkingStatus" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="StatusDialog(); return false;" TabIndex="16" />
+                                                    <input type="file" id="PresentworkingStatus" name="Undertaking" accept=".pdf" style="display: none;" runat="server" onchange="StatusDialogName()" />
+                                                </span>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtPresentworkingStatus" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
+                                            </div>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div style="display: flex; align-items: center;">
+                            <asp:CheckBox ID="chkDeclaration" runat="server" Text="&nbsp; &nbsp;Information furnished in the application is correct." />
+                        </div>
+
+
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div style="display: flex; align-items: center;">
+                            <asp:CheckBox ID="chkdeclaration2" runat="server" Text="&nbsp; &nbsp;I am authorized to sign the application as contractor/on behalf of the contractor." />
+                        </div>
+
+
+                    </div>
+                </div>
 
                 <div class="row">
-                    <table class="table table-bordered table-striped">
-                        <tbody>
-                            <tr>
-                                <td style="margin-top: auto; margin-bottom: auto;">Certificate of Competency/Wireman Permit. <span style="color: red;">★</span>
-                                </td>
-
-
-                                <td>
-                                    <div class="form-group">
-                                        <label style="font-size: 9px;">
-                                            (PLEASE UPLOAD PDF ONLY NO MORE THAN 1MB)
-                                        </label>
-                                        <div class="input-group col-xs-12">
-                                            <asp:TextBox ID="CertificateofCompetency" runat="server" CssClass="form-control file-upload-info"
-                                                Enabled="false" placeholder="Upload Document" Style="width: 85%;"></asp:TextBox>
-                                            <span class="input-group-append">
-                                                <asp:Button ID="btnCertificate" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="CertificateDialog(); return false;" TabIndex="16" />
-                                                <input type="file" id="Certificate" name="Certificate" accept=".pdf" style="display: none;" runat="server" onchange="CertificateDialogName()" />
-                                            </span>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="CertificateofCompetency" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
-                                        </div>
-
-                                    </div>
-                                </td>
-
-
-                            </tr>
-                            <tr>
-                                <td style="text-align: justify; padding-top: 20px !important;">Deposited Treasury Challan of fees, for the purpose in the Head of A/c: 0043-51-800-99-51-Other Receipt.<span style="color: red;">★</span>
-
-                                </td>
-                                <td>
-
-                                    <div class="form-group">
-                                        <label style="font-size: 9px;">
-                                            (PLEASE UPLOAD PDF ONLY NO MORE THAN 1MB)
-                                        </label>
-                                        <div class="input-group col-xs-12">
-                                            <asp:TextBox ID="txtChallan" runat="server" CssClass="form-control file-upload-info"
-                                                Enabled="false" placeholder="Upload Document" Style="width: 85%;"></asp:TextBox>
-                                            <span class="input-group-append">
-                                                <asp:Button ID="Button2" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="ChallanDialog(); return false;" TabIndex="16" />
-                                                <input type="file" id="Challan" name="EquipCertificateInput" accept=".pdf" style="display: none;" runat="server" onchange="ChallanDialogName()" />
-                                            </span>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator" runat="server" ControlToValidate="txtChallan" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
-                                        </div>
-
-                                    </div>
-                                </td>
-                            </tr>
-
-                            <tr runat="server" visible="false" id="MedicalCertificate">
-                                <td style="margin-top: auto; margin-bottom: auto;">A Medical Fitness Certificate issued from Government/Government Approved Hospital, in case he is above
-                                                <br />
-                                    55 years of age on the date of submission of application.<span style="color: red;">★</span>
-
-                                </td>
-                                <td>
-
-                                    <div class="form-group">
-                                        <label style="font-size: 9px;">
-                                            (PLEASE UPLOAD PDF ONLY NO MORE THAN 1MB)
-                                        </label>
-                                        <div class="input-group col-xs-12">
-                                            <asp:TextBox ID="txtMedicalFitness" runat="server" CssClass="form-control file-upload-info"
-                                                Enabled="false" placeholder="Upload Document" Style="width: 85%;"></asp:TextBox>
-                                            <span class="input-group-append">
-                                                <asp:Button ID="btnMedicalFitness" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="MedicalDialog(); return false;" TabIndex="16" />
-                                                <input type="file" id="MedicalFitness" name="MedicalFitness" accept=".pdf" style="display: none;" runat="server" onchange="MedicalDialogName()" />
-                                            </span>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtMedicalFitness" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
-                                        </div>
-
-                                    </div>
-                                </td>
-                            </tr>
-
-                            <tr runat="server" visible="true">
-                                <td style="margin-top: auto; margin-bottom: auto;">Undertaking for delay or non-working during cancel period, in case of expiry of the Certificate/Permit.
-                                                <span style="color: red;">★</span>
-                                </td>
-                                <td>
-
-                                    <div class="form-group">
-                                        <label style="font-size: 9px;">
-                                            (PLEASE UPLOAD PDF ONLY NO MORE THAN 1MB)
-                                        </label>
-
-                                        <input type="file" name="img[]" class="file-upload-default" />
-                                        <div class="input-group col-xs-12">
-                                            <asp:TextBox ID="txtUndertaking" runat="server" CssClass="form-control file-upload-info"
-                                                Enabled="false" placeholder="Upload Document" Style="width: 85%;"></asp:TextBox>
-                                            <span class="input-group-append">
-                                                <asp:Button ID="btnUndertaking" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="UndertakingDialog(); return false;" TabIndex="16" />
-                                                <input type="file" id="Undertaking" name="Undertaking" accept=".pdf" style="display: none;" runat="server" onchange="UndertakingDialogName()" />
-                                            </span>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtUndertaking" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
-                                        </div>
-
-                                    </div>
-                                </td>
-                            </tr>
-
-                            <tr runat="server" visible="true">
-                                <td style="margin-top: auto; margin-bottom: auto;">Present working Status.
-                                                <span style="color: red;">★</span>
-                                </td>
-                                <td>
-
-                                    <div class="form-group">
-                                        <label style="font-size: 9px;">
-                                            (PLEASE UPLOAD PDF ONLY NO MORE THAN 1MB)
-                                        </label>
-
-                                        <input type="file" name="img[]" class="file-upload-default" />
-                                        <div class="input-group col-xs-12">
-                                            <asp:TextBox ID="txtPresentworkingStatus" runat="server" CssClass="form-control file-upload-info"
-                                                Enabled="false" placeholder="Upload Document" Style="width: 85%;"></asp:TextBox>
-                                            <span class="input-group-append">
-                                                <asp:Button ID="btnPresentworkingStatus" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="StatusDialog(); return false;" TabIndex="16" />
-                                                <input type="file" id="PresentworkingStatus" name="Undertaking" accept=".pdf" style="display: none;" runat="server" onchange="StatusDialogName()" />
-                                            </span>
-                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtPresentworkingStatus" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
-                                        </div>
-
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div style="display: flex; align-items: center;">
-                        <asp:CheckBox ID="chkDeclaration" runat="server" Text="&nbsp; &nbsp;Information furnished in the application is correct." />
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4" style="text-align: center;">
+                        <asp:Button ID="btnToDeattach" Text="Submit" runat="server" OnClick="btnNext_Click" ValidationGroup="Submit" class="btn btn-primary mr-2" />
                     </div>
-
-
-                </div>
-
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div style="display: flex; align-items: center;">
-                        <asp:CheckBox ID="chkdeclaration2" runat="server" Text="&nbsp; &nbsp;I am authorized to sign the application as contractor/on behalf of the contractor." />
-                    </div>
-
-
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-md-4"></div>
-                <div class="col-md-4" style="text-align: center;">
-                    <asp:Button ID="btnToDeattach" Text="Submit" runat="server" OnClick="btnNext_Click" ValidationGroup="Submit" class="btn btn-primary mr-2" />
-                </div>
-            </div>
+
         </div>
         <asp:HiddenField ID="HdnField_Document2" runat="server" />
         <asp:HiddenField ID="HdnField_Document15" runat="server" />
@@ -781,201 +781,202 @@
         <a href="#" class="back-to-top d-flex align-items-justify justify-content-justify">
             <i class="bi bi-arrow-up-short"></i>
         </a>
-        <script src="/assetsnew/vendor/purecounter/purecounter_vanilla.js"></script>
-        <script src="/assetsnew/vendor/aos/aos.js"></script>
-        <script src="/assetsnew/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="/assetsnew/vendor/glightbox/js/glightbox.min.js"></script>
-        <script src="/assetsnew/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-        <script src="/assetsnew/vendor/swiper/swiper-bundle.min.js"></script>
-        <script src="/assetsnew/vendor/waypoints/noframework.waypoints.js"></script>
-        <script src="/assetsnew/vendor/php-email-form/validate.js"></script>
-        <!-- Template Main JS File -->
-        <script src="/assetsnew/js/main.js"></script>
-        <script src="/vendors/js/vendor.bundle.base.js"></script>
-        <!-- endinject -->
-        <!-- Plugin js for this page -->
-        <script src="/vendors/typeahead.js/typeahead.bundle.min.js"></script>
-        <script src="/vendors/select2/select2.min.js"></script>
-        <!-- End plugin js for this page -->
-        <!-- inject:js -->
-        <script src="/js2/off-canvas.js"></script>
-        <script src="/js2/hoverable-collapse.js"></script>
-        <script src="/js2/template.js"></script>
-        <script src="/js2/settings.js"></script>
-        <script src="/js2/todolist.js"></script>
-        <!-- endinject -->
-        <!-- Custom js for this page-->
-        <script src="/js2/file-upload.js"></script>
-        <script src="/js2/typeahead.js"></script>
-        <script src="/js2/select2.js"></script>
-        <script type="text/javascript">
-            function ChallanDialog() {
-                document.getElementById('<%= Challan.ClientID %>').click();
+    </div>
+    <script src="/assetsnew/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="/assetsnew/vendor/aos/aos.js"></script>
+    <script src="/assetsnew/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assetsnew/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="/assetsnew/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/assetsnew/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="/assetsnew/vendor/waypoints/noframework.waypoints.js"></script>
+    <script src="/assetsnew/vendor/php-email-form/validate.js"></script>
+    <!-- Template Main JS File -->
+    <script src="/assetsnew/js/main.js"></script>
+    <script src="/vendors/js/vendor.bundle.base.js"></script>
+    <!-- endinject -->
+    <!-- Plugin js for this page -->
+    <script src="/vendors/typeahead.js/typeahead.bundle.min.js"></script>
+    <script src="/vendors/select2/select2.min.js"></script>
+    <!-- End plugin js for this page -->
+    <!-- inject:js -->
+    <script src="/js2/off-canvas.js"></script>
+    <script src="/js2/hoverable-collapse.js"></script>
+    <script src="/js2/template.js"></script>
+    <script src="/js2/settings.js"></script>
+    <script src="/js2/todolist.js"></script>
+    <!-- endinject -->
+    <!-- Custom js for this page-->
+    <script src="/js2/file-upload.js"></script>
+    <script src="/js2/typeahead.js"></script>
+    <script src="/js2/select2.js"></script>
+    <script type="text/javascript">
+        function ChallanDialog() {
+            document.getElementById('<%= Challan.ClientID %>').click();
+        }
+
+        function ChallanDialogName() {
+            var ChallanCertificate = document.getElementById('<%= Challan.ClientID %>');
+            var selectedFileName = document.getElementById('<%= txtChallan.ClientID %>');
+
+            if (ChallanCertificate.files.length > 0) {
+                selectedFileName.value = ChallanCertificate.files[0].name;
             }
+        }
+        function CertificateDialog() {
+            document.getElementById('<%= Certificate.ClientID %>').click();
+        }
 
-            function ChallanDialogName() {
-                var ChallanCertificate = document.getElementById('<%= Challan.ClientID %>');
-                var selectedFileName = document.getElementById('<%= txtChallan.ClientID %>');
+        function CertificateDialogName() {
+            var ChallanCertificate = document.getElementById('<%= Certificate.ClientID %>');
+            var selectedFileName = document.getElementById('<%= CertificateofCompetency.ClientID %>');
 
-                if (ChallanCertificate.files.length > 0) {
-                    selectedFileName.value = ChallanCertificate.files[0].name;
-                }
+            if (ChallanCertificate.files.length > 0) {
+                selectedFileName.value = ChallanCertificate.files[0].name;
             }
-            function CertificateDialog() {
-                document.getElementById('<%= Certificate.ClientID %>').click();
+        }
+        function MedicalDialog() {
+            document.getElementById('<%= MedicalFitness.ClientID %>').click();
+        }
+
+        function MedicalDialogName() {
+            var ChallanCertificate = document.getElementById('<%= MedicalFitness.ClientID %>');
+            var selectedFileName = document.getElementById('<%= txtMedicalFitness.ClientID %>');
+
+            if (ChallanCertificate.files.length > 0) {
+                selectedFileName.value = ChallanCertificate.files[0].name;
             }
+        }
+        function UndertakingDialog() {
+            document.getElementById('<%= Undertaking.ClientID %>').click();
+        }
 
-            function CertificateDialogName() {
-                var ChallanCertificate = document.getElementById('<%= Certificate.ClientID %>');
-                var selectedFileName = document.getElementById('<%= CertificateofCompetency.ClientID %>');
+        function UndertakingDialogName() {
+            var ChallanCertificate = document.getElementById('<%= Undertaking.ClientID %>');
+            var selectedFileName = document.getElementById('<%= txtUndertaking.ClientID %>');
 
-                if (ChallanCertificate.files.length > 0) {
-                    selectedFileName.value = ChallanCertificate.files[0].name;
-                }
+            if (ChallanCertificate.files.length > 0) {
+                selectedFileName.value = ChallanCertificate.files[0].name;
             }
-            function MedicalDialog() {
-                document.getElementById('<%= MedicalFitness.ClientID %>').click();
+        }
+        function StatusDialog() {
+            document.getElementById('<%= PresentworkingStatus.ClientID %>').click();
+        }
+
+        function StatusDialogName() {
+            var ChallanCertificate = document.getElementById('<%= PresentworkingStatus.ClientID %>');
+            var selectedFileName = document.getElementById('<%= txtPresentworkingStatus.ClientID %>');
+
+            if (ChallanCertificate.files.length > 0) {
+                selectedFileName.value = ChallanCertificate.files[0].name;
             }
+        }
 
-            function MedicalDialogName() {
-                var ChallanCertificate = document.getElementById('<%= MedicalFitness.ClientID %>');
-                var selectedFileName = document.getElementById('<%= txtMedicalFitness.ClientID %>');
-
-                if (ChallanCertificate.files.length > 0) {
-                    selectedFileName.value = ChallanCertificate.files[0].name;
-                }
+    </script>
+    <script>
+        function preventEnterSubmit(event) {
+            if (event.keyCode === 13) {
+                event.preventDefault(); // Prevent form submission
+                return false;
             }
-            function UndertakingDialog() {
-                document.getElementById('<%= Undertaking.ClientID %>').click();
-            }
+        }
+    </script>
+    <!-- partial -->
+    <script type="text/javascript">
+        function validateDate() {
+            var ClnDate = document.getElementById('<%=txtdate.ClientID %>');
+            debugger;
+            if (ClnDate.value) {
+                // Parse the yyyy-MM-dd value from the date input
+                var inputParts = ClnDate.value.split("-");
+                var year = parseInt(inputParts[0], 10);
+                var month = parseInt(inputParts[1], 10) - 1; // JS months are 0-based
+                var day = parseInt(inputParts[2], 10);
 
-            function UndertakingDialogName() {
-                var ChallanCertificate = document.getElementById('<%= Undertaking.ClientID %>');
-                var selectedFileName = document.getElementById('<%= txtUndertaking.ClientID %>');
+                var ChallanDate = new Date(year, month, day);
+                ChallanDate.setHours(0, 0, 0, 0); // Remove time component
 
-                if (ChallanCertificate.files.length > 0) {
-                    selectedFileName.value = ChallanCertificate.files[0].name;
-                }
-            }
-            function StatusDialog() {
-                document.getElementById('<%= PresentworkingStatus.ClientID %>').click();
-            }
+                var today = new Date();
+                today.setHours(0, 0, 0, 0); // Remove time component
 
-            function StatusDialogName() {
-                var ChallanCertificate = document.getElementById('<%= PresentworkingStatus.ClientID %>');
-                var selectedFileName = document.getElementById('<%= txtPresentworkingStatus.ClientID %>');
-
-                if (ChallanCertificate.files.length > 0) {
-                    selectedFileName.value = ChallanCertificate.files[0].name;
-                }
-            }
-
-        </script>
-        <script>
-            function preventEnterSubmit(event) {
-                if (event.keyCode === 13) {
-                    event.preventDefault(); // Prevent form submission
+                // Now allow today's date and past dates only
+                if (ChallanDate > today) {
+                    alert('Challan Date cannot be a future date.');
+                    ClnDate.value = '';
+                    ClnDate.focus();
                     return false;
                 }
             }
-        </script>
-        <!-- partial -->
-        <script type="text/javascript">
-            function validateDate() {
-                var ClnDate = document.getElementById('<%=txtdate.ClientID %>');
-                debugger;
-                if (ClnDate.value) {
-                    // Parse the yyyy-MM-dd value from the date input
-                    var inputParts = ClnDate.value.split("-");
-                    var year = parseInt(inputParts[0], 10);
-                    var month = parseInt(inputParts[1], 10) - 1; // JS months are 0-based
-                    var day = parseInt(inputParts[2], 10);
+        }
+    </script>
 
-                    var ChallanDate = new Date(year, month, day);
-                    ChallanDate.setHours(0, 0, 0, 0); // Remove time component
+    <script type="text/javascript">
+        function formatAadhaarInput() {
+            var aadhaarTextbox = document.getElementById('<%= txtaadharno.ClientID %>');
+            var inputValue = aadhaarTextbox.value.replace(/\s/g, ''); // Remove existing spaces
+            var formattedValue = '';
 
-                    var today = new Date();
-                    today.setHours(0, 0, 0, 0); // Remove time component
-
-                    // Now allow today's date and past dates only
-                    if (ChallanDate > today) {
-                        alert('Challan Date cannot be a future date.');
-                        ClnDate.value = '';
-                        ClnDate.focus();
-                        return false;
-                    }
+            for (var i = 0; i < inputValue.length; i++) {
+                if (i > 0 && i % 4 === 0) {
+                    formattedValue += ' '; // Insert a space after every 4 characters
                 }
+                formattedValue += inputValue[i];
             }
-        </script>
 
-        <script type="text/javascript">
-            function formatAadhaarInput() {
-                var aadhaarTextbox = document.getElementById('<%= txtaadharno.ClientID %>');
-                var inputValue = aadhaarTextbox.value.replace(/\s/g, ''); // Remove existing spaces
-                var formattedValue = '';
-
-                for (var i = 0; i < inputValue.length; i++) {
-                    if (i > 0 && i % 4 === 0) {
-                        formattedValue += ' '; // Insert a space after every 4 characters
-                    }
-                    formattedValue += inputValue[i];
-                }
-
-                aadhaarTextbox.value = formattedValue;
+            aadhaarTextbox.value = formattedValue;
+        }
+    </script>
+    <script type="text/javascript">
+        function ValidateEmail() {
+            debugger
+            var email1 = document.getElementById("<%=txtEmail.ClientID %>");
+            email = email1.value;
+            var lblError = document.getElementById("lblError");
+            lblError.innerHTML = "";
+            var expr = /\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;;
+            if (email == "") {
+                //lblError.innerHTML = "Please Enter Email" + "\n";
+                return false;
             }
-        </script>
-        <script type="text/javascript">
-            function ValidateEmail() {
-                debugger
-                var email1 = document.getElementById("<%=txtEmail.ClientID %>");
-                email = email1.value;
-                var lblError = document.getElementById("lblError");
+            else if (expr.test(email)) {
                 lblError.innerHTML = "";
-                var expr = /\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;;
-                if (email == "") {
-                    //lblError.innerHTML = "Please Enter Email" + "\n";
-                    return false;
-                }
-                else if (expr.test(email)) {
-                    lblError.innerHTML = "";
-                    return true;
-                }
-                else {
-                    lblError.innerHTML = "Invalid email address.ex:abc@xyz.com" + "\n";
-                    return false;
-                }
-            }
-        </script>
-
-        <script type="text/javascript">
-            function isNumberKey(evt) {
-                var charCode = (evt.which) ? evt.which : event.keyCode
-                if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-                    return false;
-                }
                 return true;
             }
-
-
-            function isvalidphoneno() {
-
-                var Phone1 = document.getElementById("<%=txtPhone.ClientID %>");
-                phoneNo = Phone1.value;
-                var lblErrorContect = document.getElementById("lblErrorContect");
-
-                var expr = /^[6-9]\d{9}$/;
-                if (phoneNo == "") {
-                    lblErrorContect.innerHTML = "Please Enter Contact Number" + "\n";
-                    return false;
-                }
-                else if (expr.test(phoneNo)) {
-                    lblErrorContect.innerHTML = "";
-                    return true;
-                }
-                else {
-                    lblErrorContect.innerHTML = "Invalid Contact Number" + "\n";
-                    return false;
-                }
+            else {
+                lblError.innerHTML = "Invalid email address.ex:abc@xyz.com" + "\n";
+                return false;
             }
-        </script>
+        }
+    </script>
+
+    <script type="text/javascript">
+        function isNumberKey(evt) {
+            var charCode = (evt.which) ? evt.which : event.keyCode
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                return false;
+            }
+            return true;
+        }
+
+
+        function isvalidphoneno() {
+
+            var Phone1 = document.getElementById("<%=txtPhone.ClientID %>");
+            phoneNo = Phone1.value;
+            var lblErrorContect = document.getElementById("lblErrorContect");
+
+            var expr = /^[6-9]\d{9}$/;
+            if (phoneNo == "") {
+                lblErrorContect.innerHTML = "Please Enter Contact Number" + "\n";
+                return false;
+            }
+            else if (expr.test(phoneNo)) {
+                lblErrorContect.innerHTML = "";
+                return true;
+            }
+            else {
+                lblErrorContect.innerHTML = "Invalid Contact Number" + "\n";
+                return false;
+            }
+        }
+    </script>
 </asp:Content>
