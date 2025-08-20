@@ -14415,6 +14415,12 @@ SqlTransaction transaction)
             );
         }
         #endregion
+        #region navneet renewal
+        public DataTable GetRenwaUserRegistrationData(string Id)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetRenwaUserRegistrationData", Id);
+        }
+        #endregion
     }
 }
 

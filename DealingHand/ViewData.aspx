@@ -178,7 +178,7 @@
                     <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                     <asp:ListItem Text="Contractor" Value="1"></asp:ListItem>
                     <asp:ListItem Text="Supervisor" Value="2"></asp:ListItem>
-                    <asp:ListItem Text="Wireman" Value="2"></asp:ListItem>
+                    <asp:ListItem Text="Wireman" Value="3"></asp:ListItem>
                 </asp:DropDownList>
 
             </div>
