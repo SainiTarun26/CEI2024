@@ -145,7 +145,8 @@ namespace CEIHaryana.Wiremen
 
                     string Challanfp = SavePdf(Challan.PostedFile, "Challan", "Challan", CreatedBy, maxFileSize);
 
-                    string Dateturn55 = "21-05-2003";
+                    DateTime Dateturn55 = DateTime.ParseExact("21-05-2003", "dd-MM-yyyy", System.Globalization.CultureInfo.InvariantCulture);
+
 
                     using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
                     {

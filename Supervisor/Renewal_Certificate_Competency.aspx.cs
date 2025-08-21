@@ -152,7 +152,9 @@ namespace CEIHaryana.Supervisor
 
                     string Challanfp = SavePdf(Challan.PostedFile, "Challan", "Challan", CreatedBy, maxFileSize);
 
-                    string Dateturn55 = "21-05-2003";
+                    //string Dateturn55 = "21-05-2003"; 
+                    DateTime Dateturn55 = DateTime.ParseExact("21-05-2003", "dd-MM-yyyy", System.Globalization.CultureInfo.InvariantCulture);
+
 
                     using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
                     {
@@ -184,7 +186,7 @@ namespace CEIHaryana.Supervisor
 
                             tran.Commit();
 
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Documents Added Successfully !!!')", true);
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Added Successfully !!!')", true);
                             resetfeilds();
                         }
                         catch (Exception ex2)

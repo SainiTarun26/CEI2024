@@ -14347,7 +14347,7 @@ SqlTransaction transaction)
         #endregion
         #region kalpana renewal of licenses
         public void InsertRenewalData(SqlConnection con, SqlTransaction tran, string Category, string ApplicantName,
- string DOB, string age, string Dateturn55, string FatherName, string AadharNo, string District,
+ string DOB, string age, DateTime Dateturn55, string FatherName, string AadharNo, string District,
  string Address, string PhoneNo, string Email, string LicenceNew, string LicenceOld, string ExpiryDate, string DelayedOrNot,
  string DaysDelay, string RenewalTime, string amount, string GRNno, string ChallanDate, string changeofemployer, string CreatedBy)
         {
@@ -14399,6 +14399,63 @@ SqlTransaction transaction)
 
                 cmd.ExecuteNonQuery();
             }
+        }
+        public void InsertRenewalDataforContractor(
+SqlConnection con, SqlTransaction tran,
+string Category, string ApplicantName, string FatherName, string DOB, string Age, string Dateturn55,
+string PanCardNo, string LicenceNew, string LicenceOld, string ExpiryDate,
+string Address, string District, string PhoneNo, string Email,
+string ChangeInAddress, string NewAddress, string NewState, string NewDistrict, string NewPincode,
+string NeedToChangeOnLicence, string DelayedOrNot, string DaysDelay, string EquipmentsTested,
+string RenewalTime, string GRNNo, string ChallanDate, string TotalAmount,
+string ChangeInStaff, string IntimationDate, string CreatedBy)
+        {
+            using (SqlCommand cmd = new SqlCommand("sp_RenewalDetailsOfContractor", con, tran))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@Category", Category);
+                cmd.Parameters.AddWithValue("@ApplicantName", ApplicantName);
+                cmd.Parameters.AddWithValue("@FatherName", FatherName);
+                cmd.Parameters.AddWithValue("@DOB", DOB);
+                cmd.Parameters.AddWithValue("@Age", Age);
+                cmd.Parameters.AddWithValue("@Dateturn55", Dateturn55);
+                cmd.Parameters.AddWithValue("@PanCardNo", PanCardNo);
+                cmd.Parameters.AddWithValue("@LicenceNew", LicenceNew);
+                cmd.Parameters.AddWithValue("@LicenceOld", LicenceOld);
+                cmd.Parameters.AddWithValue("@ExpiryDate", ExpiryDate);
+                cmd.Parameters.AddWithValue("@Address", Address);
+                cmd.Parameters.AddWithValue("@District", District);
+                cmd.Parameters.AddWithValue("@PhoneNo", PhoneNo);
+                cmd.Parameters.AddWithValue("@Email", Email);
+                cmd.Parameters.AddWithValue("@ChangeInAddress", ChangeInAddress);
+                cmd.Parameters.AddWithValue("@NewAddress", NewAddress);
+                cmd.Parameters.AddWithValue("@NewState", NewState);
+                cmd.Parameters.AddWithValue("@NewDistrict", NewDistrict);
+                cmd.Parameters.AddWithValue("@NewPincode", NewPincode);
+                cmd.Parameters.AddWithValue("@NeedToChangeOnLicence", NeedToChangeOnLicence);
+                cmd.Parameters.AddWithValue("@DelayedOrNot", DelayedOrNot);
+                cmd.Parameters.AddWithValue("@DaysDelay", DaysDelay);
+                cmd.Parameters.AddWithValue("@EquipmentsTested", EquipmentsTested);
+                cmd.Parameters.AddWithValue("@RenewalTime", RenewalTime);
+                cmd.Parameters.AddWithValue("@GRNNo", GRNNo);
+                cmd.Parameters.AddWithValue("@ChallanDate", ChallanDate);
+                cmd.Parameters.AddWithValue("@TotalAmount", TotalAmount);
+                cmd.Parameters.AddWithValue("@ChangeInStaff", ChangeInStaff);
+                cmd.Parameters.AddWithValue("@IntimationDate", IntimationDate);
+                cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+
+                cmd.ExecuteNonQuery();
+            }
+        }
+        public DataTable GetContractorDetailsforRenewal(string UserID)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetContractorDataForRenewal", UserID);
+        }
+
+        public DataTable GetStaffDate(string userid)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_StaffDetailsOfContractor", userid);
         }
         #endregion
         #region neha upgradation
@@ -14453,6 +14510,7 @@ SqlTransaction transaction)
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_Get_LicenceApplicationFilePaths", applicationId);
         }
         #endregion
+
     }
 }
 

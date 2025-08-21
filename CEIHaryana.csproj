@@ -1598,6 +1598,7 @@
     <Content Include="Contractor\Approved_Test_Reports.aspx" />
     <Content Include="Contractor\Attach_DeAttach_Staff.aspx" />
     <Content Include="Contractor\ContractorRenewal.aspx" />
+    <Content Include="Contractor\Contractor_Licence_Renewal.aspx" />
     <Content Include="Contractor\Deattatch_Supervisor.aspx" />
     <Content Include="Contractor\GeneratingSetHistory.aspx" />
     <Content Include="Contractor\LiftWork_Intimation.aspx" />
@@ -2779,6 +2780,13 @@
     </Compile>
     <Compile Include="Contractor\ContractorRenewal.aspx.designer.cs">
       <DependentUpon>ContractorRenewal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Contractor\Contractor_Licence_Renewal.aspx.cs">
+      <DependentUpon>Contractor_Licence_Renewal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Contractor\Contractor_Licence_Renewal.aspx.designer.cs">
+      <DependentUpon>Contractor_Licence_Renewal.aspx</DependentUpon>
     </Compile>
     <Compile Include="Contractor\Deattatch_Supervisor.aspx.cs">
       <DependentUpon>Deattatch_Supervisor.aspx</DependentUpon>
