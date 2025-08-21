@@ -2209,6 +2209,7 @@
     <Content Include="UserPages\FormPrintWiremen.aspx" />
     <Content Include="UserPages\index.aspx" />
     <Content Include="UserPages\Instructions.aspx" />
+    <Content Include="UserPages\LicenceHeaderDetails.ascx" />
     <Content Include="UserPages\New_Application_Status.aspx" />
     <Content Include="UserPages\New_Registration_Information.aspx" />
     <Content Include="UserPages\New_Registration_Information_Contractor.aspx" />
@@ -5069,6 +5070,13 @@
     </Compile>
     <Compile Include="UserPages\Instructions.aspx.designer.cs">
       <DependentUpon>Instructions.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserPages\LicenceHeaderDetails.ascx.cs">
+      <DependentUpon>LicenceHeaderDetails.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserPages\LicenceHeaderDetails.ascx.designer.cs">
+      <DependentUpon>LicenceHeaderDetails.ascx</DependentUpon>
     </Compile>
     <Compile Include="UserPages\New_Application_Status.aspx.cs">
       <DependentUpon>New_Application_Status.aspx</DependentUpon>

@@ -26,7 +26,8 @@ namespace CEIHaryana.Superintendent
                             hdnId.Value = Session["SuperidentId"].ToString().Trim();
                         hdnApplicationId.Value = Session["Application_Id"].ToString();
                         getDetails(hdnApplicationId.Value);
-                        GridBind(hdnApplicationId.Value);
+                        GetHeaderDetailsWithId(hdnApplicationId.Value);
+                        BindApplicationLogDetails(hdnApplicationId.Value);
                     }
                     else
                     {
@@ -43,19 +44,9 @@ namespace CEIHaryana.Superintendent
         public void getDetails(string ApplicationId)
         {
             DataTable dt = new DataTable();
-
             dt = CEI.UserDetailsAfterComment(ApplicationId);
             if (dt.Rows.Count > 0)
             {
-                txtApplicantName.Text = dt.Rows[0]["Name"].ToString();
-                txtDOB.Text = dt.Rows[0]["DOB"].ToString();
-                txtFatherName.Text = dt.Rows[0]["FatherName"].ToString();
-                txtAdharNo.Text = dt.Rows[0]["Aadhar"].ToString();
-                txtAddress.Text = dt.Rows[0]["PermanentAddress"].ToString();
-                txtDistrict.Text = dt.Rows[0]["PermanentDistrict"].ToString();
-                txtContactNo.Text = dt.Rows[0]["PhoneNo"].ToString();
-                txtEmailId.Text = dt.Rows[0]["Email"].ToString();
-                txtCatogary.Text = dt.Rows[0]["Category"].ToString();
                 txtStatus.Text = dt.Rows[0]["ApplicationStatus"].ToString();
                 if (txtStatus.Text != "Submit")
                 {
@@ -69,37 +60,69 @@ namespace CEIHaryana.Superintendent
                 }
             }
         }
-
-        public void GridBind(string ApplicationId)
+        private void GetHeaderDetailsWithId(string licApplicationId)
+        {
+            ucLicenceDetails.BindHeaderDetails(licApplicationId);
+        }
+        private void BindApplicationLogDetails(string licApplicationId)
         {
             try
             {
-                DataTable ds = new DataTable();
-                ds = CEI.GETComments(ApplicationId);
-                if (ds.Rows.Count > 0)
+                DataSet ds = new DataSet();
+                ds = CEI.Get_Licence_ApplicationLogDetails(licApplicationId);
+
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                 {
                     GridView1.DataSource = ds;
                     GridView1.DataBind();
                 }
                 else
                 {
-                    Comments.Visible = false;
                     GridView1.DataSource = null;
                     GridView1.DataBind();
-                    //string script = "alert(\"No any User exist.\");";
-                    //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+
+                    string script = "alert(\"No record found for this application.\");";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", script, true);
                 }
+
                 ds.Dispose();
             }
             catch (Exception ex)
             {
-
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
-                return;
+                string errorScript = "alert(\"An error occurred: " + ex.Message.Replace("'", "\\'") + "\");";
+                ScriptManager.RegisterStartupScript(this, GetType(), "errorMessage", errorScript, true);
             }
-
-
         }
+        //public void GridBind(string ApplicationId)
+        //{
+        //    try
+        //    {
+        //        DataTable ds = new DataTable();
+        //        ds = CEI.GETComments(ApplicationId);
+        //        if (ds.Rows.Count > 0)
+        //        {
+        //            GridView1.DataSource = ds;
+        //            GridView1.DataBind();
+        //        }
+        //        else
+        //        {
+        //            Comments.Visible = false;
+        //            GridView1.DataSource = null;
+        //            GridView1.DataBind();
+        //            //string script = "alert(\"No any User exist.\");";
+        //            //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+        //        }
+        //        ds.Dispose();
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+        //        return;
+        //    }
+
+
+        //}
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             if (Convert.ToString(Session["SuperidentId"]) == hdnId.Value && Convert.ToString(Session["Application_Id"]) == hdnApplicationId.Value)

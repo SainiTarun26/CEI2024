@@ -69,16 +69,7 @@ namespace CEIHaryana.Superintendent
 
         private void GetHeaderDetailsWithId(string licApplicationId)
         {
-            DataSet ds =  CEI.Licence_XenfinalRecommend_GetHeaderDetails(licApplicationId);
-            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
-            {
-                DataRow row = ds.Tables[0].Rows[0];
-                txtLicenceType.Text = row["Categary"].ToString();
-                txtApplicationId.Text = row["ApplicationId"].ToString();
-                txtCommiteeId.Text = row["CommitteeId"].ToString();
-                txtApplicantName.Text = row["Name"].ToString();
-                txtRegistrationId.Text = row["RegistrationId"].ToString();
-            }
+            ucLicenceDetails.BindHeaderDetails(licApplicationId);
         }
 
 
@@ -114,11 +105,11 @@ namespace CEIHaryana.Superintendent
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            if (Session["SuperidentId"] != null && !string.IsNullOrWhiteSpace(Session["SuperidentId"].ToString()) && !string.IsNullOrWhiteSpace(txtApplicationId.Text))
+            if (Session["SuperidentId"] != null && !string.IsNullOrWhiteSpace(Session["SuperidentId"].ToString()) && !string.IsNullOrWhiteSpace(ucLicenceDetails.ApplicationId))
             {
                 try
                 {
-                    string applicationId = txtApplicationId.Text.Trim();
+                    string applicationId = ucLicenceDetails.ApplicationId;
                     string remarks = TextBox1.Text.Trim();
                     string actionTaken = ddlReview.SelectedValue;
 
@@ -178,31 +169,6 @@ namespace CEIHaryana.Superintendent
             if (Session["PreviousPageUrl2"] != null)
             {
                 Response.Redirect(Session["PreviousPageUrl2"].ToString(), false);
-            }
-        }
-
-        protected void lnkFile_Click(object sender, EventArgs e)
-        {
-
-            Session["NewApplicationRegistrationNo"] = "";
-            Session["NewApplication_Contractor_RegNo"] = "";
-            Session["Application_Id"] = txtApplicationId.Text.ToString();
-            if (txtLicenceType.Text == "Wireman" || txtLicenceType.Text == "Supervisor")
-            {
-                Session["NewApplicationRegistrationNo"] = txtRegistrationId.Text.Trim();
-                Response.Redirect("/UserPages/New_Registration_Information.aspx", false);
-
-                //string script = "window.open('/UserPages/New_Registration_Information.aspx', '_blank');";
-                //ScriptManager.RegisterStartupScript(this, this.GetType(), "OpenDoc", script, true);
-            }
-            else if (txtLicenceType.Text == "Contractor")
-            {
-                Session["NewApplication_Contractor_RegNo"] = txtRegistrationId.Text.Trim();
-
-                //string script = "window.open('/UserPages/New_Registration_Information_Contractor.aspx', '_blank');";
-                //ScriptManager.RegisterStartupScript(this, this.GetType(), "OpenDoc", script, true);
-                Response.Redirect("/UserPages/New_Registration_Information_Contractor.aspx", false);
-
             }
         }
 

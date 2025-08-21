@@ -22,6 +22,7 @@ namespace CEIHaryana.Admin
                 {
                     if (Convert.ToString(Session["AdminID"]) != null && Convert.ToString(Session["AdminID"]) != "")
                     {
+                        GridViewBind(null, null, null);
                         BindCommittee();
                         CommitteeGridViewBind();
                         Page.Session["double_Clickbutton"] = "1";

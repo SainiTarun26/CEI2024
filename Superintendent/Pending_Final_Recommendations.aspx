@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Superintendent/Superintendent.Master" AutoEventWireup="true" CodeBehind="Pending_Final_Recommendations.aspx.cs" Inherits="CEIHaryana.Superintendent.Pending_Final_Recommendations" %>
-
+<%@ Register Src="~/UserCPages/LicenceHeaderDetails.ascx" TagPrefix="uc" TagName="LicenceDetails" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
@@ -308,59 +308,9 @@
                 Pending Final Recommendations 
 
             </div>
-            <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
-                <div class="row">
-                    <div class="col-md-4" runat="server">
-                        <label>
-                            Licence Type
-                        </label>
-                        <asp:TextBox class="form-control" ID="txtLicenceType" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                    </div>
-                    <div class="col-md-4" id="individual" runat="server">
-                        <label>
-                            Application Id.
-                        </label>
-                        <asp:TextBox class="form-control" ID="txtApplicationId" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                    </div>
 
-                    <div class="col-md-4" runat="server" id="DivPancard_TanNo">
-                        <label for="txtCommiteeId">
-                            Commitee Id.
-
-                        </label>
-                        <asp:TextBox class="form-control" ID="txtCommiteeId" TabIndex="1" ReadOnly="true" MaxLength="10" onkeyup="convertToUpperCase(event)" AutoPostBack="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                    </div>
-
-                    <div class="col-md-4" runat="server" id="DivOtherDepartment" visible="true">
-                        <label for="txtApplicantName">
-                            Applicant Name
-
-                        </label>
-                        <asp:TextBox class="form-control" ID="txtApplicantName" ReadOnly="true" TabIndex="1" MaxLength="10" onkeyup="convertToUpperCase(event)" AutoPostBack="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                    </div>
-                    <div class="col-md-4">
-                        <label>
-                            Registration Id.
-                        </label>
-                        <asp:TextBox class="form-control" ID="txtRegistrationId" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                    </div>
-
-                    <div class="col-md-4" style="margin-top: 3%;">
-                        <label>
-                        </label>
-                        <asp:LinkButton ID="LinkButton1" runat="server" AutoPostBack="true" OnClick="lnkFile_Click" Text="Registration Details" />
-                    </div>
-
-
-
-                    <asp:HiddenField ID="hdn_Lic_ApplicationId" runat="server" />
-
-
-                </div>
-            </div>
-
-
-
+            <uc:LicenceDetails ID="ucLicenceDetails" runat="server" />
+             <asp:HiddenField ID="hdn_Lic_ApplicationId" runat="server" />
 
             <div class="card-title" style="margin-top: 15px; margin-bottom: 20px; font-size: 17px; font-weight: 600; margin-left: -10px;">
                 Applications Status

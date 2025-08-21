@@ -1,4 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/DealingHand/DealingHand.Master" AutoEventWireup="true" CodeBehind="CommentByDealingHand.aspx.cs" Inherits="CEIHaryana.DealingHand.CommentByDealingHand" %>
+
+<%@ Register Src="~/UserCPages/LicenceHeaderDetails.ascx" TagPrefix="uc" TagName="LicenceDetails" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
@@ -163,12 +165,16 @@
         th.headercolor {
             background: #9292cc;
             color: white;
-            width:1% !important;
+            width: 1% !important;
         }
 
         table#ContentPlaceHolder1_RadioButtonList2 {
             margin-top: 5px;
         }
+          th{
+      width:1% !important;
+      background:#8b8bc2 !important;
+  }
     </style>
 
     <script type="text/javascript">
@@ -204,147 +210,90 @@
             <%-- <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
              <asp:UpdatePanel ID="UpdatePanel1" runat="server"></asp:UpdatePanel>--%>
             <div class="card-title" style="margin-bottom: 5px; font-size: 17px; margin-bottom: 20px; font-weight: 600; margin-left: -10px;">
-              User Detail
+                User Detail
             </div>
-            <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
-                  <asp:HiddenField ID="hdnId" runat="server" />
-                  <asp:HiddenField ID="hdnApplicationId" runat="server" />
-                <div class="row">
-                    <div class="col-md-4" runat="server">
-                        <label>Applicant Name</label>
-                        <asp:TextBox class="form-control" ID="txtApplicantName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                    </div>
-                    <div class="col-md-4" id="PermisesType" visible="true" runat="server">
-                        <label>
-                            Date of Birth
-                        </label>
-                        <asp:TextBox class="form-control" ID="txtDOB" ReadOnly="true" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                    </div>
-                    <div class="col-md-4">
-                        <label>
-                            Father's Name
-                        </label>
-                        <asp:TextBox class="form-control" ID="txtFatherName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                    </div>
-                    <div class="col-md-4">
-                        <label>
-                            Aadhaar No.
-                        </label>
-                        <asp:TextBox class="form-control" ID="txtAdharNo" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                    </div>
-                   <div class="col-md-4">
-    <label>
-        Address
-    </label>
-    <asp:TextBox class="form-control" ID="txtAddress" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-</div>
-                                      <div class="col-md-4">
-    <label>
-        District
-    </label>
-    <asp:TextBox class="form-control" ID="txtDistrict" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-</div>
-                                       <div class="col-md-4">
-    <label>
-        Contact No.
-    </label>
-    <asp:TextBox class="form-control" ID="txtContactNo" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-</div>
-                                                           <div class="col-md-4">
-    <label>
-      Email Id.
-    </label>
-    <asp:TextBox class="form-control" ID="txtEmailId" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-</div>
-                                                      <div class="col-md-4">
-    <label>
-     Category
-    </label>
-    <asp:TextBox class="form-control" ID="txtCatogary" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-</div>
-                   
+            <uc:LicenceDetails ID="ucLicenceDetails" runat="server" />
+            <asp:HiddenField ID="hdnId" runat="server" />
+            <asp:HiddenField ID="hdnApplicationId" runat="server" />
+            <div id="Div1" runat="server">
+                <div class="card-title" style="margin-bottom: 5px; font-size: 17px; margin-bottom: 20px; font-weight: 600; margin-left: -10px;">
+                    Coments Details
                 </div>
-            </div>
-                        <div id="Div1" runat="server">
-                                <div class="card-title" style="margin-bottom: 5px; font-size: 17px; margin-bottom: 20px; font-weight: 600; margin-left: -10px;">
- Coments Details
-</div>
-<div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
-             <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%"
-     AutoGenerateColumns="false"    BorderWidth="1px" BorderColor="#dbddff">
-     <Columns>
-        
-         <asp:TemplateField HeaderText="SNo">
-             <HeaderStyle CssClass="headercolor" />
-             <ItemStyle />
-             <ItemTemplate>
-                 <%#Container.DataItemIndex+1 %>
-             </ItemTemplate>
-         </asp:TemplateField>
-            
-         <asp:BoundField DataField="ActionTakenBy" HeaderText="actiontakenby">
-             <HeaderStyle HorizontalAlign="center"  CssClass="headercolor" />
-             <ItemStyle HorizontalAlign="center"  />
-         </asp:BoundField>
-         <asp:BoundField DataField="ApplicationStatus" HeaderText="actiontaken">
-             <HeaderStyle HorizontalAlign="center"  CssClass="headercolor" />
-             <ItemStyle HorizontalAlign="center"  />
-         </asp:BoundField>
-        
-         <asp:BoundField DataField="ActionTakenDate" HeaderText="ActionDate">
-             <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
-             <ItemStyle HorizontalAlign="center" />
-         </asp:BoundField>
-          <asp:BoundField DataField="Remarks" HeaderText="Comments">
-     <HeaderStyle HorizontalAlign="center"  CssClass="headercolor thwidth" />
-     <ItemStyle HorizontalAlign="center"  />
- </asp:BoundField>
+                <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
+                    <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%"
+                        AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
+                        <Columns>
+
+                            <asp:TemplateField HeaderText="SNo">
+                                <HeaderStyle CssClass="headercolor" />
+                                <ItemStyle />
+                                <ItemTemplate>
+                                    <%#Container.DataItemIndex+1 %>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+
+                            <asp:BoundField DataField="ActionTakenBy" HeaderText="actiontakenby">
+                                <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="ApplicationStatus" HeaderText="actiontaken">
+                                <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" />
+                            </asp:BoundField>
+
+                            <asp:BoundField DataField="ActionTakenDate" HeaderText="ActionDate">
+                                <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Remarks" HeaderText="Comments">
+                                <HeaderStyle HorizontalAlign="center" CssClass="headercolor thwidth" />
+                                <ItemStyle HorizontalAlign="center" />
+                            </asp:BoundField>
 
 
-     </Columns>
-     <FooterStyle BackColor="White" ForeColor="#000066" />
-     <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
-     <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
-     <RowStyle ForeColor="#000066" />
-     <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-     <SortedAscendingCellStyle BackColor="#F1F1F1" />
-     <SortedAscendingHeaderStyle BackColor="#007DBB" />
-     <SortedDescendingCellStyle BackColor="#CAC9C9" />
-     <SortedDescendingHeaderStyle BackColor="#00547E" />
- </asp:GridView>
-            </div>
-           </div>
-            <div id="Comments" runat="server"  >
-             <div class="card-title" style="margin-bottom: 5px; font-size: 17px; margin-bottom: 20px; font-weight: 600; margin-left: -10px;">
-  Comments
- </div>
-            <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
-                 <div class="row">
-     <div class="col-md-12" runat="server">
-       
-         <asp:TextBox class="form-control" ID="txtRemarks" ReadOnly="false" TextMode="MultiLine" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-     </div>
-                     </div>
+                        </Columns>
+                        <FooterStyle BackColor="White" ForeColor="#000066" />
+                        <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                        <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                        <RowStyle ForeColor="#000066" />
+                        <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                        <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                        <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                        <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                        <SortedDescendingHeaderStyle BackColor="#00547E" />
+                    </asp:GridView>
                 </div>
-          
-        </div>
-             <div id="Status" runat="server"  Visible="false">
-                  <div class="row" style="margin-bottom: 15px;">
-     <div class="col-md-4">
-         <label>
-             Application Status
-         </label>
-         <asp:TextBox class="form-control" ID="txtStatus" TabIndex="8" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" MaxLength="50" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-     </div>
-     </div>
-                 </div>
-        <div class="row">
-            <div class="col-md-4"></div>
-            <div class="col-md-4" style="text-align: center;">
-                <asp:Button ID="btnSubmit" Text="Submit" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" OnClick="btnSubmit_Click" />
-                <asp:Button ID="btnBack" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnBack_Click" />
+            </div>
+            <div id="Comments" runat="server">
+                <div class="card-title" style="margin-bottom: 5px; font-size: 17px; margin-bottom: 20px; font-weight: 600; margin-left: -10px;">
+                    Comments
+                </div>
+                <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
+                    <div class="row">
+                        <div class="col-md-12" runat="server">
+
+                            <asp:TextBox class="form-control" ID="txtRemarks" ReadOnly="false" TextMode="MultiLine" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div id="Status" runat="server" visible="false">
+                <div class="row" style="margin-bottom: 15px;">
+                    <div class="col-md-4">
+                        <label>
+                            Application Status
+                        </label>
+                        <asp:TextBox class="form-control" ID="txtStatus" TabIndex="8" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" MaxLength="50" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4" style="text-align: center;">
+                    <asp:Button ID="btnSubmit" Text="Submit" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" OnClick="btnSubmit_Click" />
+                    <asp:Button ID="btnBack" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnBack_Click" />
+                </div>
             </div>
         </div>
-    </div>
-   
 </asp:Content>

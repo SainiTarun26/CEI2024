@@ -52,20 +52,10 @@ namespace CEIHaryana.Officers
             ddlvenue.Items.Insert(0, new ListItem("Select", "0"));
             dt.Clear();
         }
-        private void GetHeaderDetailsWithId(string licApplication_Id)
+        private void GetHeaderDetailsWithId(string licApplicationId)
         {
-            DataSet ds = CEI.Licence_XenfinalRecommend_GetHeaderDetails(licApplication_Id);
-            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
-            {
-                DataRow row = ds.Tables[0].Rows[0];
-               txtLicenceType.Text = row["Categary"].ToString();
-                txtApplicationId.Text = row["ApplicationId"].ToString();
-                txtCommiteeId.Text = row["CommitteeId"].ToString();
-                txtApplicantName.Text = row["Name"].ToString();
-                txtRegistrationId.Text = row["RegistrationId"].ToString();
-            }
+            ucLicenceDetails.BindHeaderDetails(licApplicationId);
         }
-
         private void BindApplicationLogDetails(string licApplication_Id)
         {
             try
@@ -101,13 +91,12 @@ namespace CEIHaryana.Officers
             {
             string StaffID = Session["StaffID"].ToString();
                 if (RadioButtonList1.SelectedValue== "Accept") {
-                    CEI.UpdateXenVerificationstatus(txtApplicationId.Text, StaffID, ddlcorrection.SelectedItem.Text, RadioButtonList1.SelectedValue, txtRemarks.Text, txtCorrectionRemarks.Text, txtDate.Text, txtTime.Text, ddlvenue.SelectedValue, "Ready For Issue Letter");
+                    CEI.UpdateXenVerificationstatus(ucLicenceDetails.ApplicationId, StaffID, ddlcorrection.SelectedItem.Text, RadioButtonList1.SelectedValue, txtRemarks.Text, txtCorrectionRemarks.Text, txtDate.Text, txtTime.Text, ddlvenue.SelectedValue, "Ready For Issue Letter");
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
                 }
                 else
                 {
-
-                    CEI.UpdateXenVerificationstatus(txtApplicationId.Text, StaffID, ddlcorrection.SelectedItem.Text, RadioButtonList1.SelectedValue.ToString(), txtRemarks.Text, txtCorrectionRemarks.Text,null,null,null, "Verified");
+                    CEI.UpdateXenVerificationstatus(ucLicenceDetails.ApplicationId, StaffID, ddlcorrection.SelectedItem.Text, RadioButtonList1.SelectedValue.ToString(), txtRemarks.Text, txtCorrectionRemarks.Text,null,null,null, "Verified");
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata2();", true);
                 }
             }

@@ -14447,6 +14447,12 @@ SqlTransaction transaction)
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetRenwaUserRegistrationData", Id);
         }
         #endregion
+        #region ASLAM Renewal 21-Aug-2025
+        public DataSet GetLicenceCeiDownloadFilePaths(string applicationId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_Get_LicenceApplicationFilePaths", applicationId);
+        }
+        #endregion
     }
 }
 

@@ -29,16 +29,7 @@ namespace CEIHaryana.Officers
         }
         private void GetHeaderDetailsWithId(string licApplicationId)
         {
-            DataSet ds = CEI.Licence_XenfinalRecommend_GetHeaderDetails(licApplicationId);
-            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
-            {
-                DataRow row = ds.Tables[0].Rows[0];
-                txtLicenceType.Text = row["Categary"].ToString();
-                txtApplicationId.Text = row["ApplicationId"].ToString();
-                txtCommiteeId.Text = row["CommitteeId"].ToString();
-                txtApplicantName.Text = row["Name"].ToString();
-                txtRegistrationId.Text = row["RegistrationId"].ToString();
-            }
+            ucLicenceDetails.BindHeaderDetails(licApplicationId);
         }
         private void BindApplicationLogDetails(string licApplicationId)
         {
@@ -105,7 +96,7 @@ namespace CEIHaryana.Officers
                             filePathInfo2 = Server.MapPath("~/Attachment/" + "XenVerifiedLetters" + "/" + ApplicationId + "/" + fileName);
 
                             Uploadfile.PostedFile.SaveAs(filePathInfo2);
-                            CEI.AddXenVerifiedLetter(txtApplicationId.Text, StaffID, path + fileName); 
+                            CEI.AddXenVerifiedLetter(ucLicenceDetails.ApplicationId, StaffID, path + fileName); 
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata2();", true);
                         //}
                         //else

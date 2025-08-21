@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -44,6 +45,7 @@ namespace CEIHaryana.Admin
                         {
                             GetHeaderDetailsWithId(var_Lic_ApplicationId);
                             BindApplicationLogDetails(var_Lic_ApplicationId);
+                            LoadLicenceCeiDownloadFilePaths(var_Lic_ApplicationId);
                         }
 
                     }
@@ -63,19 +65,9 @@ namespace CEIHaryana.Admin
             }
 
         }
-
         private void GetHeaderDetailsWithId(string licApplicationId)
         {
-            DataSet ds = CEI.Licence_Cei_Approval_GetHeaderDetails(licApplicationId);
-            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
-            {
-                DataRow row = ds.Tables[0].Rows[0];
-                txtLicenceType.Text = row["Categary"].ToString();
-                txtApplicationId.Text = row["ApplicationId"].ToString();
-                txtCommiteeId.Text = row["CommitteeId"].ToString();
-                txtApplicantName.Text = row["Name"].ToString();
-                txtRegistrationId.Text = row["RegistrationId"].ToString();
-            }
+            ucLicenceDetails.BindHeaderDetails(licApplicationId);
         }
 
 
@@ -115,7 +107,7 @@ namespace CEIHaryana.Admin
             {
                 try
                 {
-                    string applicationId = txtApplicationId.Text.Trim();
+                    string applicationId = ucLicenceDetails.ApplicationId;
                     string remarks = TextBox1.Text.Trim();
                     string actionTaken = ddlReview.SelectedValue;
 
@@ -172,29 +164,54 @@ namespace CEIHaryana.Admin
             }
         }
 
-        protected void lnkFile_Click(object sender, EventArgs e)
+
+        private void LoadLicenceCeiDownloadFilePaths(string applicationId)
         {
-            
-            Session["NewApplicationRegistrationNo"] = "";
-            Session["NewApplication_Contractor_RegNo"] = "";
-            Session["Application_Id"] = txtApplicationId.Text.ToString();
-            if (txtLicenceType.Text == "Wireman" || txtLicenceType.Text == "Supervisor")
+            DataSet ds = CEI.GetLicenceCeiDownloadFilePaths(applicationId);
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
-                Session["NewApplicationRegistrationNo"] = txtRegistrationId.Text.Trim();
-                Response.Redirect("/UserPages/New_Registration_Information.aspx", false);
-
-                //string script = "window.open('/UserPages/New_Registration_Information.aspx', '_blank');";
-                //ScriptManager.RegisterStartupScript(this, this.GetType(), "OpenDoc", script, true);
-            }
-            else if (txtLicenceType.Text == "Contractor")
-            {
-                Session["NewApplication_Contractor_RegNo"] = txtRegistrationId.Text.Trim();
-
-                //string script = "window.open('/UserPages/New_Registration_Information_Contractor.aspx', '_blank');";
-                //ScriptManager.RegisterStartupScript(this, this.GetType(), "OpenDoc", script, true);
-                Response.Redirect("/UserPages/New_Registration_Information_Contractor.aspx", false);
-
+                DataRow row = ds.Tables[0].Rows[0];
+                hfIssueLetterPath.Value = row["XenVerifiedLetterPath"]?.ToString();
+                hfMomDocumentPath.Value = row["SupMeetingDocPath"]?.ToString();
             }
         }
+
+        protected void lnkbtnDownloadIssueLetter_Click(object sender, EventArgs e)
+        {
+            HandleDownload(hfIssueLetterPath.Value);
+        }
+
+        protected void lnkMomDocument_Click(object sender, EventArgs e)
+        {
+            HandleDownload(hfMomDocumentPath.Value);
+        }
+
+        private void HandleDownload(string relativeFilePath)
+        {
+            if (string.IsNullOrEmpty(relativeFilePath))
+            {
+                ShowAlert("File not available.");
+                return;
+            }
+            string physicalPath = Server.MapPath(relativeFilePath);
+
+            if (File.Exists(physicalPath))
+            {
+                string fileUrl = ResolveUrl(relativeFilePath);
+                string script = $"window.open('{fileUrl}', '_blank');";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "OpenFileInNewTab", script, true);
+            }
+            else
+            {
+                ShowAlert("File not found. Please try again later.");
+            }
+        }
+
+        private void ShowAlert(string message)
+        {
+            string safeMessage = message.Replace("'", "\\'");
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", $"alert('{safeMessage}');", true);
+        }
+
     }
 }
