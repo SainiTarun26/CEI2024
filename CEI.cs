@@ -14346,32 +14346,58 @@ SqlTransaction transaction)
         }
         #endregion
         #region kalpana renewal of licenses
-        public void InsertRenewalData(string Category, string name, string DOB, string age, string Dateturn55, string FatherName, string AadharNo, string District, string Address, string PhoneNo, string Email, string LicenceNew, string LicenceOld, string RenewalTime, string amount, string GRNno, string ChallanDate, string changeofemployer, string CreatedBy)
+        public void InsertRenewalData(SqlConnection con, SqlTransaction tran, string Category, string ApplicantName,
+ string DOB, string age, string Dateturn55, string FatherName, string AadharNo, string District,
+ string Address, string PhoneNo, string Email, string LicenceNew, string LicenceOld, string ExpiryDate, string DelayedOrNot,
+ string DaysDelay, string RenewalTime, string amount, string GRNno, string ChallanDate, string changeofemployer, string CreatedBy)
         {
-            DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_RenewalDetails", Category, name, DOB, age, Dateturn55, FatherName, AadharNo, District, Address, PhoneNo, Email, LicenceNew, LicenceOld, RenewalTime, amount, GRNno, ChallanDate, changeofemployer, CreatedBy);
+            using (SqlCommand cmd = new SqlCommand("sp_RenewalDetails", con, tran))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@Category", Category);
+                cmd.Parameters.AddWithValue("@ApplicantName", ApplicantName);
+                cmd.Parameters.AddWithValue("@DOB", DOB);
+                cmd.Parameters.AddWithValue("@Age", age);
+                cmd.Parameters.AddWithValue("@Dateturn55", Dateturn55);
+                cmd.Parameters.AddWithValue("@FatherName", FatherName);
+                cmd.Parameters.AddWithValue("@AadharNo", AadharNo);
+                cmd.Parameters.AddWithValue("@District", District);
+                cmd.Parameters.AddWithValue("@Address", Address);
+                cmd.Parameters.AddWithValue("@PhoneNo", PhoneNo);
+                cmd.Parameters.AddWithValue("@Email", Email);
+                cmd.Parameters.AddWithValue("@LicenceNew", LicenceNew);
+                cmd.Parameters.AddWithValue("@LicenceOld", LicenceOld);
+                cmd.Parameters.AddWithValue("@ExpiryDate", ExpiryDate);
+                cmd.Parameters.AddWithValue("@DelayedOrNot", DelayedOrNot);
+                cmd.Parameters.AddWithValue("@DaysDelay", DaysDelay);
+                cmd.Parameters.AddWithValue("@RenewalTime", RenewalTime);
+                cmd.Parameters.AddWithValue("@TotalAmount", amount);
+                cmd.Parameters.AddWithValue("@GRNno", GRNno);
+                cmd.Parameters.AddWithValue("@ChallanDate", ChallanDate);
+                cmd.Parameters.AddWithValue("@ChangeOfEmployer", changeofemployer);
+                cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+
+                cmd.ExecuteNonQuery();
+            }
         }
         public DataTable GetSuperviserDetailsforRenewal(string UserID)
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetSuperviserDetailsforRenewal", UserID);
         }
-        public void InsertRenewalDocuments(string category, string documentName, string documentPath, int status, string createdBy)
+        public void InsertRenewalDocuments(SqlConnection con, SqlTransaction tran, string category, string documentName, string documentPath, int status, string createdBy)
         {
-            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+            using (SqlCommand cmd = new SqlCommand("sp_UploadRenewalUserDocument", con, tran))
             {
-                using (SqlCommand cmd = new SqlCommand("sp_UploadRenewalUserDocument", con))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandType = CommandType.StoredProcedure;
 
-                    cmd.Parameters.AddWithValue("@Category", category);
-                    cmd.Parameters.AddWithValue("@DocumentName", documentName);
-                    cmd.Parameters.AddWithValue("@DocumentPath", documentPath);
-                    cmd.Parameters.AddWithValue("@Status", status);
-                    cmd.Parameters.AddWithValue("@CreatedBy", createdBy);
+                cmd.Parameters.AddWithValue("@Category", category);
+                cmd.Parameters.AddWithValue("@DocumentName", documentName);
+                cmd.Parameters.AddWithValue("@DocumentPath", documentPath);
+                cmd.Parameters.AddWithValue("@Status", status);
+                cmd.Parameters.AddWithValue("@CreatedBy", createdBy);
 
-                    con.Open();
-                    cmd.ExecuteNonQuery();
-                    con.Close();
-                }
+                cmd.ExecuteNonQuery();
             }
         }
         #endregion

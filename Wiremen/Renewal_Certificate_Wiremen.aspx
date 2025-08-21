@@ -255,7 +255,8 @@
                 </div>
 
 
-
+                <asp:HiddenField ID="HdnUserId" runat="server" />
+                <asp:HiddenField ID="HdnUserType" runat="server" />
 
                 <div class="row">
                     <div class="col-md-4"></div>

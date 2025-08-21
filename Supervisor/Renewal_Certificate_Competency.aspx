@@ -253,7 +253,8 @@
                     <div class="col-md-2"></div>
                 </div>
 
-
+                <asp:HiddenField ID="HdnUserId" runat="server" />
+                <asp:HiddenField ID="HdnUserType" runat="server" />
 
 
                 <div class="row">
@@ -445,7 +446,7 @@
                         <asp:HiddenField ID="HiddenField2" runat="server" />
                         <div class="col-md-4">
                             <label>
-                                Is renewal application belated? If yes, mention delay period. &nbsp; &nbsp;
+                                Is renewal application belated?  &nbsp; &nbsp;
         <samp style="color: red">*</samp>
                             </label>
 

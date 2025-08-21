@@ -34,19 +34,26 @@ namespace CEIHaryana.Supervisor
             try
             {
 
-                if (Convert.ToString(Session["SupervisorID"]) != null && Convert.ToString(Session["SupervisorID"]) != "")
+                if (!IsPostBack)
                 {
-                    Category = "Supervisor";
-                    userID = Session["SupervisorID"].ToString();
-                    GetSupervisorDetails(userID);
-                }
-                else if (Convert.ToString(Session["WiremanId"]) != null && Convert.ToString(Session["WiremanId"]) != "")
-                {
-                    Category = "Wireman";
-                    userID = Session["WiremanId"].ToString();
-                    GetSupervisorDetails(userID);
-                }
+                    if (Convert.ToString(Session["SupervisorID"]) != null && Convert.ToString(Session["SupervisorID"]) != "")
+                    {
+                        Category = "Supervisor";
+                        userID = Session["SupervisorID"].ToString();
+                        HdnUserId.Value = userID;
+                        HdnUserType.Value = "Supervisor";
+                        GetSupervisorDetails(userID);
 
+                    }
+                    else if (Convert.ToString(Session["WiremanId"]) != null && Convert.ToString(Session["WiremanId"]) != "")
+                    {
+                        Category = "Wireman";
+                        userID = Session["WiremanId"].ToString();
+                        GetSupervisorDetails(userID);
+                        HdnUserId.Value = userID;
+                        HdnUserType.Value = "Wireman";
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -124,21 +131,18 @@ namespace CEIHaryana.Supervisor
             }
         }
 
-
-
         protected void btnNext_Click(object sender, EventArgs e)
         {
             try
             {
                 if (chkDeclaration.Checked == true && chkdeclaration2.Checked == true)
                 {
-                    string CreatedBy = userID;
-                    string FileName = string.Empty;
+                    string CreatedBy = HdnUserId.Value;
                     string MedicalFitnessfp = "";
-                    int maxFileSize = 1024 * 1024; // 1MB in bytes
+                    int maxFileSize = 1024 * 1024; // 1MB
+
                     string CertificateofCompetency = SavePdf(Certificate.PostedFile, "Certificate", "Certificate", CreatedBy, maxFileSize);
                     string PresentworkingStatusfp = SavePdf(PresentworkingStatus.PostedFile, "WorkStatus", "WorkStatus", CreatedBy, maxFileSize);
-
                     string Undertakingfp = SavePdf(Undertaking.PostedFile, "Undertaking", "Undertaking", CreatedBy, maxFileSize);
 
                     if (MedicalCertificate.Visible == true)
@@ -148,45 +152,48 @@ namespace CEIHaryana.Supervisor
 
                     string Challanfp = SavePdf(Challan.PostedFile, "Challan", "Challan", CreatedBy, maxFileSize);
 
-
-
-
-                    string name = txtname.Text.ToString();
-                    string DOB = txtDOB.Text.ToString();
-                    string age = txtage.Text.ToString();
                     string Dateturn55 = "21-05-2003";
-                    string FatherName = txtFatherName.Text.ToString();
-                    string AadharNo = txtaadharno.Text.ToString();
-                    string PhoneNo = txtPhone.Text.ToString();
-                    string Email = txtEmail.Text.ToString();
-                    string District = txtDistrict.Text.ToString();
-                    string Address = txtaddress.Text.ToString();
-                    string LicenceNew = txtcertificatenoNEW.Text.ToString();
-                    string LicenceOld = txtcertificatenoOLD.Text.ToString();
-                    string RenewalTime = ddlRenewalTime.SelectedItem.ToString();
-                    string amount = txtamount.Text.ToString();
-                    string GRNno = txtgrnno.Text.ToString();
-                    string ChallanDate = txtdate.Text.ToString();
-                    string changeofemployer = RadioButtonList1.SelectedItem.ToString();
 
-
-                    CEI.InsertRenewalData(Category, name, DOB, age, Dateturn55, FatherName, AadharNo, District, Address, PhoneNo, Email, LicenceNew, LicenceOld, RenewalTime, amount, GRNno, ChallanDate, changeofemployer, CreatedBy);
-
-                    CEI.InsertRenewalDocuments(Category, "Certificate of Competency/Wireman Permit. ", CertificateofCompetency, 1, CreatedBy);
-                    CEI.InsertRenewalDocuments(Category, "Present Working Status", PresentworkingStatusfp, 1, CreatedBy);
-                    CEI.InsertRenewalDocuments(Category, "Undertaking for delay or non-working during cancel period, in case of expiry of the Certificate/Permit.", Undertakingfp, 1, CreatedBy);
-
-                    if (MedicalCertificate.Visible == true && !string.IsNullOrEmpty(MedicalFitnessfp))
+                    using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
                     {
-                        CEI.InsertRenewalDocuments(Category, "Medical Fitness Certificate issued from Government/Government Approved Hospital", MedicalFitnessfp, 1, CreatedBy);
+                        con.Open();
+                        SqlTransaction tran = con.BeginTransaction();
+
+                        try
+                        {
+
+                            CEI.InsertRenewalData(con, tran, HdnUserType.Value, txtname.Text.Trim(), txtDOB.Text.Trim(),
+                                txtage.Text.Trim(), Dateturn55, txtFatherName.Text.Trim(), txtaadharno.Text.Trim(),
+                                txtDistrict.Text.Trim(), txtaddress.Text.Trim(), txtPhone.Text.Trim(), txtEmail.Text.Trim(),
+                                txtcertificatenoNEW.Text.Trim(), txtcertificatenoOLD.Text.Trim(), txtexpirydate.Text.Trim(),
+                                rblbelated.SelectedItem.ToString(), txtdays.Text.Trim(), ddlRenewalTime.SelectedItem.ToString(),
+                                txtamount.Text.Trim(), txtgrnno.Text.Trim(), txtdate.Text.Trim(), RadioButtonList1.SelectedItem.ToString(),
+                                CreatedBy);
+
+                            CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Certificate of Competency/Wireman Permit. ", CertificateofCompetency, 1, CreatedBy);
+                            CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Present Working Status", PresentworkingStatusfp, 1, CreatedBy);
+                            CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Undertaking for delay or non-working during cancel period, in case of expiry of the Certificate/Permit.", Undertakingfp, 1, CreatedBy);
+
+                            if (MedicalCertificate.Visible == true && !string.IsNullOrEmpty(MedicalFitnessfp))
+                            {
+                                CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Medical Fitness Certificate issued from Government/Government Approved Hospital", MedicalFitnessfp, 1, CreatedBy);
+                            }
+
+                            CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Deposited Treasury Challan of fees, for the purpose in the Head of A/c: 0043-51-800-99-51-Other Receipt.", Challanfp, 1, CreatedBy);
+
+
+                            tran.Commit();
+
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Documents Added Successfully !!!')", true);
+                            resetfeilds();
+                        }
+                        catch (Exception ex2)
+                        {
+
+                            tran.Rollback();
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Transaction Failed. Please try again.')", true);
+                        }
                     }
-
-                    CEI.InsertRenewalDocuments(Category, "Deposited Treasury Challan of fees, for the purpose in the Head of A/c: 0043-51-800-99-51-Other Receipt.", Challanfp, 1, CreatedBy);
-
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Documents Added Successfully !!!')", true);
-                    resetfeilds();
-
-
                 }
                 else
                 {
@@ -195,8 +202,11 @@ namespace CEIHaryana.Supervisor
             }
             catch (Exception ex)
             {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('Unexpected error occurred.')", true);
             }
         }
+
+
 
         private string SavePdf(HttpPostedFile file, string folderName, string prefix, string createdBy, int maxFileSize)
         {

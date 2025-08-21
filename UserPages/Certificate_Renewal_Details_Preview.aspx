@@ -280,9 +280,9 @@
                                                         </div>
                                                         <div class="col-md-4">
                                                             <label id="Label20" runat="server" visible="true">
-                                                                Pancard No.
+                                                                Adhaar No.
                                                             </label>
-                                                            <asp:TextBox ReadOnly="true" class="form-control" ID="txtPanCard" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                            <asp:TextBox ReadOnly="true" class="form-control" ID="txtAdhaar" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
                                                         </div>
                                                         <div class="col-md-4">
                                                             <label id="Label5" runat="server" visible="true">
@@ -362,7 +362,7 @@
 
 
 
-                                                <div class="card-body">
+                                                <div class="card-body" id="Employer" runat="server">
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <h4 class="card-title" style="margin-bottom: 0px;">EMPLOYER DETAIL</h4>
@@ -374,7 +374,7 @@
                                                             <label id="Label15" runat="server" visible="true">
                                                                 Name of Employer
                                                             </label>
-                                                            <asp:TextBox ReadOnly="true" class="form-control" ID="txtEmployerName" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                            <asp:TextBox ReadOnly="true" class="form-control" ID="txtNameofEmployer" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
                                                         </div>
                                                         <div class="col-md-4" style="margin-top:30px !important;">
                                                             <label id="Label18" runat="server" visible="true">

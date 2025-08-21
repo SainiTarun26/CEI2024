@@ -186,13 +186,13 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label20;
 
         /// <summary>
-        /// txtPanCard control.
+        /// txtAdhaar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPanCard;
+        protected global::System.Web.UI.WebControls.TextBox txtAdhaar;
 
         /// <summary>
         /// Label5 control.
@@ -339,6 +339,15 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.TextBox txtAmount;
 
         /// <summary>
+        /// Employer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Employer;
+
+        /// <summary>
         /// Label15 control.
         /// </summary>
         /// <remarks>
@@ -348,13 +357,13 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label15;
 
         /// <summary>
-        /// txtEmployerName control.
+        /// txtNameofEmployer control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEmployerName;
+        protected global::System.Web.UI.WebControls.TextBox txtNameofEmployer;
 
         /// <summary>
         /// Label18 control.

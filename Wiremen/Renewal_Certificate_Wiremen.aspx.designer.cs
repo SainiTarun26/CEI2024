@@ -24,6 +24,24 @@ namespace CEIHaryana.Wiremen
         protected global::System.Web.UI.ScriptManager ScriptManager2;
 
         /// <summary>
+        /// HdnUserId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HdnUserId;
+
+        /// <summary>
+        /// HdnUserType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HdnUserType;
+
+        /// <summary>
         /// Label1 control.
         /// </summary>
         /// <remarks>
