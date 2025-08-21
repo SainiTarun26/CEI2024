@@ -574,51 +574,8 @@
                                                 </div>
                                             </div>
                                         </div>
-
-
-                                        <%--       <div class="col-md-4">
-                                                     <asp:UpdatePanel ID="UpdatePanel4" runat="server">
-     <ContentTemplate>
-                                                    <div class="form-group row">
-                                                        <label for="exampleInputUsername2" class="col-sm-5 col-form-label" style="display: flex; align-items: center; justify-content: flex-start; font-size: 12px;">
-                                                            Applying For District:
-                                                            <samp style="color: red">* </samp>
-                                                            :</label>
-                                                        <div class="col-sm-6" style="display: flex; align-items: center; margin-top: -6px; justify-content: flex-start;">
-                                                            <asp:DropDownList class="select-form select2" ID="ddlDist" AutoPostBack="true" Style="margin-left: -35px;" runat="server" TabIndex="1"
-                                                                OnSelectedIndexChanged="ddlDist_SelectedIndexChanged">
-                                                            </asp:DropDownList>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator19" ErrorMessage="Required" ControlToValidate="ddlDist" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" CssClass="validation_required" />
-                                                        </div>
-                                                    </div>
-             </ContentTemplate>
-</asp:UpdatePanel>
-                                                </div>--%>
-
-                                        <%--      <div class="col-md-4">
-                                                                                                    <asp:UpdatePanel ID="UpdatePanel3" runat="server">
-<ContentTemplate>
-                                                    <div class="form-group row">
-                                                        <label for="exampleInputUsername2" class="col-sm-5 col-form-label" style="display: flex; align-items: center; justify-content: flex-start; font-size: 12px;">
-                                                            Applying For Division:
-                                                            <samp style="color: red">* </samp>
-                                                            :</label>
-                                                        <div class="col-sm-6" style="display: flex; align-items: center; margin-top: -6px; justify-content: flex-start;">
-                                                            <asp:DropDownList class="select-form select2" ID="ddlDivision" AutoPostBack="true" Style="margin-left: -35px;" runat="server" TabIndex="1">
-                                                            </asp:DropDownList>
-                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator18" ErrorMessage="Required" ControlToValidate="ddlDivision" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" CssClass="validation_required" />
-                                                        </div>
-                                                    </div>
-                 </ContentTemplate>
-</asp:UpdatePanel>
-                                                </div>--%>
-
-
-
                                         <hr style="margin-top: 15px !important;" />
-
                                     </div>
-
                                     <div class="row">
                                         <div class="col-md-12 grid-margin stretch-card">
                                             <div class="card">
@@ -649,6 +606,7 @@
                                                                         <div class="form-group" id="CalculatedDatey" runat="server" visible="false">
                                                                             <label for="Age">Age</label>
                                                                             <asp:TextBox class="form-control" autocomplete="off" ReadOnly="true" ID="txtyears" Width="225px" runat="server"> </asp:TextBox>
+                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator19" runat="server" ControlToValidate="txtyears"  CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
                                                                         </div>
                                                                     </ContentTemplate>
                                                                 </asp:UpdatePanel>
@@ -668,19 +626,42 @@
                                                                     <label for="Aadhaar">
                                                                         Aadhaar Card No.<samp style="color: red">* </samp>
                                                                     </label>
-                                                                    <asp:TextBox CssClass="form-control uppercase" class="form-control" ID="txtAadhaar" autocomplete="off" MaxLength="14" onkeypress="return isNumberKey(event)" oninput="formatAadhaarInput()" TabIndex="5" runat="server"> </asp:TextBox>
+                                                                    <asp:TextBox CssClass="form-control uppercase" class="form-control" ID="txtAadhaar" autocomplete="off" MaxLength="14" onkeypress="return isNumberKey(event)" oninput="return formatAadhaarInput()" TabIndex="5" runat="server"> </asp:TextBox>
                                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtAadhaar"
                                                                         CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
-                                                                    <asp:RegularExpressionValidator ID="rgxAadhaar" runat="server" ControlToValidate="txtAadhaar" ValidationExpression="^\d{4}\s?\d{4}\s?\d{4}$" ErrorMessage="Invalid Aadhaar number format." ForeColor="Red"></asp:RegularExpressionValidator>
+                                                                    <asp:RegularExpressionValidator ID="rgxAadhaar" runat="server"
+                                                                        ControlToValidate="txtAadhaar"
+                                                                        ValidationExpression="^(\d{12}|\d{4}\s\d{4}\s\d{4})$"
+                                                                        ErrorMessage="Aadhaar number must be exactly 12 digits."
+                                                                        ValidationGroup="Submit"
+                                                                        ForeColor="Red"
+                                                                        Display="Dynamic">
+                                                                    </asp:RegularExpressionValidator>
                                                                 </div>
                                                                 <div class="form-group" id="Pancardno" style="margin-bottom: 0px;" visible="false" runat="server">
                                                                     <label for="Pancard">
                                                                         PAN Card No.<samp style="color: red">* </samp>
                                                                     </label>
-                                                                    <asp:TextBox CssClass="form-control uppercase" class="form-control" ID="txtpancard" autocomplete="off" onkeyup="convertToUpperCase(event)" MaxLength="10" TabIndex="5" runat="server"> </asp:TextBox>
-                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="txtpancard"
-                                                                        CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
-                                                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtpancard" ValidationExpression="^[A-Z]{5}[0-9]{4}[A-Z]{1}$" ErrorMessage="Invalid PAN number format." ForeColor="Red"></asp:RegularExpressionValidator>
+                                                                    <asp:TextBox class="form-control" ID="txtpancard" TabIndex="1" MaxLength="10" onkeyup="convertToUpperCase(event)" autocomplete="off" runat="server"></asp:TextBox>
+
+                                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server"
+                                                                        ControlToValidate="txtpancard"
+                                                                        CssClass="validation_required"
+                                                                        ErrorMessage="Required"
+                                                                        ValidationGroup="Submit"
+                                                                        ForeColor="Red"
+                                                                        Display="Dynamic">
+                                                                    </asp:RequiredFieldValidator>
+
+                                                                    <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server"
+                                                                        ControlToValidate="txtpancard"
+                                                                        ValidationExpression="^[A-Z]{5}[0-9]{4}[A-Z]{1}$"
+                                                                        ErrorMessage="Invalid PAN number format."
+                                                                        ValidationGroup="Submit"
+                                                                        ForeColor="Red"
+                                                                        Display="Dynamic">
+                                                                    </asp:RegularExpressionValidator>
+
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -706,10 +687,10 @@
                                                                                 Date of Birth(as per the matriculation certificate)<samp style="color: red">* </samp>
                                                                             </label>
                                                                             <asp:TextBox class="form-control" type="date" autocomplete="off" ID="txtDOB" placeholder="dd/mm/yyyy" runat="server" TabIndex="6" AutoPostBack="true" OnTextChanged="txtDOB_TextChanged"> </asp:TextBox>
+                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtDOB" CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
                                                                     </ContentTemplate>
                                                                 </asp:UpdatePanel>
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtDOB" CssClass="validation_required"
-                                                                    ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
+
                                                             </div>
                                                             <br />
                                                         </div>
@@ -786,21 +767,34 @@
                                                         <span id="lblErrorContect" style="color: red"></span>
                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="txtphone" CssClass="validation_required"
                                                             ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                        <asp:RegularExpressionValidator 
+    ID="RegexPhone" 
+    runat="server" 
+    ControlToValidate="txtphone" 
+    ErrorMessage="Enter valid 10-digit mobile number" 
+    ForeColor="Red" 
+    Display="Dynamic"
+    ValidationGroup="Submit"
+    ValidationExpression="^[6-9][0-9]{9}$">
+</asp:RegularExpressionValidator>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="phone">
                                                             Create Password<samp style="color: red">* </samp>
                                                         </label>
-                                                        <asp:TextBox class="form-control" ID="txtPassword" autocomplete="off" runat="server" TabIndex="18" MaxLength="30" TextMode="Password" Style="width: 100%;"> </asp:TextBox>
+                                                        <asp:TextBox class="form-control" ID="txtPassword" autocomplete="off" runat="server" TabIndex="18" MaxLength="15" TextMode="Password" Style="width: 100%;"> </asp:TextBox>
                                                         <span id="lblErrorPassword" style="color: red"></span>
+                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server"
+                                                            ControlToValidate="txtPassword" CssClass="validation_required"
+                                                            ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"
+                                                            Display="Dynamic"></asp:RequiredFieldValidator>
+
                                                         <asp:RegularExpressionValidator ID="regexPassword" runat="server"
                                                             ControlToValidate="txtPassword"
-                                                            ErrorMessage="Password must be 8 to 15 characters long and include a combination of small, large, and special characters."
-                                                            ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,15}$" ForeColor="Red"
-                                                            Display="Dynamic">
+                                                            ErrorMessage="Password must be 8 to 15 characters long and include a combination of lowercase, uppercase, number, and special character."
+                                                            ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,15}$"
+                                                            ValidationGroup="Submit" ForeColor="Red" Display="Dynamic">
                                                         </asp:RegularExpressionValidator>
-                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="txtPassword" CssClass="validation_required"
-                                                            ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6">
@@ -865,12 +859,18 @@
                                                 <span id="lblError" style="color: red"></span>
                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator8" CssClass="validation_required" runat="server" ControlToValidate="txtEmailID"
                                                     ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                <asp:RegularExpressionValidator ID="revEmail" runat="server"
+                                                    ControlToValidate="txtEmailID"
+                                                    ValidationExpression="^[^@\s]+@[^@\s]+\.[^@\s]+$"
+                                                    ErrorMessage="Invalid Email Address"
+                                                    ValidationGroup="Submit"
+                                                    ForeColor="Red"></asp:RegularExpressionValidator>
                                             </div>
                                                             <div class="form-group">
                                                                 <label for="phone">
                                                                     Confirm Password<samp style="color: red">* </samp>
                                                                 </label>
-                                                                <asp:TextBox class="form-control" ID="txtConfirmPswrd" autocomplete="off" runat="server" TabIndex="19" MaxLength="30" TextMode="Password" Style="width: 100%;"> </asp:TextBox>
+                                                                <asp:TextBox class="form-control" ID="txtConfirmPswrd" autocomplete="off" runat="server" TabIndex="19" MaxLength="15" TextMode="Password" Style="width: 100%;"> </asp:TextBox>
                                                                 <span id="lblrPassword" style="color: red"></span>
                                                                 <asp:CompareValidator ID="comparePassword" runat="server"
                                                                     ControlToCompare="txtPassword"
@@ -896,8 +896,8 @@
                                                 <asp:Button type="button" ID="btnBack" Text="Back" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" OnClick="btnBack_Click" />
                                             </div>
                                             <div class="col-md-6" style="text-align: end;">
-                                                <asp:Button type="button" ValidationGroup="Submit" AutoPostback="true" ID="btnNext" Text="Submit" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;"
-                                                    OnClick="btnNext_Click" />
+                                                <asp:Button type="button" ValidationGroup="Submit" AutoPostback="true" ID="btnNext" Text="Submit" runat="server" CausesValidation="true" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;"
+                                                    OnClick="btnNext_Click" OnClientClick="return FocusOnError('Submit');" />
                                                 <%--OnClientClick="return validateForm();"--%>
                                             </div>
                                             <asp:HiddenField ID="hdnId" runat="server" />
@@ -959,23 +959,16 @@
     </form>
     <script type="text/javascript">
         function ValidateEmail() {
-            debugger
-            var email1 = document.getElementById("<%=txtEmailID.ClientID %>");
-            email = email1.value;
+            var email = document.getElementById("<%= txtEmailID.ClientID %>").value;
+            var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             var lblError = document.getElementById("lblError");
-            lblError.innerHTML = "";
-            var expr = /\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;;
-            if (email == "") {
-                //lblError.innerHTML = "Please Enter Email" + "\n";
+
+            if (email.length > 0 && !regex.test(email)) {
+                lblError.innerHTML = "Invalid Email Address";
                 return false;
-            }
-            else if (expr.test(email)) {
+            } else {
                 lblError.innerHTML = "";
                 return true;
-            }
-            else {
-                lblError.innerHTML = "Invalid email address.ex:abc@xyz.com" + "\n";
-                return false;
             }
         }
     </script>
@@ -1103,10 +1096,50 @@
         }
     </script>
     <script type="text/javascript">
+        function validatePAN() {
+            var panTextBox = document.getElementById('<%= txtpancard.ClientID %>');
+        <%-- var panValidator = document.getElementById('<%= revPAN.ClientID %>');--%>
 
-        function convertToUpperCase(event) {
-            var textBox = event.target;
-            textBox.value = textBox.value.toUpperCase();
+            var panValue = panTextBox.value.toUpperCase(); // Convert to uppercase here
+
+            if (panValue.length > 0 && !panValidator.isvalid) {
+                alert("Please enter a valid PAN number.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+    <script type="text/javascript">
+        function convertToUpperCase(e) {
+            e.target.value = e.target.value.toUpperCase();
+        }
+    </script>
+    <script type="text/javascript">
+        document.addEventListener("keydown", function (e) {
+            if (e.key === "Enter" && document.activeElement.id === "<%= btnNext.ClientID %>") {
+            e.preventDefault();
+            return false;
+        }
+    });
+    </script>
+    <script type="text/javascript">
+        function FocusOnError(validationGroup) {
+            if (typeof (Page_ClientValidate) == 'function') {
+                if (!Page_ClientValidate(validationGroup)) {
+                    for (var i = 0; i < Page_Validators.length; i++) {
+                        var validator = Page_Validators[i];
+                        if (!validator.isvalid && validator.validationGroup === validationGroup) {
+                            var control = document.getElementById(validator.controltovalidate);
+                            if (control) {
+                                control.focus();
+                                break;
+                            }
+                        }
+                    }
+                    return false; // Prevent postback
+                }
+            }
+            return true; // Allow postback if valid
         }
     </script>
 </body>

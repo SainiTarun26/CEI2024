@@ -45,8 +45,8 @@ namespace CEIHaryana.UserPages
                         UserID = Session["WiremanId"].ToString();
                         HdnUserId.Value = UserID;
                         HdnUserType.Value = "Wireman";
-                        Apprenticecertificate.Visible = true;
-                        Hdn_Apprenticecertificatevisible.Value = "yes";
+                        //Apprenticecertificate.Visible = true;
+                        //Hdn_Apprenticecertificatevisible.Value = "yes";
                         DetailsforDocuments(UserID);
                     }
                 }
@@ -64,6 +64,7 @@ namespace CEIHaryana.UserPages
             {
                 string Age = ds.Tables[0].Rows[0]["AgeInYears"].ToString();
                 string Retired = ds.Tables[0].Rows[0]["RetiredEngineer"].ToString();
+                string ApprenticeExperience = ds.Tables[0].Rows[0]["Name12ITIDiploma"].ToString();
 
                 string Name12ITIDiploma = ds.Tables[0].Rows[0]["Name12ITIDiploma"].ToString();
                 string NameofDiplomaDegree = ds.Tables[0].Rows[0]["NameofDiplomaDegree"].ToString();
@@ -88,6 +89,7 @@ namespace CEIHaryana.UserPages
                 HdnNameofDiplomaDegree.Value = NameofDiplomaDegree;
                 HdnNameofDegree.Value = NameofDegree;
                 HdnNameofMasters.Value = NameofMasters;
+                HdnApprenticeExperience.Value = ApprenticeExperience;
 
                 LblExp.Text = Exp;
                 LblExp1.Text = Exp1;
@@ -141,38 +143,58 @@ namespace CEIHaryana.UserPages
                 Hdn_retirementcertificatevisible.Value = "";
             }
 
-            #region Qualification Conditions
-            if (HdnName12ITIDiploma.Value != "" && HdnName12ITIDiploma.Value != null)
+
+
+            if (string.IsNullOrEmpty(HdnApprenticeExperience.Value) || HdnApprenticeExperience.Value == "Select")
             {
-               CertificateOrDiploma.Visible = true;
+                Apprenticecertificate.Visible = false;
+                Hdn_Apprenticecertificatevisible.Value = "";
             }
             else
             {
+                Apprenticecertificate.Visible = true;
+                Hdn_Apprenticecertificatevisible.Value = "yes";
+            }
+
+            #region Qualification Conditions
+            if (string.IsNullOrEmpty(HdnName12ITIDiploma.Value) || HdnName12ITIDiploma.Value == "Select")
+            {
+              
                 CertificateOrDiploma.Visible = false;
             }
-            if (HdnNameofDiplomaDegree.Value != "" && HdnNameofDiplomaDegree.Value != null)
+            else
+            {
+                CertificateOrDiploma.Visible = true;
+            }
+            if (string.IsNullOrEmpty(HdnNameofDiplomaDegree.Value) || HdnNameofDiplomaDegree.Value == "Select")
+                //if (HdnNameofDiplomaDegree.Value != "" && HdnNameofDiplomaDegree.Value != null)
+            {
+                Diploma.Visible = false;
+                
+            }
+            else
             {
                 Diploma.Visible = true;
             }
-            else
-            {
-                Diploma.Visible = false;
+            //if (HdnNameofDegree.Value != "" && HdnNameofDegree.Value != null)
+                if (string.IsNullOrEmpty(HdnNameofDegree.Value) || HdnNameofDegree.Value == "Select")
+                {
+              
+                Degree.Visible = false;
             }
-            if (HdnNameofDegree.Value != "" && HdnNameofDegree.Value != null)
+            else
             {
                 Degree.Visible = true;
             }
-            else
-            {
-                Degree.Visible = false;
-            }
-            if (HdnNameofMasters.Value != "" && HdnNameofMasters.Value != null)
-            {
-                MasterDegree.Visible = true;
-            }
-            else
+            if (string.IsNullOrEmpty(HdnNameofMasters.Value) || HdnNameofMasters.Value == "Select")
+               // if (HdnNameofMasters.Value != "" && HdnNameofMasters.Value != null)
             {
                 MasterDegree.Visible = false;
+               
+            }
+            else
+            {
+                MasterDegree.Visible = true;
             }
             #endregion
             #region Experience Conditions

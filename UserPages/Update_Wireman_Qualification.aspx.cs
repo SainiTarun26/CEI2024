@@ -129,7 +129,7 @@ namespace CEIHaryana.UserPages
                 }
                 else
                 {
-                    certificatewireman.Visible = false;
+                    certificatewireman.Visible = true;
                 }
 
 
@@ -146,7 +146,7 @@ namespace CEIHaryana.UserPages
                 }
                 else
                 {
-                    diploma.Visible = false;
+                    diploma.Visible = true;
                 }
 
                 if (!string.IsNullOrWhiteSpace(dt.Rows[0]["NameofDegree"].ToString()))
@@ -914,7 +914,7 @@ namespace CEIHaryana.UserPages
                 //Only Diploma
                 if (hasDiploma && !hasCertificate)
                 {
-                    if (totalYears < 5)
+                    if (totalYears < 1)
                     {
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "alertExpOnlyDiploma", "alert('As per your qualification, Total Experience should be at least 1 years.');", true);
                         return;
@@ -1826,6 +1826,33 @@ namespace CEIHaryana.UserPages
             else
             {
                 btnDeleteExp.Visible = false;
+            }
+        }
+
+        protected void ddlQualification_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlQualification.SelectedValue == "0")
+            {
+                TrApprenticeship.Visible = false;
+                txtUniversity1.Text = "";
+                DropDownList1.SelectedValue = "0";
+                txtmarksObtained1.Text = "";
+                txtmarksmax1.Text = "";
+                txtprcntg1.Text = "";
+
+                txtApprenticeshipEmployer.Text = "";
+                txtApprenticesPost.Text = "";
+                Apprenticesdatefrom.Text = "";
+                Apprenticesdateto.Text = "";
+                ToCalculateExperience();
+            }
+            else if (ddlQualification.SelectedValue == "1")
+            {
+                TrApprenticeship.Visible = true;
+            }
+            else
+            {
+                TrApprenticeship.Visible = false;
             }
         }
     }

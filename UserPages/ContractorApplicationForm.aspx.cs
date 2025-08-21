@@ -231,41 +231,37 @@ namespace CEIHaryana.UserPages
                     }
 
                     bool atLeastOneSupervisorConnect = false;
-                    bool atLeastOneWiremanConnect = false;
+
+                    // Check supervisor
                     foreach (GridViewRow row in GridView3.Rows)
                     {
                         string typeOfEmployee = row.Cells[1].Text.Trim();
                         if (typeOfEmployee == "Supervisor")
                         {
                             atLeastOneSupervisorConnect = true;
-                        }
-                        if (typeOfEmployee == "Wireman")
-                        {
-                            atLeastOneWiremanConnect = true;
-                        }
-                        if (atLeastOneSupervisorConnect && atLeastOneWiremanConnect)
-                        {
                             break;
                         }
                     }
 
-                    // If not both are present, show alert
-                    if (!(atLeastOneSupervisorConnect && atLeastOneWiremanConnect))
+                    // Condition: Supervisor mandatory
+                    if (!atLeastOneSupervisorConnect)
                     {
-                        //Response.Write("<script>alert('Please Add at least one Supervisor And Wireman.');</script>");
-                        //return;
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Please Add at least one Supervisor And Wireman.');", true);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Please add at least one Supervisor (mandatory).');", true);
+                        return;
                     }
-
-                    
-
+                    if (GridView3.Rows.Count < 2)
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('You must add at least 2 employees under you.');", true);
+                        return;
+                    }
 
                     if (DdlPartnerOrDirector.SelectedValue == "1" && ds.Rows.Count < 0)
                     {
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "PartnerDirectorAlert();", true);
                     }
-                    else if (!atLeastOneSupervisorConnect || !atLeastOneWiremanConnect)
-                    {
+                    //else if (!atLeastOneSupervisorConnect || !atLeastOneWiremanConnect)
+                         else if (!atLeastOneSupervisorConnect)
+                            {
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "ContractorTeamAlert();", true);
                     }
                     else
@@ -276,22 +272,22 @@ namespace CEIHaryana.UserPages
 
                         ////// Check if the string is a valid boolean representation
                         ////if (!bool.TryParse(validationResult, out isValidBoolean))
-                        
+
                         ////    {
-                       
-                            //string Createdby = Session["ContractorID"].ToString();
-                            string selectedValues = txtPenalities.Text.Trim();
-                            CEI.ContractorApplicationData(txtBusinessAddress.Text,ddlBusinessState.SelectedItem.ToString(), txtBusinessDistrict.Text, txtBusinessPin.Text, txtBusinessEmail.Text, txtBusinessPhoneNo.Text,
-                                                          txtGstNumber.Text, ddlCompanyStyle.SelectedItem.ToString(), txtNameOfCompany.Text, ddlOffice.SelectedItem.ToString(),
-                                                          DdlPartnerOrDirector.SelectedItem.ToString(), ddlAnnexureOrNot.SelectedItem.ToString(),
-                                                          txtAgentName.Text, ddlUnitOrNot.SelectedItem.ToString(), ddlLicenseGranted.SelectedItem.ToString(), 
-                                                          txtIssusuingName.Text, txtIssuedateOtherState.Text, txtLicenseExpiry.Text, txtWorkPermitUndertaken.Text,
-                                                          ddlSameNameLicense.SelectedItem.ToString(), txtLicenseNo.Text, txtLicenseIssue.Text,
-                                                          DropDownList2.SelectedItem.ToString(), txtPenalities.Text, DdlWorkUnderLicenceConditionsandregulation29.SelectedItem.ToString(),
-                                                          LoginID);
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Application Submitted Successfully !!!')", true);
-                            Response.Redirect("/UserPages/DocumentsForContractor.aspx", false);
-                       /// }
+
+                        //string Createdby = Session["ContractorID"].ToString();
+                        string selectedValues = txtPenalities.Text.Trim();
+                        CEI.ContractorApplicationData(txtBusinessAddress.Text, ddlBusinessState.SelectedItem.ToString(), ddlBusinessDistrict.SelectedItem.ToString(), txtBusinessPin.Text, txtBusinessEmail.Text, txtBusinessPhoneNo.Text,
+                                                      txtauthorizedperson.Text, txtGstNumber.Text, ddlCompanyStyle.SelectedItem.ToString(), txtNameOfCompany.Text, ddlOffice.SelectedItem.ToString(),
+                                                      DdlPartnerOrDirector.SelectedItem.ToString(), ddlAnnexureOrNot.SelectedItem.ToString(),
+                                                      txtAgentName.Text, ddlUnitOrNot.SelectedItem.ToString(), ddlLicenseGranted.SelectedItem.ToString(),
+                                                      txtIssusuingName.Text, txtIssuedateOtherState.Text, txtLicenseExpiry.Text, txtWorkPermitUndertaken.Text,
+                                                      ddlSameNameLicense.SelectedItem.ToString(), txtLicenseNo.Text, txtLicenseIssue.Text,
+                                                      DropDownList2.SelectedItem.ToString(), txtPenalities.Text, DdlWorkUnderLicenceConditionsandregulation29.SelectedItem.ToString(),
+                                                      LoginID);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Application Submitted Successfully !!!')", true);
+                        Response.Redirect("/UserPages/DocumentsForContractor.aspx", false);
+                        /// }
                     }
                 }
             }
@@ -301,7 +297,7 @@ namespace CEIHaryana.UserPages
             }
         }
 
-        
+
 
         private void PartnersModalDirectorData(string LoginID)
         {
@@ -425,7 +421,7 @@ namespace CEIHaryana.UserPages
             Response.Redirect("/Login.aspx");
         }
 
-       
+
         private void ContractorTeamBind(string LoginID)
         {
             try
@@ -482,100 +478,103 @@ namespace CEIHaryana.UserPages
             }
         }
 
-        protected void searchbtn_Click(object sender, EventArgs e)
-        {
-            string selectedSearchBy = ddlforsearch.SelectedValue;
-            string employerType = ddlEmployer1.SelectedValue;
-            string searchValue = txtSearchValue.Text.Trim();
-            try
-            {
-                DataTable dt = CEI.SearchLicenseDetails(selectedSearchBy, searchValue, employerType);
-                if (dt.Rows.Count > 0)
-                {
-                    GridView4.DataSource = dt;
-                    GridView4.DataBind();
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#myModal1').modal('show');", true);
-                }
-                else
-                {
-                    GridView4.DataSource = null;
-                    GridView4.DataBind();
-                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "Error", $"alert('Licence of this user is Expired');", true);
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Error", $"alert('Please Select Type of Employee And Search Type to search.');", true);
-                }
-            }
-            catch (Exception ex)
-            {
-                string errorMsg = ex.Message.Replace("'", "\\'");
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "Error", $"alert('An Error occurred: {errorMsg}');", true);
-            }
-        }
+        //protected void searchbtn_Click(object sender, EventArgs e)
+        //{
+        //    //string selectedSearchBy = ddlforsearch.SelectedValue;
+        //    string employerType = ddlEmployer1.SelectedValue;
+        //    //string searchValue = txtSearchValue.Text.Trim();
+        //    try
+        //    {
+        //        DataTable dt = CEI.SearchLicenseDetails(employerType);
+        //        if (dt.Rows.Count > 0)
+        //        {
+        //            GridView4.DataSource = dt;
+        //            GridView4.DataBind();
+        //            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#myModal1').modal('show');", true);
+        //        }
+        //        else
+        //        {
+        //            GridView4.DataSource = null;
+        //            GridView4.DataBind();
+        //            //ScriptManager.RegisterStartupScript(this, this.GetType(), "Error", $"alert('Licence of this user is Expired');", true);
+        //            ScriptManager.RegisterStartupScript(this, this.GetType(), "Error", $"alert('Please Select Type of Employee And Search Type to search.');", true);
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        string errorMsg = ex.Message.Replace("'", "\\'");
+        //        ScriptManager.RegisterStartupScript(this, this.GetType(), "Error", $"alert('An Error occurred: {errorMsg}');", true);
+        //    }
+        //}
 
-        protected void GridView4_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            /*if (Convert.ToString(Session["ContractorID"]) != null && Convert.ToString(Session["ContractorID"]) != "") */
-            if (HFContractor.Value != null && HFContractor.Value != "")
-            {
-                string createdBy = HFContractor.Value;
+        //protected void GridView4_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    if (e.CommandName == "SelectRow")
+        //    {
+        //        /*if (Convert.ToString(Session["ContractorID"]) != null && Convert.ToString(Session["ContractorID"]) != "") */
+        //        if (HFContractor.Value != null && HFContractor.Value != "")
+        //    {
+        //        string createdBy = HFContractor.Value;
 
-                int currentCount = CEI.GetContractorTeamCount(createdBy); // You need to create this method
-                if (currentCount >= 5)
-                {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "LimitReached", "alert('Only 5 employees are allowed in a contractor team.');", true);
-                    return;
-                }
-
-
-                GridViewRow row = GridView4.SelectedRow;
-                string typeOfEmployee = ddlEmployer1.SelectedItem.Text;
-
-                // Get controls
-                Label lblName = (Label)row.FindControl("lblName");
-                Label lblPhoneNo = (Label)row.FindControl("lblPhoneNo");
-                Label lblLicenseNo = (Label)row.FindControl("lblLicenseNo");
-                Label lblIssueDate = (Label)row.FindControl("lblIssueDate");
-                Label lblValidityDate = (Label)row.FindControl("lblValidityDate");
-                Label lblREID = (Label)row.FindControl("lblREID");
-
-                // Extract values
-                string Name = lblName.Text.Trim();
-                string licenseNo = lblLicenseNo.Text.Trim();
-                string REID = lblREID.Text.Trim();
+        //        int currentCount = CEI.GetContractorTeamCount(createdBy); // You need to create this method
+        //        if (currentCount >= 5)
+        //        {
+        //            ScriptManager.RegisterStartupScript(this, this.GetType(), "LimitReached", "alert('Only 5 employees are allowed in a contractor team.');", true);
+        //            return;
+        //        }
 
 
-                DateTime issueDate, validityDate;
-                if (lblIssueDate == null || !DateTime.TryParseExact(lblIssueDate.Text.Trim(), "dd-MM-yyyy", null, System.Globalization.DateTimeStyles.None, out issueDate))
-                {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Err", "alert('Invalid Issue Date');", true);
-                    return;
-                }
-                if (lblValidityDate == null || !DateTime.TryParseExact(lblValidityDate.Text.Trim(), "dd-MM-yyyy", null, System.Globalization.DateTimeStyles.None, out validityDate))
-                {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Err", "alert('Invalid Validity Date');", true);
-                    return;
-                }
+        //        GridViewRow row = GridView4.SelectedRow;
+        //        string typeOfEmployee = ddlEmployer1.SelectedItem.Text;
 
-                // Pass all values to your insert method
-                int RowAffected = CEI.InsertContractorTeam(Name, typeOfEmployee, licenseNo, issueDate, validityDate, createdBy, REID);
+        //        // Get controls
+        //        Label lblName = (Label)row.FindControl("lblName");
+        //        Label lblPhoneNo = (Label)row.FindControl("lblPhoneNo");
+        //        Label lblLicenseNo = (Label)row.FindControl("lblLicenseNo");
+        //        Label lblIssueDate = (Label)row.FindControl("lblIssueDate");
+        //        Label lblValidityDate = (Label)row.FindControl("lblValidityDate");
+        //        Label lblREID = (Label)row.FindControl("lblREID");
+
+        //        // Extract values
+        //        string Name = lblName.Text.Trim();
+        //        string licenseNo = lblLicenseNo.Text.Trim();
+        //        string REID = lblREID.Text.Trim();
 
 
-                if (RowAffected > 0)
-                {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Success", "alert('Employee inserted successfully');", true);
-                }
-                else
-                {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Err", "alert('This employee is already associated with another contractor');", true);
-                }
-                ContractorTeamBind(createdBy);
+        //        DateTime issueDate, validityDate;
+        //        if (lblIssueDate == null || !DateTime.TryParseExact(lblIssueDate.Text.Trim(), "dd-MM-yyyy", null, System.Globalization.DateTimeStyles.None, out issueDate))
+        //        {
+        //            ScriptManager.RegisterStartupScript(this, this.GetType(), "Err", "alert('Invalid Issue Date');", true);
+        //            return;
+        //        }
+        //        if (lblValidityDate == null || !DateTime.TryParseExact(lblValidityDate.Text.Trim(), "dd-MM-yyyy", null, System.Globalization.DateTimeStyles.None, out validityDate))
+        //        {
+        //            ScriptManager.RegisterStartupScript(this, this.GetType(), "Err", "alert('Invalid Validity Date');", true);
+        //            return;
+        //        }
 
-                //ScriptManager.RegisterStartupScript(this, this.GetType(), "Success", "alert('Employee inserted successfully');", true);
-            }
-            else
-            {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "Error", $"alert('An Error occurred');", true);
-            }
-        }
+        //        // Pass all values to your insert method
+        //        int RowAffected = CEI.InsertContractorTeam(Name, typeOfEmployee, licenseNo, issueDate, validityDate, createdBy, REID);
+
+
+        //        if (RowAffected > 0)
+        //        {
+        //            ScriptManager.RegisterStartupScript(this, this.GetType(), "Success", "alert('Employee inserted successfully');", true);
+        //        }
+        //        else
+        //        {
+        //            ScriptManager.RegisterStartupScript(this, this.GetType(), "Err", "alert('This employee is already associated with another contractor');", true);
+        //        }
+        //        ContractorTeamBind(createdBy);
+
+        //        //ScriptManager.RegisterStartupScript(this, this.GetType(), "Success", "alert('Employee inserted successfully');", true);
+        //    }
+        //    else
+        //    {
+        //        ScriptManager.RegisterStartupScript(this, this.GetType(), "Error", $"alert('An Error occurred');", true);
+        //    }
+        //        }
+        //}
 
         protected void GridView3_RowCommand(object sender, GridViewCommandEventArgs e)
         {
@@ -599,8 +598,8 @@ namespace CEIHaryana.UserPages
 
         protected void ddlCompanyStyle_SelectedIndexChanged(object sender, EventArgs e)
         {
-             if (ddlCompanyStyle.SelectedValue == "1")
-            {          
+            if (ddlCompanyStyle.SelectedValue == "1")
+            {
                 Lbl1.Visible = true;
                 Lbl2.Visible = false;
                 Lbl3.Visible = false;
@@ -609,7 +608,7 @@ namespace CEIHaryana.UserPages
                 txtAgentName.Text = "";
             }
             else if (ddlCompanyStyle.SelectedValue == "2")
-            {               
+            {
                 Lbl1.Visible = false;
                 Lbl2.Visible = true;
                 Lbl3.Visible = false;
@@ -617,7 +616,7 @@ namespace CEIHaryana.UserPages
                 DivAgentName.Visible = true;
             }
             else if (ddlCompanyStyle.SelectedValue == "3")
-            {               
+            {
                 Lbl1.Visible = false;
                 Lbl2.Visible = false;
                 Lbl3.Visible = true;
@@ -626,7 +625,7 @@ namespace CEIHaryana.UserPages
                 txtAgentName.Text = "";
             }
             else if (ddlCompanyStyle.SelectedValue == "4")
-            {             
+            {
                 Lbl1.Visible = false;
                 Lbl2.Visible = false;
                 Lbl3.Visible = false;
@@ -634,6 +633,128 @@ namespace CEIHaryana.UserPages
                 DivAgentName.Visible = false;
                 txtAgentName.Text = "";
             }
+        }
+
+        //protected void ddlBusinessState_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    ddlLoadBindBusinessDistrict(ddlBusinessState.SelectedItem.ToString());
+        //}
+
+        private void ddlLoadBindBusinessDistrict(string State)
+        {
+            DataSet dsDistrict = new DataSet();
+            dsDistrict = CEI.GetddlDrawDistrict(State);
+            ddlBusinessDistrict.DataSource = dsDistrict;
+            ddlBusinessDistrict.DataTextField = "District";
+            ddlBusinessDistrict.DataValueField = "District";
+            ddlBusinessDistrict.DataBind();
+            ddlBusinessDistrict.Items.Insert(0, new ListItem("Select", "0"));
+            dsDistrict.Clear();
+        }
+
+        protected void ddlEmployer1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string employerType = ddlEmployer1.SelectedValue;
+            try
+            {
+                DataTable dt = CEI.SearchLicenseDetails(employerType);
+                if (dt.Rows.Count > 0)
+                {
+                    GridView4.DataSource = dt;
+                    GridView4.DataBind();
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#myModal1').modal('show');", true);
+                }
+                else
+                {
+                    GridView4.DataSource = null;
+                    GridView4.DataBind();
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Error", $"alert('There is no any employee active to attached with you.');", true);
+                    ddlEmployer1.ClearSelection();
+                }
+            }
+            catch (Exception ex)
+            {
+                string errorMsg = ex.Message.Replace("'", "\\'");
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Error", $"alert('An Error occurred: {errorMsg}');", true);
+            }
+        }
+
+        protected void GridView4_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Select")
+            {
+                if (!string.IsNullOrEmpty(HFContractor.Value))
+                {
+                    string createdBy = HFContractor.Value;
+
+                    //int currentCount = CEI.GetContractorTeamCount(createdBy);
+                    //if (currentCount >= 2)
+                    //{
+                    //    ScriptManager.RegisterStartupScript(this, this.GetType(), "LimitReached", "alert('Only 2 employees are allowed in a contractor team.');", true);
+                    //    ddlEmployer1.ClearSelection();
+                    //    return;
+                    //}
+
+                    int rowIndex = Convert.ToInt32(e.CommandArgument);
+                    GridViewRow row = GridView4.Rows[rowIndex];
+                    string typeOfEmployee = ddlEmployer1.SelectedItem.Text;
+
+                    // Get controls
+                    Label lblName = (Label)row.FindControl("lblName");
+                    Label lblPhoneNo = (Label)row.FindControl("lblPhoneNo");
+                    Label lblLicenseNo = (Label)row.FindControl("lblLicenseNo");
+                    Label lblIssueDate = (Label)row.FindControl("lblIssueDate");
+                    Label lblValidityDate = (Label)row.FindControl("lblValidityDate");
+                    Label lblREID = (Label)row.FindControl("lblREID");
+
+                    // Extract values
+                    string Name = lblName.Text.Trim();
+                    string licenseNo = lblLicenseNo.Text.Trim();
+                    string REID = lblREID.Text.Trim();
+
+                    DateTime issueDate, validityDate;
+                    if (lblIssueDate == null ||
+                        !DateTime.TryParseExact(lblIssueDate.Text.Trim(), "dd-MM-yyyy", null,
+                            System.Globalization.DateTimeStyles.None, out issueDate))
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "Err", "alert('Invalid Issue Date');", true);
+                        return;
+                    }
+
+                    if (lblValidityDate == null ||
+                        !DateTime.TryParseExact(lblValidityDate.Text.Trim(), "dd-MM-yyyy", null,
+                            System.Globalization.DateTimeStyles.None, out validityDate))
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "Err", "alert('Invalid Validity Date');", true);
+                        return;
+                    }
+
+                    // Insert employee
+                    int RowAffected = CEI.InsertContractorTeam(Name, typeOfEmployee, licenseNo,
+                        issueDate, validityDate, createdBy, REID);
+
+                    if (RowAffected > 0)
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "Success", "alert('Employee inserted successfully');", true);
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "Err", "alert('This employee is already associated with another contractor');", true);
+                    }
+
+                    ContractorTeamBind(createdBy);
+                    ddlEmployer1.ClearSelection();
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Error", "alert('An error occurred');", true);
+                }
+            }
+        }
+
+        protected void ddlBusinessState_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ddlLoadBindBusinessDistrict(ddlBusinessState.SelectedItem.ToString());
         }
     }
 

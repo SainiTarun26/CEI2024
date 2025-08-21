@@ -77,11 +77,12 @@ namespace CEIHaryana.UserPages
                 if (txtPassword.Text == txtConfirmPswrd.Text)
                 {
                     string Category = string.Empty;
-                    string name = txtName.Text;
+                    string name = txtName.Text.Trim();
                     string dob = txtDOB.Text;
                     string firstNamePart = name.Length >= 4 ? name.Substring(0, 4) : name;
                     string numericDOB = new string(dob.Where(char.IsDigit).ToArray());
                     string userId = $"{firstNamePart}{numericDOB}";
+
 
                     if (ddlcategory.SelectedValue == "1")
                     {
@@ -104,6 +105,7 @@ namespace CEIHaryana.UserPages
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "AadharAlert();", true);
                         return;
                     }
+
                     #endregion
                     else
                     {

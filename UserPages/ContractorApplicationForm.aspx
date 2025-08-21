@@ -47,43 +47,45 @@
 
     <style>
         textarea#txtPenalities {
-    height: 100px;
-    margin-top: 19px;
-}
-         #penaltyContainer {
-     min-height: 100px;
-     padding: 8px;
-     border: 1px solid #ced4da;
-     border-radius: 5px;
-     display: flex;
-     flex-wrap: wrap;
- }
+            height: 100px;
+            margin-top: 19px;
+        }
 
- .penalty-tag {
-     background: white;
-     border: 1px solid black;
-     color: black;
-     padding: 10px 10px;
-     border-radius: 20px;
-     margin: 4px;
-     display: flex;
-     align-items: center;
-     font-size: 14px;
-     height: 30px;
- }
+        #penaltyContainer {
+            min-height: 100px;
+            padding: 8px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            display: flex;
+            flex-wrap: wrap;
+        }
 
-     .penalty-tag span.remove-icon {
-         cursor: pointer;
-         margin-left: 10px;
-         font-weight: bold;
-         color: red;
-         font-size: 18px;
-         background: #cbcbcb;
-         border-radius: 40px;
-         height: 16px;
-         padding-left: 4px;
-         padding-right: 4px;
-     }
+        .penalty-tag {
+            background: white;
+            border: 1px solid black;
+            color: black;
+            padding: 10px 10px;
+            border-radius: 20px;
+            margin: 4px;
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            height: 30px;
+        }
+
+            .penalty-tag span.remove-icon {
+                cursor: pointer;
+                margin-left: 10px;
+                font-weight: bold;
+                color: red;
+                font-size: 18px;
+                background: #cbcbcb;
+                border-radius: 40px;
+                height: 16px;
+                padding-left: 4px;
+                padding-right: 4px;
+            }
+
         th.headercolor {
             background: #9292cc;
             color: white;
@@ -419,16 +421,29 @@
             border-radius: 4px;
         }
 
-           select#ddlBusinessState {
-       width: 100%;
-       height: 30PX;
-       width: 100%;
-       box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-       border: 1px solid #CED4DA;
-       font-weight: 400;
-       font-size: 12px !important;
-       border-radius: 4px;
-   }
+        select#ddlBusinessState {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 12px !important;
+            border-radius: 4px;
+        }
+
+        select#ddlBusinessDistrict {
+            width: 100%;
+            height: 30PX;
+            width: 100%;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            border: 1px solid #CED4DA;
+            font-weight: 400;
+            font-size: 12px !important;
+            border-radius: 4px;
+        }
+
+
 
         select#DdlPartnerOrDirector {
             width: 100%;
@@ -995,7 +1010,8 @@
     </script>
     <script type="text/javascript">
         function ContractorTeamAlert() {
-            if (confirm('Please Add Atleast One Wireman And Supervisor Information')) {
+            /*if (confirm('Please Add Atleast One Wireman And Supervisor Information')) {*/
+            if (confirm('Please Add Atleast 2 employees work under you')) {
                 ddlEmployer1.style.border = '1px solid red';;
             } else {
             }
@@ -1189,7 +1205,7 @@
                                                                     </h3>
                                                                 </div>
                                                             </div>
-                                                            <div class="card" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; margin: -20px; padding: 17px; padding-bottom: 15px;">
+                                                            <%--  <div class="card" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; margin: -20px; padding: 17px; padding-bottom: 15px;">
                                                                 <div class="row">
                                                                     <div class="col-md-4">
                                                                         <div class="forms-sample">
@@ -1203,19 +1219,19 @@
                                                                                     <asp:ListItem Text="Proprietary Concern" Value="1"></asp:ListItem>
                                                                                     <asp:ListItem Text="Company(Limited)" Value="2"></asp:ListItem>
                                                                                     <asp:ListItem Text="Firm(Registered under the company's act.)" Value="3"></asp:ListItem>
-                                                                                    <asp:ListItem Text="Partnership Firm" Value="3"></asp:ListItem>
+                                                                                    <asp:ListItem Text="Partnership Firm" Value="4"></asp:ListItem>
                                                                                 </asp:DropDownList>
-                                                                                  <asp:RequiredFieldValidator ID="RequiredFieldValidator19" ErrorMessage="Required" ControlToValidate="ddlCompanyStyle" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-                                                                            
+                                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator19" ErrorMessage="Required" ControlToValidate="ddlCompanyStyle" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+
                                                                             </div>
 
                                                                             <div class="form-group" style="margin-top: 23px;">
                                                                                 <label>
                                                                                     State<samp style="color: red">* </samp>
                                                                                 </label>
-                                                                              
-                                                                                 <asp:DropDownList ID="ddlBusinessState"  class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;" runat="server"  AutoPostBack="true"></asp:DropDownList>
-                                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator3"  ErrorMessage="Required" ControlToValidate="ddlBusinessState" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+
+                                                                                <asp:DropDownList ID="ddlBusinessState" class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlBusinessState_SelectedIndexChanged"></asp:DropDownList>
+                                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ErrorMessage="Required" ControlToValidate="ddlBusinessState" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                                                             </div>
                                                                             <div class="form-group" style="margin-top: 23px;">
                                                                                 <label>
@@ -1223,13 +1239,18 @@
                                                                                 </label>
                                                                                 <asp:TextBox class="form-control" ID="txtBusinessPin" autocomplete="off" runat="server" onKeyPress="return isNumberKey(event);" MaxLength="6"> </asp:TextBox>
                                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtBusinessPin" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
+
+                                                                                <asp:RegularExpressionValidator ID="revPin" runat="server" ControlToValidate="txtBusinessPin" ValidationExpression="^\d{6}$" ErrorMessage="Pin Code must be exactly 6 digits" ValidationGroup="Submit" ForeColor="Red" Display="Dynamic"></asp:RegularExpressionValidator>
                                                                             </div>
                                                                             <div class="form-group">
                                                                                 <label>
                                                                                     Business Phone No.<samp style="color: red">* </samp>
                                                                                 </label>
-                                                                                <asp:TextBox class="form-control" ID="txtBusinessPhoneNo" autocomplete="off" runat="server" onkeyup="return isvalidphoneno();" onKeyPress="return isNumberKey(event);" MaxLength="10"> </asp:TextBox>
+                                                                                <asp:TextBox class="form-control" ID="txtBusinessPhoneNo" autocomplete="off" runat="server"  onkeyup="return isvalidphoneno();" onKeyPress="return isNumberKey(event);" MaxLength="10"> </asp:TextBox>
                                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator27" runat="server" ControlToValidate="txtBusinessPhoneNo" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
+                                                                             <asp:RegularExpressionValidator ID="revPhone" runat="server" ControlToValidate="txtBusinessPhoneNo" ValidationExpression="^[6-9]\d{9}$" ErrorMessage="Enter a valid phone number" ValidationGroup="Submit" ForeColor="Red" Display="Dynamic">
+    </asp:RegularExpressionValidator>
+                                                                                <asp:Label ID="lblErrorContect" runat="server" ForeColor="Red"></asp:Label>
                                                                             </div>
 
                                                                         </div>
@@ -1256,9 +1277,11 @@
                                                                                 <label>
                                                                                     District<samp style="color: red">* </samp>
                                                                                 </label>
-
-                                                                                <asp:TextBox class="form-control" ID="txtBusinessDistrict" autocomplete="off" runat="server" MaxLength="50"> </asp:TextBox>
-                                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="txtBusinessDistrict" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
+                                                                                <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px; width: 100%; height: 25px; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;"
+                                                                                    ID="ddlBusinessDistrict" AutoPostBack="true" runat="server" TabIndex="9">
+                                                                                    <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                                                                                </asp:DropDownList>
+                                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator18" CssClass="validation_required" ErrorMessage="Required" ControlToValidate="ddlBusinessDistrict" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                                                             </div>
                                                                             <div class="form-group">
                                                                                 <label id="contractor" runat="server" visible="true">
@@ -1292,7 +1315,7 @@
                                                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 
                                                                                             </div>
-                                                                                            <!-- Modal body -->
+                                                                                          
                                                                                             <div class="modal-body">
                                                                                                 <div style="margin: -20px; padding: 17px; padding-bottom: 0px;">
                                                                                                     <div class="row">
@@ -1479,7 +1502,322 @@
                                                                         <br />
                                                                     </div>
                                                                 </div>
+                                                            </div>--%>
+
+                                                            <div class="card" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; margin: -20px; padding: 17px; padding-bottom: 15px;">
+                                                                <div class="row">
+                                                                    <div class="form-group">
+                                                                        <button type="button" runat="server" visible="false" style="padding: 10px 20px 10px 20px;" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+                                                                            Open modal
+                                                                        </button>
+                                                                        <div class="modal" id="myModal">
+                                                                            <div class="modal-dialog">
+                                                                                <div class="modal-content">
+                                                                                    <!-- Modal Header -->
+                                                                                    <div class="modal-header">
+                                                                                        <h3 class="modal-title">Director Details</h3>
+                                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                                    </div>
+                                                                                    <!-- Modal body -->
+                                                                                    <div class="modal-body">
+                                                                                        <div style="margin: -20px; padding: 17px; padding-bottom: 0px;">
+                                                                                            <div class="row">
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="forms-sample">
+                                                                                                        <div class="form-group">
+                                                                                                            <label id="Label6" runat="server" visible="true">
+                                                                                                                Type of Authority<samp style="color: red">* </samp>
+                                                                                                            </label>
+                                                                                                            <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
+                                                                                                                ID="ddlAuthority" runat="server" TabIndex="5">
+                                                                                                                <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                                                                                                                <asp:ListItem Text="Director" Value="1"></asp:ListItem>
+                                                                                                                <asp:ListItem Text="Partner" Value="2"></asp:ListItem>
+                                                                                                            </asp:DropDownList>
+                                                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator21" runat="server" ControlToValidate="ddlAuthority" InitialValue="0" CssClass="validation_required" ErrorMessage="Required" ValidationGroup="ModalSubmit" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="forms-sample">
+                                                                                                        <div class="form-group">
+                                                                                                            <label id="Label8" runat="server" visible="true">
+                                                                                                                Full Name<samp style="color: red">* </samp>
+                                                                                                            </label>
+                                                                                                            <asp:TextBox class="form-control" ID="txtName" autocomplete="off" onKeyPress="return alphabetKey(event);" runat="server" TabIndex="6"> </asp:TextBox>
+                                                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator22" ErrorMessage="Required" ControlToValidate="txtName" runat="server" Display="Dynamic" ValidationGroup="ModalSubmit" ForeColor="Red" />
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="forms-sample">
+                                                                                                        <div class="form-group">
+                                                                                                            <label id="Label9" runat="server" visible="true">
+                                                                                                                Address<samp style="color: red">* </samp>
+                                                                                                            </label>
+                                                                                                            <asp:TextBox class="form-control" ID="txtAddress" autocomplete="off" runat="server" TabIndex="7"> </asp:TextBox>
+                                                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator23" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="txtAddress" runat="server" ValidationGroup="ModalSubmit" ForeColor="Red" />
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="row">
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="forms-sample">
+                                                                                                        <div class="form-group">
+                                                                                                            <label>
+                                                                                                                State<samp style="color: red">* </samp>
+                                                                                                            </label>
+                                                                                                            <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
+                                                                                                                ID="ddlState" AutoPostBack="true" runat="server" TabIndex="8" OnSelectedIndexChanged="ddlState_SelectedIndexChanged">
+                                                                                                            </asp:DropDownList>
+                                                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator24" Text="Please Select State" ErrorMessage="Required" ControlToValidate="ddlState" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="ModalSubmit" ForeColor="Red" />
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="forms-sample">
+                                                                                                        <div class="form-group">
+                                                                                                            <label>
+                                                                                                                District<samp style="color: red">* </samp>
+                                                                                                            </label>
+                                                                                                            <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
+                                                                                                                ID="ddlDistrict" runat="server" TabIndex="9">
+                                                                                                            </asp:DropDownList>
+                                                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator25" ErrorMessage="Required" ControlToValidate="ddlDistrict" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="ModalSubmit" ForeColor="Red" />
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-4">
+                                                                                                    <div class="forms-sample">
+                                                                                                        <div class="form-group">
+                                                                                                            <label id="Label11" runat="server" visible="true">
+                                                                                                                Pin Code<samp style="color: red">* </samp>
+                                                                                                            </label>
+                                                                                                            <asp:TextBox class="form-control" ID="txtPinCode" autocomplete="off" onKeyPress="return isNumberKey(event);" runat="server" MaxLength="6" TabIndex="10"> </asp:TextBox>
+                                                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator26" runat="server" ControlToValidate="txtPinCode"
+                                                                                                                ErrorMessage="Required" ValidationGroup="ModalSubmit" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="row">
+                                                                                                <div class="col-12" style="text-align: end;">
+                                                                                                    <asp:Button type="Submit" OnClientClick="return validateFormodal();" ID="btnModalSubmit" OnClick="btnModalSubmit_Click" Text="Add" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" />
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <hr style="margin-top: 45px; margin-bottom: 10px;" />
+                                                                                        <div class="row" style="margin-top: 40px;">
+                                                                                            <asp:GridView class="table-responsive table table-hover table-striped table-bordered" ID="GridView1" runat="server" Width="100%"
+                                                                                                AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff" DataKeyNames="Id">
+                                                                                                <%--OnRowCommand="GridView1_RowCommand"--%>
+                                                                                                <PagerStyle CssClass="pagination-ys" />
+                                                                                                <Columns>
+                                                                                                    <asp:BoundField DataField="TypeOfAuthority" HeaderText="Type Of Authority">
+                                                                                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                                                                                        <ItemStyle HorizontalAlign="center" Width="15%" CssClass="tdpadding" />
+                                                                                                    </asp:BoundField>
+                                                                                                    <asp:BoundField DataField="Name" HeaderText="Name">
+                                                                                                        <HeaderStyle HorizontalAlign="left" Width="12%" CssClass="headercolor" />
+                                                                                                        <ItemStyle HorizontalAlign="left" Width="12%" CssClass="tdpadding" />
+                                                                                                    </asp:BoundField>
+                                                                                                    <asp:BoundField DataField="State" HeaderText="State">
+                                                                                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                                                                                        <ItemStyle HorizontalAlign="center" Width="15%" CssClass="tdpadding" />
+                                                                                                    </asp:BoundField>
+                                                                                                    <asp:BoundField DataField="District" HeaderText="District">
+                                                                                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                                                                                        <ItemStyle HorizontalAlign="center" Width="15%" CssClass="tdpadding" />
+                                                                                                    </asp:BoundField>
+                                                                                                    <asp:BoundField DataField="PinCode" HeaderText="PinCode">
+                                                                                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                                                                                        <ItemStyle HorizontalAlign="center" Width="15%" CssClass="tdpadding" />
+                                                                                                    </asp:BoundField>
+                                                                                                    <asp:BoundField DataField="Address" HeaderText="Address">
+                                                                                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                                                                                        <ItemStyle HorizontalAlign="center" Width="15%" CssClass="tdpadding" />
+                                                                                                    </asp:BoundField>
+                                                                                                    <asp:TemplateField HeaderText="Delete">
+                                                                                                        <ItemTemplate>
+                                                                                                            <asp:LinkButton ID="lnkDelete" runat="server" CommandName="DeleteRecord"
+                                                                                                                Text="Delete" ForeColor="Red" CommandArgument='<%# Eval("Id") %>'>
+                                                                                                            </asp:LinkButton>
+                                                                                                        </ItemTemplate>
+                                                                                                        <HeaderStyle HorizontalAlign="Center" CssClass="headercolor" />
+                                                                                                        <ItemStyle HorizontalAlign="Center" CssClass="tdpadding" />
+                                                                                                    </asp:TemplateField>
+                                                                                                </Columns>
+                                                                                                <FooterStyle BackColor="White" ForeColor="#000066" />
+                                                                                                <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                                                                                                <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                                                                                                <RowStyle ForeColor="#000066" CssClass="gridViewRow" />
+                                                                                                <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                                                                                                <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                                                                                <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                                                                                                <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                                                                                <SortedDescendingHeaderStyle BackColor="#00547E" />
+                                                                                            </asp:GridView>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label id="contractor" runat="server" visible="true">
+                                                                                GST No.<samp style="color: red">* </samp>
+                                                                            </label>
+                                                                            <asp:TextBox class="form-control" ID="txtGstNumber" autocomplete="off" runat="server" onKeyPress="return isNumberKey(event) || alphabetKey(event);" TabIndex="1" MaxLength="15"> </asp:TextBox>
+                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtGstNumber"
+                                                                                CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                                            <asp:RegularExpressionValidator ID="regexValidatorGST" runat="server" ControlToValidate="txtGstNumber" ValidationExpression="^(06)[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$" ValidationGroup="Submit" ErrorMessage="GST is incorrect. Only Haryana's GST is valid" ForeColor="Red" Display="Dynamic"></asp:RegularExpressionValidator>
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label>
+                                                                                Style of Company<samp style="color: red">* </samp>
+                                                                            </label>
+                                                                            <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
+                                                                                ID="ddlCompanyStyle" runat="server" TabIndex="2" AutoPostBack="true" OnSelectedIndexChanged="ddlCompanyStyle_SelectedIndexChanged">
+                                                                                <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                                                                                <asp:ListItem Text="Proprietary Concern" Value="1"></asp:ListItem>
+                                                                                <asp:ListItem Text="Company(Limited)" Value="2"></asp:ListItem>
+                                                                                <asp:ListItem Text="Firm(Registered under the company's act.)" Value="3"></asp:ListItem>
+                                                                                <asp:ListItem Text="Partnership Firm" Value="4"></asp:ListItem>
+                                                                            </asp:DropDownList>
+                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator19" ErrorMessage="Required" ControlToValidate="ddlCompanyStyle" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4" id="DivAgentName" runat="server" visible="false">
+                                                                        <div class="form-group">
+                                                                            <label id="Label2" runat="server" visible="true">
+                                                                                Full Name of Agent/Manager<samp style="color: red">* </samp>
+                                                                            </label>
+                                                                            <asp:TextBox class="form-control" ID="txtAgentName" autocomplete="off" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtAgentName"
+                                                                                CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label id="Lbl1" runat="server" visible="true">
+                                                                                Name Of Proprietary Concern<samp style="color: red">* </samp>
+                                                                            </label>
+                                                                            <label id="Lbl2" runat="server" visible="false">
+                                                                                Name Of Company(Limited)<samp style="color: red">* </samp>
+                                                                            </label>
+                                                                            <label id="Lbl3" runat="server" visible="false">
+                                                                                Name Of Firm(Registered under the company's act.)<samp style="color: red">* </samp>
+                                                                            </label>
+                                                                            <label id="Lbl4" runat="server" visible="false">
+                                                                                Name Of Partnership Firm<samp style="color: red">* </samp>
+                                                                            </label>
+                                                                            <asp:TextBox class="form-control" ID="txtNameOfCompany" autocomplete="off" runat="server" MaxLength="100"> </asp:TextBox>
+                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator29" runat="server" ControlToValidate="txtNameOfCompany" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label for="Gender">
+                                                                                Registered office in (Haryana/UT Chandigarh/ NCT Delhi)<samp style="color: red">* </samp>
+                                                                            </label>
+                                                                            <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
+                                                                                ID="ddlOffice" runat="server" TabIndex="3">
+                                                                                <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                                                                                <asp:ListItem Text="YES" Value="1"></asp:ListItem>
+                                                                                <asp:ListItem Text="NO" Value="2"></asp:ListItem>
+                                                                            </asp:DropDownList>
+                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator17" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlOffice" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label>
+                                                                                Business Address<samp style="color: red">* </samp>
+                                                                            </label>
+                                                                            <asp:TextBox class="form-control" ID="txtBusinessAddress" autocomplete="off" runat="server" MaxLength="250"> </asp:TextBox>
+                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator28" runat="server" ControlToValidate="txtBusinessAddress" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label>
+                                                                                State<samp style="color: red">* </samp>
+                                                                            </label>
+
+                                                                            <asp:DropDownList ID="ddlBusinessState" class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlBusinessState_SelectedIndexChanged"></asp:DropDownList>
+                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ErrorMessage="Required" ControlToValidate="ddlBusinessState" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label>
+                                                                                District<samp style="color: red">* </samp>
+                                                                            </label>
+                                                                            <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px; width: 100%; height: 25px; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;"
+                                                                                ID="ddlBusinessDistrict" AutoPostBack="true" runat="server" TabIndex="9">
+                                                                                <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                                                                            </asp:DropDownList>
+                                                                            <%--   <asp:DropDownList ID="ddlBusinessDistrict" class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlBusinessState_SelectedIndexChanged"></asp:DropDownList>
+                                                                            --%>
+                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator18" CssClass="validation_required" ErrorMessage="Required" ControlToValidate="ddlBusinessDistrict" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label>
+                                                                                Business Pin Code<samp style="color: red">* </samp>
+                                                                            </label>
+                                                                            <asp:TextBox class="form-control" ID="txtBusinessPin" autocomplete="off" runat="server" onKeyPress="return isNumberKey(event);" MaxLength="6"> </asp:TextBox>
+                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtBusinessPin" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
+                                                                            <asp:RegularExpressionValidator
+                                                                                ID="RegexPin" runat="server" ControlToValidate="txtBusinessPin" ErrorMessage="Enter valid 6-digit Pin Code" ForeColor="Red" Display="Dynamic" ValidationGroup="Submit" ValidationExpression="^[1-9][0-9]{5}$">
+                                                                            </asp:RegularExpressionValidator>
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label>
+                                                                                Business E-mail<samp style="color: red">* </samp>
+                                                                            </label>
+                                                                            <asp:TextBox class="form-control" ID="txtBusinessEmail" autocomplete="off" runat="server" MaxLength="50" onkeyup="return ValidateEmail();"> </asp:TextBox>
+                                                                            <span id="lblError" style="color: red"></span>
+                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator16" CssClass="validation_required" runat="server" ControlToValidate="txtBusinessEmail"
+                                                                                ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                                            <asp:RegularExpressionValidator ID="revEmail" runat="server" ControlToValidate="txtBusinessEmail" ValidationExpression="^[^@\s]+@[^@\s]+\.[^@\s]+$" ErrorMessage="Invalid Email Address" ValidationGroup="Submit"
+                                                                                ForeColor="Red"></asp:RegularExpressionValidator>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label>
+                                                                                Business Phone No.<samp style="color: red">* </samp>
+                                                                            </label>
+                                                                            <asp:TextBox class="form-control" ID="txtBusinessPhoneNo" autocomplete="off" runat="server" onkeyup="return isvalidphoneno();" onKeyPress="return isNumberKey(event);" MaxLength="10"> </asp:TextBox>
+                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator27" runat="server" ControlToValidate="txtBusinessPhoneNo" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
+                                                                            <asp:RegularExpressionValidator ID="revPhone" runat="server" ControlToValidate="txtBusinessPhoneNo" ValidationExpression="^[6-9]\d{9}$" ErrorMessage="Enter a valid phone number" ValidationGroup="Submit" ForeColor="Red" Display="Dynamic">
+                                                                            </asp:RegularExpressionValidator>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label>
+                                                                                Name of authorized person signing document<samp style="color: red">* </samp>
+                                                                            </label>
+                                                                            <asp:TextBox class="form-control" ID="txtauthorizedperson" autocomplete="off" runat="server" onKeyPress="return alphabetKey(event);" MaxLength="150"> </asp:TextBox>
+                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator31" runat="server" ControlToValidate="txtauthorizedperson" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
+
+                                                                        </div>
+                                                                    </div>
+
+                                                                </div>
                                                             </div>
+
                                                             <div class="row" style="margin-top: -10px !important; margin-bottom: 10PX; font-size: 20PX;">
                                                                 <div class="col-md-12">
                                                                     <h3 class="card-title" style="margin-top: 50px; font-size: 21px;">Other Organisation Details
@@ -1512,13 +1850,13 @@
                                                                             <asp:ListItem Text="NO" Value="2"></asp:ListItem>
                                                                         </asp:DropDownList>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator14" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlSameNameLicense" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-                                                                   
+
                                                                     </div>
                                                                     <div class="col-md-4" id="DivLicenseNo" runat="server" visible="false">
                                                                         <label id="Label14" runat="server" visible="true">
                                                                             Enter License No.<samp style="color: red">* </samp>
                                                                         </label>
-                                                                        <asp:TextBox class="form-control" ID="txtLicenseNo" autocomplete="off" MaxLength="10" onKeyPress="return isNumberKey(event) || alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                                        <asp:TextBox class="form-control" ID="txtLicenseNo" autocomplete="off" MaxLength="10" onkeypress="return isValidLicenseKey(event);" runat="server"> </asp:TextBox>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="txtLicenseNo"
                                                                             CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
                                                                     </div>
@@ -1671,13 +2009,13 @@
                                                                 <div class="col-md-3">
                                                                     <asp:Label ID="typeemp" runat="server" Style="font-size: 12px;">Type of Employee<samp style="color: red">* </samp></asp:Label>
                                                                     <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;" AutoPostBack="true"
-                                                                        ID="ddlEmployer1" runat="server">
+                                                                        ID="ddlEmployer1" runat="server" OnSelectedIndexChanged="ddlEmployer1_SelectedIndexChanged">
                                                                         <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                                                         <asp:ListItem Text="Supervisor" Value="Supervisor"></asp:ListItem>
                                                                         <asp:ListItem Text="Wireman" Value="Wireman"></asp:ListItem>
                                                                     </asp:DropDownList>
                                                                 </div>
-                                                                <div class="col-md-3">
+                                                                <%-- <div class="col-md-3">
                                                                     <asp:Label ID="toserch" Text="Search According To " runat="server" Style="font-size: 12px;"></asp:Label>
                                                                     <br />
                                                                     <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;" AutoPostBack="true" ID="ddlforsearch" runat="server">
@@ -1693,7 +2031,7 @@
                                                                 </div>
                                                                 <div class="col-md-2" style="margin-top: 15px;">
                                                                     <asp:Button class="btn btn-primary" runat="server" ID="searchbtn" Text="Search" OnClick="searchbtn_Click" Style="padding: 10px 20px 10px 20px; border-radius: 5px; margin-bottom: 5%;" />
-                                                                </div>
+                                                                </div>--%>
                                                             </div>
                                                             <asp:Label ID="lblMessage" runat="server" ForeColor="Red"></asp:Label>
                                                             <!-- Bootstrap Modal -->
@@ -1716,7 +2054,8 @@
                                                                             <div class="row" style="margin-top: 5px;">
                                                                                 <div class="col-md-12">
                                                                                     <asp:GridView class="table-responsive table table-hover table-striped table-bordered" ID="GridView4" runat="server"
-                                                                                        AutoGenerateColumns="false" BorderWidth="1px" DataKeyNames="LicenceNo" OnSelectedIndexChanged="GridView4_SelectedIndexChanged">
+                                                                                        AutoGenerateColumns="false" BorderWidth="1px" DataKeyNames="LicenceNo" OnRowCommand="GridView4_RowCommand">
+                                                                                        <%--OnSelectedIndexChanged="GridView4_SelectedIndexChanged">--%>
                                                                                         <PagerStyle CssClass="pagination-ys" />
                                                                                         <Columns>
                                                                                             <asp:TemplateField HeaderText="SNo">
@@ -1764,7 +2103,7 @@
                                                                                             </asp:TemplateField>
                                                                                             <asp:TemplateField HeaderText="Select">
                                                                                                 <ItemTemplate>
-                                                                                                    <asp:LinkButton ID="lnkSelect" runat="server" CommandName="Select" Text="Select" ForeColor="Blue" />
+                                                                                                    <asp:LinkButton ID="lnkSelect" runat="server" CommandName="Select" CommandArgument='<%# Container.DataItemIndex %>' Text="Select" ForeColor="Blue" />
                                                                                                 </ItemTemplate>
                                                                                                 <HeaderStyle HorizontalAlign="Center" CssClass="headercolor" />
                                                                                                 <ItemStyle HorizontalAlign="Center" CssClass="tdpadding" />
@@ -1821,132 +2160,131 @@
                                                                 </asp:GridView>
                                                             </div>
                                                         </div>
-                                                                                                           <div class="row" style="margin-top: -10px !important; margin-bottom: 10PX; font-size: 20PX;">
-       <div class="col-md-12">
-           <h3 class="card-title" style="margin-top: 35px; font-size: 21px; padding-left: 25px !important;">
-           </h3>
-       </div>
-   </div>
-                                                        <div class="card" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; margin: -20px 0px 0px 0px !important; padding: 17px; padding-bottom: 20px;">
-            <div class="row">
-                                               <div class="col-md-12">
-     <div class="forms-sample">
-         <div class="form-group">
-                                        <label id="Label16" runat="server" >
-    Whether the staff indicated under column 13 are exclusively earmark for the work under the conditions for licencing and Regulation 29 of "Central Electricity Authority (Measures relating to Safety and Electric Supply)"?<samp style="color: red">* </samp>
-</label>
-        
-             <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
-                 ID="DdlWorkUnderLicenceConditionsandregulation29" runat="server">
-                 <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                 <asp:ListItem Text="YES" Value="1"></asp:ListItem>
-                 <asp:ListItem Text="NO" Value="2"></asp:ListItem>
-             </asp:DropDownList>
-              <asp:RequiredFieldValidator ID="RequiredFieldValidator11" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="DdlWorkUnderLicenceConditionsandregulation29" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-          
-         </div>
-     </div>
- </div>
-                                                                </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
                                                         <div class="row" style="margin-top: -10px !important; margin-bottom: 10PX; font-size: 20PX;">
                                                             <div class="col-md-12">
-                                                                <h3 class="card-title" style="margin-top: 35px; font-size: 21px; padding-left: 25px !important;">Other Details
-                                                                </h3>
+                                                                <h3 class="card-title" style="margin-top: 35px; font-size: 21px; padding-left: 25px !important;"></h3>
                                                             </div>
                                                         </div>
                                                         <div class="card" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; margin: -20px 0px 0px 0px !important; padding: 17px; padding-bottom: 20px;">
                                                             <div class="row">
-                                                                <div class="col-md-4">
+                                                                <div class="col-md-12">
                                                                     <div class="forms-sample">
                                                                         <div class="form-group">
-                                                                            <label for="Gender">
-                                                                                Whether E library/library as per ANNEXURE-2 Available<samp style="color: red">* </samp>
+                                                                            <label id="Label16" runat="server">
+                                                                                Whether the staff indicated under column 13 are exclusively earmark for the work under the conditions for licencing and Regulation 29 of "Central Electricity Authority (Measures relating to Safety and Electric Supply)"?<samp style="color: red">* </samp>
                                                                             </label>
+
                                                                             <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
-                                                                                ID="ddlAnnexureOrNot" runat="server">
-                                                                                <asp:ListItem Text="SELECT" Value="0"></asp:ListItem>
-                                                                                <asp:ListItem Text="YES" Value="1"></asp:ListItem>
-                                                                                <asp:ListItem Text="NO" Value="2"></asp:ListItem>
-                                                                            </asp:DropDownList>
-                                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator4" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlAnnexureOrNot" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-                                                                       
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                                    <div class="forms-sample">
-                                                                        <div class="form-group">
-                                                                            <label id="Label12" runat="server" visible="true">
-                                                                                Do company/firm have any <b>Penalties or Punishments</b>?<samp style="color: red">* </samp>
-                                                                            </label>
-                                                                            <asp:DropDownList class="select-form select2" AutoPostBack="true" Style="border: 1px solid #ced4da; border-radius: 5px;"
-                                                                                ID="DropDownList2" runat="server" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged">
+                                                                                ID="DdlWorkUnderLicenceConditionsandregulation29" runat="server">
                                                                                 <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                                                                 <asp:ListItem Text="YES" Value="1"></asp:ListItem>
                                                                                 <asp:ListItem Text="NO" Value="2"></asp:ListItem>
                                                                             </asp:DropDownList>
-                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator13" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="DropDownList2" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator11" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="DdlWorkUnderLicenceConditionsandregulation29" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-md-4" id="DdlPenelity" runat="server" visible="false">
-                                                                    <div class="forms-sample">
-                                                                        <div class="form-group">
-     <label id="Label10" runat="server" visible="true">
-         Select penalties or punishments<samp style="color: red">* </samp>
-     </label>
-     <asp:DropDownList ID="ddlPenalities" runat="server"
-         CssClass="select-form select2 form-control"
-         AutoPostBack="false"
-         onchange="updatePenalityText(this)">
-         <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-         <asp:ListItem Text="By state licensing board, Haryana/chief Electrical inspector,Haryana" Value="1"></asp:ListItem>
-         <asp:ListItem Text="By government & other agencies" Value="2"></asp:ListItem>
-         <asp:ListItem Text="Any court of law." Value="3"></asp:ListItem>
-     </asp:DropDownList>
-     <asp:RequiredFieldValidator ID="RequiredFieldValidator12" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="txtPenalities"
-         runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-
- </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-6">
-     <div class="form-group" id="ShowPenelity" runat="server" visible="false">
-         <label id="Label1" runat="server" visible="true"></label>
-         <div id="penaltyContainer" class="form-control">
-             <!-- Tags will be added here -->
-         </div>
-
-     </div>
- </div>
- <div class="col-md-6"  id="DivPenelity" runat="server" visible="false">
-     <asp:TextBox ID="txtPenalities" runat="server" TextMode="MultiLine"
-         Rows="2" CssClass="form-control" />
-<%--     <asp:RequiredFieldValidator ID="RequiredFieldValidator11"
-         runat="server" ControlToValidate="txtPenalities"
-         CssClass="validation_required" ErrorMessage="Required"
-         ValidationGroup="Submit3" ForeColor="Red"></asp:RequiredFieldValidator>--%>
- </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row" style="margin-bottom: -75px; margin-top: 50px;">
-                                                            <div class="col-md-6" style="padding-left: 0px;">
-                                                            </div>
-                                                            <div class="col-md-6" style="padding-right: 0px; text-align: end;">
-                                                                <asp:Button type="BtnSubmit" ID="Button2" Text="Next"  OnClick="BtnSubmit_Click" ValidationGroup="Submit" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px; margin-bottom: 5%;" />
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <asp:HiddenField ID="HFContractor" runat="server" />
                                             </div>
                                         </div>
+
+                                        <div class="row" style="margin-top: -10px !important; margin-bottom: 10PX; font-size: 20PX;">
+                                            <div class="col-md-12">
+                                                <h3 class="card-title" style="margin-top: 35px; font-size: 21px; padding-left: 25px !important;">Other Details
+                                                </h3>
+                                            </div>
+                                        </div>
+                                        <div class="card" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; margin: -20px 0px 0px 0px !important; padding: 17px; padding-bottom: 20px;">
+                                            <div class="row">
+                                                <div class="col-md-4">
+                                                    <div class="forms-sample">
+                                                        <div class="form-group">
+                                                            <label for="Gender">
+                                                                Whether E library/library as per ANNEXURE-2 Available<samp style="color: red">* </samp>
+                                                            </label>
+                                                            <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
+                                                                ID="ddlAnnexureOrNot" runat="server">
+                                                                <asp:ListItem Text="SELECT" Value="0"></asp:ListItem>
+                                                                <asp:ListItem Text="YES" Value="1"></asp:ListItem>
+                                                                <asp:ListItem Text="NO" Value="2"></asp:ListItem>
+                                                            </asp:DropDownList>
+                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlAnnexureOrNot" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="forms-sample">
+                                                        <div class="form-group">
+                                                            <label id="Label12" runat="server" visible="true">
+                                                                Do company/firm have any <b>Penalties or Punishments</b>?<samp style="color: red">* </samp>
+                                                            </label>
+                                                            <asp:DropDownList class="select-form select2" AutoPostBack="true" Style="border: 1px solid #ced4da; border-radius: 5px;"
+                                                                ID="DropDownList2" runat="server" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged">
+                                                                <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                                                                <asp:ListItem Text="YES" Value="1"></asp:ListItem>
+                                                                <asp:ListItem Text="NO" Value="2"></asp:ListItem>
+                                                            </asp:DropDownList>
+                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator13" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="DropDownList2" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4" id="DdlPenelity" runat="server" visible="false">
+                                                    <div class="forms-sample">
+                                                        <div class="form-group">
+                                                            <label id="Label10" runat="server" visible="true">
+                                                                Select penalties or punishments<samp style="color: red">* </samp>
+                                                            </label>
+                                                            <asp:DropDownList ID="ddlPenalities" runat="server"
+                                                                CssClass="select-form select2 form-control"
+                                                                AutoPostBack="false"
+                                                                onchange="updatePenalityText(this)">
+                                                                <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                                                                <asp:ListItem Text="By state licensing board, Haryana/chief Electrical inspector,Haryana" Value="1"></asp:ListItem>
+                                                                <asp:ListItem Text="By government & other agencies" Value="2"></asp:ListItem>
+                                                                <asp:ListItem Text="Any court of law." Value="3"></asp:ListItem>
+                                                            </asp:DropDownList>
+                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator12" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="txtPenalities"
+                                                                runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group" id="ShowPenelity" runat="server" visible="false">
+                                                        <label id="Label1" runat="server" visible="true"></label>
+                                                        <div id="penaltyContainer" class="form-control">
+                                                            <!-- Tags will be added here -->
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6" id="DivPenelity" runat="server" visible="false">
+                                                    <asp:TextBox ID="txtPenalities" runat="server" TextMode="MultiLine"
+                                                        Rows="2" CssClass="form-control" />
+                                                    <%--     <asp:RequiredFieldValidator ID="RequiredFieldValidator11"
+         runat="server" ControlToValidate="txtPenalities"
+         CssClass="validation_required" ErrorMessage="Required"
+         ValidationGroup="Submit3" ForeColor="Red"></asp:RequiredFieldValidator>--%>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-bottom: -75px; margin-top: 50px;">
+                                            <div class="col-md-6" style="padding-left: 0px;">
+                                            </div>
+                                            <div class="col-md-6" style="padding-right: 0px; text-align: end;">
+                                                <asp:Button type="BtnSubmit" ID="Button2" Text="Next" OnClick="BtnSubmit_Click" ValidationGroup="Submit" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px; margin-bottom: 5%;" OnClientClick="return FocusOnError('Submit');" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <asp:HiddenField ID="HFContractor" runat="server" />
+                            </div>
+                            </div>
                                     </div>
                                 </div>
                             </div>
@@ -2004,7 +2342,7 @@
         <script src="/js2/typeahead.js"></script>
         <script src="/js2/select2.js"></script>
     </form>
-    
+
     <%-- Multiselect Dropdown --%>
     <script>
         $(document).ready(function () {
@@ -2596,7 +2934,7 @@
                 validateField(document.getElementById('txtLicenseIssue'), 'LicenseIssue');
             }
 
-          
+
             validateDropdown(document.getElementById('DropDownList2'));
 
             var DropDownList2 = document.getElementById('DropDownList2');
@@ -2609,7 +2947,7 @@
             }
             return isValid;
         }
-    </script>  
+    </script>
     <script type="text/javascript">
         function validateDates1() {
             var issuingDate = document.getElementById('<%=txtIssuedateOtherState.ClientID %>').value;
@@ -2659,74 +2997,64 @@
     </script>
     <script type="text/javascript">
         function ValidateEmail() {
-            debugger
-            var email1 = document.getElementById("<%=txtBusinessEmail.ClientID %>");
-            email = email1.value;
+            var email = document.getElementById("<%= txtBusinessEmail.ClientID %>").value;
+            var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             var lblError = document.getElementById("lblError");
-            lblError.innerHTML = "";
-            var expr = /\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;;
-            if (email == "") {
-                //lblError.innerHTML = "Please Enter Email" + "\n";
+
+            if (email.length > 0 && !regex.test(email)) {
+                lblError.innerHTML = "Invalid Email Address";
                 return false;
-            }
-            else if (expr.test(email)) {
+            } else {
                 lblError.innerHTML = "";
                 return true;
             }
-            else {
-                lblError.innerHTML = "Invalid email address.ex:abc@xyz.com" + "\n";
-                return false;
-            }
         }
     </script>
-    <script type="text/javascript">
+    <%--<script type="text/javascript">
         function isvalidphoneno() {
-
             var Phone1 = document.getElementById("<%=txtBusinessPhoneNo.ClientID %>");
-            phoneNo = Phone1.value;
-            var lblErrorContect = document.getElementById("lblErrorContect");
+            var phoneNo = Phone1.value.trim();
+            var lblErrorContect = document.getElementById("<%=lblErrorContect.ClientID %>");
             lblErrorContect.innerHTML = "";
+
             var expr = /^[6-9]\d{9}$/;
-            if (phoneNo == "") {
-                lblErrorContect.innerHTML = "Please Enter Contact Number" + "\n";
+            if (phoneNo === "") {
+                lblErrorContect.innerHTML = "Please Enter Contact Number";
                 return false;
             }
-            else if (expr.test(phoneNo)) {
-                lblErrorContect.innerHTML = "";
-                return true;
-            }
-            else {
-                lblErrorContect.innerHTML = "Invalid Contact Number" + "\n";
+            else if (!expr.test(phoneNo)) {
+                lblErrorContect.innerHTML = "Invalid Contact Number";
                 return false;
+            }
+            return true;
+        }
+    </script>--%>
+    <script type="text/javascript">
+        function Search_Gridview(strKey) {
+            var strData = strKey.value.toLowerCase().split(" ");
+            var tblData = document.getElementById("<%=GridView4.ClientID %>");
+            var rowData;
+            for (var i = 1; i < tblData.rows.length; i++) {
+                rowData = tblData.rows[i].innerHTML;
+                var styleDisplay = 'none';
+                for (var j = 0; j < strData.length; j++) {
+                    if (rowData.toLowerCase().indexOf(strData[j]) >= 0)
+                        styleDisplay = '';
+                    else {
+                        styleDisplay = 'none';
+                        break;
+                    }
+                }
+                tblData.rows[i].style.display = styleDisplay;
+            }
+        }
+        function SearchOnEnter(event) {
+            if (event.keyCode === 13) {
+                event.preventDefault(); // Prevent default form submission
+                Search_Gridview(document.getElementById('txtSearch'));
             }
         }
     </script>
-      <script type="text/javascript">
-          function Search_Gridview(strKey) {
-              var strData = strKey.value.toLowerCase().split(" ");
-              var tblData = document.getElementById("<%=GridView4.ClientID %>");
-              var rowData;
-              for (var i = 1; i < tblData.rows.length; i++) {
-                  rowData = tblData.rows[i].innerHTML;
-                  var styleDisplay = 'none';
-                  for (var j = 0; j < strData.length; j++) {
-                      if (rowData.toLowerCase().indexOf(strData[j]) >= 0)
-                          styleDisplay = '';
-                      else {
-                          styleDisplay = 'none';
-                          break;
-                      }
-                  }
-                  tblData.rows[i].style.display = styleDisplay;
-              }
-          }
-          function SearchOnEnter(event) {
-              if (event.keyCode === 13) {
-                  event.preventDefault(); // Prevent default form submission
-                  Search_Gridview(document.getElementById('txtSearch'));
-              }
-          }
-      </script>
     <script type="text/javascript">
         function updatePenalityText(dropdown) {
             var selectedOption = dropdown.options[dropdown.selectedIndex];
@@ -2759,42 +3087,89 @@
 
             // Re-add option to dropdown
             var ddl = document.getElementById("<%= ddlPenalities.ClientID %>");
-        var newOption = document.createElement("option");
-        newOption.value = value;
-        newOption.text = text;
-        ddl.add(newOption);
+            var newOption = document.createElement("option");
+            newOption.value = value;
+            newOption.text = text;
+            ddl.add(newOption);
 
-        ddl.selectedIndex = 0;
+            ddl.selectedIndex = 0;
 
-        renumberPenaltyTags();
-        updateHiddenTextbox();
-    }
-
-    function renumberPenaltyTags() {
-        var container = document.getElementById("penaltyContainer");
-        var tags = container.children;
-
-        for (var i = 0; i < tags.length; i++) {
-            var tag = tags[i];
-            var value = tag.getAttribute("data-value");
-            var text = tag.getAttribute("data-text");
-
-            tag.innerHTML = (i + 1) + '. ' + text + ' <span class="remove-icon" onclick="removePenaltyTag(this, \'' + value + '\', \'' + text + '\')">&times;</span>';
-        }
-    }
-
-    function updateHiddenTextbox() {
-        var tags = document.getElementById("penaltyContainer").children;
-        var values = [];
-
-        for (var i = 0; i < tags.length; i++) {
-            var tag = tags[i];
-            var text = tag.getAttribute("data-text");
-            values.push((i + 1) + '. ' + text);
+            renumberPenaltyTags();
+            updateHiddenTextbox();
         }
 
-        document.getElementById("<%= txtPenalities.ClientID %>").value = values.join(", ");
+        function renumberPenaltyTags() {
+            var container = document.getElementById("penaltyContainer");
+            var tags = container.children;
+
+            for (var i = 0; i < tags.length; i++) {
+                var tag = tags[i];
+                var value = tag.getAttribute("data-value");
+                var text = tag.getAttribute("data-text");
+
+                tag.innerHTML = (i + 1) + '. ' + text + ' <span class="remove-icon" onclick="removePenaltyTag(this, \'' + value + '\', \'' + text + '\')">&times;</span>';
+            }
+        }
+
+        function updateHiddenTextbox() {
+            var tags = document.getElementById("penaltyContainer").children;
+            var values = [];
+
+            for (var i = 0; i < tags.length; i++) {
+                var tag = tags[i];
+                var text = tag.getAttribute("data-text");
+                values.push((i + 1) + '. ' + text);
+            }
+
+            document.getElementById("<%= txtPenalities.ClientID %>").value = values.join(", ");
         }
     </script>
+    <script type="text/javascript">
+        function isValidLicenseKey(evt) {
+            var charCode = evt.which ? evt.which : evt.keyCode;
+
+            // Allow alphabets (A-Z, a-z)
+            if ((charCode >= 65 && charCode <= 90) || (charCode >= 97 && charCode <= 122)) {
+                return true;
+            }
+
+            // Allow numbers (0-9)
+            if (charCode >= 48 && charCode <= 57) {
+                return true;
+            }
+
+            // Allow - and /
+            if (charCode === 45 || charCode === 47) {
+                return true;
+            }
+
+            // Allow backspace, tab, delete, arrow keys
+            if (charCode === 8 || charCode === 9 || charCode === 46 || (charCode >= 37 && charCode <= 40)) {
+                return true;
+            }
+
+            return false; // Block everything else
+        }
+    </script>
+       <script type="text/javascript">
+           function FocusOnError(validationGroup) {
+               if (typeof (Page_ClientValidate) == 'function') {
+                   if (!Page_ClientValidate(validationGroup)) {
+                       for (var i = 0; i < Page_Validators.length; i++) {
+                           var validator = Page_Validators[i];
+                           if (!validator.isvalid && validator.validationGroup === validationGroup) {
+                               var control = document.getElementById(validator.controltovalidate);
+                               if (control) {
+                                   control.focus();
+                                   break;
+                               }
+                           }
+                       }
+                       return false; // Prevent postback
+                   }
+               }
+               return true; // Allow postback if valid
+           }
+       </script>
 </body>
 </html>

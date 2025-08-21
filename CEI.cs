@@ -11559,8 +11559,9 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
         }
 
         #region chaged by neha on 27-June-2025
-        
-        public void ContractorApplicationData(string BusinessAddress, string BusinessState, string BusinessDistrict, string BusinessAddPinCode, string BusinessAddEmail, string BusinessAddPhoneNo, string GSTNumber, string StyleOfCompany,
+
+        public void ContractorApplicationData(string BusinessAddress, string BusinessState, string BusinessDistrict, string BusinessAddPinCode, string BusinessAddEmail, string BusinessAddPhoneNo,
+            string NameOfAuthorizedperson, string GSTNumber, string StyleOfCompany,
         string NameOfCompany, string CompanyRegisterdOffice, string CompanyPartnerOrDirector,
    string LibraryAvailable, string AgentName, string ManufacturingFirmOrProductionUnit, string ContractorLicencePreviouslyGranted,
  string NameOfIssuingAuthority, string IssuedateOtherState, string DateOfLicenseExpiring, string WorkPermitUndertaken, string ContractorLicencePreviouslyGrantedWithSameName,
@@ -11582,6 +11583,7 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
             cmd.Parameters.AddWithValue("@BusinessAddPinCode", BusinessAddPinCode);
             cmd.Parameters.AddWithValue("@BusinessAddEmail", BusinessAddEmail);
             cmd.Parameters.AddWithValue("@BusinessAddPhoneNo", BusinessAddPhoneNo);
+            cmd.Parameters.AddWithValue("@NameOfAuthorizedperson", NameOfAuthorizedperson);
             cmd.Parameters.AddWithValue("@GSTNumber", GSTNumber);
             cmd.Parameters.AddWithValue("@StyleOfCompany", StyleOfCompany);
             cmd.Parameters.AddWithValue("@NameOfCompany", NameOfCompany);
@@ -11644,10 +11646,10 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetContractorTeam", CreatedBy);
         }
-
-        public DataTable SearchLicenseDetails(string selectedSearchBy, string searchValue, string employerType)
+        //neha changed
+        public DataTable SearchLicenseDetails(string employerType)
         {
-            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetValidLicenseDetails", selectedSearchBy, searchValue, employerType);
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetValidLicenseDetails", employerType);
         }
 
         public int GetContractorTeamCount(string CreatedBy)
@@ -13083,11 +13085,11 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
         }
 
         public DataTable UpdateContractorOrganisationDetails(string BusinessAddress, string BusinessState, string BusinessDistrict, string BusinessAddPinCode,
-            string BusinessAddEmail, string BusinessAddPhoneNo, string GSTNumber, string StyleOfCompany,
-            string NameOfCompany, string CompanyRegisterdOffice, string AgentName, string ModifiedBy)
+      string BusinessAddEmail, string BusinessAddPhoneNo, string NameOfAuthorizedperson, string GSTNumber, string StyleOfCompany,
+      string NameOfCompany, string CompanyRegisterdOffice, string AgentName, string ModifiedBy)
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_UpdateContractorOrganisationDetails", BusinessAddress,
-                                                     BusinessState, BusinessDistrict, BusinessAddPinCode, BusinessAddEmail, BusinessAddPhoneNo, GSTNumber, StyleOfCompany,
+                                                     BusinessState, BusinessDistrict, BusinessAddPinCode, BusinessAddEmail, BusinessAddPhoneNo, NameOfAuthorizedperson, GSTNumber, StyleOfCompany,
                                                      NameOfCompany, CompanyRegisterdOffice, AgentName, ModifiedBy);
         }
         public DataTable UpdateOtherConOrganisationDetails(string ManufacturingFirmOrProductionUnit, string ContractorLicencePreviouslyGranted,

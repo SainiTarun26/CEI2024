@@ -349,12 +349,14 @@
             input#btnNext {
                 padding: 10px !important;
             }
-             input#btn_Preview  {
-     padding: 10px !important;
- }
-              input#btnBack {
-     padding: 10px !important;
- }
+
+            input#btn_Preview {
+                padding: 10px !important;
+            }
+
+            input#btnBack {
+                padding: 10px !important;
+            }
 
         label {
             display: inline-block;
@@ -493,6 +495,27 @@
                                             <div class="col-md-12">
                                                 <h4 class="card-title">Documents Checklist that should be attached with
                                                     <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label></h4>
+
+                                                <div class="card" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; border-radius: 10px !important; padding: 10px 10px 10px 10px; margin-bottom: 25px;">
+
+
+                                                    <div class="row">
+                                                        <div class="col-md-10" style="margin-top: auto; margin-bottom: auto;">
+                                                            <h6>Click Preview to verify details; use Back if changes are needed.
+                                                            </h6>
+
+                                                        </div>
+                                                        <div class="col-md-2" style="text-align: center;">
+                                                            <asp:Button type="button" ID="btnBack" Text="Back" OnClick="btnBack_Click" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" />
+
+                                                            <asp:Button type="button" ID="btn_Preview" Text="Preview" runat="server" OnClick="btn_Preview_Click" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" />
+
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+
                                                 <h6>The candidates are requested to ensure that the documents are genuine and
                                             should be self attested.</h6>
                                             </div>
@@ -625,7 +648,7 @@
                                                                 <i class="fa fa-times"></i> </asp:LinkButton>
                                                             </td>
                                                         </tr>
-                                                      
+
                                                         <tr id="Medicalfitness" runat="server" visible="false">
                                                             <td style="">
                                                                 <p>
@@ -682,7 +705,9 @@
 
 
                                                         <tr id="Exp" runat="server" visible="false">
-                                                            <td>Upload <asp:Label ID="LblExp" runat="server" Text="Label"></asp:Label> Experience Letter 1 (<span style="color: red;">★</span>)
+                                                            <td>Upload
+                                                                <asp:Label ID="LblExp" runat="server" Text="Label"></asp:Label>
+                                                                Experience Letter 1 (<span style="color: red;">★</span>)
                                                             </td>
                                                             <td style="text-align: center;">
                                                                 <text style="color: red; font-size: 12px;" id="text19" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
@@ -697,7 +722,9 @@
                                                             </td>
                                                         </tr>
                                                         <tr id="Exp1" runat="server" visible="false">
-                                                            <td>Upload <asp:Label ID="LblExp1" runat="server" Text="Label"></asp:Label> Experience Letter 2 (<span style="color: red;">★</span>)</td>
+                                                            <td>Upload
+                                                                <asp:Label ID="LblExp1" runat="server" Text="Label"></asp:Label>
+                                                                Experience Letter 2 (<span style="color: red;">★</span>)</td>
                                                             <td style="text-align: center;">
                                                                 <text style="color: red; font-size: 12px;" id="text20" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
                                                                 <asp:FileUpload ID="FileUpload20" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
@@ -711,7 +738,9 @@
                                                             </td>
                                                         </tr>
                                                         <tr id="Exp2" runat="server" visible="false">
-                                                            <td style="">Upload <asp:Label ID="LblExp2" runat="server" Text="Label"></asp:Label> Experience Letter 3 (<span style="color: red;">★</span>)</td>
+                                                            <td style="">Upload
+                                                                <asp:Label ID="LblExp2" runat="server" Text="Label"></asp:Label>
+                                                                Experience Letter 3 (<span style="color: red;">★</span>)</td>
                                                             <td style="text-align: center;">
                                                                 <text style="color: red; font-size: 12px;" id="text21" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
                                                                 <asp:FileUpload ID="FileUpload21" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
@@ -725,7 +754,9 @@
                                                             </td>
                                                         </tr>
                                                         <tr id="Exp3" runat="server" visible="false">
-                                                            <td>Upload <asp:Label ID="LblExp3" runat="server" Text="Label"></asp:Label> Experience Letter 4 (<span style="color: red;">★</span>)</td>
+                                                            <td>Upload
+                                                                <asp:Label ID="LblExp3" runat="server" Text="Label"></asp:Label>
+                                                                Experience Letter 4 (<span style="color: red;">★</span>)</td>
                                                             <td style="text-align: center;">
                                                                 <text style="color: red; font-size: 12px;" id="text22" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
                                                                 <asp:FileUpload ID="FileUpload22" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
@@ -739,7 +770,9 @@
                                                             </td>
                                                         </tr>
                                                         <tr id="Exp4" runat="server" visible="false">
-                                                            <td>Upload <asp:Label ID="LblExp4" runat="server" Text="Label"></asp:Label> Experience Letter 5 (<span style="color: red;">★</span>)</td>
+                                                            <td>Upload
+                                                                <asp:Label ID="LblExp4" runat="server" Text="Label"></asp:Label>
+                                                                Experience Letter 5 (<span style="color: red;">★</span>)</td>
                                                             <td style="text-align: center;">
                                                                 <text style="color: red; font-size: 12px;" id="text23" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
                                                                 <asp:FileUpload ID="FileUpload23" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
@@ -753,7 +786,9 @@
                                                             </td>
                                                         </tr>
                                                         <tr id="Exp5" runat="server" visible="false">
-                                                            <td>Upload <asp:Label ID="LblExp5" runat="server" Text="Label"></asp:Label> Experience Letter 6 (<span style="color: red;">★</span>)</td>
+                                                            <td>Upload
+                                                                <asp:Label ID="LblExp5" runat="server" Text="Label"></asp:Label>
+                                                                Experience Letter 6 (<span style="color: red;">★</span>)</td>
                                                             <td style="text-align: center;">
                                                                 <text style="color: red; font-size: 12px;" id="text24" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
                                                                 <asp:FileUpload ID="FileUpload24" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
@@ -767,7 +802,9 @@
                                                             </td>
                                                         </tr>
                                                         <tr id="Exp6" runat="server" visible="false">
-                                                            <td>Upload <asp:Label ID="LblExp6" runat="server" Text="Label"></asp:Label> Experience Letter 7 (<span style="color: red;">★</span>)</td>
+                                                            <td>Upload
+                                                                <asp:Label ID="LblExp6" runat="server" Text="Label"></asp:Label>
+                                                                Experience Letter 7 (<span style="color: red;">★</span>)</td>
                                                             <td style="text-align: center;">
                                                                 <text style="color: red; font-size: 12px;" id="text25" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
                                                                 <asp:FileUpload ID="FileUpload25" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
@@ -781,7 +818,9 @@
                                                             </td>
                                                         </tr>
                                                         <tr id="Exp7" runat="server" visible="false">
-                                                            <td>Upload <asp:Label ID="LblExp7" runat="server" Text="Label"></asp:Label> Experience Letter 8 (<span style="color: red;">★</span>)</td>
+                                                            <td>Upload
+                                                                <asp:Label ID="LblExp7" runat="server" Text="Label"></asp:Label>
+                                                                Experience Letter 8 (<span style="color: red;">★</span>)</td>
                                                             <td style="text-align: center;">
                                                                 <text style="color: red; font-size: 12px;" id="text26" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
                                                                 <asp:FileUpload ID="FileUpload26" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
@@ -795,7 +834,9 @@
                                                             </td>
                                                         </tr>
                                                         <tr id="Exp8" runat="server" visible="false">
-                                                            <td>Upload <asp:Label ID="LblExp8" runat="server" Text="Label"></asp:Label> Experience Letter 9 (<span style="color: red;">★</span>)</td>
+                                                            <td>Upload
+                                                                <asp:Label ID="LblExp8" runat="server" Text="Label"></asp:Label>
+                                                                Experience Letter 9 (<span style="color: red;">★</span>)</td>
                                                             <td style="text-align: center;">
                                                                 <text style="color: red; font-size: 12px;" id="text27" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
                                                                 <asp:FileUpload ID="FileUpload27" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
@@ -809,7 +850,9 @@
                                                             </td>
                                                         </tr>
                                                         <tr id="Exp9" runat="server" visible="false">
-                                                            <td>Upload <asp:Label ID="LblExp9" runat="server" Text="Label"></asp:Label> Experience Letter 10 (<span style="color: red;">★</span>)</td>
+                                                            <td>Upload
+                                                                <asp:Label ID="LblExp9" runat="server" Text="Label"></asp:Label>
+                                                                Experience Letter 10 (<span style="color: red;">★</span>)</td>
                                                             <td style="text-align: center;">
                                                                 <text style="color: red; font-size: 12px;" id="text28" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
                                                                 <asp:FileUpload ID="FileUpload28" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
@@ -869,7 +912,7 @@
                                                                 </label>
                                                                 <asp:FileUpload ID="FileUpload12" runat="server" CssClass="form-control" Style="padding: 0px; font-size: 15px; height: 28px !important;" onchange="previewImage(this, 'imagePreview')" accept="image/*" />
 
-                                                                <text style="color: red; font-size: 12px;" id="text12" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
+                                                                <text style="color: red; font-size: 12px;" id="text12" runat="server" visible="true">Please upload a valid image file (.jpg, .jpeg, .png) (Max: 1MB).</text>
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="FileUpload12" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
                                                             </td>
                                                             <td style="text-align: center;">
@@ -889,7 +932,7 @@
                                                                 </label>
                                                                 <asp:FileUpload ID="FileUpload13" runat="server" CssClass="form-control" Style="padding: 0px; font-size: 15px; height: 28px !important;" onchange="previewImage(this, 'signaturePreview')" accept="image/*" />
 
-                                                                <text style="color: red; font-size: 12px;" id="text13" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
+                                                                <text style="color: red; font-size: 12px;" id="text13" runat="server" visible="true">Please upload a valid image file (.jpg, .jpeg, .png) (Max: 1MB).</text>
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidatorSignature" runat="server" ControlToValidate="FileUpload13" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
                                                             </td>
                                                             <td style="text-align: center;">
@@ -917,12 +960,9 @@
                                         </div>
                                         <div class="row" style="margin-top: 15px;">
                                             <div class="col-md-4" style="text-align: start;">
-                                                <asp:Button type="button" ID="btnBack" Text="Back" OnClick="btnBack_Click" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" />
                                             </div>
-                                              <div class="col-md-4" style="text-align: center;">
-     <asp:Button type="button"  ID="btn_Preview" Text="Preview" runat="server" OnClick="btn_Preview_Click" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" />
-                                          
-  </div>
+                                            <div class="col-md-4" style="text-align: center;">
+                                            </div>
 
                                             <div class="col-md-4" style="text-align: end;">
                                                 <asp:Button type="button" ValidationGroup="Submit" ID="btnNext" Text="Next" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" OnClick="btnNext_Click" />
@@ -985,6 +1025,8 @@
                             <asp:HiddenField ID="HdnField_Document26" runat="server" />
                             <asp:HiddenField ID="HdnField_Document27" runat="server" />
                             <asp:HiddenField ID="HdnField_Document28" runat="server" />
+
+                            <asp:HiddenField ID="HdnApprenticeExperience" runat="server" />
                         </div>
                         <div class="col-md-1"></div>
                     </div>

@@ -252,7 +252,7 @@ namespace CEIHaryana.UserPages
         {
             if (IsSessionValid())
             {
-                string Result = SaveDocumentWithTransaction(FileUpload1, Button1, 44, lnkbtn_Delete1, lnkbtn_Save1, "Last Three Year Income Tax Returns and Balance Sheet", null, null);
+                string Result = SaveDocumentWithTransaction(FileUpload1, Button1, 57, lnkbtn_Delete1, lnkbtn_Save1, "Authorized Signatory Approval Letter", null, null);
                 if (Result != null && Result != "")
                 {
                     HdnField_Document1.Value = "1";
@@ -483,7 +483,7 @@ namespace CEIHaryana.UserPages
                         //{
                             bool allMandatoryUploaded = true;
                             string errorMessage = "";
-                            if (HdnField_Document1.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Last Three Year Income Tax Returns and Balance Sheet.<br>"; }
+                            if (HdnField_Document1.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Authorized Signatory Approval Letter.<br>"; }
                             if (HdnField_Document2.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Id proof.<br>"; }
                             if (HdnField_Document3.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Calibration Certificate from NABL or Government testing laboratory respect of electrical equipment’s invoices.<br>"; }
                             if (HdnField_Document4.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Copy of Annexure 3 & 5.<br>"; }
