@@ -304,6 +304,13 @@ namespace CEIHaryana.Admin
                         Response.Write("<script>window.open('/UserPages/Certificate_Renewal_Details_Preview.aspx','_blank');</script>");
                        // Response.Redirect("/UserPages/Certificate_Renewal_Details_Preview.aspx", false);
                     }
+                    else
+                    {
+                        Session["NewApplicationRegistrationNo"] = lblId.Text.Trim();
+
+                        Response.Write("<script>window.open('/UserPages/Contractor_Renewal_Details_Preview.aspx','_blank');</script>");
+
+                    }
                 }
 
 

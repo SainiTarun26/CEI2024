@@ -25,6 +25,7 @@ namespace CEIHaryana.UserPages
                     if (Convert.ToString(Session["NewApplicationRegistrationNo"]) != null || Convert.ToString(Session["NewApplicationRegistrationNo"]) != string.Empty)
                     {
                         GetRenewalData(Session["NewApplicationRegistrationNo"].ToString().Trim());
+                        GetGridBindData(Session["NewApplicationRegistrationNo"].ToString().Trim());
                     }
                 }
             }
@@ -34,6 +35,39 @@ namespace CEIHaryana.UserPages
             }
 
 
+        }
+
+        protected void GetGridBindData(string RenewalId)
+        {
+            DataTable dt = new DataTable();
+            dt = CEI.GetRenewalDocuments(RenewalId);
+            if (dt.Rows.Count > 0)
+            {
+                Grd_Document.DataSource = dt;
+                Grd_Document.DataBind();
+            }
+            else
+            {
+                Grd_Document.DataSource = null;
+                Grd_Document.DataBind();
+                string script = "alert(\"No Record Found for document \");";
+                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+            }
+            dt.Dispose();
+        }
+        protected void Grd_Document_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "View")
+            {
+                string fileName = "";
+                //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                // fileName = "https://localhost:44393" + e.CommandArgument.ToString();
+                fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                string script = $@"<script>window.open('{fileName}','_blank');</script>";
+                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+
+
+            }
         }
         protected void GetRenewalData(string RenewalId)
         {
@@ -60,6 +94,7 @@ namespace CEIHaryana.UserPages
                 txtBelatedDate.Text = dt.Rows[0]["DelayedOrNot"].ToString();
                 txtMentiondays.Text = dt.Rows[0]["DaysDelay"].ToString();
                 txtEmployerChange.Text = dt.Rows[0]["changeofemployer"].ToString();
+                txtExpiryDate.Text = dt.Rows[0]["ExpiryDate"].ToString();
             }
             
             //already created that is why usedin it 

@@ -295,7 +295,7 @@
                                                             <label id="Label6" runat="server" visible="true">
                                                                 Date of Expiry
                                                             </label>
-                                                            <asp:TextBox ReadOnly="true" class="form-control" ID="TextBox6" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                            <asp:TextBox ReadOnly="true" class="form-control" ID="txtExpiryDate" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
                                                         </div>
                                                         <div class="col-md-4">
                                                             <label id="Label7" runat="server" visible="true">
@@ -313,13 +313,13 @@
                                                             <label id="Label10" runat="server" visible="true">
                                                                 Whether there is any change of address?
                                                             </label>
-                                                            <asp:TextBox ReadOnly="true" class="form-control" ID="TextBox10" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                            <asp:TextBox ReadOnly="true" class="form-control" ID="txtAddressChange" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
                                                         </div>
                                                         <div class="col-md-8">
                                                             <label id="Label11" runat="server" visible="true">
                                                                 Whether the equipments have been tested as required in the conditions for licincing of haryana.
                                                             </label>
-                                                            <asp:TextBox ReadOnly="true" class="form-control" Style="width: 95% !important;" ID="TextBox11" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                            <asp:TextBox ReadOnly="true" class="form-control" Style="width: 95% !important;" ID="txtEquipments" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
                                                         </div>
                                                     </div>
 
@@ -371,50 +371,6 @@
 
 
 
-
-                                                <div class="card-body">
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <h4 class="card-title" style="margin-bottom: 0px;">EMPLOYER DETAIL</h4>
-                                                        </div>
-                                                    </div>
-                                                    <hr />
-                                                    <div class="row" id="Employer" runat="server">
-                                                        <div class="col-md-4" style="margin-top: 30px !important;">
-                                                            <label id="Label15" runat="server" visible="true">
-                                                                Name of Employer
-                                                            </label>
-                                                            <asp:TextBox ReadOnly="true" class="form-control" ID="txtNameofEmployer" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
-                                                        </div>
-                                                        <div class="col-md-4" style="margin-top: 30px !important;">
-                                                            <label id="Label18" runat="server" visible="true">
-                                                                License No.
-                                                            </label>
-                                                            <asp:TextBox ReadOnly="true" class="form-control" ID="txtLicenseNo" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
-                                                        </div>
-                                                        <div class="col-md-4" style="margin-top: 30px !important;">
-                                                            <label id="Label22" runat="server" visible="true">
-                                                                Employer Address
-                                                            </label>
-                                                            <asp:TextBox ReadOnly="true" class="form-control" ID="txtEmployerAddress" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
-                                                        </div>
-                                                        <div class="col-md-8" style="margin-top: 30px !important;">
-                                                            <label id="Label23" runat="server" visible="true">
-                                                                Whether there is any change of employer during the subsequent period to the last renewal
-                                                            </label>
-                                                            <asp:TextBox ReadOnly="true" class="form-control" ID="txtEmployerChange" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
-                                                        </div>
-                                                        <div class="col-md-12">
-                                                            <%-- Add GridView Here --%>
-                                                        </div>
-                                                    </div>
-
-
-                                                </div>
-
-
-
-
                                                 <div class="card-body">
                                                     <div class="row">
                                                         <div class="col-md-12">
@@ -425,7 +381,45 @@
                                                     <div class="row">
 
                                                         <div class="col-md-12">
-                                                            <%-- Add GridView Here --%>
+                                                             <asp:GridView class="table-responsive table table-hover table-striped" ID="Grd_Document" OnRowCommand="Grd_Document_RowCommand" runat="server" AutoGenerateColumns="false">
+      <%-- <asp:GridView class="table-responsive table table-hover table-striped" ID="Grd_Document"  OnRowCommand="Grd_Document_RowCommand"  runat="server" AutoGenerateColumns="false">--%>
+      <PagerStyle CssClass="pagination-ys" />
+      <Columns>
+
+
+          <asp:TemplateField HeaderText="SNo">
+              <HeaderStyle Width="5%" CssClass="headercolor" />
+              <ItemStyle Width="5%" />
+              <ItemTemplate>
+                  <%#Container.DataItemIndex+1 %>
+              </ItemTemplate>
+          </asp:TemplateField>
+          <%-- <asp:BoundField DataField="SNo" HeaderText="SNo" />--%>
+          <%--  <asp:BoundField DataField="DocumentID" HeaderText="DocumentID" />--%>
+          <asp:BoundField DataField="DocumentName" HeaderText="Document Name">
+              <HeaderStyle HorizontalAlign="Left" Width="85%" CssClass="headercolor leftalign" />
+              <ItemStyle HorizontalAlign="Left" Width="85%" />
+          </asp:BoundField>
+
+          <asp:TemplateField>
+              <HeaderStyle HorizontalAlign="Left" CssClass="headercolor leftalign" />
+              <ItemTemplate>
+                  <asp:LinkButton ID="lnkDocumentPath" runat="server" Text="View Document" CommandName="View" CommandArgument='<%# Eval("DocumentPath") %>' />
+
+              </ItemTemplate>
+          </asp:TemplateField>
+
+      </Columns>
+      <FooterStyle BackColor="White" ForeColor="#000066" />
+      <HeaderStyle BackColor="#9292cc" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+      <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+      <RowStyle ForeColor="#000066" />
+      <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+      <SortedAscendingCellStyle BackColor="#F1F1F1" />
+      <SortedAscendingHeaderStyle BackColor="#007DBB" />
+      <SortedDescendingCellStyle BackColor="#CAC9C9" />
+      <SortedDescendingHeaderStyle BackColor="#00547E" />
+  </asp:GridView>
                                                         </div>
                                                     </div>
 
