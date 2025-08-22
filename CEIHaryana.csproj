@@ -2196,6 +2196,7 @@
     <Content Include="TestReport\SubstationTransformer.aspx" />
     <Content Include="TestReport\TestReport.aspx" />
     <Content Include="ToVerifyRegistration.aspx" />
+    <Content Include="UserCPages\LicenceHeaderDetails.ascx" />
     <Content Include="UserManual\Flow-Chart-for-LiftSolar-Panel-DG-Set-Renewable-Sources.jpg" />
     <Content Include="UserPages\ApplicationForLiftEscalators.aspx" />
     <Content Include="UserPages\Certificate_Renewal_Details_Preview.aspx" />
@@ -2210,7 +2211,6 @@
     <Content Include="UserPages\FormPrintWiremen.aspx" />
     <Content Include="UserPages\index.aspx" />
     <Content Include="UserPages\Instructions.aspx" />
-    <Content Include="UserPages\LicenceHeaderDetails.ascx" />
     <Content Include="UserPages\New_Application_Status.aspx" />
     <Content Include="UserPages\New_Registration_Information.aspx" />
     <Content Include="UserPages\New_Registration_Information_Contractor.aspx" />
@@ -4988,6 +4988,13 @@
     <Compile Include="ToVerifyRegistration.aspx.designer.cs">
       <DependentUpon>ToVerifyRegistration.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UserCPages\LicenceHeaderDetails.ascx.cs">
+      <DependentUpon>LicenceHeaderDetails.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserCPages\LicenceHeaderDetails.ascx.designer.cs">
+      <DependentUpon>LicenceHeaderDetails.ascx</DependentUpon>
+    </Compile>
     <Compile Include="UserPages\ApplicationForLiftEscalators.aspx.cs">
       <DependentUpon>ApplicationForLiftEscalators.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -5078,13 +5085,6 @@
     </Compile>
     <Compile Include="UserPages\Instructions.aspx.designer.cs">
       <DependentUpon>Instructions.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="UserPages\LicenceHeaderDetails.ascx.cs">
-      <DependentUpon>LicenceHeaderDetails.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="UserPages\LicenceHeaderDetails.ascx.designer.cs">
-      <DependentUpon>LicenceHeaderDetails.ascx</DependentUpon>
     </Compile>
     <Compile Include="UserPages\New_Application_Status.aspx.cs">
       <DependentUpon>New_Application_Status.aspx</DependentUpon>
