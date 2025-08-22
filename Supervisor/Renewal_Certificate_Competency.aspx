@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Supervisor/Supervisor_Renewal.Master" AutoEventWireup="true" CodeBehind="Renewal_Certificate_Competency.aspx.cs" Inherits="CEIHaryana.Supervisor.Renewal_Certificate_Competency" %>
 
-<asp:Content ID="Content3" ContentPlaceHolderID="head" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
@@ -238,7 +238,7 @@
         }
     </style>
 </asp:Content>
-<asp:Content ID="Content4" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>
     <div class="content-wrapper">
         <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
@@ -336,6 +336,7 @@
                                 Style="margin-left: 18px;">
                             </asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="txtPhone" ValidationGroup="Submit" ForeColor="Red">Please Select</asp:RequiredFieldValidator>
+                            <asp:Label ID="lblErrorContect" runat="server" ForeColor="Red"></asp:Label>
 
                         </div>
                         <div class="col-md-4" runat="server" visible="true">
@@ -343,11 +344,6 @@
                                 Aadhar Number
                                     <samp style="color: red">* </samp>
                             </label>
-
-                            <%-- <asp:TextBox class="form-control" ID="txtaadharno" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
-                           Style="margin-left: 18px;">
-                       </asp:TextBox>
-                       <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="txtaadharno" ValidationGroup="Submit" ForeColor="Red">Please Select</asp:RequiredFieldValidator>--%>
                             <asp:TextBox CssClass="form-control uppercase" class="form-control" ID="txtaadharno" autocomplete="off" MaxLength="14" onkeypress="return isNumberKey(event)" oninput="formatAadhaarInput()" TabIndex="5" runat="server"> </asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="txtaadharno"
                                 CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
@@ -558,9 +554,11 @@
           <samp style="color: red">* </samp>
                             </label>
 
-                            <asp:TextBox class="form-control" ID="txtNameofEmployer" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
+                            <asp:TextBox class="form-control" ID="txtNameofEmployer" ReadOnly="true" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
                                 MaxLength="200" Style="margin-left: 18px;">
                             </asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator25" runat="server" ControlToValidate="txtNameofEmployer" ValidationGroup="Submit" ForeColor="Red">Please Select</asp:RequiredFieldValidator>
+
                         </div>
                         <div class="col-md-4" runat="server" visible="false" id="LicensenContractor">
                             <label>
@@ -568,9 +566,11 @@
           <samp style="color: red">* </samp>
                             </label>
 
-                            <asp:TextBox class="form-control" ID="txtLicenseno" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
+                            <asp:TextBox class="form-control" ID="txtLicenseno" ReadOnly="true" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
                                 MaxLength="200" Style="margin-left: 18px;">
                             </asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator26" runat="server" ControlToValidate="txtNameofEmployer" ValidationGroup="Submit" ForeColor="Red">Please Select</asp:RequiredFieldValidator>
+
                         </div>
                         <div class="col-md-4" runat="server" visible="false" id="AddressContractor">
                             <label>
@@ -578,9 +578,11 @@
            <samp style="color: red">* </samp>
                             </label>
 
-                            <asp:TextBox class="form-control" ID="txtaddressofEmployer" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
+                            <asp:TextBox class="form-control" ID="txtaddressofEmployer" ReadOnly="true" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
                                 MaxLength="200" Style="margin-left: 18px;">
                             </asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator27" runat="server" ControlToValidate="txtaddressofEmployer" ValidationGroup="Submit" ForeColor="Red">Please Select</asp:RequiredFieldValidator>
+
                         </div>
                     </div>
                     <div class="row">
@@ -783,33 +785,36 @@
             <i class="bi bi-arrow-up-short"></i>
         </a>
     </div>
+    <!-- Core -->
+    <script src="/vendors/js/vendor.bundle.base.js"></script>
+    <!-- (includes jQuery/Bootstrap if bundled) -->
+    <script src="/assetsnew/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- only if NOT included above -->
+
+    <!-- Vendor plugins -->
     <script src="/assetsnew/vendor/purecounter/purecounter_vanilla.js"></script>
     <script src="/assetsnew/vendor/aos/aos.js"></script>
-    <script src="/assetsnew/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="/assetsnew/vendor/glightbox/js/glightbox.min.js"></script>
     <script src="/assetsnew/vendor/isotope-layout/isotope.pkgd.min.js"></script>
     <script src="/assetsnew/vendor/swiper/swiper-bundle.min.js"></script>
     <script src="/assetsnew/vendor/waypoints/noframework.waypoints.js"></script>
     <script src="/assetsnew/vendor/php-email-form/validate.js"></script>
-    <!-- Template Main JS File -->
-    <script src="/assetsnew/js/main.js"></script>
-    <script src="/vendors/js/vendor.bundle.base.js"></script>
-    <!-- endinject -->
-    <!-- Plugin js for this page -->
     <script src="/vendors/typeahead.js/typeahead.bundle.min.js"></script>
     <script src="/vendors/select2/select2.min.js"></script>
-    <!-- End plugin js for this page -->
-    <!-- inject:js -->
+
+    <!-- Template main -->
+    <script src="/assetsnew/js/main.js"></script>
     <script src="/js2/off-canvas.js"></script>
     <script src="/js2/hoverable-collapse.js"></script>
     <script src="/js2/template.js"></script>
     <script src="/js2/settings.js"></script>
     <script src="/js2/todolist.js"></script>
-    <!-- endinject -->
-    <!-- Custom js for this page-->
+
+    <!-- Page custom -->
     <script src="/js2/file-upload.js"></script>
     <script src="/js2/typeahead.js"></script>
     <script src="/js2/select2.js"></script>
+
     <script type="text/javascript">
         function ChallanDialog() {
             document.getElementById('<%= Challan.ClientID %>').click();
@@ -959,15 +964,17 @@
         }
 
 
+    </script>
+    <script type="text/javascript">
         function isvalidphoneno() {
-
-            var Phone1 = document.getElementById("<%=txtPhone.ClientID %>");
-            phoneNo = Phone1.value;
-            var lblErrorContect = document.getElementById("lblErrorContect");
+            var Phone1 = document.getElementById("<%= txtPhone.ClientID %>");
+              var phoneNo = Phone1.value;
+              var lblErrorContect = document.getElementById("<%= lblErrorContect.ClientID %>");
 
             var expr = /^[6-9]\d{9}$/;
-            if (phoneNo == "") {
-                lblErrorContect.innerHTML = "Please Enter Contact Number" + "\n";
+
+            if (phoneNo === "") {
+                lblErrorContect.innerHTML = "Please Enter Contact Number";
                 return false;
             }
             else if (expr.test(phoneNo)) {
@@ -975,7 +982,7 @@
                 return true;
             }
             else {
-                lblErrorContect.innerHTML = "Invalid Contact Number" + "\n";
+                lblErrorContect.innerHTML = "Invalid Contact Number";
                 return false;
             }
         }

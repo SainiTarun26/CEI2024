@@ -14459,6 +14459,30 @@ SqlTransaction transaction)
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_StaffDetailsOfContractor", userid);
         }
+        public bool IsContractorExpiryNear(string UserId)
+        {
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+            using (SqlCommand cmd = new SqlCommand("sp_CheckContractorExpiry", con))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+
+
+                cmd.Parameters.AddWithValue("@UserId", UserId);
+
+
+                SqlParameter output = new SqlParameter("@isExpiryNear", SqlDbType.Bit)
+                {
+                    Direction = ParameterDirection.Output
+                };
+                cmd.Parameters.Add(output);
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+
+                return Convert.ToBoolean(output.Value);
+            }
+        }
         #endregion
         #region neha upgradation
         public DataSet GetSuperviserForUpgradation(string id)

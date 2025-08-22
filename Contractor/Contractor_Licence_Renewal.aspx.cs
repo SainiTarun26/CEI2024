@@ -294,7 +294,7 @@ namespace CEIHaryana.Contractor
                         {
 
                             string intimationdate = txtintimationDate.Text;
-                            if (intimationdate=="")
+                            if (intimationdate == "")
                             {
                                 intimationdate = "10/11/1888";
                             }
@@ -417,6 +417,11 @@ namespace CEIHaryana.Contractor
             txtEmail.Text = "";
             rdlEquipmentsTested.SelectedIndex = -1;
             rblChangeAddress.SelectedIndex = -1;
+            txtAddressNew.Text = "";
+            txtPincodeNew.Text = "";
+            ddlState1.SelectedValue = "0";
+            ddlDistrict1.Text = "0";
+            rdlchangedonlicence.SelectedIndex = -1;
 
             rblChangeInStaff.SelectedIndex = -1;
             txtintimationDate.Text = "";

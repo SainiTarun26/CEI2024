@@ -21,7 +21,10 @@ namespace CEIHaryana.Contractor
                 {
 
                     lblName.Text = Convert.ToString(Session["ContractorID"]);
+                    string UserId = Convert.ToString(Session["ContractorID"]);
+                    bool showRenewal = CEI.IsContractorExpiryNear(UserId);
                     //txtContractorLogoutType.Text = "Contractor";
+                    RenewalMenuItem.Visible = showRenewal;
                 }
                 else if (Session["ContractorID"] == null)
                 {
@@ -119,8 +122,8 @@ namespace CEIHaryana.Contractor
         {
             REID = Session["ContractorID"].ToString();
             DataSet ds = new DataSet();
-            ds = CEI.GetContractorName(REID);            
-            PersonDetails.Text= ds.Tables[0].Rows[0]["ContractorName"].ToString();
+            ds = CEI.GetContractorName(REID);
+            PersonDetails.Text = ds.Tables[0].Rows[0]["ContractorName"].ToString();
         }
 
         protected void BtnChangePassword_Click(object sender, EventArgs e)

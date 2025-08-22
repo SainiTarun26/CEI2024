@@ -238,8 +238,7 @@
         }
     </style>
 </asp:Content>
-
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<asp:Content ID="Content4" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>
     <div class="content-wrapper">
         <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
@@ -254,9 +253,9 @@
                     <div class="col-md-2"></div>
                 </div>
 
-
                 <asp:HiddenField ID="HdnUserId" runat="server" />
                 <asp:HiddenField ID="HdnUserType" runat="server" />
+
 
                 <div class="row">
                     <div class="col-md-4"></div>
@@ -325,7 +324,7 @@
                             </asp:TextBox>
 
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="txtEmail" ValidationGroup="Submit" ForeColor="Red">Please Select</asp:RequiredFieldValidator>
-
+                            <asp:Label ID="lblError" runat="server" ForeColor="Red"></asp:Label>
                         </div>
                         <div class="col-md-4" runat="server" visible="true">
                             <label>
@@ -337,33 +336,23 @@
                                 Style="margin-left: 18px;">
                             </asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="txtPhone" ValidationGroup="Submit" ForeColor="Red">Please Select</asp:RequiredFieldValidator>
-
+                            <asp:Label ID="lblErrorContect" runat="server" ForeColor="Red"></asp:Label>
                         </div>
                         <div class="col-md-4" runat="server" visible="true">
                             <label>
                                 Aadhar Number
                                     <samp style="color: red">* </samp>
                             </label>
-
-                            <%-- <asp:TextBox class="form-control" ID="txtaadharno" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
-                           Style="margin-left: 18px;">
-                       </asp:TextBox>
-                       <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="txtaadharno" ValidationGroup="Submit" ForeColor="Red">Please Select</asp:RequiredFieldValidator>--%>
                             <asp:TextBox CssClass="form-control uppercase" class="form-control" ID="txtaadharno" autocomplete="off" MaxLength="14" onkeypress="return isNumberKey(event)" oninput="formatAadhaarInput()" TabIndex="5" runat="server"> </asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="txtaadharno"
                                 CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red" Display="Dynamic"></asp:RequiredFieldValidator>
                             <asp:RegularExpressionValidator ID="rgxAadhaar" runat="server" ControlToValidate="txtaadharno" ValidationExpression="^\d{4}\s?\d{4}\s?\d{4}$" ErrorMessage="Invalid Aadhaar number format." ForeColor="Red"></asp:RegularExpressionValidator>
 
                         </div>
-
-                    </div>
-                    <div class="row" style="margin-bottom: 15px;">
-
-
                         <div class="col-md-4" runat="server" visible="true">
                             <label>
                                 Age 
-          <samp style="color: red">* </samp>
+                                    <samp style="color: red">* </samp>
                             </label>
 
                             <asp:TextBox class="form-control" ID="txtage" runat="server" autocomplete="off" ReadOnly="true" onKeyPress="return alphabetKey(event);" TabIndex="1"
@@ -372,10 +361,10 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="txtage" ValidationGroup="Submit" ForeColor="Red">Please Select</asp:RequiredFieldValidator>
 
                         </div>
-                        <div class="col-md-4" runat="server" id="Ifage55" visible="false">
+                        <div class="col-md-4" runat="server" id="Ifage55" visible="true">
                             <label>
                                 Date when applicant completed 55 years
-           <samp style="color: red">* </samp>
+                                    <samp style="color: red">* </samp>
                             </label>
 
                             <asp:TextBox class="form-control" ID="txtage55" runat="server" autocomplete="off" ReadOnly="true" onKeyPress="return alphabetKey(event);" TabIndex="1"
@@ -387,7 +376,7 @@
                         <div class="col-md-4" runat="server" visible="true">
                             <label>
                                 Present Address with Pincode
-           <samp style="color: red">* </samp>
+                                    <samp style="color: red">* </samp>
                             </label>
 
                             <asp:TextBox class="form-control" ID="txtaddress" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
@@ -399,7 +388,7 @@
                         <div class="col-md-4" runat="server" visible="true">
                             <label>
                                 District        
-                                    <samp style="color: red">* </samp>
+         <samp style="color: red">* </samp>
                             </label>
 
                             <asp:TextBox class="form-control" ID="txtDistrict" runat="server" autocomplete="off" ReadOnly="true" onKeyPress="return alphabetKey(event);" TabIndex="1"
@@ -411,7 +400,7 @@
                         <div class="col-md-4" runat="server" visible="true">
                             <label>
                                 Competency Certificate No. (Old)
-              <samp style="color: red">* </samp>
+                       <samp style="color: red">* </samp>
                             </label>
 
                             <asp:TextBox class="form-control" ID="txtcertificatenoOLD" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
@@ -424,7 +413,7 @@
                         <div class="col-md-4" runat="server" visible="true">
                             <label>
                                 Competency Certificate No. (NEW)
-                           <samp style="color: red">* </samp>
+                                    <samp style="color: red">* </samp>
                             </label>
 
                             <asp:TextBox class="form-control" ID="txtcertificatenoNEW" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
@@ -445,19 +434,24 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ControlToValidate="txtexpirydate" ValidationGroup="Submit" ForeColor="Red">Please Select</asp:RequiredFieldValidator>
                         </div>
                     </div>
-
+                    <div class="row" style="margin-bottom: 15px;">
+                    </div>
 
                     <div class="row" style="margin-bottom: 15px;">
                         <asp:HiddenField ID="HiddenField2" runat="server" />
                         <div class="col-md-4">
                             <label>
-                                Is renewal application belated? If yes, mention delay period.
+                                Is renewal application belated?  &nbsp; &nbsp;
         <samp style="color: red">*</samp>
                             </label>
 
-                            <asp:RadioButtonList runat="server" ID="rblbelated" RepeatDirection="Horizontal" Enabled="false">
-                                <asp:ListItem Value="1" Text="Yes &nbsp;&nbsp;"></asp:ListItem>
-                                <asp:ListItem Value="0" Text="No &nbsp;&nbsp;"></asp:ListItem>
+                            <asp:RadioButtonList
+                                ID="rblbelated"
+                                runat="server"
+                                Enabled="false"
+                                RepeatDirection="Horizontal">
+                                <asp:ListItem Value="1" Text="Yes&nbsp; &nbsp;"></asp:ListItem>
+                                <asp:ListItem Value="0" Text="No&nbsp; &nbsp;"></asp:ListItem>
                             </asp:RadioButtonList>
 
                             <asp:RequiredFieldValidator
@@ -469,8 +463,7 @@
         Please Select
                             </asp:RequiredFieldValidator>
                         </div>
-
-                        <div class="col-md-4" runat="server" visible="true" id="days">
+                        <div class="col-md-4" runat="server" visible="false" id="days">
                             <label>
                                 Delay days after Certificate Expiry
                <samp style="color: red">* </samp>
@@ -560,9 +553,11 @@
           <samp style="color: red">* </samp>
                             </label>
 
-                            <asp:TextBox class="form-control" ID="txtNameofEmployer" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
+                            <asp:TextBox class="form-control" ID="txtNameofEmployer" ReadOnly="true" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
                                 MaxLength="200" Style="margin-left: 18px;">
                             </asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator25" runat="server" ControlToValidate="txtNameofEmployer" ValidationGroup="Submit" ForeColor="Red">Please Select</asp:RequiredFieldValidator>
+
                         </div>
                         <div class="col-md-4" runat="server" visible="false" id="LicensenContractor">
                             <label>
@@ -570,9 +565,11 @@
           <samp style="color: red">* </samp>
                             </label>
 
-                            <asp:TextBox class="form-control" ID="txtLicenseno" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
+                            <asp:TextBox class="form-control" ID="txtLicenseno" ReadOnly="true" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
                                 MaxLength="200" Style="margin-left: 18px;">
                             </asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator26" runat="server" ControlToValidate="txtNameofEmployer" ValidationGroup="Submit" ForeColor="Red">Please Select</asp:RequiredFieldValidator>
+
                         </div>
                         <div class="col-md-4" runat="server" visible="false" id="AddressContractor">
                             <label>
@@ -580,35 +577,30 @@
            <samp style="color: red">* </samp>
                             </label>
 
-                            <asp:TextBox class="form-control" ID="txtaddressofEmployer" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
+                            <asp:TextBox class="form-control" ID="txtaddressofEmployer" ReadOnly="true" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
                                 MaxLength="200" Style="margin-left: 18px;">
                             </asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator27" runat="server" ControlToValidate="txtaddressofEmployer" ValidationGroup="Submit" ForeColor="Red">Please Select</asp:RequiredFieldValidator>
+
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6" style="margin-top: 30px;">
                             <label>
                                 Whether there is any change of employer during the subsequent period to the last renewal
-        <samp style="color: red">*</samp>
+                                      <samp style="color: red">*</samp>
                             </label>
 
                             <div style="margin-top: 10px;">
+
                                 <asp:RadioButtonList runat="server" ID="RadioButtonList1" RepeatDirection="Horizontal">
                                     <asp:ListItem Value="1" Text="Yes"></asp:ListItem>
                                     <asp:ListItem Value="0" Text="No"></asp:ListItem>
                                 </asp:RadioButtonList>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="RadioButtonList1" ValidationGroup="Submit" ForeColor="Red">Please Select</asp:RequiredFieldValidator>
 
-                                <asp:RequiredFieldValidator
-                                    ID="RequiredFieldValidator8"
-                                    runat="server"
-                                    ControlToValidate="RadioButtonList1"
-                                    ValidationGroup="Submit"
-                                    ForeColor="Red">
-            Please Select
-                                </asp:RequiredFieldValidator>
                             </div>
                         </div>
-
                     </div>
 
                 </div>
@@ -776,48 +768,52 @@
                 </div>
             </div>
 
-        </div>
-    </div>
-    <asp:HiddenField ID="HdnField_Document2" runat="server" />
-    <asp:HiddenField ID="HdnField_Document15" runat="server" />
-    <asp:HiddenField ID="HdnField_Document8" runat="server" />
-    <asp:HiddenField ID="HdnField_Document3" runat="server" />
-    <asp:HiddenField ID="HdnField_Document4" runat="server" />
 
-    <!-- partial:../../partials/_footer.html -->
-    <footer class="footer">
-    </footer>
-    <div id="preloader"></div>
-    <a href="#" class="back-to-top d-flex align-items-justify justify-content-justify">
-        <i class="bi bi-arrow-up-short"></i>
-    </a>
+        </div>
+        <asp:HiddenField ID="HdnField_Document2" runat="server" />
+        <asp:HiddenField ID="HdnField_Document15" runat="server" />
+        <asp:HiddenField ID="HdnField_Document8" runat="server" />
+        <asp:HiddenField ID="HdnField_Document3" runat="server" />
+        <asp:HiddenField ID="HdnField_Document4" runat="server" />
+
+        <!-- partial:../../partials/_footer.html -->
+        <footer class="footer">
+        </footer>
+        <div id="preloader"></div>
+        <a href="#" class="back-to-top d-flex align-items-justify justify-content-justify">
+            <i class="bi bi-arrow-up-short"></i>
+        </a>
+    </div>
+    <!-- Core -->
+    <script src="/vendors/js/vendor.bundle.base.js"></script>
+    <!-- (includes jQuery/Bootstrap if bundled) -->
+    <script src="/assetsnew/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- only if NOT included above -->
+
+    <!-- Vendor plugins -->
     <script src="/assetsnew/vendor/purecounter/purecounter_vanilla.js"></script>
     <script src="/assetsnew/vendor/aos/aos.js"></script>
-    <script src="/assetsnew/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="/assetsnew/vendor/glightbox/js/glightbox.min.js"></script>
     <script src="/assetsnew/vendor/isotope-layout/isotope.pkgd.min.js"></script>
     <script src="/assetsnew/vendor/swiper/swiper-bundle.min.js"></script>
     <script src="/assetsnew/vendor/waypoints/noframework.waypoints.js"></script>
     <script src="/assetsnew/vendor/php-email-form/validate.js"></script>
-    <!-- Template Main JS File -->
-    <script src="/assetsnew/js/main.js"></script>
-    <script src="/vendors/js/vendor.bundle.base.js"></script>
-    <!-- endinject -->
-    <!-- Plugin js for this page -->
     <script src="/vendors/typeahead.js/typeahead.bundle.min.js"></script>
     <script src="/vendors/select2/select2.min.js"></script>
-    <!-- End plugin js for this page -->
-    <!-- inject:js -->
+
+    <!-- Template main -->
+    <script src="/assetsnew/js/main.js"></script>
     <script src="/js2/off-canvas.js"></script>
     <script src="/js2/hoverable-collapse.js"></script>
     <script src="/js2/template.js"></script>
     <script src="/js2/settings.js"></script>
     <script src="/js2/todolist.js"></script>
-    <!-- endinject -->
-    <!-- Custom js for this page-->
+
+    <!-- Page custom -->
     <script src="/js2/file-upload.js"></script>
     <script src="/js2/typeahead.js"></script>
     <script src="/js2/select2.js"></script>
+
     <script type="text/javascript">
         function ChallanDialog() {
             document.getElementById('<%= Challan.ClientID %>').click();
@@ -936,14 +932,16 @@
     </script>
     <script type="text/javascript">
         function ValidateEmail() {
-            debugger
-            var email1 = document.getElementById("<%=txtEmail.ClientID %>");
-            email = email1.value;
-            var lblError = document.getElementById("lblError");
+            var email1 = document.getElementById("<%= txtEmail.ClientID %>");
+           var email = email1.value;
+           var lblError = document.getElementById("<%= lblError.ClientID %>");
+
             lblError.innerHTML = "";
-            var expr = /\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;;
-            if (email == "") {
-                //lblError.innerHTML = "Please Enter Email" + "\n";
+            var expr = /^\w+([-.']?\w+)*@\w+([-.]?\w+)*\.\w{2,}$/;
+
+            if (email === "") {
+                // Optional: show message if you want mandatory
+                // lblError.innerHTML = "Please Enter Email";
                 return false;
             }
             else if (expr.test(email)) {
@@ -951,7 +949,7 @@
                 return true;
             }
             else {
-                lblError.innerHTML = "Invalid email address.ex:abc@xyz.com" + "\n";
+                lblError.innerHTML = "Invalid email address. Ex: abc@xyz.com";
                 return false;
             }
         }
@@ -966,16 +964,17 @@
             return true;
         }
 
-
+    </script>
+    <script type="text/javascript">
         function isvalidphoneno() {
-
-            var Phone1 = document.getElementById("<%=txtPhone.ClientID %>");
-            phoneNo = Phone1.value;
-            var lblErrorContect = document.getElementById("lblErrorContect");
+            var Phone1 = document.getElementById("<%= txtPhone.ClientID %>");
+            var phoneNo = Phone1.value;
+            var lblErrorContect = document.getElementById("<%= lblErrorContect.ClientID %>");
 
             var expr = /^[6-9]\d{9}$/;
-            if (phoneNo == "") {
-                lblErrorContect.innerHTML = "Please Enter Contact Number" + "\n";
+
+            if (phoneNo === "") {
+                lblErrorContect.innerHTML = "Please Enter Contact Number";
                 return false;
             }
             else if (expr.test(phoneNo)) {
@@ -983,10 +982,10 @@
                 return true;
             }
             else {
-                lblErrorContect.innerHTML = "Invalid Contact Number" + "\n";
+                lblErrorContect.innerHTML = "Invalid Contact Number";
                 return false;
             }
         }
     </script>
-</asp:Content>
 
+</asp:Content>
