@@ -2203,6 +2203,7 @@
     <Content Include="UserPages\ContractorApplicationForm.aspx" />
     <Content Include="UserPages\Contractor_Declaration.aspx" />
     <Content Include="UserPages\Contractor_Registration_Details.aspx" />
+    <Content Include="UserPages\Contractor_Renewal_Details_Preview.aspx" />
     <Content Include="UserPages\Documents.aspx" />
     <Content Include="UserPages\DocumentsForContractor.aspx" />
     <Content Include="UserPages\DocumentsForLift.aspx" />
@@ -5029,6 +5030,13 @@
     </Compile>
     <Compile Include="UserPages\Contractor_Registration_Details.aspx.designer.cs">
       <DependentUpon>Contractor_Registration_Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserPages\Contractor_Renewal_Details_Preview.aspx.cs">
+      <DependentUpon>Contractor_Renewal_Details_Preview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserPages\Contractor_Renewal_Details_Preview.aspx.designer.cs">
+      <DependentUpon>Contractor_Renewal_Details_Preview.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserPages\Documents.aspx.cs">
       <DependentUpon>Documents.aspx</DependentUpon>

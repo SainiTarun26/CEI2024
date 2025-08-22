@@ -348,6 +348,8 @@
                             <asp:TextBox class="form-control" ID="txtage" runat="server" autocomplete="off" ReadOnly="true" onKeyPress="return alphabetKey(event);" TabIndex="1"
                                 MaxLength="200" Style="margin-left: 18px;">
                             </asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator11" CssClass="validation_required" Text="Required" ErrorMessage="Required" ControlToValidate="txtage" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+
                         </div>
                         <div class="col-md-4">
                             <label>
@@ -358,6 +360,8 @@
                             <asp:TextBox class="form-control" ID="txtage55" runat="server" autocomplete="off" ReadOnly="true" onKeyPress="return alphabetKey(event);" TabIndex="1"
                                 MaxLength="200" Style="margin-left: 18px;">
                             </asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator15" CssClass="validation_required" Text="Required" ErrorMessage="Required" ControlToValidate="txtage55" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+
                         </div>
                         <div class="col-md-4">
                             <label>
@@ -369,6 +373,7 @@
                                 MaxLength="200" Style="margin-left: 18px;">
                             </asp:TextBox>
                             <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtPANNo" ValidationExpression="^[A-Z]{5}[0-9]{4}[A-Z]{1}$" ErrorMessage="Invalid PAN number format." ForeColor="Red"></asp:RegularExpressionValidator>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator16" CssClass="validation_required" Text="Required" ErrorMessage="Required" ControlToValidate="txtPANNo" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
 
                         </div>
                         <div class="col-md-4">
@@ -377,9 +382,11 @@
                                 <samp style="color: red">* </samp>
                             </label>
 
-                            <asp:TextBox class="form-control" ID="txtLicenceOld" runat="server" autocomplete="off" ReadOnly="false" onKeyPress="return alphabetKey(event);" TabIndex="1"
+                            <asp:TextBox class="form-control" ID="txtLicenceOld" runat="server" autocomplete="off" ReadOnly="false" TabIndex="1"
                                 MaxLength="200" Style="margin-left: 18px;">
                             </asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator17" CssClass="validation_required" Text="Required" ErrorMessage="Required" ControlToValidate="txtLicenceOld" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+
                         </div>
                         <div class="col-md-4">
                             <label>
@@ -387,9 +394,11 @@
                                 <samp style="color: red">* </samp>
                             </label>
 
-                            <asp:TextBox class="form-control" ID="txtLicenceNew" runat="server" autocomplete="off" ReadOnly="false" onKeyPress="return alphabetKey(event);" TabIndex="1"
+                            <asp:TextBox class="form-control" ID="txtLicenceNew" runat="server" autocomplete="off" ReadOnly="false" TabIndex="1"
                                 MaxLength="200" Style="margin-left: 18px;">
                             </asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator18" CssClass="validation_required" Text="Required" ErrorMessage="Required" ControlToValidate="txtLicenceNew" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+
                         </div>
                         <div class="col-md-4">
                             <label>
@@ -400,6 +409,9 @@
                             <asp:TextBox class="form-control" ID="txtexpirydate" runat="server" autocomplete="off" ReadOnly="true" onKeyPress="return alphabetKey(event);" TabIndex="1"
                                 MaxLength="200" Style="margin-left: 18px;">
                             </asp:TextBox>
+
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator19" CssClass="validation_required" Text="Required" ErrorMessage="Required" ControlToValidate="txtexpirydate" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+
                         </div>
                         <div class="col-md-8">
                             <label>
@@ -410,6 +422,8 @@
                             <asp:TextBox class="form-control" ID="txtaddress" runat="server" autocomplete="off" ReadOnly="true" onKeyPress="return alphabetKey(event);" TabIndex="1"
                                 MaxLength="200" Style="margin-left: 18px;">
                             </asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator20" CssClass="validation_required" Text="Required" ErrorMessage="Required" ControlToValidate="txtaddress" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+
                         </div>
                         <div class="col-md-4">
                             <label>
@@ -420,6 +434,8 @@
                             <asp:TextBox class="form-control" ID="txtDistrict" runat="server" autocomplete="off" ReadOnly="true" onKeyPress="return alphabetKey(event);" TabIndex="1"
                                 MaxLength="200" Style="margin-left: 18px;">
                             </asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator21" CssClass="validation_required" Text="Required" ErrorMessage="Required" ControlToValidate="txtDistrict" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+
                         </div>
                         <div class="col-md-4">
                             <label>
@@ -430,6 +446,8 @@
                             <asp:TextBox class="form-control" ID="txtEmail" runat="server" autocomplete="off" ReadOnly="false" onkeyup="return ValidateEmail();" TabIndex="1"
                                 MaxLength="200" Style="margin-left: 18px;">
                             </asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator22" CssClass="validation_required" Text="Required" ErrorMessage="Required" ControlToValidate="txtEmail" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+
                         </div>
                         <div class="col-md-4">
                             <label>
@@ -440,6 +458,8 @@
                             <asp:TextBox class="form-control" ID="txtPhone" runat="server" autocomplete="off" ReadOnly="false" onkeypress="return isNumberKey(event)" onkeyup="return isvalidphoneno();" TabIndex="1"
                                 MaxLength="200" Style="margin-left: 18px;">
                             </asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator23" CssClass="validation_required" Text="Required" ErrorMessage="Required" ControlToValidate="txtPhone" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+
                         </div>
                         <div class="col-md-4">
                             <label>
@@ -452,6 +472,8 @@
                                 <asp:ListItem Value="1" Text="Yes"></asp:ListItem>
                                 <asp:ListItem Value="0" Text="No"></asp:ListItem>
                             </asp:RadioButtonList>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator24" CssClass="validation_required" Text="Required" ErrorMessage="Required" ControlToValidate="rblChangeAddress" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+
                         </div>
                         <div class="col-md-4" id="NewAddress" runat="server" visible="false">
                             <label>
@@ -462,6 +484,8 @@
                             <asp:TextBox class="form-control" ID="txtAddressNew" runat="server" autocomplete="off" ReadOnly="false" onKeyPress="return alphabetKey(event);" TabIndex="1"
                                 MaxLength="200" Style="margin-left: 18px;">
                             </asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator25" CssClass="validation_required" Text="Required" ErrorMessage="Required" ControlToValidate="txtAddressNew" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+
                         </div>
                         <div class="col-md-4" id="NewState" runat="server" visible="false">
                             <label>
@@ -482,10 +506,6 @@
                                 <samp style="color: red">* </samp>
                             </label>
 
-                            <%--<asp:DropDownList ID="ddlDistrict1" runat="server" TabIndex="1" class="select-form select2">
-                                <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                            </asp:DropDownList>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator13" CssClass="validation_required" ErrorMessage="Required" ControlToValidate="ddlDistrict1" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />--%>
                             <asp:DropDownList class="select-form select2"
                                 ID="ddlDistrict1" AutoPostBack="true" runat="server" TabIndex="9">
                                 <asp:ListItem Text="Select" Value="0"></asp:ListItem>
@@ -504,6 +524,9 @@
                             </asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator14" CssClass="validation_required" runat="server" ControlToValidate="txtPincodeNew"
                                 ErrorMessage="Please Enter Your Pincode" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
+                            <asp:RegularExpressionValidator
+                                ID="RegexPin" runat="server" ControlToValidate="txtPincodeNew" ErrorMessage="Enter valid 6-digit Pin Code" ForeColor="Red" Display="Dynamic" ValidationGroup="Submit" ValidationExpression="^[1-9][0-9]{5}$">
+                            </asp:RegularExpressionValidator>
 
                         </div>
                         <div class="col-md-4" runat="server" visible="false" id="changedInAddress">
@@ -516,6 +539,8 @@
                                 <asp:ListItem Value="1" Text="Yes &nbsp;&nbsp;"></asp:ListItem>
                                 <asp:ListItem Value="0" Text="No &nbsp;&nbsp;"></asp:ListItem>
                             </asp:RadioButtonList>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator26" CssClass="validation_required" ErrorMessage="Required" ControlToValidate="rdlchangedonlicence" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+
                         </div>
                         <div class="col-md-4">
                             <label>
@@ -527,6 +552,8 @@
                                 <asp:ListItem Value="1" Text="Yes"></asp:ListItem>
                                 <asp:ListItem Value="0" Text="No "></asp:ListItem>
                             </asp:RadioButtonList>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator27" CssClass="validation_required" ErrorMessage="Required" ControlToValidate="rblbelated" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+
                         </div>
                         <div class="col-md-4" runat="server" visible="true" id="days">
                             <label>
@@ -537,6 +564,8 @@
                             <asp:TextBox class="form-control" ID="txtdays" runat="server" autocomplete="off" ReadOnly="true" onKeyPress="return alphabetKey(event);" TabIndex="1"
                                 MaxLength="200" Style="margin-left: 18px;">
                             </asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator28" CssClass="validation_required" ErrorMessage="Required" ControlToValidate="txtdays" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+
                         </div>
                         <div class="col-md-8">
                             <label>
@@ -550,6 +579,8 @@
                                 <asp:ListItem Value="1" Text="Yes"></asp:ListItem>
                                 <asp:ListItem Value="0" Text="No"></asp:ListItem>
                             </asp:RadioButtonList>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator29" CssClass="validation_required" ErrorMessage="Required" ControlToValidate="rdlEquipmentsTested" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+
                         </div>
                     </div>
                 </div>
@@ -577,9 +608,12 @@
                                 <samp style="color: red">* </samp>
                             </label>
 
-                            <asp:TextBox class="form-control" ID="txtgrnno" runat="server" autocomplete="off" ReadOnly="false" onKeyPress="return alphabetKey(event);" TabIndex="1"
+                            <asp:TextBox class="form-control" ID="txtgrnno" runat="server" autocomplete="off" ReadOnly="false" TabIndex="1"
                                 MaxLength="200" Style="margin-left: 18px;">
                             </asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator30" CssClass="validation_required" ErrorMessage="Required" ControlToValidate="txtgrnno" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+
+
                         </div>
                         <div class="col-md-3">
                             <label>
@@ -590,6 +624,8 @@
                             <asp:TextBox class="form-control" ID="txtdate" type="date" runat="server" autocomplete="off" ReadOnly="false" onchange="validateDate()" TabIndex="1"
                                 MaxLength="200" Style="margin-left: 18px;">
                             </asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator31" CssClass="validation_required" ErrorMessage="Required" ControlToValidate="txtdate" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+
                         </div>
                         <div class="col-md-3">
                             <label>
@@ -600,6 +636,8 @@
                             <asp:TextBox class="form-control" ID="txtamount" runat="server" autocomplete="off" ReadOnly="true" onKeyPress="return alphabetKey(event);" TabIndex="1"
                                 MaxLength="200" Style="margin-left: 18px;">
                             </asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator32" CssClass="validation_required" ErrorMessage="Required" ControlToValidate="txtamount" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+
                         </div>
                     </div>
                 </div>
@@ -655,14 +693,16 @@
                             </label>
                             <div style="margin-top: 10px;">
                                 <asp:RadioButtonList runat="server" ID="rblChangeInStaff"
-                                    RepeatDirection="Horizontal" CssClass="radio-inline">
+                                    RepeatDirection="Horizontal" CssClass="radio-inline" AutoPostBack="true" OnSelectedIndexChanged="rblChangeInStaff_SelectedIndexChanged">
                                     <asp:ListItem Value="1" Text="Yes"></asp:ListItem>
                                     <asp:ListItem Value="0" Text="No"></asp:ListItem>
                                 </asp:RadioButtonList>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator34" CssClass="validation_required" ErrorMessage="Required" ControlToValidate="rblChangeInStaff" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+
                             </div>
 
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4" id="DateOFIntimation" runat="server" visible="false">
                             <label>
                                 Specify Date
                                 <samp style="color: red">* </samp>
@@ -671,6 +711,8 @@
                             <asp:TextBox class="form-control" ID="txtintimationDate" type="date" runat="server" autocomplete="off" ReadOnly="false" onKeyPress="return alphabetKey(event);" TabIndex="1"
                                 MaxLength="200" Style="margin-left: 18px;">
                             </asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator33" CssClass="validation_required" ErrorMessage="Required" ControlToValidate="txtintimationDate" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+
                         </div>
                     </div>
 

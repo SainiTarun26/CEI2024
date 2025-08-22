@@ -50,7 +50,7 @@ namespace CEIHaryana
                         if (Category.Trim() == "Contractor")
                         {
                             Session["ContractorID"] = txtUserID.Text;
-                            Response.Redirect("/Contractor/Renewal_Contractor_Licence.aspx", false);
+                            Response.Redirect("/Contractor/Contractor_Licence_Renewal.aspx", false);
 
                         }
                         if (Category.Trim() == "Supervisor")

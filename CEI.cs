@@ -14403,14 +14403,14 @@ SqlTransaction transaction)
             }
         }
         public void InsertRenewalDataforContractor(
-SqlConnection con, SqlTransaction tran,
-string Category, string ApplicantName, string FatherName, string DOB, string Age, string Dateturn55,
-string PanCardNo, string LicenceNew, string LicenceOld, string ExpiryDate,
-string Address, string District, string PhoneNo, string Email,
-string ChangeInAddress, string NewAddress, string NewState, string NewDistrict, string NewPincode,
-string NeedToChangeOnLicence, string DelayedOrNot, string DaysDelay, string EquipmentsTested,
-string RenewalTime, string GRNNo, string ChallanDate, string TotalAmount,
-string ChangeInStaff, string IntimationDate, string CreatedBy)
+     SqlConnection con, SqlTransaction tran,
+     string Category, string ApplicantName, string FatherName, string DOB, string Age, DateTime Dateturn55,
+     string PanCardNo, string LicenceNew, string LicenceOld, string ExpiryDate,
+     string Address, string District, string PhoneNo, string Email,
+     string ChangeInAddress, string NewAddress, string NewState, string NewDistrict, string NewPincode,
+     string NeedToChangeOnLicence, string DelayedOrNot, string DaysDelay, string EquipmentsTested,
+     string RenewalTime, string GRNNo, string ChallanDate, string TotalAmount,
+     string ChangeInStaff, string IntimationDate, string CreatedBy)
         {
             using (SqlCommand cmd = new SqlCommand("sp_RenewalDetailsOfContractor", con, tran))
             {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Web;
@@ -223,8 +224,9 @@ namespace CEIHaryana.Contractor
                             string ageString = $"{ageYear} Years - {ageMonth} Months - {ageDay} Days";
                             txtage.Text = ageString;
 
+
                             DateTime fiftyFifthBirthday = selectedDOB.AddYears(55);
-                            txtage55.Text = fiftyFifthBirthday.ToString("dd-MMM-yyyy");
+                            txtage55.Text = fiftyFifthBirthday.ToString("dd-MM-yyyy");
 
                             if (ageYear >= 64)
                             {
@@ -290,17 +292,27 @@ namespace CEIHaryana.Contractor
 
                         try
                         {
+
+                            string intimationdate = txtintimationDate.Text;
+                            if (intimationdate=="")
+                            {
+                                intimationdate = "10/11/1888";
+                            }
+                            //txtDOB.Text.Trim()
+                            //    txtdate.Text.Trim()
+                            //    txtexpirydate.Text.Trim()
+                            //     txtintimationDate.Text.Trim()
                             CEI.InsertRenewalDataforContractor(con, tran,
                                 HdnUserType.Value, txtname.Text.Trim(), txtFatherName.Text.Trim(), txtDOB.Text.Trim(),
-                                txtage.Text.Trim(), txtage55.Text.Trim(), txtPANNo.Text.Trim(),
-                                txtLicenceNew.Text.Trim(), txtLicenceOld.Text.Trim(), txtexpirydate.Text.Trim(),
+                                txtage.Text.Trim(), DateTime.Parse(txtage55.Text), txtPANNo.Text.Trim(),
+                                txtLicenceNew.Text.Trim(), txtLicenceOld.Text.Trim(), txtexpirydate.Text,
                                 txtaddress.Text.Trim(), txtDistrict.Text.Trim(), txtPhone.Text.Trim(), txtEmail.Text.Trim(),
                                 rblChangeAddress.SelectedItem.ToString(), txtAddressNew.Text.Trim(),
                                 ddlState1.SelectedItem.ToString(), ddlDistrict1.SelectedItem.ToString(), txtPincodeNew.Text.Trim(),
                                 rdlchangedonlicence.SelectedItem.ToString(), rblbelated.SelectedItem.ToString(),
                                 txtdays.Text.Trim(), rdlEquipmentsTested.SelectedItem.ToString(),
-                                ddlRenewalTime.SelectedItem.ToString(), txtgrnno.Text.Trim(), txtdate.Text.Trim(),
-                                txtamount.Text.Trim(), rblChangeInStaff.SelectedItem.ToString(), txtintimationDate.Text.Trim(),
+                                ddlRenewalTime.SelectedItem.ToString(), txtgrnno.Text.Trim(), txtdate.Text,
+                                txtamount.Text.Trim(), rblChangeInStaff.SelectedItem.ToString(), intimationdate,
                                 CreatedBy
                             );
 
@@ -409,6 +421,18 @@ namespace CEIHaryana.Contractor
             rblChangeInStaff.SelectedIndex = -1;
             txtintimationDate.Text = "";
 
+        }
+
+        protected void rblChangeInStaff_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (rblChangeInStaff.SelectedValue == "1")
+            {
+                DateOFIntimation.Visible = true;
+            }
+            else
+            {
+                DateOFIntimation.Visible = false;
+            }
         }
     }
 }
