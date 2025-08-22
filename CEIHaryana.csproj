@@ -2782,6 +2782,13 @@
     <Compile Include="Contractor\ContractorRenewal.aspx.designer.cs">
       <DependentUpon>ContractorRenewal.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Contractor\ContractorRenewalMaster.Master.cs">
+      <DependentUpon>ContractorRenewalMaster.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Contractor\ContractorRenewalMaster.Master.designer.cs">
+      <DependentUpon>ContractorRenewalMaster.Master</DependentUpon>
+    </Compile>
     <Compile Include="Contractor\Contractor_Licence_Renewal.aspx.cs">
       <DependentUpon>Contractor_Licence_Renewal.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -5469,6 +5476,7 @@
     <Content Include="Admin\Admin_Master2.Master" />
     <Content Include="Industry_Master\NewLift_Industry.Master" />
     <Content Include="DealingHand\DealingHand.Master" />
+    <Content Include="Contractor\ContractorRenewalMaster.Master" />
     <None Include="packages.config" />
     <Content Include="Supervisor\Supervisor.Master" />
     <Content Include="TestReport\TestReport.Master" />

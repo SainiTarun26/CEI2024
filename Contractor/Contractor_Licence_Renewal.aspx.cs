@@ -302,14 +302,43 @@ namespace CEIHaryana.Contractor
                             //    txtdate.Text.Trim()
                             //    txtexpirydate.Text.Trim()
                             //     txtintimationDate.Text.Trim()
+                            
+                            string NewAddress = txtAddressNew.Text;
+                            if (NewAddress == "")
+                            {
+
+                                NewAddress = "Null";
+                            }
+                            string NewState = ddlState1.SelectedItem.ToString();
+                            if (NewState == "Select")
+                            {
+                                NewState = "Null";
+                            }
+
+                            string NewDistrict = ddlDistrict1.SelectedItem.ToString();
+                            if (NewDistrict == "Select")
+                            {
+                                NewDistrict = "Null";
+                            }
+                            string NewPincode = txtPincodeNew.Text;
+                            if (NewPincode == "")
+                            {
+                                NewPincode = "Null";
+                            }
+                            string changedonlicence = rdlchangedonlicence.SelectedIndex.ToString();
+                            if (rdlchangedonlicence.SelectedValue == "")
+                            {
+                                changedonlicence = "Null";
+                            }
+
                             CEI.InsertRenewalDataforContractor(con, tran,
                                 HdnUserType.Value, txtname.Text.Trim(), txtFatherName.Text.Trim(), txtDOB.Text.Trim(),
                                 txtage.Text.Trim(), DateTime.Parse(txtage55.Text), txtPANNo.Text.Trim(),
                                 txtLicenceNew.Text.Trim(), txtLicenceOld.Text.Trim(), txtexpirydate.Text,
                                 txtaddress.Text.Trim(), txtDistrict.Text.Trim(), txtPhone.Text.Trim(), txtEmail.Text.Trim(),
-                                rblChangeAddress.SelectedItem.ToString(), txtAddressNew.Text.Trim(),
-                                ddlState1.SelectedItem.ToString(), ddlDistrict1.SelectedItem.ToString(), txtPincodeNew.Text.Trim(),
-                                rdlchangedonlicence.SelectedItem.ToString(), rblbelated.SelectedItem.ToString(),
+                                rblChangeAddress.SelectedItem.ToString(), NewAddress,
+                                NewState, NewDistrict, NewPincode,
+                                changedonlicence, rblbelated.SelectedItem.ToString(),
                                 txtdays.Text.Trim(), rdlEquipmentsTested.SelectedItem.ToString(),
                                 ddlRenewalTime.SelectedItem.ToString(), txtgrnno.Text.Trim(), txtdate.Text,
                                 txtamount.Text.Trim(), rblChangeInStaff.SelectedItem.ToString(), intimationdate,
