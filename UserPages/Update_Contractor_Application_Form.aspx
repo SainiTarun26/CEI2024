@@ -1574,7 +1574,7 @@
                                                                             Is Contractor License Previously Granted with same name<samp style="color: red">* </samp>
                                                                         </label>
                                                                         <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
-                                                                            ID="ddlSameNameLicense" runat="server" AutoPostBack="true">
+                                                                            ID="ddlSameNameLicense" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlSameNameLicense_SelectedIndexChanged">
                                                                             <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                                                             <asp:ListItem Text="YES" Value="1"></asp:ListItem>
                                                                             <asp:ListItem Text="NO" Value="2"></asp:ListItem>
@@ -1586,7 +1586,7 @@
                                                                         <label id="Label14" runat="server" visible="true">
                                                                             Enter License No.<samp style="color: red">* </samp>
                                                                         </label>
-                                                                        <asp:TextBox class="form-control" ID="txtLicenseNo" autocomplete="off" MaxLength="10" onKeyPress="return isNumberKey(event) || alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                                        <asp:TextBox class="form-control" ID="txtLicenseNo" autocomplete="off" MaxLength="10" onkeypress="return isValidLicenseKey(event);" runat="server"> </asp:TextBox>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="txtLicenseNo"
                                                                             CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit2" ForeColor="Red"></asp:RequiredFieldValidator>
                                                                     </div>
@@ -1603,7 +1603,7 @@
                                                                             Is Contractor License Previously Granted with same name from other state<samp style="color: red">* </samp>
                                                                         </label>
                                                                         <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
-                                                                            ID="ddlLicenseGranted" runat="server" AutoPostBack="true">
+                                                                            ID="ddlLicenseGranted" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlLicenseGranted_SelectedIndexChanged">
                                                                             <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                                                             <asp:ListItem Text="YES" Value="1"></asp:ListItem>
                                                                             <asp:ListItem Text="NO" Value="2"></asp:ListItem>
@@ -2870,5 +2870,33 @@
             document.getElementById("<%= txtPenalities.ClientID %>").value = values.join(", ");
         }
     </script>
+
+      <script type="text/javascript">
+          function isValidLicenseKey(evt) {
+              var charCode = evt.which ? evt.which : evt.keyCode;
+
+              // Allow alphabets (A-Z, a-z)
+              if ((charCode >= 65 && charCode <= 90) || (charCode >= 97 && charCode <= 122)) {
+                  return true;
+              }
+
+              // Allow numbers (0-9)
+              if (charCode >= 48 && charCode <= 57) {
+                  return true;
+              }
+
+              // Allow - and /
+              if (charCode === 45 || charCode === 47) {
+                  return true;
+              }
+
+              // Allow backspace, tab, delete, arrow keys
+              if (charCode === 8 || charCode === 9 || charCode === 46 || (charCode >= 37 && charCode <= 40)) {
+                  return true;
+              }
+
+              return false; // Block everything else
+          }
+      </script>
 </body>
 </html>

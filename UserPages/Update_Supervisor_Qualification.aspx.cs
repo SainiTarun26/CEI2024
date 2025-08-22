@@ -129,7 +129,7 @@ namespace CEIHaryana.UserPages
                 }
                 else
                 {
-                    diploma.Visible = false;
+                    diploma.Visible = true;
                 }
 
                 if (!string.IsNullOrWhiteSpace(dt.Rows[0]["NameofDegree"].ToString()))
@@ -145,7 +145,7 @@ namespace CEIHaryana.UserPages
                 }
                 else
                 {
-                    DdlDegree.Visible = false;
+                    DdlDegree.Visible = true;
                 }
 
                 if (!string.IsNullOrWhiteSpace(dt.Rows[0]["NameofMasters"].ToString()))

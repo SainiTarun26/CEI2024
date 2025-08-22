@@ -112,6 +112,8 @@ namespace CEIHaryana.Print_Forms
                     string IsCertificateofCompetency = dt.Rows[0]["IsCertificateofCompetency"].ToString();
                     if (IsCertificateofCompetency == "Yes")
                     {
+                        RadioButtonList2.SelectedValue = "0";
+                        competency.Visible = true;
                         PermitNo.Text = dt.Rows[0]["PermitNo1"].ToString();
                         Category.Text = dt.Rows[0]["CertificateofCompetency1"].ToString();
                         IssuingAuthority.Text = dt.Rows[0]["IssuingAuthority1"].ToString();
@@ -126,8 +128,13 @@ namespace CEIHaryana.Print_Forms
                             ExpiryDate.Text = ExpiryDate1.ToString("yyyy-MM-dd");
                         }
                     }
+                    else
+                    {
+                        RadioButtonList2.SelectedValue = "1";
+                        competency.Visible = false;
+                    }
 
-                    string EmployedPermanent = dt.Rows[0]["EmployedPermanent"].ToString();
+                        string EmployedPermanent = dt.Rows[0]["EmployedPermanent"].ToString();
                     if (EmployedPermanent == "Yes")
                     {
                         PermanentEmployee.Visible = true;
@@ -154,7 +161,7 @@ namespace CEIHaryana.Print_Forms
                     if (!string.IsNullOrWhiteSpace(dt.Rows[0]["ApprenticePostDescription"].ToString()) ||
                         !string.IsNullOrWhiteSpace(dt.Rows[0]["ApprenticenameofEmployer"].ToString()))
                     {
-                        txtApprenticeship.Text = dt.Rows[0]["ApprenticeExperience"].ToString().Trim();
+                        //txtApprenticeship.Text = dt.Rows[0]["ApprenticeExperience"].ToString().Trim();
                         txtAppretinceExperience.Text = dt.Rows[0]["ApprenticeTrainingUnder"].ToString().Trim();
                         txtApprenticeshipEmployer.Text = dt.Rows[0]["ApprenticenameofEmployer"].ToString();
                         txtApprenticesPost.Text = dt.Rows[0]["ApprenticePostDescription"].ToString();

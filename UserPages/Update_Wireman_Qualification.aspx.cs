@@ -126,10 +126,12 @@ namespace CEIHaryana.UserPages
                     txtmarksmax1.Text = dt.Rows[0]["MarksMax12thorITI"].ToString();
                     txtprcntg1.Text = dt.Rows[0]["Percentage12thorITI"].ToString();
                     certificatewireman.Visible = true;
+                    TrApprenticeship.Visible = true;
                 }
                 else
                 {
                     certificatewireman.Visible = true;
+                    TrApprenticeship.Visible = false;
                 }
 
 
@@ -205,6 +207,23 @@ namespace CEIHaryana.UserPages
                     string MarksMaxWirman = txtmarksmax1.Text;
                     string PercentageWirman = txtprcntg1.Text;
 
+
+
+                    bool isCertificateInvalid = string.IsNullOrEmpty(certificateWirman) || certificateWirman.Equals("Select", StringComparison.OrdinalIgnoreCase);
+                    bool isUniversityInvalid = string.IsNullOrEmpty(UniversityNameWirman);
+
+                    if (isCertificateInvalid && isUniversityInvalid)
+                    {
+                        TrApprenticeship.Visible = false;
+
+                        // Reset fields
+                        txtApprenticeshipEmployer.Text = "";
+                        txtApprenticesPost.Text = "";
+                        Apprenticesdatefrom.Text = "";
+                        Apprenticesdateto.Text = "";
+                    }
+
+
                     string NameofDiplomaDegree = ddlQualification1.SelectedItem.ToString();
                     string UniversityNameDiplomaorDegree = txtUniversity2.Text;
                     int PassingYearDiplomaorDegree = Convert.ToInt32(DropDownList2.SelectedValue.ToString());
@@ -233,7 +252,8 @@ namespace CEIHaryana.UserPages
                         certificateWirman, UniversityNameWirman, PassingYearWirman, MarksObtainedWirman, MarksMaxWirman, PercentageWirman,
                          NameofDiplomaDegree, UniversityNameDiplomaorDegree, PassingYearDiplomaorDegree, MarksObtainedDiplomaorDegree, MarksMaxDiplomaorDegree, PercentageDiplomaorDegree,
                         NameofDegree, UniversityNamePG, PassingYearPG, MarksObtainedPG, MarksMaxPG, PercentagePG,
-                        NameofMasters, MastersUniversityName, MastersPassingYear, MasterMarksObtained, MastersMarksMax, MatersPercentage);
+                        NameofMasters, MastersUniversityName, MastersPassingYear, MasterMarksObtained, MastersMarksMax, MatersPercentage
+                        , txtApprenticeshipEmployer.Text.Trim(), txtApprenticesPost.Text.Trim(), Apprenticesdatefrom.Text.Trim(), Apprenticesdateto.Text.Trim());
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Details Updated Successfully !!!')", true);
                 }
                 else
@@ -406,7 +426,7 @@ namespace CEIHaryana.UserPages
                         !string.IsNullOrWhiteSpace(dt.Rows[0]["ApprenticenameofEmployer"].ToString()))
                     {
 
-                        txtApprenticeship.Text = dt.Rows[0]["ApprenticeExperience"].ToString();
+                        //txtApprenticeship.Text = dt.Rows[0]["ApprenticeExperience"].ToString();
                         txtAppretinceExperience.Text = dt.Rows[0]["ApprenticeTrainingUnder"].ToString();
                         txtApprenticeshipEmployer.Text = dt.Rows[0]["ApprenticenameofEmployer"].ToString();
                         txtApprenticesPost.Text = dt.Rows[0]["ApprenticePostDescription"].ToString();
@@ -421,11 +441,11 @@ namespace CEIHaryana.UserPages
                             Apprenticesdateto.Text = apprenticeTo.ToString("yyyy-MM-dd");
                         }
 
-                        TrApprenticeship.Visible = true;
+                        //TrApprenticeship.Visible = true;
                     }
                     else
                     {
-                        TrApprenticeship.Visible = false;
+                        //TrApprenticeship.Visible = false;
                     }
 
 

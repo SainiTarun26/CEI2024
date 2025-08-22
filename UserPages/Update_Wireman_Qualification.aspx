@@ -1363,7 +1363,7 @@
                                                             <tbody>
                                                                 <tr id="TrApprenticeship" runat="server" visible="true" autopostback="true">
                                                                     <td>
-                                                                        <asp:TextBox class="form-control" autocomplete="off" ID="txtApprenticeship" Text="Apprenticeship Certificate" ReadOnly="true" runat="server" onkeyup="convertToUpperCase(this.id);"> </asp:TextBox>
+                                                                        <asp:TextBox class="form-control" autocomplete="off" ID="txtApprenticeship" Text="Apprenticeship Certificate" ReadOnly="true" runat="server" > </asp:TextBox>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator92" runat="server" ControlToValidate="txtApprenticeship"
                                                                             ErrorMessage="Please Add Employer Name" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
                                                                     </td>

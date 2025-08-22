@@ -372,7 +372,7 @@
                             <asp:TextBox class="form-control" ID="txtPANNo" runat="server" autocomplete="off" onkeyup="convertToUpperCase(event)" TabIndex="1"
                                 MaxLength="200" Style="margin-left: 18px;">
                             </asp:TextBox>
-                            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtPANNo" ValidationExpression="^[A-Z]{5}[0-9]{4}[A-Z]{1}$" ErrorMessage="Invalid PAN number format." ForeColor="Red"></asp:RegularExpressionValidator>
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ControlToValidate="txtPANNo" ValidationGroup="Submit" ValidationExpression="^[A-Z]{5}[0-9]{4}[A-Z]{1}$" ErrorMessage="Invalid PAN number format." ForeColor="Red"></asp:RegularExpressionValidator>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator16" CssClass="validation_required" Text="Required" ErrorMessage="Required" ControlToValidate="txtPANNo" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
 
                         </div>
@@ -456,7 +456,7 @@
                             </label>
 
                             <asp:TextBox class="form-control" ID="txtPhone" runat="server" autocomplete="off" ReadOnly="false" onkeypress="return isNumberKey(event)" onkeyup="return isvalidphoneno();" TabIndex="1"
-                                MaxLength="200" Style="margin-left: 18px;">
+                                MaxLength="10" Style="margin-left: 18px;">
                             </asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator23" CssClass="validation_required" Text="Required" ErrorMessage="Required" ControlToValidate="txtPhone" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
 
@@ -536,8 +536,8 @@
                             </label>
                             <asp:RadioButtonList runat="server" ID="rdlchangedonlicence"
                                 RepeatDirection="Horizontal" CssClass="radio-inline">
-                                <asp:ListItem Value="1" Text="Yes &nbsp;&nbsp;"></asp:ListItem>
-                                <asp:ListItem Value="0" Text="No &nbsp;&nbsp;"></asp:ListItem>
+                                <asp:ListItem Value="1" Text="Yes"></asp:ListItem>
+                                <asp:ListItem Value="0" Text="No"></asp:ListItem>
                             </asp:RadioButtonList>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator26" CssClass="validation_required" ErrorMessage="Required" ControlToValidate="rdlchangedonlicence" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
 

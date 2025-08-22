@@ -829,6 +829,14 @@
                                                         <asp:TextBox class="form-control" ID="txtBusinessAddress" autocomplete="off" runat="server" ReadOnly="true" MaxLength="250" > </asp:TextBox>
                                                     </div>
                                                 </div>
+                                                 <div class="col-md-4">
+     <div class="form-group">
+         <label>
+            Name of authorized person signing document
+         </label>
+         <asp:TextBox class="form-control" ID="txtauthorizedperson" autocomplete="off" runat="server" ReadOnly="true" MaxLength="250" > </asp:TextBox>
+     </div>
+ </div>
                                                 <div class="col-md-4">
                                                     <div class="forms-sample">
                                                         <div class="form-group" id="DivAgentName" runat="server" visible="true">

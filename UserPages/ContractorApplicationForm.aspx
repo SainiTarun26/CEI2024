@@ -1610,8 +1610,8 @@
                                                                                         <hr style="margin-top: 45px; margin-bottom: 10px;" />
                                                                                         <div class="row" style="margin-top: 40px;">
                                                                                             <asp:GridView class="table-responsive table table-hover table-striped table-bordered" ID="GridView1" runat="server" Width="100%"
-                                                                                                AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff" DataKeyNames="Id">
-                                                                                                <%--OnRowCommand="GridView1_RowCommand"--%>
+                                                                                                AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff" DataKeyNames="Id" OnRowCommand="GridView1_RowCommand">
+                                                                                       
                                                                                                 <PagerStyle CssClass="pagination-ys" />
                                                                                                 <Columns>
                                                                                                     <asp:BoundField DataField="TypeOfAuthority" HeaderText="Type Of Authority">

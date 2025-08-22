@@ -37,6 +37,12 @@
     <link rel="shortcut icon" href="/images/favicon.png" />
 
     <style>
+
+td {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    text-align: center !important;
+}
         ul#profile_drop {
             margin-left: -86px;
             width: 120px;
@@ -884,7 +890,7 @@
                                                     </div>
                                                     <div class="col-md-2">
                                                         <asp:RadioButtonList ID="RadioButtonList2" Enabled="false" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25">
-                                                            <asp:ListItem Text="Yes" Value="0" Selected="True"></asp:ListItem>
+                                                            <asp:ListItem Text="Yes" Value="0" ></asp:ListItem>
                                                             <asp:ListItem Text="No" Value="1"></asp:ListItem>
                                                         </asp:RadioButtonList>
                                                     </div>
@@ -999,6 +1005,33 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
+
+                                                                  <tr id="TrApprenticeship" runat="server"  visible="true" autopostback="true">
+      <td>
+          <asp:Label ReadOnly="true" class="form-control" autocomplete="off" ID="txtApprenticeship"  Text="Apprenticeship Certificate" TabIndex="32" MaxLength="30" runat="server"></asp:Label>
+
+      </td>
+      <td>
+          <asp:Label ReadOnly="true" class="form-control" autocomplete="off" ID="txtAppretinceExperience" TabIndex="32" MaxLength="30" runat="server"></asp:Label>
+
+      </td>
+      <td>
+          <asp:Label ReadOnly="true" class="form-control uppercase-label" autocomplete="off" ID="txtApprenticeshipEmployer" TabIndex="32" MaxLength="30" runat="server"></asp:Label>
+
+      </td>
+      <td>
+          <asp:Label ReadOnly="true" class="form-control uppercase-label" autocomplete="off" ID="txtApprenticesPost" TabIndex="32" MaxLength="30" runat="server"></asp:Label>
+
+      </td>
+      <td>
+          <asp:Label ReadOnly="true" class="form-control uppercase-label" autocomplete="off" ID="Apprenticesdatefrom" TabIndex="32" MaxLength="30" runat="server"></asp:Label>
+
+      </td>
+      <td>
+          <asp:Label ReadOnly="true" class="form-control uppercase-label" autocomplete="off" ID="Apprenticesdateto" TabIndex="32" MaxLength="30" runat="server"></asp:Label>
+
+      </td>
+  </tr>
                                                                 <tr>
                                                                     <%--  <td style="text-align: center; font-size: 13px;">1
                                                             </td>--%>
@@ -1167,7 +1200,7 @@
                                                 <div class="card-body" style="padding: 0px;">
                                                     <div class="row">
                                                         <div class="col-md-12">
-                                                            <h4 class="card-title">Checklist for submission of documents</h4>
+                                                            <h4 class="card-title" style="    margin-bottom: 5px; margin-top: 25px;">Checklist for submission of documents</h4>
                                                             <%--<h6>The candidates are requested to ensure that the documents are genuine and
                                             should be self attested.</h6>--%>
                                                         </div>

@@ -936,6 +936,59 @@ namespace CEIHaryana.UserPages
         {
             ddlLoadBindBusinessDistrict(ddlBusinessState.SelectedItem.ToString());
         }
+
+        protected void ddlSameNameLicense_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ddlSameNameLicense.SelectedValue == "1") // "Yes"
+                {
+                    DivLicenseNo.Visible = true;
+                    DivLicenseIssueDateifSameName.Visible = true;
+                }
+                else
+                {
+                    DivLicenseNo.Visible = false;
+                    DivLicenseIssueDateifSameName.Visible = false;
+
+                    txtLicenseNo.Text = "";
+                    txtLicenseIssue.Text = "";
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+        protected void ddlLicenseGranted_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ddlLicenseGranted.SelectedValue == "1") // "Yes" selected
+                {
+                    divIssueAuthority.Visible = true;
+                    divLicenseIssueDate.Visible = true;
+                    divLicenseExpiry.Visible = true;
+                    divDetailsOfWorkPermit.Visible = true;
+                    //divLicensePreviouslyGranted.Visible = true;
+                }
+                else
+                {
+                    divIssueAuthority.Visible = false;
+                    divLicenseIssueDate.Visible = false;
+                    divLicenseExpiry.Visible = false;
+                    divDetailsOfWorkPermit.Visible = false;
+                    //divLicensePreviouslyGranted.Visible = false;
+                    txtIssusuingName.Text = "";
+                    txtIssuedateOtherState.Text = "";
+                    txtLicenseExpiry.Text = "";
+                    txtWorkPermitUndertaken.Text = "";
+                }
+
+            }
+            catch { }
+        }
     }
 }
 

@@ -109,6 +109,7 @@ namespace CEIHaryana.UserPages
                     }
                     //Added by neha
                     txtWorkUnderConditionsandgulation29.Text = dt.Rows[0]["WorkUnderLicenceConditionsandregulation29"].ToString();
+                    txtauthorizedperson.Text = dt.Rows[0]["NameOfIssuingAuthority"].ToString();
                 }
             }
             catch (Exception ex)

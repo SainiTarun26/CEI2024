@@ -112,12 +112,20 @@ namespace CEIHaryana.UserPages
                     string IsCertificateofCompetency = dt.Rows[0]["IsCertificateofCompetency"].ToString();
                     if (IsCertificateofCompetency == "Yes")
                     {
+                        RadioButtonList2.SelectedValue = "0";
+                        competency.Visible = true;
                         txtPermitNo.Text = dt.Rows[0]["PermitNo1"].ToString();
                         txtCategory.Text = dt.Rows[0]["CertificateofCompetency1"].ToString();
                         txtIssuingAuthority.Text = dt.Rows[0]["IssuingAuthority1"].ToString();
                         txtIssuingDate.Text = dt.Rows[0]["IssueDate1"].ToString();
                         txtExpiryDate.Text = dt.Rows[0]["ExpiryDate1"].ToString();
                     }
+                    else
+                    {
+                        RadioButtonList2.SelectedValue = "1";
+                        competency.Visible = false;
+                    }
+
 
                     string EmployedPermanent = dt.Rows[0]["EmployedPermanent"].ToString();
                     if (EmployedPermanent == "Yes")
@@ -135,6 +143,33 @@ namespace CEIHaryana.UserPages
                         RadioButtonList3.SelectedValue = "1";
                     }
 
+
+                    if (!string.IsNullOrWhiteSpace(dt.Rows[0]["ApprenticePostDescription"].ToString()) ||
+                      !string.IsNullOrWhiteSpace(dt.Rows[0]["ApprenticenameofEmployer"].ToString()))
+                    {
+                        //txtApprenticeship.Text = dt.Rows[0]["ApprenticeExperience"].ToString().Trim();
+                        txtAppretinceExperience.Text = dt.Rows[0]["ApprenticeTrainingUnder"].ToString().Trim();
+                        txtApprenticeshipEmployer.Text = dt.Rows[0]["ApprenticenameofEmployer"].ToString();
+                        txtApprenticesPost.Text = dt.Rows[0]["ApprenticePostDescription"].ToString();
+
+                        //if (DateTime.TryParse(dt.Rows[0]["ApprenticeExperienceFromDate"].ToString(), out DateTime apprenticeFrom))
+                        //{
+                        //    Apprenticesdatefrom.Text = apprenticeFrom.ToString("yyyy-MM-dd");
+                        //}
+
+                        //if (DateTime.TryParse(dt.Rows[0]["ApprenticeExperienceToDate"].ToString(), out DateTime apprenticeTo))
+                        //{
+                        //    Apprenticesdateto.Text = apprenticeTo.ToString("yyyy-MM-dd");
+                        //}
+
+                        Apprenticesdatefrom.Text = dt.Rows[0]["ApprenticeExperienceFromDate"].ToString();
+                        Apprenticesdateto.Text = dt.Rows[0]["ApprenticeExperienceToDate"].ToString();
+                        TrApprenticeship.Visible = true;
+                    }
+                    else
+                    {
+                        TrApprenticeship.Visible = false;
+                    }
 
                     txtExperience.Text = dt.Rows[0]["ExperiencedIn"].ToString();
                     txtTrainingunder.Text = dt.Rows[0]["TrainingUnder"].ToString();

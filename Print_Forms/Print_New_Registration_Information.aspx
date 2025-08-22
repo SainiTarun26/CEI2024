@@ -667,7 +667,16 @@ Board/Chief Electrical Inspector. If so, give details:
                                         </h6>
 
                                     </div>
-                                    <div class="col-12">
+                                      <div class="col-md-2">
+      <asp:RadioButtonList ID="RadioButtonList2"  readonly="true" runat="server" Enabled="false" RepeatDirection="Horizontal" TabIndex="25" 
+         >
+          <asp:ListItem Text="Yes" Value="0"></asp:ListItem>
+          <asp:ListItem Text="No" Value="1"></asp:ListItem>
+      </asp:RadioButtonList>
+
+                                      </div>
+
+                                    <div class="col-12" id="competency" runat="server">
 
                                         <div class="table-responsive" runat="server">
                                             <table class="table table-bordered">
@@ -807,7 +816,7 @@ Basis.</h4>
                                                     </tr>--%>
                                                     <tr id="TrApprenticeship" runat="server" visible="true" autopostback="true">
                                                         <td>
-                                                            <asp:Label ReadOnly="true" class="form-control" autocomplete="off" ID="txtApprenticeship" TabIndex="32" MaxLength="30" runat="server"></asp:Label>
+                                                            <asp:Label ReadOnly="true" class="form-control" autocomplete="off" ID="txtApprenticeship"  Text="Apprenticeship Certificate"   TabIndex="32" MaxLength="30" runat="server"></asp:Label>
 
                                                         </td>
                                                         <td>

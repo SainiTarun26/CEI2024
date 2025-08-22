@@ -106,6 +106,9 @@ namespace CEIHaryana.UserPages
                 txtBusinessPhoneNo.Text = ds.Rows[0]["BusinessAddPhoneNo"].ToString();
                 txtNameOfCompany.Text = ds.Rows[0]["NameOfCompany"].ToString();
 
+
+                txtauthorizedperson.Text = ds.Rows[0]["NameOfAuthorizedperson"].ToString();
+
                 txtUnitOrNot.Text = ds.Rows[0]["ManufacturingFirmOrProductionUnit"].ToString();
 
 

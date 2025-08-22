@@ -411,6 +411,15 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.TextBox txtBusinessAddress;
 
         /// <summary>
+        /// txtauthorizedperson control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtauthorizedperson;
+
+        /// <summary>
         /// DivAgentName control.
         /// </summary>
         /// <remarks>

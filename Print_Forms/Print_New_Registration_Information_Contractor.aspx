@@ -696,7 +696,7 @@
                                         <br />
 
                                         <text>Name of Applicant:    </text>
-                                        <asp:Label ID="Name" runat="server" CssClass="uppercase-label" Style="font-weight: 700; width: 76%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
+                                        <asp:Label ID="Name" runat="server" CssClass="uppercase-label" Style="font-weight: 700; width: 75%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
                                         </asp:Label>
                                         <br />
                                         <text>Father's Name:    </text>
@@ -707,7 +707,7 @@
                                         <asp:Label ID="gender" CssClass="uppercase-label" runat="server" Style="font-weight: 700; width: 40%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
                                         </asp:Label>
                                         <text>Nationality:</text>
-                                        <asp:Label ID="Nationailty" CssClass="uppercase-label" runat="server" Style="font-weight: 700; width: 34%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
+                                        <asp:Label ID="Nationailty" CssClass="uppercase-label" runat="server" Style="font-weight: 700; width: 33%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
                                         </asp:Label>
                                         <br />
                                         <text>Date of Birth:</text>
@@ -722,7 +722,7 @@
                                 </div>
                                 <div class="col-3">
                                     <!-- Placeholder for image -->
-                                    <asp:Image ID="myimg" runat="server" Width="250" Height="90" Style="bottom: 140px;" />
+                                    <asp:Image ID="myimg" runat="server" Width="250" Height="225" Style="bottom: 140px;" />
 
                                 </div>
 
@@ -733,28 +733,28 @@
                                 <div class="col-12">
                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18PX; font-weight: 600; line-height: 2.7;">
                                         <text>Permanent Address:</text>
-                                        <asp:Label ID="Label5" CssClass="uppercase-label" runat="server" Style="font-weight: 700; width: 82%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
+                                        <asp:Label ID="Label5" CssClass="uppercase-label" runat="server" Style="font-weight: 700; width: 80%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
                                         </asp:Label>
                                     </h6>
                                 </div>
                                 <div class="col-12">
                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18PX; font-weight: 600; line-height: 2.7;">
                                         <text>Communication Address:</text>
-                                        <asp:Label ID="CommunicationAddress" CssClass="uppercase-label" runat="server" Style="font-weight: 700; width: 77%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
+                                        <asp:Label ID="CommunicationAddress" CssClass="uppercase-label" runat="server" Style="font-weight: 700; width: 75%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
                                         </asp:Label>
                                     </h6>
                                 </div>
                                 <div class="col-5" style="padding-right: 0px !important;">
                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18PX; font-weight: 600; line-height: 2.7;">
                                         <text>Mobile No.:</text>
-                                        <asp:Label ID="phone" runat="server" CssClass="uppercase-label" Style="font-weight: 700; width: 74%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
+                                        <asp:Label ID="phone" runat="server" CssClass="uppercase-label" Style="font-weight: 700; width: 70%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
                                         </asp:Label>
                                     </h6>
                                 </div>
                                 <div class="col-7">
                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18PX; font-weight: 600; line-height: 2.7;">
                                         <text>E-mail Id:</text>
-                                        <asp:Label ID="Email" runat="server" Style="font-weight: 700; width: 84%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
+                                        <asp:Label ID="Email" runat="server" Style="font-weight: 700; width: 81%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
                                         </asp:Label>
                                     </h6>
                                 </div>
@@ -774,7 +774,7 @@
 
                             <div class="row">
                                 <div class="col-12">
-                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 20PX; font-weight: 600; line-height: 2.7; text-decoration: underline;">Director Details:
+                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 20PX; font-weight: 600; line-height: 2.7; text-decoration: underline;">Organisation Details:
 
                                     </h6>
 
@@ -807,7 +807,13 @@
                                         </asp:Label>
                                     </h6>
                                 </div>
-
+                                <div class="col-12" style="padding-right: 0px !important;">
+    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18PX; font-weight: 600; line-height: 2.7;">
+        <text>Name of Person Signing Document:</text>
+        <asp:Label ID="Label1" CssClass="uppercase-label" runat="server" Style="font-weight: 700; width: 40%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
+        </asp:Label>
+    </h6>
+</div>
                             </div>
 
 

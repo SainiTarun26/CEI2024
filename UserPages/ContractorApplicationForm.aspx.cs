@@ -38,9 +38,13 @@ namespace CEIHaryana.UserPages
                         {
                             DdlPartnerOrDirector.SelectedValue = "1";
                             ADDpartner.Visible = true;
-                            DdlPartnerOrDirector.Enabled = false;
+                            //DdlPartnerOrDirector.Enabled = false;
                         }
-                        ContractorInformation(ContractorId);
+                        else
+                        {
+                            DdlPartnerOrDirector.ClearSelection();
+                        }
+                            ContractorInformation(ContractorId);
                         ddlLoadBindState();
                         ddlBusinessStateBind();
                         PartnersModalDirectorData(ContractorId);
