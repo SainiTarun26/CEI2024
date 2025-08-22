@@ -124,6 +124,7 @@
             margin-left: 0px !important;
             height: 30px;
             font-size: 12px !important;
+            padding: 3px;
         }
 
         select.form-control {
@@ -738,16 +739,17 @@
                                                 </label>
 
                                                 <input type="file" name="img[]" class="file-upload-default" />
-                                                <div class="input-group col-xs-12">
+                                                <%--<div class="input-group col-xs-12">
                                                     <asp:TextBox ID="txtLicence" runat="server" CssClass="form-control file-upload-info"
                                                         Enabled="false" placeholder="Upload Document" Style="width: 85%;"></asp:TextBox>
                                                     <span class="input-group-append">
                                                         <asp:Button ID="btnLicence" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="LicenceDialog(); return false;" TabIndex="16" />
-                                                        <input type="file" id="Licence" name="Licence" accept=".pdf" style="display: none;" runat="server" onchange="LicenceDialogName()" />
+                                                       
                                                     </span>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="txtLicence" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
-                                                </div>
-
+                                                </div>--%>
+                                                <input type="file" id="Licence" name="Licence" accept=".pdf" runat="server" class="form-control" />
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="Licence" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
                                             </div>
                                         </td>
                                     </tr>
@@ -767,15 +769,16 @@
                                                 </label>
 
                                                 <input type="file" name="img[]" class="file-upload-default" />
-                                                <div class="input-group col-xs-12">
+                                                <%-- <div class="input-group col-xs-12">
                                                     <asp:TextBox ID="txtCertificate" runat="server" CssClass="form-control file-upload-info"
                                                         Enabled="false" placeholder="Upload Document" Style="width: 85%;"></asp:TextBox>
                                                     <span class="input-group-append">
                                                         <asp:Button ID="btnCertificate" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="CertificateDialog(); return false;" TabIndex="16" />
-                                                        <input type="file" id="Certificate" name="Undertaking" accept=".pdf" style="display: none;" runat="server" onchange="CertificateDialogName()" />
                                                     </span>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtCertificate" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
-                                                </div>
+                                                </div>--%>
+                                                <input type="file" id="Certificate" name="Undertaking" accept=".pdf" runat="server" class="form-control" />
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="Licence" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
 
                                             </div>
                                         </td>
@@ -792,7 +795,7 @@
                                                 </label>
 
                                                 <input type="file" name="img[]" class="file-upload-default" />
-                                                <div class="input-group col-xs-12">
+                                                <%--  <div class="input-group col-xs-12">
                                                     <asp:TextBox ID="txtIncomeTax" runat="server" CssClass="form-control file-upload-info"
                                                         Enabled="false" placeholder="Upload Document" Style="width: 85%;"></asp:TextBox>
                                                     <span class="input-group-append">
@@ -800,7 +803,9 @@
                                                         <input type="file" id="IncomeTax" name="IncomeTax" accept=".pdf" style="display: none;" runat="server" onchange="IncomeTaxDialogName()" />
                                                     </span>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtIncomeTax" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
-                                                </div>
+                                                </div>--%>
+                                                <input type="file" id="IncomeTax" name="IncomeTax" accept=".pdf" runat="server" class="form-control" />
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="IncomeTax" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
 
                                             </div>
                                         </td>
@@ -817,7 +822,7 @@ equipments. (<span style="color: red; display: inline; padding: 0;">★</span>)
                                                 </label>
 
                                                 <input type="file" name="img[]" class="file-upload-default" />
-                                                <div class="input-group col-xs-12">
+                                                <%--  <div class="input-group col-xs-12">
                                                     <asp:TextBox ID="txtCalibrationCertificate" runat="server" CssClass="form-control file-upload-info"
                                                         Enabled="false" placeholder="Upload Document" Style="width: 85%;"></asp:TextBox>
                                                     <span class="input-group-append">
@@ -825,7 +830,9 @@ equipments. (<span style="color: red; display: inline; padding: 0;">★</span>)
                                                         <input type="file" id="CalibrationCertificate" name="CalibrationCertificate" accept=".pdf" style="display: none;" runat="server" onchange="CalibrationCertificateDialogName()" />
                                                     </span>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtCalibrationCertificate" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
-                                                </div>
+                                                </div>--%>
+                                                <input type="file" id="CalibrationCertificate" name="IncomeTax" accept=".pdf" runat="server" class="form-control" />
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="CalibrationCertificate" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
 
                                             </div>
                                         </td>
@@ -841,7 +848,7 @@ equipments. (<span style="color: red; display: inline; padding: 0;">★</span>)
                                                 <label style="font-size: 9px;">
                                                     (PLEASE UPLOAD PDF ONLY NO MORE THAN 1MB)
                                                 </label>
-                                                <div class="input-group col-xs-12">
+                                                <%--<div class="input-group col-xs-12">
                                                     <asp:TextBox ID="txtworksexecuted" runat="server" CssClass="form-control file-upload-info"
                                                         Enabled="false" placeholder="Upload Document" Style="width: 85%;"></asp:TextBox>
                                                     <span class="input-group-append">
@@ -849,7 +856,9 @@ equipments. (<span style="color: red; display: inline; padding: 0;">★</span>)
                                                         <input type="file" id="worksexecuted" name="worksexecuted" accept=".pdf" style="display: none;" runat="server" onchange="worksexecutedDialogName()" />
                                                     </span>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtworksexecuted" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
-                                                </div>
+                                                </div>--%>
+                                                <input type="file" id="worksexecuted" name="worksexecuted" accept=".pdf" runat="server" class="form-control" />
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="worksexecuted" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
 
                                             </div>
                                         </td>
@@ -864,7 +873,7 @@ equipments. (<span style="color: red; display: inline; padding: 0;">★</span>)
                                                 <label style="font-size: 9px;">
                                                     (PLEASE UPLOAD PDF ONLY NO MORE THAN 1MB)
                                                 </label>
-                                                <div class="input-group col-xs-12">
+                                                <%--  <div class="input-group col-xs-12">
                                                     <asp:TextBox ID="txtAnnexureIII" runat="server" CssClass="form-control file-upload-info"
                                                         Enabled="false" placeholder="Upload Document" Style="width: 85%;"></asp:TextBox>
                                                     <span class="input-group-append">
@@ -872,7 +881,9 @@ equipments. (<span style="color: red; display: inline; padding: 0;">★</span>)
                                                         <input type="file" id="AnnexureIII" name="AnnexureIII" accept=".pdf" style="display: none;" runat="server" onchange="AnnexureIIIDialogName()" />
                                                     </span>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtAnnexureIII" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
-                                                </div>
+                                                </div>--%>
+                                                <input type="file" id="AnnexureIII" name="AnnexureIII" accept=".pdf" runat="server" class="form-control" />
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="AnnexureIII" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
 
                                             </div>
                                         </td>
@@ -889,7 +900,7 @@ equipments. (<span style="color: red; display: inline; padding: 0;">★</span>)
                                                 </label>
 
                                                 <input type="file" name="img[]" class="file-upload-default" />
-                                                <div class="input-group col-xs-12">
+                                                <%--  <div class="input-group col-xs-12">
                                                     <asp:TextBox ID="txtFormE" runat="server" CssClass="form-control file-upload-info"
                                                         Enabled="false" placeholder="Upload Document" Style="width: 85%;"></asp:TextBox>
                                                     <span class="input-group-append">
@@ -897,7 +908,9 @@ equipments. (<span style="color: red; display: inline; padding: 0;">★</span>)
                                                         <input type="file" id="FormE" name="FormE" accept=".pdf" style="display: none;" runat="server" onchange="FormEDialogName()" />
                                                     </span>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="txtFormE" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
-                                                </div>
+                                                </div>--%>
+                                                <input type="file" id="FormE" name="FormE" accept=".pdf" runat="server" class="form-control" />
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="FormE" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
 
                                             </div>
                                         </td>
@@ -913,7 +926,7 @@ Head of A/c: 0043-51-800-99-51—Other Receipt. (<span style="color: red; displa
                                                 <label style="font-size: 9px;">
                                                     (PLEASE UPLOAD PDF ONLY NO MORE THAN 1MB)
                                                 </label>
-                                                <div class="input-group col-xs-12">
+                                                <%--<div class="input-group col-xs-12">
                                                     <asp:TextBox ID="txtChallan" runat="server" CssClass="form-control file-upload-info"
                                                         Enabled="false" placeholder="Upload Document" Style="width: 85%;"></asp:TextBox>
                                                     <span class="input-group-append">
@@ -921,7 +934,9 @@ Head of A/c: 0043-51-800-99-51—Other Receipt. (<span style="color: red; displa
                                                         <input type="file" id="Challan" name="EquipCertificateInput" accept=".pdf" style="display: none;" runat="server" onchange="ChallanDialogName()" />
                                                     </span>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="txtChallan" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
-                                                </div>
+                                                </div>--%>
+                                                <input type="file" id="Challan" name="FormE" accept=".pdf" runat="server" class="form-control" />
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="Challan" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
 
                                             </div>
                                         </td>
@@ -1049,7 +1064,7 @@ Head of A/c: 0043-51-800-99-51—Other Receipt. (<span style="color: red; displa
             }
         }
     </script>
-    <script type="text/javascript">
+    <%--<script type="text/javascript">
         function LicenceDialog() {
             document.getElementById('<%= Licence.ClientID %>').click();
         }
@@ -1151,7 +1166,7 @@ Head of A/c: 0043-51-800-99-51—Other Receipt. (<span style="color: red; displa
             }
         }
 
-    </script>
+    </script>--%>
     <script type="text/javascript">
         function validateDate() {
             var ClnDate = document.getElementById('<%=txtdate.ClientID %>');
