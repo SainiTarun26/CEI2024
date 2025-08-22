@@ -117,6 +117,7 @@
             margin-left: 0px !important;
             height: 30px;
             font-size: 12px !important;
+             padding: 3px;
         }
 
         select.form-control {
