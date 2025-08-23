@@ -23,6 +23,7 @@ namespace CEIHaryana.Print_Forms
                 {
                     hdnApplicationId.Value = Session["Application_Id"].ToString();
                     GetData(hdnApplicationId.Value);
+                    GridData(hdnApplicationId.Value);
                 }
                
             }
@@ -41,10 +42,38 @@ namespace CEIHaryana.Print_Forms
                     lblFatherName.Text = dt.Rows[0]["FatherName"].ToString();
                     lblAddress.Text = dt.Rows[0]["Address"].ToString();
                     lblApprovedDate.Text = dt.Rows[0]["ApprovedDate"].ToString();
-                    myImage.ImageUrl = "data:image/jpeg;base64," + Convert.ToBase64String((byte[])dt.Rows[0]["Signature"]);
+                    Image.ImageUrl = "data:image/jpeg;base64," + Convert.ToBase64String((byte[])dt.Rows[0]["Signature"]);
+                    imgPhoto.ImageUrl = dt.Rows[0]["ApplicantImageDocPath"].ToString();
+                    lblAuthorizedUpto.Text = dt.Rows[0]["Votagelevel"].ToString();
                 }
 
           
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+                return;
+            }
+        }
+
+        public void GridData(string ApplicationId)
+        {
+            try
+            {
+                DataSet ds = new DataSet();
+                ds = CEI.getDataLicence(ApplicationId);
+                if (ds.Tables.Count > 0)
+                {
+                    Gridview1.DataSource = ds;
+                    Gridview1.DataBind();
+                }
+                else
+                {
+                    Gridview1.DataSource = null;
+                    Gridview1.DataBind();
+
+                }
+                ds.Dispose();
             }
             catch (Exception ex)
             {

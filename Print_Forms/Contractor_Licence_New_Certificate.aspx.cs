@@ -23,7 +23,7 @@ namespace CEIHaryana.Print_Forms
                     hdnApplicationId.Value = Session["Application_Id"].ToString();
                     GetData(hdnApplicationId.Value);
                     GridData(hdnApplicationId.Value);
-                    getContractorSignature();
+                    //getContractorSignature();
                     GetPatnersDetails();
                     GetSupervisiorWiremanDetails();
                 }
@@ -43,6 +43,9 @@ namespace CEIHaryana.Print_Forms
                     lblName.Text = dt.Rows[0]["Name"].ToString();
                     lblApprovedDate.Text = dt.Rows[0]["ApprovedDate"].ToString();
                     Image.ImageUrl = "data:image/jpeg;base64," + Convert.ToBase64String((byte[])dt.Rows[0]["Signature"]);
+                    myImage.ImageUrl = dt.Rows[0]["ContractorSignatureDocPath"].ToString();
+                    imgPhoto.ImageUrl = dt.Rows[0]["ApplicantImageDocPath"].ToString();
+                    lblAuthorizedUpto.Text = dt.Rows[0]["Votagelevel"].ToString();
                 }
 
 
@@ -53,24 +56,24 @@ namespace CEIHaryana.Print_Forms
                 return;
             }
         }
-        public void getContractorSignature()
-        {
-            try
-            {
-                DataTable dt = new DataTable();
-                dt = CEI.getContractorSignature(lblRegistationId.Text);
-                if (dt.Rows.Count > 0)
-                {
-                    myImage.ImageUrl = dt.Rows[0]["DocumentPath"].ToString();
-                }
-            }
-            catch (Exception ex)
-            {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
-                return;
-            }
+        //public void getContractorSignature()
+        //{
+        //    try
+        //    {
+        //        DataTable dt = new DataTable();
+        //        dt = CEI.getContractorSignature(lblRegistationId.Text);
+        //        if (dt.Rows.Count > 0)
+        //        {
+        //            myImage.ImageUrl = dt.Rows[0]["DocumentPath"].ToString();
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+        //        return;
+        //    }
 
-        }
+        //}
         public void GetPatnersDetails()
         {
             DataTable dt = new DataTable();
@@ -115,7 +118,6 @@ namespace CEIHaryana.Print_Forms
                 lblSup5.Text = dt.Rows[4]["Name"].ToString();
             }
         }
-
         public  void GridData(string ApplicationId)
         {
             try
