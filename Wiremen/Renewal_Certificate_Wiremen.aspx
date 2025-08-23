@@ -621,7 +621,7 @@
                                            <label style="font-size: 9px;">
                                                (PLEASE UPLOAD PDF ONLY NO MORE THAN 1MB)
                                            </label>
-                                           <div class="input-group col-xs-12">
+                                           <%--<div class="input-group col-xs-12">
                                                <asp:TextBox ID="CertificateofCompetency" runat="server" CssClass="form-control file-upload-info"
                                                    Enabled="false" placeholder="Upload Document" Style="width: 85%;"></asp:TextBox>
                                                <span class="input-group-append">
@@ -629,7 +629,9 @@
                                                    <input type="file" id="Certificate" name="Certificate" accept=".pdf" style="display: none;" runat="server" onchange="CertificateDialogName()" />
                                                </span>
                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="CertificateofCompetency" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
-                                           </div>
+                                           </div>--%>
+                                           <input type="file" id="File1" name="Certificate" accept=".pdf" runat="server" class="form-control" />
+                                           <asp:RequiredFieldValidator ID="RequiredFieldValidator29" runat="server" ControlToValidate="Certificate" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
 
                                        </div>
                                    </td>
