@@ -582,13 +582,13 @@ namespace CEIHaryana.Wiremen
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator8;
 
         /// <summary>
-        /// File1 control.
+        /// Certificate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputFile File1;
+        protected global::System.Web.UI.HtmlControls.HtmlInputFile Certificate;
 
         /// <summary>
         /// RequiredFieldValidator29 control.

@@ -630,7 +630,7 @@
                                                </span>
                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="CertificateofCompetency" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
                                            </div>--%>
-                                           <input type="file" id="File1" name="Certificate" accept=".pdf" runat="server" class="form-control" />
+                                           <input type="file" id="Certificate" name="Certificate" accept=".pdf" runat="server" class="form-control" />
                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator29" runat="server" ControlToValidate="Certificate" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
 
                                        </div>
