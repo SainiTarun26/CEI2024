@@ -49,12 +49,13 @@ namespace CEIHaryana.Print_Forms
                     FatherName.Text = dt.Rows[0]["FatherName"].ToString();
                     gender.Text = dt.Rows[0]["Gender"].ToString();
                     Nationailty.Text = dt.Rows[0]["Nationality"].ToString();
-                    Aadhar.Text = dt.Rows[0]["Aadhar"].ToString();
+                    PanNo.Text = dt.Rows[0]["PanCardNo"].ToString();
                     dob.Text = dt.Rows[0]["DOB"].ToString();
                     Age.Text = dt.Rows[0]["CalculatedAge"].ToString();
                     phone.Text = dt.Rows[0]["PhoneNo"].ToString();
                     Email.Text = dt.Rows[0]["Email"].ToString();
-                    CommunicationAddress.Text = dt.Rows[0]["CommunicationAddress"].ToString();
+                    lblPermanant.Text = dt.Rows[0]["permanantAdd"].ToString();
+                    lblCommunicationAddress.Text = dt.Rows[0]["CommunicationAdd"].ToString();
                     // permanentAddress.Text = dt.Rows[0][""].ToString();
 
                     GridBindDocument(Userid);
@@ -67,6 +68,30 @@ namespace CEIHaryana.Print_Forms
                     lblGst.Text = dt.Rows[0]["GSTNumber"].ToString();
                     lblStylecompany.Text = dt.Rows[0]["StyleOfCompany"].ToString();
                     lblRegisteroffice.Text = dt.Rows[0]["CompanyRegisterdOffice"].ToString();
+
+                    lblCompanyName.Text = dt.Rows[0]["StyleOfCompany"].ToString();
+
+                    if (lblStylecompany.Text == "Company(Limited)")
+                    {
+                        DivAgentName.Visible = true;
+                        lblAgentName.Text = dt.Rows[0]["AgentName"].ToString();
+                    }
+                    else
+                    {
+                        DivAgentName.Visible = false;
+                    }
+
+
+                    lblInputCompanyName.Text = dt.Rows[0]["NameOfCompany"].ToString();
+                    lblBusinessAdd.Text = dt.Rows[0]["BusinessAddress"].ToString();
+                    lblBusinessState.Text = dt.Rows[0]["BusinessState"].ToString();
+                    lblBusinessDistrict.Text = dt.Rows[0]["BusinessDistrict"].ToString();
+                    lblBusinessPin.Text = dt.Rows[0]["BusinessAddPinCode"].ToString();
+                    lblBusinessEmail.Text = dt.Rows[0]["BusinessAddEmail"].ToString();
+                    lblBusinessPhone.Text = dt.Rows[0]["BusinessAddPhoneNo"].ToString();
+                    lblauthorizedperson.Text = dt.Rows[0]["NameOfAuthorizedperson"].ToString();
+
+
                     lblweathercompnypartner.Text = dt.Rows[0]["CompanyPartnerOrDirector"].ToString();
                     if (!string.IsNullOrEmpty(lblweathercompnypartner.Text))
                     {
@@ -83,28 +108,44 @@ namespace CEIHaryana.Print_Forms
                         ShowPenelity.Visible = true;
                         lblPenality.Text = dt.Rows[0]["Penalities"].ToString();
                     }
-                    lblAgentName.Text = dt.Rows[0]["AgentName"].ToString();
+                    //lblAgentName.Text = dt.Rows[0]["AgentName"].ToString();
                     lblManufacturing.Text = dt.Rows[0]["ManufacturingFirmOrProductionUnit"].ToString();
                     lblCOntractorLicencesamename_otherstate.Text = dt.Rows[0]["ContractorLicencePreviouslyGrantedFromOtherState"].ToString();
                     if (lblCOntractorLicencesamename_otherstate.Text == "YES")
                     {
-                        divIssueAuthority.Visible = true;
-                        divLicensePreviouslyGranted.Visible = true;
-                        //divLicenseExpiry.Visible = true;
+                        ////divIssueAuthority.Visible = true;
+                        ////divLicensePreviouslyGranted.Visible = true;
+                        //////divLicenseExpiry.Visible = true;
+                        
+                        divIssusuingNameSNO.Visible = true;
+                        divIssueDateSNO.Visible = true;
+                        divLicenceExpirySNO.Visible = true;
+                        divDetailOfWorkPermitSNO.Visible = true;
+
+                        lblIssusuingName.Text = dt.Rows[0]["NameOfIssuingAuthority"].ToString();
+                        lblDateOfIssueSNO.Text = dt.Rows[0]["IssuedateOtherState"].ToString();
+                        lblDateOfExpirySNO.Text = dt.Rows[0]["DateOfLicenseExpiring"].ToString();
+                        lblWorkPermitUndertaken.Text = dt.Rows[0]["DetailOfWorkPermit"].ToString();
+
+
                     }
-                    lblIssuingAuthority.Text = dt.Rows[0]["NameOfIssuingAuthority"].ToString();
-                    lblDateOfIssue.Text = dt.Rows[0]["IssuedateOtherState"].ToString();
-                    lblDateOfExpiry.Text = dt.Rows[0]["DateOfLicenseExpiring"].ToString();
                     lblLicencePrivouslySameName.Text = dt.Rows[0]["ContractorLicencePreviouslyGrantedWithSameName"].ToString();
                     if (lblLicencePrivouslySameName.Text == "YES")
                     {
-                        divLicence.Visible = true;
-                        //divDOIssue.Visible = true;
+                        ////divLicence.Visible = true;
+                        //////divDOIssue.Visible = true;
+                        ////lblLicenceNo.Text = dt.Rows[0]["LicenseNoIfYes"].ToString();
+                        ///
+                        divLicenceSM.Visible = true;
+                        divDateOfIssueSM.Visible = true;
+
                         lblLicenceNo.Text = dt.Rows[0]["LicenseNoIfYes"].ToString();
+                        lblDateOfIssue.Text = dt.Rows[0]["DateoFIssue"].ToString();
                     }
                     lblLibraryAnnexure.Text = dt.Rows[0]["LibraryAvailable"].ToString();
                     //Added by neha
                     lblWorkUnderConditionsandgulation29.Text = dt.Rows[0]["WorkUnderLicenceConditionsandregulation29"].ToString();
+                    //lblSigning.Text = dt.Rows[0]["NameOfAuthorizedperson"].ToString();
                 }
             }
             catch (Exception ex)

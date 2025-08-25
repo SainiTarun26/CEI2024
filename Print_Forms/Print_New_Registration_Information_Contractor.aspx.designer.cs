@@ -123,22 +123,22 @@ namespace CEIHaryana.Print_Forms
         protected global::System.Web.UI.WebControls.Image myimg;
 
         /// <summary>
-        /// Label5 control.
+        /// lblPermanant control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label5;
+        protected global::System.Web.UI.WebControls.Label lblPermanant;
 
         /// <summary>
-        /// CommunicationAddress control.
+        /// lblCommunicationAddress control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label CommunicationAddress;
+        protected global::System.Web.UI.WebControls.Label lblCommunicationAddress;
 
         /// <summary>
         /// phone control.
@@ -159,13 +159,13 @@ namespace CEIHaryana.Print_Forms
         protected global::System.Web.UI.WebControls.Label Email;
 
         /// <summary>
-        /// Aadhar control.
+        /// PanNo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Aadhar;
+        protected global::System.Web.UI.WebControls.Label PanNo;
 
         /// <summary>
         /// lblGst control.
@@ -177,15 +177,6 @@ namespace CEIHaryana.Print_Forms
         protected global::System.Web.UI.WebControls.Label lblGst;
 
         /// <summary>
-        /// lblRegisteroffice control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblRegisteroffice;
-
-        /// <summary>
         /// lblStylecompany control.
         /// </summary>
         /// <remarks>
@@ -195,22 +186,103 @@ namespace CEIHaryana.Print_Forms
         protected global::System.Web.UI.WebControls.Label lblStylecompany;
 
         /// <summary>
-        /// lblweathercompnypartner control.
+        /// lblCompanyName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblweathercompnypartner;
+        protected global::System.Web.UI.WebControls.Label lblCompanyName;
 
         /// <summary>
-        /// Label1 control.
+        /// lblInputCompanyName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label lblInputCompanyName;
+
+        /// <summary>
+        /// lblRegisteroffice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblRegisteroffice;
+
+        /// <summary>
+        /// lblBusinessAdd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblBusinessAdd;
+
+        /// <summary>
+        /// lblBusinessState control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblBusinessState;
+
+        /// <summary>
+        /// lblBusinessDistrict control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblBusinessDistrict;
+
+        /// <summary>
+        /// lblBusinessPin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblBusinessPin;
+
+        /// <summary>
+        /// lblBusinessEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblBusinessEmail;
+
+        /// <summary>
+        /// lblBusinessPhone control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblBusinessPhone;
+
+        /// <summary>
+        /// lblauthorizedperson control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblauthorizedperson;
+
+        /// <summary>
+        /// DivAgentName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl DivAgentName;
 
         /// <summary>
         /// lblAgentName control.
@@ -249,6 +321,15 @@ namespace CEIHaryana.Print_Forms
         protected global::System.Web.UI.WebControls.Label lblLicencePrivouslySameName;
 
         /// <summary>
+        /// divLicenceSM control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divLicenceSM;
+
+        /// <summary>
         /// lblLicenceNo control.
         /// </summary>
         /// <remarks>
@@ -258,13 +339,13 @@ namespace CEIHaryana.Print_Forms
         protected global::System.Web.UI.WebControls.Label lblLicenceNo;
 
         /// <summary>
-        /// divLicence control.
+        /// divDateOfIssueSM control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divLicence;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divDateOfIssueSM;
 
         /// <summary>
         /// lblDateOfIssue control.
@@ -285,49 +366,67 @@ namespace CEIHaryana.Print_Forms
         protected global::System.Web.UI.WebControls.Label lblCOntractorLicencesamename_otherstate;
 
         /// <summary>
-        /// divIssueAuthority control.
+        /// divIssusuingNameSNO control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divIssueAuthority;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divIssusuingNameSNO;
 
         /// <summary>
-        /// lblIssuingAuthority control.
+        /// lblIssusuingName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblIssuingAuthority;
+        protected global::System.Web.UI.WebControls.Label lblIssusuingName;
 
         /// <summary>
-        /// lablDateOfIssue control.
+        /// divIssueDateSNO control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lablDateOfIssue;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divIssueDateSNO;
 
         /// <summary>
-        /// divLicenseExpiry control.
+        /// lblDateOfIssueSNO control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divLicenseExpiry;
+        protected global::System.Web.UI.WebControls.Label lblDateOfIssueSNO;
 
         /// <summary>
-        /// lblDateOfExpiry control.
+        /// divLicenceExpirySNO control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDateOfExpiry;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divLicenceExpirySNO;
+
+        /// <summary>
+        /// lblDateOfExpirySNO control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDateOfExpirySNO;
+
+        /// <summary>
+        /// divDetailOfWorkPermitSNO control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divDetailOfWorkPermitSNO;
 
         /// <summary>
         /// lblWorkPermitUndertaken control.
@@ -337,6 +436,15 @@ namespace CEIHaryana.Print_Forms
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblWorkPermitUndertaken;
+
+        /// <summary>
+        /// lblweathercompnypartner control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblweathercompnypartner;
 
         /// <summary>
         /// Partner_Div control.

@@ -697,10 +697,10 @@ td {
 
                                                         </div>
                                                         <div class="col-md-6">
-                                                          <%--  <label runat="server" visible="true" style="font-size: 12px;">
+                                                            <label runat="server" visible="true" style="font-size: 12px;">
                                                                 Permanent Address  
-                                                            </label>--%>
-                                                            <%--<asp:TextBox ReadOnly="true" class="form-control" ID="txtpermanentAddress" autocomplete="off" runat="server" TabIndex="7" MaxLength="200" Style="width: 97%;"> </asp:TextBox>--%>
+                                                            </label>
+                                                            <asp:TextBox ReadOnly="true" class="form-control" ID="txtpermanentAddress" autocomplete="off" runat="server" TabIndex="7" MaxLength="200" Style="width: 97%;"> </asp:TextBox>
                                                         </div>
                                                     </div>
                                                   
@@ -1200,7 +1200,7 @@ td {
                                                 <div class="card-body" style="padding: 0px;">
                                                     <div class="row">
                                                         <div class="col-md-12">
-                                                            <h4 class="card-title" style="    margin-bottom: 5px; margin-top: 25px;">Checklist for submission of documents</h4>
+                                                            <h4 class="card-title" style="    margin-bottom: 5px; margin-top: 15px;">Checklist for submission of documents</h4>
                                                             <%--<h6>The candidates are requested to ensure that the documents are genuine and
                                             should be self attested.</h6>--%>
                                                         </div>
@@ -1208,7 +1208,6 @@ td {
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <%-- Add gridview here --%>
-                                                            <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px !important; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                     <%-- add gridview here --%>
                     <asp:GridView ID="grd_Documemnts" CssClass="table table-bordered table-striped table-responsive" runat="server"  autopostback="true" OnRowCommand="grd_Documemnts_RowCommand" OnRowDataBound="grd_Documemnts_RowDataBound"  AutoGenerateColumns="false">
                         <HeaderStyle BackColor="#B7E2F0" />
@@ -1234,7 +1233,7 @@ td {
                         </Columns>
                         <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
                     </asp:GridView>                    
-                </div>
+               
                                                              
                                                         </div>
                                                     </div>

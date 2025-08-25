@@ -952,6 +952,11 @@
                                                                          <asp:Label ID="lblStatus" runat="server" Text='<%#Eval("Status") %>'></asp:Label>
                                                                     </ItemTemplate>
                                                                 </asp:TemplateField>
+                                                                <asp:TemplateField HeaderText="Application No." HeaderStyle-CssClass="headercolor" ItemStyle-HorizontalAlign="Center">
+    <ItemTemplate>
+        <%# Eval("CreatedBy") %>
+    </ItemTemplate>
+</asp:TemplateField>
                                                                 <asp:TemplateField HeaderText="Name" HeaderStyle-CssClass="headercolor" ItemStyle-HorizontalAlign="Center">
                                                                     <ItemTemplate>
                                                                         <%# Eval("Name") %>

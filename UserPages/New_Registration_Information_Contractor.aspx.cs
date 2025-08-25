@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using static iTextSharp.text.pdf.AcroFields;
 
 namespace CEIHaryana.UserPages
 {
@@ -51,25 +52,33 @@ namespace CEIHaryana.UserPages
                     txtFatherName.Text = dt.Rows[0]["FatherName"].ToString();
                     txtgender.Text = dt.Rows[0]["Gender"].ToString();
                     txtNationailty.Text = dt.Rows[0]["Nationality"].ToString();
-                    txtAadhar.Text = dt.Rows[0]["Aadhar"].ToString();
+                    txtPan.Text = dt.Rows[0]["PanCardNo"].ToString();
                     txtdob.Text = dt.Rows[0]["DOB"].ToString();
                     txtAge.Text = dt.Rows[0]["CalculatedAge"].ToString();
 
-                    //string[] parts = calculatedAge.Split('-');
-                    //if (parts.Length == 3)
-                    //{
-                    //    txtAge.Text = parts[0].Trim().Split(' ')[0];
-                    // //   txtMonth.Text = parts[1].Trim().Split(' ')[0];
-                    // //   txtdays.Text = parts[2].Trim().Split(' ')[0];
-                    //}
-                    
                     txtphone.Text = dt.Rows[0]["PhoneNo"].ToString();
                     txtEmail.Text = dt.Rows[0]["Email"].ToString();
-                    txtCommunicationAddress.Text = dt.Rows[0]["CommunicationAddress"].ToString();
-                    //txtpermanentAddress.Text = dt.Rows[0][""].ToString();
-
+                    txtPermanant.Text = dt.Rows[0]["permanantAdd"].ToString();
+                    txtCommunicationAddress.Text = dt.Rows[0]["CommunicationAdd"].ToString();
+                   
                     txtGstNumber.Text = dt.Rows[0]["GSTNumber"].ToString();
                     txtstyle.Text = dt.Rows[0]["StyleOfCompany"].ToString();
+                    lblCompanyName.Text = dt.Rows[0]["StyleOfCompany"].ToString();
+                    txtCompanyName.Text = dt.Rows[0]["NameOfCompany"].ToString();
+
+                    
+                        if (txtstyle.Text == "Company(Limited)")
+                        {
+                            DivAgentName.Visible = true;
+                            txtAgentName.Text = dt.Rows[0]["AgentName"].ToString();
+                    }
+                        else
+                        {
+                            DivAgentName.Visible = false;
+                        }
+                 
+
+
                     txtRegisterOffice.Text = dt.Rows[0]["CompanyRegisterdOffice"].ToString();
                     txthave_Partner_director.Text = dt.Rows[0]["CompanyPartnerOrDirector"].ToString();
                     if (!string.IsNullOrEmpty(txthave_Partner_director.Text))
@@ -79,24 +88,48 @@ namespace CEIHaryana.UserPages
                     }
                     GridBind_Team(Userid);
                     GridBindDocument(Userid);
-                    txtAgentName.Text = dt.Rows[0]["AgentName"].ToString();
+
+
+                    txtBusinessAdd.Text = dt.Rows[0]["BusinessAddress"].ToString();
+                    txtBusinessState.Text = dt.Rows[0]["BusinessState"].ToString();
+                    txtBusinessDistrict.Text = dt.Rows[0]["BusinessDistrict"].ToString(); 
+                    txtBusinessPin.Text = dt.Rows[0]["BusinessAddPinCode"].ToString(); 
+                    txtbusinessEmail.Text = dt.Rows[0]["BusinessAddEmail"].ToString();
+                    txtBusinessPhone.Text = dt.Rows[0]["BusinessAddPhoneNo"].ToString();
+
+                    //txtAgentName.Text = dt.Rows[0]["AgentName"].ToString();
                     txtManufacturingfirm.Text = dt.Rows[0]["ManufacturingFirmOrProductionUnit"].ToString();
                     txtContractorLicence_sameName_otherstate.Text = dt.Rows[0]["ContractorLicencePreviouslyGrantedFromOtherState"].ToString();
                     if (txtContractorLicence_sameName_otherstate.Text == "YES")
                     {
-                        divIssueAuthority.Visible = true;
-                        divLicensePreviouslyGranted.Visible = true;
-                        divLicenseExpiry.Visible = true;
+                        divIssusuingNameSNO.Visible = true;
+                        divIssueDateSNO.Visible = true;
+                        divLicenceExpirySNO.Visible = true;
+                        divDetailOfWorkPermitSNO.Visible = true;
+                        //divIssueAuthority.Visible = true;
+                        //divLicensePreviouslyGranted.Visible = true;
+                        //divLicenseExpiry.Visible = true;
+
+                        txtIssusuingName.Text = dt.Rows[0]["NameOfIssuingAuthority"].ToString();
+                        txtIssueDateSNO.Text = dt.Rows[0]["IssuedateOtherState"].ToString();
+                        txtLicenseExpiry.Text = dt.Rows[0]["DateOfLicenseExpiring"].ToString();
+                        txtDetailOfWorkPermit.Text = dt.Rows[0]["DetailOfWorkPermit"].ToString();
                     }
-                    txtIssusuingName.Text = dt.Rows[0]["NameOfIssuingAuthority"].ToString();
-                    txtDateOfIssue.Text = dt.Rows[0]["IssuedateOtherState"].ToString();
-                    txtLicenseExpiry.Text = dt.Rows[0]["DateOfLicenseExpiring"].ToString();
+                    //txtIssusuingName.Text = dt.Rows[0]["NameOfIssuingAuthority"].ToString();
+                    //txtDateOfIssue.Text = dt.Rows[0]["IssuedateOtherState"].ToString();
+                    //txtLicenseExpiry.Text = dt.Rows[0]["DateOfLicenseExpiring"].ToString();
                     txtContractorLicence_sameName.Text = dt.Rows[0]["ContractorLicencePreviouslyGrantedWithSameName"].ToString();
                     if (txtContractorLicence_sameName.Text == "YES")
                     {
-                        divLicence.Visible = true;
-                        //divDOIssue.Visible = true;
-                        txtLicenseNo.Text = dt.Rows[0]["LicenseNoIfYes"].ToString();
+                        //divLicence.Visible = true;
+                        ////divDOIssue.Visible = true;
+                        //txtLicenseNo.Text = dt.Rows[0]["LicenseNoIfYes"].ToString();
+
+                        divLicenceSM.Visible = true;
+                        divDateOfIssueSM.Visible = true;
+
+                        txtLicenceNo.Text = dt.Rows[0]["LicenseNoIfYes"].ToString();
+                        txtDateOfIssue.Text = dt.Rows[0]["DateoFIssue"].ToString();
                     }
 
 
@@ -109,7 +142,8 @@ namespace CEIHaryana.UserPages
                     }
                     //Added by neha
                     txtWorkUnderConditionsandgulation29.Text = dt.Rows[0]["WorkUnderLicenceConditionsandregulation29"].ToString();
-                    txtauthorizedperson.Text = dt.Rows[0]["NameOfIssuingAuthority"].ToString();
+                    txtauthorizedperson.Text = dt.Rows[0]["NameOfAuthorizedperson"].ToString();
+                   
                 }
             }
             catch (Exception ex)

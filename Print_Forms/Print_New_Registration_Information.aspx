@@ -279,7 +279,7 @@
         }
 
         th.headercolor {
-            width: 46% !important;
+            width: 1% !important;
         }
 
         img#Gridview1_ImgSignature_0 {
@@ -334,6 +334,10 @@
             .no-print, .btn, .navbar {
                 display: none !important;
             }
+        }
+
+        th.headercolor.tdwidth {
+            width: 80% !important;
         }
     </style>
 
@@ -455,7 +459,7 @@
                                 </div>
                                 <div class="col-3">
                                     <div class="mx-auto" style="width: 175px; height: 195px; border: 1px solid #ccc; background-color: #f8f9fa;">
-                                        <asp:Image ID="imgPhoto" runat="server" Width="100px" Height="100px" Style="object-fit: cover;" />
+                                        <asp:Image ID="imgPhoto" runat="server" Style="object-fit: cover;" />
 
                                     </div>
                                 </div>
@@ -667,14 +671,13 @@ Board/Chief Electrical Inspector. If so, give details:
                                         </h6>
 
                                     </div>
-                                      <div class="col-md-2">
-      <asp:RadioButtonList ID="RadioButtonList2"  readonly="true" runat="server" Enabled="false" RepeatDirection="Horizontal" TabIndex="25" 
-         >
-          <asp:ListItem Text="Yes" Value="0"></asp:ListItem>
-          <asp:ListItem Text="No" Value="1"></asp:ListItem>
-      </asp:RadioButtonList>
+                                    <div class="col-md-2">
+                                        <asp:RadioButtonList ID="RadioButtonList2" readonly="true" runat="server" Enabled="false" RepeatDirection="Horizontal" TabIndex="25">
+                                            <asp:ListItem Text="Yes" Value="0"></asp:ListItem>
+                                            <asp:ListItem Text="No" Value="1"></asp:ListItem>
+                                        </asp:RadioButtonList>
 
-                                      </div>
+                                    </div>
 
                                     <div class="col-12" id="competency" runat="server">
 
@@ -816,7 +819,7 @@ Basis.</h4>
                                                     </tr>--%>
                                                     <tr id="TrApprenticeship" runat="server" visible="true" autopostback="true">
                                                         <td>
-                                                            <asp:Label ReadOnly="true" class="form-control" autocomplete="off" ID="txtApprenticeship"  Text="Apprenticeship Certificate"   TabIndex="32" MaxLength="30" runat="server"></asp:Label>
+                                                            <asp:Label ReadOnly="true" class="form-control" autocomplete="off" ID="txtApprenticeship" Text="Apprenticeship Certificate" TabIndex="32" MaxLength="30" runat="server"></asp:Label>
 
                                                         </td>
                                                         <td>
@@ -1195,68 +1198,67 @@ Basis.</h4>
                                 </div>
 
 
-                                <div class="row">
-                                    <div class="col-12">
-                                        <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18PX; font-weight: 600; line-height: 2.7;">Document Checklist:
-                                        </h6>
 
-                                    </div>
-                                    <div class="col-12">
-                                        <%-- Add GridView Here --%>
-                                        <asp:GridView ID="grd_Documemnts" CssClass="table table-bordered table-striped table-responsive" runat="server" autopostback="true" AutoGenerateColumns="false">
-                                            <HeaderStyle BackColor="#B7E2F0" />
-                                            <Columns>
-                                                <asp:TemplateField HeaderText="SNo">
-                                                    <HeaderStyle Width="5%" CssClass="headercolor tdwidth" />
-                                                    <ItemStyle Width="5%" />
-                                                    <ItemTemplate>
-                                                        <%#Container.DataItemIndex+1 %>
-                                                    </ItemTemplate>
-                                                </asp:TemplateField>
-                                                <asp:BoundField DataField="DocumentName" HeaderText="Documents Name">
-                                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
-                                                </asp:BoundField>
+                                <div class="col-12" style="margin-left: 25px; padding-right: 75px;">
+                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18PX; font-weight: 600; line-height: 2.7;">Document Checklist:
+                                    </h6>
 
-                                            </Columns>
-                                            <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
-                                        </asp:GridView>
-                                    </div>
+
+                                    <%-- Add GridView Here --%>
+                                    <asp:GridView ID="grd_Documemnts" CssClass="table table-bordered table-striped table-responsive" runat="server" autopostback="true" AutoGenerateColumns="false">
+                                        <HeaderStyle BackColor="#B7E2F0" />
+                                        <Columns>
+                                            <asp:TemplateField HeaderText="SNo">
+                                                <HeaderStyle CssClass="headercolor" />
+                                                <ItemStyle />
+                                                <ItemTemplate>
+                                                    <%#Container.DataItemIndex+1 %>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:BoundField DataField="DocumentName" HeaderText="Documents Name">
+                                                <HeaderStyle HorizontalAlign="Left" CssClass="headercolor tdwidth" />
+                                                <ItemStyle HorizontalAlign="Left" />
+                                            </asp:BoundField>
+
+                                        </Columns>
+                                        <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
+                                    </asp:GridView>
+
                                 </div>
 
 
 
 
 
-                                <br />
+                            <br />
 
-                                <div class="row">
-                                    <div class="col-12">
-                                        <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18PX; font-weight: 600; text-align: justify;">I hereby declare that the particulars stated above are correct to the best of my knowledge. I am not a holder of
+                            <div class="row">
+                                <div class="col-12">
+                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18PX; font-weight: 600; text-align: justify;">I hereby declare that the particulars stated above are correct to the best of my knowledge. I am not a holder of
 Supervisor Competency Certificate issued by the State Licensing Board/Chief Electrical Inspector other than those
 indicated in the<bold>Column 10</bold>. I also agree to the cancellation of my Certificate of Competency to be issued in
 pursuance of this application, in case the particulars furnished in the application are found incorrect or false at any
 stage
-                                        </h6>
-                                    </div>
+                                    </h6>
                                 </div>
-                                <br />
+                            </div>
+                            <br />
 
 
-                                <div class="row" style="width: 100%; margin-bottom: 50px;">
-                                    <div class="col-3" style="margin-top: auto !important;">
-                                    </div>
-                                    <div class="col-9" style="text-align: end !important;">
-
-                                        <asp:Image ID="mySignature" runat="server" Width="300" Height="90" Style="bottom: 140px; margin-left: -300px;" />
-                                        <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18PX; font-weight: 700; margin-right: 55px;">Signature of Applicant</h6>
-
-                                    </div>
+                            <div class="row" style="width: 100%; margin-bottom: 50px;">
+                                <div class="col-3" style="margin-top: auto !important;">
                                 </div>
+                                <div class="col-9" style="text-align: end !important;">
 
-                                <br />
-                                <br />
-                                <%--<div class="row">
+                                    <asp:Image ID="mySignature" runat="server" Width="300" Height="90" Style="bottom: 140px; margin-left: -300px;" />
+                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18PX; font-weight: 700; margin-right: 55px;">Signature of Applicant</h6>
+
+                                </div>
+                            </div>
+
+                            <br />
+                            <br />
+                            <%--<div class="row">
                                 <div class="col-12">
                                     <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 18PX; text-align: Justify;">Photocopies of documents to be forwarded alongwith the application:-
 </h6>
