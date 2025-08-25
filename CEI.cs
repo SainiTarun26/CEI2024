@@ -14572,9 +14572,9 @@ SqlTransaction transaction)
         }
         #endregion
         #region navneet renewal
-        public DataTable GetRenwaUserRegistrationData(string Id)
+        public DataTable GetRenwaUserRegistrationData(string Id,string ApplicationId)
         {
-            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetRenwaUserRegistrationData", Id);
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetRenwaUserRegistrationData", Id, ApplicationId);
         }
         public DataTable GetRenewalDocuments(string RenewalUserTableId)
         {
