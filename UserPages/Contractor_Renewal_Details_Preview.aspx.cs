@@ -56,7 +56,7 @@ namespace CEIHaryana.UserPages
         protected void GetRenewalData(string RenewalId)
         {
             DataTable dt = new DataTable();
-            dt = CEI.GetRenwaUserRegistrationData(RenewalId,null);
+            dt = CEI.GetRenwaUserRegistrationData(RenewalId);
             if (dt.Rows.Count > 0 && dt != null)
             {
                 txtname.Text = dt.Rows[0]["ApplicantName"].ToString();
