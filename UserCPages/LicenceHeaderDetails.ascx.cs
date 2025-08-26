@@ -85,16 +85,41 @@ namespace CEIHaryana.UserCPages
             Session["NewApplication_Contractor_RegNo"] = "";
             Session["Application_Id"] = ApplicationId;
 
-            if (LicenceCategory == "Wireman" || LicenceCategory == "Supervisor")
+            var redirectId = hdnRedirectionRegistrationId.Value.Trim();
+
+            if (string.IsNullOrWhiteSpace(redirectId))
             {
-                Session["NewApplicationRegistrationNo"] = RegistrationId.Trim();
-                Response.Redirect("/UserPages/New_Registration_Information.aspx", false);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertMessage", "alert('RegistrationId ID Not Found.');", true);
+                return;
             }
-            else if (LicenceCategory == "Contractor")
+
+            if (LicenceType == "New")
             {
-                Session["NewApplication_Contractor_RegNo"] = RegistrationId.Trim();
-                Response.Redirect("/UserPages/New_Registration_Information_Contractor.aspx", false);
+                if (LicenceCategory == "Wireman" || LicenceCategory == "Supervisor")
+                {
+                    Session["NewApplicationRegistrationNo"] = hdnRedirectionRegistrationId.Value.Trim();
+                    Response.Write("<script>window.open('/UserPages/New_Registration_Information.aspx','_blank');</script>");
+                }
+                else if (LicenceCategory == "Contractor")
+                {
+                    Session["NewApplication_Contractor_RegNo"] = hdnRedirectionRegistrationId.Value.Trim();
+                    Response.Write("<script>window.open('/UserPages/New_Registration_Information_Contractor.aspx','_blank');</script>");
+                }
             }
+            else if(LicenceType == "Renewal")
+            {
+                if (LicenceCategory == "Wireman" || LicenceCategory == "Supervisor")
+                {
+                    Session["NewApplicationRegistrationNo"] = hdnRedirectionRegistrationId.Value.Trim();
+                    Response.Write("<script>window.open('/UserPages/Certificate_Renewal_Details_Preview.aspx','_blank');</script>");
+                }
+                else if (LicenceCategory == "Contractor")
+                {
+                    Session["NewApplicationRegistrationNo"] = hdnRedirectionRegistrationId.Value.Trim();
+                    Response.Write("<script>window.open('/UserPages/Contractor_Renewal_Details_Preview.aspx','_blank');</script>");
+                }
+            }
+
         }
         public void BindHeaderDetails(string licApplicationId)
         {
@@ -115,7 +140,8 @@ namespace CEIHaryana.UserCPages
                 ContactNo = row["PhoneNo"].ToString();
                 District = row["District"].ToString();
                 Address = row["Address"].ToString();
-
+                hdnRedirectionRegistrationId.Value = row["RedirectionRegistrationId"]?.ToString();
+                
                 if (LicenceCategory == "Contractor")
                 {
                     lblPanOrAadhaar.InnerText = "PAN No";

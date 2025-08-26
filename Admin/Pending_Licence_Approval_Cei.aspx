@@ -341,7 +341,7 @@
 
             <div class="row">
 
-                <div class="row">
+                <div class="row" id ="LettersView" runat ="server"  visible="false">
                     <div class="col-md-2">
                         <label> Issue Letter</label><br />
                         <asp:LinkButton runat="server" ID="lnkbtnDownloadIssueLetter" OnClick="lnkbtnDownloadIssueLetter_Click">Download</asp:LinkButton>

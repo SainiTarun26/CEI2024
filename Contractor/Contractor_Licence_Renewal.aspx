@@ -598,6 +598,9 @@
                             <asp:DropDownList ID="ddlRenewalTime" CssClass="form-control" runat="server" OnSelectedIndexChanged="ddlRenewalTime_SelectedIndexChanged" AutoPostBack="true">
                                 <asp:ListItem Value="0" Text="Select"></asp:ListItem>
                                 <asp:ListItem Value="1" Text="1 Year"></asp:ListItem>
+                                <asp:ListItem Value="2" Text="2 Year"></asp:ListItem>
+                                <asp:ListItem Value="3" Text="3 Year"></asp:ListItem>
+                                <asp:ListItem Value="4" Text="4 Year"></asp:ListItem>
                                 <asp:ListItem Value="5" Text="5 Year"></asp:ListItem>
                             </asp:DropDownList>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator" runat="server" InitialValue="0" ControlToValidate="ddlRenewalTime" ValidationGroup="Submit" ForeColor="Red">Please select</asp:RequiredFieldValidator>
@@ -610,11 +613,13 @@
                             </label>
 
                             <asp:TextBox class="form-control" ID="txtgrnno" runat="server" autocomplete="off" ReadOnly="false" TabIndex="1"
-                                MaxLength="200" Style="margin-left: 18px;">
+                                MaxLength="10" Style="margin-left: 18px;">
                             </asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator30" CssClass="validation_required" ErrorMessage="Required" ControlToValidate="txtgrnno" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
 
-
+                            <asp:RegularExpressionValidator
+                                ID="RegularExpressionValidator2" runat="server" ControlToValidate="txtgrnno" ErrorMessage="Enter valid GRN No. " ForeColor="Red" Display="Dynamic" ValidationGroup="Submit" ValidationExpression="^[A-Za-z0-9]{10}$">
+                            </asp:RegularExpressionValidator>
                         </div>
                         <div class="col-md-3">
                             <label>
@@ -777,8 +782,8 @@
                                                     </span>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtCertificate" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
                                                 </div>--%>
-                                                <input type="file" id="Certificate" name="Undertaking" accept=".pdf" runat="server" class="form-control" />
-                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="Licence" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
+                                                <input type="file" id="Certificate" name="Certificate" accept=".pdf" runat="server" class="form-control" />
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="Certificate" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
 
                                             </div>
                                         </td>
@@ -831,7 +836,7 @@ equipments. (<span style="color: red; display: inline; padding: 0;">★</span>)
                                                     </span>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtCalibrationCertificate" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
                                                 </div>--%>
-                                                <input type="file" id="CalibrationCertificate" name="IncomeTax" accept=".pdf" runat="server" class="form-control" />
+                                                <input type="file" id="CalibrationCertificate" name="CalibrationCertificate" accept=".pdf" runat="server" class="form-control" />
                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="CalibrationCertificate" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
 
                                             </div>
@@ -935,8 +940,67 @@ Head of A/c: 0043-51-800-99-51—Other Receipt. (<span style="color: red; displa
                                                     </span>
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="txtChallan" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
                                                 </div>--%>
-                                                <input type="file" id="Challan" name="FormE" accept=".pdf" runat="server" class="form-control" />
+                                                <input type="file" id="Challan" name="Challan" accept=".pdf" runat="server" class="form-control" />
                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="Challan" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
+
+                                            </div>
+                                        </td>
+                                    </tr>
+
+
+                                    <tr id="Tr1" runat="server" visible="true">
+                                        <td>
+                                            <label for="State1">
+                                                Upload Candidate Image <span style="color: red;">★</span>
+                                            </label>
+                                        </td>
+                                        <td>
+                                            <div class="form-group">
+                                                <label style="font-size: 9px;">
+                                                    (PLEASE UPLOAD PDF ONLY NO MORE THAN 1MB)
+                                                </label>
+                                                <%--<div class="input-group col-xs-12">
+          <asp:TextBox ID="txtChallan" runat="server" CssClass="form-control file-upload-info"
+              Enabled="false" placeholder="Upload Document" Style="width: 85%;"></asp:TextBox>
+          <span class="input-group-append">
+              <asp:Button ID="Button2" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="ChallanDialog(); return false;" TabIndex="16" />
+              <input type="file" id="Challan" name="EquipCertificateInput" accept=".pdf" style="display: none;" runat="server" onchange="ChallanDialogName()" />
+          </span>
+          <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="txtChallan" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
+      </div>--%>
+                                                <input type="file" id="CandidateImage" name="CandidateImage" accept=".jpg,.jpeg,.png" runat="server" class="form-control" />
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator35" runat="server" ControlToValidate="CandidateImage" ValidationGroup="Submit" ForeColor="Red">Please Upload Image</asp:RequiredFieldValidator>
+
+                                            </div>
+                                        </td>
+                                    </tr>
+
+
+
+
+                                    <tr id="TrSignature" runat="server" visible="true">
+                                        <td>
+                                            <label for="State1">
+                                                Upload Candidate Signature <span style="color: red;">★</span>
+                                            </label>
+                                        </td>
+                                        <td>
+
+                                            <div class="form-group">
+                                                <label style="font-size: 9px;">
+                                                    (PLEASE UPLOAD PDF ONLY NO MORE THAN 1MB)
+                                                </label>
+                                                <%--<div class="input-group col-xs-12">
+    <asp:TextBox ID="txtChallan" runat="server" CssClass="form-control file-upload-info"
+        Enabled="false" placeholder="Upload Document" Style="width: 85%;"></asp:TextBox>
+    <span class="input-group-append">
+        <asp:Button ID="Button2" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="ChallanDialog(); return false;" TabIndex="16" />
+        <input type="file" id="Challan" name="EquipCertificateInput" accept=".pdf" style="display: none;" runat="server" onchange="ChallanDialogName()" />
+    </span>
+    <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="txtChallan" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
+</div>--%>
+                                                <input type="file" id="CandidateSignature" name="CandidateSignature" accept=".jpg,.jpeg,.png" runat="server" class="form-control" />
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator36" runat="server" ControlToValidate="CandidateSignature" ValidationGroup="Submit" ForeColor="Red">Please Upload Image</asp:RequiredFieldValidator>
 
                                             </div>
                                         </td>

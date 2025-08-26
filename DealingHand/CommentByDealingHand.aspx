@@ -171,10 +171,11 @@
         table#ContentPlaceHolder1_RadioButtonList2 {
             margin-top: 5px;
         }
-          th{
-      width:1% !important;
-      background:#8b8bc2 !important;
-  }
+
+        th {
+            width: 1% !important;
+            background: #8b8bc2 !important;
+        }
     </style>
 
     <script type="text/javascript">
@@ -215,53 +216,28 @@
             <uc:LicenceDetails ID="ucLicenceDetails" runat="server" />
             <asp:HiddenField ID="hdnId" runat="server" />
             <asp:HiddenField ID="hdnApplicationId" runat="server" />
-            <div id="Div1" runat="server">
-                <div class="card-title" style="margin-bottom: 5px; font-size: 17px; margin-bottom: 20px; font-weight: 600; margin-left: -10px;">
-                    Coments Details
-                </div>
-                <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
-                    <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%"
-                        AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
-                        <Columns>
+            <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
+                <div class="row">
+                    <div class="col-md-12">
+                        <asp:GridView ID="GridView1" CssClass="table table-responsive table-bordered table-striped" runat="server" AutoGenerateColumns="False" EmptyDataText="No data to display.">
+                            <Columns>
+                                <asp:BoundField DataField="ActionTakenBy" HeaderText="Action Taken By" />
+                                <asp:BoundField DataField="ApplicationStatus" HeaderText="Action Taken" />
+                                <asp:BoundField DataField="Remarks" HeaderText="Comments" />
+                                <asp:BoundField DataField="ActionDate" HeaderText="Action Date" DataFormatString="{0:dd-MMM-yy}" />
+                            </Columns>
+                            <FooterStyle BackColor="White" ForeColor="#000066" />
+                            <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                            <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                            <RowStyle ForeColor="#000066" />
+                            <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                            <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                            <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                            <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                            <SortedDescendingHeaderStyle BackColor="#00547E" />
+                        </asp:GridView>
+                    </div>
 
-                            <asp:TemplateField HeaderText="SNo">
-                                <HeaderStyle CssClass="headercolor" />
-                                <ItemStyle />
-                                <ItemTemplate>
-                                    <%#Container.DataItemIndex+1 %>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-
-                            <asp:BoundField DataField="ActionTakenBy" HeaderText="actiontakenby">
-                                <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="center" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="ApplicationStatus" HeaderText="actiontaken">
-                                <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="center" />
-                            </asp:BoundField>
-
-                            <asp:BoundField DataField="ActionTakenDate" HeaderText="ActionDate">
-                                <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="center" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="Remarks" HeaderText="Comments">
-                                <HeaderStyle HorizontalAlign="center" CssClass="headercolor thwidth" />
-                                <ItemStyle HorizontalAlign="center" />
-                            </asp:BoundField>
-
-
-                        </Columns>
-                        <FooterStyle BackColor="White" ForeColor="#000066" />
-                        <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
-                        <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
-                        <RowStyle ForeColor="#000066" />
-                        <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                        <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                        <SortedAscendingHeaderStyle BackColor="#007DBB" />
-                        <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                        <SortedDescendingHeaderStyle BackColor="#00547E" />
-                    </asp:GridView>
                 </div>
             </div>
             <div id="Comments" runat="server">

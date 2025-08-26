@@ -253,18 +253,14 @@ namespace CEIHaryana.Contractor
 
         protected void ddlRenewalTime_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ddlRenewalTime.SelectedValue == "1")
-            {
-                txtamount.Text = "1050";
-            }
-            else if (ddlRenewalTime.SelectedValue == "5")
-            {
-                txtamount.Text = "5250";
-            }
-            else
-            {
-                txtamount.Text = " ";
-            }
+
+            string Category = HdnUserType.Value;
+            int DaysDelay = Convert.ToInt32(txtdays.Text);
+
+
+            string fees = CEI.RenewalFees(Category, DaysDelay, Convert.ToInt32(ddlRenewalTime.SelectedValue));
+            txtamount.Text = fees;
+
         }
         protected void Button1_Click(object sender, EventArgs e)
         {
@@ -276,111 +272,93 @@ namespace CEIHaryana.Contractor
                     int maxFileSize = 1024 * 1024; // 1 MB
 
                     // Save files
-                    string ContractorLicense = SavePdf(Licence.PostedFile, "ContractorLicense", "Contractor License", CreatedBy, maxFileSize);
-                    string certificate = SavePdf(Certificate.PostedFile, "Certificate", "Competency Certificate", CreatedBy, maxFileSize);
-                    string Incometax = SavePdf(IncomeTax.PostedFile, "IncomeTax", "Income Tax Return", CreatedBy, maxFileSize);
-                    string Calibrationtertificate = SavePdf(CalibrationCertificate.PostedFile, "CalibrationCertificate", "Calibration Certificate", CreatedBy, maxFileSize);
-                    string WorksExecuted = SavePdf(worksexecuted.PostedFile, "WorksExecuted", "Works Executed", CreatedBy, maxFileSize);
-                    string annexureIII = SavePdf(AnnexureIII.PostedFile, "AnnexureIII", "Annexure III", CreatedBy, maxFileSize);
-                    string FormE1 = SavePdf(FormE.PostedFile, "FormE", "Form E", CreatedBy, maxFileSize);
-                    string Challanfp = SavePdf(Challan.PostedFile, "Challan", "Challan", CreatedBy, maxFileSize);
+                    string ContractorLicense = SaveFile(Licence.PostedFile, "ContractorLicense", "Contractor License", CreatedBy, maxFileSize);
+                    string certificate = SaveFile(Certificate.PostedFile, "Certificate", "Competency Certificate", CreatedBy, maxFileSize);
+                    string Incometax = SaveFile(IncomeTax.PostedFile, "IncomeTax", "Income Tax Return", CreatedBy, maxFileSize);
+                    string Calibrationtertificate = SaveFile(CalibrationCertificate.PostedFile, "CalibrationCertificate", "Calibration Certificate", CreatedBy, maxFileSize);
+                    string WorksExecuted = SaveFile(worksexecuted.PostedFile, "WorksExecuted", "Works Executed", CreatedBy, maxFileSize);
+                    string annexureIII = SaveFile(AnnexureIII.PostedFile, "AnnexureIII", "Annexure III", CreatedBy, maxFileSize);
+                    string FormE1 = SaveFile(FormE.PostedFile, "FormE", "Form E", CreatedBy, maxFileSize);
+                    string Challanfp = SaveFile(Challan.PostedFile, "Challan", "Challan", CreatedBy, maxFileSize);
+                    string Candidateimage = SaveFile(CandidateImage.PostedFile, "Candidate Image", "Candidate Image", CreatedBy, maxFileSize);
+                    string Candidatesignature = SaveFile(CandidateSignature.PostedFile, "Candidate Signature", "Candidate Signature", CreatedBy, maxFileSize);
 
-                    using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+                    bool check = CEI.CheckIfRenewalApplicationExist(CreatedBy);
+                    if (check)
                     {
-                        con.Open();
-                        SqlTransaction tran = con.BeginTransaction();
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('You have already submitted a renewal application.')", true);
+                        return;
 
-                        try
+                    }
+                    else
+                    {
+
+                        using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
                         {
+                            con.Open();
+                            SqlTransaction tran = con.BeginTransaction();
 
-                            string intimationdate = txtintimationDate.Text;
-                            if (intimationdate == "")
-                            {
-                                intimationdate = "10/11/1888";
-                            }
-                            //txtDOB.Text.Trim()
-                            //    txtdate.Text.Trim()
-                            //    txtexpirydate.Text.Trim()
-                            //     txtintimationDate.Text.Trim()
-                            
-                            string NewAddress = txtAddressNew.Text;
-                            if (NewAddress == "")
+                            try
                             {
 
-                                NewAddress = "Null";
+
+                                CEI.InsertRenewalDataforContractor(con, tran,
+                                    HdnUserType.Value, txtname.Text.Trim(), txtFatherName.Text.Trim(), txtDOB.Text.Trim(),
+                                    txtage.Text.Trim(), DateTime.Parse(txtage55.Text), txtPANNo.Text.Trim(),
+                                    txtLicenceNew.Text.Trim(), txtLicenceOld.Text.Trim(), txtexpirydate.Text,
+                                    txtaddress.Text.Trim(), txtDistrict.Text.Trim(), txtPhone.Text.Trim(), txtEmail.Text.Trim(),
+                                    rblChangeAddress.SelectedItem.ToString(), txtAddressNew.Text,
+                                    ddlState1.SelectedItem.ToString(), ddlDistrict1.SelectedItem.ToString(), txtPincodeNew.Text,
+                                    rdlchangedonlicence.SelectedIndex.ToString(), rblbelated.SelectedItem.ToString(),
+                                    txtdays.Text.Trim(), rdlEquipmentsTested.SelectedItem.ToString(),
+                                    ddlRenewalTime.SelectedItem.ToString(), txtgrnno.Text.Trim(), txtdate.Text,
+                                    txtamount.Text.Trim(), rblChangeInStaff.SelectedItem.ToString(), txtintimationDate.Text,
+                                    CreatedBy
+                                );
+
+
+                                if (!string.IsNullOrEmpty(ContractorLicense))
+                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Contractor License", ContractorLicense, 1, CreatedBy);
+
+                                if (!string.IsNullOrEmpty(certificate))
+                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Competency Certificate", certificate, 1, CreatedBy);
+
+                                if (!string.IsNullOrEmpty(Incometax))
+                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Income Tax Return", Incometax, 1, CreatedBy);
+
+                                if (!string.IsNullOrEmpty(Calibrationtertificate))
+                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Calibration Certificate", Calibrationtertificate, 1, CreatedBy);
+
+                                if (!string.IsNullOrEmpty(WorksExecuted))
+                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Works Executed", WorksExecuted, 1, CreatedBy);
+
+                                if (!string.IsNullOrEmpty(annexureIII))
+                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Annexure III", annexureIII, 1, CreatedBy);
+
+                                if (!string.IsNullOrEmpty(FormE1))
+                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Form E", FormE1, 1, CreatedBy);
+
+                                if (!string.IsNullOrEmpty(Challanfp))
+                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Challan", Challanfp, 1, CreatedBy);
+
+                                if (!string.IsNullOrEmpty(Candidateimage))
+                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Challan", Candidateimage, 1, CreatedBy);
+
+                                if (!string.IsNullOrEmpty(Candidatesignature))
+                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Challan", Candidatesignature, 1, CreatedBy);
+
+
+                                tran.Commit();
+
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Application submitted successfully!')", true);
+                                resetfeild();
+
                             }
-                            string NewState = ddlState1.SelectedItem.ToString();
-                            if (NewState == "Select")
+                            catch (Exception ex2)
                             {
-                                NewState = "Null";
+                                tran.Rollback();
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Transaction Failed: " + ex2.Message + "')", true);
                             }
-
-                            string NewDistrict = ddlDistrict1.SelectedItem.ToString();
-                            if (NewDistrict == "Select")
-                            {
-                                NewDistrict = "Null";
-                            }
-                            string NewPincode = txtPincodeNew.Text;
-                            if (NewPincode == "")
-                            {
-                                NewPincode = "Null";
-                            }
-                            string changedonlicence = rdlchangedonlicence.SelectedIndex.ToString();
-                            if (rdlchangedonlicence.SelectedValue == "")
-                            {
-                                changedonlicence = "Null";
-                            }
-
-                            CEI.InsertRenewalDataforContractor(con, tran,
-                                HdnUserType.Value, txtname.Text.Trim(), txtFatherName.Text.Trim(), txtDOB.Text.Trim(),
-                                txtage.Text.Trim(), DateTime.Parse(txtage55.Text), txtPANNo.Text.Trim(),
-                                txtLicenceNew.Text.Trim(), txtLicenceOld.Text.Trim(), txtexpirydate.Text,
-                                txtaddress.Text.Trim(), txtDistrict.Text.Trim(), txtPhone.Text.Trim(), txtEmail.Text.Trim(),
-                                rblChangeAddress.SelectedItem.ToString(), NewAddress,
-                                NewState, NewDistrict, NewPincode,
-                                changedonlicence, rblbelated.SelectedItem.ToString(),
-                                txtdays.Text.Trim(), rdlEquipmentsTested.SelectedItem.ToString(),
-                                ddlRenewalTime.SelectedItem.ToString(), txtgrnno.Text.Trim(), txtdate.Text,
-                                txtamount.Text.Trim(), rblChangeInStaff.SelectedItem.ToString(), intimationdate,
-                                CreatedBy
-                            );
-
-
-                            if (!string.IsNullOrEmpty(ContractorLicense))
-                                CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Contractor License", ContractorLicense, 1, CreatedBy);
-
-                            if (!string.IsNullOrEmpty(certificate))
-                                CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Competency Certificate", certificate, 1, CreatedBy);
-
-                            if (!string.IsNullOrEmpty(Incometax))
-                                CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Income Tax Return", Incometax, 1, CreatedBy);
-
-                            if (!string.IsNullOrEmpty(Calibrationtertificate))
-                                CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Calibration Certificate", Calibrationtertificate, 1, CreatedBy);
-
-                            if (!string.IsNullOrEmpty(WorksExecuted))
-                                CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Works Executed", WorksExecuted, 1, CreatedBy);
-
-                            if (!string.IsNullOrEmpty(annexureIII))
-                                CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Annexure III", annexureIII, 1, CreatedBy);
-
-                            if (!string.IsNullOrEmpty(FormE1))
-                                CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Form E", FormE1, 1, CreatedBy);
-
-                            if (!string.IsNullOrEmpty(Challanfp))
-                                CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Challan", Challanfp, 1, CreatedBy);
-
-
-                            tran.Commit();
-
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Application submitted successfully!')", true);
-                            resetfeild();
-
-                        }
-                        catch (Exception ex2)
-                        {
-                            tran.Rollback();
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Transaction Failed: " + ex2.Message + "')", true);
                         }
                     }
                 }
@@ -394,26 +372,65 @@ namespace CEIHaryana.Contractor
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Unexpected Error: " + ex.Message + "')", true);
             }
         }
-        private string SavePdf(HttpPostedFile file, string folderName, string prefix, string createdBy, int maxFileSize)
+        //private string SavePdf(HttpPostedFile file, string folderName, string prefix, string createdBy, int maxFileSize)
+        //{
+        //    if (file == null || file.ContentLength == 0)
+        //        return null;
+
+        //    if (file.ContentLength > maxFileSize)
+        //    {
+        //        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert",
+        //            $"alert('{prefix} must be a PDF file with a maximum size of 1MB.')", true);
+        //        return null;
+        //    }
+
+        //    string ext = Path.GetExtension(file.FileName).ToLower();
+        //    if (ext != ".pdf")
+        //    {
+        //        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert",
+        //            $"alert('{prefix} must be a PDF file.')", true);
+        //        return null;
+        //    }
+
+        //    string path = $"/Attachment/Renewal/{createdBy}/{folderName}/";
+        //    string directoryPath = HttpContext.Current.Server.MapPath("~" + path);
+        //    if (!Directory.Exists(directoryPath))
+        //    {
+        //        Directory.CreateDirectory(directoryPath);
+        //    }
+
+        //    string fileName = $"{prefix}_{DateTime.Now:yyyyMMddHHmmssfff}.pdf";
+        //    string filePath = Path.Combine(directoryPath, fileName);
+
+        //    file.SaveAs(filePath);
+
+
+        //    return path + fileName;
+        //}
+        private string SaveFile(HttpPostedFile file, string folderName, string prefix, string createdBy, int maxFileSize)
         {
             if (file == null || file.ContentLength == 0)
                 return null;
 
+            // Validate file size
             if (file.ContentLength > maxFileSize)
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert",
-                    $"alert('{prefix} must be a PDF file with a maximum size of 1MB.')", true);
+                    $"alert('{prefix} must be less than {maxFileSize / 1024 / 1024}MB.')", true);
                 return null;
             }
 
             string ext = Path.GetExtension(file.FileName).ToLower();
-            if (ext != ".pdf")
+
+            // Allow only pdf, jpg, jpeg, png
+            if (ext != ".pdf" && ext != ".jpg" && ext != ".jpeg" && ext != ".png")
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert",
-                    $"alert('{prefix} must be a PDF file.')", true);
+                    $"alert('{prefix} must be a PDF or an Image file (.jpg, .jpeg, .png).')", true);
                 return null;
             }
 
+            // Set folder path
             string path = $"/Attachment/Renewal/{createdBy}/{folderName}/";
             string directoryPath = HttpContext.Current.Server.MapPath("~" + path);
             if (!Directory.Exists(directoryPath))
@@ -421,14 +438,16 @@ namespace CEIHaryana.Contractor
                 Directory.CreateDirectory(directoryPath);
             }
 
-            string fileName = $"{prefix}_{DateTime.Now:yyyyMMddHHmmssfff}.pdf";
+            // Generate unique file name
+            string fileName = $"{prefix}_{DateTime.Now:yyyyMMddHHmmssfff}{ext}";
             string filePath = Path.Combine(directoryPath, fileName);
 
+            // Save file
             file.SaveAs(filePath);
-
 
             return path + fileName;
         }
+
 
 
         private void resetfeild()

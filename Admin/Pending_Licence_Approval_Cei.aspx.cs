@@ -171,8 +171,17 @@ namespace CEIHaryana.Admin
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
                 DataRow row = ds.Tables[0].Rows[0];
-                hfIssueLetterPath.Value = row["XenVerifiedLetterPath"]?.ToString();
-                hfMomDocumentPath.Value = row["SupMeetingDocPath"]?.ToString();
+                string issueLetterPath = row["XenVerifiedLetterPath"]?.ToString();
+                string momDocPath = row["SupMeetingDocPath"]?.ToString();
+                hfIssueLetterPath.Value = issueLetterPath;
+                hfMomDocumentPath.Value = momDocPath;
+                LettersView.Visible = !string.IsNullOrWhiteSpace(issueLetterPath) && !string.IsNullOrWhiteSpace(momDocPath);
+            }
+            else
+            {
+                lnkbtnDownloadIssueLetter.Visible = false;
+                lnkMomDocument.Visible = false;
+                LettersView.Visible = false;
             }
         }
 
