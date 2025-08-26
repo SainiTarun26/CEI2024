@@ -24,6 +24,15 @@ namespace CEIHaryana.Print_Forms
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
+        /// hdnApplicationId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnApplicationId;
+
+        /// <summary>
         /// lblAddress1 control.
         /// </summary>
         /// <remarks>
@@ -87,13 +96,13 @@ namespace CEIHaryana.Print_Forms
         protected global::System.Web.UI.WebControls.Label lblDate;
 
         /// <summary>
-        /// Label1 control.
+        /// lblCategary control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label lblCategary;
 
         /// <summary>
         /// lblAppNo control.
@@ -105,13 +114,22 @@ namespace CEIHaryana.Print_Forms
         protected global::System.Web.UI.WebControls.Label lblAppNo;
 
         /// <summary>
-        /// Label2 control.
+        /// lblCategary1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.Label lblCategary1;
+
+        /// <summary>
+        /// Shortcomings control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Shortcomings;
 
         /// <summary>
         /// lblShortcomings control.
@@ -123,42 +141,6 @@ namespace CEIHaryana.Print_Forms
         protected global::System.Web.UI.WebControls.Label lblShortcomings;
 
         /// <summary>
-        /// lblShortcomings1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblShortcomings1;
-
-        /// <summary>
-        /// lblShortcomings2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblShortcomings2;
-
-        /// <summary>
-        /// lblShortcomings3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblShortcomings3;
-
-        /// <summary>
-        /// lblShortcomings4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblShortcomings4;
-
-        /// <summary>
         /// lblScheduleDate control.
         /// </summary>
         /// <remarks>
@@ -168,22 +150,22 @@ namespace CEIHaryana.Print_Forms
         protected global::System.Web.UI.WebControls.Label lblScheduleDate;
 
         /// <summary>
-        /// lblTime control.
+        /// lblScheduleTime control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTime;
+        protected global::System.Web.UI.WebControls.Label lblScheduleTime;
 
         /// <summary>
-        /// lblVenue control.
+        /// lblScheduleVenue control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblVenue;
+        protected global::System.Web.UI.WebControls.Label lblScheduleVenue;
 
         /// <summary>
         /// lblSuperintendent control.
@@ -193,14 +175,5 @@ namespace CEIHaryana.Print_Forms
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblSuperintendent;
-
-        /// <summary>
-        /// lblChief control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblChief;
     }
 }

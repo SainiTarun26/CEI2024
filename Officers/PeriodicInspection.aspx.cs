@@ -91,8 +91,9 @@ namespace CEIHaryana.Officers
                 //PermisesType.Visible = false;
 
                 LineVoltage.Visible = false;
-                
-                txtPremises.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString().ToLower() == "industry" ? "Industry" : "NonIndustry";
+
+                txtPremises.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
+                    //.ToLower() == "industry" ? "Industry" : "NonIndustry";
                 //commented by gurmeet 22 july toshow same pages
                 txtSiteOwnerName.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
                 txtContactPersonEmail.Text = ds.Tables[0].Rows[0]["SiteownerEmail"].ToString();

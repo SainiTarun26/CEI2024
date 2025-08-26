@@ -344,12 +344,12 @@
 <body>
     <form id="form1" runat="server">
         <div class="card-body" style="border: 2px solid black; padding: 20px;">
-
+            <asp:HiddenField ID="hdnApplicationId" runat="server" />
             <div class="row" style="margin-bottom: 15PX;">
-                <div class="col-2" style="margin-top: auto; margin-bottom: auto;text-align:end;">
+                <div class="col-2" style="margin-top: auto; margin-bottom: auto; text-align: end;">
                     <img src="../Assets/haryana.png" height="110" width="auto" />
                 </div>
-                <div class="col-sm-10" style="text-align: center; padding-top: 8px; padding-bottom: 8px; border-radius: 10px;padding-right:140px;">
+                <div class="col-sm-10" style="text-align: center; padding-top: 8px; padding-bottom: 8px; border-radius: 10px; padding-right: 140px;">
                     <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 18px;">Office of the
                     </h6>
                     <asp:Label ID="lblAddress1" runat="server" Text="Chief Electrical Inspector to Govt., Haryana"
@@ -371,19 +371,19 @@
 
                 <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
                     <div>
-                        <asp:Label ID="lblName" runat="server" Text="{{Name of Person}}"></asp:Label><br />
-                        <asp:Label ID="lblAddress" runat="server" Text="{{Address}}"></asp:Label>
+                        <asp:Label ID="lblName" runat="server" Text=""></asp:Label><br />
+                        <asp:Label ID="lblAddress" runat="server" Text=""></asp:Label>
                     </div>
                     <div>
                         Date:
-                        <asp:Label ID="lblDate" runat="server" Text="{{Date}}"></asp:Label>
+                        <asp:Label ID="lblDate" runat="server" Text=""></asp:Label>
                     </div>
                 </div>
 
                 <p>
                     <p>
                         <strong>Subject:</strong> Document Verification and Clarification of Shortcomings for
-               <asp:Label ID="Label1" runat="server" Text="[Contractor / Supervisor / Wireman]"></asp:Label>
+               <asp:Label ID="lblCategary" runat="server" Text=""></asp:Label>
                         License Registration
                     </p>
 
@@ -391,9 +391,9 @@
 
                     <p>
                         With reference to your online application bearing <b>Application No.</b>
-                        <asp:Label ID="lblAppNo" runat="server" Text="Application Number"></asp:Label>
+                        <asp:Label ID="lblAppNo" runat="server" Text=""></asp:Label>
                         for the
-                        <asp:Label ID="Label2" runat="server" Text="[Contractor / Supervisor / Wireman]"></asp:Label>
+                        <asp:Label ID="lblCategary1" runat="server" Text=""></asp:Label>
                         license registration, you are hereby requested
                 to appear in person for the <b>mandatory Application Document Verification</b>.
                     </p>
@@ -404,20 +404,22 @@
                     </p>
 
                     <p>
-                        <b>Shortcomings identified:</b><br />
-                        <asp:Label ID="lblShortcomings" runat="server" Text="Shortcoming 1"></asp:Label><br />
-                        <br />
-                        <asp:Label ID="lblShortcomings1" runat="server" Text="Shortcoming 2"></asp:Label><br />
+                        <%-- <b>Shortcomings identified:</b><br />--%>
+                        <b>
+                            <asp:Label ID="Shortcomings" runat="server" Text="Shortcomings identified:" Visible="true"></asp:Label></b><br />
+                        <asp:Label ID="lblShortcomings" runat="server" Text="Shortcoming 1"></asp:Label>
+
+                        <%-- <asp:Label ID="lblShortcomings1" runat="server" Text="Shortcoming 2"></asp:Label><br />
                         <br />
                         <asp:Label ID="lblShortcomings2" runat="server" Text="Shortcoming 3"></asp:Label><br />
                         <br />
                         <asp:Label ID="lblShortcomings3" runat="server" Text="Shortcoming 4"></asp:Label><br />
                         <br />
                         <asp:Label ID="lblShortcomings4" runat="server" Text="Shortcoming 5"></asp:Label><br />
-                        <br />
+                        <br />--%>
                     </p>
 
-                    <p>(In case no shortcomings are observed, “Nil” shall be displayed.)</p>
+                    <%--<p>(In case no shortcomings are observed, “Nil” shall be displayed.)</p>--%>
 
                     <p>
                         You are requested to bring all relevant original documents uploaded during the online application
@@ -428,11 +430,11 @@
                     <p><b>The schedule for your document verification is as follows:</b></p>
                     <ul>
                         <li>Date:
-                            <asp:Label ID="lblScheduleDate" runat="server" Text="{{Date}}"></asp:Label></li>
+                            <asp:Label ID="lblScheduleDate" runat="server" Text=""></asp:Label></li>
                         <li>Time:
-                            <asp:Label ID="lblTime" runat="server" Text="{{Time}}"></asp:Label></li>
+                            <asp:Label ID="lblScheduleTime" runat="server" Text="{{Time}}"></asp:Label></li>
                         <li>Venue:
-                            <asp:Label ID="lblVenue" runat="server" Text="{{Full Venue}}"></asp:Label></li>
+                            <asp:Label ID="lblScheduleVenue" runat="server" Text="{{Full Venue}}"></asp:Label></li>
                     </ul>
 
                     <p>This notice is issued with the approval of the State License Board Committee, Haryana.</p>
@@ -445,8 +447,8 @@
                     <br />
                     <p>
 
-                        <asp:Label ID="lblSuperintendent" runat="server" Text="Superintendent"></asp:Label><br />
-                        <asp:Label ID="lblChief" runat="server" Text="Chief Electrical Inspector (CEI), Haryana"></asp:Label>
+                        <asp:Label ID="lblSuperintendent" runat="server" Text="Executive Engineer"></asp:Label><br />
+                        <%--<asp:Label ID="lblChief" runat="server" Text="Chief Electrical Inspector (CEI), Haryana"></asp:Label>--%>
                     </p>
             </div>
 

@@ -678,7 +678,7 @@
                                     <img src="../Assets/haryana.png" height="110" width="auto" />
                                 </div>--%>
                                 <div class="col-sm-12" style="text-align: center; padding-top: 8px; padding-bottom: 8px; border-radius: 10px;">
-                                    <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 20PX;">APPLICATION FOR GRANT OF CERTIFICATE OF COMPETENCY/WIREMAN PERMIT                                      
+                                    <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 20PX;">APPLICATION FOR GRANT OF CERTIFICATE OF CONTRACTOR LICENSE                                      
                                     </h6>
                                 </div>
                             </div>
@@ -763,7 +763,7 @@
                                 </div>
                                 <div class="col-12" style="padding-right: 0px !important;">
                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18PX; font-weight: 600; line-height: 2.7;">
-                                        <text>Aadhaar No.:</text>
+                                        <text>Pan No.:</text>
                                         <asp:Label ID="PanNo" runat="server" Style="font-weight: 700; width: 30%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
                                         </asp:Label>
                                     </h6>
