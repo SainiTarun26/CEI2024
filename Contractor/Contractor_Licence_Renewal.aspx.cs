@@ -309,7 +309,7 @@ namespace CEIHaryana.Contractor
                                     txtaddress.Text.Trim(), txtDistrict.Text.Trim(), txtPhone.Text.Trim(), txtEmail.Text.Trim(),
                                     rblChangeAddress.SelectedItem.ToString(), txtAddressNew.Text,
                                     ddlState1.SelectedItem.ToString(), ddlDistrict1.SelectedItem.ToString(), txtPincodeNew.Text,
-                                    rdlchangedonlicence.SelectedIndex.ToString(), rblbelated.SelectedItem.ToString(),
+                                    rdlchangedonlicence.SelectedItem.ToString(), rblbelated.SelectedItem.ToString(),
                                     txtdays.Text.Trim(), rdlEquipmentsTested.SelectedItem.ToString(),
                                     ddlRenewalTime.SelectedItem.ToString(), txtgrnno.Text.Trim(), txtdate.Text,
                                     txtamount.Text.Trim(), rblChangeInStaff.SelectedItem.ToString(), txtintimationDate.Text,
