@@ -168,10 +168,10 @@ namespace CEIHaryana.Wiremen
                             try
                             {
 
-                                CEI.InsertRenewalData(con, tran, HdnUserType.Value, txtname.Text.Trim(), txtDOB.Text.Trim(),
+                                CEI.InsertRenewalData(con, tran, HdnUserType.Value, txtDOB.Text.Trim(),
                                     txtage.Text.Trim(), Dateturn55, txtFatherName.Text.Trim(), txtaadharno.Text.Trim(),
-                                    txtDistrict.Text.Trim(), txtaddress.Text.Trim(), txtPhone.Text.Trim(), txtEmail.Text.Trim(),
-                                    txtcertificatenoNEW.Text.Trim(), txtcertificatenoOLD.Text.Trim(), txtexpirydate.Text.Trim(),
+                                     txtPhone.Text.Trim(), txtEmail.Text.Trim(),
+                                    txtcertificatenoNEW.Text.Trim(), txtcertificatenoOLD.Text.Trim(), 
                                     rblbelated.Text, txtdays.Text.Trim(), ddlRenewalTime.SelectedItem.ToString(),
                                     txtamount.Text.Trim(), txtgrnno.Text.Trim(), txtdate.Text.Trim(), RadioButtonList1.SelectedItem.ToString(),
                                     CreatedBy);

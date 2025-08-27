@@ -315,10 +315,9 @@ namespace CEIHaryana.Contractor
 
 
                                 CEI.InsertRenewalDataforContractor(con, tran,
-                                    HdnUserType.Value, txtname.Text.Trim(), txtFatherName.Text.Trim(), txtDOB.Text.Trim(),
+                                    HdnUserType.Value,  txtFatherName.Text.Trim(), txtDOB.Text.Trim(),
                                     txtage.Text.Trim(), DateTime.Parse(txtage55.Text), txtPANNo.Text.Trim(),
-                                    txtLicenceNew.Text.Trim(), txtLicenceOld.Text.Trim(), txtexpirydate.Text,
-                                    txtaddress.Text.Trim(), txtDistrict.Text.Trim(), txtPhone.Text.Trim(), txtEmail.Text.Trim(),
+                                    txtLicenceNew.Text.Trim(), txtLicenceOld.Text.Trim(), txtPhone.Text.Trim(), txtEmail.Text.Trim(),
                                     rblChangeAddress.SelectedItem.ToString(), txtAddressNew.Text,
                                     ddlState1.SelectedItem.ToString(), ddlDistrict1.SelectedItem.ToString(), txtPincodeNew.Text,
                                     rdlchangedonlicence.SelectedItem.ToString(), rblbelated.SelectedItem.ToString(),

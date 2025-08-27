@@ -14399,9 +14399,8 @@ SqlTransaction transaction)
         }
         public void InsertRenewalDataforContractor(
  SqlConnection con, SqlTransaction tran,
- string Category, string ApplicantName, string FatherName, string DOB, string Age, DateTime Dateturn55,
- string PanCardNo, string LicenceNew, string LicenceOld, string ExpiryDate,
- string Address, string District, string PhoneNo, string Email,
+ string Category, string FatherName, string DOB, string Age, DateTime Dateturn55,
+ string PanCardNo, string LicenceNew, string LicenceOld, string PhoneNo, string Email,
  string ChangeInAddress, string NewAddress, string NewState, string NewDistrict, string NewPincode,
  string NeedToChangeOnLicence, string DelayedOrNot, string DaysDelay, string EquipmentsTested,
  string RenewalTime, string GRNNo, string ChallanDate, string TotalAmount,
@@ -14412,7 +14411,6 @@ SqlTransaction transaction)
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.Parameters.AddWithValue("@Category", Category);
-                cmd.Parameters.AddWithValue("@ApplicantName", ApplicantName);
                 cmd.Parameters.AddWithValue("@FatherName", FatherName);
                 DateTime dob;
                 if (DateTime.TryParse(DOB, out dob))
@@ -14428,17 +14426,6 @@ SqlTransaction transaction)
                 cmd.Parameters.AddWithValue("@PanCardNo", PanCardNo);
                 cmd.Parameters.AddWithValue("@LicenceNew", LicenceNew);
                 cmd.Parameters.AddWithValue("@LicenceOld", LicenceOld);
-                DateTime expiry;
-                if (DateTime.TryParse(ExpiryDate, out expiry))
-                {
-                    cmd.Parameters.AddWithValue("@ExpiryDate", expiry);
-                }
-                else
-                {
-                    cmd.Parameters.AddWithValue("@ExpiryDate", DBNull.Value);
-                }
-                cmd.Parameters.AddWithValue("@Address", Address);
-                cmd.Parameters.AddWithValue("@District", District);
                 cmd.Parameters.AddWithValue("@PhoneNo", PhoneNo);
                 cmd.Parameters.AddWithValue("@Email", Email);
                 cmd.Parameters.AddWithValue("@ChangeInAddress", ChangeInAddress);
@@ -14497,9 +14484,9 @@ SqlTransaction transaction)
                 cmd.ExecuteNonQuery();
             }
         }
-        public void InsertRenewalData(SqlConnection con, SqlTransaction tran, string Category, string ApplicantName,
-string DOB, string age, DateTime Dateturn55, string FatherName, string AadharNo, string District,
-string Address, string PhoneNo, string Email, string LicenceNew, string LicenceOld, string ExpiryDate, string DelayedOrNot,
+        public void InsertRenewalData(SqlConnection con, SqlTransaction tran, string Category, 
+string DOB, string age, DateTime Dateturn55, string FatherName, string AadharNo, 
+ string PhoneNo, string Email, string LicenceNew, string LicenceOld, string DelayedOrNot,
 string DaysDelay, string RenewalTime, string amount, string GRNno, string ChallanDate, string changeofemployer, string CreatedBy)
         {
             using (SqlCommand cmd = new SqlCommand("sp_RenewalDetails", con, tran))
@@ -14507,7 +14494,6 @@ string DaysDelay, string RenewalTime, string amount, string GRNno, string Challa
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.Parameters.AddWithValue("@Category", Category);
-                cmd.Parameters.AddWithValue("@ApplicantName", ApplicantName);
                 //cmd.Parameters.AddWithValue("@DOB", DOB);
                 DateTime dob;
                 if (DateTime.TryParse(DOB, out dob))
@@ -14531,22 +14517,11 @@ string DaysDelay, string RenewalTime, string amount, string GRNno, string Challa
                 }
                 cmd.Parameters.AddWithValue("@FatherName", FatherName);
                 cmd.Parameters.AddWithValue("@AadharNo", AadharNo);
-                cmd.Parameters.AddWithValue("@District", District);
-                cmd.Parameters.AddWithValue("@Address", Address);
                 cmd.Parameters.AddWithValue("@PhoneNo", PhoneNo);
                 cmd.Parameters.AddWithValue("@Email", Email);
                 cmd.Parameters.AddWithValue("@LicenceNew", LicenceNew);
                 cmd.Parameters.AddWithValue("@LicenceOld", LicenceOld);
                 //cmd.Parameters.AddWithValue("@ExpiryDate", ExpiryDate);
-                DateTime expiry;
-                if (DateTime.TryParse(ExpiryDate, out expiry))
-                {
-                    cmd.Parameters.AddWithValue("@ExpiryDate", expiry);
-                }
-                else
-                {
-                    cmd.Parameters.AddWithValue("@ExpiryDate", DBNull.Value);
-                }
                 cmd.Parameters.AddWithValue("@DelayedOrNot", DelayedOrNot);
                 cmd.Parameters.AddWithValue("@DaysDelay", DaysDelay);
                 cmd.Parameters.AddWithValue("@RenewalTime", RenewalTime);
