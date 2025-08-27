@@ -2032,8 +2032,10 @@
     <Content Include="Print_Forms\Certificate_of_wireman_Permit.aspx" />
     <Content Include="Print_Forms\ContractorLicenceRenewal.aspx" />
     <Content Include="Print_Forms\Contractor_Licence_New_Certificate.aspx" />
+    <Content Include="Print_Forms\Contractor_Licence_Renewal_Print.aspx" />
     <Content Include="Print_Forms\EscalatorApprovalCertificate.aspx" />
     <Content Include="Print_Forms\InspectionRequestPrint.aspx" />
+    <Content Include="Print_Forms\Licence_Renewal_Print.aspx" />
     <Content Include="Print_Forms\LiftApprovalCertificate.aspx" />
     <Content Include="Print_Forms\NewInspectionApprovalCertificate.aspx" />
     <Content Include="Print_Forms\NewInspectionApprovalCertificate_Industry.aspx" />
@@ -3826,6 +3828,13 @@
     <Compile Include="Print_Forms\Contractor_Licence_New_Certificate.aspx.designer.cs">
       <DependentUpon>Contractor_Licence_New_Certificate.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Print_Forms\Contractor_Licence_Renewal_Print.aspx.cs">
+      <DependentUpon>Contractor_Licence_Renewal_Print.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Print_Forms\Contractor_Licence_Renewal_Print.aspx.designer.cs">
+      <DependentUpon>Contractor_Licence_Renewal_Print.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Print_Forms\EscalatorApprovalCertificate.aspx.cs">
       <DependentUpon>EscalatorApprovalCertificate.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3839,6 +3848,13 @@
     </Compile>
     <Compile Include="Print_Forms\InspectionRequestPrint.aspx.designer.cs">
       <DependentUpon>InspectionRequestPrint.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Print_Forms\Licence_Renewal_Print.aspx.cs">
+      <DependentUpon>Licence_Renewal_Print.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Print_Forms\Licence_Renewal_Print.aspx.designer.cs">
+      <DependentUpon>Licence_Renewal_Print.aspx</DependentUpon>
     </Compile>
     <Compile Include="Print_Forms\LiftApprovalCertificate.aspx.cs">
       <DependentUpon>LiftApprovalCertificate.aspx</DependentUpon>

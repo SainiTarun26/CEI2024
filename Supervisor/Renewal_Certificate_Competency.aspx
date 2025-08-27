@@ -244,7 +244,7 @@
     <div class="content-wrapper">
         <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
             <div class="card-body">
-
+                <asp:HiddenField ID="HiddenField2" runat="server" />
                 <div class="row">
                     <div class="col-md-2"></div>
                     <div class="col-md-8" style="text-align: center; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding-top: 8px; padding-bottom: 8px; border-radius: 10px; top: 0px; left: 0px;">
@@ -435,26 +435,23 @@
                             </asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ControlToValidate="txtexpirydate" ValidationGroup="Submit" ForeColor="Red">Please Select</asp:RequiredFieldValidator>
                         </div>
-                    </div>
-                    <div class="row" style="margin-bottom: 15px;">
-                    </div>
 
-                    <div class="row" style="margin-bottom: 15px;">
-                        <asp:HiddenField ID="HiddenField2" runat="server" />
                         <div class="col-md-4">
                             <label>
                                 Is renewal application belated?  &nbsp; &nbsp;
-        <samp style="color: red">*</samp>
+                                <samp style="color: red">*</samp>
                             </label>
-
-                            <asp:RadioButtonList
+                            <asp:TextBox class="form-control" ID="rblbelated" runat="server" autocomplete="off" ReadOnly="true" onKeyPress="return alphabetKey(event);" TabIndex="1"
+                                Style="margin-left: 18px;">
+                            </asp:TextBox>
+                            <%-- <asp:RadioButtonList
                                 ID="rblbelated"
                                 runat="server"
                                 Enabled="false"
                                 RepeatDirection="Horizontal">
                                 <asp:ListItem Value="1" Text="Yes&nbsp; &nbsp;"></asp:ListItem>
                                 <asp:ListItem Value="0" Text="No&nbsp; &nbsp;"></asp:ListItem>
-                            </asp:RadioButtonList>
+                            </asp:RadioButtonList>--%>
 
                             <asp:RequiredFieldValidator
                                 ID="RequiredFieldValidator21"
@@ -462,13 +459,13 @@
                                 ControlToValidate="rblbelated"
                                 ValidationGroup="Submit"
                                 ForeColor="Red">
-        Please Select
+Please Select
                             </asp:RequiredFieldValidator>
                         </div>
                         <div class="col-md-4" runat="server" visible="false" id="days">
                             <label>
                                 Delay days after Certificate Expiry
-               <samp style="color: red">* </samp>
+       <samp style="color: red">* </samp>
                             </label>
 
                             <asp:TextBox class="form-control" ID="txtdays" runat="server" autocomplete="off" ReadOnly="true" onKeyPress="return alphabetKey(event);" TabIndex="1"
@@ -478,6 +475,8 @@
 
                         </div>
                     </div>
+
+
 
 
 

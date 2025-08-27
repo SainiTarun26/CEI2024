@@ -253,7 +253,7 @@
                     <br />
                     <div class="col-md-2"></div>
                 </div>
-
+                <asp:HiddenField ID="HiddenField2" runat="server" />
                 <asp:HiddenField ID="HdnUserId" runat="server" />
                 <asp:HiddenField ID="HdnUserType" runat="server" />
 
@@ -434,26 +434,22 @@
                             </asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ControlToValidate="txtexpirydate" ValidationGroup="Submit" ForeColor="Red">Please Select</asp:RequiredFieldValidator>
                         </div>
-                    </div>
-                    <div class="row" style="margin-bottom: 15px;">
-                    </div>
-
-                    <div class="row" style="margin-bottom: 15px;">
-                        <asp:HiddenField ID="HiddenField2" runat="server" />
                         <div class="col-md-4">
                             <label>
                                 Is renewal application belated?  &nbsp; &nbsp;
-        <samp style="color: red">*</samp>
+                                <samp style="color: red">*</samp>
                             </label>
-
-                            <asp:RadioButtonList
+                            <asp:TextBox class="form-control" ID="rblbelated" runat="server" autocomplete="off" ReadOnly="true" onKeyPress="return alphabetKey(event);" TabIndex="1"
+                                Style="margin-left: 18px;">
+                            </asp:TextBox>
+                            <%--<asp:RadioButtonList
                                 ID="rblbelated"
                                 runat="server"
                                 Enabled="false"
                                 RepeatDirection="Horizontal">
                                 <asp:ListItem Value="1" Text="Yes&nbsp; &nbsp;"></asp:ListItem>
                                 <asp:ListItem Value="0" Text="No&nbsp; &nbsp;"></asp:ListItem>
-                            </asp:RadioButtonList>
+                            </asp:RadioButtonList>--%>
 
                             <asp:RequiredFieldValidator
                                 ID="RequiredFieldValidator21"
@@ -461,13 +457,13 @@
                                 ControlToValidate="rblbelated"
                                 ValidationGroup="Submit"
                                 ForeColor="Red">
-        Please Select
+Please Select
                             </asp:RequiredFieldValidator>
                         </div>
                         <div class="col-md-4" runat="server" visible="false" id="days">
                             <label>
                                 Delay days after Certificate Expiry
-               <samp style="color: red">* </samp>
+       <samp style="color: red">* </samp>
                             </label>
 
                             <asp:TextBox class="form-control" ID="txtdays" runat="server" autocomplete="off" ReadOnly="true" onKeyPress="return alphabetKey(event);" TabIndex="1"
@@ -476,9 +472,8 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator22" runat="server" ControlToValidate="txtdays" ValidationGroup="Submit" ForeColor="Red">Please Select</asp:RequiredFieldValidator>
 
                         </div>
+
                     </div>
-
-
 
 
 

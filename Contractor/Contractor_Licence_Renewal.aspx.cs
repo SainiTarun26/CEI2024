@@ -19,12 +19,24 @@ namespace CEIHaryana.Contractor
         CEI CEI = new CEI();
         string userID = "";
         string Category = "";
+        protected void Page_PreInit(object sender, EventArgs e)
+        {
+            if (Convert.ToString(Session["Renwal"]) != "" && Convert.ToString(Session["Renwal"]) != null)
+            {
+                this.Page.MasterPageFile = "~/Contractor/ContractorRenewalMaster.Master";
+            }
+            else
+            {
+                this.Page.MasterPageFile = "~/Contractor/Contractor.Master";
+            }
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
                 if (!IsPostBack)
                 {
+
                     if (Session["ContractorID"] != null && !string.IsNullOrEmpty(Convert.ToString(Session["ContractorID"])))
                     {
                         Category = "Contractor";

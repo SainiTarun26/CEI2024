@@ -14601,6 +14601,11 @@ string DaysDelay, string RenewalTime, string amount, string GRNno, string Challa
                 return Convert.ToBoolean(output.Value);
             }
         }
+        public string GetIDfForRenewalPrint(string ID)
+        {
+            object Id = DBTask.ExecuteScalar(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetRenewalID", ID);
+            return Id?.ToString();
+        }
         #endregion
         #region neha upgradation
         public DataSet GetSuperviserForUpgradation(string id)

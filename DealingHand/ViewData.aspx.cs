@@ -13,6 +13,7 @@ namespace CEIHaryana.DealingHand
     {
         //Page Created By Neeraj on june 2025
         CEI CEI = new CEI();
+        string LicenceType = "";
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -94,27 +95,48 @@ namespace CEIHaryana.DealingHand
             Label lblID = (Label)row.FindControl("lblID");
             Label lblStatus = (Label)row.FindControl("lblStatus");
             Label lblAssignTo = (Label)row.FindControl("lblAssignTo");
-            Label lblRegistrationId  = (Label)row.FindControl("lblRegistrationId");
+            Label lblRegistrationId = (Label)row.FindControl("lblRegistrationId");
             Label lblCategory = (Label)row.FindControl("lblCategory");
             if (e.CommandName == "Select")
             {
-              
+
                 Session["Application_Id"] = lblID.Text;
                 Response.Redirect("/DealingHand/CommentByDealingHand.aspx", false);
             }
-            else if(e.CommandName == "Print")
+            else if (e.CommandName == "Print")
             {
-                if (lblCategory.Text == "Contractor")
+                Label lblLicenceType = (Label)row.FindControl("lblLicenceType");
+                string LicenceType = lblLicenceType != null ? lblLicenceType.Text : string.Empty;
+
+                if (LicenceType == "New")
                 {
-                    Session["NewApplication_Contractor_RegNo"] = lblRegistrationId.Text;
-                    Response.Redirect("/UserPages/New_Registration_Information_Contractor.aspx", false);
+                    if (lblCategory.Text == "Contractor")
+                    {
+
+                        Session["NewApplication_Contractor_RegNo"] = lblRegistrationId.Text;
+                        Response.Redirect("/UserPages/New_Registration_Information_Contractor.aspx", false);
+                    }
+                    else
+                    {
+                        Session["NewApplicationRegistrationNo"] = lblRegistrationId.Text;
+                        Response.Redirect("/UserPages/New_Registration_Information.aspx", false);
+                    }
                 }
                 else
                 {
-                    Session["NewApplicationRegistrationNo"] = lblRegistrationId.Text;
-                    Response.Redirect("/UserPages/New_Registration_Information.aspx", false);
+                    string Id = CEI.GetIDfForRenewalPrint(lblID.Text);
+                    if (lblCategory.Text == "Contractor")
+                    {
+                        Session["NewApplicationRegistrationNo"] = Id;
+                        Response.Redirect("/UserPages/Contractor_Renewal_Details_Preview.aspx", false);
+                    }
+                    else
+                    {
+                        Session["NewApplicationRegistrationNo"] = Id;
+                        Response.Redirect("/UserPages/Certificate_Renewal_Details_Preview.aspx", false);
+                    }
+
                 }
-               
             }
         }
 

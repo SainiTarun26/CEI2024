@@ -1,4 +1,5 @@
 ﻿using CEI_PRoject;
+using CEIHaryana.Contractor;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,7 @@ namespace CEIHaryana.UserPages
                     if (Convert.ToString(Session["ContractorID"]) != null && Convert.ToString(Session["ContractorID"]) != "")
                     {
                         string UserID = Session["ContractorID"].ToString();
+                        HdnID.Value = UserID;
                         BindGridData(UserID);
                     }
                     else if (Convert.ToString(Session["SupervisorID"]) != null && Convert.ToString(Session["SupervisorID"]) != "")
@@ -30,7 +32,7 @@ namespace CEIHaryana.UserPages
                         string UserID = Session["SupervisorID"].ToString();
                         BindGridData(UserID);
                     }
-                    else if(Convert.ToString(Session["WiremanId"]) != null && Convert.ToString(Session["WiremanId"]) != "")
+                    else if (Convert.ToString(Session["WiremanId"]) != null && Convert.ToString(Session["WiremanId"]) != "")
                     {
                         string UserID = Session["WiremanId"].ToString();
                         BindGridData(UserID);
@@ -53,6 +55,12 @@ namespace CEIHaryana.UserPages
             DataTable dt = CEI.GetUserGridData(UserID);
             if (dt.Rows.Count > 0)
             {
+                string filePath = dt.Rows[0]["LetterPath"].ToString();
+                HdnPanFilePath.Value = filePath;
+                if (string.IsNullOrEmpty(filePath))
+                {
+                    GridView1.Columns[11].Visible = false;
+                }
                 GridView1.DataSource = dt;
                 GridView1.DataBind();
             }
@@ -95,7 +103,7 @@ namespace CEIHaryana.UserPages
                             Session["NewApplication_Contractor_RegNo"] = idValue;
                             Response.Redirect("~/Print_Forms/Print_New_Registration_Information_Contractor.aspx");
                         }
-                        
+
                     }
                     else if (e.CommandName == "ViewDetails")
                     {
@@ -109,6 +117,14 @@ namespace CEIHaryana.UserPages
                             Session["NewApplication_Contractor_RegNo"] = idValue;
                             Response.Redirect("~/UserPages/New_Registration_Information_Contractor.aspx");
                         }
+                    }
+                    else if (e.CommandName == "ViewVerificationLetter")
+                    {
+
+                        string fileUrl = "https://localhost:44393/" + HdnPanFilePath.Value;
+                        string script = $@"<script>window.open('{fileUrl}', '_blank');</script>";
+                        ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+
                     }
                 }
             }
@@ -131,17 +147,17 @@ namespace CEIHaryana.UserPages
 
 
                 Label lblID = e.Row.FindControl("lblID") as Label;
-               
+
                 if (lblID != null)
                 {
                     HdnID.Value = lblID.Text.Trim();
                 }
 
-               
+
                 if (status == "Returned")
                 {
-                   btnEdit.Visible = true;
-                   lblUpdate.Visible = true;
+                    btnEdit.Visible = true;
+                    lblUpdate.Visible = true;
                 }
                 else
                 {

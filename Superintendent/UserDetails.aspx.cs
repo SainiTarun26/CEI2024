@@ -32,13 +32,13 @@ namespace CEIHaryana.Superintendent
                         }
                         else
                         {
-                           
+
                             string script = "alert(\"No any request submit for Licence yet.\");";
                             ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
                         }
-                      
+
                     }
-                  
+
                 }
             }
             catch (Exception ex)
@@ -116,45 +116,66 @@ namespace CEIHaryana.Superintendent
             }
             else if (e.CommandName == "Print")
             {
-                if(lblCategory.Text == "Contractor")
+                Label lblLicenceType = (Label)row.FindControl("lblLicenceType");
+                string LicenceType = lblLicenceType != null ? lblLicenceType.Text : string.Empty;
+
+                if (LicenceType == "New")
                 {
-                    Session["NewApplication_Contractor_RegNo"] = lblRegistrationId.Text;
-                    Response.Redirect("/UserPages/New_Registration_Information_Contractor.aspx", false);
+                    if (lblCategory.Text == "Contractor")
+                    {
+
+                        Session["NewApplication_Contractor_RegNo"] = lblRegistrationId.Text;
+                        Response.Redirect("/UserPages/New_Registration_Information_Contractor.aspx", false);
+                    }
+                    else
+                    {
+                        Session["NewApplicationRegistrationNo"] = lblRegistrationId.Text;
+                        Response.Redirect("/UserPages/New_Registration_Information.aspx", false);
+                    }
                 }
                 else
                 {
-                    Session["NewApplicationRegistrationNo"] = lblRegistrationId.Text;
-                    Response.Redirect("/UserPages/New_Registration_Information.aspx", false);
+                    string Id = CEI.GetIDfForRenewalPrint(lblID.Text);
+                    if (lblCategory.Text == "Contractor")
+                    {
+                        Session["NewApplicationRegistrationNo"] = Id;
+                        Response.Redirect("/UserPages/Contractor_Renewal_Details_Preview.aspx", false);
+                    }
+                    else
+                    {
+                        Session["NewApplicationRegistrationNo"] = Id;
+                        Response.Redirect("/UserPages/Certificate_Renewal_Details_Preview.aspx", false);
+                    }
+
                 }
-              
             }
         }
-                 
+
         protected void ddlSearchBy_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(ddlSearchBy.SelectedValue == "1")
+            if (ddlSearchBy.SelectedValue == "1")
             {
-                district.Visible= true;
+                district.Visible = true;
                 ddlApplicationStatus.SelectedValue = "0";
                 txtName.Text = "";
                 Name.Visible = false;
                 AppStatus.Visible = false;
             }
-           else if (ddlSearchBy.SelectedValue == "2")
+            else if (ddlSearchBy.SelectedValue == "2")
             {
                 ddlApplicationStatus.SelectedValue = "0";
                 txtName.Text = "";
                 Name.Visible = false;
                 district.Visible = false;
-                AppStatus.Visible= true;
+                AppStatus.Visible = true;
             }
-            else if(ddlSearchBy.SelectedValue == "3")
+            else if (ddlSearchBy.SelectedValue == "3")
             {
                 ddlDistrict.SelectedValue = "0";
                 ddlApplicationStatus.SelectedValue = "0";
                 district.Visible = false;
                 AppStatus.Visible = false;
-                Name.Visible= true;
+                Name.Visible = true;
             }
             else
             {

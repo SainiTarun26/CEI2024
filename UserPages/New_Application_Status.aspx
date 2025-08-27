@@ -949,14 +949,14 @@
                                                                     <ItemTemplate>
                                                                         <asp:Label ID="lblID" runat="server" Text='<%#Eval("CreatedBy") %>'></asp:Label>
                                                                         <asp:Label ID="lblCategory" runat="server" Text='<%#Eval("Category") %>'></asp:Label>
-                                                                         <asp:Label ID="lblStatus" runat="server" Text='<%#Eval("Status") %>'></asp:Label>
+                                                                        <asp:Label ID="lblStatus" runat="server" Text='<%#Eval("Status") %>'></asp:Label>
                                                                     </ItemTemplate>
                                                                 </asp:TemplateField>
                                                                 <asp:TemplateField HeaderText="Application No." HeaderStyle-CssClass="headercolor" ItemStyle-HorizontalAlign="Center">
-    <ItemTemplate>
-        <%# Eval("CreatedBy") %>
-    </ItemTemplate>
-</asp:TemplateField>
+                                                                    <ItemTemplate>
+                                                                        <%# Eval("CreatedBy") %>
+                                                                    </ItemTemplate>
+                                                                </asp:TemplateField>
                                                                 <asp:TemplateField HeaderText="Name" HeaderStyle-CssClass="headercolor" ItemStyle-HorizontalAlign="Center">
                                                                     <ItemTemplate>
                                                                         <%# Eval("Name") %>
@@ -1006,8 +1006,15 @@
                                                                         </asp:LinkButton>
                                                                     </ItemTemplate>
                                                                 </asp:TemplateField>
+                                                                <asp:TemplateField HeaderText="Verification Letter" HeaderStyle-CssClass="headercolor" ItemStyle-HorizontalAlign="Center">
+                                                                    <ItemTemplate>
 
+                                                                        <asp:LinkButton ID="lnkVerification" runat="server" CommandName="ViewVerificationLetter" CssClass="btn btn-link" ToolTip="View Details">
+                                                                                <i class="fas fa-print"></i>
+                                                                        </asp:LinkButton>
+                                                                    </ItemTemplate>
 
+                                                                </asp:TemplateField>
                                                             </Columns>
                                                             <FooterStyle BackColor="White" ForeColor="#000066" />
                                                             <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
@@ -1034,8 +1041,9 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-4">
-                                                   <asp:HiddenField ID="HdnID" runat="server" />
-                                                    </div>
+                                                    <asp:HiddenField ID="HdnID" runat="server" />
+                                                    <asp:HiddenField ID="HdnPanFilePath" runat="server" />
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-1"></div>

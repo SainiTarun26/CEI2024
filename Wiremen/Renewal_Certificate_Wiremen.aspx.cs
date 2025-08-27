@@ -92,12 +92,13 @@ namespace CEIHaryana.Wiremen
             int belated = Convert.ToInt32(dt.Rows[0]["BelatedRenewal"]);
             if (belated == 1)
             {
-                rblbelated.SelectedValue = "1";
+                rblbelated.Text = "Yes";
+
                 days.Visible = true;
             }
             else
             {
-                rblbelated.SelectedValue = "0";
+                rblbelated.Text = "No";
                 days.Visible = false;
             }
             txtdays.Text = dt.Rows[0]["NoOfDays"].ToString();
@@ -171,7 +172,7 @@ namespace CEIHaryana.Wiremen
                                     txtage.Text.Trim(), Dateturn55, txtFatherName.Text.Trim(), txtaadharno.Text.Trim(),
                                     txtDistrict.Text.Trim(), txtaddress.Text.Trim(), txtPhone.Text.Trim(), txtEmail.Text.Trim(),
                                     txtcertificatenoNEW.Text.Trim(), txtcertificatenoOLD.Text.Trim(), txtexpirydate.Text.Trim(),
-                                    rblbelated.SelectedItem.ToString(), txtdays.Text.Trim(), ddlRenewalTime.SelectedItem.ToString(),
+                                    rblbelated.Text, txtdays.Text.Trim(), ddlRenewalTime.SelectedItem.ToString(),
                                     txtamount.Text.Trim(), txtgrnno.Text.Trim(), txtdate.Text.Trim(), RadioButtonList1.SelectedItem.ToString(),
                                     CreatedBy);
 

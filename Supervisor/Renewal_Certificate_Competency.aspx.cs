@@ -21,21 +21,27 @@ namespace CEIHaryana.Supervisor
         string userID = "";
         string Category = "";
         //page created by kalpana 18-Aug-2025
+
+        protected void Page_PreInit(object sender, EventArgs e)
+        {
+            if (Convert.ToString(Session["Renwal"]) != "" && Convert.ToString(Session["Renwal"]) != null)
+            {
+                this.Page.MasterPageFile = "~/Supervisor/Supervisor_Renewal.Master";
+            }
+            else
+            {
+                this.Page.MasterPageFile = "~/Supervisor/Supervisor.Master";
+            }
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
-            //Session["SupervisorID"] = "EPH-5030";
-            ////EPH-4929
-            //Session["SupervisorID"] = "EPH-4929";
-            //Category = "Supervisor";
-            //userID = Session["SupervisorID"].ToString();
-            ////Session["SupervisorID"] = "CPH-3188";
-            //GetSupervisorDetails();
 
             try
             {
 
                 if (!IsPostBack)
                 {
+
                     if (Convert.ToString(Session["SupervisorID"]) != null && Convert.ToString(Session["SupervisorID"]) != "")
                     {
                         Category = "Supervisor";
@@ -44,14 +50,6 @@ namespace CEIHaryana.Supervisor
                         HdnUserType.Value = "Supervisor";
                         GetSupervisorDetails(userID);
 
-                    }
-                    else if (Convert.ToString(Session["WiremanId"]) != null && Convert.ToString(Session["WiremanId"]) != "")
-                    {
-                        Category = "Wireman";
-                        userID = Session["WiremanId"].ToString();
-                        GetSupervisorDetails(userID);
-                        HdnUserId.Value = userID;
-                        HdnUserType.Value = "Wireman";
                     }
                 }
             }
@@ -101,12 +99,13 @@ namespace CEIHaryana.Supervisor
             int belated = Convert.ToInt32(dt.Rows[0]["BelatedRenewal"]);
             if (belated == 1)
             {
-                rblbelated.SelectedValue = "1";
+                rblbelated.Text = "Yes";
+
                 days.Visible = true;
             }
             else
             {
-                rblbelated.SelectedValue = "0";
+                rblbelated.Text = "No";
                 days.Visible = false;
             }
             txtdays.Text = dt.Rows[0]["NoOfDays"].ToString();
@@ -179,7 +178,7 @@ namespace CEIHaryana.Supervisor
                                     txtage.Text.Trim(), Dateturn55, txtFatherName.Text.Trim(), txtaadharno.Text.Trim(),
                                     txtDistrict.Text.Trim(), txtaddress.Text.Trim(), txtPhone.Text.Trim(), txtEmail.Text.Trim(),
                                     txtcertificatenoNEW.Text.Trim(), txtcertificatenoOLD.Text.Trim(), txtexpirydate.Text.Trim(),
-                                    rblbelated.SelectedItem.ToString(), txtdays.Text.Trim(), ddlRenewalTime.SelectedItem.ToString(),
+                                    rblbelated.Text.ToString(), txtdays.Text.Trim(), ddlRenewalTime.SelectedItem.ToString(),
                                     txtamount.Text.Trim(), txtgrnno.Text.Trim(), txtdate.Text.Trim(), RadioButtonList1.SelectedItem.ToString(),
                                     CreatedBy);
 

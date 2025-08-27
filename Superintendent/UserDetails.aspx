@@ -115,28 +115,34 @@
             height: 25px;
             padding: 0px !important;
         }
+
         span {
-    width: 40%;
-    font-size:13px;
-}
-        select#ContentPlaceHolder1_ddlSearchBy {
-    padding: 0px !important;
-}
-        select#ContentPlaceHolder1_ddlApplicationStatus {
-    padding: 0px !important;
-}
-        input#ContentPlaceHolder1_btnSearch {
-    padding: 0px 10px 0px 10px !important;
-}
-        input#ContentPlaceHolder1_btnReset{
-             padding: 0px 10px 0px 10px !important;
+            width: 40%;
+            font-size: 13px;
         }
+
+        select#ContentPlaceHolder1_ddlSearchBy {
+            padding: 0px !important;
+        }
+
+        select#ContentPlaceHolder1_ddlApplicationStatus {
+            padding: 0px !important;
+        }
+
+        input#ContentPlaceHolder1_btnSearch {
+            padding: 0px 10px 0px 10px !important;
+        }
+
+        input#ContentPlaceHolder1_btnReset {
+            padding: 0px 10px 0px 10px !important;
+        }
+
         .btn-primary {
-    color: #fff;
-    background-color: #9292cc;
-    border-color: #9292cc;
-    padding: 5px 10px 5px 10px !important;
-}
+            color: #fff;
+            background-color: #9292cc;
+            border-color: #9292cc;
+            padding: 5px 10px 5px 10px !important;
+        }
     </style>
 
 </asp:Content>
@@ -161,7 +167,7 @@
                             <asp:Panel ID="Panel3" runat="server">
                                 <div style="display: flex; align-items: center; gap: 10px;">
                                     <asp:Label ID="Label3" runat="server" Text="Category:" AssociatedControlID="ddlcategory" Style="margin-bottom: 0px; font-size: 13px;" />
-                                    <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlcategory"  selectionmode="Multiple" Style="width: 100% !important;font-size:13px;">
+                                    <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlcategory" selectionmode="Multiple" Style="width: 100% !important; font-size: 13px;">
                                         <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                         <asp:ListItem Text="Contractor" Value="1"></asp:ListItem>
                                         <asp:ListItem Text="Supervisor" Value="2"></asp:ListItem>
@@ -176,7 +182,7 @@
                             <asp:Panel ID="Panel2" runat="server">
                                 <div style="display: flex; align-items: center; gap: 10px;">
                                     <asp:Label ID="Label2" runat="server" Text="Search By:" />
-                                    <asp:DropDownList ID="ddlSearchBy" runat="server" AutoPostBack="true" class="form-control  select-form select2" OnSelectedIndexChanged="ddlSearchBy_SelectedIndexChanged" Style="width: 100% !important; padding-top: 3px; font-size: 16px !important;height:30px;">
+                                    <asp:DropDownList ID="ddlSearchBy" runat="server" AutoPostBack="true" class="form-control  select-form select2" OnSelectedIndexChanged="ddlSearchBy_SelectedIndexChanged" Style="width: 100% !important; padding-top: 3px; font-size: 16px !important; height: 30px;">
                                         <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                         <asp:ListItem Text="District" Value="1"></asp:ListItem>
                                         <asp:ListItem Text="Status" Value="2"></asp:ListItem>
@@ -189,7 +195,7 @@
                             <asp:Panel ID="Panel1" runat="server">
                                 <div style="display: flex; align-items: center; gap: 10px;">
                                     <asp:Label ID="Label1" runat="server" Text="Search Value:" />
-                                    <asp:DropDownList ID="ddlDistrict" runat="server" AutoPostBack="true" class="form-control  select-form select2"  Style="width: 100% !important; padding-top: 3px; font-size: 16px !important;">
+                                    <asp:DropDownList ID="ddlDistrict" runat="server" AutoPostBack="true" class="form-control  select-form select2" Style="width: 100% !important; padding-top: 3px; font-size: 16px !important;">
                                     </asp:DropDownList>
                                 </div>
                             </asp:Panel>
@@ -198,7 +204,7 @@
                             <asp:Panel ID="Panel5" runat="server">
                                 <div style="display: flex; align-items: center; gap: 10px;">
                                     <asp:Label ID="Label5" runat="server" Text="Search Value:" />
-                                    <asp:DropDownList ID="ddlApplicationStatus" runat="server" AutoPostBack="true" class="form-control  select-form select2"  Style="width: 100% !important; padding-top: 3px; font-size: 16px !important;height:30px;width:85% !important;">
+                                    <asp:DropDownList ID="ddlApplicationStatus" runat="server" AutoPostBack="true" class="form-control  select-form select2" Style="width: 100% !important; padding-top: 3px; font-size: 16px !important; height: 30px; width: 85% !important;">
                                         <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                         <asp:ListItem Text="Submit" Value="1"></asp:ListItem>
                                         <asp:ListItem Text="InProcess" Value="2"></asp:ListItem>
@@ -218,12 +224,12 @@
                                 </div>
                             </asp:Panel>
                         </div>
-                          <div class="col-md-3">
-                                   <asp:Button ID="btnSearch" Text="Search" runat="server" class="btn btn-primary mr-2" OnClick="btnSearch_Click"/>
-                                 <asp:Button ID="btnReset" Text="Reset" runat="server" class="btn btn-primary mr-2" OnClick="btnReset_Click"/>
+                        <div class="col-md-3">
+                            <asp:Button ID="btnSearch" Text="Search" runat="server" class="btn btn-primary mr-2" OnClick="btnSearch_Click" />
+                            <asp:Button ID="btnReset" Text="Reset" runat="server" class="btn btn-primary mr-2" OnClick="btnReset_Click" />
 
-                              </div>
-                        
+                        </div>
+
                     </div>
                     <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%"
                         AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" BorderWidth="1px" BorderColor="#dbddff">
@@ -233,7 +239,8 @@
                                     <asp:Label ID="lblID" runat="server" Text='<%#Eval("ApplicationId") %>'></asp:Label>
                                     <asp:Label ID="lblStatus" runat="server" Text='<%#Eval("ApplicationStatus") %>'></asp:Label>
                                     <asp:Label ID="lblRegistrationId" runat="server" Text='<%#Eval("RegistrationId") %>'></asp:Label>
-                                      <asp:Label ID="lblCategory" runat="server" Text='<%#Eval("Categary") %>'></asp:Label>
+                                    <asp:Label ID="lblCategory" runat="server" Text='<%#Eval("Categary") %>'></asp:Label>
+                                    <asp:Label ID="lblLicenceType" runat="server" Text='<%#Eval("LicenceType") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="SNo">
@@ -244,15 +251,21 @@
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField>
-                                <HeaderStyle Width="35%" CssClass="headercolor" />
-                                <ItemStyle Width="35%" />
+                                <HeaderStyle Width="35%" CssClass="headercolor" HorizontalAlign="Center" />
+                                <ItemStyle Width="35%" HorizontalAlign="Center" />
                                 <HeaderTemplate>
-                                    Application Id   
+                                    Application<br />
+                                    Id
                                 </HeaderTemplate>
                                 <ItemTemplate>
-                                    <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("ApplicationId") %> ' CommandName="Select"><%#Eval("ApplicationId") %></asp:LinkButton>
+                                    <asp:LinkButton ID="LinkButton4" runat="server"
+                                        CommandArgument='<%# Eval("ApplicationId") %>'
+                                        CommandName="Select">
+            <%# Eval("ApplicationId") %>
+                                    </asp:LinkButton>
                                 </ItemTemplate>
                             </asp:TemplateField>
+
 
 
                             <asp:BoundField DataField="RegistrationId" HeaderText="Registration Id">
@@ -261,7 +274,7 @@
                             </asp:BoundField>
                             <asp:BoundField DataField="Name" HeaderText="Name">
                                 <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="center" Width="28%" />
+                                <ItemStyle HorizontalAlign="center" Width="28%" CssClass="break-text" />
                             </asp:BoundField>
                             <asp:BoundField DataField="PermanentDistrict" HeaderText="District">
                                 <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor" />
@@ -277,13 +290,26 @@
 
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>
+                            <asp:TemplateField>
+                                <HeaderTemplate>
+                                    Licence<br />
+                                    Type
+                                </HeaderTemplate>
+                                <HeaderStyle Width="5%" CssClass="headercolor" />
+                                <ItemTemplate>
+                                    <asp:HiddenField ID="hdnLicenceType" runat="server" Value='<%# Eval("LicenceType") %>' />
+                                    <%# Eval("LicenceType") %>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+
+
 
                             <asp:BoundField DataField="ApplicationStatus" HeaderText="Status">
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
 
-                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                                <ItemStyle HorizontalAlign="center" Width="15%" CssClass="break-text" />
                             </asp:BoundField>
-                            <asp:TemplateField HeaderText="View Details">
+                            <asp:TemplateField HeaderText="">
                                 <HeaderStyle Width="10%" CssClass="headercolor" />
                                 <ItemStyle Width="10%" />
                                 <ItemTemplate>
@@ -322,7 +348,42 @@
     <script>
         new DataTable('#example');
     </script>
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function () {
+            const elements = document.querySelectorAll('.break-text');
 
+            elements.forEach(function (element) {
+                let text = element.innerText;
+                let formattedText = '';
+                let currentIndex = 0;
+
+                while (currentIndex < text.length) {
+                    // Take a chunk of up to 20 characters
+                    let chunk = text.slice(currentIndex, currentIndex + 20);
+
+                    if (chunk.length < 20) {
+                        // If the chunk is less than 20 characters, add it without breaking
+                        formattedText += chunk;
+                        break; // Exit the loop as we've processed the remaining text
+                    }
+
+                    // For chunks of 20 or more characters, try to break at the last whitespace
+                    let breakIndex = chunk.lastIndexOf(" ");
+                    if (breakIndex !== -1) {
+                        // If there's a whitespace, break at that space
+                        formattedText += chunk.slice(0, breakIndex) + '<br>';
+                        currentIndex += breakIndex + 1; // Move past the space
+                    } else {
+                        // Otherwise, break at the 20-character limit
+                        formattedText += chunk + '<br>';
+                        currentIndex += 20;
+                    }
+                }
+
+                element.innerHTML = formattedText.trim(); // Remove any trailing <br>
+            });
+        });
+    </script>
 </asp:Content>
 
 

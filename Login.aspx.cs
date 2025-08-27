@@ -46,7 +46,7 @@ namespace CEIHaryana
                         DataSet ds = new DataSet();
                         ds = cei.checkApplicationStatus(txtUserID.Text);
                         string Category = ds.Tables[0].Rows[0]["Category"].ToString();
-
+                        Session["Renwal"] = "Yes";
                         if (Category.Trim() == "Contractor")
                         {
                             Session["ContractorID"] = txtUserID.Text;
