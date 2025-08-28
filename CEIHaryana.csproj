@@ -2158,6 +2158,7 @@
     <Content Include="Supervisor\SupervisorLineTestReport.aspx" />
     <Content Include="Supervisor\SupervisorSubstationTestReport.aspx" />
     <Content Include="Supervisor\SupervisorUpgradationHistory.aspx" />
+    <Content Include="Supervisor\Supervisor_Licence_Upgradation.aspx" />
     <Content Include="Supervisor\TestReportForm.aspx" />
     <Content Include="Supervisor\TestReportForm1.aspx" />
     <Content Include="Supervisor\TestReportHistory.aspx" />
@@ -4660,6 +4661,13 @@
     </Compile>
     <Compile Include="Supervisor\SupervisorUpgradationHistory.aspx.designer.cs">
       <DependentUpon>SupervisorUpgradationHistory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Supervisor\Supervisor_Licence_Upgradation.aspx.cs">
+      <DependentUpon>Supervisor_Licence_Upgradation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Supervisor\Supervisor_Licence_Upgradation.aspx.designer.cs">
+      <DependentUpon>Supervisor_Licence_Upgradation.aspx</DependentUpon>
     </Compile>
     <Compile Include="Supervisor\Supervisor_Renewal.Master.cs">
       <DependentUpon>Supervisor_Renewal.Master</DependentUpon>

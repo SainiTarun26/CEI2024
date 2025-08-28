@@ -14435,6 +14435,44 @@ string dbPathCompetency, string dbPathMedicalCertificate, string userId)
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetCEISignatureForUpgradation");
         }
+        public DataSet GetSuperviserForUpgradation(string id)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetSuperviserForUpgradation", id);
+        }
+
+        public static int UpgradationOfSupervisorData(string SupervisorName, string NewCertificateNo, string OldCertificateNo, string IssueDate, string PresentScope,
+                                                             string Qualification, string Academic, string professional, string experience, string address,
+                                                             string State, string District, string Pin, string UpgradationAppliedErlier, string InterviewDate, string Voltage, string dbPathExperience,
+                                                             string dbPathCompetency, string userId)
+        {
+            object sqlInterviewDate;
+            if (!string.IsNullOrWhiteSpace(InterviewDate) &&
+                DateTime.TryParse(InterviewDate, out DateTime parsedInterviewDate))
+            {
+                sqlInterviewDate = parsedInterviewDate;
+            }
+            else
+            {
+                sqlInterviewDate = DBNull.Value;
+            }
+
+            object sqlIssueDate;
+            if (!string.IsNullOrWhiteSpace(IssueDate) &&
+                DateTime.TryParse(IssueDate, out DateTime parsedIssueDate))
+            {
+                sqlIssueDate = parsedIssueDate;
+            }
+            else
+            {
+                sqlIssueDate = DBNull.Value;
+            }
+            return DBTask.ExecuteNonQuery(
+                ConfigurationManager.ConnectionStrings["DBConnection"].ToString(),
+                "Sp_UpgradationOfSupervisor", SupervisorName, NewCertificateNo, OldCertificateNo, sqlIssueDate,
+                PresentScope, Qualification, Academic, professional, experience, address, State, District, Pin,
+                UpgradationAppliedErlier, sqlInterviewDate, Voltage, dbPathExperience, dbPathCompetency, userId
+            );
+        }
         #endregion
         #region aslam
         public DataSet GetGrUtrNoAndChallanDetailByAppId(string applicationId)
