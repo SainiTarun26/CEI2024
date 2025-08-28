@@ -10995,7 +10995,7 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
         {
             string encryptedNumber = EncryptRandomNumber(RandomUniqueNumber);
             // string activationLink = $"https://uat.ceiharyana.com/ToVerifyRegistration.aspx?id={encryptedNumber}&email={HttpUtility.UrlEncode(Email)}";
-            string activationLink = $"https://uat.ceiharyana.com/ToVerifyRegistration.aspx?id={encryptedNumber}&email={HttpUtility.UrlEncode(Email)}";
+            string activationLink = $"https://localhost:44393/ToVerifyRegistration.aspx?id={encryptedNumber}&email={HttpUtility.UrlEncode(Email)}";
 
 
             MailMessage mailMessage = new MailMessage();
