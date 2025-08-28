@@ -12,6 +12,7 @@ namespace CEIHaryana.DealingHand
 {
     public partial class DealingHand : System.Web.UI.MasterPage
     {
+        //page created by Neeraj
         protected void Page_Load(object sender, EventArgs e)
         {
             try

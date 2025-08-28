@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics.Eventing.Reader;
-using System.IO;
 using System.Linq;
 using System.Web;
+using System.IO;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
@@ -72,10 +72,8 @@ namespace CEIHaryana.SiteOwnerPages
                 Label LblAssignTo = (Label)row.FindControl("LblAssignTo"); 
                 Label lblApproveDateLabel = row.FindControl("lblApproveDate") as Label;
                 string ApproveDate = lblApproveDateLabel.Text;
-                //Added By neeraj 22-May-2025
                 Label lblApproveCertificate = row.FindControl("lblApproveCertificate") as Label;
                 string ApproveCertificate = lblApproveCertificate.Text;
-                //
                 if (lblType.Text.Trim() == "Line")
                 {
                     Session["LineID"] = lblTestRportId.Text.Trim();
@@ -121,27 +119,29 @@ namespace CEIHaryana.SiteOwnerPages
                 {
 
 
-                    if (LblInspectionType.Text == "New")
+                    //Added By neeraj 22-May-2025
+                    if (lblType.Text == "Cinema_Videos Talkies")
                     {
-                        //Added By neeraj 22-May-2025
-                        if (lblType.Text == "Cinema_Videos Talkies")
+                        string fileName = lblApproveCertificate.Text;
+                        string folderPath = Server.MapPath(fileName);
+                        string filePath = Path.Combine(folderPath);
+                        if (System.IO.File.Exists(filePath))
                         {
-                            string fileName = lblApproveCertificate.Text;
-                            string folderPath = Server.MapPath(fileName);
-                            string filePath = Path.Combine(folderPath);
-                            if (System.IO.File.Exists(filePath))
-                            {
-                                string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
-                                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
-                            }
-                            else
-                            {
-                                string errorMessage = "An error occurred: " + "Loading failed Please try Again later";
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('" + errorMessage.Replace("'", "\\'") + "')", true);
-                            }
+                            string script = $@"<script>window.open('{ResolveUrl(fileName)}','_blank');</script>";
+                            ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
                         }
-                        //
-                       else  if (lblType.Text != "Lift" && lblType.Text != "Escalator" && lblType.Text != "Lift/Escalator" && lblType.Text != "MultiLift" && lblType.Text != "MultiEscalator")
+                        else
+                        {
+                            string errorMessage = "An error occurred: " + "Loading failed Please try Again later";
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('" + errorMessage.Replace("'", "\\'") + "')", true);
+                        }
+                    }
+                    //
+                    else if (LblInspectionType.Text == "New")
+                    {
+
+                        
+                            if (lblType.Text != "Lift" && lblType.Text != "Escalator" && lblType.Text != "Lift/Escalator" && lblType.Text != "MultiLift" && lblType.Text != "MultiEscalator")
                             {
                                 if (ApproveDate != null && DateTime.TryParse(ApproveDate, out DateTime lblApproveDate))
                                 {
@@ -183,7 +183,7 @@ namespace CEIHaryana.SiteOwnerPages
                                 ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('" + errorMessage.Replace("'", "\\'") + "')", true);
                             }
                         }//
-                        else  if (lblType.Text != "Lift" && lblType.Text != "Escalator" && lblType.Text != "Lift/Escalator" && lblType.Text != "MultiLift" && lblType.Text != "MultiEscalator")
+                        else if (lblType.Text != "Lift" && lblType.Text != "Escalator" && lblType.Text != "Lift/Escalator" && lblType.Text != "MultiLift" && lblType.Text != "MultiEscalator")
                         {
                             Response.Redirect("/Print_Forms/PeriodicApprovalCertificate.aspx", false);
                         }

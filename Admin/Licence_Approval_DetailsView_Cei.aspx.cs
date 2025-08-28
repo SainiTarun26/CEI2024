@@ -14,6 +14,8 @@ namespace CEIHaryana.Admin
 {
     public partial class Licence_Approval_DetailsView_Cei : System.Web.UI.Page
     {
+
+        //page created by aslam
         CEI CEI = new CEI();
         protected void Page_Load(object sender, EventArgs e)
         {

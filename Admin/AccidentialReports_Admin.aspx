@@ -148,6 +148,10 @@
                     <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                     <ItemStyle HorizontalAlign="center" Width="15%"  />
                 </asp:BoundField>
+                <asp:BoundField DataField="DateOfSubmission" HeaderText="DateOfSubmission">
+                    <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                    <ItemStyle HorizontalAlign="center" Width="15%"  />
+                </asp:BoundField>
             </Columns>
             <FooterStyle BackColor="White" ForeColor="#000066" />
             <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />

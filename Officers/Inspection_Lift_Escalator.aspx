@@ -164,6 +164,7 @@
         th.headercolor {
             background: #9292cc;
             color: white;
+            width:1% !important;
         }
 
         table#ContentPlaceHolder1_RadioButtonList2 {
@@ -175,36 +176,39 @@
             padding-right: 30px !important;
         }
 
-        .input-box {
-            display: flex;
-            align-items: center;
-            max-width: 300px;
-            background: #fff;
-            border: 1px solid #a0a0a0;
-            border-radius: 4px;
-            padding-left: 0.5rem;
-            overflow: hidden;
-            font-family: sans-serif;
-        }
+                .input-box {
+       display: flex;
+       align-items: center;
+       max-width: 300px;
+       background: #fff;
+       border: 1px solid #a0a0a0;
+       border-radius: 4px;
+       padding-left: 0.5rem;
+       overflow: hidden;
+       font-family: sans-serif;
+   }
 
-            .input-box .prefix {
-                font-weight: 300;
-                font-size: 14px;
-                color: black;
-            }
+       .input-box .prefix {
+           font-weight: 300;
+           font-size: 14px;
+           color: black;
+       }
 
-            .input-box input {
-                flex-grow: 1;
-                font-size: 14px;
-                background: #fff;
-                border: none;
-                outline: none;
-                padding: 0.5rem;
-            }
+       .input-box input {
+           flex-grow: 1;
+           font-size: 14px;
+           background: #fff;
+           border: none;
+           outline: none;
+           padding: 0.5rem;
+       }
 
-            .input-box:focus-within {
-                border-color: #777;
-            }
+       .input-box:focus-within {
+           border-color: #777;
+       }
+       th.headercolor.thwidth {
+    width: 7% !important;
+}
     </style>
 
     <script type="text/javascript">
@@ -236,25 +240,31 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="content-wrapper">
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-        <div class="card-body" style="background: white; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+        <div class="card-body" style="background:white;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
             <%-- <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
              <asp:UpdatePanel ID="UpdatePanel1" runat="server"></asp:UpdatePanel>--%>
             <div class="card-title" style="margin-bottom: 5px; font-size: 17px; margin-bottom: 20px; font-weight: 600; margin-left: -10px;">
                 Inspection/SiteOwner  Detail (<asp:Label ID="lblInspectionType" runat="server" Text="Label"></asp:Label>-<asp:Label ID="lblInstallation" runat="server" Text="Label"></asp:Label>)
             </div>
-            <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
+            <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
                 <div class="row">
                     <div class="col-md-4" runat="server">
                         <label>Inspection Application No</label>
                         <asp:TextBox class="form-control" ID="txtInspectionReportID" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                     <div class="col-md-4">
-                        <label>
-                            Type of Applicant
-                        </label>
-                        <asp:TextBox class="form-control" ID="txtApplicantType" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    <div class="col-md-4" id="individual" runat="server">
+                        <label>Owner Name</label>
+                        <asp:TextBox class="form-control" ID="txtSiteOwnerName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                   
+                     <div class="col-md-4" id="agency" runat="server" visible="false">
+                        <label for="agency">
+                            Name of Firm/ Org./ Company/ Department
+                        </label>
+                        <div class="input-box">
+                            <span class="prefix">M/s.</span>
+                            <asp:TextBox class="form-control" ID="txtagency" MaxLength="50" onkeydown="return preventEnterSubmit(event)" placeholder="As Per Demand Notice of Utility or Electricity Bill" autocomplete="off" runat="server" Style="margin-left: 18px;"></asp:TextBox>
+                        </div>
+                    </div>
 
                     <div class="col-md-4" runat="server" id="DivPancard_TanNo">
                         <label for="PanNumber">
@@ -265,36 +275,29 @@
 
                     <div class="col-md-4" runat="server" id="DivOtherDepartment" visible="false">
                         <label for="TanNumber">
-                            PAN/TAN Number
+                           PAN/TAN Number
                         </label>
                         <asp:TextBox class="form-control" ID="txtTanNumber" ReadOnly="true" TabIndex="1" MaxLength="10" onkeyup="convertToUpperCase(event)" AutoPostBack="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                     <div class="col-md-4" id="individual" runat="server">
-                        <label>Owner Name</label>
-                        <asp:TextBox class="form-control" ID="txtSiteOwnerName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                    </div>
-                    <div class="col-md-4" id="agency" runat="server" visible="false">
-                        <label for="agency">
-                            Name of Firm/ Org./ Company/ Department
+
+                    <div class="col-md-4" >
+                        <label>
+                            Type of Applicant
                         </label>
-                        <div class="input-box">
-                            <span class="prefix">M/s.</span>
-                            <asp:TextBox class="form-control" ID="txtagency" MaxLength="50" onkeydown="return preventEnterSubmit(event)" placeholder="As Per Demand Notice of Utility or Electricity Bill" autocomplete="off" runat="server" Style="margin-left: 18px;"></asp:TextBox>
-                        </div>
+                        <asp:TextBox class="form-control" ID="txtApplicantType" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                   
-                    <div class="col-md-4">
+                     <div class="col-md-4" >
                         <label>
                             Electrical Installation For
                         </label>
                         <asp:TextBox class="form-control" ID="txtelectrical" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                    <div class="col-md-4">
-                        <label>
-                            Contact Person Mobile No.
-                        </label>
-                        <asp:TextBox class="form-control" ID="txtContactNo" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                    </div>
+                                         <div class="col-md-4"  >
+    <label>
+       Contact No.
+    </label>
+    <asp:TextBox class="form-control" ID="txtContactNo" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+</div>
                     <div class="col-md-4" id="Installation" runat="server" visible="false">
                         <label>
                             Type of Installation
@@ -305,30 +308,19 @@
                         <label>Address</label>
                         <asp:TextBox class="form-control" ID="txtAddress" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                    <div class="col-md-4">
-                        <label>
-                            District
-                        </label>
-                        <asp:TextBox class="form-control" ID="txtDistrict" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                    </div>
-
-                    <div class="col-md-12" id="Usertype" visible="true" runat="server">
-                        <label>UserType</label>
-                        <asp:TextBox class="form-control" ID="txtUserType" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                    </div>
-                    <div class="col-md-4">
-                        <label>
-                            Contact Person Email
-                        </label>
-                        <asp:TextBox class="form-control" ID="txtEmail" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                    </div>
+                                         <div class="col-md-4"  >
+    <label>
+        District
+    </label>
+    <asp:TextBox class="form-control" ID="txtDistrict" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+</div>
                 </div>
             </div>
             <div id="TranscationDetails" runat="server">
                 <div class="card-title" style="margin-bottom: 5px; font-size: 17px; margin-top: 20px; font-weight: 600; margin-left: -10px; margin-bottom: 20px;">
                     Transaction Details
                 </div>
-                <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
+                <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
                     <div class="row">
                         <div class="col-md-4" runat="server">
                             <label>Transaction ID(GRN Number)</label>
@@ -350,37 +342,37 @@
                     Inspection Details
                 </div>
             </div>
-            <div class="card" style="margin: -11px; padding: 11px; padding: 10px 10px 0px 10px !important; margin-bottom: 20px; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;" id="TRAttachedGrid" runat="server" visible="true">
+            <div class="card" style="margin: -11px; padding: 11px;padding:10px 10px 0px 10px !important; margin-bottom: 20px;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;" id="TRAttachedGrid" runat="server" visible="true">
                 <div class="col-12" style="padding: 0px;">
                     <asp:GridView ID="GridView1" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowDataBound="GridView1_RowDataBound" OnRowCommand="grd_Documemnts_RowCommand" AutoGenerateColumns="false" AllowPaging="True" PageSize="10">
                         <HeaderStyle BackColor="#B7E2F0" />
                         <Columns>
                             <asp:TemplateField HeaderText="SNo">
-                                <HeaderStyle Width="5%" CssClass="headercolor" />
-                                <ItemStyle Width="5%" />
+                                <HeaderStyle CssClass="headercolor" />
+                                <ItemStyle />
                                 <ItemTemplate>
                                     <%#Container.DataItemIndex+1 %>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:BoundField DataField="InstallationType" HeaderText="Installation Type">
-                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" />
                             </asp:BoundField>
                             <asp:BoundField DataField="ActionTaken" HeaderText="ActionTaken">
-                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="ActionDate" HeaderText="ActionDate">
-                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                            <asp:BoundField DataField="ActionDate" HeaderText="ActionDate" >
+                                <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" />
                             </asp:BoundField>
                             <%--<asp:BoundField DataField="Status" HeaderText="Status">
                              <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                              <ItemStyle HorizontalAlign="Left" Width="15%" />
                          </asp:BoundField>--%>
-                            <asp:BoundField DataField="AssignTo" HeaderText="AssignTo">
-                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                            <asp:BoundField DataField="AssignTo" HeaderText="AssignTo" >
+                                <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" />
                             </asp:BoundField>
                             <%-- <asp:TemplateField HeaderText="View TestReports" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
                              <ItemTemplate>                                
@@ -401,10 +393,10 @@
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>--%>
                             <asp:BoundField DataField="Remarks" HeaderText="Remarks">
-                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                <HeaderStyle HorizontalAlign="Left" CssClass="headercolor thwidth" />
+                                <ItemStyle HorizontalAlign="Left" />
                             </asp:BoundField>
-                            <%--   <asp:BoundField DataField="TotalAmount" HeaderText="Fees Amount">
+                         <%--   <asp:BoundField DataField="TotalAmount" HeaderText="Fees Amount">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>--%>
@@ -431,7 +423,7 @@
                     Test Reports & Documents Attached in Test Reports
                 </div>
             </div>
-            <div class="card" style="margin: -11px; padding: 11px; padding: 10px 10px 0px 10px !important; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; margin-bottom: 20px;" id="DivViewTRinMultipleCaseNew" runat="server" visible="false">
+            <div class="card" style="margin: -11px; padding: 11px;padding:10px 10px 0px 10px !important;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; margin-bottom: 20px;" id="DivViewTRinMultipleCaseNew" runat="server" visible="false">
                 <div class="col-12" style="padding: 0px;">
                     <asp:GridView ID="Grid_MultipleInspectionTR" CssClass="table table-bordered table-striped table-responsive" OnRowDataBound="Grid_MultipleInspectionTR_RowDataBound" runat="server" AutoGenerateColumns="false">
                         <HeaderStyle BackColor="#B7E2F0" />
@@ -473,7 +465,7 @@
             <div class="card-title" style="margin-bottom: 5px; font-size: 17px; margin-bottom: 20px; font-weight: 600; margin-left: -10px;">
                 Documents Attached (In CheckList)
             </div>
-            <div class="card" style="margin: -11px; padding: 11px; padding: 10px 10px 0px 10px !important; margin-bottom: 20px; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
+            <div class="card" style="margin: -11px; padding: 11px;padding:10px 10px 0px 10px !important; margin-bottom: 20px;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
                 <div class="row">
                     <div class="col-md-12">
                         <asp:GridView ID="grd_Documemnts" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowCommand="grd_Documemnts_RowCommand" AutoGenerateColumns="false" AllowPaging="True" PageSize="10">

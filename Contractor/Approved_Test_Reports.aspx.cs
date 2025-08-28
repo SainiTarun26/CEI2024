@@ -120,11 +120,12 @@ namespace CEIHaryana.Contractor
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
 
+                Label lblTypeOf = (Label)e.Row.FindControl("lblTypeOf");
                 Label lblInspectionType = (Label)e.Row.FindControl("lblInspectionType");
                 LinkButton linkButton = (LinkButton)e.Row.FindControl("LnkInovoice");
                 LinkButton LinkButton3 = (LinkButton)e.Row.FindControl("lnkReport");
-                if (lblInspectionType.Text.Trim() != "New" || linkButton.CommandArgument.ToString() == null || linkButton.CommandArgument.ToString() == "" || LinkButton3.CommandArgument.ToString() == null)
-                {                  
+                if (lblInspectionType.Text.Trim() != "New" || lblTypeOf.Text.Trim() == "Line")
+                {
                     linkButton.Visible = false;
                     LinkButton3.Visible = false;
                 }

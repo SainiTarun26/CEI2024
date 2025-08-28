@@ -18,7 +18,7 @@ namespace CEIHaryana.Industry_Master
     {
         CEI CEI = new CEI();
         IndustryApiLogDetails logDetails = new IndustryApiLogDetails();
-        //string id = string.Empty;https://localhost:44393/Contractor/Work_Intimation.aspx.cs
+        //string id = string.Empty;https://ceiharyana.comContractor/Work_Intimation.aspx.cs
         string fileExtension = string.Empty;
         string fileExtension2 = string.Empty;
         string fileExtension3 = string.Empty;

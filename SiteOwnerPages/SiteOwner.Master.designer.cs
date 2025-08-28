@@ -69,22 +69,13 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.WebControls.Button btnLogout;
 
         /// <summary>
-        /// SelfCertification control.
+        /// Cinema_Sidebar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SelfCertification;
-
-        /// <summary>
-        /// SelfStatus control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl SelfStatus;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Cinema_Sidebar;
 
         /// <summary>
         /// powerutilitySiteowner1 control.
@@ -103,15 +94,6 @@ namespace CEIHaryana.SiteOwnerPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl powerutilitySiteowner2;
-
-        /// <summary>
-        /// Cinema_Sidebar control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Cinema_Sidebar;
 
         /// <summary>
         /// DisconnectionRequest control.

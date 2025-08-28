@@ -21,7 +21,7 @@ namespace CEIHaryana.SiteOwnerPages
     public partial class GenerateInspection : System.Web.UI.Page
     {
         CEI CEI = new CEI();
-        //string id = string.Empty;https://localhost:44393/Contractor/Work_Intimation.aspx.cs
+        //string id = string.Empty;https://ceiharyana.comContractor/Work_Intimation.aspx.cs
         string fileExtension = string.Empty;
         string fileExtension2 = string.Empty;
         string fileExtension3 = string.Empty;
@@ -1073,7 +1073,8 @@ namespace CEIHaryana.SiteOwnerPages
                         else if (StaffAssignedCount == "4")
                         {
                             StaffAssigned = "CEI";
-                            ServiceType = 1;
+                            //ServiceType = 1; COMMENTED CHnaged on the instructions of sunil sir
+                            ServiceType = 5;
                         }
                         else
                         {

@@ -34,7 +34,6 @@ namespace CEIHaryana
                 }
                 else
                 {
-
                     #region Kalpana Restrict user login
                     bool expired = cei.IsUserExpired(txtUserID.Text, txtPassword.Text);
 
@@ -67,7 +66,6 @@ namespace CEIHaryana
                     else
                     {
                         #endregion
-                        // Proceed with login
                         int check = Convert.ToInt32(cei.checkUserLogin(txtUserID.Text, txtPassword.Text));
                         string Status = cei.Status();
                         if (check != 0)
@@ -77,24 +75,20 @@ namespace CEIHaryana
                             {
                                 if (txtPassword.Text != "123456")
                                 {
-                                    if (chkSignedin.Checked == true)
-                                    {
+                                    //if (txtUserID.Text.ToLower().Trim() == "cei")
+                                    //{
+                                    //    Session["Role"] = "Admin";
+                                    //    Session["StaffID"] = txtUserID.Text;
+                                    //    Response.Redirect("OfficerVerification/OTP.aspx", false);
+                                    //}
+                                    //else
+                                    //{
                                         Session["AdminID"] = txtUserID.Text;
                                         Session["logintype"] = "Admin";
                                         Response.Cookies["AdminID"].Value = txtUserID.Text;
                                         Response.Cookies["logintype"].Value = "Admin";
-                                        Response.Redirect("Admin/AdminMaster.aspx", false);
-
-                                    }
-                                    else
-                                    {
-                                        Session["AdminID"] = txtUserID.Text;
-                                        Session["logintype"] = "Admin";
-                                        Response.Cookies["AdminID"].Value = txtUserID.Text;
-                                        Response.Cookies["logintype"].Value = "Admin";
-                                        Response.Redirect("Admin/AdminMaster.aspx", false);
-
-                                    }
+                                        Response.Redirect("/Admin/AdminMaster.aspx", false);
+                                   // }
                                 }
                                 else
                                 {
@@ -302,31 +296,22 @@ namespace CEIHaryana
                             }
                             else if (check == 8)
                             {
-                                Session["StaffID"] = txtUserID.Text;
                                 if (txtPassword.Text != "123456")
                                 {
-                                    if (chkSignedin.Checked == true)
-                                    {
-                                        Session["StaffID"] = txtUserID.Text;
-                                        Session["logintype"] = "Staff";
-                                        Response.Cookies["StaffID"].Value = txtUserID.Text;
-                                        Response.Cookies["logintype"].Value = "Staff";
-                                        Response.Redirect("Officers/OfficerDashboard.aspx", false);
-                                    }
-                                    else
-                                    {
-                                        Session["StaffID"] = txtUserID.Text;
-                                        Session["logintype"] = "Staff";
-                                        Response.Cookies["StaffID"].Value = txtUserID.Text;
-                                        Response.Cookies["logintype"].Value = "Staff";
-                                        Response.Redirect("Officers/OfficerDashboard.aspx", false);
-                                    }
-                                    //for otp verification
+                                    //Session["Role"] = "Staff";
+                                    //Session["StaffID"] = txtUserID.Text;
                                     //Response.Redirect("OfficerVerification/OTP.aspx", false);
 
+                                    Session["StaffID"] = txtUserID.Text;
+                                    Session["logintype"] = "Staff";
+                                    Response.Cookies["StaffID"].Value = txtUserID.Text;
+                                    Response.Cookies["logintype"].Value = "Staff";
+
+                                    Response.Redirect("/Officers/OfficerDashboard.aspx", false);
                                 }
                                 else
                                 {
+                                    Session["StaffID"] = txtUserID.Text;
                                     Response.Redirect("/ChangePassword.aspx", false);
                                 }
                             }
@@ -439,7 +424,6 @@ namespace CEIHaryana
                                             {
                                                 Response.Redirect("/UserPages/Qualification.aspx", false);
                                             }
-
                                         }
                                         else if (ApplicationStatus.Trim() == "Mid")
                                         {
@@ -449,8 +433,9 @@ namespace CEIHaryana
                                         {
                                             Response.Redirect("/UserPages/New_Application_Status.aspx", false);
                                         }
-                                    }
+                                      
 
+                                    }
                                 }
                                 else
                                 {
@@ -458,6 +443,7 @@ namespace CEIHaryana
                                     Response.Redirect("/ChangePassword.aspx", false);
 
                                 }
+                                
                             }
                             //11 and 12 added by neeraj on 18-june-2025
                             else if (check == 11)
@@ -514,22 +500,19 @@ namespace CEIHaryana
                                     Response.Redirect("/ChangePassword.aspx", false);
                                 }
                             }
-                            //
-                        }
-                        else
-                        {
-                            Session["Username"] = null;
-                            txtUserID.Text = "";
-                            txtPassword.Text = "";
-                            WrongCredentials.Visible = true;
+                            else
+                            {
+                                Session["Username"] = null;
+                                txtUserID.Text = "";
+                                txtPassword.Text = "";
+                                WrongCredentials.Visible = true;
 
-                            Response.Write("<script> window.close(); localStorage.removeItem('activeSession'); sessionStorage.clear(); window.close();</script>");
-                            // string script = "alert(\"Your UserName or Password is Invalid.\");";
-                            // ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                                Response.Write("<script> window.close(); localStorage.removeItem('activeSession'); sessionStorage.clear(); window.close();</script>");
+                                // string script = "alert(\"Your UserName or Password is Invalid.\");";
+                                // ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
+                            }
                         }
                     }
-
-
                 }
             }
             catch (Exception ex)

@@ -727,7 +727,7 @@
                         </div>
                         <div class="col-md-4">
                             <label>
-                                Village /City / Town Address With<samp style="color: red">*</samp>
+                                Address along with village/city/town<samp style="color: red">*</samp>
                             </label>
                             <asp:TextBox class="form-control" ID="txtVillageCityTown" MaxLength="100" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtVillageCityTown" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>

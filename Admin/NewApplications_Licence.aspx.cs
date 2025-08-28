@@ -13,6 +13,7 @@ namespace CEIHaryana.Admin
 {
     public partial class NewApplications_Licence : System.Web.UI.Page
     {
+        //page created by aslam
         CEI cei = new CEI();
         protected void Page_Load(object sender, EventArgs e)
         {

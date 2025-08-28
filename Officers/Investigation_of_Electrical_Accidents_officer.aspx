@@ -907,7 +907,7 @@
 
                     <asp:Button ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" ValidationGroup="Submit" Class="btn btn-primary" Text="Submit" />
                     <div style="text-align:center; margin-top:20px;">
-    <asp:Button ID="btnPrint" runat="server" Text="Print" CssClass="btn btn-success" OnClientClick="printDiv('printdiv'); return false;" />
+   <%-- <asp:Button ID="btnPrint" runat="server" Text="Print" CssClass="btn btn-success" OnClientClick="printDiv('printdiv'); return false;" />--%>
 </div>
                 </div>
             </div>

@@ -103,8 +103,12 @@ namespace CEIHaryana.SiteOwner_Verification
                     if (fileName != "" && fileName != null)
                     {
                         CEI.UpdatePendingsignatureOfOwner(txtpan.Text.Trim(), fileName);
+                        Session["SiteOwnerId"] = txtpan.Text;
+                        Session["logintype"] = "SiteOwner";
+                        Response.Cookies["SiteOwnerId"].Value = txtpan.Text;
+                        Response.Cookies["logintype"].Value = "SiteOwner";
                         Reset();
-                        string script = "alert('Pan Number Updated Successfully'); window.location='/Login.aspx';";                        
+                        string script = "alert('Pan Number Updated Successfully'); window.location='/SiteOwnerPages/InspectionHistory.aspx';";                        
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
                     }
                 }
@@ -125,7 +129,7 @@ namespace CEIHaryana.SiteOwner_Verification
         protected void Reset()
         {
             txtpan.Text = "";
-            Session["SiteOwnerId"] = "";
+            //Session["SiteOwnerId"] = "";
             txtApplicanttype.Text = "";
             txtInstallationFor.Text = "";
             txtOwnerName.Text = "";

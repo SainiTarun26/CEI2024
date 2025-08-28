@@ -24,7 +24,6 @@ namespace CEIHaryana.SiteOwnerPages
                     if (Convert.ToString(Session["SiteOwnerId"]) != null && Convert.ToString(Session["SiteOwnerId"]) != string.Empty)
                     {
                         //string siteOwnerId = Session["SiteOwnerId"] as string;
-                        Session["IntimationId_Cinema"] = ""; //add by gurmeet to resolve backsubmit issue 04/07/2025
                         string ID = Session["InspectionId"] as string ?? Session["PrintInspectionID"] as string;
 
                         if (!string.IsNullOrEmpty(ID))

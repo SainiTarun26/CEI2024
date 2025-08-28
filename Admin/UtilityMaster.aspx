@@ -181,7 +181,7 @@
             padding: 9px !important;
         }
 
-      
+
         th {
             width: 1%;
         }
@@ -226,14 +226,15 @@
         .row {
             margin-bottom: 15px;
         }
-    table#GridView1{
-    margin-left: 1%;
-   width: 100% !important;
-}
-table#GridView1{
-    margin-top: 20px;
-     
-}
+
+        table#GridView1 {
+            margin-left: 1%;
+            width: 100% !important;
+        }
+
+        table#GridView1 {
+            margin-top: 20px;
+        }
     </style>
     <script type="text/javascript">
         function isNumberKey(evt) {
@@ -327,41 +328,41 @@ table#GridView1{
                 <div>
                 </div>
             </div>
-                    <div class="card-body" style="margin-left:20px;margin-right:20px; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-    <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%"
-        AutoGenerateColumns="false"  BorderWidth="1px" BorderColor="#dbddff">
-        <Columns>
-          
-            <asp:TemplateField HeaderText="SNo">
-                <HeaderStyle Width="5%" CssClass="headercolor" />
-                <ItemStyle Width="5%" />
-                <ItemTemplate>
-                    <%#Container.DataItemIndex+1 %>
-                </ItemTemplate>
-            </asp:TemplateField>
-          
-            <asp:BoundField DataField="Id" HeaderText="Utility Id">
-                <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor" />
-                <ItemStyle HorizontalAlign="center" Width="28%" />
-            </asp:BoundField>
-            <asp:BoundField DataField="UtilityName" HeaderText="Utility Name">
-                <HeaderStyle HorizontalAlign="center" Width="32%" CssClass="headercolor" />
-                <ItemStyle HorizontalAlign="center" Width="32%" />
-           </asp:BoundField>
-        </Columns>
-        <FooterStyle BackColor="White" ForeColor="#000066" />
-        <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
-        <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
-        <RowStyle ForeColor="#000066" />
-        <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-        <SortedAscendingCellStyle BackColor="#F1F1F1" />
-        <SortedAscendingHeaderStyle BackColor="#007DBB" />
-        <SortedDescendingCellStyle BackColor="#CAC9C9" />
-        <SortedDescendingHeaderStyle BackColor="#00547E" />
-    </asp:GridView>
-</div>
+            <div class="card-body" style="margin-left: 20px; margin-right: 20px; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%"
+                    AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff">
+                    <Columns>
+
+                        <asp:TemplateField HeaderText="SNo">
+                            <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
+                            <ItemStyle HorizontalAlign="center" />
+                            <ItemTemplate>
+                                <%#Container.DataItemIndex+1 %>
+                            </ItemTemplate>
+                        </asp:TemplateField>
+
+                        <asp:BoundField DataField="Id" HeaderText="Utility Id">
+                            <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
+                            <ItemStyle HorizontalAlign="center" />
+                        </asp:BoundField>
+                        <asp:BoundField DataField="UtilityName" HeaderText="Utility Name">
+                            <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
+                            <ItemStyle HorizontalAlign="center" />
+                        </asp:BoundField>
+                    </Columns>
+                    <FooterStyle BackColor="White" ForeColor="#000066" />
+                    <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                    <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                    <RowStyle ForeColor="#000066" />
+                    <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                    <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                    <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                    <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                    <SortedDescendingHeaderStyle BackColor="#00547E" />
+                </asp:GridView>
+            </div>
         </div>
-                       
+
     </div>
     <footer class="footer">
     </footer>

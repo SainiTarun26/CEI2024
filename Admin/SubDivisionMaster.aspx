@@ -241,6 +241,14 @@
         input#ContentPlaceHolder1_txtSearch {
             font-size: 13px !important;
         }
+
+        .table td, .jsgrid .jsgrid-table td {
+            font-size: 13PX !important;
+        }
+
+        .table th {
+            font-size: 13px;
+        }
     </style>
     <script type="text/javascript">
         function isNumberKey(evt) {
@@ -508,7 +516,7 @@
                         </div>
                         <div class="col-md-6">
                             <label>
-                                Phone N0.
+                                Phone No.
                                 <samp style="color: red">* </samp>
                             </label>
                             <asp:TextBox class="form-control" ID="txtPhone" TabIndex="8" onkeydown="return preventEnterSubmit(event)" onKeyPress="return isNumberKey(event);" onkeyup="return isvalidphoneno();" MaxLength="10" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
@@ -539,8 +547,8 @@
                             <Columns>
 
                                 <asp:TemplateField HeaderText="SNo">
-                                    <HeaderStyle Width="5%" CssClass="headercolor" />
-                                    <ItemStyle Width="5%" />
+                                    <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="center" />
                                     <ItemTemplate>
                                         <%#Container.DataItemIndex+1 %>
                                     </ItemTemplate>
@@ -551,48 +559,54 @@
                                     </ItemTemplate>
                                 </asp:TemplateField>
 
-                                <asp:BoundField DataField="UtilityId" HeaderText="Utility Id">
+                                <asp:BoundField DataField="UtilityId" HeaderText="Utility Id" Visible="false">
                                     <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
                                     <ItemStyle HorizontalAlign="center" />
                                 </asp:BoundField>
-                                <%--   <asp:BoundField DataField="UtilityName" HeaderText="Utility Name">
- <HeaderStyle HorizontalAlign="center"   CssClass="headercolor" />
- <ItemStyle HorizontalAlign="center"   />
-</asp:BoundField>--%>
-                                <asp:BoundField DataField="WingId" HeaderText="Wing Id">
+
+                                <asp:BoundField DataField="WingId" HeaderText="Wing Id" Visible="false">
                                     <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
                                     <ItemStyle HorizontalAlign="center" />
                                 </asp:BoundField>
-                                <%--          <asp:BoundField DataField="WingName" HeaderText="Wing Name">
- <HeaderStyle HorizontalAlign="center"   CssClass="headercolor" />
- <ItemStyle HorizontalAlign="center"   />
-</asp:BoundField>--%>
-                                <asp:BoundField DataField="ZoneId" HeaderText="Zone Id">
+
+                                <asp:BoundField DataField="ZoneId" HeaderText="Zone Id" Visible="false">
                                     <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
                                     <ItemStyle HorizontalAlign="center" />
                                 </asp:BoundField>
-                                <%--        <asp:BoundField DataField="ZoneName" HeaderText="Zone Name">
- <HeaderStyle HorizontalAlign="center"   CssClass="headercolor" />
- <ItemStyle HorizontalAlign="center"   />
-</asp:BoundField>--%>
-                                <asp:BoundField DataField="CircleId" HeaderText="Circle Id">
+
+                                <asp:BoundField DataField="CircleId" HeaderText="Circle Id" Visible="false">
                                     <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
                                     <ItemStyle HorizontalAlign="center" />
                                 </asp:BoundField>
-                                <%--     <asp:BoundField DataField="CircleName" HeaderText="Circle Name">
- <HeaderStyle HorizontalAlign="center"   CssClass="headercolor" />
- <ItemStyle HorizontalAlign="center"   />
-</asp:BoundField>--%>
-                                <asp:BoundField DataField="DivisionId" HeaderText="Division Id">
+
+                                <asp:BoundField DataField="DivisionId" HeaderText="Division Id" Visible="false">
                                     <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor" />
                                     <ItemStyle HorizontalAlign="center" Width="28%" />
                                 </asp:BoundField>
-                                <%-- <asp:BoundField DataField="DivisionName" HeaderText="Division Name">
-      <HeaderStyle HorizontalAlign="center"   CssClass="headercolor" />
-      <ItemStyle HorizontalAlign="center"   />
- </asp:BoundField>--%>
+
+                                <asp:BoundField DataField="UtilityName" HeaderText="Utility Name">
+                                    <HeaderStyle HorizontalAlign="center" CssClass="break-text-10" />
+                                    <ItemStyle HorizontalAlign="center" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="WingName" HeaderText="Wing Name">
+                                    <HeaderStyle HorizontalAlign="center" />
+                                    <ItemStyle HorizontalAlign="center" CssClass="break-text-10" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="ZoneName" HeaderText="Zone Name">
+                                    <HeaderStyle HorizontalAlign="center" />
+                                    <ItemStyle HorizontalAlign="center" CssClass="break-text-10" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="CircleName" HeaderText="Circle Name">
+                                    <HeaderStyle HorizontalAlign="center" />
+                                    <ItemStyle HorizontalAlign="center" CssClass="break-text-10" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="DivisionName" HeaderText="Division Name">
+                                    <HeaderStyle HorizontalAlign="center" />
+                                    <ItemStyle HorizontalAlign="center" CssClass="break-text-10" />
+                                </asp:BoundField>
+
                                 <asp:BoundField DataField="SubDivision" HeaderText="SubDivision Name">
-                                    <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
+                                    <HeaderStyle HorizontalAlign="center" CssClass="headercolor break-text-10" />
                                     <ItemStyle HorizontalAlign="center" CssClass="break-text-10" />
                                 </asp:BoundField>
                                 <asp:BoundField DataField="Email" HeaderText="Email">
@@ -604,8 +618,8 @@
                                     <ItemStyle HorizontalAlign="center" />
                                 </asp:BoundField>
                                 <asp:TemplateField HeaderText="Reset Password">
-                                    <HeaderStyle Width="5%" CssClass="headercolor" />
-                                    <ItemStyle Width="5%" HorizontalAlign="center" />
+                                    <HeaderStyle CssClass="headercolor break-text-10" />
+                                    <ItemStyle HorizontalAlign="center" />
                                     <ItemTemplate>
                                         <asp:LinkButton runat="server" ID="LnkResetButton" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;" Text="<i class='fa fa-refresh' style='color:white !important;'></i>" CssClass='greenButton btn-primary'
                                             CommandName="Reset" CommandArgument='<%# Eval("UserId") %>' OnClientClick='<%# "showUpdatePasswordModal(\"" + Eval("UserId") + "\", \"" + Eval("Email") + "\"); return false;" %>' />
@@ -696,8 +710,8 @@
                 // Set the UserId in the modal's input field
                 // $('#updatePasswordModal #txtUserId').val(userId); 
                 var email = '<%= hdnEmailId.ClientID %>';
-            $('#' + email).val(Email);
-            var txtUserIdClientID = '<%= txtUserId.ClientID %>';
+                $('#' + email).val(Email);
+                var txtUserIdClientID = '<%= txtUserId.ClientID %>';
                 $('#' + txtUserIdClientID).val(userId); // Set value using ClientID
                 // $('#txtUserId').value(userId);(userId);
                 // Show the modal
@@ -708,5 +722,37 @@
             function closeUpdatePasswordModal() {
                 $('#updatePasswordModal').modal('hide');
             }
+        </script>
+        <script type="text/javascript">
+            document.addEventListener("DOMContentLoaded", function () {
+                const elements = document.querySelectorAll('.break-text-10');
+
+                elements.forEach(function (element) {
+                    let text = element.innerText;
+                    let formattedText = '';
+                    let currentIndex = 0;
+
+                    while (currentIndex < text.length) {
+                        // Get a 30-character substring
+                        let chunk = text.slice(currentIndex, currentIndex + 20);
+
+                        // Find the nearest whitespace in this chunk
+                        let breakIndex = chunk.lastIndexOf(" ");
+
+                        // If a whitespace is found, break at that whitespace
+                        if (breakIndex !== -1) {
+                            formattedText += chunk.slice(0, breakIndex) + '<br>';
+                            currentIndex += breakIndex + 1; // Move past the whitespace
+                        } else {
+                            // If no whitespace is found, break at the 30-character limit
+                            formattedText += chunk + '<br>';
+                            currentIndex += 20;
+                        }
+                    }
+
+                    // Apply the formatted text with <br> to the element's innerHTML
+                    element.innerHTML = formattedText.trim(); // Remove any trailing <br>
+                });
+            });
         </script>
 </asp:Content>

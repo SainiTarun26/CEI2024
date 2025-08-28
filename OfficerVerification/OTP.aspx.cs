@@ -35,6 +35,14 @@ namespace CEIHaryana.OfficerVerification
           
             txtUserId.Text = Session["StaffID"].ToString();
             txtEmail.Text = CEI.getStaffEmal(txtUserId.Text.Trim());
+            if (Session["Role"].ToString().Trim() == "Staff")
+            {
+                txtCategory.Text = "Staff";
+            }
+            else
+            {
+                txtCategory.Text = "Admin";
+            }
             SENDEMAIL();
             Session["StaffID"] = "";
         }
@@ -47,12 +55,23 @@ namespace CEIHaryana.OfficerVerification
                 {
 
                     ScriptManager.RegisterStartupScript(this, GetType(), "alert", "alert('OTP VERIFIED SUCCESSFULLY!!!!');", true);
-                    Session["StaffID"] = txtUserId.Text;
-                    Session["logintype"] = "Staff";
-                    Response.Cookies["StaffID"].Value = txtUserId.Text;
-                    Response.Cookies["logintype"].Value = "Staff";
+                    if (Session["Role"].ToString().Trim() == "Staff")
+                    {
+                        Session["StaffID"] = txtUserId.Text;
+                        Session["logintype"] = "Staff";
+                        Response.Cookies["StaffID"].Value = txtUserId.Text;
+                        Response.Cookies["logintype"].Value = "Staff";
 
-                    Response.Redirect("/Officers/OfficerDashboard.aspx", false);
+                        Response.Redirect("/Officers/OfficerDashboard.aspx", false);
+                    }
+                    else
+                    {
+                        Session["AdminID"] = txtUserId.Text;
+                        Session["logintype"] = "Admin";
+                        Response.Cookies["AdminID"].Value = txtUserId.Text;
+                        Response.Cookies["logintype"].Value = "Admin";
+                        Response.Redirect("/Admin/AdminMaster.aspx", false);
+                    }
                 }
                 else
                 {

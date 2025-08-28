@@ -1369,7 +1369,6 @@ namespace CEIHaryana.Contractor
         }
         protected void Submit_Click(object sender, EventArgs e)
         {
-          
             using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
             {
                 SqlTransaction transaction = null;
@@ -1613,22 +1612,6 @@ namespace CEIHaryana.Contractor
                 }
             }
         }
-
-        #region Navneet Popup Functionality Created By Navneet 23-June-2025
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            if (ddlPremises.SelectedValue=="2")
-            {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "popup", "showWarningPopup();", true);
-                return;
-            }
-            else
-            {
-                Submit_Click(sender, e);
-            }
-        }
-        #endregion
-
         protected void ddlDistrict_SelectedIndexChanged(object sender, EventArgs e)
         {
             string selected = ddlDistrict.SelectedItem.Text.ToLower();

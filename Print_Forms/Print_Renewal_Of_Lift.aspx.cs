@@ -1,5 +1,4 @@
 ﻿using CEI_PRoject;
-using Org.BouncyCastle.Utilities;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -7,11 +6,10 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
 
 namespace CEIHaryana.Print_Forms
 {
-    public partial class Print_Renewal_Of_Lift : System.Web.UI.Page
+    public partial class Lift_Renewal_Approval_Certificate : System.Web.UI.Page
     {
         CEI CEI = new CEI();
         string InspectionId;
@@ -53,6 +51,7 @@ namespace CEIHaryana.Print_Forms
                     Response.Redirect("/SiteOwnerLogout.aspx");
                 }
             }
+
         }
         public void GetData()
         {
@@ -68,39 +67,63 @@ namespace CEIHaryana.Print_Forms
                     InspectionId = Session["InspectionId"].ToString();
 
                 }
+                lblInspectionid.Text = InspectionId;
                 ID = Session["LiftTestReportID"].ToString();
-                DataSet ds = new DataSet();
-                ds = CEI.GetRenewalLiftData(InspectionId, ID);
-                if (ds.Tables.Count > 0)
+                DataTable dt = new DataTable();
+                dt = CEI.GetLiftCertificateData(InspectionId, ID);
+                if (dt.Rows.Count > 0)
                 {
-                    lbltype.Text = ds.Tables[0].Rows[0]["InstallationType"].ToString();
-                    lbltype2.Text = ds.Tables[0].Rows[0]["InstallationType"].ToString();
-                    lblAddress1.Text = ds.Tables[0].Rows[0]["Header1"].ToString();
-                    lblAdress2.Text = ds.Tables[0].Rows[0]["Header2"].ToString();
-                    lblAdress3.Text = ds.Tables[0].Rows[0]["Header3"].ToString();
-                    lblInspectionId.Text = ds.Tables[0].Rows[0]["InspectionId"].ToString();
-                    if (string.IsNullOrEmpty(ds.Tables[0].Rows[0]["Header4"].ToString()))
+                    lblAddress1.Text = dt.Rows[0]["Header1"].ToString();
+                    lblAdress2.Text = dt.Rows[0]["Header2"].ToString();
+                    lblAdress3.Text = dt.Rows[0]["Header3"].ToString();
+                    if (string.IsNullOrEmpty(dt.Rows[0]["Header4"].ToString()))
                     {
                         lblEmail.Visible = false;
                     }
                     else
                     {
                         lblEmail.Visible = true;
-                        lblEmail.Text = ds.Tables[0].Rows[0]["Header4"].ToString();
+                        lblEmail.Text = dt.Rows[0]["Header4"].ToString();
                     }
-                    lblRegistrationNo.Text = ds.Tables[0].Rows[0]["RegistrationNo"].ToString();
-                    lblMemoNo.Text = ds.Tables[0].Rows[0]["MemoNo"].ToString();
-                    lblApprovedDate.Text = ds.Tables[0].Rows[0]["InspectionCreatedDate"].ToString();
-                    ImgSignature2.ImageUrl = "data:image/jpeg;base64," + Convert.ToBase64String((byte[])ds.Tables[0].Rows[0]["Signature"]);
-                    lblstamp1.Text = ds.Tables[0].Rows[0]["Stamp1"].ToString();
-                    lblstamp2.Text = ds.Tables[0].Rows[0]["Stamp2"].ToString();
-                    lblstamp3.Text = ds.Tables[0].Rows[0]["Stamp3"].ToString();
-                    //lblApprovedDate.Text = DateTime.Parse(createdDate1).ToString("dd/MM/yyyy");
+                    lblRegNo.Text = dt.Rows[0]["RegistrationNo"].ToString();
+                    lblCompanyName.Text = dt.Rows[0]["Maker"].ToString();
+                    lblAddress.Text = dt.Rows[0]["SiteAddress"].ToString();
+                    DateTime createdDate1 = Convert.ToDateTime(dt.Rows[0]["ApprovedDate"]);
+                    lblInspectionDate.Text = createdDate1.ToString("dd/MM/yyyy");
+                    lblOwnerName.Text = dt.Rows[0]["OwnerName"].ToString();
+                    lblMakerName.Text = dt.Rows[0]["Maker"].ToString();
+                    lblSrNo.Text = dt.Rows[0]["RegistrationSrNo"].ToString();
+                    lblTypeOflift.Text = dt.Rows[0]["TypeOfLift"].ToString();
+                    lblDistrict.Text = dt.Rows[0]["District"].ToString().Trim().ToUpper();
+                    lblTypeControl.Text = dt.Rows[0]["TypeOfControl"].ToString();
+                    lblCapacity.Text = dt.Rows[0]["Capacity"].ToString();
+                    lblMemoNo.Text = dt.Rows[0]["MemoNo"].ToString();
+                    DateTime ErectedDate = Convert.ToDateTime(dt.Rows[0]["ErectionDate"]);
+                    lblErectionDate.Text = ErectedDate.ToString("dd/MM/yyyy");
+                    DateTime createdDate = Convert.ToDateTime(dt.Rows[0]["CreatedDate"]);
+                    lblDated.Text = createdDate.ToString("dd/MM/yyyy");
+                    string dp_Id6 = dt.Rows[0]["TypeOfInspection"].ToString();
+                   
+                        myImage.Visible = false;
+                   
+                        txtSD.Visible = true;
 
-
+                    
+                    myImage.ImageUrl = "data:image/jpeg;base64," + Convert.ToBase64String((byte[])dt.Rows[0]["Signature"]);
+                    lblstamp1.Text = dt.Rows[0]["Stamp1"].ToString();
+                    lblstamp2.Text = dt.Rows[0]["Stamp2"].ToString();
+                    if (string.IsNullOrEmpty(dt.Rows[0]["Stamp3"].ToString()))
+                    {
+                        lblstamp3.Visible = false;
+                    }
+                    else
+                    {
+                        lblstamp3.Visible = true;
+                        lblstamp3.Text = dt.Rows[0]["Stamp3"].ToString();
+                    }
                 }
 
-                GridBind(InspectionId, ID);
+                GridBind();
 
                 string script = "<script type=\"text/javascript\">printDiv('printableDiv');</script>";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "PrintOnLoad", script, false);
@@ -114,33 +137,33 @@ namespace CEIHaryana.Print_Forms
             }
 
         }
-        protected void GridBind(string InspectionId, string ID)
+        protected void GridBind()
         {
             try
             {
                 ID = Session["LiftTestReportID"].ToString();
                 DataSet ds = new DataSet();
-                ds = CEI.GetRenewalLiftData(InspectionId, ID);
-
-                if (ds.Tables.Count > 1 && ds.Tables[1].Rows.Count > 0)
+                ds = CEI.getDataforLift(ID);
+                if (ds.Tables.Count > 0)
                 {
-                    Gridview1.DataSource = ds.Tables[1];  // ✅ Bind to 2nd table
+                    Gridview1.DataSource = ds;
                     Gridview1.DataBind();
                 }
                 else
                 {
                     Gridview1.DataSource = null;
                     Gridview1.DataBind();
-                }
 
+                }
                 ds.Dispose();
             }
             catch (Exception ex)
             {
-                // Optional: Log or display error
-                Response.Write("Error: " + ex.Message);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+                return;
             }
         }
+
 
         protected void Gridview1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
@@ -189,5 +212,7 @@ namespace CEIHaryana.Print_Forms
                 System.Diagnostics.Debug.WriteLine("Error in GridView1_RowDataBound: " + ex.ToString());
             }
         }
+
+
     }
 }

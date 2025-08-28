@@ -941,7 +941,7 @@
                                                         <label for="Gender">
                                                             Category  
                                                         </label>
-                                                        <asp:TextBox ReadOnly="true" class="form-control" ID="txtCategory" Text="Staff" autocomplete="off" runat="server" MaxLength="50" TabIndex="17" Style="width: 100%;"> </asp:TextBox>
+                                                        <asp:TextBox ReadOnly="true" class="form-control" ID="txtCategory" autocomplete="off" runat="server" MaxLength="50" TabIndex="17" Style="width: 100%;"> </asp:TextBox>
                                                     </div>
 
                                                 </div>

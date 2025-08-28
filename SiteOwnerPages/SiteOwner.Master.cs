@@ -22,6 +22,8 @@ namespace CEIHaryana.SiteOwnerPages
                 if (Convert.ToString(Session["SiteOwnerId"]) != null && Convert.ToString(Session["SiteOwnerId"]) != string.Empty && Request.Cookies["SiteOwnerId"] != null)
                 {
                     GetContractorNotifications();
+
+
                     if (Request.Cookies["SiteOwnerId"] != null)
                     {
                         DataSet ds = new DataSet();
@@ -30,12 +32,9 @@ namespace CEIHaryana.SiteOwnerPages
                         {
                             powerutilitySiteowner1.Visible = true;
                             powerutilitySiteowner2.Visible = true;
-                            SelfCertification.Visible = false;
-                            SelfStatus.Visible = false;
                             //Added by  neeraj 29-May-2025
                             DisconnectionRequest.Visible = true;
                             DisconnectionStatus.Visible = true;
-                            //Added by gurmeet 29-May-2025
                             Cinema_Sidebar.Visible = false;
                         }
                         lblName.Text = Request.Cookies["SiteOwnerId"].Value;
@@ -48,16 +47,14 @@ namespace CEIHaryana.SiteOwnerPages
                         {
                             powerutilitySiteowner1.Visible = true;
                             powerutilitySiteowner2.Visible = true;
-                            SelfCertification.Visible = false;
-                            SelfStatus.Visible = false;
-                            //Added by neeraj 29-May-2025
+                            //Added by  neeraj 29-May-2025
                             DisconnectionRequest.Visible = true;
                             DisconnectionStatus.Visible = true;
-                            //Added by gurmeet 29-May-2025
                             Cinema_Sidebar.Visible = false;
                         }
                         lblName.Text = Convert.ToString(Session["SiteOwnerId"]);
                     }
+
 
                 }
                 else if (Session["SiteOwnerId"] == null)

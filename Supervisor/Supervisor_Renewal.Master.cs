@@ -10,6 +10,7 @@ namespace CEIHaryana.Supervisor
 {
     public partial class Supervisor_Renewal : System.Web.UI.MasterPage
     {
+        //page created by kalpan
         CEI CEI = new CEI();
         protected void Page_Load(object sender, EventArgs e)
         {

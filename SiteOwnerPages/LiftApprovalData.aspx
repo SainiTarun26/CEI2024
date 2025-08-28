@@ -209,6 +209,7 @@
                                     <asp:Label ID="lblID" runat="server" Text='<%#Eval("Lift_Escelator_Id") %>'></asp:Label>
                                     <asp:Label ID="lblInstallationType" runat="server" Text='<%#Eval("InstallationType") %>'></asp:Label>
                                     <asp:Label ID="lblInspectionType" runat="server" Text='<%#Eval("TypeOfInspection") %>'></asp:Label>
+
                                     <asp:Label ID="lblRegistrationNo" runat="server" Text='<%#Eval("RegistrationNo") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>

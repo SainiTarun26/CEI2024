@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Print_Renewal_Of_Lift.aspx.cs" Inherits="CEIHaryana.Print_Forms.Print_Renewal_Of_Lift" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Print_Renewal_Of_Lift.aspx.cs" Inherits="CEIHaryana.Print_Forms.Lift_Renewal_Approval_Certificate" %>
 
 <!DOCTYPE html>
 
@@ -46,8 +46,7 @@
             min-height: 100vh;
             margin: 0px;
             border: solid 1px black;
-            PADDING: 8PX;
-            border-radius: 5px;
+            PADDING: 10PX;
         }
 
         input#txtInstallationType {
@@ -88,7 +87,7 @@
             color: #010101;
             margin-bottom: 1.2rem;
             text-transform: capitalize;
-            font-size: 18PX;
+             font-size: 18PX;
             font-weight: 600;
         }
 
@@ -106,7 +105,7 @@
         }
 
         li {
-            font-size: 18PX;
+             font-size: 20PX;
         }
 
         .col-2 {
@@ -121,7 +120,7 @@
 
         input {
             border: none;
-            font-size: 18PX;
+             font-size: 18PX;
         }
 
         hr {
@@ -141,7 +140,6 @@
 
         span {
             font-size: 18px !important;
-            font-weight: bold;
         }
 
         table.table {
@@ -149,13 +147,13 @@
         }
 
         span#txtSD {
-            font-size: 45px !important;
-            padding-right: 150px;
+            font-size: 35px !important;
+            padding-right: 70px;
         }
-
+/*
         .p1 {
             font-family: 'Cedarville Cursive', cursive;
-        }
+        }*/
 
         th {
             width: 1% !important;
@@ -167,27 +165,17 @@
             font-size: 18px;
             /*  text-align: center;*/
         }
-
         td {
-            padding-top: 4px !important;
-            padding-bottom: 3px !important;
-        }
-
-        .page-break {
-            page-break-before: always; /* Forces new page when printing */
-        }
-
+    padding-top: 4px !important;
+    padding-bottom: 3px !important;
+}
         @media print {
-            .no-print {
-                display: none;
-            }
-        }
-
-        li {
-            line-height: 2;
-        }
+    .print-new-page {
+        page-break-before: always;
+    }
+}
     </style>
-
+   
     <script type="text/javascript">
         function printDiv(printableDiv) {
             var printContents = document.getElementById(printableDiv).innerHTML;
@@ -240,69 +228,192 @@
                 <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
                     <div class="col-12" style="text-align: end; margin-top: auto; margin-bottom: auto;">
                         <asp:Button ID="btnPrint" Text="Print" runat="server" class="btn btn-primary mr-2"
-                            Style="margin-top: 5px; margin-bottom: -40px; font-size: 18PX; padding-left: 25px; padding-right: 25px; position: fixed; margin-left: -100px; z-index: 50;" OnClientClick="printDiv('printableDiv');" />
+                            Style="margin-top: 5px; margin-bottom: -40px;  font-size: 18PX; padding-left: 25px; padding-right: 25px; position: fixed; margin-left: -100px; z-index: 50;" OnClientClick="printDiv('printableDiv');" />
                     </div>
                     <div class="col-12" style="text-align: initial; margin-top: auto; margin-bottom: auto;">
                         <asp:Button ID="btnBack" Text="Back" runat="server" class="btn btn-primary mr-2"
-                            Style="margin-top: 5px; margin-bottom: -40px; font-size: 18PX; padding-left: 25px; padding-right: 25px; position: fixed; z-index: 50;" />
+                            Style="margin-top: 5px; margin-bottom: -40px;  font-size: 18PX; padding-left: 25px; padding-right: 25px; position: fixed; z-index: 50;" />
                     </div>
                     <div class="card-body">
                         <div id="printableDiv">
+                                               
                             <div class="row" style="margin-bottom: 15PX;">
                                 <%-- <div class="col-1" style="margin-top: auto; margin-bottom: auto;">
                                     <img src="../Assets/haryana.png" height="110" width="auto" />
                                 </div>--%>
-                                <div class="col-sm-12" style="text-align: center; padding-top: 8px; padding-bottom: 8px; border-radius: 10px;">
-                                    <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 18PX;">Office of the                                        
-                                    </h6>
-                                    <asp:Label ID="lblAddress1" runat="server" Text="Chief Electrical Inspector to Govt., Haryana" Style="font-weight: 700; margin-bottom: 0px !important; font-size: 24PX; text-align: center;"></asp:Label><br />
-                                    <asp:Label ID="lblAdress2" runat="server" Text="SCO 117-118, Sector-17-B, Chandigarh (E-mail: cei_goh@yahoo.com" Style="font-weight: 700; margin-bottom: 0px !important; font-size: 24PX; text-align: center;"></asp:Label><br />
-                                    <asp:Label ID="lblAdress3" runat="server" Text="Telephone No. 0172-2704090, Fax No. 0172-2710171
-"
-                                        Style="font-weight: 700; margin-bottom: 0px !important; font-size: 24PX; text-align: center;"></asp:Label><br />
-                                    <asp:Label ID="lblEmail" runat="server" Visible="true" Text="Website: www.ceiharyana.in " Style="font-weight: 700; margin-bottom: 0px !important; font-size: 24PX; text-align: center;"></asp:Label><br />
-                                </div>
+                               <div class="col-sm-12" style="position: relative; padding: 8px; border-radius: 10px;">
+    <!-- Logo on left -->
+     <div style="position: absolute; left: 5%; top: 50%; transform: translateY(-50%);text-align:center;">
+        <img src="../Image/Image/Emblem_of_Haryana.svg.png" alt="Govt. of Haryana Logo" style="height: 120px;" />
+    </div>
+
+    <!-- Center Text -->
+    <div style="text-align: center;">
+        <h6 style="font-weight: 700; margin-bottom: 0; font-size: 18px;">
+            Office of the
+        </h6>
+        <asp:Label ID="lblAddress1" runat="server" 
+            Text="Chief Electrical Inspector to Govt., Haryana" 
+            Style="font-weight: 700; font-size: 24px;">
+        </asp:Label><br />
+        <asp:Label ID="lblAdress2" runat="server" 
+            Text="SCO 117-118, Sector-17-B, Chandigarh (E-mail: cei_goh@yahoo.com)" 
+            Style="font-weight: 700; font-size: 24px;">
+        </asp:Label><br />
+        <asp:Label ID="lblAdress3" runat="server" 
+            Text="Telephone No. 0172-2704090, Fax No. 0172-2710171"
+            Style="font-weight: 700; font-size: 24px;">
+        </asp:Label><br />
+        <asp:Label ID="lblEmail" runat="server" 
+            Text="Website: www.ceiharyana.in" 
+            Style="font-weight: 700; font-size: 24px;">
+        </asp:Label><br />
+    </div>
+</div>
+
+
+
+
                             </div>
                             <hr />
-                            <br />
-                            <br />
-                            <div class="row">
-                                <div class="col-12">
-                                    <p style="text-align: center; font-size: 22px; font-weight: bold;">
-                                        Renewal Of  <asp:Label ID="lbltype" style="font-size: 22px!important" runat="server" ></asp:Label>
-                                    <br /> (Registration No.
-                                        <asp:Label ID="lblRegistrationNo" runat="server" Text="Label" Style="font-size: 22px !important; text-decoration: underline;"></asp:Label>)
-                                    </p>
+                            <div class="row" style="margin-bottom: 15PX;">
+                                <div class="col-sm-12" style="text-align: center; padding-top: 8px; padding-bottom: 8px; border-radius: 10px;">
+                                    <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;  font-size: 18PX; text-align: center;">FORM D
+                                    </h6>
+                                    <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;  font-size: 18PX; text-align: center;">[See rule 4 (2)]
+                                    </h6>
+                                    <h6 runat="server" id="txtLift" class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;  font-size: 18PX; text-align: center; text-decoration: underline;">Registration of Lift
+                                    </h6>
+                                    <%--   <h6 runat="server" id="txtEscalator"  class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;  font-size: 18PX; text-align: center; text-decoration: underline;">Registration of Escalator--%>
+                                    </h6>
                                 </div>
                             </div>
+                            <div class="row">
+    <div class="col-12">
+        <p>
+           In reference to your online application no. ( <b><asp:Label ID="lblInspectionid" runat="server"></asp:Label> </b>)
+            </p>
+    </div>
+</div>
                             <div class="row">
                                 <div class="col-12">
                                     <p>
-                                        In continuation to this office Memo No. "<asp:Label ID="lblMemoNo" runat="server" Text="Label"></asp:Label>" and your Online Application No "<asp:Label ID="lblInspectionId" runat="server" Text="Label"></asp:Label>"Dated "<asp:Label ID="lblApprovedDate" runat="server" Text="Label"></asp:Label>".
+                                        (<b>This</b> registration is not transferable or assignable to any person, company, body of individuals or firm.
+                                        This registration is to be <b style="text-decoration: underline;">renewed annually</b> and must be produced to the Registering Authority when Called for).
                                     </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <p style="text-decoration: underline;"><b>Registration No. :&nbsp;<asp:Label ID="lblRegNo" runat="server"></asp:Label></b></p>
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col-12">
                                     <p>
-                                        (This registration is not transferable or assignable to any person, company, body of individuals or firm. This registration is to be renewed annually and must be produced to the Registering Authority when called for. For all future correspondence this registration number shall be invariably mentioned)"
+                                        Under sub-section (2) of section 4 of the Haryana  Lifts and Escalators Act, 2009 (27 of 2009) through
+                                        <asp:Label ID="lblCompanyName" Style="font-weight: bold;" runat="server" Text="M/s"></asp:Label>
+                                        is/are hereby registered to work or cause to be worked or allow the working of the lift erected and inspected on &nbsp;<asp:Label ID="lblInspectionDate" Style="font-weight: bold;" runat="server"></asp:Label>
+                                        at the premises of 
+                                        <asp:Label Style="font-weight: bold;" ID="lblOwnerName" runat="server"></asp:Label>
+                                        at
+                                        <asp:Label Style="font-weight: bold;" ID="lblAddress" runat="server"></asp:Label>, &nbsp;<asp:Label Style="font-weight: bold;" ID="lblDistrict" runat="server"></asp:Label>
+                                        subject to the provisions of the Haryana Lift and Escalators Rules, 2009. The particulars of lift which are given below:-
                                     </p>
                                 </div>
                             </div>
-
+                            <div class="row" style="margin-bottom: 15PX;">
+                                <div class="col-sm-12" style="text-align: center; padding-top: 8px; padding-bottom: 8px; border-radius: 10px;">
+                                    <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;  font-size: 18PX; text-align: center; text-decoration: underline;">PARTICULARS
+                                    </h6>
+                                </div>
+                            </div>
                             <div class="row">
-                                <div class="col-12">
-                                    <p>
-                                        Details of <asp:Label ID="lbltype2" runat="server" ></asp:Label> renewal are displayed below:
+                                <div class="col-md-12">
+                                    <table class="table">
+                                        <%-- <tr>
+            <th>Particulars</th>
+            <th>Details</th>
+        </tr>--%>
+                                        <tr>
+                                            <td class="tableid textbold">(i)</td>
+                                            <td>Make of Lift and Serial Number</td>
+                                            <td class="textbold">:-</td>
+                                            <td class="textbold">
+                                                <asp:Label ID="lblMakerName" runat="server"></asp:Label></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableid"></td>
+                                            <td class="textbold" style="text-align: end;">Sr. No.</td>
+                                            <td class="textbold">:-</td>
+                                            <td class="textbold">
+                                                <asp:Label ID="lblSrNo" runat="server"></asp:Label></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableid textbold">(ii)</td>
+                                            <td>Type of Lift</td>
+                                            <td class="textbold">:-</td>
+                                            <td class="textbold">
+                                                <asp:Label ID="lblTypeOflift" runat="server"></asp:Label></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableid textbold">(iii)</td>
+                                            <td>Type of Control</td>
+                                            <td class="textbold">:-</td>
+                                            <td class="textbold">
+                                                <asp:Label ID="lblTypeControl" runat="server"></asp:Label></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="tableid textbold">(iv)</td>
+                                            <td>Capacity</td>
+                                            <td class="textbold">:-</td>
+                                            <td class="textbold">
+                                                <asp:Label ID="lblCapacity" runat="server" Text="Label"></asp:Label></td>
+                                        </tr>
+                                        <tr style="border-bottom: 1px solid #dee2e6;">
+                                            <td class="tableid textbold">(iv)</td>
+                                            <td>Date of Erection</td>
+                                            <td class="textbold">:-</td>
+                                            <td class="textbold">
+                                                <asp:Label ID="lblErectionDate" runat="server" Text="Label"></asp:Label></td>
+                                        </tr>
+                                    </table>
 
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12" style="font-weight: bold;">
+                                    <asp:Label ID="lblMemoNoText" runat="server" Text="Memo No:-"></asp:Label>&nbsp;<asp:Label ID="lblMemoNo" runat="server"></asp:Label>
+                                </div>
+                                <div class="col-md-12" style="font-weight: bold;">
+                                    <asp:Label runat="server" Text="Memo Date:-"></asp:Label>&nbsp;<asp:Label ID="lblDated" runat="server"></asp:Label>
+                                </div>
+                            </div>
+                            <div class="row" style="padding-right: 5px !important;">
+                                <div class="col-12" style="text-align: end;padding-right:100px !important; padding-left: 10px; margin-top: -60px;">
+                                    
+                                        <asp:Label class="p1" ID="txtSD" runat="server" Text="-sd-"></asp:Label><br />
+                                    <%-- <img src="../Assets/Line_Through_Name-removebg-preview.png" width="300" height="90" style="position: fixed; bottom: 140px; margin-left: -300px;" />--%>
+                                    <asp:Image ID="myImage" runat="server" Width="200" Height="60" Style="bottom: 140px; margin-left: -300px;" />
+                                </div>
+                                <div class="col-7">
+                                </div>
+                                <div class="col-5" style="margin-left: 60%;">
+                                    <p style="text-align: center; font-weight: bold; bottom: 10PX;">
+                                        <asp:Label ID="lblstamp1" runat="server"></asp:Label><br />
+                                        <asp:Label ID="lblstamp2" runat="server"></asp:Label><br />
+                                        <asp:Label ID="lblstamp3" runat="server"></asp:Label><br />
                                     </p>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-12">
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
 
-                                    <asp:GridView ID="Gridview1" CssClass="table table-bordered table-striped table-responsive" runat="server" AutoGenerateColumns="false" OnRowDataBound="Gridview1_RowDataBound">
+
+                                    <asp:GridView ID="Gridview1" CssClass="table table-bordered table-striped table-responsive" runat="server" AutoGenerateColumns="false" AllowPaging="True" PageSize="10">  <%--OnRowDataBound="Gridview1_RowDataBound"--%>
                                         <HeaderStyle BackColor="#B7E2F0" />
                                         <Columns>
                                             <asp:TemplateField HeaderText="Id" Visible="False">
@@ -311,12 +422,18 @@
 
                                                 </ItemTemplate>
                                             </asp:TemplateField>
-
+                                            <%--  <asp:TemplateField HeaderText="S.No.">
+            <HeaderStyle Width="5%" CssClass="headercolor" />
+            <ItemStyle Width="5%" />
+            <ItemTemplate>
+                <%#Container.DataItemIndex+1 %>
+            </ItemTemplate>
+        </asp:TemplateField>--%>
                                             <asp:TemplateField HeaderText="Renewal Date">
                                                 <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" CssClass="headercolor" />
                                                 <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" CssClass="itemcenter" />
                                                 <HeaderTemplate>
-                                                    Date of Renewal
+                                                    Renewal Date
                                                 </HeaderTemplate>
                                                 <ItemTemplate>
                                                     <div style="display: flex; align-items: center !important; justify-content: center !important; width: 100% !important; height: 100%; text-align: center !important;">
@@ -325,10 +442,14 @@
                                                     </div>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
-                                            <asp:BoundField DataField="ExpiryDate" HeaderText="Date of Expiry">
+
+
+
+                                            <asp:BoundField DataField="ExpiryDate" HeaderText="Expiry Date">
                                                 <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
                                                 <ItemStyle HorizontalAlign="center" />
                                             </asp:BoundField>
+                                            
                                             <asp:TemplateField HeaderText="Signature">
                                                 <ItemTemplate>
                                                     <div style="display: flex; align-items: center !important; justify-content: center !important; width: 100% !important; height: 30%; text-align: center !important;">
@@ -336,63 +457,132 @@
                                                             ImageUrl='<%# Eval("Signature") != DBNull.Value && Eval("Signature") != null 
                            ? "data:image/jpeg;base64," + Convert.ToBase64String((byte[])Eval("Signature")) 
                            : "" %>'
-                                                            Visible='<%# Eval("Signature") != DBNull.Value && Eval("Signature") != null %>' Width="150px" Height="50px" />
+                                                            Visible='<%# Eval("Signature") != DBNull.Value && Eval("Signature") != null %>' />
                                                     </div>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
+
+
+
                                         </Columns>
                                         <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
                                     </asp:GridView>
+
+
+                                    <%--<table class="table table-bordered" style="text-align: center;">
+                                        <tr>
+                                            <th style="width: 30%;">Date of Renewal</th>
+                                            <th style="width: 30%;">Date of Expiry</th>
+                                            <th style="width: 40%;">Signature of the Officer Renewing the License</th>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: center; vertical-align: middle;">
+                                                <asp:Label ID="lblDateofRenewal" runat="server" ></asp:Label>
+                                            </td>
+                                            <td style="text-align: center; vertical-align: middle;">
+                                                <asp:Label ID="lblDateofExpiry" runat="server" ></asp:Label>
+                                            </td>
+                                            <td style="text-align: center; vertical-align: middle;">
+                                                <asp:Image ID="Image1" runat="server" Width="80%" Height="40" Style="bottom: 140px;" />
+                                            </td>
+                                        </tr>
+
+                                        <!-- Empty rows start -->
+                                        <tr>
+                                            <td style="text-align: center; vertical-align: middle;">&nbsp;
+                                            </td>
+                                            <td style="text-align: center; vertical-align: middle;">&nbsp;
+                                            </td>
+                                            <td style="text-align: center; vertical-align: middle;">&nbsp;
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: center; vertical-align: middle;">&nbsp;
+                                            </td>
+                                            <td style="text-align: center; vertical-align: middle;">&nbsp;
+                                            </td>
+                                            <td style="text-align: center; vertical-align: middle;">&nbsp;
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: center; vertical-align: middle;">&nbsp;
+                                            </td>
+                                            <td style="text-align: center; vertical-align: middle;">&nbsp;
+                                            </td>
+                                            <td style="text-align: center; vertical-align: middle;">&nbsp;
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align: center; vertical-align: middle;">&nbsp;
+                                            </td>
+                                            <td style="text-align: center; vertical-align: middle;">&nbsp;
+                                            </td>
+                                            <td style="text-align: center; vertical-align: middle;">&nbsp;
+                                            </td>
+                                        </tr>
+                                       
+                                        <!-- Empty rows end -->
+                                    </table>--%>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-12" style="text-align: center; margin-top: 30px; padding-left: 70%">
-                                    <!-- Signature Image -->
-                                    <asp:Image ID="ImgSignature2" runat="server"
-                                        Width="150px" Height="50px"
-                                        Style="display: block; margin: 0 auto;" />
-                                    <!-- Text Below Signature (Centered & Bold) -->
-                                    <asp:Label ID="lblstamp1" runat="server"
-                                        Style="display: block; font-size: 18px; font-weight: bold; margin-top: 8px;" />
-                                    <asp:Label ID="lblstamp2" runat="server"
-                                        Style="display: block; font-size: 18px; font-weight: bold;" />
-                                    <asp:Label ID="lblstamp3" runat="server"
-                                        Style="display: block; font-size: 18px; font-weight: bold;" />
-                                </div>
-                            </div>
-                            <div class="page-break">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <p style="text-align: center; font-size: 22px; font-weight: bold; text-decoration: underline;">INSTRUCTIONS</p>
-                                    </div>
-                                </div>
-                                <ul style="text-align: justify; padding: 50px;">
-                                    <li>The lifts and its installation shall be worked and maintained in conformity with the provisions of the Haryana Lifts and Escalators Act 2008, Rules and amendments thereon.</li>
-                                    <li>If the holder of this registration does not reside in the town or village in which the lift has been erected, he shall within one month from the date of this registration appoint an agent who shall be resident in the town or village in which the lift has been erected. The agent so appointed shall be responsible for the working and maintenance of the lift in conformity with the provisions of the said Act and rules. The name of every such agent shall be communicated to the Inspector of lifts. Any change of agent shall also be similarly communicated.</li>
-                                    <li>The holder of this registration or his agent, if any shall, within one month from the date of this registration, appoint a manufacturer of lift or a company of Electrical and Mechanical Engineers responsible for working of the lift in healthy condition and shall communicate the same to the Inspector. Any change of the above so appointed, shall be communicated.</li>
-                                    <li>No additions or alterations to the lift and its installation shall be carried out without previous permission in writing of the Inspector.</li>
-                                    <li>If the holder of this registration ceases to have interest in the lift installation for which the registration is granted the same shall be deemed to be invalid and it shall be returned to the Inspector.</li>
-                                    <li>Whoever contravenes any of the provisions of the Act or the rules made there under or the terms and conditions of a permission or of a registration or a direction given by the Inspector or any person appointed under section 3 (i) of the Act to assist him, shall on conviction be punishable with imprisonment for a term which may extend to three months or with a fine which may extend to Rs 50,000/- (Rupees fifty thousand only) or with both and in the case of a continuing contravention with a further fine which may extend to Rs. 1,000/- (one thousand rupees only) for every day during which such contravention is continued after such conviction for the first such contravention.</li>
-                                </ul>
-                                <br />
-                                <br />
-                                <br />
-                                <br />
-                                <br />
-                                <br />
-                                <br />
-                                <br />
-                                <br />
-                                <br />
-                                <br />
-                                <br />
-                                <br />
-                                <br />
-                                <br />
-                            </div>
+
+
+                                                                            <div class="print-new-page">
+                                                                                <br />
+                                                                                <br />
+                                                                                <br />
+    <h3 style="text-align: center;text-decoration:underline;">Instructions</h3> <br />
+    <ul style="font-size: 16px;
+    line-height: 1.6;
+    padding-left: 60px;
+    padding-right: 60px;
+    text-align: justify;">
+        <li>The lifts and its installation shall be worked and maintained in conformity with the provisions of the Haryana Lifts and Escalators Act 2008, Rules and amendments thereon.</li>
+        <li>If the holder of this registration does not reside in the town or village in which the lift has been erected, he shall within one month from the date of this registration appoint an agent who shall be resident in the town or village in which the lift has been erected. The agent so appointed shall be responsible for the working and maintenance of the lift in conformity with the provisions of the said Act and rules. The name of every such agent shall be communicated to the Inspector of lifts. Any change of agent shall also be similarly communicated.</li>
+        <li>The holder of this registration or his agent, if any shall, within one month from the date of this registration, appoint a manufacturer of lift or a company of Electrical and Mechanical Engineers responsible for working of the lift in healthy condition and shall communicate the same to the Inspector. Any change of the above so appointed, shall be communicated.</li>
+        <li>No additions or alterations to the lift and its installation shall be carried out without previous permission in writing of the Inspector.</li>
+        <li>If the holder of this registration ceases to have interest in the lift installation for which the registration is granted the same shall be deemed to be invalid and it shall be returned to the Inspector.</li>
+        <li>Whoever contravenes any of the provisions of the Act or the rules made there under or the terms and conditions of a permission or of a registration or a direction given by the Inspector or any person appointed under section 3 (i) of the Act to assist him, shall on conviction be punishable with imprisonment for a term which may extend to three months or with a fine which may extend to Rs 50,000/- (Rupees fifty thousand only) or with both and in the case of a continuing contravention with a further fine which may extend to Rs. 1,000/- (one thousand rupees only) for every day during which such contravention is continued after such conviction for the first such contravention.</li>
+    
+    </ul>
+                                                                                 <br />
+ <br />
+ <br /> <br />
+ <br />
+ <br /> <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+                                                                                <br />
+<br />
+<br />
+<br />
+<br /><br />
+<br />
+<br />
+<br />
+<br /><br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+</div>
+
+
+
                         </div>
                     </div>
+                  
                 </div>
+                <!-- End of your existing printable content -->
+
+
+
             </div>
         </div>
         <!-- partial:../../partials/_footer.html -->

@@ -134,8 +134,9 @@ namespace CEIHaryana.Admin
 
                                     if (x > 0)
                                     {
-                                        string script = $"alert('Registration Succesffuly!!.'); window.location='AdminMaster.aspx';";
+                                        string script = $"alert('Registration Succesffuly!!.');";
                                         ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
+                                        Reset();
                                     }
                                     else
                                     {                                     
@@ -221,7 +222,8 @@ namespace CEIHaryana.Admin
                     if (e.CommandName == "Print")
                     {
                         CEI.DeleteCESERecord(hnRegistrationId.Value);
-                        string script = $"alert('Registration deleted successfully!!.'); window.location='AdminMaster.aspx';";
+                        Reset();
+                        string script = $"alert('Registration deleted successfully!!.');";
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
 
                     }
@@ -279,6 +281,10 @@ namespace CEIHaryana.Admin
                 ddlVoltage.SelectedValue = "0";
                 customFile.Attributes.Clear();
                 CeseCert.Visible = true;
+
+                ForSubmit.Visible = true;
+                ForUpdate.Visible = false;
+                hiddenfield.Visible = false;
             }
             catch (Exception ex)
             {
@@ -393,7 +399,8 @@ namespace CEIHaryana.Admin
 
                                             if (x > 0)
                                             {
-                                                string script = $"alert('Registration updated Succesffuly!!.'); window.location='AdminMaster.aspx';";
+                                                Reset();
+                                                string script = $"alert('Registration updated Succesffuly!!.');";
                                                 ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
                                             }
                                             else

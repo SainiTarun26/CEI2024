@@ -13,7 +13,6 @@ namespace CEIHaryana.Admin
 {
     public partial class SLDHistory : System.Web.UI.Page
     {
-        //Page created by aslam 10-July-2025
         CEI CEI = new CEI();
         protected void Page_Load(object sender, EventArgs e)
         {

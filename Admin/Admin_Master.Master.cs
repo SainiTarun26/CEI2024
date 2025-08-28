@@ -10,9 +10,8 @@ namespace CEI_PRoject.ADMIN
         {
             try
             {
-                //Changed By neeraj 22-May-2025
-                if (Convert.ToString(Session["AdminID"]) != null && Convert.ToString(Session["AdminID"]) != string.Empty && Request.Cookies["AdminID"] != null)
-                {//
+                if (Convert.ToString(Session["AdminID"]) != null || Convert.ToString(Session["AdminID"]) != string.Empty || Request.Cookies["AdminID"] != null)
+                {
                     if (Request.Cookies["AdminID"] != null)
                     {
 
@@ -32,6 +31,8 @@ namespace CEI_PRoject.ADMIN
                             NewInspectionTab.Visible = false;
                             //ActionInprocesstab.Visible = false;
                             CESE.Visible = true;
+                            UpgradationRequest.Visible = false;
+                            UpgradationHistory.Visible = false;
                         }
                         else
                         {
@@ -48,6 +49,8 @@ namespace CEI_PRoject.ADMIN
                             NewInspectionTab.Visible = true;
                             //ActionInprocesstab.Visible = true;
                             CESE.Visible = false;
+                            UpgradationRequest.Visible = true;
+                            UpgradationHistory.Visible = true;
                         }
                     }
                     else

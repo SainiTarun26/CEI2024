@@ -16,6 +16,7 @@ namespace CEIHaryana.Contractor
 
     public partial class Contractor_Licence_Renewal : System.Web.UI.Page
     {
+        //page created by kalpana
         CEI CEI = new CEI();
         string userID = "";
         string Category = "";

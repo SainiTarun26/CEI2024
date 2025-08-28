@@ -128,6 +128,7 @@ namespace CEIHaryana
                     GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
                     Label lblID = (Label)row.FindControl("lblID");
                     Label lblInstallationType = (Label)row.FindControl("lblInstallationType");
+                    Label lblInspectionType = (Label)row.FindControl("lblInspectionType");
                     string id = lblID.Text;
                     Label lblInspectionId = (Label)row.FindControl("lblInspectionId");
                     string Inspectionid = lblInspectionId.Text;
@@ -135,14 +136,20 @@ namespace CEIHaryana
                     
                     Session["LiftTestReportID"] = id;
                     Session["InProcessInspectionId"] = Inspectionid;
-
-                    if (lblInstallationType.Text == "Lift")
-                    {
-                        Response.Redirect("/Print_Forms/LiftApprovalCertificate.aspx", false);
+                    if (lblInspectionType.Text.Trim()== "New") {
+                        if (lblInstallationType.Text == "Lift")
+                        {
+                            Response.Redirect("/Print_Forms/LiftApprovalCertificate.aspx", false);
+                        }
+                        else
+                        {
+                            Response.Redirect("/Print_Forms/EscalatorApprovalCertificate.aspx", false);
+                        }
                     }
                     else
                     {
-                        Response.Redirect("/Print_Forms/EscalatorApprovalCertificate.aspx", false);
+                        Response.Redirect("/Print_Forms/Print_Renewal_Of_Lift.aspx", false);
+
                     }
                 }
             }

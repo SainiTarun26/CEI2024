@@ -1,4 +1,5 @@
 ﻿using CEI_PRoject;
+using CEIHaryana.Print_Forms;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -11,6 +12,7 @@ namespace CEIHaryana.Admin
 {
     public partial class Approved_Licence_Approval_Cei_List : System.Web.UI.Page
     {
+        //PAGE CREATED BY ASLAM
         CEI CEI = new CEI();
         string LoginID = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
@@ -76,7 +78,8 @@ namespace CEIHaryana.Admin
                 GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
                 Label lblApplicationId = (Label)row.FindControl("lblApplicationId");
                 Label lblgetCategory = (Label)row.FindControl("lblgetCategory");
-
+                Label lblLicenceType = (Label)row.FindControl("lblLicenceType");
+                
                 string applicationId = lblApplicationId?.Text;
                 string category = lblgetCategory?.Text;
 
@@ -90,18 +93,39 @@ namespace CEIHaryana.Admin
 
                 if (e.CommandName == "Print")
                 {
-                    switch (category)
+
+                    if (!string.IsNullOrEmpty(lblLicenceType.Text) && lblLicenceType.Text == "New")
                     {
-                        case "Contractor":
-                            Response.Redirect("/Print_Forms/Contractor_Licence_New_Certificate.aspx", false);
-                            break;
-                        case "Supervisor":
-                            Response.Redirect("/Print_Forms/Certificate_of_Competency.aspx", false);
-                            break;
-                        case "Wireman":
-                            Response.Redirect("/Print_Forms/Certificate_of_wireman_Permit.aspx", false);
-                            break;
+                        switch (category)
+                        {
+                            case "Contractor":
+                                Response.Redirect("/Print_Forms/Contractor_Licence_New_Certificate.aspx", false);
+                                break;
+                            case "Supervisor":
+                                Response.Redirect("/Print_Forms/Certificate_of_Competency.aspx", false);
+                                break;
+                            case "Wireman":
+                                Response.Redirect("/Print_Forms/Certificate_of_wireman_Permit.aspx", false);
+                                break;
+                        }
                     }
+                   else if (!string.IsNullOrEmpty(lblLicenceType.Text) && lblLicenceType.Text == "Renewal")
+                    {
+                        switch (category)
+                        {
+                            case "Contractor":
+                                Response.Redirect("/Print_Forms/ContractorLicenceRenewal.aspx", false);
+                                break;
+                            case "Supervisor":
+
+                                Response.Redirect("/Print_Forms/CertificateOfCompetencyRenewal.aspx", false);
+                                break;
+                            case "Wireman":
+                                Response.Redirect("/Print_Forms/CertificateOfWiremanPermitRenewal.aspx", false);
+                                break;
+                        }
+                    }
+
                 }
             }
         }

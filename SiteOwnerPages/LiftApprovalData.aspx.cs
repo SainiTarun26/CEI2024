@@ -69,11 +69,9 @@ namespace CEIHaryana.SiteOwnerPages
                     Label lblInstallationType = (Label)row.FindControl("lblInstallationType");
                     Label lblRegistrationNo = (Label)row.FindControl("lblRegistrationNo");
                     Session["RegistrationNo"] = lblRegistrationNo.Text;
-                    //lblInspectionType added by Aslam  26-July-2025
-                    Label lblInspectionType = (Label)row.FindControl("lblInspectionType");
                     string InspectionId = Session["InspectionId"].ToString();
+                    Label lblInspectionType = (Label)row.FindControl("lblInspectionType");
                     Session["LiftTestReportID"] = id;
-
                     #region aslam code liftperiodic 26-July-2025
                     if (lblInstallationType.Text == "Lift")
                     {

@@ -11,6 +11,7 @@ namespace CEIHaryana.Contractor
 {
     public partial class ContractorRenewalMaster : System.Web.UI.MasterPage
     {
+        //page created by kalpana
         CEI CEI = new CEI();
         string REID = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
