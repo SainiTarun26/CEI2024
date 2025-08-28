@@ -424,7 +424,7 @@
                                 <a class="nav-link" data-toggle="collapse" href="#ui-basic8" aria-expanded="false" aria-controls="ui-basic8">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="20" fill="#ffffff" width="20" viewBox="0 0 640 512">
                                         <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
-                                         <path d="M96 80c0-26.5 21.5-48 48-48H432c26.5 0 48 21.5 48 48V384H96V80zm313 47c-9.4-9.4-24.6-9.4-33.9 0l-111 111-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L409 161c9.4-9.4 9.4-24.6 0-33.9zM0 336c0-26.5 21.5-48 48-48H64V416H512V288h16c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V336z" />
+                                        <path d="M96 80c0-26.5 21.5-48 48-48H432c26.5 0 48 21.5 48 48V384H96V80zm313 47c-9.4-9.4-24.6-9.4-33.9 0l-111 111-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L409 161c9.4-9.4 9.4-24.6 0-33.9zM0 336c0-26.5 21.5-48 48-48H64V416H512V288h16c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V336z" />
                                     </svg>
                                     <span class="menu-title">Inspections</span>
                                     <i class="menu-arrow"></i>
@@ -432,11 +432,12 @@
                                 <div class="collapse" id="ui-basic8">
                                     <ul class="nav flex-column sub-menu">
                                         <li class="nav-item"><a class="nav-link" href="/Admin/IntimationHistoryForAdmin.aspx">New</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="/Admin/ActionInspectioHistrory.aspx">InProcess</a></li>>
+                                        <li class="nav-item"><a class="nav-link" href="/Admin/ActionInspectioHistrory.aspx">InProcess</a></li>
+                                        
                                     </ul>
                                 </div>
                             </li>
-                           
+
                             <li class="nav-item" id="ConsolidatedReport" runat="server" visible="false">
                                 <a class="nav-link" href="/Admin/Consolidated_Report.aspx">
                                     <i class="icon-grid menu-icon"></i>
@@ -477,7 +478,7 @@
                                         <li class="nav-item"><a class="nav-link" href="/Admin/SLDHistory.asp">History</a></li>
                                     </ul>
                                 </div>
-                            </li>                         
+                            </li>
 
 
 
@@ -607,7 +608,13 @@
                                     </ul>
                                 </div>
                             </li>
-                            
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Admin/Suspend_Terminate.aspx">
+                                    <i class="icon-grid menu-icon"></i>
+                                    <span class="menu-title">Termination /<br />
+                                        Suspension</span>
+                                </a>
+                            </li>
                         </ul>
                     </nav>
                     <div class="main-panel">

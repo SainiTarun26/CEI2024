@@ -267,6 +267,7 @@
     <Content Include="Admin\SLDHistory.aspx" />
     <Content Include="Admin\StaffDetailsData.aspx" />
     <Content Include="Admin\SubDivisionMaster.aspx" />
+    <Content Include="Admin\Suspend_Terminate.aspx" />
     <Content Include="Admin\TestHistoryReport.aspx" />
     <Content Include="Admin\TestReportHistoryFromSupervisor.aspx" />
     <Content Include="Admin\TotalRequestInspectionForAdmin.aspx" />
@@ -2606,6 +2607,13 @@
     </Compile>
     <Compile Include="Admin\SubDivisionMaster.aspx.designer.cs">
       <DependentUpon>SubDivisionMaster.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Suspend_Terminate.aspx.cs">
+      <DependentUpon>Suspend_Terminate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Suspend_Terminate.aspx.designer.cs">
+      <DependentUpon>Suspend_Terminate.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\TestHistoryReport.aspx.cs">
       <DependentUpon>TestHistoryReport.aspx</DependentUpon>

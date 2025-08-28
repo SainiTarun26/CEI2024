@@ -14638,6 +14638,48 @@ string DaysDelay, string RenewalTime, string amount, string GRNno, string Challa
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_Get_LicenceApplicationFilePaths", applicationId);
         }
         #endregion
+        #region kalpana suspension and termination
+        public DataSet GridForSuspensionAndTermination(string Category, string Search)
+     {
+         return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GridForSuspensionAndTermination", Category, Search);
+
+     }
+
+        public void InsertSuspensionAndTerminationData(string UserId,string Category,string ActionTaken,string ActionTakenBy,string FromDate,string Todate,string TerminationSuspensionOrder,
+         string CreatedBy)
+        {
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_SuspensionAndTerminationData", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@UserId", UserId);
+                    cmd.Parameters.AddWithValue("@Category", Category);
+                    cmd.Parameters.AddWithValue("@ActionTaken", ActionTaken);
+                    cmd.Parameters.AddWithValue("@ActionTakenBy", ActionTakenBy);
+
+                    DateTime from;
+                    if (DateTime.TryParse(FromDate, out from))
+                        cmd.Parameters.AddWithValue("@FromDate", from);
+                    else
+                        cmd.Parameters.AddWithValue("@FromDate", DBNull.Value);
+
+                    DateTime to;
+                    if (DateTime.TryParse(Todate, out to))
+                        cmd.Parameters.AddWithValue("@Todate", to);
+                    else
+                        cmd.Parameters.AddWithValue("@Todate", DBNull.Value);
+
+                    cmd.Parameters.AddWithValue("@TerminationSuspensionOrder", TerminationSuspensionOrder);
+                    cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+        #endregion
 
     }
 }
