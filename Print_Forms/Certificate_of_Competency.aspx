@@ -191,6 +191,15 @@
                 padding: 8px 0 8px 20px; /* Add space for numbers */
                 border-bottom: 1px dotted black;
             }
+            
+        img#imgQRCode {
+            max-width: 142px;
+        }
+
+        img#imgPhoto {
+            max-width: 113px;
+            margin-left: 6px;
+        }
     </style>
 
     <script type="text/javascript">
@@ -263,7 +272,7 @@
                                     <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 18px;">Office of the                                        
                                     </h6>
                                     <asp:Label ID="lblAddress1" runat="server" Text="Chief Electrical Inspector to Govt., Haryana" Style="font-weight: 700; margin-bottom: 0px !important; font-size: 24PX; text-align: center;"></asp:Label><br />
-                                    <asp:Label ID="lblAdress2" runat="server" Text="SCO 117-118, Sector-17-B, Chandigarh (E-mail: cei_goh@yahoo.com" Style="font-weight: 700; margin-bottom: 0px !important; font-size: 24PX; text-align: center;"></asp:Label><br />
+                                    <asp:Label ID="lblAdress2" runat="server" Text="SCO 117-118, Sector-17-B, Chandigarh (E-mail: cei_goh@yahoo.com)" Style="font-weight: 700; margin-bottom: 0px !important; font-size: 24PX; text-align: center;"></asp:Label><br />
                                     <asp:Label ID="lblAdress3" runat="server" Text="Telephone No. 0172-2704090, Fax No. 0172-2710171
 "
                                         Style="font-weight: 700; margin-bottom: 0px !important; font-size: 24PX; text-align: center;"></asp:Label><br />
@@ -273,43 +282,44 @@
                             <hr />
                             <br />
                             <div class="row align-items-center" style="margin-bottom: 15px;">
-                                <!-- Left QR/Barcode Placeholder -->
-                                <div class="col-sm-3 d-flex justify-content-start">
-                                    <div style="width: 100px; height: 100px; border: 2px solid black; display: flex; align-items: center; justify-content: center;">
-                                        <span style="font-size: 12px;">QR / Barcode</span>
-                                    </div>
-                                </div>
+    <!-- Left QR/Barcode Placeholder -->
+    <div class="col-sm-3 d-flex justify-content-start">
+        <div style="width: 150px; height: 150px; border: 2px solid black; display: flex; align-items: center; justify-content: center;">
+            <span style="font-size: 12px;">
+                <asp:Image ID="imgQRCode" runat="server" /></span>
+        </div>
+    </div>
 
-                                <!-- Center Text -->
-                                <div class="col-sm-6 text-center">
-                                    <h6 class="card-title fw-semibold mb-1" style="font-size: 16px;">FORM II</h6>
-                                    <h6 class="card-title fw-semibold mb-1" style="font-size: 16px;">{See rule 6 (3)}</h6>
-                                </div>
+    <!-- Center Text -->
+    <div class="col-sm-6 text-center">
+        <h6 class="card-title fw-semibold mb-1" style="font-size: 19PX;">FORM II</h6>
+        <h6 class="card-title fw-semibold mb-1" style="font-size: 19PX;">{See rule 6 (3)}</h6>
+    </div>
 
-                                <!-- Right Image Placeholder -->
-                                <div class="col-sm-3 d-flex justify-content-end">
-                                    <div style="width: 100px; height: 100px; border: 2px solid black; display: flex; align-items: center; justify-content: center;">
-                                        <span style="font-size: 12px; height: 20px; width: 20px"">
-                                            <asp:Image ID="imgPhoto" runat="server" />
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
+    <!-- Right Image Placeholder -->
+    <div class="col-sm-3 d-flex justify-content-end">
+        <div style="width: 130px; height: 150px; border: 2px solid black; display: flex;">
+            <span style="font-size: 12px; height: 20px; width: 20px">
+                <asp:Image ID="imgPhoto" runat="server" />
+            </span>
+        </div>
+    </div>
+</div>
                             <asp:HiddenField ID="hdnApplicationId" runat="server" />
                             <div class="row">
                                 <div class="col-6">
                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 15PX;">No. 
-                                                                                    <asp:Label ID="lblCertificateNo" runat="server" Text="" Style="font-size: 16px !important; text-decoration: underline;"></asp:Label>
+                                                                                    <asp:Label ID="lblCertificateNo" runat="server" Text="" Style="font-size: 16px !important;   "></asp:Label>
 
                                     </h6>
                                 </div>
                                 <div class="col-6">
                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 15PX; text-align: end;">Date of Birth:
-                                        <asp:Label ID="lblDob" runat="server" Text="" Style="font-size: 16px !important; text-decoration: underline;"></asp:Label>
+                                        <asp:Label ID="lblDob" runat="server" Text="" Style="font-size: 16px !important;   "></asp:Label>
                                     </h6>
                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 15PX; text-align: end;">Authorised UPTO:
    <%-- <asp:Label ID="Label1" runat="server" Text="" Style="font-size: 16px !important;text-decoration:underline;"></asp:Label>--%>
-                                        <asp:Label ID="lblAuthorizedUpto" runat="server" Text="" Style="font-size: 16px !important; text-decoration: underline;"></asp:Label>
+                                        <asp:Label ID="lblAuthorizedUpto" runat="server" Text="" Style="font-size: 16px !important;   "></asp:Label>
 
                                     </h6>
                                 </div>
@@ -324,19 +334,19 @@
                             <div class="row">
                                 <div class="col-12">
                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 16px; font-weight: 600; text-align: justify; line-height: 2;">
-                                        <%--                                        <asp:Label Style="font-weight: 700 !important; text-decoration: underline;" ID="Label10" runat="server" Text="tarunpreet singh"></asp:Label>--%>
+                                        <%--                                        <asp:Label Style="font-weight: 700 !important;   " ID="Label10" runat="server" Text="tarunpreet singh"></asp:Label>--%>
                                         <asp:Label
                                             ID="lblname"
                                             runat="server"
-                                            Style="font-weight: 700; width: 350px; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
-                                        </asp:Label>son/daughter of sh.<asp:Label ID="lblFatherName" runat="server" Style="font-weight: 700; width: 360px; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
+                                            Style="font-weight: 700; display: inline-block;     height: 30px; padding-left: 10px;">
+                                        </asp:Label> son/daughter of sh.<asp:Label ID="lblFatherName" runat="server" Style="font-weight: 700; display: inline-block;     height: 30px; padding-left: 10px;">
                                         </asp:Label>
                                         R/o 
                                                                               
                                         <asp:Label
                                             ID="lblAddress"
                                             runat="server"
-                                            Style="font-weight: 700; width: 360px; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
+                                            Style="font-weight: 700; display: inline-block;     height: 30px; padding-left: 10px;">
                                         </asp:Label>
                                         having satisfied the Chief Electrical Inspector, Haryana that his/her
 qualifications and experience as certained by the Screening Committee, found eligible for grant of  Certificate of Competency., is herby granted this Certificate of Competency.</h6>
@@ -348,13 +358,13 @@ qualifications and experience as certained by the Screening Committee, found eli
                             <div class="row">
                                 <div class="col-3" style="margin-top: auto;">
 
-                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 16px; font-weight: 700;">Dated:
-                                        <asp:Label ID="lblApprovedDate" runat="server" Text="29-Aug-2025" Style="font-weight: 500; font-size: 16px !important;"></asp:Label></h6>
+                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 16px; font-weight: 700;">Initial Issue Date:
+                                        <asp:Label ID="lblApprovedDate" runat="server"  Style="font-weight: 500; font-size: 16px !important;"></asp:Label></h6>
 
                                 </div>
                                 <div class="col-9" style="text-align: end">
 
-                                    <asp:Image ID="Image" runat="server" Width="300" Height="90" Style="bottom: 140px; margin-left: -300px;" />
+                                    <asp:Image ID="Image" runat="server" Width="130" Height="50" Style="bottom: 140px; margin-left: -300px;" />
                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 16px; font-weight: 700;">Chief Electrical Inspector</h6>
                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 16px; font-weight: 700;">to Govt., Haryana, Chandigarh</h6>
 
@@ -365,7 +375,7 @@ qualifications and experience as certained by the Screening Committee, found eli
 
                             <div class="row">
                                 <div class="col-12" style="margin-bottom: 10px;">
-                                    <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 16px; text-align: center; text-decoration: underline;">INSTRUCTIONS</h6>
+                                    <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 16px; text-align: center;   ">INSTRUCTIONS</h6>
 
                                 </div>
                                 <div class="col-12">

@@ -4,12 +4,12 @@ using System.Data;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace CEIHaryana.UserCPages
 {
     public partial class LicenceHeaderDetails : System.Web.UI.UserControl
     {
-        //page created by aslam
         CEI CEI = new CEI();
         public string LicenceCategory
         {
@@ -76,6 +76,7 @@ namespace CEIHaryana.UserCPages
             get => txtAddress.Text.Trim();
             set => txtAddress.Text = value;
         }
+       
         protected void Page_Load(object sender, EventArgs e)
         {
         }
@@ -152,6 +153,13 @@ namespace CEIHaryana.UserCPages
                     lblPanOrAadhaar.InnerText = "Aadhaar No";
                 }
             }
+            GetTreasuryDetailsWithId(licApplicationId);
         }
+
+        private void GetTreasuryDetailsWithId(string licApplicationId)
+        {
+            ucLicenceTCDetails.BindChallanDetails(licApplicationId);
+        }
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CertificateOfCompetencyRenewal.aspx.cs" Inherits="CEIHaryana.Print_Forms.CertificateOfCompetencyRenewal" %>
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -11,9 +12,6 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!------ Include the above in your HEAD tag ---------->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
@@ -77,7 +75,7 @@
         }
 
         label {
-            font-size: 18px;
+            font-size: 16px;
             margin-top: 5px;
             font-weight: 600;
         }
@@ -86,7 +84,7 @@
             color: #010101;
             margin-bottom: 1.2rem;
             text-transform: capitalize;
-            font-size: 18PX;
+            font-size: 16px;
             font-weight: 600;
         }
 
@@ -104,7 +102,7 @@
         }
 
         li {
-            font-size: 18PX;
+            font-size: 16px;
             font-weight: 600;
             line-height: 2;
         }
@@ -121,7 +119,7 @@
 
         input {
             border: none;
-            font-size: 18PX;
+            font-size: 16px;
         }
 
         hr {
@@ -159,11 +157,11 @@
         th {
             width: 1% !important;
             text-align: center;
-            font-size: 18px;
+            font-size: 16px;
         }
 
         td {
-            font-size: 18px;
+            font-size: 16px;
             /*  text-align: center;*/
         }
 
@@ -193,6 +191,15 @@
                 padding: 8px 0 8px 20px; /* Add space for numbers */
                 border-bottom: 1px dotted black;
             }
+
+        img#imgQRCode {
+            max-width: 142px;
+        }
+
+        img#imgPhoto {
+            max-width: 113px;
+            margin-left: 6px;
+        }
     </style>
 
     <script type="text/javascript">
@@ -207,7 +214,6 @@
         window.onload = function () {
             printDiv('printableDiv');
         };
-
     </script>
     <script type="text/javascript">
         function countLines(textbox) {
@@ -225,12 +231,12 @@
                 }
             }
 
-            // Set the textbox valueh the updated lines
+            // Set the textbox value with the updated lines
             textbox.value = lines.join('\n');
         }
     </script>
     <script>
-        // Detect when the print dialog is closed (whether by printing or canceling)
+
         window.onafterprint = function () {
             // Delay execution to ensure the print dialog is fully closed
             setTimeout(function () {
@@ -250,24 +256,23 @@
                 <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
                     <div class="col-12" style="text-align: end; margin-top: auto; margin-bottom: auto;">
                         <asp:Button ID="btnPrint" Text="Print" runat="server" class="btn btn-primary mr-2"
-                            Style="margin-top: 5px; margin-bottom: -40px; font-size: 18PX; padding-left: 25px; padding-right: 25px; position: fixed; margin-left: -100px; z-index: 50;" OnClientClick="printDiv('printableDiv');" />
+                            Style="margin-top: 5px; margin-bottom: -40px; font-size: 16px; padding-left: 25px; padding-right: 25px; position: fixed; margin-left: -100px; z-index: 50;" OnClientClick="printDiv('printableDiv');" />
                     </div>
                     <div class="col-12" style="text-align: initial; margin-top: auto; margin-bottom: auto;">
                         <asp:Button ID="btnBack" Text="Back" runat="server" class="btn btn-primary mr-2"
-                            Style="margin-top: 5px; margin-bottom: -40px; font-size: 18PX; padding-left: 25px; padding-right: 25px; position: fixed; z-index: 50;" />
+                            Style="margin-top: 5px; margin-bottom: -40px; font-size: 16px; padding-left: 25px; padding-right: 25px; position: fixed; z-index: 50;" />
                     </div>
                     <div class="card-body">
                         <div id="printableDiv">
                             <div class="row" style="margin-bottom: 15PX;">
-                                <%-- <div class="col-1" style="margin-top: auto; margin-bottom: auto;">
+                                <div class="col-1" style="margin-top: auto; margin-bottom: auto;">
                                     <img src="../Assets/haryana.png" height="110" width="auto" />
-                                </div>--%>
-                                <div class="col-sm-12" style="text-align: center; padding-top: 8px; padding-bottom: 8px; border-radius: 10px;">
-                                    <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 18PX;">Office of the                                        
+                                </div>
+                                <div class="col-sm-11" style="text-align: center; padding-top: 8px; padding-bottom: 8px; border-radius: 10px; padding-right: 80px;">
+                                    <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 18px;">Office of the                                        
                                     </h6>
-                                     <asp:HiddenField ID="hdnApplicationId" runat="server" />
                                     <asp:Label ID="lblAddress1" runat="server" Text="Chief Electrical Inspector to Govt., Haryana" Style="font-weight: 700; margin-bottom: 0px !important; font-size: 24PX; text-align: center;"></asp:Label><br />
-                                    <asp:Label ID="lblAdress2" runat="server" Text="SCO 117-118, Sector-17-B, Chandigarh (E-mail: cei_goh@yahoo.com" Style="font-weight: 700; margin-bottom: 0px !important; font-size: 24PX; text-align: center;"></asp:Label><br />
+                                    <asp:Label ID="lblAdress2" runat="server" Text="SCO 117-118, Sector-17-B, Chandigarh (E-mail: cei_goh@yahoo.com)" Style="font-weight: 700; margin-bottom: 0px !important; font-size: 24PX; text-align: center;"></asp:Label><br />
                                     <asp:Label ID="lblAdress3" runat="server" Text="Telephone No. 0172-2704090, Fax No. 0172-2710171
 "
                                         Style="font-weight: 700; margin-bottom: 0px !important; font-size: 24PX; text-align: center;"></asp:Label><br />
@@ -275,59 +280,77 @@
                                 </div>
                             </div>
                             <hr />
-                            <div class="row" style="margin-bottom: 15PX;">
-                                <div class="col-sm-12" style="text-align: center; padding-top: 8px; padding-bottom: 8px; border-radius: 10px;">
-                                    <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 18PX; text-align: center;">FORM II
-                                    </h6>
-                                    <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 18PX; text-align: center;">{See rule 8 (3)}
-                                    </h6>
+                            <br />
+                            <div class="row align-items-center" style="margin-bottom: 15px;">
+                                <!-- Left QR/Barcode Placeholder -->
+                                <div class="col-sm-3 d-flex justify-content-start">
+                                    <div style="width: 150px; height: 150px; border: 2px solid black; display: flex; align-items: center; justify-content: center;">
+                                        <span style="font-size: 12px;">
+                                            <asp:Image ID="imgQRCode" runat="server" /></span>
+                                    </div>
+                                </div>
 
+                                <!-- Center Text -->
+                                <div class="col-sm-6 text-center">
+                                    <h6 class="card-title fw-semibold mb-1" style="font-size: 19PX;">FORM V</h6>
+                                    <h6 class="card-title fw-semibold mb-1" style="font-size: 19PX;">{See rule 8 (3)}</h6>
+                                </div>
+
+                                <!-- Right Image Placeholder -->
+                                <div class="col-sm-3 d-flex justify-content-end">
+                                    <div style="width: 130px; height: 150px; border: 2px solid black; display: flex;">
+                                        <span style="font-size: 12px; height: 20px; width: 20px">
+                                            <asp:Image ID="imgPhoto" runat="server" />
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
+                            <asp:HiddenField ID="hdnApplicationId" runat="server" />
                             <div class="row">
                                 <div class="col-6">
-                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 15PX;">No.
-                                       <asp:Label ID="lblCertificateNo" runat="server" Text="" Style="font-size: 16px !important;"></asp:Label>
+                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 15PX;">No. 
+                                                                                    <asp:Label ID="lblCertificateNo" runat="server" Text="" Style="font-size: 16px !important;"></asp:Label>
 
-
+                                    </h6>
+                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 15PX;">OLD No.
+                                     <asp:Label ID="lblOldLicenceNo" runat="server" Text="" Style="font-size: 16px !important;"></asp:Label>
                                     </h6>
                                 </div>
                                 <div class="col-6">
                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 15PX; text-align: end;">Date of Birth:
                                         <asp:Label ID="lblDob" runat="server" Text="" Style="font-size: 16px !important;"></asp:Label>
                                     </h6>
+                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 15PX; text-align: end;">Authorised UPTO:
+   <%-- <asp:Label ID="Label1" runat="server" Text="" Style="font-size: 16px !important;text-decoration:underline;"></asp:Label>--%>
+                                        <asp:Label ID="lblAuthorizedUpto" runat="server" Text="" Style="font-size: 16px !important;"></asp:Label>
+
+                                    </h6>
                                 </div>
                             </div>
                             <br />
                             <div class="row">
                                 <div class="col-12">
-                                    <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 18PX; text-align: center;">PERFORMA FOR RENEWAL OF CERTIFICATE OF COMPETENCY</h6>
+                                    <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 20px; text-align: center;">PERFORMA FOR RENEWAL OF CERTIFICATE OF COMPETENCY</h6>
                                 </div>
                             </div>
                             <br />
                             <div class="row">
                                 <div class="col-12">
-                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18PX; font-weight: 600; text-align: justify; line-height: 2;">
-                                        <%--                                        <asp:Label Style="font-weight: 700 !important; text-decoration: underline;" ID="Label10" runat="server" Text="tarunpreet singh"></asp:Label>--%>
+                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 16px; font-weight: 600; text-align: justify; line-height: 2;">
+                                        <%--                                        <asp:Label Style="font-weight: 700 !important;   " ID="Label10" runat="server" Text="tarunpreet singh"></asp:Label>--%>
                                         <asp:Label
                                             ID="lblname"
                                             runat="server"
-                                          
-                                            Style="font-weight: 700; width: 390px; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
+                                            Style="font-weight: 700; display: inline-block; height: 30px; padding-left: 10px;">
                                         </asp:Label>
-                                        son/daughter of sh.<asp:Label
-                                            ID="lblFatherName"
-                                            runat="server"
-                                         
-                                            Style="font-weight: 700; width: 390px; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
+                                        son/daughter of sh.<asp:Label ID="lblFatherName" runat="server" Style="font-weight: 700; display: inline-block; height: 30px; padding-left: 10px;">
                                         </asp:Label>
                                         R/o 
                                                                               
                                         <asp:Label
                                             ID="lblAddress"
                                             runat="server"
-                                          
-                                            Style="font-weight: 700; width: 390px; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
+                                            Style="font-weight: 700; display: inline-block; height: 30px; padding-left: 10px;">
                                         </asp:Label>
                                         having satisfied the Chief Electrical Inspector, Haryana that his/her
 qualifications and experience as certained by the Screening Committee, found eligible for grant of  Certificate of Competency., is herby granted this Certificate of Competency.</h6>
@@ -335,36 +358,35 @@ qualifications and experience as certained by the Screening Committee, found eli
                             </div>
                             <br />
 
-                            <br />
-                            <br />
-                            <div class="row">
-                                <div class="col-3">
 
-                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18PX; font-weight: 700;">Dated:
+                            <div class="row">
+                                <div class="col-3" style="margin-top: auto;">
+
+                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 16px; font-weight: 700;">Initial Issue Date:
                                         <asp:Label ID="lblApprovedDate" runat="server"  Style="font-weight: 500; font-size: 16px !important;"></asp:Label></h6>
 
                                 </div>
                                 <div class="col-9" style="text-align: end">
-                                    <asp:Image ID="Image1" runat="server" Width="200" Height="90" Style="bottom: 140px; margin-right: 30px;" />
 
-                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18PX; font-weight: 700; margin-right: 55px;">Chief Electrical Inspector</h6>
-                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18PX; font-weight: 700;">to Govt., Haryana, Chandigarh.</h6>
+                                    <asp:Image ID="Image" runat="server" Width="130" Height="50" Style="bottom: 140px; margin-left: -300px;" />
+                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 16px; font-weight: 700;">Chief Electrical Inspector</h6>
+                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 16px; font-weight: 700;">to Govt., Haryana, Chandigarh</h6>
 
                                 </div>
                             </div>
 
                             <br />
-                            <br />
+
                             <div class="row">
-                                <div class="col-12">
-                                    <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 18PX; text-align: center;">INSTRUCTIONS</h6>
+                                <div class="col-12" style="margin-bottom: 10px;">
+                                    <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 16px; text-align: center;">INSTRUCTIONS</h6>
 
                                 </div>
                                 <div class="col-12">
                                     <ol>
-                                        <li>This Certificate is to be renewed once in five years before its expiry date, failing which it will
-automatically stand inoperative.
-</li>
+                                        <li>This Certificate is to be renewed every five years before its expiry date, failing which it will automatically
+stand inoperative.
+                                        </li>
                                         <li>Treasury challan of fees for the purpose, deposited in any treasury of Haryana under<b> Head of
 account: - 0043-Taxes and Duties on Electricity –Other Receipts i.e. 0043-51-800-99-51—Other
 Receipts'</b> alongwith relevant <b>Form</b> be sent to the Chief Electrical Inspector to Government, Haryana.</li>
@@ -373,6 +395,97 @@ Receipts'</b> alongwith relevant <b>Form</b> be sent to the Chief Electrical Ins
                                     </ol>
                                 </div>
                             </div>
+                            <div class="col-md-12">
+                                <%-- Delete the table below and add GridView here --%>
+                                <div class="container mt-4">
+                                    <asp:GridView ID="Gridview1" CssClass="table table-bordered table-striped table-responsive" runat="server" AutoGenerateColumns="false">
+                                        <HeaderStyle BackColor="#B7E2F0" />
+                                        <Columns>
+
+                                            <asp:TemplateField HeaderText="Date Of Renewal">
+                                                <HeaderStyle HorizontalAlign="Center" VerticalAlign="Middle" CssClass="headercolor" />
+                                                <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" CssClass="itemcenter" />
+                                                <HeaderTemplate>
+                                                    Date Of Renewal
+                                                </HeaderTemplate>
+                                                <ItemTemplate>
+                                                    <div style="display: flex; align-items: center !important; justify-content: center !important; width: 100% !important; height: 100%; text-align: center !important;">
+                                                        <%# Eval("RenewalDate") %>
+                                                    </div>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                            <asp:BoundField DataField="ExpiryDate" HeaderText="Date Of Expiry">
+                                                <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
+                                                <ItemStyle HorizontalAlign="center" />
+                                            </asp:BoundField>
+                                            <asp:TemplateField HeaderText="Initials Of Chief Electrical Inspector to Govt., Haryana.">
+                                                <ItemTemplate>
+                                                    <div style="display: flex; align-items: center !important; justify-content: center !important; width: 100% !important; height: 30%; text-align: center !important;">
+                                                        <asp:Image ID="ImgSignature" runat="server"
+                                                            ImageUrl='<%# Eval("Signature") != DBNull.Value && Eval("Signature") != null 
+? "data:image/jpeg;base64," + Convert.ToBase64String((byte[])Eval("Signature")) 
+: "" %>'
+                                                            Visible='<%# Eval("Signature") != DBNull.Value && Eval("Signature") != null %>' />
+                                                    </div>
+                                                </ItemTemplate>
+                                            </asp:TemplateField>
+                                        </Columns>
+                                        <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
+                                    </asp:GridView>
+                                </div>
+                                <%--<div class="container mt-4">
+  <table class="table table-bordered text-center align-middle">
+    <thead>
+      <tr>
+        <th scope="col" style="width:25% !important;">Date Of Renewal</th>
+        <th scope="col" style="width:25% !important;">Date Of Expiry</th>
+        <th scope="col" style="width:50% !important;">Initials Of Chief Electrical Inspector to Govt., Haryana.</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+        <tr>
+  <td>&nbsp;</td>
+  <td>&nbsp;</td>
+  <td>&nbsp;</td>
+</tr>
+        <tr>
+  <td>&nbsp;</td>
+  <td>&nbsp;</td>
+  <td>&nbsp;</td>
+</tr>
+              <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+        <td>&nbsp;</td>
+      </tr>
+     
+    </tbody>
+  </table>
+</div>--%>
+                            </div>
+
+
+
                         </div>
                     </div>
                 </div>

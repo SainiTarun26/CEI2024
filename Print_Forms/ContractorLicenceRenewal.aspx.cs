@@ -6,24 +6,28 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using QRCoder;
+using System.IO;
+using System.Drawing;
+
 
 namespace CEIHaryana.Print_Forms
 {
     public partial class ContractorLicenceRenewal : System.Web.UI.Page
     {
-        //page created by kalpana
+        //page created By neeraj 19-June-2025
         CEI CEI = new CEI();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                //  Session["Application_Id"] = "App-109";
+                // Session["Application_Id"] = "App-109";
                 if (Convert.ToString(Session["Application_Id"]) != null && Convert.ToString(Session["Application_Id"]) != string.Empty)
                 {
                     hdnApplicationId.Value = Session["Application_Id"].ToString();
                     GetData(hdnApplicationId.Value);
                     GridData(hdnApplicationId.Value);
-                    getContractorSignature();
+                    //getContractorSignature();
                     GetPatnersDetails();
                     GetSupervisiorWiremanDetails();
                 }
@@ -38,11 +42,17 @@ namespace CEIHaryana.Print_Forms
                 dt = CEI.GetCertificateDataCon_Sup_Wir(ApplicationId);
                 if (dt.Rows.Count > 0)
                 {
+                    dt.Rows[0]["QRCode"] = GenerateQrCode("Certificate_No = " + dt.Rows[0]["Certificate_No"].ToString());
                     lblRegistationId.Text = dt.Rows[0]["RegistationId"].ToString();
-                    lblCertificateNo.Text = dt.Rows[0]["CertificateNo"].ToString();
+                    lblCertificateNo.Text = dt.Rows[0]["LicenceNo"].ToString();
                     lblName.Text = dt.Rows[0]["Name"].ToString();
                     lblApprovedDate.Text = dt.Rows[0]["ApprovedDate"].ToString();
-                    Image1.ImageUrl = "data:image/jpeg;base64," + Convert.ToBase64String((byte[])dt.Rows[0]["Signature"]);
+                    Image.ImageUrl = "data:image/jpeg;base64," + Convert.ToBase64String((byte[])dt.Rows[0]["Signature"]);
+                    myImage.ImageUrl = dt.Rows[0]["ContractorSignatureDocPath"].ToString();
+                    imgPhoto.ImageUrl = dt.Rows[0]["ApplicantImageDocPath"].ToString();
+                    lblAuthorizedUpto.Text = dt.Rows[0]["Votagelevel"].ToString();
+                    imgQRCode.ImageUrl = "data:image/jpeg;base64," + Convert.ToBase64String((byte[])dt.Rows[0]["QRCode"]);
+                    //lblOldLicenceNo.Text = dt.Rows[0]["OldLicenceNo"].ToString();
                 }
 
 
@@ -53,25 +63,24 @@ namespace CEIHaryana.Print_Forms
                 return;
             }
         }
-        public void getContractorSignature()
-        {
-            try
-            {
-                DataTable dt = new DataTable();
-                dt = CEI.getContractorSignature(lblRegistationId.Text);
-                if (dt.Rows.Count > 0)
-                { 
-                    ContractorImage.ImageUrl = dt.Rows[0]["DocumentPath"].ToString();
-                }
-            }
-            catch (Exception ex)
-            {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
-                return;
-            }
+        //public void getContractorSignature()
+        //{
+        //    try
+        //    {
+        //        DataTable dt = new DataTable();
+        //        dt = CEI.getContractorSignature(lblRegistationId.Text);
+        //        if (dt.Rows.Count > 0)
+        //        {
+        //            myImage.ImageUrl = dt.Rows[0]["DocumentPath"].ToString();
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+        //        return;
+        //    }
 
-        }
-
+        //}
         public void GetPatnersDetails()
         {
             DataTable dt = new DataTable();
@@ -139,6 +148,25 @@ namespace CEIHaryana.Print_Forms
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
                 return;
+            }
+        }
+
+        private byte[] GenerateQrCode(string qrmsg)
+        {
+            string code = qrmsg;
+            QRCodeGenerator qrGenerator = new QRCodeGenerator();
+            QRCodeGenerator.QRCode qrCode = qrGenerator.CreateQrCode(code, QRCodeGenerator.ECCLevel.Q);
+            System.Web.UI.WebControls.Image imgBarCode = new System.Web.UI.WebControls.Image();
+            imgBarCode.Height = 70;
+            imgBarCode.Width = 70;
+            using (Bitmap bitMap = qrCode.GetGraphic(20))
+            {
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    bitMap.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                    byte[] byteImage = ms.ToArray();
+                    return byteImage;
+                }
             }
         }
     }

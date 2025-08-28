@@ -1,4 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="LicenceHeaderDetails.ascx.cs" Inherits="CEIHaryana.UserCPages.LicenceHeaderDetails" %>
+<%@ Register TagPrefix="uc" TagName="LicenceTCDetails" Src="~/UserCPages/LicenceTCDetails.ascx" %>
 <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
 
     <div class="row">
@@ -105,3 +106,4 @@
 
     </div>
 </div>
+<uc:LicenceTCDetails ID="ucLicenceTCDetails" runat="server" />  

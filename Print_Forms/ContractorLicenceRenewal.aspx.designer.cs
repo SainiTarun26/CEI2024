@@ -87,6 +87,33 @@ namespace CEIHaryana.Print_Forms
         protected global::System.Web.UI.WebControls.Label lblEmail;
 
         /// <summary>
+        /// imgQRCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imgQRCode;
+
+        /// <summary>
+        /// imgPhoto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imgPhoto;
+
+        /// <summary>
+        /// lblAuthorizedUpto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAuthorizedUpto;
+
+        /// <summary>
         /// lblCertificateNo control.
         /// </summary>
         /// <remarks>
@@ -204,13 +231,13 @@ namespace CEIHaryana.Print_Forms
         protected global::System.Web.UI.WebControls.Label lblSup5;
 
         /// <summary>
-        /// ContractorImage control.
+        /// myImage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ContractorImage;
+        protected global::System.Web.UI.WebControls.Image myImage;
 
         /// <summary>
         /// lblApprovedDate control.
@@ -222,13 +249,13 @@ namespace CEIHaryana.Print_Forms
         protected global::System.Web.UI.WebControls.Label lblApprovedDate;
 
         /// <summary>
-        /// Image1 control.
+        /// Image control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Image1;
+        protected global::System.Web.UI.WebControls.Image Image;
 
         /// <summary>
         /// RegistationId control.

@@ -42,15 +42,6 @@ namespace CEIHaryana.Print_Forms
         protected global::System.Web.UI.WebControls.Button btnBack;
 
         /// <summary>
-        /// hdnApplicationId control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hdnApplicationId;
-
-        /// <summary>
         /// lblAddress1 control.
         /// </summary>
         /// <remarks>
@@ -87,6 +78,33 @@ namespace CEIHaryana.Print_Forms
         protected global::System.Web.UI.WebControls.Label lblEmail;
 
         /// <summary>
+        /// imgQRCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imgQRCode;
+
+        /// <summary>
+        /// imgPhoto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imgPhoto;
+
+        /// <summary>
+        /// hdnApplicationId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnApplicationId;
+
+        /// <summary>
         /// lblCertificateNo control.
         /// </summary>
         /// <remarks>
@@ -96,6 +114,15 @@ namespace CEIHaryana.Print_Forms
         protected global::System.Web.UI.WebControls.Label lblCertificateNo;
 
         /// <summary>
+        /// lblOldLicenceNo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblOldLicenceNo;
+
+        /// <summary>
         /// lblDob control.
         /// </summary>
         /// <remarks>
@@ -103,6 +130,15 @@ namespace CEIHaryana.Print_Forms
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblDob;
+
+        /// <summary>
+        /// lblAuthorizedUpto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblAuthorizedUpto;
 
         /// <summary>
         /// lblname control.
@@ -141,12 +177,21 @@ namespace CEIHaryana.Print_Forms
         protected global::System.Web.UI.WebControls.Label lblApprovedDate;
 
         /// <summary>
-        /// Image1 control.
+        /// Image control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Image1;
+        protected global::System.Web.UI.WebControls.Image Image;
+
+        /// <summary>
+        /// Gridview1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView Gridview1;
     }
 }

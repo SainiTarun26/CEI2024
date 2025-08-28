@@ -14436,6 +14436,12 @@ string dbPathCompetency, string dbPathMedicalCertificate, string userId)
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetCEISignatureForUpgradation");
         }
         #endregion
+        #region aslam
+        public DataSet GetGrUtrNoAndChallanDetailByAppId(string applicationId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_Get_GrUtrNoAndChallanDetailByAppId", applicationId);
+        }
+        #endregion
     }
 }
 

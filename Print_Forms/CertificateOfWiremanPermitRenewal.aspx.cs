@@ -1,7 +1,10 @@
 ﻿using CEI_PRoject;
+using QRCoder;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -11,7 +14,7 @@ namespace CEIHaryana.Print_Forms
 {
     public partial class CertificateOfWiremanPermitRenewal : System.Web.UI.Page
     {
-        //page created by kalpana
+        //page created By neeraj 19-June-2025
         CEI CEI = new CEI();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -22,6 +25,7 @@ namespace CEIHaryana.Print_Forms
                 {
                     hdnApplicationId.Value = Session["Application_Id"].ToString();
                     GetData(hdnApplicationId.Value);
+                    GridData(hdnApplicationId.Value);
                 }
 
             }
@@ -34,16 +38,19 @@ namespace CEIHaryana.Print_Forms
                 dt = CEI.GetCertificateDataCon_Sup_Wir(ApplicationId);
                 if (dt.Rows.Count > 0)
                 {
-                    lblCertificateNo.Text = dt.Rows[0]["CertificateNo"].ToString();
-                    lblDOB.Text = dt.Rows[0]["DOB"].ToString();
+                    dt.Rows[0]["QRCode"] = GenerateQrCode("Certificate_No = " + dt.Rows[0]["Certificate_No"].ToString());
+                    lblCertificateNo.Text = dt.Rows[0]["LicenceNo"].ToString();
+                    lblDob.Text = dt.Rows[0]["DOB"].ToString();
                     lblname.Text = dt.Rows[0]["Name"].ToString();
-                    lblfatherName.Text = dt.Rows[0]["FatherName"].ToString();
+                    lblFatherName.Text = dt.Rows[0]["FatherName"].ToString();
                     lblAddress.Text = dt.Rows[0]["Address"].ToString();
-                    lblApproveDate.Text = dt.Rows[0]["ApprovedDate"].ToString();
-                    Image1.ImageUrl = "data:image/jpeg;base64," + Convert.ToBase64String((byte[])dt.Rows[0]["Signature"]);
+                    lblApprovedDate.Text = dt.Rows[0]["ApprovedDate"].ToString();
+                    Image.ImageUrl = "data:image/jpeg;base64," + Convert.ToBase64String((byte[])dt.Rows[0]["Signature"]);
+                    imgPhoto.ImageUrl = dt.Rows[0]["ApplicantImageDocPath"].ToString();
+                    imgQRCode.ImageUrl = "data:image/jpeg;base64," + Convert.ToBase64String((byte[])dt.Rows[0]["QRCode"]);
+                    lblOldLicenceNo.Text = dt.Rows[0]["OldLicenceNo"].ToString();
+
                 }
-
-
             }
             catch (Exception ex)
             {
@@ -51,5 +58,50 @@ namespace CEIHaryana.Print_Forms
                 return;
             }
         }
+
+        public void GridData(string ApplicationId)
+        {
+            try
+            {
+                DataSet ds = new DataSet();
+                ds = CEI.getDataLicence(ApplicationId);
+                if (ds.Tables.Count > 0)
+                {
+                    Gridview1.DataSource = ds;
+                    Gridview1.DataBind();
+                }
+                else
+                {
+                    Gridview1.DataSource = null;
+                    Gridview1.DataBind();
+
+                }
+                ds.Dispose();
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+                return;
+            }
+        }
+        private byte[] GenerateQrCode(string qrmsg)
+        {
+            string code = qrmsg;
+            QRCodeGenerator qrGenerator = new QRCodeGenerator();
+            QRCodeGenerator.QRCode qrCode = qrGenerator.CreateQrCode(code, QRCodeGenerator.ECCLevel.Q);
+            System.Web.UI.WebControls.Image imgBarCode = new System.Web.UI.WebControls.Image();
+            imgBarCode.Height = 70;
+            imgBarCode.Width = 70;
+            using (Bitmap bitMap = qrCode.GetGraphic(20))
+            {
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    bitMap.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                    byte[] byteImage = ms.ToArray();
+                    return byteImage;
+                }
+            }
+        }
+
     }
 }
