@@ -470,6 +470,11 @@
                                     <li>
                                         <a href="UserManual/form_split.pdf" target="_blank">Forms & Fees
                                         </a>
+                                                      
+                                    </li>
+                                    <li>
+    <a href="/UserPages/Instructions.aspx" target="_blank">For New Licence
+    </a>
                                     </li>
                                 </ul>
                             </li>
