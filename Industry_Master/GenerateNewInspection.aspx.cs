@@ -28,6 +28,8 @@ namespace CEIHaryana.Industry_Master
         int inspectionCountRes = 0;
         int inspectionIdRes = 0;
         string InstallationId = string.Empty;
+
+        string CombinedInstallationId = string.Empty;
         protected decimal totalAmount = 0;
         int intSubTotalIndex = 1, dblSubTotalCapacity = 0, dblGrandTotalCapacity = 0, highestOfficerDesignation = 0;
         decimal dblSubTotalAmount = 0, dblGrandTotalAmount = 0;
@@ -73,7 +75,7 @@ namespace CEIHaryana.Industry_Master
             }
             catch (Exception ex)
             {
-                string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://staging.investharyana.in/#/';";
+                string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://investharyana.in/#/';";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
             }
 
@@ -123,6 +125,26 @@ namespace CEIHaryana.Industry_Master
                         customFile.Visible = false;
                     }
                 }
+                #region Added by Neha
+                string str = Convert.ToString(Session["Amount"]);
+                if (Convert.ToInt32(Session["Amount"]) == 0)
+                {
+                    HtmlInputHidden hiddenDocId = (HtmlInputHidden)e.Row.FindControl("DocumentID");
+
+                    if (hiddenDocId != null)
+                    {
+                        string docIdValue = hiddenDocId.Value;
+
+                        // Example: Hide row if DocumentID == "0"
+                        if (docIdValue == "17")
+                        {
+                            e.Row.Visible = false;
+                            PaymentDetails.Visible = false;
+                        }
+
+                    }
+                }
+                #endregion
             }
 
         }
@@ -167,7 +189,7 @@ namespace CEIHaryana.Industry_Master
             //Added on 3 apl 2025  Method to Check If Any of Neccessary Session is Empty then redirect to Corresponding page
             if (CheckAndRedirect("Duplicacy1", "ForNewInstallation.aspx"))
             {
-                return; 
+                return;
             }
 
             try
@@ -202,17 +224,17 @@ namespace CEIHaryana.Industry_Master
                         }
                     }
                 }
-                InstallationId = string.Join(",", selectedTypes);
+                CombinedInstallationId = string.Join(",", selectedTypes);
                 DataTable ds = new DataTable();
-                ds = CEI.GetApplicantCodeIndustry(InstallationId);
+                ds = CEI.GetApplicantCodeIndustry(CombinedInstallationId);
                 if (ds.Rows.Count > 0)
                 {
-                    InstallationId = ds.Rows[0]["Id"].ToString();
-                    Session["InstallationId"] = InstallationId;
+                    CombinedInstallationId = ds.Rows[0]["Id"].ToString();
+                    Session["InstallationId"] = CombinedInstallationId;
                 }
                 else
                 {
-                    InstallationId = Session["InstallationId"].ToString();
+                    CombinedInstallationId = Session["InstallationId"].ToString();
 
                 }
                 GridViewRow row = ((Control)sender).NamingContainer as GridViewRow;
@@ -389,7 +411,7 @@ namespace CEIHaryana.Industry_Master
                     btnReset.Visible = true;
                     Declaration.Visible = true;
                     //lnkFile.Visible = true;
-                    GetDocumentUploadData(ApplicantTypeCode, int.Parse(InstallationId), InspectionType, PlantLocationRoofTop, PlantLocationGroundMounted, inspectionIdRes);
+                    //GetDocumentUploadData(ApplicantTypeCode, int.Parse(InstallationId), InspectionType, PlantLocationRoofTop, PlantLocationGroundMounted, inspectionIdRes); ///Commented By Neha
                     //Session["InstallationTypeID"] = int.Parse(InstallationId);
 
                     DataTable dt = new DataTable();
@@ -431,6 +453,7 @@ namespace CEIHaryana.Industry_Master
                     }
 
                     PaymentGridViewBind(id);
+                    GetDocumentUploadData(ApplicantTypeCode, int.Parse(CombinedInstallationId), InspectionType, PlantLocationRoofTop, PlantLocationGroundMounted, inspectionIdRes);  // Added here by Neha
 
                     GetOtherDetails_ForReturnedInspection(inspectionIdRes);
                     //    else
@@ -637,7 +660,7 @@ namespace CEIHaryana.Industry_Master
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
             //Added on 3 apl 2025  Method to Check If Any of Neccessary Session is Empty then redirect to Corresponding page
-            if( CheckAndRedirect("InstallationId,id,Amount,TotalCapacity,HighestVoltage", "ForNewInstallation.aspx"))
+            if (CheckAndRedirect("InstallationId,id,Amount,TotalCapacity,HighestVoltage", "ForNewInstallation.aspx"))
             {
                 return;
             }
@@ -905,7 +928,7 @@ namespace CEIHaryana.Industry_Master
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('Please accept declaration first to proceed.')", true);
                     }
                 }
-                
+
                 else
                 {
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Please First tick the any one installation for inspection')", true);
@@ -922,7 +945,7 @@ namespace CEIHaryana.Industry_Master
         protected void lnkFile_Click(object sender, EventArgs e)
         {
             //Added on 3 apl 2025  Method to Check If Any of Neccessary Session is Empty then redirect to Corresponding page
-           if( CheckAndRedirect("File", "ForNewInstallation.aspx"))
+            if (CheckAndRedirect("File", "ForNewInstallation.aspx"))
             {
                 return;
             }
@@ -1050,7 +1073,7 @@ namespace CEIHaryana.Industry_Master
         private void getWorkIntimationData()
         {
             //Added on 3 apl 2025  Method to Check If Any of Neccessary Session is Empty then redirect to Corresponding page
-            if(CheckAndRedirect("id", "ForNewInstallation.aspx"))
+            if (CheckAndRedirect("id", "ForNewInstallation.aspx"))
             {
                 return;
             }
@@ -1131,6 +1154,7 @@ namespace CEIHaryana.Industry_Master
 
             foreach (GridViewRow row in Grd_Document.Rows)
             {
+                if (!row.Visible) continue;  //Added by Neha
                 FileUpload fileUpload = (FileUpload)row.FindControl("FileUpload1");
                 string Req = ((HtmlInputHidden)row.FindControl("Req")).Value.Replace("\r\n", "");
                 string DocSaveName = ((HtmlInputHidden)row.FindControl("DocumentShortName")).Value.Replace("\r\n", "");
@@ -1142,12 +1166,13 @@ namespace CEIHaryana.Industry_Master
                     if (Req == "1")
                     {
 
-                        if (!fileUpload.HasFile && Req == "1")
-                        {
-                            string message = DocName + " is mandatory to upload.";
-                            throw new Exception(message);
+                        //if (!fileUpload.HasFile && Req == "1")
+                            if (!fileUpload.HasFile)
+                            {
+                                string message = DocName + " is mandatory to upload.";
+                                throw new Exception(message);
 
-                        }
+                            }
 
                     }
                 }
@@ -1213,7 +1238,7 @@ namespace CEIHaryana.Industry_Master
                 {
                     Session["Duplicacy1"] = "2";
                     CEI.InsertInspectionDataNewCodeIndustry(InstallationTypeID, para_txtContact, para_ApplicantTypeCode, para_IntimationId, para_PremisesType, para_lblApplicant, para_lblCategory, para_lblVoltageLevel,
-                  // para_District, para_To, para_PaymentMode, para_txtDate, para_txtInspectionRemarks, para_CreatedByy, para_TotalAmount, para_Assigned, para_transcationId, para_TranscationDate, para_ChallanAttachment, para_InspectID, para_kVA, para_DemandNotice, TotalCapacity, MaxVoltage, ServiceType, transaction);
+                   // para_District, para_To, para_PaymentMode, para_txtDate, para_txtInspectionRemarks, para_CreatedByy, para_TotalAmount, para_Assigned, para_transcationId, para_TranscationDate, para_ChallanAttachment, para_InspectID, para_kVA, para_DemandNotice, TotalCapacity, MaxVoltage, ServiceType, transaction);
                    para_District, para_To, para_PaymentMode, para_txtDate, para_txtInspectionRemarks, para_CreatedByy, para_Assigned, para_transcationId, para_TranscationDate, para_ChallanAttachment, para_InspectID, para_kVA, para_DemandNotice, MaxVoltage, ServiceType, transaction);
                     string generatedIdCombinedDetails = CEI.InspectionId();
 
@@ -1464,7 +1489,7 @@ namespace CEIHaryana.Industry_Master
         protected void PaymentGridViewBind(string id)
         {
             //Added on 3 apl 2025  Method to Check If Any of Neccessary Session is Empty then redirect to Corresponding page
-            if(CheckAndRedirect("SiteOwnerId_Sld_Indus", "ForNewInstallation.aspx"))
+            if (CheckAndRedirect("SiteOwnerId_Sld_Indus", "ForNewInstallation.aspx"))
             {
                 return;
             }
@@ -1613,9 +1638,9 @@ namespace CEIHaryana.Industry_Master
             if (!string.IsNullOrEmpty(resultPage))
             {
                 Response.Redirect(resultPage, false);
-                return true; 
+                return true;
             }
-            return false; 
+            return false;
         }
 
     }

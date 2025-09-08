@@ -402,6 +402,7 @@
                 </div>
 
             </div>
+             <div id="challanDetailsDiv" visible="true" runat="server">
             <div class="row ">
                 <div class="col-sm-4 col-md-4">
                     <h6 class="card-title fw-semibold mb-4">
@@ -441,6 +442,7 @@
                     </div>
                 </div>
             </div>
+                 </div>
             <div class="row" id="Declaration" runat="server" visible="true" style="margin-left: 1%; margin-bottom: 20px;">
                 <label style="display: flex; align-items: center;">
                     <asp:CheckBox ID="Check" runat="server" TabIndex="24" Style="margin-top: -5px;" />

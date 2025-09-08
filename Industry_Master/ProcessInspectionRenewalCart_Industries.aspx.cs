@@ -71,7 +71,7 @@ namespace CEIHaryana.Industry_Master
             }
             catch (Exception ex)
             {
-                string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://staging.investharyana.in/#/';";
+                string script = "alert('" + ex.Message.Replace("'", "\\'") + "'); window.location = 'https://investharyana.in/#/';";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
             }
         }
@@ -125,6 +125,17 @@ namespace CEIHaryana.Industry_Master
                             Voltage = ds.Tables[0].Rows[0]["MaxVoltage"].ToString();
                             Amount = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
                             LblAmount.Text = Amount;
+
+                            int TotalCalAmount = Convert.ToInt32(ds.Tables[0].Rows[0]["TotalAmount"]);
+                            if (TotalCalAmount == 0)
+                            {
+                                challanDetailsDiv.Visible = false;
+                            }
+                            else
+                            {
+                                challanDetailsDiv.Visible = true;
+                            }
+
                             LblVoltage.Text = Voltage;
                             LblCapacity.Text = Capacity;
                             IdCart = ds.Tables[0].Rows[0]["CartId"].ToString();
@@ -166,7 +177,19 @@ namespace CEIHaryana.Industry_Master
 
                                 if (dsDetails != null && dsDetails.Tables[0].Rows.Count > 0)
                                 {
-                                    AddFixedRows(dsDetails);
+
+                                    if (TotalCalAmount == 0)
+                                    {
+                                        AddFixedRowsIfAmountZero(dsDetails);
+                                        challanDetailsDiv.Visible = false;
+                                    }
+                                    else
+                                    {
+                                        AddFixedRows(dsDetails);
+                                        challanDetailsDiv.Visible = true;
+                                    }
+
+                                    //AddFixedRows(dsDetails);
                                     GridView1.DataSource = dsDetails;
                                     GridView1.DataBind();
                                 }
@@ -186,6 +209,25 @@ namespace CEIHaryana.Industry_Master
                         Response.Redirect("/Industry_Sessions_Clear.aspx", false);
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                Response.Write(ex.Message);
+            }
+        }
+
+        private void AddFixedRowsIfAmountZero(DataSet dsDetails)
+        {
+            try
+            {
+                DataTable dt = dsDetails.Tables[0];
+
+                DataRow fixedRow1 = dt.NewRow();
+                fixedRow1["DocumentName"] = "Other Document";
+                dt.Rows.Add(fixedRow1);
+
+                GridView1.DataSource = dt;
+                GridView1.DataBind();
             }
             catch (Exception ex)
             {
@@ -240,6 +282,16 @@ namespace CEIHaryana.Industry_Master
                             Capacity = ds.Tables[0].Rows[0]["TotalCapacity"].ToString();
                             Voltage = ds.Tables[0].Rows[0]["MaxVoltage"].ToString();
                             Amount = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
+                            int TotalCalculatedAmount = Convert.ToInt32(ds.Tables[0].Rows[0]["TotalAmount"]);
+                            if (TotalCalculatedAmount == 0)
+                            {
+                                challanDetailsDiv.Visible = false;
+                            }
+                            else
+                            {
+                                challanDetailsDiv.Visible = true;
+                            }
+
                             LblAmount.Text = Amount;
                             LblVoltage.Text = Voltage;
                             LblCapacity.Text = Capacity;
@@ -269,7 +321,17 @@ namespace CEIHaryana.Industry_Master
                             //if (NewInspectionId != null)
                             if (dsDetails != null && dsDetails.Tables[0].Rows.Count > 0)
                             {
-                                AddFixedRows(dsDetails);
+                                if (TotalCalculatedAmount == 0)
+                                {
+                                    AddFixedRowsIfAmountZero(dsDetails);
+                                    challanDetailsDiv.Visible = false;
+                                }
+                                else
+                                {
+                                    AddFixedRows(dsDetails);
+                                    challanDetailsDiv.Visible = true;
+                                }
+                                //AddFixedRows(dsDetails);
                                 GridView1.DataSource = dsDetails;
                                 GridView1.DataBind();
                             }
