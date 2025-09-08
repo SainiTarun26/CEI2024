@@ -6387,9 +6387,9 @@ string CreatedBy, string TotalCapacity, string MaxVoltage, int InspectID)
 
         //Change by aslam 24-april-2025
         public void InsertInspectionDataNewCodeIndustry(string InstallationTypeID, string ContactNo, string ApplicantTypeCode, string IntimationId, string Inspectiontype, string ApplicantType, string InstallationType,
-string VoltageLevel, string District, string Division, string PaymentMode, string DateOfSubmission, string InspectionRemarks, string CreatedBy,
-string para_Assigned, string transcationId, string TranscationDate, string ChallanAttachment, int InspectID, string KVA, string DemandNotice, int MaxVoltage, int ServiceType, SqlTransaction transaction
-)
+    string VoltageLevel, string District, string Division, string PaymentMode, string DateOfSubmission, string InspectionRemarks, string CreatedBy,
+    string para_Assigned, string transcationId, string TranscationDate, string ChallanAttachment, int InspectID, string KVA, string DemandNotice, int MaxVoltage, int ServiceType, SqlTransaction transaction
+    )
         {
             SqlCommand cmd = new SqlCommand("sp_InsertInspectionData_NewCodeForMultiple_Industry", transaction.Connection, transaction);
             cmd.CommandType = CommandType.StoredProcedure;
@@ -6423,10 +6423,19 @@ string para_Assigned, string transcationId, string TranscationDate, string Chall
             }
             cmd.Parameters.AddWithValue("@InspectionRemarks ", InspectionRemarks);
             cmd.Parameters.AddWithValue("@CreatedBy ", CreatedBy);
-            cmd.Parameters.AddWithValue("@TransactionId ", transcationId);
+            ////cmd.Parameters.AddWithValue("@TransactionId ", transcationId);
+            cmd.Parameters.AddWithValue("@TransactionId", string.IsNullOrWhiteSpace(transcationId) ? (object)DBNull.Value : transcationId); //Change by neha
             //cmd.Parameters.AddWithValue("@TotalAmount", TotalAmount);
             cmd.Parameters.AddWithValue("@AssignTo", para_Assigned);
-            cmd.Parameters.AddWithValue("@TransctionDate", TranscationDate);
+            ////cmd.Parameters.AddWithValue("@TransctionDate", TranscationDate);
+            if (string.IsNullOrWhiteSpace(TranscationDate))  //Change by neha
+            {
+                cmd.Parameters.AddWithValue("@TransctionDate", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@TransctionDate", TranscationDate);
+            }
             cmd.Parameters.AddWithValue("@ChallanAttachment", null);
             cmd.Parameters.AddWithValue("@InspectID", InspectID);
             cmd.Parameters.AddWithValue("@SactionVoltage", KVA);
