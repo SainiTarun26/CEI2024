@@ -24,7 +24,7 @@ namespace CEIHaryana.Admin
             {
                 if (Convert.ToString(Session["AdminId"]) != null && Convert.ToString(Session["AdminId"]) != string.Empty)
                 {
-                    loginid = Convert.ToString(Session["AdminId"]);
+                    hdnId.Value = Convert.ToString(Session["AdminId"]);
                     GridBind();
 
                 }
@@ -90,15 +90,15 @@ namespace CEIHaryana.Admin
 
         protected void rblAction_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (rblAction.SelectedValue == "Suspend")
+            if (rblAction.SelectedValue == "Terminate")
             {
                 FromDate.Visible = true;
-                ToDate.Visible = true;
+                ToDate.Visible = false;
             }
             else
             {
-                FromDate.Visible = false;
-                ToDate.Visible = false;
+                FromDate.Visible = true;
+                ToDate.Visible = true;
             }
         }
         //file saved by navneet
@@ -173,7 +173,7 @@ namespace CEIHaryana.Admin
                         filePathInfo2 = Filepathe(rblAction.SelectedValue, lblCategory.Text, lblUserId.Text);
                         if (filePathInfo2 != null && filePathInfo2 != "")
                         {
-                            CEI.InsertSuspensionAndTerminationData(lblUserId.Text, lblCategory.Text, rblAction.SelectedValue, loginid, txtFromDate.Text, txtdateto.Text, filePathInfo2, loginid);
+                            CEI.InsertSuspensionAndTerminationData(lblUserId.Text, lblCategory.Text, rblAction.SelectedValue, hdnId.Value, txtFromDate.Text, txtdateto.Text, filePathInfo2, hdnId.Value);
 
                             break;
                         }
@@ -208,7 +208,7 @@ namespace CEIHaryana.Admin
         {
             txtdateto.Text = "";
             txtFromDate.Text = "";
-             rblAction.ClearSelection();
+            rblAction.ClearSelection();
             GridBind();
         }
 

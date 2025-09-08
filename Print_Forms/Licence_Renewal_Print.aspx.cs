@@ -21,7 +21,7 @@ namespace CEIHaryana.Print_Forms
             {
                 if (!IsPostBack)
                 {
-                    Session["NewApplicationRegistrationNo"] = "12";
+                   // Session["NewApplicationRegistrationNo"] = "12";
                     if (Convert.ToString(Session["NewApplicationRegistrationNo"]) != null || Convert.ToString(Session["NewApplicationRegistrationNo"]) != string.Empty)
                     {
                         GetRenewalData(Session["NewApplicationRegistrationNo"].ToString().Trim());
@@ -101,10 +101,12 @@ namespace CEIHaryana.Print_Forms
                 if (dta.Rows[0]["AnyContractor"].ToString() == "No")
                 {
                     Employer.Visible = false;
+                    Employer2.Visible = false;
                 }
                 else
                 {
                     Employer.Visible = true;
+                    Employer2.Visible = true;
                     txtNameofEmployer.Text = dta.Rows[0]["ContractorName"].ToString();
                     txtLicenseNo.Text = dta.Rows[0]["Licence"].ToString();
                     txtEmployerAddress.Text = dta.Rows[0]["ContractorAddress"].ToString();

@@ -443,27 +443,17 @@
                                         Reports</span>
                                 </a>
                             </li>
-                           
+                            <%--<li class="nav-item">
+                                <a class="nav-link" href="/Contractor/Supervisor_Requests.aspx">
+                                    <i class="icon-grid menu-icon"></i>
+                                    <span class="menu-title">Supervisor Request</span>
+                                </a>
+                            </li>--%>
                             <li class="nav-item">
                                 <a id="RenewalMenuItem" runat="server" visible="false" class="nav-link" href="/Contractor/Contractor_Licence_Renewal.aspx">
                                     <i class="icon-grid menu-icon"></i>
                                     <span class="menu-title">Renewal Contractor<br />
                                         Licence</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a id="A1" runat="server" class="nav-link" href="/Contractor/Contractor_Licence_Updradation.aspx">
-                                    <i class="icon-grid menu-icon"></i>
-                                    <span class="menu-title">Licence Upgradation</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a id="A2" runat="server" class="nav-link" href="/Contractor/ConractorUpgradationHistory.aspx">
-                                    <i class="icon-grid menu-icon"></i>
-                                    <span class="menu-title">Licence Upgradation
-           
-                                        <br />
-                                        History</span>
                                 </a>
                             </li>
                             <%-- <li class="nav-item">

@@ -30,6 +30,7 @@ namespace CEIHaryana.UserPages
                 {
                     if (Convert.ToString(Session["SupervisorID"]) != null && Convert.ToString(Session["SupervisorID"]) != "")
                     {
+                        Session["TempUniqueId"] = "";
                         Label1.Text = "Competency(Supervisor)";
                         UserID = Session["SupervisorID"].ToString();
                         HdnUserId.Value = UserID;
@@ -41,6 +42,7 @@ namespace CEIHaryana.UserPages
                     }
                     else if (Convert.ToString(Session["WiremanId"]) != null && Convert.ToString(Session["WiremanId"]) != "")
                     {
+                        Session["TempUniqueId"] = "";
                         Label1.Text = "Wireman Permit";
                         UserID = Session["WiremanId"].ToString();
                         HdnUserId.Value = UserID;
@@ -367,7 +369,24 @@ namespace CEIHaryana.UserPages
             }
             return true;
         }
-
+        protected void Button8_Click(object sender, EventArgs e)
+        {
+            if (IsSessionValid())
+            {
+                string Result = SaveDocumentWithTransaction(FileUpload8, Button8, 38, lnkbtn_Delete8, lnkbtn_Save8, "Medical fitness certificate", null, null);
+                if (Result != null && Result != "")
+                {
+                    HdnField_Document8.Value = "1";
+                    lnkbtn_Delete8.Visible = true;
+                    lnkbtn_Save8.Visible = true;
+                    text8.Visible = false;
+                }
+            }
+            else
+            {
+                Response.Redirect("/LogOut.aspx", false);
+            }
+        }
         private bool IsSessionValid()
         {
             if (!string.IsNullOrEmpty(Convert.ToString(HdnUserId.Value)))
@@ -382,6 +401,7 @@ namespace CEIHaryana.UserPages
         }
         private void GenerateUniqueTempId()
         {
+            Session["TempUniqueId"] = "";
             Random rnd = new Random();
             int randomNumber = rnd.Next(1000000000, int.MaxValue);
             string currentDate = DateTime.Now.ToString("ddMMyyyy");
@@ -623,24 +643,7 @@ namespace CEIHaryana.UserPages
         ////        }
         ////    }
         ////}
-        protected void Button8_Click(object sender, EventArgs e)
-        {
-            if (IsSessionValid())
-            {
-                string Result = SaveDocumentWithTransaction(FileUpload8, Button8, 38, lnkbtn_Delete8, lnkbtn_Save8, "Medical fitness certificate from Government/Government approved Hospital in case he is above 55 years of age on the date of submission of application", null, null);
-                if (Result != null && Result != "")
-                {
-                    HdnField_Document8.Value = "1";
-                    lnkbtn_Delete8.Visible = true;
-                    lnkbtn_Save8.Visible = true;
-                    text8.Visible = false;
-                }
-            }
-            else
-            {
-                Response.Redirect("/LogOut.aspx", false);
-            }
-        }
+        
         protected void lnkbtn_Delete8_Click(object sender, EventArgs e)
         {
             LinkButton btn = (LinkButton)sender;

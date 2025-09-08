@@ -267,7 +267,7 @@ namespace CEIHaryana.SiteOwnerPages
                         }
                     }
                     decimal TotalAmount = Convert.ToDecimal(Session["CinemaAmount"]);                    
-                    //assigned officer changes by navneet on instructions of vinod sir
+                    
                     AssignedOfficer = "CEI";
 
                     if (txttransactionId.Text != "")

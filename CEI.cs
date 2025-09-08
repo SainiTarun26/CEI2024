@@ -3615,9 +3615,18 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
             }
             cmd.Parameters.AddWithValue("@InspectionRemarks ", InspectionRemarks);
             cmd.Parameters.AddWithValue("@CreatedBy ", CreatedBy);
-            cmd.Parameters.AddWithValue("@TransactionId ", transcationId);
+            cmd.Parameters.AddWithValue("@TransactionId", string.IsNullOrWhiteSpace(transcationId) ? (object)DBNull.Value : transcationId); //Change by neha
             cmd.Parameters.AddWithValue("@AssignTo", para_Assigned);
-            cmd.Parameters.AddWithValue("@TransctionDate", TranscationDate);
+            //cmd.Parameters.AddWithValue("@TransctionDate", TranscationDate);
+            if (string.IsNullOrWhiteSpace(TranscationDate))  //Change by neha
+            {
+                cmd.Parameters.AddWithValue("@TransctionDate", DBNull.Value);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@TransctionDate", TranscationDate);
+            }
+
             cmd.Parameters.AddWithValue("@ChallanAttachment", null);
             cmd.Parameters.AddWithValue("@InspectID", InspectID);
             cmd.Parameters.AddWithValue("@SactionVoltage", KVA);
@@ -10995,7 +11004,7 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
         {
             string encryptedNumber = EncryptRandomNumber(RandomUniqueNumber);
             // string activationLink = $"https://uat.ceiharyana.com/ToVerifyRegistration.aspx?id={encryptedNumber}&email={HttpUtility.UrlEncode(Email)}";
-            string activationLink = $"https://localhost:44393/ToVerifyRegistration.aspx?id={encryptedNumber}&email={HttpUtility.UrlEncode(Email)}";
+            string activationLink = $"https://uat.ceiharyana.com/ToVerifyRegistration.aspx?id={encryptedNumber}&email={HttpUtility.UrlEncode(Email)}";
 
 
             MailMessage mailMessage = new MailMessage();
@@ -12693,6 +12702,16 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
             {
             }
         }
+        public static int ToCheckAlreadyExistedOrNot(string ToCheckexistance)
+        {
+            object result = DBTask.ExecuteScalar(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_ToCheckAlreadyExistedOrNot", ToCheckexistance);
+            return Convert.ToInt32(result);
+        }
+
+        public DataTable IfAlreadyExistThenUserId(string ToCheckexistance)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_IfAlreadyExistThenUserId", ToCheckexistance);
+        }
         #endregion
         #region kalpana renewal of licenses
         public string RenewalFees(string Category, int DaysDelay, int years)
@@ -13755,7 +13774,7 @@ string DaysDelay, string RenewalTime, string amount, string GRNno, string Challa
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_Licence_Cei_Approval_GetHeaderDetails", licApplicationId);
         }
 
-        public int Insert_Licence_CeiApprovalRejection(string applicationId, string remarks, string actionTaken, string actionTakenBy)
+        public int Insert_Licence_CeiApprovalRejection(string applicationId, string remarks, string actionTaken, string actionTakenBy, string ipadress)
         {
             int result = 0;
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
@@ -13767,6 +13786,7 @@ string DaysDelay, string RenewalTime, string amount, string GRNno, string Challa
                     cmd.Parameters.AddWithValue("@Remarks", remarks);
                     cmd.Parameters.AddWithValue("@ActionTaken", actionTaken);
                     cmd.Parameters.AddWithValue("@ActionTakenBy", actionTakenBy);
+                    cmd.Parameters.AddWithValue("@IpAddress", ipadress);
 
                     SqlParameter returnParam = new SqlParameter();
                     returnParam.Direction = ParameterDirection.ReturnValue;
@@ -14473,11 +14493,135 @@ string dbPathCompetency, string dbPathMedicalCertificate, string userId)
                 UpgradationAppliedErlier, sqlInterviewDate, Voltage, dbPathExperience, dbPathCompetency, userId
             );
         }
+       
         #endregion
         #region aslam
         public DataSet GetGrUtrNoAndChallanDetailByAppId(string applicationId)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_Get_GrUtrNoAndChallanDetailByAppId", applicationId);
+        }
+        #endregion
+        #region kalpana suspend and terminate
+        public DataSet GridForSuspensionAndTermination(string Category, string Search)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GridForSuspensionAndTermination", Category, Search);
+
+        }
+
+        public void InsertSuspensionAndTerminationData(
+      string UserId, string Category, string ActionTaken, string ActionTakenBy,
+      string FromDate, string Todate, string TerminationSuspensionOrder, string CreatedBy)
+        {
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+            using (SqlCommand cmd = new SqlCommand("sp_SuspensionAndTerminationData", con))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@UserId", UserId);
+                cmd.Parameters.AddWithValue("@Category", Category);
+                cmd.Parameters.AddWithValue("@ActionTaken", ActionTaken);
+                cmd.Parameters.AddWithValue("@ActionTakenBy", ActionTakenBy);
+
+                DateTime From;
+                if (DateTime.TryParse(FromDate, out From))
+                    cmd.Parameters.AddWithValue("@FromDate", From);
+                else
+                    cmd.Parameters.AddWithValue("@FromDate", DBNull.Value);
+
+                DateTime To;
+                if (DateTime.TryParse(Todate, out To))
+                    cmd.Parameters.AddWithValue("@Todate", To);
+                else
+                    cmd.Parameters.AddWithValue("@Todate", DBNull.Value);
+
+                cmd.Parameters.AddWithValue("@TerminationSuspensionOrder", TerminationSuspensionOrder);
+                cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+        #endregion
+
+
+
+        #region Neha upgradation
+        public static int ToCheckthesignatureAndImageexist(string UserId, string UserType)
+        {
+            object result = DBTask.ExecuteScalar(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(),
+                "Sp_ToCheckthesignatureAndImageexist", UserId, UserType);
+            return Convert.ToInt32(result);
+        }
+        public static int UpdateImageAndSignature(string Category, string Photo, string Signature, string userId)
+        {
+            object result = DBTask.ExecuteScalar(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(),
+                "Sp_UpdateImageAndSignature", Category, Photo, Signature, userId);
+            return Convert.ToInt32(result);
+        }
+        #endregion
+        #region gurmeet attachdeattach 30-June-2025
+        public void EmailForDeattachmentRequestContractor(string Text, string From, string To)
+        {
+            MailMessage mailMessage = new MailMessage();
+            mailMessage.From = new MailAddress("ceiharyana58@gmail.com");
+            mailMessage.To.Add(To);
+            mailMessage.CC.Add(From);
+            mailMessage.Subject = Text + " Request";
+
+            string body = $"Dear Customer,\n\nWe are pleased to inform you that user request for  '{Text}' successfully.\n\nThank you for choosing our services. If you have any questions or need further assistance, please feel free to contact our support team.\n\nBest regards,\n[CEI Haryana]";
+            mailMessage.Body = body;
+            SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
+            smtpClient.Port = 587;
+            smtpClient.Credentials = new NetworkCredential("ceiharyana58@gmail.com", "hztpndeqdowygdim");
+            smtpClient.EnableSsl = true;
+
+            smtpClient.Send(mailMessage);
+        }
+        public DataSet GetSupervisorRequestForDeattachment_Attachments(string ContractorId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetsupervisorListForDeattached", ContractorId);
+        }
+        public DataTable GetDetailsForDeattachedSupervisor(string SupervisorRequestID)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetsupervisorDetails_ForDetattached", SupervisorRequestID);
+        }
+        public int DeattachedbyContractor(string ContractorId, string SupervisorREID, string UserId)
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("Sp_Deattached_Supervisor");
+            cmd.Connection = con;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@contratorId", ContractorId);
+            cmd.Parameters.AddWithValue("@SupervisorREID", SupervisorREID);
+            cmd.Parameters.AddWithValue("@UserId", UserId);
+            int x = cmd.ExecuteNonQuery();
+            con.Close();
+            return x;
+        }
+        public int AttachedbyContractor(string ContractorId, string SupervisorREID, string UserId)
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
+            con.Open();
+            SqlCommand cmd = new SqlCommand("Sp_Attached_Supervisor");
+            cmd.Connection = con;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@contratorId", ContractorId);
+            cmd.Parameters.AddWithValue("@SupervisorREID", SupervisorREID);
+            cmd.Parameters.AddWithValue("@UserId", UserId);
+            int x = cmd.ExecuteNonQuery();
+            con.Close();
+            return x;
+        }
+        public DataSet GetSupervisorRequestForDeattachment_AttachmentHistroy(string ContractorId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetsupervisorListForDeattached_AttachedHistroy", ContractorId);
+        }
+        #endregion
+        #region navneet zipcode 
+        public DataTable getNewUserDocumentsForZip(string RegistrationId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getNewUserDocumentsForZip", RegistrationId);
         }
         #endregion
     }

@@ -193,7 +193,6 @@
                         <div class="col-md-3">
                             <label>
                                 Select Staff:
-        <samp style="color: red">* </samp>
                             </label>
                             <asp:DropDownList ID="ddlCategory" runat="server" CssClass="form-control"
                                 Style="margin-left: 18px" TabIndex="8" AppendDataBoundItems="true" AutoPostBack="true" OnSelectedIndexChanged="ddlCategory_SelectedIndexChanged">
@@ -208,7 +207,6 @@
                         <div class="col-md-3">
                             <label>
                                 Search:
-        <samp style="color: red">* </samp>
                             </label>
                             <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control"
                                 Style="margin-left: 18px" autocomplete="off" OnTextChanged="txtSearch_TextChanged"></asp:TextBox>
@@ -294,91 +292,143 @@
                             <asp:HiddenField ID="HdnPanFilePath" runat="server" />
                         </div>
                     </div>
-                      <asp:UpdatePanel ID="updatepanel" runat="server">
-      <ContentTemplate>
-                    <div class="row" style="margin-top: 20px;">
-                      
-                        <div class="col-md-4">
-                            <label>
-                                Action
+                    <asp:UpdatePanel ID="updatepanel" runat="server">
+                        <ContentTemplate>
+                            <div class="row" style="margin-top: 20px;">
+
+                                <div class="col-md-4">
+                                    <label>
+                                        Action
                                 <samp style="color: red">*</samp></label>
-                            <asp:RadioButtonList ID="rblAction" runat="server" RepeatDirection="Horizontal"
-                                TextAlign="Left" CssClass="form-check custom-rbl" OnSelectedIndexChanged="rblAction_SelectedIndexChanged" AutoPostBack="true">
-                                <asp:ListItem Text="Suspend &nbsp;&nbsp;" Value="Suspend"></asp:ListItem>
-                                <asp:ListItem Text="Terminate&nbsp;&nbsp;" Value="Terminate"></asp:ListItem>
-                            </asp:RadioButtonList>
+                                    <asp:RadioButtonList ID="rblAction" runat="server" RepeatDirection="Horizontal"
+                                        TextAlign="Left" CssClass="form-check custom-rbl" OnSelectedIndexChanged="rblAction_SelectedIndexChanged" AutoPostBack="true">
+                                        <asp:ListItem Text="Suspend &nbsp;&nbsp;" Value="Suspend"></asp:ListItem>
+                                        <asp:ListItem Text="Terminate&nbsp;&nbsp;" Value="Terminate"></asp:ListItem>
+                                    </asp:RadioButtonList>
 
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidatorAction" runat="server"
-                                ControlToValidate="rblAction"
-                                ErrorMessage="Please select an action"
-                                ValidationGroup="Submit"
-                                ForeColor="Red" />
-                        </div>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidatorAction" runat="server"
+                                        ControlToValidate="rblAction"
+                                        ErrorMessage="Please select an action"
+                                        ValidationGroup="Submit"
+                                        ForeColor="Red" />
+                                </div>
 
-                        <div class="col-md-4" runat="server" id="FromDate" visible="false">
-                            <label>
-                                From Date
+                                <div class="col-md-4" runat="server" id="FromDate" visible="true">
+                                    <label>
+                                        From Date
         <samp style="color: red">* </samp>
-                            </label>
-                            <asp:TextBox ID="txtFromDate" runat="server" CssClass="form-control"
-                                Style="margin-left: 18px" autocomplete="off"
-                                TextMode="Date"></asp:TextBox>
+                                    </label>
+                                    <asp:TextBox ID="txtFromDate" runat="server" CssClass="form-control"
+                                        Style="margin-left: 18px" autocomplete="off"
+                                        TextMode="Date" onchange="validateFromDate();"></asp:TextBox>
 
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
-                                ControlToValidate="txtFromDate"
-                                ErrorMessage="Please select From Date"
-                                ValidationGroup="Submit"
-                                ForeColor="Red" />
-                        </div>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
+                                        ControlToValidate="txtFromDate"
+                                        ErrorMessage="Please select From Date"
+                                        ValidationGroup="Submit"
+                                        ForeColor="Red" />
+                                </div>
 
-                        <div class="col-md-4" runat="server" id="ToDate" visible="false">
+                                <div class="col-md-4" runat="server" id="ToDate" visible="true">
+                                    <label>
+                                        To Date
+       
+                                    </label>
+                                    <asp:TextBox ID="txtdateto" runat="server" CssClass="form-control"
+                                        Style="margin-left: 18px" autocomplete="off"
+                                        TextMode="Date" onchange="validateToDate();"></asp:TextBox>
+
+
+                                </div>
+
+
+                            </div>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                    <div class="row">
+                        <div class="col-md-3">
                             <label>
-                                To Date
-        <samp style="color: red">* </samp>
+                                Upload Termination/Suspension Order
+                                <samp style="color: red">* </samp>
                             </label>
-                            <asp:TextBox ID="txtdateto" runat="server" CssClass="form-control"
-                                Style="margin-left: 18px" autocomplete="off"
-                                TextMode="Date"></asp:TextBox>
+                            <asp:FileUpload ID="fileUpload" runat="server" CssClass="form-control"
+                                Style="margin-left: 18px" TabIndex="8" />
 
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"
-                                ControlToValidate="txtFromDate"
-                                ErrorMessage="Please select From Date"
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server"
+                                ControlToValidate="fileUpload"
+                                ErrorMessage="Please upload Termination/Suspension Order"
                                 ValidationGroup="Submit"
                                 ForeColor="Red" />
                         </div>
-                               
-                       
                     </div>
-                  </ContentTemplate>
-</asp:UpdatePanel>
-                <div class="row">
-                                    <div class="col-md-3">
-                    <label>
-                        Upload Termination/Suspension Order
-<samp style="color: red">* </samp>
-                    </label>
-                    <asp:FileUpload ID="fileUpload" runat="server" CssClass="form-control"
-                        Style="margin-left: 18px" TabIndex="8" />
-
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server"
-                        ControlToValidate="fileUpload"
-                        ErrorMessage="Please upload Termination/Suspension Order"
-                        ValidationGroup="Submit"
-                        ForeColor="Red" />
-                </div>
-                </div>
 
                 </div>
                 <div class="row">
                     <div class="col-md-12" style="text-align: center;">
-                        <asp:Button ID="Button1" runat="server" Text="Submit" class="btn btn-primary" OnClick="Button1_Click" />
+                        <asp:Button ID="Button1" runat="server" Text="Submit" ValidationGroup="Submit" class="btn btn-primary" OnClick="Button1_Click" />
                     </div>
                 </div>
             </div>
+            <asp:HiddenField ID="hdnId" runat="server" />
         </div>
     </div>
     <footer class="footer">
     </footer>
+
+    <script type="text/javascript">
+        // Validate From Date
+        function validateFromDate() {
+            var today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            var fromDateEl = document.getElementById("<%= txtFromDate.ClientID %>");
+            var fromDate = new Date(fromDateEl.value);
+
+            if (fromDate < today) {
+                alert("From Date cannot be in the past. Please select today or a future date.");
+                fromDateEl.value = "";
+                fromDateEl.focus();
+                return false;
+            }
+            return true;
+        }
+
+        // Validate To Date
+        function validateToDate() {
+            var today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            var fromDateEl = document.getElementById("<%= txtFromDate.ClientID %>");
+            var toDateEl = document.getElementById("<%= txtdateto.ClientID %>");
+
+            if (toDateEl.value === "") return true;
+
+            var fromDate = new Date(fromDateEl.value);
+            var toDate = new Date(toDateEl.value);
+
+            // Past date check
+            if (toDate < today) {
+                alert("To Date cannot be in the past. Please select today or a future date.");
+                toDateEl.value = "";
+                toDateEl.focus();
+                return false;
+            }
+
+            // Must be >= From Date
+            if (fromDateEl.value !== "" && toDate < fromDate) {
+                alert("To Date must be greater than or equal to From Date.");
+                toDateEl.value = "";
+                toDateEl.focus();
+                return false;
+            }
+
+            return true;
+        }
+
+
+    </script>
+
+
 
     <script type="text/javascript">
         function checkOnlyOne(chk) {

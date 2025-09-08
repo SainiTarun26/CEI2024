@@ -18,6 +18,7 @@ using System.Reflection.Emit;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.Util;
 using System.Xml.Linq;
 using Label = System.Web.UI.WebControls.Label;
 
@@ -189,8 +190,22 @@ namespace CEIHaryana.Officers
                     GridBindDocument();
                     //txtAmount.Visible = false;
                     txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
-                    txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
-                    txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
+                    #region Added 05-09-2025 Neha
+                    if (txtAmount.Text == "0")
+                    {
+                        transactionId.Visible = false;
+                        transactionDate.Visible = false;
+                    }
+                    else
+                    {
+                        transactionId.Visible = true;
+                        transactionDate.Visible = true;
+                        txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
+                        txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
+                    }
+                    #endregion
+                    //txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
+                    //txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
 
                     DivViewTRinMultipleCaseNew.Visible = true;
                     GridToViewMultipleCaseNew();
@@ -350,9 +365,25 @@ namespace CEIHaryana.Officers
                     txtVoltage.Text = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
                     txtSiteOwnerName.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
 
-                    txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
-                    txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
+                    //txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
+                    //txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
                     txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
+                    #region Added 05-09-2025 Neha
+                    if (txtAmount.Text == "0")
+                    {
+                        transactionId.Visible = false;
+                        transactionDate.Visible = false;
+                    }
+                    else
+                    {
+                        transactionId.Visible = true;
+                        transactionDate.Visible = true;
+                        txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
+                        txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
+                    }
+                    txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
+
+                    #endregion
                     Session["InspectionType"] = ds.Tables[0].Rows[0]["Type_of_Inspection"].ToString();
                     //divTestReportAttachment.Visible = false;
                     Address.Visible = true;

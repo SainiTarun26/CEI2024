@@ -127,7 +127,14 @@ namespace CEIHaryana.Admin
                         return;
                     }
 
-                    int result = CEI.Insert_Licence_CeiApprovalRejection(applicationId, remarks, actionTaken, Session["AdminId"].ToString());
+                    var precheck = PrecheckBeforeApproval(applicationId, actionTaken);
+                    if (!precheck.IsValid)
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "alertMessage", $"alert('{precheck.Message}');", true);
+                        return;
+                    }
+                    string ipAddress = HttpContext.Current?.Request?.UserHostAddress;
+                    int result = CEI.Insert_Licence_CeiApprovalRejection(applicationId, remarks, actionTaken, Session["AdminId"].ToString(), ipAddress);
 
                     if (result == 1)
                     {
@@ -221,6 +228,49 @@ namespace CEIHaryana.Admin
             string safeMessage = message.Replace("'", "\\'");
             ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", $"alert('{safeMessage}');", true);
         }
+
+
+        public class LicencePrecheckResult
+        {
+            public bool IsValid { get; set; }
+            public string Message { get; set; }
+        }
+
+        public LicencePrecheckResult PrecheckBeforeApproval(string applicationId,string actionTaken)
+        {
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand("sp_Precheck_LicenceApproval_New", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ApplicationId", applicationId);
+                    cmd.Parameters.AddWithValue("@ActionTaken", actionTaken);
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            string status = reader["CheckStatus"].ToString();
+                            string message = reader["CheckMessage"].ToString();
+
+                            return new LicencePrecheckResult
+                            {
+                                IsValid = status == "OK",
+                                Message = message
+                            };
+                        }
+                    }
+                }
+            }
+
+            return new LicencePrecheckResult
+            {
+                IsValid = false,
+                Message = "Unable to Validate Application."
+            };
+        }
+
 
     }
 }

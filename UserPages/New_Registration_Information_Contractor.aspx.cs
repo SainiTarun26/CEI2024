@@ -261,7 +261,7 @@ namespace CEIHaryana.UserPages
                     //string folderPath = Server.MapPath(fileNames);
 
                     string fileNames = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
-                    // fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                    // fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                     string script = $@"<script>window.open('{fileNames}','_blank');</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
                 }

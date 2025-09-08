@@ -76,55 +76,76 @@ namespace CEIHaryana.UserPages
             {
                 if (txtPassword.Text == txtConfirmPswrd.Text)
                 {
-                    string Category = string.Empty;
-                    string name = txtName.Text.Trim();
-                    string dob = txtDOB.Text;
-                    string firstNamePart = name.Length >= 4 ? name.Substring(0, 4) : name;
-                    string numericDOB = new string(dob.Where(char.IsDigit).ToArray());
-                    string userId = $"{firstNamePart}{numericDOB}";
+                    string ToCheckexistance = ddlcategory.SelectedItem.ToString().Trim() + txtName.Text.Trim() + txtFatherNmae.Text.Trim() + Convert.ToDateTime(txtDOB.Text.Trim()).ToString("yyyyMMdd").Trim();
+                    int exist = CEI.ToCheckAlreadyExistedOrNot(ToCheckexistance);
 
+                    if (exist != 1)
+                    {
+                        string userId = string.Empty;
+                        string Category = string.Empty;
+                        string name = txtName.Text.Trim();
+                        string dob = txtDOB.Text;
+                        string firstNamePart = name.Length >= 4 ? name.Substring(0, 4) : name;
+                        string numericDOB = new string(dob.Where(char.IsDigit).ToArray());
+                        string userIdStructure = $"{firstNamePart}{numericDOB}".ToUpper().Trim();
 
-                    if (ddlcategory.SelectedValue == "1")
-                    {
-                        Category = "Wireman";
-                    }
-                    else if (ddlcategory.SelectedValue == "2")
-                    {
-                        Category = "Supervisor";
-                    }
-                    else
-                    {
-                        Category = "Contractor";
-                    }
-                    GetIP();
-
-                    #region kalpana 30-July-2025
-                    int Aadhar = CEI.CheckAadharOrPANExist(txtAadhaar.Text.Trim(), txtpancard.Text.Trim());
-                    if (Aadhar > 0)
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "AadharAlert();", true);
-                        return;
-                    }
-
-                    #endregion
-                    else
-                    {
-                        if (Convert.ToString(hdnrandomNumber.Value) == null || Convert.ToString(hdnrandomNumber.Value) == "")
+                        if (ddlcategory.SelectedValue == "1")
                         {
-                            GenerateUniquerandomNumber();
+                            Category = "Wireman";
+                            userId = "W-" + userIdStructure;
                         }
-                        if (Convert.ToString(hdnrandomNumber.Value) != null && Convert.ToString(hdnrandomNumber.Value) != "")
+                        else if (ddlcategory.SelectedValue == "2")
                         {
-                            string RandomUniqueNumber = hdnrandomNumber.Value;
-                            GetIP();
-                            CEI.InserNewUserData(ddlcategory.SelectedItem.ToString(), txtName.Text, txtDOB.Text, txtyears.Text, txtFatherNmae.Text,
-                            ddlGender.SelectedItem.ToString(), txtAadhaar.Text.Trim(), txtpancard.Text.Trim(), txtPermanentAddress.Text, ddlDistrict.SelectedItem.ToString(),
-                            ddlState.SelectedItem.ToString(), txtPinCode.Text, txtphone.Text,
-                            txtEmailID.Text, Category, userId, userId, txtCommunicationAddress.Text, ddlState1.SelectedItem.ToString(), ddlDistrict1.SelectedItem.ToString(),
-                            txtPin.Text, txtConfirmPswrd.Text, ipaddress, RandomUniqueNumber);
+                            Category = "Supervisor";
+                            userId = "S-" + userIdStructure;
+                        }
+                        else
+                        {
+                            Category = "Contractor";
+                            userId = "C-" + userIdStructure;
+                        }
+                        GetIP();
 
-                            CEI.ToActivateAndVerifyEmail(txtEmailID.Text, RandomUniqueNumber);
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+                        #region kalpana 30-July-2025
+                        int Aadhar = CEI.CheckAadharOrPANExist(txtAadhaar.Text.Trim(), txtpancard.Text.Trim());
+                        if (Aadhar > 0)
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "AadharAlert();", true);
+                            return;
+                        }
+
+                        #endregion
+                        else
+                        {
+                            if (Convert.ToString(hdnrandomNumber.Value) == null || Convert.ToString(hdnrandomNumber.Value) == "")
+                            {
+                                GenerateUniquerandomNumber();
+                            }
+                            if (Convert.ToString(hdnrandomNumber.Value) != null && Convert.ToString(hdnrandomNumber.Value) != "")
+                            {
+                                string RandomUniqueNumber = hdnrandomNumber.Value;
+                                GetIP();
+                                CEI.InserNewUserData(ddlcategory.SelectedItem.ToString(), txtName.Text, txtDOB.Text, txtyears.Text, txtFatherNmae.Text,
+                                ddlGender.SelectedItem.ToString(), txtAadhaar.Text.Trim(), txtpancard.Text.Trim(), txtPermanentAddress.Text, ddlDistrict.SelectedItem.ToString(),
+                                ddlState.SelectedItem.ToString(), txtPinCode.Text, txtphone.Text,
+                                txtEmailID.Text, Category, userId, userId, txtCommunicationAddress.Text, ddlState1.SelectedItem.ToString(), ddlDistrict1.SelectedItem.ToString(),
+                                txtPin.Text, txtConfirmPswrd.Text, ipaddress, RandomUniqueNumber);
+
+                                CEI.ToActivateAndVerifyEmail(txtEmailID.Text, RandomUniqueNumber);
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        DataTable dt = CEI.IfAlreadyExistThenUserId(ToCheckexistance);
+
+                        if (dt != null && dt.Rows.Count > 0)
+                        {
+                            string ExistedUserID = dt.Rows[0]["UserId"].ToString();
+                            string alertMessage = $"User already exists with the same details. User ID: {ExistedUserID}, Please Contact to HelpDesk";
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", $"alert('{alertMessage}');", true);
+                            Reset();
                         }
                     }
                 }

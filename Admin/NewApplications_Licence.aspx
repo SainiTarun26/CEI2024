@@ -17,10 +17,7 @@
     <script src="https://kit.fontawesome.com/57676f1d80.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
-        input#ContentPlaceHolder1_Button1 {
-            padding: 0px 10px 0px 10px !important;
-            margin-top: 22px;
-        }
+       
 
         .fade {
             transition: opacity 0.15s linear;
@@ -242,6 +239,12 @@
         span#ContentPlaceHolder1_lblData {
             font-size: 20px;
         }
+       input#ContentPlaceHolder1_Button1{
+           font-size: 13px;
+    margin-top: 28px;
+    padding-top: 3px !important;
+    padding-bottom: 3px !important;
+       }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -357,7 +360,7 @@
                                         </ItemTemplate>
                                     </asp:TemplateField>
 
-                                    <asp:TemplateField HeaderText="ApplicationID">
+                                    <asp:TemplateField HeaderText="App-ID">
                                         <HeaderStyle HorizontalAlign="Left" Width="25%" CssClass="headercolor" />
                                         <ItemStyle HorizontalAlign="Left" Width="25%" CssClass="text-wrap" />
                                         <ItemTemplate>
@@ -393,7 +396,7 @@
                                         <HeaderStyle HorizontalAlign="Center" Width="12%" CssClass="headercolor" />
                                         <ItemStyle HorizontalAlign="Center" Width="12%" />
                                     </asp:BoundField>
-                                    <asp:BoundField DataField="ApplicationStatus" HeaderText="ApplicationStatus">
+                                    <asp:BoundField DataField="ApplicationStatus" HeaderText="Status">
                                         <HeaderStyle HorizontalAlign="Center" Width="15%" CssClass="headercolor" />
                                         <ItemStyle HorizontalAlign="Center" Width="15%" />
                                     </asp:BoundField>
@@ -409,11 +412,19 @@
                                         <ItemStyle HorizontalAlign="right" Width="15%" />
                                     </asp:BoundField>
                                     
-                                    <asp:TemplateField HeaderText="ApplicationType">
+                                    <asp:TemplateField HeaderText="Type">
                                         <HeaderStyle HorizontalAlign="Left" Width="10%" CssClass="headercolor" />
                                         <ItemStyle HorizontalAlign="Left" Width="10%" CssClass="text-wrap" />
                                         <ItemTemplate>
                                             <asp:Label ID="lblApplicationType" runat="server" Text='<%# Eval("ApplicationType") %>' CssClass="text-wrap"></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    
+                                    <asp:TemplateField HeaderText="Download">
+                                        <HeaderStyle Width="10%" CssClass="headercolor" />
+                                        <ItemStyle Width="10%" CssClass="text-wrap" />
+                                        <ItemTemplate>
+                                            <asp:LinkButton ID="LinkDownload" runat="server" CommandArgument=' <%#Eval("UserId") %> ' CommandName="Download">Download</asp:LinkButton>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                 </Columns>
@@ -430,20 +441,25 @@
                         </div>
 
                     </div>
-                    <div class="row" style="margin-top: 15px;">
+                    <div class="row" id="ForWardToCommittee" runat="server" visible="false" style="margin-top: 35px; margin-left: 0px;">
                         <div class="div-4">
-                            <asp:Label ID="Label1" runat="server" Text="Commettiee Id.:" />
+                           <%-- <asp:Label ID="Label1" runat="server" Text="Commettiee Id.:" />--%>
+                            <label>Commettiee Id.:</label>
                             <%--                                <asp:TextBox CssClass="form-control" ReadOnly="true" ID="txtCommittee" runat="server" autocomplete="off"
                                     TabIndex="1" MaxLength="200"
                                     Style="width: calc(100% - 40px);">
                 </asp:TextBox>--%>
 
-                            <asp:DropDownList class="form-control  select-form select2" runat="server"  ID="ddlCommittee" Style="width: 94% !important;">
+                            <asp:DropDownList class="form-control  select-form select2" runat="server"  ID="ddlCommittee" Style="width: 94% !important;
+    height: 25px;
+    padding: 0px;
+    font-size: 13px;">
                             </asp:DropDownList>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="ddlCommittee" runat="server" InitialValue="0" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                         </div>
-                        <div class="div-4">
-                            <asp:Button ID="Button1" Text="ForWord To Committee" OnClick="Button1_Click" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" />
+                        <div class="div-4" style="margin-top: 2px;">
+                              <label>&nbsp;</label>
+                            <asp:Button ID="Button1" Text="Forward To Committee" OnClick="Button1_Click" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" />
 
                         </div>
                     </div>

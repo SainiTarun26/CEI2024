@@ -198,8 +198,8 @@ namespace CEIHaryana.SiteOwnerPages
                 btnSubmit.Visible = true;
                 if (status == "Returned")
                 {
-                    Documents.Visible = false;
-                    btnSubmit.Visible = false;
+                    Documents.Visible = true;
+                    btnSubmit.Visible = true;
                     e.Row.Cells[2].ForeColor = System.Drawing.Color.Red;
                 }
                 if (status == "Rejected")

@@ -225,24 +225,24 @@
                             <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;"><u>Payment Details</u></h6>
                             <div id="Earthing" runat="server" class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                                 <div class="row">
-                                    <div class="col-4">
+                                    <div class="col-4" id="transactionId" visible="true" runat="server">
                                         <label for="Name">
                                             Transaction ID (GRN Number):
                                         </label>
                                         <asp:TextBox class="form-control" ID="txtUTRN" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" ReadOnly="true" Style="margin-left: 18px;">
                                         </asp:TextBox>
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-4"  id="transactionDate" visible="true" runat="server">
                                         <label for="FatherName">Transaction Date:</label>
                                         <asp:TextBox class="form-control" ID="txtTransactionDate" autocomplete="off" runat="server" onKeyPress="return alphabetKey(event);" ReadOnly="true" Style="margin-left: 18px">
                                         </asp:TextBox>
                                     </div>
-                                    <div class="col-4">
+                                    <div class="col-4"  id="PayMode" visible="true" runat="server">
                                         <label>Payment Mode</label>
                                         <asp:TextBox class="form-control" ID="txtPaymentMode" autocomplete="off" runat="server" onKeyPress="return alphabetKey(event);" ReadOnly="true" Style="margin-left: 18px">
                                         </asp:TextBox>
                                     </div>
-                                    <div class="col-4" style="margin-top:35px;">
+                                    <div class="col-4" style="margin-top:35px;"  id="PayAmount" visible="true" runat="server">
                                         <label>Payment Amount</label>
                                         <asp:TextBox class="form-control" ID="txtPaymentAmount" autocomplete="off" runat="server" onKeyPress="return alphabetKey(event);" ReadOnly="true" Style="margin-left: 18px">
                                         </asp:TextBox>

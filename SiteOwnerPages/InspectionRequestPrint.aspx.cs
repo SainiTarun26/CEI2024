@@ -105,10 +105,31 @@ namespace CEIHaryana.SiteOwnerPages
                 txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
                 txtApplicant.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
                 txtAddress.Text = ds.Tables[0].Rows[0]["Address"].ToString();
-                txtUTRN.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
-                txtTransactionDate.Text = ds.Tables[0].Rows[0]["TransctionDate"].ToString();
-                txtPaymentMode.Text = ds.Tables[0].Rows[0]["PaymentMode"].ToString();
-                txtPaymentAmount.Text = ds.Tables[0].Rows[0]["PaymentAmount"].ToString();
+                #region neha 5-sept-2025
+                string amount = ds.Tables[0].Rows[0]["PaymentAmount"].ToString();
+                if(amount == "0")
+                {
+                    transactionId.Visible = false;
+                    transactionDate.Visible = false;
+                    PayMode.Visible = false;
+                    PayAmount.Visible = false;
+                }
+                else
+                {
+                    transactionId.Visible = true;
+                    transactionDate.Visible = true;
+                    PayMode.Visible = true;
+                    PayAmount.Visible = true;
+                    txtUTRN.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
+                    txtTransactionDate.Text = ds.Tables[0].Rows[0]["TransctionDate"].ToString();
+                    txtPaymentMode.Text = ds.Tables[0].Rows[0]["PaymentMode"].ToString();
+                    txtPaymentAmount.Text = ds.Tables[0].Rows[0]["PaymentAmount"].ToString();
+                }
+                //txtUTRN.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
+                //txtTransactionDate.Text = ds.Tables[0].Rows[0]["TransctionDate"].ToString();
+                //txtPaymentMode.Text = ds.Tables[0].Rows[0]["PaymentMode"].ToString();
+                //txtPaymentAmount.Text = ds.Tables[0].Rows[0]["PaymentAmount"].ToString();
+                #endregion
                 txtSubmissionDate.Text = ds.Tables[0].Rows[0]["CreatedDate"].ToString();
                 txtRTSDueDate.Text = ds.Tables[0].Rows[0]["RTSDueDate"].ToString();
 

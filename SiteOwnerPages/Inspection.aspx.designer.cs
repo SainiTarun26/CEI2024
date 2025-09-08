@@ -15,24 +15,6 @@ namespace CEIHaryana.SiteOwnerPages
     {
 
         /// <summary>
-        /// lblInspectionType control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblInspectionType;
-
-        /// <summary>
-        /// Premise control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Premise;
-
-        /// <summary>
         /// txtPremises control.
         /// </summary>
         /// <remarks>
@@ -42,15 +24,6 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.WebControls.TextBox txtPremises;
 
         /// <summary>
-        /// Applicant control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Applicant;
-
-        /// <summary>
         /// txtApplicantType control.
         /// </summary>
         /// <remarks>
@@ -58,15 +31,6 @@ namespace CEIHaryana.SiteOwnerPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtApplicantType;
-
-        /// <summary>
-        /// txtApplicationNo control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtApplicationNo;
 
         /// <summary>
         /// txtWorkType control.
@@ -114,13 +78,13 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.WebControls.TextBox txtInspectionType;
 
         /// <summary>
-        /// txtAmount control.
+        /// txtApplicationNo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAmount;
+        protected global::System.Web.UI.WebControls.TextBox txtApplicationNo;
 
         /// <summary>
         /// GridView1 control.

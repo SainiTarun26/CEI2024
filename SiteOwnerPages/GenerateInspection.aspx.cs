@@ -31,6 +31,8 @@ namespace CEIHaryana.SiteOwnerPages
         int inspectionCountRes = 0;
         int inspectionIdRes = 0;
         string InstallationId = string.Empty;
+
+        string CombinedInstallationId = string.Empty;
         protected decimal totalAmount = 0;
         int intSubTotalIndex = 1, dblSubTotalCapacity = 0, dblGrandTotalCapacity = 0, highestOfficerDesignation = 0;
         decimal dblSubTotalAmount = 0, dblGrandTotalAmount = 0;
@@ -117,7 +119,7 @@ namespace CEIHaryana.SiteOwnerPages
                         e.Row.CssClass = "ReturnedRowColor";
                     }
                     //Only Condition Changed By Navneet 30-april-2025 
-                    if (linkButton.CommandArgument.ToString()==null|| linkButton.CommandArgument.ToString() == ""|| LinkButton3.CommandArgument.ToString() == null)
+                    if (linkButton.CommandArgument.ToString() == null || linkButton.CommandArgument.ToString() == "" || LinkButton3.CommandArgument.ToString() == null)
                     {
                         linkButton.Visible = false;
                         LinkButton3.Visible = false;
@@ -247,17 +249,17 @@ namespace CEIHaryana.SiteOwnerPages
                         }
                     }
                 }
-                InstallationId = string.Join(",", selectedTypes);
+                CombinedInstallationId = string.Join(",", selectedTypes);
                 DataTable ds = new DataTable();
-                ds = CEI.GetApplicantCode(InstallationId);
+                ds = CEI.GetApplicantCode(CombinedInstallationId);
                 if (ds.Rows.Count > 0)
                 {
-                    InstallationId = ds.Rows[0]["Id"].ToString();
-                    Session["InstallationId"] = InstallationId;
+                    CombinedInstallationId = ds.Rows[0]["Id"].ToString();  //Parameter Name changed by Neha
+                    Session["InstallationId"] = CombinedInstallationId;
                 }
                 else
                 {
-                    InstallationId = Session["InstallationId"].ToString();
+                    CombinedInstallationId = Session["InstallationId"].ToString();
 
                 }
                 GridViewRow row = ((Control)sender).NamingContainer as GridViewRow;
@@ -425,7 +427,6 @@ namespace CEIHaryana.SiteOwnerPages
                     btnReset.Visible = true;
                     Declaration.Visible = true;
                     //lnkFile.Visible = true;
-                    GetDocumentUploadData(ApplicantTypeCode, int.Parse(InstallationId), InspectionType, PlantLocationRoofTop, PlantLocationGroundMounted, inspectionIdRes);
                     //Session["InstallationTypeID"] = int.Parse(InstallationId);
 
                     DataTable dt = new DataTable();
@@ -465,6 +466,7 @@ namespace CEIHaryana.SiteOwnerPages
                     }
 
                     PaymentGridViewBind(id);
+                    GetDocumentUploadData(ApplicantTypeCode, int.Parse(CombinedInstallationId), InspectionType, PlantLocationRoofTop, PlantLocationGroundMounted, inspectionIdRes); //Location changed by Neha
 
                     GetOtherDetails_ForReturnedInspection(inspectionIdRes);
                     //    else
@@ -1095,12 +1097,12 @@ namespace CEIHaryana.SiteOwnerPages
                     , kVA.ToString(), DemandNotice, MaxVoltage, ServiceType);
                         //Session["PrintInspectionID"] = id.ToString();
                     }
-            
-                else
-                {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('Please accept declaration first to proceed.')", true);
+
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('Please accept declaration first to proceed.')", true);
+                    }
                 }
-            }
                 else
                 {
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Please First tick the any one installation for inspection')", true);
@@ -1118,6 +1120,7 @@ namespace CEIHaryana.SiteOwnerPages
         {
             foreach (GridViewRow row in Grd_Document.Rows)
             {
+                if (!row.Visible) continue;
                 FileUpload fileUpload = (FileUpload)row.FindControl("FileUpload1");
                 string Req = ((HtmlInputHidden)row.FindControl("Req")).Value.Replace("\r\n", "");
                 string DocSaveName = ((HtmlInputHidden)row.FindControl("DocumentShortName")).Value.Replace("\r\n", "");
@@ -1129,7 +1132,8 @@ namespace CEIHaryana.SiteOwnerPages
                     if (Req == "1")
                     {
 
-                        if (!fileUpload.HasFile && Req == "1")
+                        //if (!fileUpload.HasFile && Req == "1")
+                        if (!fileUpload.HasFile)
                         {
                             string message = DocName + " is mandatory to upload.";
                             throw new Exception(message);
@@ -1187,7 +1191,7 @@ namespace CEIHaryana.SiteOwnerPages
         public void InsertFilesIntoDatabase(string InstallationTypeID, string para_CreatedBy, string para_txtContact, string para_ApplicantTypeCode, string para_IntimationId, string para_PremisesType, string para_lblApplicant, string para_lblCategory, string para_lblVoltageLevel,
              string para_District, string para_To, string para_PaymentMode, string para_txtDate, string para_txtInspectionRemarks, string para_CreatedByy, string para_Assigned, string para_transcationId, string para_TranscationDate, string para_ChallanAttachment, int para_InspectID, string para_kVA
             , string para_DemandNotice, int MaxVoltage, int ServiceType)
-        {           
+        {
             // Insert the uploaded files into the database
             string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ToString();
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -1270,7 +1274,7 @@ namespace CEIHaryana.SiteOwnerPages
                 finally
                 {
                     connection.Close();
-                }               
+                }
             }
         }
         protected void ddlDocumentFor_SelectedIndexChanged(object sender, EventArgs e)
@@ -1453,6 +1457,26 @@ namespace CEIHaryana.SiteOwnerPages
                         customFile.Visible = false;
                     }
                 }
+                #region Added by Neha
+                string str = Convert.ToString(Session["Amount"]);
+                if (Convert.ToInt32(Session["Amount"]) == 0)
+                {
+                    HtmlInputHidden hiddenDocId = (HtmlInputHidden)e.Row.FindControl("DocumentID");
+
+                    if (hiddenDocId != null)
+                    {
+                        string docIdValue = hiddenDocId.Value;
+
+                        // Example: Hide row if DocumentID == "0"
+                        if (docIdValue == "17")
+                        {
+                            e.Row.Visible = false;
+                            PaymentDetails.Visible = false;
+                        }
+
+                    }
+                }
+                #endregion
             }
         }
         //protected void Grd_Document_RowDataBound(object sender, GridViewRowEventArgs e)

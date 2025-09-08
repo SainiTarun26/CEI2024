@@ -56,8 +56,8 @@ namespace CEIHaryana.UserPages
                     txtAge.Text = dt.Rows[0]["CalculatedAge"].ToString();                    
                     txtphone.Text = dt.Rows[0]["PhoneNo"].ToString();
                     txtEmail.Text = dt.Rows[0]["Email"].ToString();
-                    txtCommunicationAddress.Text = dt.Rows[0]["CommunicationAddress"].ToString();
-                    //txtpermanentAddress.Text = dt.Rows[0][""].ToString();
+                    txtCommunicationAddress.Text = dt.Rows[0]["Communication"].ToString();
+                    txtpermanentAddress.Text = dt.Rows[0]["permanant"].ToString();
 
                     GridBindDocument(UserId);
 
@@ -297,7 +297,7 @@ namespace CEIHaryana.UserPages
                     string folderPath = Server.MapPath(fileNames);
 
                     //string fileNames = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
-                    // fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                    // fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                     string script = $@"<script>window.open('{fileNames}','_blank');</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
                 }

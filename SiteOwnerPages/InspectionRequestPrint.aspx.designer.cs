@@ -168,6 +168,15 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Earthing;
 
         /// <summary>
+        /// transactionId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl transactionId;
+
+        /// <summary>
         /// txtUTRN control.
         /// </summary>
         /// <remarks>
@@ -175,6 +184,15 @@ namespace CEIHaryana.SiteOwnerPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtUTRN;
+
+        /// <summary>
+        /// transactionDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl transactionDate;
 
         /// <summary>
         /// txtTransactionDate control.
@@ -186,6 +204,15 @@ namespace CEIHaryana.SiteOwnerPages
         protected global::System.Web.UI.WebControls.TextBox txtTransactionDate;
 
         /// <summary>
+        /// PayMode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl PayMode;
+
+        /// <summary>
         /// txtPaymentMode control.
         /// </summary>
         /// <remarks>
@@ -193,6 +220,15 @@ namespace CEIHaryana.SiteOwnerPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPaymentMode;
+
+        /// <summary>
+        /// PayAmount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl PayAmount;
 
         /// <summary>
         /// txtPaymentAmount control.

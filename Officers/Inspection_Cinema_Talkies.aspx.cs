@@ -312,17 +312,8 @@ namespace CEIHaryana.Officers
                                 {
                                     //CEI.UpdateInspectionRejection_Lift_Escalator(ID, StaffId, ddlRejectionReasonType.SelectedItem.ToString(), Reason);
                                     CEI.UpdateInspectionRejection_Cinema(ID, StaffId, ddlRejectionReasonType.SelectedItem.ToString(), Reason);
-                                    CCemail = Session["CCemail"].ToString();
-                                    ToEmail = Session["ToEmail"].ToString();
-                                    if (ToEmail.Trim() != "" && ToEmail != null)
-                                    {
-                                        string subject = "Inspection Application Rejected";
-                                        string Message = "Your inspection application (ID: '" + ID + "') has been rejected as response on the mentioned application is not received from beyond 15 working days. We regret any inconvenience this may cause.     \n\nThank you for your understanding.     \n\nBest regards,     \n\n[CEIHaryana]'";
-                                        CEI.RejectMessagethroughEmail(ToEmail, CCemail, subject, Message);
-                                        checksuccessmessage = 1;
-                                    }
-                                    else
-                                    { }
+                                   
+                                    
                                 }
                                 else
                                 {
@@ -332,16 +323,7 @@ namespace CEIHaryana.Officers
                                         {
                                             //CEI.InspectionAccepted_Lift_Escalator(ID, StaffId);
                                             CEI.InspectionAccepted_Cinema(ID, StaffId);
-                                            CCemail = Session["CCemail"].ToString();
-                                            ToEmail = Session["ToEmail"].ToString();
-                                            if (ToEmail.Trim() != "" && ToEmail != null)
-                                            {
-                                                string subject = "Inspection Application Accepted";
-                                                string Message = "We are pleased to inform you that your inspection application (ID: '" + ID + "') has been Accepted by the officer . Please login to your Portal with your credentials to check return remarks     \n\n    \n\nShould you have any questions or need assistance, feel free to reach out.     \n\nBest regards,     \n\n[CEIHaryana]'";
-                                                CEI.RejectMessagethroughEmail(ToEmail, CCemail, subject, Message);
-                                            }
-                                            else
-                                            { }
+                                           
                                         }
                                         else if (RadioButtonList2.SelectedValue == "1")
                                         {

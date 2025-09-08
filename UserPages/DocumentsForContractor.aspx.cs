@@ -30,6 +30,7 @@ namespace CEIHaryana.UserPages
                 {
                     if (Convert.ToString(Session["ContractorID"]) != null && Convert.ToString(Session["ContractorID"]) != "")
                     {
+                        Session["TempUniqueId"] = "";
                         string UserID = Session["ContractorID"].ToString();
                         HdnUserId.Value = UserID;
 
@@ -175,6 +176,7 @@ namespace CEIHaryana.UserPages
 
         private void GenerateUniqueTempId()
         {
+            Session["TempUniqueId"] = "";
             Random rnd = new Random();
             int randomNumber = rnd.Next(1000000000, int.MaxValue);
             string currentDate = DateTime.Now.ToString("ddMMyyyy");
@@ -397,7 +399,7 @@ namespace CEIHaryana.UserPages
         {
             if (IsSessionValid())
             {
-                string Result = SaveDocumentWithTransaction(FileUpload5, Button5, 38, lnkbtn_Delete5, lnkbtn_Save5, "Medical fitness certificate from Government/Government approved Hospital in case he is above 55 years of age on the date of submission of application", null, null);
+                string Result = SaveDocumentWithTransaction(FileUpload5, Button5, 38, lnkbtn_Delete5, lnkbtn_Save5, "Medical fitness certificate", null, null);
                 if (Result != null && Result != "")
                 {
                     HdnField_Document5.Value = "1";

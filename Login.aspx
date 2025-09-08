@@ -470,11 +470,10 @@
                                     <li>
                                         <a href="UserManual/form_split.pdf" target="_blank">Forms & Fees
                                         </a>
-                                                      
                                     </li>
                                     <li>
-    <a href="/UserPages/Instructions.aspx" target="_blank">For New Licence
-    </a>
+                                        <a href="/UserPages/Instructions.aspx" target="_blank">Apply for New Licence
+                                        </a>
                                     </li>
                                 </ul>
                             </li>
@@ -570,7 +569,7 @@
                             <li class="dropdown">
                                 <a href="#">
                                     <span>EODB Compliance's
-</span>
+                                    </span>
                                     <i class="bi bi-chevron-down"></i>
                                 </a>
                                 <ul>
@@ -587,15 +586,15 @@
 
                                 </ul>
                             </li>
-                          <%--  <li style="display: flex;">
+                            <%--  <li style="display: flex;">
                                 <a href="/VerifyCertificate.aspx" id="alertLink1" style="position: relative; z-index: 1;">Verify Certificate</a>
                             </li>--%>
-                             <li style="display: flex;">
-     <a href="https://grs.hartron.io/#/" target="_blank" id="alertLink2" style="position: relative; z-index: 1;">Grievance Redressal</a>
- </li>
                             <li style="display: flex;">
-      <a href="VerifyCertificate.aspx" style="position: relative; z-index: 1;">Verify Certificate</a>
-  </li>
+                                <a href="https://grs.hartron.io/#/" target="_blank" id="alertLink2" style="position: relative; z-index: 1;">Grievance Redressal</a>
+                            </li>
+                            <li style="display: flex;">
+                                <a href="VerifyCertificate.aspx" style="position: relative; z-index: 1;">Verify Certificate</a>
+                            </li>
                             <li style="display: flex;">
                                 <a href="UserPages/OurServices.aspx" id="alertLink" style="position: relative; z-index: 1;">User Manual</a><img src="Assets/new1.gif" id="alertGif" />
                             </li>
@@ -735,6 +734,7 @@
                                             <%--<div class="signup-link">Don't have an Account?<a href="#" class="text-primary">Create</a></div>--%>
                                             <%--                                            <div class="signup-link">Don't have an Account?<a href="/UserPages/Registration.aspx" class="text-primary">Create</a></div>--%>
                                             <div class="signup-link"><a href="UserPages/SiteOwnerRegistration.aspx" class="text-primary">Register as Site Owner</a></div>
+                                            <div class="signup-link"><a href="UserPages/Instructions.aspx" class="text-primary">Register for new Licence</a></div>
                                             <%--  <div class="signup-link"><a href="GetPassword.aspx" class="text-primary">Get user Id & Password</a></div>--%>
                                         </div>
                                     </div>
@@ -795,7 +795,7 @@
                                             </li>
                                         </ul>
                                         <li>
-                                            
+
                                             <a href="UserManual/RTS2014.pdf" target="_blank">Right to Service Act</a>
                                         </li>
                                         <li>
@@ -920,7 +920,7 @@
     <script src="/assetsnew/vendor/php-email-form/validate.js"></script>
     <!-- Template Main JS File -->
     <script src="/assetsnew/js/main.js"></script>
-   <%-- <script>
+    <%-- <script>
         function checkActiveSession() {
             if (localStorage.getItem("activeSession")) {
                 alert("You are already logged in another tab.");

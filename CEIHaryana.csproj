@@ -58,6 +58,10 @@
     <Reference Include="EPPlus.System.Drawing, Version=6.1.1.0, Culture=neutral, PublicKeyToken=2308d35469c9bac0, processorArchitecture=MSIL">
       <HintPath>packages\EPPlus.System.Drawing.6.1.1\lib\net462\EPPlus.System.Drawing.dll</HintPath>
     </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.12.2.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\HtmlAgilityPack.dll</HintPath>
+    </Reference>
     <Reference Include="itext.barcodes, Version=8.0.0.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>packages\itext7.8.0.0\lib\net461\itext.barcodes.dll</HintPath>
     </Reference>
@@ -240,6 +244,7 @@
     <Content Include="Admin\ChangeStaff.aspx" />
     <Content Include="Admin\CinemaInspectionDetails.aspx" />
     <Content Include="Admin\CircleMaster.aspx" />
+    <Content Include="Admin\Committee_Details.aspx" />
     <Content Include="Admin\Consolidated_Report.aspx" />
     <Content Include="Admin\Contractor_Supervisor_Upgradation_Details.aspx" />
     <Content Include="Admin\Contractor_Upgradation_Details.aspx" />
@@ -276,6 +281,7 @@
     <Content Include="Admin\StaffDetailsData.aspx" />
     <Content Include="Admin\SubDivisionMaster.aspx" />
     <Content Include="Admin\Supervisor_Upgradation_Details.aspx" />
+    <Content Include="Admin\Suspend_Terminate.aspx" />
     <Content Include="Admin\TestHistoryReport.aspx" />
     <Content Include="Admin\TestReportHistoryFromSupervisor.aspx" />
     <Content Include="Admin\TotalRequestInspectionForAdmin.aspx" />
@@ -1611,12 +1617,14 @@
     <Content Include="Contractor\ContractorRenewal.aspx" />
     <Content Include="Contractor\Contractor_Licence_Renewal.aspx" />
     <Content Include="Contractor\Contractor_Licence_Updradation.aspx" />
+    <Content Include="Contractor\Deattatch_Supervisor.aspx" />
     <Content Include="Contractor\GeneratingSetHistory.aspx" />
     <Content Include="Contractor\LiftWork_Intimation.aspx" />
     <Content Include="Contractor\PreviousProjects.aspx" />
     <Content Include="Contractor\ReturnedInspection.aspx" />
     <Content Include="Contractor\ReturnedInspectionForPeriodic.aspx" />
     <Content Include="Contractor\SubstationTransformer.aspx" />
+    <Content Include="Contractor\Supervisor_Requests.aspx" />
     <Content Include="Contractor\TestReportForContractor.aspx" />
     <Content Include="Contractor\TestReportHistory.aspx" />
     <Content Include="Contractor\TestReportsWithIntimation.aspx" />
@@ -1968,6 +1976,7 @@
     <Content Include="Officers\ActionForCinemaVideo_Talkies.aspx" />
     <Content Include="Officers\ActionOnSelfCertification.aspx" />
     <Content Include="Officers\ActionTakenInspections.aspx" />
+    <Content Include="Officers\Approved_Final_Recommendations_List.aspx" />
     <Content Include="Officers\ConsolidatedReport.aspx" />
     <Content Include="Officers\DisconnectionNotice.aspx" />
     <Content Include="Officers\DisConnectionNoticeView.aspx" />
@@ -1994,6 +2003,7 @@
     <Content Include="Officers\PeriodicInspection.aspx" />
     <Content Include="Officers\PeriodicInspection_Cinema_Talkies.aspx" />
     <Content Include="Officers\PeriodicInspection_Lift_Escalator.aspx" />
+    <Content Include="Officers\PhysicalVerification_Letter_Request.aspx" />
     <Content Include="Officers\ReturnedInspections.aspx" />
     <Content Include="Officers\Returned_Inspection_Lift_Escalator.aspx" />
     <Content Include="Officers\Returned_PeriodicInspection_Lift_Escalator.aspx" />
@@ -2028,6 +2038,7 @@
     <Content Include="Print_Forms\Contractor_Licence_Upgradation_Certificate.aspx" />
     <Content Include="Print_Forms\EscalatorApprovalCertificate.aspx" />
     <Content Include="Print_Forms\InspectionRequestPrint.aspx" />
+    <Content Include="Print_Forms\Licence_Renewal_Print.aspx" />
     <Content Include="Print_Forms\LiftApprovalCertificate.aspx" />
     <Content Include="Print_Forms\Print_New_Registration_Information.aspx" />
     <Content Include="Print_Forms\Print_New_Registration_Information_Contractor.aspx" />
@@ -2141,6 +2152,11 @@
     <Content Include="Superintendent\Sup_LicenceFinal_DetailView.aspx" />
     <Content Include="Superintendent\UserDetails.aspx" />
     <Content Include="SupervisorLogout.aspx" />
+    <Content Include="Supervisor\AttachedRequest.aspx" />
+    <Content Include="Supervisor\AttachedRequestViewDetails.aspx" />
+    <Content Include="Supervisor\DeAttachedRequestView.aspx" />
+    <Content Include="Supervisor\DeattachmentRequest.aspx" />
+    <Content Include="Supervisor\DeAttacted_Staff.aspx" />
     <Content Include="Supervisor\GeneratingSetTestReport.aspx" />
     <Content Include="Supervisor\InstallationDetails.aspx" />
     <Content Include="Supervisor\IntimationData.aspx" />
@@ -2183,6 +2199,8 @@
     <Content Include="TestReport\Single-Three-Phase.aspx" />
     <Content Include="TestReport\SubstationTransformer.aspx" />
     <Content Include="TestReport\TestReport.aspx" />
+    <Content Include="ToVerifyRegistration.aspx" />
+    <Content Include="Upload_Image_Sign.aspx" />
     <Content Include="UserCPages\LicenceHeaderDetails.ascx" />
     <Content Include="UserCPages\LicenceTCDetails.ascx" />
     <Content Include="UserManual\Flow-Chart-for-LiftSolar-Panel-DG-Set-Renewable-Sources.jpg" />
@@ -2375,6 +2393,13 @@
     </Compile>
     <Compile Include="Admin\CircleMaster.aspx.designer.cs">
       <DependentUpon>CircleMaster.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Committee_Details.aspx.cs">
+      <DependentUpon>Committee_Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Committee_Details.aspx.designer.cs">
+      <DependentUpon>Committee_Details.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Consolidated_Report.aspx.cs">
       <DependentUpon>Consolidated_Report.aspx</DependentUpon>
@@ -2628,6 +2653,13 @@
     <Compile Include="Admin\Supervisor_Upgradation_Details.aspx.designer.cs">
       <DependentUpon>Supervisor_Upgradation_Details.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Suspend_Terminate.aspx.cs">
+      <DependentUpon>Suspend_Terminate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Suspend_Terminate.aspx.designer.cs">
+      <DependentUpon>Suspend_Terminate.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\TestHistoryReport.aspx.cs">
       <DependentUpon>TestHistoryReport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2840,6 +2872,13 @@
     <Compile Include="Contractor\Contractor_Licence_Updradation.aspx.designer.cs">
       <DependentUpon>Contractor_Licence_Updradation.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Contractor\Deattatch_Supervisor.aspx.cs">
+      <DependentUpon>Deattatch_Supervisor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Contractor\Deattatch_Supervisor.aspx.designer.cs">
+      <DependentUpon>Deattatch_Supervisor.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Contractor\GeneratingSetHistory.aspx.cs">
       <DependentUpon>GeneratingSetHistory.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2881,6 +2920,13 @@
     </Compile>
     <Compile Include="Contractor\SubstationTransformer.aspx.designer.cs">
       <DependentUpon>SubstationTransformer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Contractor\Supervisor_Requests.aspx.cs">
+      <DependentUpon>Supervisor_Requests.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Contractor\Supervisor_Requests.aspx.designer.cs">
+      <DependentUpon>Supervisor_Requests.aspx</DependentUpon>
     </Compile>
     <Compile Include="Contractor\TestReportForContractor.aspx.cs">
       <DependentUpon>TestReportForContractor.aspx</DependentUpon>
@@ -2946,6 +2992,7 @@
     <Compile Include="DealingHand\ViewData.aspx.designer.cs">
       <DependentUpon>ViewData.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ExportUtility.cs" />
     <Compile Include="ForgetPassword.aspx.cs">
       <DependentUpon>ForgetPassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3324,6 +3371,13 @@
     <Compile Include="Officers\ActionTakenInspections.aspx.designer.cs">
       <DependentUpon>ActionTakenInspections.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Officers\Approved_Final_Recommendations_List.aspx.cs">
+      <DependentUpon>Approved_Final_Recommendations_List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Officers\Approved_Final_Recommendations_List.aspx.designer.cs">
+      <DependentUpon>Approved_Final_Recommendations_List.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Officers\ConsolidatedReport.aspx.cs">
       <DependentUpon>ConsolidatedReport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3512,6 +3566,13 @@
     </Compile>
     <Compile Include="Officers\PeriodicInspection_Lift_Escalator.aspx.designer.cs">
       <DependentUpon>PeriodicInspection_Lift_Escalator.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Officers\PhysicalVerification_Letter_Request.aspx.cs">
+      <DependentUpon>PhysicalVerification_Letter_Request.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Officers\PhysicalVerification_Letter_Request.aspx.designer.cs">
+      <DependentUpon>PhysicalVerification_Letter_Request.aspx</DependentUpon>
     </Compile>
     <Compile Include="Officers\ReturnedInspections.aspx.cs">
       <DependentUpon>ReturnedInspections.aspx</DependentUpon>
@@ -3750,6 +3811,13 @@
     </Compile>
     <Compile Include="Print_Forms\InspectionRequestPrint.aspx.designer.cs">
       <DependentUpon>InspectionRequestPrint.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Print_Forms\Licence_Renewal_Print.aspx.cs">
+      <DependentUpon>Licence_Renewal_Print.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Print_Forms\Licence_Renewal_Print.aspx.designer.cs">
+      <DependentUpon>Licence_Renewal_Print.aspx</DependentUpon>
     </Compile>
     <Compile Include="Print_Forms\LiftApprovalCertificate.aspx.cs">
       <DependentUpon>LiftApprovalCertificate.aspx</DependentUpon>
@@ -4536,6 +4604,41 @@
     <Compile Include="SupervisorLogout.aspx.designer.cs">
       <DependentUpon>SupervisorLogout.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Supervisor\AttachedRequest.aspx.cs">
+      <DependentUpon>AttachedRequest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Supervisor\AttachedRequest.aspx.designer.cs">
+      <DependentUpon>AttachedRequest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Supervisor\AttachedRequestViewDetails.aspx.cs">
+      <DependentUpon>AttachedRequestViewDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Supervisor\AttachedRequestViewDetails.aspx.designer.cs">
+      <DependentUpon>AttachedRequestViewDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Supervisor\DeAttachedRequestView.aspx.cs">
+      <DependentUpon>DeAttachedRequestView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Supervisor\DeAttachedRequestView.aspx.designer.cs">
+      <DependentUpon>DeAttachedRequestView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Supervisor\DeattachmentRequest.aspx.cs">
+      <DependentUpon>DeattachmentRequest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Supervisor\DeattachmentRequest.aspx.designer.cs">
+      <DependentUpon>DeattachmentRequest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Supervisor\DeAttacted_Staff.aspx.cs">
+      <DependentUpon>DeAttacted_Staff.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Supervisor\DeAttacted_Staff.aspx.designer.cs">
+      <DependentUpon>DeAttacted_Staff.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Supervisor\GeneratingSetTestReport.aspx.cs">
       <DependentUpon>GeneratingSetTestReport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -4850,6 +4953,20 @@
     </Compile>
     <Compile Include="TestReport\TestReport.Master.designer.cs">
       <DependentUpon>TestReport.Master</DependentUpon>
+    </Compile>
+    <Compile Include="ToVerifyRegistration.aspx.cs">
+      <DependentUpon>ToVerifyRegistration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ToVerifyRegistration.aspx.designer.cs">
+      <DependentUpon>ToVerifyRegistration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Upload_Image_Sign.aspx.cs">
+      <DependentUpon>Upload_Image_Sign.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Upload_Image_Sign.aspx.designer.cs">
+      <DependentUpon>Upload_Image_Sign.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserCPages\LicenceHeaderDetails.ascx.cs">
       <DependentUpon>LicenceHeaderDetails.ascx</DependentUpon>

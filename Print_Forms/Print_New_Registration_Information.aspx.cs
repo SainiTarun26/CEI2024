@@ -57,8 +57,8 @@ namespace CEIHaryana.Print_Forms
                     Age.Text = dt.Rows[0]["CalculatedAge"].ToString();
                     phone.Text = dt.Rows[0]["PhoneNo"].ToString();
                     Email.Text = dt.Rows[0]["Email"].ToString();
-                    CommunicationAddress.Text = dt.Rows[0]["CommunicationAddress"].ToString();
-                    PermanentAddress.Text = dt.Rows[0]["PermanentAddress"].ToString();
+                    CommunicationAddress.Text = dt.Rows[0]["Communication"].ToString();
+                    PermanentAddress.Text = dt.Rows[0]["permanant"].ToString();
                     GridBindDocument(UserId);
 
 

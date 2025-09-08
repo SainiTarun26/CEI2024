@@ -121,7 +121,7 @@ namespace CEIHaryana.UserPages
                     else if (e.CommandName == "ViewVerificationLetter")
                     {
 
-                        string fileUrl = "https://localhost:44393/" + HdnPanFilePath.Value;
+                        string fileUrl = "https://uat.ceiharyana.com" + HdnPanFilePath.Value;
                         string script = $@"<script>window.open('{fileUrl}', '_blank');</script>";
                         ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
 

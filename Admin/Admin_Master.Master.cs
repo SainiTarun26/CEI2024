@@ -31,8 +31,9 @@ namespace CEI_PRoject.ADMIN
                             NewInspectionTab.Visible = false;
                             //ActionInprocesstab.Visible = false;
                             CESE.Visible = true;
-                            UpgradationRequest.Visible = false;
-                            UpgradationHistory.Visible = false;
+                            UpgradationRequest.Visible = true;
+                            UpgradationHistory.Visible = true;
+                            TerminationOrSuspension.Visible = false;
                         }
                         else
                         {
@@ -51,6 +52,7 @@ namespace CEI_PRoject.ADMIN
                             CESE.Visible = false;
                             UpgradationRequest.Visible = true;
                             UpgradationHistory.Visible = true;
+                            TerminationOrSuspension.Visible = true;
                         }
                     }
                     else

@@ -1,17 +1,18 @@
-﻿using System;
+﻿using CEI_PRoject;
+using Org.BouncyCastle.Asn1.X509;
+using Org.BouncyCastle.Ocsp;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Data.SqlTypes;
 using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Helpers;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using CEI_PRoject;
-using Org.BouncyCastle.Asn1.X509;
-using Org.BouncyCastle.Ocsp;
 using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
 
 namespace CEIHaryana.Wiremen
@@ -149,7 +150,7 @@ namespace CEIHaryana.Wiremen
                     string Candidatesignature = SaveFile(CandidateSignature.PostedFile, "Candidate Signature", "Candidate Signature", CreatedBy, maxFileSize);
 
 
-                    DateTime Dateturn55 = DateTime.ParseExact("21-05-2003", "dd-MM-yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                    //DateTime Dateturn55 = DateTime.ParseExact("21-05-2003", "dd-MM-yyyy", System.Globalization.CultureInfo.InvariantCulture);
 
                     bool check = CEI.CheckIfRenewalApplicationExist(CreatedBy);
                     if (check)
@@ -162,19 +163,19 @@ namespace CEIHaryana.Wiremen
                     {
                         using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
                         {
-                            con.Open();
-                            SqlTransaction tran = con.BeginTransaction();
-
+                            SqlTransaction tran = null;
                             try
                             {
+                                con.Open();
+                                tran = con.BeginTransaction();
 
                                 CEI.InsertRenewalData(con, tran, HdnUserType.Value, txtDOB.Text.Trim(),
-                                    txtage.Text.Trim(), Dateturn55, txtFatherName.Text.Trim(), txtaadharno.Text.Trim(),
-                                     txtPhone.Text.Trim(), txtEmail.Text.Trim(),
-                                    txtcertificatenoNEW.Text.Trim(), txtcertificatenoOLD.Text.Trim(), 
-                                    rblbelated.Text, txtdays.Text.Trim(), ddlRenewalTime.SelectedItem.ToString(),
-                                    txtamount.Text.Trim(), txtgrnno.Text.Trim(), txtdate.Text.Trim(), RadioButtonList1.SelectedItem.ToString(),
-                                    CreatedBy);
+                                     txtage.Text.Trim(), DateTime.TryParse(txtage55?.Text, out var dt55) ? dt55 : (DateTime)SqlDateTime.Null, txtFatherName.Text.Trim(), txtaadharno.Text.Trim(),
+                                      txtPhone.Text.Trim(), txtEmail.Text.Trim(),
+                                     txtcertificatenoNEW.Text.Trim(), txtcertificatenoOLD.Text.Trim(),
+                                     rblbelated.Text.ToString(), txtdays.Text.Trim(), ddlRenewalTime.SelectedItem.ToString(),
+                                     txtamount.Text.Trim(), txtgrnno.Text.Trim(), txtdate.Text.Trim(), RadioButtonList1.SelectedItem.ToString(),
+                                     CreatedBy);
 
                                 CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Certificate of Competency/Wireman Permit. ", CertificateofCompetency, 1, CreatedBy);
                                 CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Present Working Status", PresentworkingStatusfp, 1, CreatedBy);
@@ -187,10 +188,10 @@ namespace CEIHaryana.Wiremen
 
                                 CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Deposited Treasury Challan of fees, for the purpose in the Head of A/c: 0043-51-800-99-51-Other Receipt.", Challanfp, 1, CreatedBy);
 
-                                CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Challan", Candidateimage, 1, CreatedBy);
+                                CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Candidate Image", Candidateimage, 1, CreatedBy);
 
 
-                                CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Challan", Candidatesignature, 1, CreatedBy);
+                                CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Candidate Signature", Candidatesignature, 1, CreatedBy);
 
 
                                 tran.Commit();
@@ -303,8 +304,8 @@ namespace CEIHaryana.Wiremen
         protected void ddlRenewalTime_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            string Category = HdnUserType.Value;
-            int DaysDelay = Convert.ToInt32(txtdays.Text);
+            string Category = HdnUserType.Value;       
+            int DaysDelay = int.TryParse(txtdays.Text, out var value) ? value : 0;
 
             string fees = CEI.RenewalFees(Category, DaysDelay, Convert.ToInt32(ddlRenewalTime.SelectedValue));
             txtamount.Text = fees;

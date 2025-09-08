@@ -160,7 +160,6 @@
         th.headercolor {
             background: #9292cc;
             color: white;
-            width:1% !important;
         }
         h6#maincard {
     font-size: 20px !important;
@@ -177,9 +176,6 @@
        div#ContentPlaceHolder1_Div1{
            margin-left:0px;
        }
-       th.headercolor.width {
-    width: 12% !important;
-}
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -192,27 +188,23 @@
             </div>
 
             <div class="row">
-                   <div class="card-title" style="margin-bottom: 20px; margin-top: 15px; font-size: 17px; font-weight: 600; margin-left: 5px;">
-       Inspection Details (<asp:Label ID="lblInspectionType" runat="server"  style="font-size: 17px;"></asp:Label>)
-   </div>
+                <div class="col-md-12">
+                    <h7 class="card-title fw-semibold mb-4" id="maincard1" style="font-size: 18px !important;">SiteOwner Details</h7>
+                </div>
             </div>
             <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                 <div class="row">
 
-                    <div class="col-md-4" id="Premise" runat="server" visible="false">
+                    <div class="col-md-4">
                         <label>Type of Inspection</label>
                         <asp:TextBox class="form-control" ID="txtPremises" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
                     </div>
-                    <div class="col-4"  id="Applicant" runat="server" visible="false">
+                    <div class="col-4">
                         <label>
                             Type of Applicant
                         </label>
                         <asp:TextBox class="form-control" ID="txtApplicantType" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                    </div>
-                    <div class="col-4" runat="server">
-                        <label for="Pin">Application No.</label>
-                        <asp:TextBox class="form-control" ID="txtApplicationNo" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
                     <div class="col-4">
                         <label>
@@ -228,11 +220,9 @@
                         <label for="Pin">InspectionType</label>
                         <asp:TextBox class="form-control" ID="txtInspectionType" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                    <div class="col-4">
-                        <label>
-                        Total  Amount
-                        </label>
-                        <asp:TextBox class="form-control" ID="txtAmount" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    <div class="col-4" runat="server">
+                        <label for="Pin">Application No.</label>
+                        <asp:TextBox class="form-control" ID="txtApplicationNo" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
                 </div>
             </div>
@@ -298,35 +288,51 @@
                             <HeaderStyle BackColor="#B7E2F0" />
                             <Columns>
                                 <asp:TemplateField HeaderText="SNo">
-                                    <HeaderStyle CssClass="headercolor" />
-                                    <ItemStyle />
+                                    <HeaderStyle Width="5%" CssClass="headercolor" />
+                                    <ItemStyle Width="5%" />
                                     <ItemTemplate>
                                         <%#Container.DataItemIndex+1 %>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:BoundField DataField="InstallationType" HeaderText="Installation Type">
-                                    <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
-                                    <ItemStyle HorizontalAlign="Left" />
+                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
                                 </asp:BoundField>
                                 <asp:BoundField DataField="ActionTaken" HeaderText="ActionTaken">
-                                    <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
-                                    <ItemStyle HorizontalAlign="Left" />
+                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
                                 </asp:BoundField>
-                              
+                                <%-- <asp:BoundField DataField="TestRportId" HeaderText="TestReportId" Visible="false">
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                            </asp:BoundField>
+                                     <asp:TemplateField HeaderText="View TestReports" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%" Visible="false">
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="lnkRedirect" runat="server" Text="View Test Report" OnClick="lnkRedirect_Click" CommandName="ViewTestReport" CommandArgument='<%# Eval("TestRportId") %>' />
+                                </ItemTemplate>
+                                <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
+                                <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                            </asp:TemplateField>--%>
                                 <asp:BoundField DataField="ActionDate" HeaderText="ActionDate">
-                                    <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
-                                    <ItemStyle HorizontalAlign="Left" />
+                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
                                 </asp:BoundField>
                                 <asp:BoundField DataField="AssignTo" HeaderText="AssignTo">
-                                    <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
-                                    <ItemStyle HorizontalAlign="center" />
+                                    <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="center" Width="15%" />
                                 </asp:BoundField>
-                               
+                                <%--  <asp:BoundField DataField="ReturnDate" HeaderText="ReturnDate">
+                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                </asp:BoundField>--%>
                                 <asp:BoundField DataField="Remarks" HeaderText="Remarks">
-                                    <HeaderStyle HorizontalAlign="Left" CssClass="headercolor width" />
-                                    <ItemStyle HorizontalAlign="Left" />
+                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
                                 </asp:BoundField>
-                              
+                                <%--  <asp:BoundField  DataField="ReturnBased" HeaderText="Return Based" >
+                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                            </asp:BoundField>--%>
                             </Columns>
                             <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
                         </asp:GridView>

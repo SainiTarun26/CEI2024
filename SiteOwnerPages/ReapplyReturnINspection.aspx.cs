@@ -65,6 +65,16 @@ namespace CEIHaryana.SiteOwnerPages
                 txtMaxVoltage.Text = ds.Tables[0].Rows[0]["MaxVoltage"].ToString();
                 txtCapacity.Text = ds.Tables[0].Rows[0]["TotalCapacity"].ToString();
                 txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
+                if (txtAmount.Text == "0")
+                {
+                    PaymentDetails.Visible = false;
+                }
+                else
+                {
+                    PaymentDetails.Visible = true;
+                }
+
+
                 txttransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
                 txttransactionDate.Text = ds.Tables[0].Rows[0]["TransctionDate"].ToString();
                 hnReturnStatus.Value = ds.Tables[0].Rows[0]["ReturnedBasedOnDocumentValue"].ToString();

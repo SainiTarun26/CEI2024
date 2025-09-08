@@ -65,10 +65,10 @@ namespace CEIHaryana.SiteOwnerPages
             }
             else if (e.CommandName == "Print")
             {
-                string fileNames = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                string fileNames = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                // string fileNames = "https://localhost:44393" + e.CommandArgument.ToString();
 
-                // fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                // fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
                 string script = $@"<script>window.open('{fileNames}','_blank');</script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
             }

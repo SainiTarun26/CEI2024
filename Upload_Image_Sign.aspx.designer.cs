@@ -7,21 +7,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CEIHaryana.Contractor
+namespace CEIHaryana.UserPages
 {
 
 
-    public partial class Contractor
+    public partial class Upload_Image_Sign
     {
-
-        /// <summary>
-        /// head control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
 
         /// <summary>
         /// form1 control.
@@ -33,31 +24,22 @@ namespace CEIHaryana.Contractor
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// TextBoxPlaceholder control.
+        /// ipaddresshf control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder TextBoxPlaceholder;
+        protected global::System.Web.UI.WebControls.HiddenField ipaddresshf;
 
         /// <summary>
-        /// lblName control.
+        /// ScriptManager2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblName;
-
-        /// <summary>
-        /// BtnChangePassword control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnChangePassword;
+        protected global::System.Web.UI.ScriptManager ScriptManager2;
 
         /// <summary>
         /// btnLogout control.
@@ -69,39 +51,66 @@ namespace CEIHaryana.Contractor
         protected global::System.Web.UI.WebControls.Button btnLogout;
 
         /// <summary>
-        /// RenewalMenuItem control.
+        /// WireSup control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor RenewalMenuItem;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl WireSup;
 
         /// <summary>
-        /// LoginType control.
+        /// txtCategory control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LoginType;
+        protected global::System.Web.UI.WebControls.TextBox txtCategory;
 
         /// <summary>
-        /// PersonDetails control.
+        /// Label2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label PersonDetails;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Label2;
 
         /// <summary>
-        /// ContentPlaceHolder1 control.
+        /// txtUserId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
+        protected global::System.Web.UI.WebControls.TextBox txtUserId;
+
+        /// <summary>
+        /// fuPhoto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload fuPhoto;
+
+        /// <summary>
+        /// fuSignature control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload fuSignature;
+
+        /// <summary>
+        /// btnSave control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSave;
     }
 }

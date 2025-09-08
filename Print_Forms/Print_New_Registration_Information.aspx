@@ -7,9 +7,9 @@
     <title></title>
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!------ Include the above in your HEAD tag ---------->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
@@ -339,6 +339,11 @@
         th.headercolor.tdwidth {
             width: 80% !important;
         }
+        img#imgPhoto {
+    max-height: 193px;
+    margin-top: 0px;
+    margin-left: 13px;
+}
     </style>
 
 
@@ -471,14 +476,14 @@
                                 <div class="col-12">
                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18PX; font-weight: 600; line-height: 2.7;">
                                         <text>Permanent Address:</text>
-                                        <asp:Label ID="PermanentAddress" CssClass="uppercase-label" runat="server" Style="font-weight: 700; width: 82%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
+                                        <asp:Label ID="PermanentAddress" CssClass="uppercase-label" runat="server" Style="font-weight: 700; width: 100%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
                                         </asp:Label>
                                     </h6>
                                 </div>
                                 <div class="col-12">
                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18PX; font-weight: 600; line-height: 2.7;">
                                         <text>Communication Address:</text>
-                                        <asp:Label ID="CommunicationAddress" CssClass="uppercase-label" runat="server" Style="font-weight: 700; width: 77%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
+                                        <asp:Label ID="CommunicationAddress" CssClass="uppercase-label" runat="server" Style="font-weight: 700; width: 100%; display: inline-block; border-bottom: 1px solid black; height: 30px; padding-left: 10px;">
                                         </asp:Label>
                                     </h6>
                                 </div>
