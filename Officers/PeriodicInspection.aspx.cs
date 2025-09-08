@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CEI_PRoject;
+using CEIHaryana.Model.Industry;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -7,8 +9,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using CEI_PRoject;
-using CEIHaryana.Model.Industry;
+using System.Web.Util;
 
 namespace CEIHaryana.Officers
 {
@@ -85,15 +86,28 @@ namespace CEIHaryana.Officers
                 txtCapacity.Text = ds.Tables[0].Rows[0]["Capacity"].ToString();
                 txtVoltage.Text = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
                 txtSiteOwnerName.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
-                txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
-                txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
+                //txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
+                //txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
                 txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
+                #region Added 05-09-2025 Neha
+               if (txtAmount.Text == "0")
+                {
+                    transactionId.Visible = false;
+                    transactionDate.Visible = false;
+                }
+                else
+                {
+                    transactionId.Visible = true;
+                    transactionDate.Visible = true;
+                    txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
+                    txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
+                }
+                #endregion
                 //PermisesType.Visible = false;
-
-                LineVoltage.Visible = false;
-
                 txtPremises.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
                     //.ToLower() == "industry" ? "Industry" : "NonIndustry";
+
+                LineVoltage.Visible = false;
                 //commented by gurmeet 22 july toshow same pages
                 txtSiteOwnerName.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
                 txtContactPersonEmail.Text = ds.Tables[0].Rows[0]["SiteownerEmail"].ToString();
@@ -106,7 +120,7 @@ namespace CEIHaryana.Officers
                 txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
                 txtContractorEmail.Text = ds.Tables[0].Rows[0]["ContractorEmail"].ToString();
                 txtSupervisorName.Text = ds.Tables[0].Rows[0]["SupervisorName"].ToString();
-                txtSupervisorEmail.Text = ds.Tables[0].Rows[0]["SupervisorEmail"].ToString(); 
+                txtSupervisorEmail.Text = ds.Tables[0].Rows[0]["SupervisorEmail"].ToString();
                 //ContractorName.Visible = false;
                 //ContractorPhoneNo.Visible = false;
                 //ContractorEmail.Visible = false;

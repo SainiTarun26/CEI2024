@@ -267,6 +267,15 @@ namespace CEIHaryana.Admin
         protected global::System.Web.UI.WebControls.TextBox txtLineVoltage;
 
         /// <summary>
+        /// transactionId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl transactionId;
+
+        /// <summary>
         /// txtTransactionId control.
         /// </summary>
         /// <remarks>
@@ -274,6 +283,15 @@ namespace CEIHaryana.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTransactionId;
+
+        /// <summary>
+        /// transactionDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl transactionDate;
 
         /// <summary>
         /// txtTranscationDate control.

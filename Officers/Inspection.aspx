@@ -280,10 +280,10 @@
                         <label>Contact Person Mobile No</label>
                         <asp:TextBox class="form-control" ID="txtSiteOwnerContact" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                     <div class="col-md-4" id="ContractorPhoneNo" visible="true" runat="server">
+                    <div class="col-md-4" id="ContractorPhoneNo" visible="true" runat="server">
                         <label>Contractor Phone No.</label>
                         <asp:TextBox class="form-control" ID="txtContractorPhoneNo" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                    </div>     
+                    </div>
                     <div class="col-md-4" id="Div3" runat="server" visible="true">
                         <label>Supervisor Phone No.</label>
                         <asp:TextBox class="form-control" ID="txtSupervisorMobile" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
@@ -292,7 +292,7 @@
                         <label>Contact Person Email</label>
                         <asp:TextBox class="form-control" ID="txtContactPersonEmail" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div> 
-                     <div class="col-md-4" id="ContractorEmail" visible="true" runat="server">
+                    <div class="col-md-4" id="ContractorEmail" visible="true" runat="server">
                         <label>Contractor Email</label>
                         <asp:TextBox class="form-control" ID="txtContractorEmail" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
@@ -310,11 +310,11 @@
             </div>
             <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
                 <div class="row">
-                     <div class="col-md-4" runat="server">
+                     <div class="col-md-4" runat="server" id="transactionId" visible="true">
                         <label>Transaction ID(GRN Number)</label>
                         <asp:TextBox class="form-control" ID="txtTransactionId" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                    <div class="col-md-4" runat="server">
+                    <div class="col-md-4" runat="server"  id="transactionDate" visible="true">
                         <label>Transaction Date</label>
                         <asp:TextBox class="form-control" ID="txtTranscationDate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
@@ -322,8 +322,8 @@
                         <label>Fees Amount</label>
                         <asp:TextBox class="form-control" ID="txtAmount" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                    </div>
                 </div>
+            </div>
             <div class="card-title" style="margin-bottom: 5px; font-size: 17px; margin-bottom: 20px; font-weight: 600; margin-left: -10px;">
                 Documents Attached (In CheckList)
             </div>

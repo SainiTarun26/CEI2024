@@ -133,10 +133,24 @@ namespace CEIHaryana.Officers
                     txtSupervisorName.Text = ds.Tables[0].Rows[0]["SupervisorName"].ToString();
                     txtSupervisorEmail.Text = ds.Tables[0].Rows[0]["SupervisorEmail"].ToString();
                     txtTestReportId.Text = ds.Tables[0].Rows[0]["TestRportId"].ToString();
-                    txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
-                    txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
+                    //txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
+                    //txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
                     // txtInspectionRemark.Text = ds.Tables[0].Rows[0]["InspectionRemarks"].ToString();
                     txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
+                    #region Added 05-09-2025 Neha
+                    if (txtAmount.Text == "0")
+                    {
+                        transactionId.Visible = false;
+                        transactiondate.Visible = false;
+                    }
+                    else
+                    {
+                        transactionId.Visible = true;
+                        transactiondate.Visible = true;
+                        txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
+                        txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
+                    }
+                    #endregion
                     //count = Convert.ToInt32(ds.Tables[0].Rows[0]["TestReportCount"].ToString());           //Added     
                     IntimationId = ds.Tables[0].Rows[0]["IntimationId"].ToString();        //Added     
                     string ReturnValu = ds.Tables[0].Rows[0]["ReturnedBasedOnDocumentValue"].ToString();
@@ -229,11 +243,9 @@ namespace CEIHaryana.Officers
                     txtCapacity.Text = ds.Tables[0].Rows[0]["Capacity"].ToString();
                     txtVoltage.Text = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
                     txtSiteOwnerName.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
-                    txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
-                    txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
+                    //txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
+                    //txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
                     txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
-                    //PermisesType.Visible = false;
-                    //added by gurmeet 24 july 
                     //txtPremises.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString().ToLower() == "industry" ? "Industry" : "NonIndustry";                   
                     txtContactPersonEmail.Text = ds.Tables[0].Rows[0]["SiteownerEmail"].ToString();
                     txtSupervisorMobile.Text = ds.Tables[0].Rows[0]["SupervisorPhoneNo"].ToString();
@@ -248,7 +260,22 @@ namespace CEIHaryana.Officers
                         txtPremises.Text = "     -";
                     }
                     //end here
-
+                    #region Added 05-09-2025 Neha
+                    if (txtAmount.Text == "0")
+                    {
+                        transactionId.Visible = false;
+                        transactiondate.Visible = false;
+                    }
+                    else
+                    {
+                        transactionId.Visible = true;
+                        transactiondate.Visible = true;
+                        txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
+                        txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
+                    }
+                    #endregion
+                    //PermisesType.Visible = false;
+                    txtPremises.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString().ToLower() == "industry" ? "Industry" : "NonIndustry";
                     LineVoltage.Visible = false;
                     //ContractorName.Visible = false;
                     //ContractorPhoneNo.Visible = false;
@@ -1186,7 +1213,6 @@ namespace CEIHaryana.Officers
                         LinkButtonReport.Text = "View Document";
                     }
                     //
-
 
                 }
                 else if (e.Row.RowType == DataControlRowType.Footer)

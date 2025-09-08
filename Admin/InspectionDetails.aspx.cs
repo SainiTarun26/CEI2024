@@ -8,6 +8,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.Util;
 using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
 
 namespace CEIHaryana.Admin
@@ -135,9 +136,24 @@ namespace CEIHaryana.Admin
                     txtSiteOwnerName.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
                     txtContractorName.Text = ds.Tables[0].Rows[0]["ContractorName"].ToString();
                     txtSupervisorName.Text = ds.Tables[0].Rows[0]["SupervisorName"].ToString();
-                    txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
-                    txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
+                    //txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
+                    //txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
                     txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
+                    #region Added 05-09-2025 Neha
+                    string amount = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
+                    if (amount == "0")
+                    {
+                        transactionId.Visible = false;
+                        transactionDate.Visible = false;
+                    }
+                    else
+                    {
+                        transactionId.Visible = true;
+                        transactionDate.Visible = true;
+                        txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
+                        txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
+                    }
+                    #endregion
                     txtApplicationStatus.Text = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
                     if (txtApplicationStatus.Text == "Approved")
                     {

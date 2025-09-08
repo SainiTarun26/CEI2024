@@ -381,8 +381,6 @@ namespace CEIHaryana.Officers
                         txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
                         txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
                     }
-                    txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
-
                     #endregion
                     Session["InspectionType"] = ds.Tables[0].Rows[0]["Type_of_Inspection"].ToString();
                     //divTestReportAttachment.Visible = false;

@@ -1,20 +1,22 @@
 ﻿using CEI_PRoject;
+using CEIHaryana.Contractor;
+using CEIHaryana.Model.Industry;
+using CEIHaryana.SiteOwnerPages;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
+using System.Diagnostics;
+using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Security.Cryptography.Xml;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.Util;
 using System.Xml.Linq;
-using System.IO;
-using System.Diagnostics;
-using System.Drawing;
-using CEIHaryana.Model.Industry;
-using System.Configuration;
-using System.Data.SqlClient;
-using CEIHaryana.Contractor;
-using CEIHaryana.SiteOwnerPages;
 
 namespace CEIHaryana.Officers
 {
@@ -136,10 +138,25 @@ namespace CEIHaryana.Officers
                     txtSupervisorName.Text = ds.Tables[0].Rows[0]["SupervisorName"].ToString();
                     txtSupervisorEmail.Text = ds.Tables[0].Rows[0]["SupervisorEmail"].ToString();
                     txtTestReportId.Text = ds.Tables[0].Rows[0]["TestRportId"].ToString();
-                    txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
-                    txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
+                    ////txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
+                    ////txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
                     // txtInspectionRemark.Text = ds.Tables[0].Rows[0]["InspectionRemarks"].ToString();
                     txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
+                    #region Added 05-09-2025 Neha
+                    string amount = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
+                    if (amount == "0")
+                    {
+                        transactionId.Visible = false;
+                        transactionDate.Visible = false;
+                    }
+                    else
+                    {
+                        transactionId.Visible = true;
+                        transactionDate.Visible = true;
+                        txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
+                        txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
+                    }
+                    #endregion
                     //count = Convert.ToInt32(ds.Tables[0].Rows[0]["TestReportCount"].ToString());           //Added     
                     IntimationId = ds.Tables[0].Rows[0]["IntimationId"].ToString();
 
@@ -186,9 +203,25 @@ namespace CEIHaryana.Officers
                     txtCapacity.Text = ds.Tables[0].Rows[0]["Capacity"].ToString();
                     txtVoltage.Text = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
                     txtSiteOwnerName.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
-                    txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
-                    txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
+                    ////txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
+                    ////txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
                     txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
+
+                    #region Added 05-09-2025 Neha
+                    string amountValue = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
+                    if (amountValue == "0")
+                    {
+                        transactionId.Visible = false;
+                        transactionDate.Visible = false;
+                    }
+                    else
+                    {
+                        transactionId.Visible = true;
+                        transactionDate.Visible = true;
+                        txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
+                        txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
+                    }
+                    #endregion
                     //added by gurmeet 24 july                    
                     txtContactPersonEmail.Text = ds.Tables[0].Rows[0]["SiteownerEmail"].ToString();
                     txtSupervisorMobile.Text = ds.Tables[0].Rows[0]["SupervisorPhoneNo"].ToString();
@@ -202,7 +235,7 @@ namespace CEIHaryana.Officers
                     {
                         txtPremises.Text = "     -";
                     }
-                   
+
                     //PermisesType.Visible = false;
                     LineVoltage.Visible = false;
                     //ContractorName.Visible = false;
@@ -415,6 +448,7 @@ namespace CEIHaryana.Officers
                         StaffId = Session["StaffID"].ToString();
                         ID = Session["InspectionId"].ToString();
                         //Added by vinod sir on 19-June-2025
+                        DataSet dsa = new DataSet();
                         DataTable dt = new DataTable();
                         dt = CEI.GetEmails(ID);
                         if (dt.Rows.Count>0)
@@ -427,7 +461,7 @@ namespace CEIHaryana.Officers
                             ToEmail = "";
                             CCemail = "";
                         }
-                        dt.Dispose();
+                        dsa.Dispose();
                             //
 
                         bool isRemarksValid = true;

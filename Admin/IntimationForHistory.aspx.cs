@@ -173,7 +173,6 @@ namespace CEIHaryana.Admin
                         //** end added by gurmeet 17 july-2025
                         txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
                         txtWorkType.Text = ds.Tables[0].Rows[0]["InstallationType"].ToString();
-
                         if (txtWorkType.Text == "Line")
                         {
                             Capacity.Visible = false;
@@ -191,9 +190,24 @@ namespace CEIHaryana.Admin
                         txtSiteOwnerName.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
                         txtContractorName.Text = ds.Tables[0].Rows[0]["ContractorName"].ToString();
                         txtSupervisorName.Text = ds.Tables[0].Rows[0]["SupervisorName"].ToString();
-                        txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
-                        txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
+                        //txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
+                        //txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
                         txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
+                        #region Added 05-09-2025 Neha
+                        if (txtAmount.Text == "0")
+                        {
+                            transactionId.Visible = false;
+                            transactionDate.Visible = false;
+                        }
+                        else
+                        {
+                            transactionId.Visible = true;
+                            transactionDate.Visible = true;
+                            txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
+                            txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
+                        }
+                        #endregion
+
                         // count = Convert.ToInt32(ds.Tables[0].Rows[0]["TestReportCount"].ToString());           //Added     
                         IntimationId = ds.Tables[0].Rows[0]["IntimationId"].ToString();
                         DivTRinMultipleCaseNew.Visible = true;
@@ -240,7 +254,26 @@ namespace CEIHaryana.Admin
                         txtCapacity.Text = ds.Tables[0].Rows[0]["Capacity"].ToString();
                         txtVoltage.Text = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
                         ////txtTestReportId.Text = ds.Tables[0].Rows[0]["TestRportId"].ToString();
-                         //start added by gurmeet 18 july-2025
+                        txtSiteOwnerName.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
+                        ContractorName.Visible = false;
+                        SupervisorName.Visible = false;
+                        LineVoltage.Visible = false;
+                        //txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
+                        //txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
+                        txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
+                        if (txtAmount.Text == "0")
+                        {
+                            transactionId.Visible = false;
+                            transactionDate.Visible = false;
+                        }
+                        else
+                        {
+                            transactionId.Visible = true;
+                            transactionDate.Visible = true;
+                            txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
+                            txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
+                        }
+                        //start added by gurmeet 18 july-2025
                         string Premises = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
                         if (!string.IsNullOrEmpty(Premises))
                         {
@@ -261,13 +294,10 @@ namespace CEIHaryana.Admin
                         txtSupervisorEmail.Text = ds.Tables[0].Rows[0]["SupervisorEmail"].ToString();
                         //** end added by gurmeet 17 july-2025
                         txtSiteOwnerName.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
-                       // ContractorName.Visible = false;
-                       // SupervisorName.Visible = false;
+                        // ContractorName.Visible = false;
+                        // SupervisorName.Visible = false;
                         LineVoltage.Visible = false;
-                        txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
-                        txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
-                        txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
-                        //TypeOfInspection.Visible = false;
+                        TypeOfInspection.Visible = false;
                         txtInspectionReportId.Text = ds.Tables[0].Rows[0]["Id"].ToString();
                         txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
                         txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
@@ -275,13 +305,26 @@ namespace CEIHaryana.Admin
                         txtVoltage.Text = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
                         txtCapacity.Text = ds.Tables[0].Rows[0]["Capacity"].ToString();
                         txtSiteOwnerName.Text = ds.Tables[0].Rows[0]["OwnerName"].ToString();
-                       // ContractorName.Visible = false;
-                       // SupervisorName.Visible = false;
+                        ContractorName.Visible = false;
+                        SupervisorName.Visible = false;
                         LineVoltage.Visible = false;
-                        txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
-                        txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
+                        //txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
+                        //txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
                         txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
-                        //TypeOfInspection TypeOfInspection.Visible = false;
+                        
+                        if (txtAmount.Text == "0")
+                        {
+                            transactionId.Visible = false;
+                            transactionDate.Visible = false;
+                        }
+                        else
+                        {
+                            transactionId.Visible = true;
+                            transactionDate.Visible = true;
+                            txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
+                            txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
+                        }
+                        TypeOfInspection.Visible = false;
                         TRAttached.Visible = true;
                         TRAttachedGrid.Visible = true;
                         //GridView1.Columns[7].Visible = false;

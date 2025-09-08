@@ -1,15 +1,16 @@
-﻿using System;
+﻿using CEI_PRoject;
+using CEIHaryana.Model.Industry;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Data.SqlClient;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using CEI_PRoject;
-using CEIHaryana.Model.Industry;
+using System.Web.Util;
 
 namespace CEIHaryana.Admin
 {
@@ -83,7 +84,7 @@ namespace CEIHaryana.Admin
                     {
                         txtInspectionReportId.Text = ds.Tables[0].Rows[0]["Id"].ToString();
                         txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
-                        //txtPremises.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
+                        txtPremises.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
                         txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
                         txtWorkType.Text = ds.Tables[0].Rows[0]["InstallationType"].ToString();
                         if (txtWorkType.Text == "Line")
@@ -105,12 +106,9 @@ namespace CEIHaryana.Admin
                         txtContractorName.Text = ds.Tables[0].Rows[0]["ContractorName"].ToString();
                         txtSupervisorName.Text = ds.Tables[0].Rows[0]["SupervisorName"].ToString();
 
-                        txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
-                        txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
+                        //txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
+                        //txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
                         txtAmount.Text = ds.Tables[0].Rows[0]["TotalAmount"].ToString();
-
-                        IntimationId = ds.Tables[0].Rows[0]["IntimationId"].ToString();
-                        DivTRinMultipleCaseNew.Visible = true;
                         //added by gurmeet 18july
                         string Premises = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
                         if (!string.IsNullOrEmpty(Premises))
@@ -130,6 +128,23 @@ namespace CEIHaryana.Admin
                         txtContractorEmail.Text = ds.Tables[0].Rows[0]["ContractorEmail"].ToString();
                         txtSupervisorName.Text = ds.Tables[0].Rows[0]["SupervisorName"].ToString();
                         //**end here
+                        #region Added 05-09-2025 Neha
+                        if (txtAmount.Text == "0")
+                        {
+                            transactionId.Visible = false;
+                            transactionDate.Visible = false;
+                        }
+                        else
+                        {
+                            transactionId.Visible = true;
+                            transactionDate.Visible = true;
+                            txtTransactionId.Text = ds.Tables[0].Rows[0]["TransactionId"].ToString();
+                            txtTranscationDate.Text = ds.Tables[0].Rows[0]["TransactionDate1"].ToString();
+                        }
+                        #endregion
+                        IntimationId = ds.Tables[0].Rows[0]["IntimationId"].ToString();
+                        DivTRinMultipleCaseNew.Visible = true;
+
                         //GetGridNewInspectionMultiple();
 
                         string ReturnedValue = ds.Tables[0].Rows[0]["ReturnedBasedOnDocumentValue"].ToString();

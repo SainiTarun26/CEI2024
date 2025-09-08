@@ -233,7 +233,6 @@
                         <label for="Capacity">Capacity</label>
                         <asp:TextBox class="form-control" runat="server" ID="txtCapacity" ReadOnly="true" Style="margin-left: 18px"> </asp:TextBox>
                     </div>
-                   <%-- --%>
                 </div>
             </div>
             <div class="card-title" style="margin-bottom: 5px; font-size: 17px; font-weight: 600; margin-left: -10px; margin-bottom: 15px;">
@@ -302,11 +301,11 @@
             </div>
             <div class="card" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px !important; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                 <div class="row">
- <div class="col-md-4" runat="server">
+ <div class="col-md-4" runat="server" id="transactionId" visible="true">
                         <label>Transaction Id(GRN Number)</label>
                         <asp:TextBox class="form-control" ID="txtTransactionId" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                    <div class="col-md-4" runat="server">
+                    <div class="col-md-4" runat="server" id="transactionDate" runat="server">
                         <label>Transcation Date</label>
                         <asp:TextBox class="form-control" ID="txtTranscationDate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
@@ -314,9 +313,8 @@
                         <label>Fees Amount</label>
                         <asp:TextBox class="form-control" ID="txtAmount" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                 </div>
-             </div>
-
+                </div>
+            </div>
             <div class="card-title" style="margin-bottom: 5px; font-size: 17px; font-weight: 600; margin-left: -10px; margin-bottom: 15px;">
                 Documents Attached
             </div>

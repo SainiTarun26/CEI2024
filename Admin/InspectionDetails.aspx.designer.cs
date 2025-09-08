@@ -51,15 +51,6 @@ namespace CEIHaryana.Admin
         protected global::System.Web.UI.WebControls.TextBox txtInspectionReportId;
 
         /// <summary>
-        /// txtApplicantType control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtApplicantType;
-
-        /// <summary>
         /// txtPremises control.
         /// </summary>
         /// <remarks>
@@ -67,6 +58,15 @@ namespace CEIHaryana.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtPremises;
+
+        /// <summary>
+        /// txtApplicantType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtApplicantType;
 
         /// <summary>
         /// txtWorkType control.
@@ -267,6 +267,15 @@ namespace CEIHaryana.Admin
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl TransactionCard;
 
         /// <summary>
+        /// transactionId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl transactionId;
+
+        /// <summary>
         /// txtTransactionId control.
         /// </summary>
         /// <remarks>
@@ -274,6 +283,15 @@ namespace CEIHaryana.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtTransactionId;
+
+        /// <summary>
+        /// transactionDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl transactionDate;
 
         /// <summary>
         /// txtTranscationDate control.

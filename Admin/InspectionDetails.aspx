@@ -187,15 +187,15 @@
                     </div>
                     <div class="col-4">
                         <label>
-                            Type of Applicant
-                        </label>
-                        <asp:TextBox class="form-control" ID="txtApplicantType" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                    </div>
-                    <div class="col-4">
-                        <label>
                             Type of Premises 
                         </label>
                         <asp:TextBox class="form-control" ID="txtPremises" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
+                    <div class="col-4">
+                        <label>
+                            Type of Applicant
+                        </label>
+                        <asp:TextBox class="form-control" ID="txtApplicantType" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
                     <div class="col-4">
                         <label>
@@ -210,7 +210,7 @@
                       <div class="col-4" id="Capacity" runat="server">
                         <label for="Capacity">Capacity</label>
                         <asp:TextBox class="form-control" runat="server" ID="txtCapacity" ReadOnly="true" Style="margin-left: 18px"> </asp:TextBox>
-                    </div>                   
+                    </div>
                 </div>
             </div>
             <div class="card-title" style="margin-bottom: 5px; font-size: 17px; font-weight: 600; margin-left: -10px; margin-bottom: 15px;">
@@ -234,10 +234,10 @@
                         <label>Contractor Name</label>
                         <asp:TextBox class="form-control" ID="txtContractorName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                      <div class="col-4" runat="server">
+                    <div class="col-4" runat="server">
                         <label>Supervisor Name</label>
                         <asp:TextBox class="form-control" ID="txtSupervisorName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                    </div> 
+                    </div>
                      <div class="col-md-4" runat="server">
                         <label>ContactPerson Mobile</label>
                         <asp:TextBox class="form-control" ID="txtContactPersonContact" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
@@ -279,11 +279,11 @@
             </div>
             <div class="card" id="TransactionCard" runat="server" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                 <div class="row">
-                     <div class="col-4" runat="server">
+                     <div class="col-4" runat="server" id="transactionId" visible="true">
                         <label>Transaction Id(GRN Number)</label>
                         <asp:TextBox class="form-control" ID="txtTransactionId" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                    <div class="col-4" runat="server">
+                    <div class="col-4" runat="server" id="transactionDate" visible="true">
                         <label>Transcation Date</label>
                         <asp:TextBox class="form-control" ID="txtTranscationDate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
@@ -292,7 +292,6 @@
                         <asp:TextBox class="form-control" ID="txtAmount" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
                 </div>
-
             </div>
             <div class="card-title" style="margin-bottom: 5px; font-size: 17px; font-weight: 600; margin-left: -10px; margin-bottom: 15px;">
                 Documents Attached

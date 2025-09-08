@@ -246,7 +246,6 @@
                         <label>District</label>
                         <asp:TextBox class="form-control" ID="txtDistrict" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                    
                     <div class="col-md-4" id="ContractorName" visible="true" runat="server">
                         <label>Contractor Name</label>
                         <asp:TextBox class="form-control" ID="txtContractorName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
@@ -279,12 +278,12 @@
                      <div class="col-md-4" id="Div2" runat="server" visible="true">
                         <label>Contact Person Email</label>
                         <asp:TextBox class="form-control" ID="txtContactPersonEmail" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                    </div>                                        
+                    </div>
                      <div class="col-md-4" id="ContractorEmail" runat="server" visible="true">
                         <label>Contractor Email</label>
                         <asp:TextBox class="form-control" ID="txtContractorEmail" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                    <div class="col-md-4" id="SupervisorEmail" runat="server" visible="true">
+                    <div class="col-md-4" id="SupervisorEmail" visible="true" runat="server">
                         <label>Supervisor Email</label>
                         <asp:TextBox class="form-control" ID="txtSupervisorEmail" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
@@ -296,26 +295,20 @@
                 </div>
                 <div class="card" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                     <div class="row">
-                        <div class="col-md-4" runat="server">
-                            <label>Transaction ID(GRN Number)</label>
-                            <asp:TextBox class="form-control" ID="txtTransactionId" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                        </div>
-                        <div class="col-md-4" runat="server">
-                            <label>Transaction Date</label>
-                            <asp:TextBox class="form-control" ID="txtTranscationDate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                        </div>
-                        <div class="col-md-4" runat="server">
-                            <label>Fees Amount</label>
-                            <asp:TextBox class="form-control" ID="txtAmount" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                        </div>
+                        <div class="col-md-4" runat="server" id="transactionId" visible="true">
+                         <label>Transaction ID(GRN Number)</label>
+                        <asp:TextBox class="form-control" ID="txtTransactionId" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
+                    <div class="col-md-4" runat="server"  id="transactionDate" visible="true">
+                        <label>Transaction Date</label>
+                        <asp:TextBox class="form-control" ID="txtTranscationDate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
+                    <div class="col-md-4" runat="server">
+                        <label>Fees Amount</label>
+                        <asp:TextBox class="form-control" ID="txtAmount" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
                 </div>
-
             </div>
-
-
-
-
             <div class="card-title" style="margin-bottom: 5px; font-size: 17px; margin-bottom: 20px; font-weight: 600; margin-left: -10px;">
                 Documents Attached
             </div>
