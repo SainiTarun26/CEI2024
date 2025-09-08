@@ -74,20 +74,20 @@ namespace CEIHaryana
                         {
                             if (txtPassword.Text != "123456")
                             {
-                                if (txtUserID.Text.ToLower().Trim() == "cei")
-                                {
-                                    Session["Role"] = "Admin";
-                                    Session["StaffID"] = txtUserID.Text;
-                                    Response.Redirect("OfficerVerification/OTP.aspx", false);
-                                }
-                                else
-                                {
+                                //if (txtUserID.Text.ToLower().Trim() == "cei")
+                                //{
+                                //    Session["Role"] = "Admin";
+                                //    Session["StaffID"] = txtUserID.Text;
+                                //    Response.Redirect("OfficerVerification/OTP.aspx", false);
+                                //}
+                                //else
+                                //{
                                     Session["AdminID"] = txtUserID.Text;
                                     Session["logintype"] = "Admin";
                                     Response.Cookies["AdminID"].Value = txtUserID.Text;
                                     Response.Cookies["logintype"].Value = "Admin";
                                     Response.Redirect("/Admin/AdminMaster.aspx", false);
-                                }
+                               // }
                             }
                             else
                             {
@@ -320,16 +320,16 @@ namespace CEIHaryana
                         {
                             if (txtPassword.Text != "123456")
                             {
-                                Session["Role"] = "Staff";
-                                Session["StaffID"] = txtUserID.Text;
-                                Response.Redirect("OfficerVerification/OTP.aspx", false);
-
+                                //Session["Role"] = "Staff";
                                 //Session["StaffID"] = txtUserID.Text;
-                                //Session["logintype"] = "Staff";
-                                //Response.Cookies["StaffID"].Value = txtUserID.Text;
-                                //Response.Cookies["logintype"].Value = "Staff";
+                                //Response.Redirect("OfficerVerification/OTP.aspx", false);
 
-                                //Response.Redirect("/Officers/OfficerDashboard.aspx", false);
+                                Session["StaffID"] = txtUserID.Text;
+                                Session["logintype"] = "Staff";
+                                Response.Cookies["StaffID"].Value = txtUserID.Text;
+                                Response.Cookies["logintype"].Value = "Staff";
+
+                                Response.Redirect("/Officers/OfficerDashboard.aspx", false);
                             }
                             else
                             {
