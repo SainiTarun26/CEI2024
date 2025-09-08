@@ -671,6 +671,7 @@
                                 <asp:ListItem Text="Contractor" Value="3"></asp:ListItem>
                                 <asp:ListItem Text="Supervisor" Value="4"></asp:ListItem>
                                 <asp:ListItem Text="Wireman" Value="5"></asp:ListItem>
+                                <asp:ListItem Text="LicenceNew" Value="6"></asp:ListItem>
                             </asp:DropDownList>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator" runat="server"
                                 ControlToValidate="ddlApplicantType" ErrorMessage="Please Select User Type"
