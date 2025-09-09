@@ -10,6 +10,7 @@ using System.Web.UI;
 using System.IO;
 using System.Web.UI.WebControls;
 using System.IO.Compression;
+using CEIHaryana.UserPages;
 
 namespace CEIHaryana.Admin
 {
@@ -43,7 +44,7 @@ namespace CEIHaryana.Admin
                         Response.Redirect("LogOut.aspx", false);
                     }
                 }
-                
+
             }
             catch (Exception ex)
             {
@@ -209,7 +210,7 @@ namespace CEIHaryana.Admin
                                                 RegistrationNo = lblRegistrationNo.Text;
                                             }
 
-                                            cei.InsertNewLicenceApplicationFromCEI(lblApplicationType.Text.Trim(),RegistrationNo, CommitteeID, Category, CreatedBy, transaction);
+                                            cei.InsertNewLicenceApplicationFromCEI(lblApplicationType.Text.Trim(), RegistrationNo, CommitteeID, Category, CreatedBy, transaction);
                                             transaction.Commit();
                                             Session["double_Clickbutton"] = "";
                                             Session["double_Clickbutton"] = null;
@@ -234,7 +235,7 @@ namespace CEIHaryana.Admin
                                 conn.Close();
                             }
                         }
-                       
+
                     }
                     else
                     {
@@ -292,11 +293,12 @@ namespace CEIHaryana.Admin
                 Session["NewApplicationRegistrationNo"] = "";
                 Session["NewApplication_Contractor_RegNo"] = "";
                 //lblApplicationType added by navneet 
-                if (lblApplicationType.Text.Trim()=="New") {
+                if (lblApplicationType.Text.Trim() == "New")
+                {
                     if (Categary.Text == "Wireman" || Categary.Text == "Supervisor")
                     {
                         Session["NewApplicationRegistrationNo"] = RegNo;
-                       // Response.Redirect("/UserPages/New_Registration_Information.aspx", false);
+                        // Response.Redirect("/UserPages/New_Registration_Information.aspx", false);
                         Response.Write("<script>window.open('/UserPages/New_Registration_Information.aspx','_blank');</script>");
                     }
                     else if (Categary.Text == "Contractor")
@@ -314,7 +316,7 @@ namespace CEIHaryana.Admin
                         Session["NewApplicationRegistrationNo"] = lblId.Text.Trim();
 
                         Response.Write("<script>window.open('/UserPages/Certificate_Renewal_Details_Preview.aspx','_blank');</script>");
-                       // Response.Redirect("/UserPages/Certificate_Renewal_Details_Preview.aspx", false);
+                        // Response.Redirect("/UserPages/Certificate_Renewal_Details_Preview.aspx", false);
                     }
                     else
                     {
@@ -567,6 +569,127 @@ namespace CEIHaryana.Admin
             ddlCommittee.Items.Insert(0, new ListItem("Select", "0"));
             ds.Clear();
         }
+        #endregion
+
+        #region navneet return 9-sept-2025
+
+        protected void btnReturn_Click(object sender, EventArgs e)
+        {
+            int selectedCount = 0;
+            foreach (GridViewRow row in GridView1.Rows)
+            {
+                CheckBox cb = (CheckBox)row.FindControl("CheckBox1");
+                if (cb != null && cb.Checked)
+                {
+                    selectedCount++;
+                    if (selectedCount > 1)
+                    {
+                        
+                        break;
+                    }
+                }
+            }
+            if (selectedCount == 1)
+            {
+                foreach (GridViewRow row in GridView1.Rows)
+                {
+                    CheckBox cb = (CheckBox)row.FindControl("CheckBox1");
+                    if (cb != null && cb.Checked)
+                    {
+
+                        Label lblApplicationType = (Label)row.FindControl("lblApplicationType");
+                        Label lblRegistrationNo;
+                        if (lblApplicationType.Text.Trim() == "New")
+                        {
+
+                            lblRegistrationNo = (Label)row.FindControl("lblRegistrationNo");
+                            cei.UpdatestatusOfReturnLicenseapplication("Return", "New", lblRegistrationNo.Text);
+                            GridViewBind(null, null, null);
+
+                            ScriptManager.RegisterStartupScript(this, GetType(), "UploadError",
+                                  "alert('Record Returned successfully);", true);
+                        }
+                        else
+                        {
+                            ScriptManager.RegisterStartupScript(this, GetType(), "UploadError",
+                          "alert('Only New License applications can be Returned. Renew will be rejected');", true);
+                            return;
+                        }
+
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, GetType(), "UploadError",
+                              "alert('You will only able to Reject 1 at a time');", true);
+                        return;
+                    }
+                }
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "UploadError",
+                          "alert('You will only able to return 1 at a time');", true);
+                return;
+
+            }
+            
+        }
+
+        protected void btnReJect_Click(object sender, EventArgs e)
+        {
+            int selectedCount = 0;
+            foreach (GridViewRow row in GridView1.Rows)
+            {
+                CheckBox cb = (CheckBox)row.FindControl("CheckBox1");
+                if (cb != null && cb.Checked)
+                {
+                    selectedCount++;
+                    if (selectedCount > 1)
+                    {
+                       
+                        break;
+                    }
+                }
+            }
+            if (selectedCount == 1)
+            {
+                foreach (GridViewRow row in GridView1.Rows)
+                {
+                    CheckBox cb = (CheckBox)row.FindControl("CheckBox1");
+                    if (cb != null && cb.Checked)
+                    {
+
+                        Label lblApplicationType = (Label)row.FindControl("lblApplicationType");
+                        Label lblRegistrationNo;
+                        if (lblApplicationType.Text.Trim() == "New")
+                        {
+
+                            lblRegistrationNo = (Label)row.FindControl("lblRegistrationNo");
+                            cei.UpdatestatusOfReturnLicenseapplication("Reject", "New", lblRegistrationNo.Text);
+                        }
+                        else
+                        {
+
+                            lblRegistrationNo = (Label)row.FindControl("lblId");
+                            cei.UpdatestatusOfReturnLicenseapplication("Reject", "ReNew", lblRegistrationNo.Text);
+                        }
+
+                        ScriptManager.RegisterStartupScript(this, GetType(), "UploadError",
+                              "alert('Record Rejected successfully');", true);
+                        GridViewBind(null, null, null);
+
+                    }
+                }
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "UploadError",
+                      "alert('You will only able to Reject 1 at a time');", true);
+                return;
+            }
+        }
+            
+        
         #endregion
     }
 }

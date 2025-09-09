@@ -14674,6 +14674,14 @@ string dbPathCompetency, string dbPathMedicalCertificate, string userId)
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_NewRequestReceivedForGuestAdmin", LoginId, string.IsNullOrEmpty(Division) ? (object)DBNull.Value : Division, string.IsNullOrEmpty(InstallationType) ? (object)DBNull.Value : InstallationType);
         }
         #endregion
+
+        #region navneet Return licenses new 
+        public void UpdatestatusOfReturnLicenseapplication(string Status,string type, string CreatedBy)
+        {
+             DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_UpdatestatusOfReturnLicenseapplication", Status, type, CreatedBy);
+
+        }
+        #endregion
     }
 }
 

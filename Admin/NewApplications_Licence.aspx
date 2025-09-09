@@ -450,16 +450,15 @@
                                     Style="width: calc(100% - 40px);">
                 </asp:TextBox>--%>
 
-                            <asp:DropDownList class="form-control  select-form select2" runat="server"  ID="ddlCommittee" Style="width: 94% !important;
-    height: 25px;
-    padding: 0px;
-    font-size: 13px;">
+                            <asp:DropDownList class="form-control  select-form select2" runat="server" ID="ddlCommittee" Style="width: 94% !important; height: 25px; padding: 0px; font-size: 13px;">
                             </asp:DropDownList>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="ddlCommittee" runat="server" InitialValue="0" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                         </div>
                         <div class="div-4" style="margin-top: 2px;">
-                              <label>&nbsp;</label>
+                            <label>&nbsp;</label>
                             <asp:Button ID="Button1" Text="Forward To Committee" OnClick="Button1_Click" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" />
+                            <asp:Button ID="btnReturn" Text="Return" OnClick="btnReturn_Click" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" />
+                            <asp:Button ID="btnReJect" Text="Reject" OnClick="btnReJect_Click" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" />
 
                         </div>
                     </div>
