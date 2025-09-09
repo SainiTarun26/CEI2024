@@ -33,6 +33,8 @@ namespace CEI_PRoject.ADMIN
                             CESE.Visible = true;
                             UpgradationRequest.Visible = true;
                             UpgradationHistory.Visible = true;
+                            Printforms.Visible = true;
+                            StaffDetails.Visible = true;
                             TerminationOrSuspension.Visible = false;
                         }
                         else
