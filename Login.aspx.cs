@@ -82,12 +82,12 @@ namespace CEIHaryana
                                 //}
                                 //else
                                 //{
-                                    Session["AdminID"] = txtUserID.Text;
-                                    Session["logintype"] = "Admin";
-                                    Response.Cookies["AdminID"].Value = txtUserID.Text;
-                                    Response.Cookies["logintype"].Value = "Admin";
-                                    Response.Redirect("/Admin/AdminMaster.aspx", false);
-                               // }
+                                Session["AdminID"] = txtUserID.Text;
+                                Session["logintype"] = "Admin";
+                                Response.Cookies["AdminID"].Value = txtUserID.Text;
+                                Response.Cookies["logintype"].Value = "Admin";
+                                Response.Redirect("/Admin/AdminMaster.aspx", false);
+                                // }
                             }
                             else
                             {
@@ -378,7 +378,7 @@ namespace CEIHaryana
                                     {
                                         Response.Redirect("/UserPages/New_Application_Status.aspx", false);
                                     }
-                                }                                
+                                }
 
                                 else if (Category.Trim() == "Supervisor")
                                 {
@@ -494,6 +494,34 @@ namespace CEIHaryana
                             {
                                 Session["SuperidentId"] = txtUserID.Text;
                                 Response.Redirect("/ChangePassword.aspx", false);
+                            }
+                        }
+                        else if (check == 13)
+                        {
+                            if (txtPassword.Text != "123456")
+                            {
+                                if (chkSignedin.Checked == true)
+                                {
+                                    Session["GuestAdmin"] = txtUserID.Text;
+                                    Session["logintype"] = "GuestAdmin";
+                                    Response.Cookies["GuestAdmin"].Value = txtUserID.Text;
+                                    Response.Cookies["logintype"].Value = "GuestAdmin";
+                                    Response.Redirect("GuestAdmin/GuestAdmin.aspx", false);
+                                }
+                                else
+                                {
+                                    Session["GuestAdmin"] = txtUserID.Text;
+                                    Session["logintype"] = "GuestAdmin";
+                                    Response.Cookies["GuestAdmin"].Value = txtUserID.Text;
+                                    Response.Cookies["logintype"].Value = "GuestAdmin";
+                                    Response.Redirect("GuestAdmin/GuestAdmin.aspx", false);
+                                }
+                            }
+                            else
+                            {
+                                Session["GuestUser"] = txtUserID.Text;
+                                Response.Redirect("/ChangePassword.aspx", false);
+
                             }
                         }
                         else

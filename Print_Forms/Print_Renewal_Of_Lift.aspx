@@ -60,7 +60,7 @@
             font-weight: 700;
             text-align: initial;
             border-bottom: 0px solid !important;
-        }
+        } 
 
         .col-4 {
             top: 0px;
@@ -544,8 +544,10 @@
         <li>If the holder of this registration ceases to have interest in the lift installation for which the registration is granted the same shall be deemed to be invalid and it shall be returned to the Inspector.</li>
         <li>Whoever contravenes any of the provisions of the Act or the rules made there under or the terms and conditions of a permission or of a registration or a direction given by the Inspector or any person appointed under section 3 (i) of the Act to assist him, shall on conviction be punishable with imprisonment for a term which may extend to three months or with a fine which may extend to Rs 50,000/- (Rupees fifty thousand only) or with both and in the case of a continuing contravention with a further fine which may extend to Rs. 1,000/- (one thousand rupees only) for every day during which such contravention is continued after such conviction for the first such contravention.</li>
     
+        <li><b>Note:-Lifts installed and operated by the owner.</b></li>
     </ul>
                                                                                  <br />
+
  <br />
  <br /> <br />
  <br />

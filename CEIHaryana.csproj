@@ -1852,6 +1852,11 @@
     <Content Include="GenerateCaptcha.aspx" />
     <Content Include="GetPassword.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="GuestAdmin\AcceptedOrRejectedRequestForGuestAdmin.aspx" />
+    <Content Include="GuestAdmin\GuestAdmin.aspx" />
+    <Content Include="GuestAdmin\InProcessRequestForGuestAdmin.aspx" />
+    <Content Include="GuestAdmin\NewRequestInspectionForGuestAdmin.aspx" />
+    <Content Include="GuestAdmin\TotalRequestInspectionForGuestAdmin.aspx" />
     <Content Include="Image\Image\Emblem_of_Haryana.svg.png" />
     <Content Include="Image\Image\ImageToDelete-removebg-preview.png" />
     <Content Include="Image\Image\ImageToDelete.jpeg" />
@@ -3023,6 +3028,48 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="GuestAdmin\AcceptedOrRejectedRequestForGuestAdmin.aspx.cs">
+      <DependentUpon>AcceptedOrRejectedRequestForGuestAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GuestAdmin\AcceptedOrRejectedRequestForGuestAdmin.aspx.designer.cs">
+      <DependentUpon>AcceptedOrRejectedRequestForGuestAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GuestAdmin\GuestAdmin.aspx.cs">
+      <DependentUpon>GuestAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GuestAdmin\GuestAdmin.aspx.designer.cs">
+      <DependentUpon>GuestAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GuestAdmin\GuestAdmin.Master.cs">
+      <DependentUpon>GuestAdmin.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GuestAdmin\GuestAdmin.Master.designer.cs">
+      <DependentUpon>GuestAdmin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="GuestAdmin\InProcessRequestForGuestAdmin.aspx.cs">
+      <DependentUpon>InProcessRequestForGuestAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GuestAdmin\InProcessRequestForGuestAdmin.aspx.designer.cs">
+      <DependentUpon>InProcessRequestForGuestAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GuestAdmin\NewRequestInspectionForGuestAdmin.aspx.cs">
+      <DependentUpon>NewRequestInspectionForGuestAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GuestAdmin\NewRequestInspectionForGuestAdmin.aspx.designer.cs">
+      <DependentUpon>NewRequestInspectionForGuestAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GuestAdmin\TotalRequestInspectionForGuestAdmin.aspx.cs">
+      <DependentUpon>TotalRequestInspectionForGuestAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GuestAdmin\TotalRequestInspectionForGuestAdmin.aspx.designer.cs">
+      <DependentUpon>TotalRequestInspectionForGuestAdmin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Industry\CeiTrackApiDetailsPost_DefaultMethodTesting.aspx.cs">
       <DependentUpon>CeiTrackApiDetailsPost_DefaultMethodTesting.aspx</DependentUpon>
@@ -5456,6 +5503,7 @@
     <Content Include="Industry_Master\NewLift_Industry.Master" />
     <Content Include="DealingHand\DealingHand.Master" />
     <Content Include="Contractor\ContractorRenewalMaster.Master" />
+    <Content Include="GuestAdmin\GuestAdmin.Master" />
     <None Include="packages.config" />
     <Content Include="Supervisor\Supervisor.Master" />
     <Content Include="TestReport\TestReport.Master" />

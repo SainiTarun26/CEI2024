@@ -14633,6 +14633,47 @@ string dbPathCompetency, string dbPathMedicalCertificate, string userId)
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_getNewUserDocumentsForZip", RegistrationId);
         }
         #endregion
+        #region kalpana Guest admin
+        public DataTable DasboardPieChartCalculationsForGuestAdmin()
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_BindDashboardPiechartForGuestAdmin", 1);
+        }
+        //Adding parameter because of server error
+        public DataTable DasboardCalculationsForGuestAdmin()
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_RequestsForGuestAdmin", 1);
+        }
+        public DataTable TotalRequestInspectionForGuestAdmin(string LoginId, string Division = null, string InstallationType = null)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_TotalRequestInspectionForGuestAdmin", LoginId, string.IsNullOrEmpty(Division) ? (object)DBNull.Value : Division, string.IsNullOrEmpty(InstallationType) ? (object)DBNull.Value : InstallationType);
+        }
+
+        public DataTable AllInspectionHistoryForGuestAdmin()
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_RequestsForGuestAdmin", 1);
+        }
+
+        public DataTable StaffPendingRecordsCountForGuestAdmin()
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_PendingApplicationsForAdminGuest", 1);
+        }
+
+
+        public DataTable AcceptRejectReturnedInspectionForGuestAdmin(string LoginId, string Division = null, string InstallationType = null)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_AcceptRejectReturnedInspectionForGuestAdmin", LoginId, string.IsNullOrEmpty(Division) ? (object)DBNull.Value : Division, string.IsNullOrEmpty(InstallationType) ? (object)DBNull.Value : InstallationType);
+
+        }
+
+        public DataSet InProcessRequestInspectionForGuestAdmin(string LoginId, string Division = null, string InstallationType = null)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetProcessRequestForGuestAdmin", LoginId, string.IsNullOrEmpty(Division) ? (object)DBNull.Value : Division, string.IsNullOrEmpty(InstallationType) ? (object)DBNull.Value : InstallationType);
+        }
+        public DataSet NeWRequestInspectionForGuestAdmin(string LoginId, string Division = null, string InstallationType = null)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_NewRequestReceivedForGuestAdmin", LoginId, string.IsNullOrEmpty(Division) ? (object)DBNull.Value : Division, string.IsNullOrEmpty(InstallationType) ? (object)DBNull.Value : InstallationType);
+        }
+        #endregion
     }
 }
 
