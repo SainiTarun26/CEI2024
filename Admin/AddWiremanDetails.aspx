@@ -227,6 +227,8 @@
                             <label for="Pincode">Pincode</label>
                             <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="txtPincode" runat="server" MaxLength="6" onkeyup="ValidatePincode();" onkeypress="return isNumberKey(event);" Style="margin-left: 18px" TabIndex="6"></asp:TextBox>
                             <span id="lblPinError" style="color: red"></span>
+                              <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="txtPincode" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter Pincode</asp:RequiredFieldValidator>
+                             
                         </div>
                         <div class="col-md-4">
 
@@ -234,7 +236,7 @@
                                 <ContentTemplate>
                                     <label for="Qualification">
                                         Qualification<samp style="color: red"> * </samp>
-                                    </label>
+                                   </label>
                                     <asp:DropDownList Style="width: 100% !important;" class="form-control  select-form select2" ID="ddlQualification" runat="server" AutoPostBack="true" TabIndex="7" OnSelectedIndexChanged="ddlQualification_SelectedIndexChanged">
                                         <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                     </asp:DropDownList>
@@ -274,15 +276,21 @@
                         <div class="col-md-4">
                             <label for="CertificateOld">
                                 Certificate no (Old)<samp style="color: red"> * </samp>
-                            </label>
+                            </label>                   
                             <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="txtCertifacateOld" runat="server" onkeypress="return validateKeyPress(event, this.id)" onblur="validateOnBlur(this.id)" MaxLength="20" Style="margin-left: 18px" TabIndex="9"></asp:TextBox>
-                        </div>
+                             
+                            </div>
                         <div class="col-md-4">
                             <label for="CertificateNew">
                                 Ceritifcate No.(New)<samp style="color: red"> * </samp>
                             </label>
+                            <%--ClientValidationFunction="validateBothEmpty"--%>
                             <asp:TextBox class="form-control" autocomplete="off" onkeydown="return preventEnterSubmit(event)" ID="txtCertificateNew" runat="server" onkeypress="return validateKeyPress(event, this.id)" onblur="validateOnBlur(this.id)" MaxLength="20" Style="margin-left: 18px" TabIndex="10"></asp:TextBox>
-                            <asp:CustomValidator ID="CustomValidator1" runat="server" ClientValidationFunction="validateBothEmpty" ErrorMessage="Please provide either old Certificate No or New Certificate No" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red"></asp:CustomValidator>
+                       <%--     <asp:CustomValidator ID="CustomValidator1" runat="server" ErrorMessage="Please provide either old Certificate No or New Certificate No" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red"></asp:CustomValidator>
+                     --%>  
+                              <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="txtCertificateNew" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter CertificateNew No </asp:RequiredFieldValidator>
+                            
+
                         </div>
                         <div class="col-md-4">
                             <label for="DateofIntialissue">
@@ -385,7 +393,7 @@
     <script>
         $('.select2').select2();
     </script>
-    <script type="text/javascript">
+   <%-- <script type="text/javascript">
         function validateBothEmpty(source, args) {
             var CertifacateOld = document.getElementById('<%= txtCertifacateOld.ClientID %>').value;
              var CertificateNew = document.getElementById('<%= txtCertificateNew.ClientID %>').value;
@@ -396,7 +404,7 @@
                 args.IsValid = true;
             }
         }
-    </script>
+    </script>--%>
     <script type="text/javascript">
         function validateKeyPress(event, inputId) {
             var inputField = document.getElementById(inputId);
@@ -452,7 +460,7 @@
         }
     </script>
 
-    <script type="text/javascript">
+  <%--  <script type="text/javascript">
         function validateForm() {
 
             var CertifacateOld = document.getElementById('<%= txtCertifacateOld.ClientID %>').value
@@ -473,7 +481,7 @@
 
         }
 
-    </script>
+    </script>--%>
     <script type="text/javascript">
         function ValidateEmail() {
             var email1 = document.getElementById("<%=txtEmail.ClientID %>");

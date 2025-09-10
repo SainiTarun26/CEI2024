@@ -23,11 +23,13 @@
     <link href="/assetsnew/css/style.css" rel="stylesheet" />
     <style type="text/css">
         li.dropdown {
-    padding: 10px 0 10px 20px !important;
-}
+            padding: 10px 0 10px 20px !important;
+        }
+
         .container.d-flex.align-items-center.justify-content-between {
-    max-width: 1550px;
-}
+            max-width: 1550px;
+        }
+
         body {
             overflow-x: hidden;
         }
@@ -452,6 +454,10 @@
                                         <a href="UserManual/Haryana-Electrical-Contractor-Licence-Certificate-of.pdf" target="_blank">Electrical Licensing Rules-2021
                                         </a>
                                     </li>
+                                    <li>
+                                        <a href="/UserPages/Active_Licence_Contractor_List.aspx" target="_blank"> List Of Active Registered Contractors
+                                        </a>
+                                    </li>
                                     <!-- <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
                   <li><a href="#">Deep Drop Down 1</a></li>
@@ -475,6 +481,7 @@
                                         <a href="/UserPages/Instructions.aspx" target="_blank">Apply for New Licence
                                         </a>
                                     </li>
+
                                 </ul>
                             </li>
                             <li class="dropdown">
@@ -674,8 +681,8 @@
                                 <h1>Welcome to
               <span>CEI, Haryana</span>
                                 </h1>
-                                <h2 style="margin-bottom:0px;">SCO NO 117-118, TOP FLOOR, SECTOR 17-B, CHANDIGARH</h2>
-                                <p style="font-weight:600;">Email:- cei_goh@yahoo.com &nbsp;&nbsp;&nbsp;&nbsp; Phone No.:- 01722704090</p>
+                                <h2 style="margin-bottom: 0px;">SCO NO 117-118, TOP FLOOR, SECTOR 17-B, CHANDIGARH</h2>
+                                <p style="font-weight: 600;">Email:- cei_goh@yahoo.com &nbsp;&nbsp;&nbsp;&nbsp; Phone No.:- 01722704090</p>
                                 <!-- <div class="d-flex">
         <a href="#about" class="btn-get-started scrollto">Get Started</a>
         <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
@@ -724,7 +731,7 @@
                                             <div class="field btn" style="margin-bottom: 10px;">
                                                 <div class="btn-layer"></div>
                                                 <asp:Button class="btn btn-block btn-primary btn-lg font-weight-medium auth-form-btn" ID="BtnLogin" runat="server" Text="Sign in" Style="width: 84% !important; margin-left: 24px;"
-                                                    OnClick="BtnLogin_Click"  OnClientClick="return checkLoginBeforeSubmit();" ValidationGroup="Submit"></asp:Button>
+                                                    OnClick="BtnLogin_Click" OnClientClick="return checkLoginBeforeSubmit();" ValidationGroup="Submit"></asp:Button>
                                             </div>
                                             <div>
                                                 <label id="WrongCredentials" runat="server" visible="false" style="color: red;">

@@ -242,7 +242,12 @@ namespace CEI_PRoject.Admin
             try
             {
                 REID = hdnId.Value;
+                string name = txtName.Text.Trim();
+                string fathersname = FatherName.Text.Trim();
+                string dob = txtAge.Text.Trim();
 
+                REID = hdnId.Value;
+                string checkExistOrNot = string.Concat(name, fathersname, dob);
                 if (txtQualification.Visible == true)
                 {
 
@@ -264,7 +269,7 @@ namespace CEI_PRoject.Admin
                 if (btnSubmit.Text.Trim() == "Submit")
                 {
                     DataSet ds1 = new DataSet();
-                    ds1 = CEI.checkCertificateexist(CertificateOld.Text.Trim(), CertificateNew.Text.Trim());
+                    ds1 = CEI.checkCertificateexist(CertificateOld.Text.Trim(), CertificateNew.Text.Trim() , checkExistOrNot);
                     if (ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
                     {
                         string alertScript = "alert('The  Certificate number is already in use. Please provide a different Certificate number.');";

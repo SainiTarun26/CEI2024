@@ -18,6 +18,7 @@ namespace CEI_PRoject.Admin
         string REID = string.Empty;
         string ipaddress;
         string NewUserID = string.Empty;
+        string checkExistOrNot = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
             Response.Cache.SetCacheability(HttpCacheability.NoCache);
@@ -260,106 +261,118 @@ namespace CEI_PRoject.Admin
             {
                 if (Page.IsValid)
                 {
-                    REID = hdnId.Value;
-                    if (txtQualification.Visible == true)
+
+                    UserId = txtCertificateNew.Text.Trim();
+                    if (UserId.Substring(0, 3) == "EW-")
                     {
 
-                        Qualification = txtQualifications.Text;
-                    }
-                    else
-                    {
-                        Qualification = ddlQualification.SelectedValue;
-                    }
-                    if (txtCertificateNew.Text.Trim() != "" && txtCertificateNew.Text.Trim() != "NA")
-                    {
-                        UserId = "W-" + txtCertificateNew.Text.Trim();
-                    }
-                    else
-                    {
-                        UserId = txtCertifacateOld.Text.Trim();
-                    }
-                    if (btnSubmit.Text.Trim() == "Submit")
-                    {
-                        DataSet ds1 = new DataSet();
-                        ds1 = CEI.checkCertificateexist(txtCertifacateOld.Text.Trim(), txtCertificateNew.Text.Trim());
-                        if (ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
+                        string name = txtName.Text.Trim();
+                        string fathername = txtFatherName.Text.Trim();
+                        string dob = txtAge.Text.Trim();
+
+                        REID = hdnId.Value;
+                        checkExistOrNot = string.Concat(name, fathername, dob);
+                        if (txtQualification.Visible == true)
                         {
 
-                            string alertScript = "alert('The  Certificate number is already in use. Please provide a different Certificate number.');";
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
-                            return;
+                            Qualification = txtQualifications.Text;
                         }
-                    }
-                    else if (btnSubmit.Text.Trim() == "Update")
-                    {
-                        if (Convert.ToString(Session["OldWiremanUserID"]) != "" && Convert.ToString(Session["OldWiremanUserID"]) != null)
-
+                        else
                         {
+                            Qualification = ddlQualification.SelectedValue;
+                        }
 
-                            string MySession = Session["OldWiremanUserID"].ToString();
-                            string[] str = MySession.Split('|');
-                            UserId = str[0];
-                            if (str[1] == "New")
+                        if (btnSubmit.Text.Trim() == "Submit")
+                        {
+                            DataSet ds1 = new DataSet();
+                            ds1 = CEI.checkCertificateexist(txtCertifacateOld.Text.Trim(), txtCertificateNew.Text.Trim(), checkExistOrNot);
+                            if (ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
                             {
-                                if (UserId == "W-" + txtCertificateNew.Text)
-                                {
-                                    NewUserID = "";
-                                }
-                                else
-                                {
-                                    NewUserID = "W-" + txtCertificateNew.Text;
-                                }
+
+                                string alertScript = "alert('The  Certificate number is already in use. Please provide a different Certificate number.');";
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
+                                return;
                             }
-                            else
+                        }
+                        else if (btnSubmit.Text.Trim() == "Update")
+                        {
+                            if (Convert.ToString(Session["OldWiremanUserID"]) != "" && Convert.ToString(Session["OldWiremanUserID"]) != null)
+
                             {
-                                if (txtCertificateNew.Text.Length > 0)
+
+                                string MySession = Session["OldWiremanUserID"].ToString();
+                                string[] str = MySession.Split('|');
+                                UserId = str[0];
+                                if (str[1] == "New")
                                 {
-                                    NewUserID = "W-" + txtCertificateNew.Text;
-                                }
-                                else
-                                {
-                                    if (UserId == txtCertifacateOld.Text)
+                                    if (UserId == "W-" + txtCertificateNew.Text)
                                     {
                                         NewUserID = "";
                                     }
                                     else
                                     {
-                                        NewUserID = txtCertifacateOld.Text;
+                                        NewUserID = "W-" + txtCertificateNew.Text;
+                                    }
+                                }
+                                else
+                                {
+                                    if (txtCertificateNew.Text.Length > 0)
+                                    {
+                                        NewUserID = "W-" + txtCertificateNew.Text;
+                                    }
+                                    else
+                                    {
+                                        if (UserId == txtCertifacateOld.Text)
+                                        {
+                                            NewUserID = "";
+                                        }
+                                        else
+                                        {
+                                            NewUserID = txtCertifacateOld.Text;
+                                        }
                                     }
                                 }
                             }
+
+                            DataSet ds1 = new DataSet();
+                            ds1 = CEI.checkCertificateexistupdated(txtCertifacateOld.Text.Trim(), txtCertificateNew.Text.Trim(), REID);
+                            if (ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
+                            {
+                                string alertScript = "alert('Wireman already Exist.');";
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
+                                return;
+                            }
                         }
 
-                        DataSet ds1 = new DataSet();
-                        ds1 = CEI.checkCertificateexistupdated(txtCertifacateOld.Text.Trim(), txtCertificateNew.Text.Trim(), REID);
-                        if (ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
+                        GetIP();
+                        string Createdby = Convert.ToString(Session["AdminID"]);
+                        CEI.InserWireManData(REID, txtName.Text.ToUpper(), txtAge.Text.Trim(), txtFatherName.Text.ToUpper(), txtAddress.Text, ddlDistrict.SelectedItem.ToString(),
+                        ddlState.SelectedItem.ToString(), txtPincode.Text.Trim(), txtContect.Text.Trim(), Qualification, txtEmail.Text.Trim(), txtCertifacateOld.Text.Trim(), txtCertificateNew.Text.Trim(),
+                        txtDateInitialIssue.Text, txtDateExpiry.Text, txtDateRenewal.Text, ddlAttachedContractor.SelectedValue, ddlContractorDetails.SelectedValue,
+                        Createdby, UserId, NewUserID, ipaddress);
+
+                        if (btnSubmit.Text == "Update")
                         {
-                            string alertScript = "alert('The  Certificate number is already in use. Please provide a different Certificate number.');";
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
-                            return;
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Updated Successfully !!!')", true);
+                            Session["ID"] = "";
+                            //DataUpdated.Visible = true;
                         }
-                    }
+                        else
+                        {
+                            //DataSaved.Visible = true;
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Inserted Successfully !!!')", true);
 
-                    GetIP();
-                    string Createdby = Convert.ToString(Session["AdminID"]);
-                    CEI.InserWireManData(REID, txtName.Text.ToUpper(), txtAge.Text.Trim(), txtFatherName.Text.ToUpper(), txtAddress.Text, ddlDistrict.SelectedItem.ToString(),
-                    ddlState.SelectedItem.ToString(), txtPincode.Text.Trim(), txtContect.Text.Trim(), Qualification, txtEmail.Text.Trim(), txtCertifacateOld.Text.Trim(), txtCertificateNew.Text.Trim(),
-                    txtDateInitialIssue.Text, txtDateExpiry.Text, txtDateRenewal.Text, ddlAttachedContractor.SelectedValue, ddlContractorDetails.SelectedValue,
-                    Createdby, UserId, NewUserID, ipaddress);
+                        }
+                        Reset();
 
-                    if (btnSubmit.Text == "Update")
-                    {
-                        // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Updated Successfully !!!')", true);
-                        Session["ID"] = "";
-                        DataUpdated.Visible = true;
                     }
                     else
-                    {
-                        DataSaved.Visible = true;
-                        //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Inserted Successfully !!!')", true);
-
+                    {                   
+                        ScriptManager.RegisterStartupScript(this, GetType(), "UploadError",
+                       "alert('You will only able to Reject 1 at a timeFisrt 3 Letter of Certificate Should be \"EW-\".');", true);
+                        return;
                     }
-                    Reset();
+
                 }
             }
             catch (Exception Ex)

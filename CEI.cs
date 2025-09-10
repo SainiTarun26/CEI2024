@@ -2290,10 +2290,12 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_checkLicenceUpdated", LicenceNew, LicenceOld, ContractorId);
         }
-        public DataSet checkCertificateexist(string CertificateOld, string CertificateNew)
+        //Change by kalpana on 10-sept-2025
+        public DataSet checkCertificateexist(string CertificateOld, string CertificateNew, string checkExistOrNot)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_CheckCertificate", CertificateOld, CertificateNew);
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_CheckCertificate", CertificateOld, CertificateNew, checkExistOrNot);
         }
+        //
         public DataSet checkCertificateexistupdated(string CertificateOld, string CertificateNew, string Id)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_CheckCertificateupdated", CertificateOld, CertificateNew, Id);
@@ -14680,6 +14682,12 @@ string dbPathCompetency, string dbPathMedicalCertificate, string userId)
         {
              DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_UpdatestatusOfReturnLicenseapplication", Status, type, CreatedBy);
 
+        }
+        #endregion
+        #region kalpana contractordetails
+        public DataTable GetActiveContractorData()
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "GetActiveContractorDetails");
         }
         #endregion
     }
