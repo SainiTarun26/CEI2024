@@ -4194,7 +4194,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         }
 
         public string InsertPeriodicInspectionDataNew(string TypeOfInspection, string CartId, string TransactionId, string TransctionDate,
-        string CreatedBy, int InspectID, SqlTransaction transaction)
+    string CreatedBy, int InspectID, SqlTransaction transaction)
         {
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
             {
@@ -4203,8 +4203,19 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@TypeOfInspection", TypeOfInspection);
                     cmd.Parameters.AddWithValue("@CartId", CartId);
-                    cmd.Parameters.AddWithValue("@TransactionId ", TransactionId);
-                    cmd.Parameters.AddWithValue("@TransactionDate", TransctionDate);
+                    ////cmd.Parameters.AddWithValue("@TransactionId ", TransactionId);
+                    ////cmd.Parameters.AddWithValue("@TransactionDate", TransctionDate);
+
+                    cmd.Parameters.AddWithValue("@TransactionId", string.IsNullOrWhiteSpace(TransactionId) ? (object)DBNull.Value : TransactionId); //Change by neha
+                                                                                                                                                    //cmd.Parameters.AddWithValue("@TotalAmount", TotalAmount);
+                    if (string.IsNullOrWhiteSpace(TransctionDate))  //Change by neha
+                    {
+                        cmd.Parameters.AddWithValue("@TransactionDate", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@TransactionDate", TransctionDate);
+                    }
                     cmd.Parameters.AddWithValue("@CreatedBy ", CreatedBy);
                     cmd.Parameters.AddWithValue("@InspectID", InspectID);
                     outputParam = new SqlParameter("@Ret_InspectionID", SqlDbType.NVarChar, 500);
@@ -7557,8 +7568,8 @@ string PrimaryVoltage, string SecondoryVoltage, string MakeType, string CreatedB
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "SP_GetCartData_Industries", address, CartID, CreatedBy);
         }
-     public string InsertPeriodicInspectionData_Industries(string TypeOfInspection,
-      string CartId, string TransactionId, string TransctionDate, string CreatedBy, int InspectID, SqlTransaction transaction)
+        public string InsertPeriodicInspectionData_Industries(string TypeOfInspection,
+     string CartId, string TransactionId, string TransctionDate, string CreatedBy, int InspectID, SqlTransaction transaction)
 
         {
             using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
@@ -7568,8 +7579,17 @@ string PrimaryVoltage, string SecondoryVoltage, string MakeType, string CreatedB
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@TypeOfInspection", TypeOfInspection);
                     cmd.Parameters.AddWithValue("@CartId", CartId);
-                    cmd.Parameters.AddWithValue("@TransactionId ", TransactionId);
-                    cmd.Parameters.AddWithValue("@TransactionDate", TransctionDate);
+                    ////cmd.Parameters.AddWithValue("@TransactionId ", TransactionId);--
+                    ////cmd.Parameters.AddWithValue("@TransactionDate", TransctionDate);
+                    cmd.Parameters.AddWithValue("@TransactionId", string.IsNullOrWhiteSpace(TransactionId) ? (object)DBNull.Value : TransactionId); //Change by neha                                                                                                                                                    //cmd.Parameters.AddWithValue("@TotalAmount", TotalAmount);
+                    if (string.IsNullOrWhiteSpace(TransctionDate))  //Change by neha
+                    {
+                        cmd.Parameters.AddWithValue("@TransactionDate", DBNull.Value);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@TransactionDate", TransctionDate);
+                    }
                     cmd.Parameters.AddWithValue("@CreatedBy ", CreatedBy);
                     cmd.Parameters.AddWithValue("@InspectID", InspectID);
                     outputParam = new SqlParameter("@Ret_InspectionID", SqlDbType.NVarChar, 500);
@@ -7584,7 +7604,6 @@ string PrimaryVoltage, string SecondoryVoltage, string MakeType, string CreatedB
 
             }
         }
-
         //Creted By Navneet for lift 
 
         public DataSet GetSupervisorData()

@@ -968,16 +968,20 @@ namespace CEIHaryana.Industry_Master
                                             /* int para_InspectID = 0; */   //////////
                                                                             //string TransactionId = txtTransactionId.Text;
                                                                             //string TransctionDate = txtTransactiondate.Text;
-                                            if (txtTransactionId.Text != "")
+
+                                            if (challanDetailsDiv.Visible)
                                             {
-                                                transcationId = txtTransactionId.Text.Trim();
-                                                TranscationDate = string.IsNullOrEmpty(txtTransactiondate.Text) ? null : txtTransactiondate.Text;
-                                            }
-                                            else
-                                            {
-                                                txtTransactiondate.Focus();
-                                                txtTransactionId.Focus();
-                                                return;
+                                                if (txtTransactionId.Text != "")
+                                                {
+                                                    transcationId = txtTransactionId.Text.Trim();
+                                                    TranscationDate = string.IsNullOrEmpty(txtTransactiondate.Text) ? null : txtTransactiondate.Text;
+                                                }
+                                                else
+                                                {
+                                                    txtTransactiondate.Focus();
+                                                    txtTransactionId.Focus();
+                                                    return;
+                                                }
                                             }
 
                                             //string NewInspID = 

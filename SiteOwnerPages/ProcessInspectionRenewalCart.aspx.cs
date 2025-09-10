@@ -775,18 +775,20 @@ namespace CEIHaryana.SiteOwnerPages
                                             /* int para_InspectID = 0; */   //////////
                                                                             //string TransactionId = txtTransactionId.Text;
                                                                             //string TransctionDate = txtTransactiondate.Text;
-                                            if (txtTransactionId.Text != "")
+                                            if (challanDetailsDiv.Visible)
                                             {
-                                                transcationId = txtTransactionId.Text.Trim();
-                                                TranscationDate = string.IsNullOrEmpty(txtTransactiondate.Text) ? null : txtTransactiondate.Text;
+                                                if (txtTransactionId.Text != "")
+                                                {
+                                                    transcationId = txtTransactionId.Text.Trim();
+                                                    TranscationDate = string.IsNullOrEmpty(txtTransactiondate.Text) ? null : txtTransactiondate.Text;
+                                                }
+                                                else
+                                                {
+                                                    txtTransactiondate.Focus();
+                                                    txtTransactionId.Focus();
+                                                    return;
+                                                }
                                             }
-                                            else
-                                            {
-                                                txtTransactiondate.Focus();
-                                                txtTransactionId.Focus();
-                                                return;
-                                            }
-
                                             //string NewInspID = 
                                             transaction = connection.BeginTransaction();
                                             CEI.InsertPeriodicInspectionDataNew("Periodic", CartID, transcationId, TranscationDate, para_CreatedByy, NewPara, transaction);
