@@ -369,7 +369,7 @@ namespace CEI_PRoject.Admin
                     else
                     {                   
                         ScriptManager.RegisterStartupScript(this, GetType(), "UploadError",
-                       "alert('You will only able to Reject 1 at a timeFisrt 3 Letter of Certificate Should be \"EW-\".');", true);
+                       "alert('Fisrt 3 Letter of Certificate Should be \"EW-\".');", true);
                         return;
                     }
 

@@ -335,22 +335,22 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-    <a class="nav-link" data-toggle="collapse" href="#ui-basic7" aria-expanded="false" aria-controls="ui-basic7">
-        <svg xmlns="http://www.w3.org/2000/svg" height="20" fill="#ffffff" width="20" viewBox="0 0 576 512">
-            <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
-            <path d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm80 256h64c44.2 0 80 35.8 80 80c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16c0-44.2 35.8-80 80-80zm-32-96a64 64 0 1 1 128 0 64 64 0 1 1 -128 0zm256-32H496c8.8 0 16 7.2 16 16s-7.2 16-16 16H368c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64H496c8.8 0 16 7.2 16 16s-7.2 16-16 16H368c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64H496c8.8 0 16 7.2 16 16s-7.2 16-16 16H368c-8.8 0-16-7.2-16-16s7.2-16 16-16z" />
-        </svg>
-        <span class="menu-title">Licence</span>
-        <i class="menu-arrow"></i>
-    </a>
-    <div class="collapse" id="ui-basic7">
-        <ul class="nav flex-column sub-menu">
-            <li class="nav-item"><a class="nav-link" href="/Admin/NewApplications_Licence.aspx">NewApplcations</a></li>
-            <li class="nav-item"><a class="nav-link" href="/Admin/Pending_Licence_Approval_Cei_List.aspx">InProcess Licence</a></li>
-            <li class="nav-item"><a class="nav-link" href="/Admin/Approved_Licence_Approval_Cei_List.aspx">Application History</a></li>
-        </ul>
-    </div>
-</li>
+                                <a class="nav-link" data-toggle="collapse" href="#ui-basic7" aria-expanded="false" aria-controls="ui-basic7">
+                                    <svg xmlns="http://www.w3.org/2000/svg" height="20" fill="#ffffff" width="20" viewBox="0 0 576 512">
+                                        <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
+                                        <path d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm80 256h64c44.2 0 80 35.8 80 80c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16c0-44.2 35.8-80 80-80zm-32-96a64 64 0 1 1 128 0 64 64 0 1 1 -128 0zm256-32H496c8.8 0 16 7.2 16 16s-7.2 16-16 16H368c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64H496c8.8 0 16 7.2 16 16s-7.2 16-16 16H368c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64H496c8.8 0 16 7.2 16 16s-7.2 16-16 16H368c-8.8 0-16-7.2-16-16s7.2-16 16-16z" />
+                                    </svg>
+                                    <span class="menu-title">Licence</span>
+                                    <i class="menu-arrow"></i>
+                                </a>
+                                <div class="collapse" id="ui-basic7">
+                                    <ul class="nav flex-column sub-menu">
+                                        <li class="nav-item"><a class="nav-link" href="/Admin/NewApplications_Licence.aspx">NewApplcations</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="/Admin/Pending_Licence_Approval_Cei_List.aspx">InProcess Licence</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="/Admin/Approved_Licence_Approval_Cei_List.aspx">Application History</a></li>
+                                    </ul>
+                                </div>
+                            </li>
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="20" fill="#ffffff" width="20" viewBox="0 0 576 512">
@@ -450,7 +450,7 @@
                                     <ul class="nav flex-column sub-menu">
                                         <li class="nav-item"><a class="nav-link" href="/Admin/IntimationHistoryForAdmin.aspx">New</a></li>
                                         <li class="nav-item"><a class="nav-link" href="/Admin/ActionInspectioHistrory.aspx">InProcess</a></li>
-                                        
+
                                     </ul>
                                 </div>
                             </li>
@@ -608,7 +608,7 @@
                                     <span class="menu-title">Committee</span>
                                 </a>
                             </li>
-                            
+
                             <li class="nav-item" id="TerminationOrSuspension" runat="server" visible="false">
                                 <a class="nav-link" href="/Admin/Suspend_Terminate.aspx">
                                     <i class="icon-grid menu-icon"></i>
@@ -625,12 +625,14 @@
                                 </a>
                             </li>
                             <li class="nav-item" id="UpgradationHistory" runat="server" visible="false">
-    <a class="nav-link" href="/Admin/UpgradationRequestHistory.aspx">
-        <i class="icon-grid menu-icon"></i>
-        <span class="menu-title">Upgradation<br />Requests<br />History
-        </span>
-    </a>
-</li>
+                                <a class="nav-link" href="/Admin/UpgradationRequestHistory.aspx">
+                                    <i class="icon-grid menu-icon"></i>
+                                    <span class="menu-title">Upgradation<br />
+                                        Requests<br />
+                                        History
+                                    </span>
+                                </a>
+                            </li>
                         </ul>
                     </nav>
                     <div class="main-panel">
