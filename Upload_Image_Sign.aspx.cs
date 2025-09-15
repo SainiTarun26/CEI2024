@@ -57,7 +57,8 @@ namespace CEIHaryana.UserPages
                 if (Page.IsValid)
                 {
                     string UId = txtUserId.Text;
-                    string baseFolder = Server.MapPath("~/Attachment/Supervisor/" + UId + "/");
+                    string TypeOfUser = txtCategory.Text;
+                    string baseFolder = Server.MapPath("~/Attachment/" + TypeOfUser + "/" + UId + "/");
 
                     // Create directory if not exists
                     if (!Directory.Exists(baseFolder))
@@ -82,7 +83,7 @@ namespace CEIHaryana.UserPages
                                 string savePath = Path.Combine(baseFolder, fileName);
                                 fuPhoto.SaveAs(savePath);
 
-                                dbPathPhoto = "/Attachment/Supervisor/" + UId + "/" + fileName;
+                                dbPathPhoto = "/Attachment/" + TypeOfUser + "/" + UId + "/" + fileName;
                             }
                             else
                             {
@@ -109,7 +110,7 @@ namespace CEIHaryana.UserPages
                                 string savePath = Path.Combine(baseFolder, fileName);
                                 fuSignature.SaveAs(savePath);
 
-                                dbPathSignature = "/Attachment/Supervisor/" + UId + "/" + fileName;
+                                dbPathSignature = "/Attachment/" + TypeOfUser + "/" + UId + "/" + fileName;
                             }
                             else
                             {
@@ -128,8 +129,20 @@ namespace CEIHaryana.UserPages
 
                     if (result > 0)
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alertAndRedirect",
-                            "alert('Information Updated Successfully!'); window.location='Login.aspx';", true);
+                        if (txtCategory.Text == "Supervisor")
+                        {
+                            Session["SupervisorID"] = UId.Trim();
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "alertAndRedirect",
+                                "alert('Information Updated Successfully!'); window.location='/Supervisor/IntimationData.aspx';", true);
+
+                        }
+                        else if (txtCategory.Text == "Contractor")
+                        {
+                            Session["ContractorID"] = UId.Trim();
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "alertAndRedirect",
+                                "alert('Information Updated Successfully!'); window.location='/Contractor/Work_Intimation.aspx';", true);
+
+                        }
                     }
                     else
                     {
