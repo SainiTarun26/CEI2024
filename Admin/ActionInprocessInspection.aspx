@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin_Master2.Master" AutoEventWireup="true" CodeBehind="ActionInprocessInspection.aspx.cs" Inherits="CEIHaryana.Admin.ActionInprocessInspection" %>
-
+<%@ Register Src="~/UserCPages/InspectionReturnDetails.ascx" TagPrefix="uc1" TagName="InspectionReturnDetails" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
@@ -21,15 +21,15 @@
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
-            
+
             $("#<%= txtInspectionDate.ClientID %>").datepicker({
-            dateFormat: 'dd/mm/yy',  // Customize the format as needed
-            changeMonth: true,
-            changeYear: true,
-            maxDate: 0,
-            yearRange: "1900:2100"
+                dateFormat: 'dd/mm/yy',  // Customize the format as needed
+                changeMonth: true,
+                changeYear: true,
+                maxDate: 0,
+                yearRange: "1900:2100"
+            });
         });
-    });
     </script>
     <style>
              div#ui-datepicker-div
@@ -452,10 +452,37 @@ th.headercolor.thwidth {
                                     <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
                                     <ItemStyle HorizontalAlign="Left" />
                                 </asp:BoundField>
-                            <asp:BoundField DataField="ActionTaken" HeaderText="ActionTaken">
+                            <%--                            <asp:BoundField DataField="ActionTaken" HeaderText="ActionTaken">
                                     <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
                                     <ItemStyle HorizontalAlign="Left" />
-                                </asp:BoundField>
+                                </asp:BoundField>--%>
+
+                            <asp:TemplateField HeaderText="ActionTaken">
+                                <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" />
+                                <ItemTemplate>
+                                    <asp:Label ID="lblActionTaken" runat="server" Text='<%# Eval("ActionTaken") %>' Visible="false" />
+                                    <asp:Label ID="lblInspectionId" runat="server" Text='<%# Eval("Id") %>' Visible="false" />
+
+                                    <!-- If ActionTaken is RETURN, show LinkButton -->
+                                    <asp:LinkButton
+                                        ID="lnkReturn"
+                                        runat="server"
+                                        Text="Return"
+                                        CommandName="ShowReturnPopup"
+                                        CommandArgument='<%# Eval("Id") %>'
+                                        OnCommand="lnkReturn_Command"
+                                        CssClass="text-danger"
+                                        Visible='<%# Eval("ActionTaken").ToString() == "Return" %>' />
+
+                                    <!-- Otherwise, show normal text -->
+                                    <asp:Label
+                                        ID="lblNormalStatus"
+                                        runat="server"
+                                        Text='<%# Eval("ActionTaken") %>'
+                                        Visible='<%# Eval("ActionTaken").ToString() != "Return" %>' />
+                                </ItemTemplate>
+                            </asp:TemplateField>
                                 <%-- <asp:BoundField DataField="TestRportId" HeaderText="TestReportId" Visible="false">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
@@ -502,6 +529,7 @@ th.headercolor.thwidth {
                             </Columns>
                             <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
                         </asp:GridView>
+<uc1:InspectionReturnDetails runat="server" id="InspectionReturnDetails" />                         
                       
                     
                 </div>
@@ -822,22 +850,22 @@ th.headercolor.thwidth {
        $(document).ready(function () {
            var datePickerElement = $("#<%= txtInspectionDate.ClientID %>");
 
-        // Initialize the datepicker, but do not show it automatically
-        datePickerElement.datepicker({
-            dateFormat: 'dd/mm/yy',  // Customize the format as needed
-            changeMonth: true,
-            changeYear: true,
-            maxDate: 0,
-            yearRange: "1900:2100",
-            showOn: "focus",  // Only show the datepicker when the input is focused
-        });
+           // Initialize the datepicker, but do not show it automatically
+           datePickerElement.datepicker({
+               dateFormat: 'dd/mm/yy',  // Customize the format as needed
+               changeMonth: true,
+               changeYear: true,
+               maxDate: 0,
+               yearRange: "1900:2100",
+               showOn: "focus",  // Only show the datepicker when the input is focused
+           });
 
-        // This ensures the datepicker is hidden initially and only shows when the textbox is clicked
-        datePickerElement.on('focus', function () {
-            $(this).datepicker('show');  // Show datepicker on focus
-        });
-    });
+           // This ensures the datepicker is hidden initially and only shows when the textbox is clicked
+           datePickerElement.on('focus', function () {
+               $(this).datepicker('show');  // Show datepicker on focus
+           });
+       });
    </script>
-
+   <script src="/Assets/js/js/vendor.bundle.base.js"></script>     
     
 </asp:Content>

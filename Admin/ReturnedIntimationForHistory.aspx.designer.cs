@@ -645,6 +645,15 @@ namespace CEIHaryana.Admin
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
 
         /// <summary>
+        /// InspectionReturnDetails control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::CEIHaryana.UserCPages.InspectionReturnDetails InspectionReturnDetails;
+
+        /// <summary>
         /// btnUpdate control.
         /// </summary>
         /// <remarks>

@@ -258,6 +258,15 @@ namespace CEIHaryana.Officers
         protected global::System.Web.UI.WebControls.GridView Grid_MultipleInspectionTR;
 
         /// <summary>
+        /// InspectionReturnDetails control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::CEIHaryana.UserCPages.InspectionReturnDetails InspectionReturnDetails;
+
+        /// <summary>
         /// txtApplicationStatus control.
         /// </summary>
         /// <remarks>

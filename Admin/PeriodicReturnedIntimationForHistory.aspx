@@ -1,17 +1,18 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin_Master.Master" AutoEventWireup="true" CodeBehind="PeriodicReturnedIntimationForHistory.aspx.cs" Inherits="CEIHaryana.Admin.PeriodicReturnedIntimationForHistory" %>
 
+<%@ Register Src="~/UserCPages/InspectionReturnDetails.ascx" TagPrefix="uc1" TagName="InspectionReturnDetails" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <%--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>--%>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
 
-    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
     <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://kit.fontawesome.com/57676f1d80.js" crossorigin="anonymous"></script>
@@ -37,9 +38,9 @@
             return (allow.indexOf(String.fromCharCode(k)) != -1);
         }
     </script>
-    
-<%--        //Uncommented by neha 8-may--%>
-     <script type="text/javascript">
+
+    <%--        //Uncommented by neha 8-may--%>
+    <script type="text/javascript">
         function validateDropdowns(sender, args) {
             var ddlToAssign = document.getElementById('<%= ddlToAssign.ClientID %>');
 
@@ -47,7 +48,7 @@
             args.IsValid = selectedValueToAssign !== "0";
         }
     </script>
-  <%--  //--%>
+    <%--  //--%>
     <script type="text/javascript">   
         function alertWithRedirectdata() {
 
@@ -227,7 +228,7 @@
                         <label>Site Address</label>
                         <asp:TextBox class="form-control" ID="txtSiteAddress" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                     <div class="col-md-4" runat="server">
+                    <div class="col-md-4" runat="server">
                         <label>District</label>
                         <asp:TextBox class="form-control" ID="txtDistrict" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
@@ -242,25 +243,25 @@
                     <div class="col-md-4" runat="server">
                         <label>ContactPerson Mobile</label>
                         <asp:TextBox class="form-control" ID="txtContactPersonContact" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                    </div> 
-                     <div class="col-4" runat="server">
+                    </div>
+                    <div class="col-4" runat="server">
                         <label>Contractor Contact No.</label>
                         <asp:TextBox class="form-control" ID="txtcontractorContact" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                    </div>                                                                                            
-                     <div class="col-4" runat="server">
+                    </div>
+                    <div class="col-4" runat="server">
                         <label>Supervisor Contact No.</label>
                         <asp:TextBox class="form-control" ID="txtSupervisorContact" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                                        
-                       <div class="col-md-4" id="Div6" runat="server" visible="true">
+
+                    <div class="col-md-4" id="Div6" runat="server" visible="true">
                         <label>ContactPerson Email</label>
                         <asp:TextBox class="form-control" ID="txtContactPersonEmail" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                    </div>                                        
-                     <div class="col-md-4" id="ContractorEmail" runat="server" visible="true">
+                    </div>
+                    <div class="col-md-4" id="ContractorEmail" runat="server" visible="true">
                         <label>Contractor Email</label>
                         <asp:TextBox class="form-control" ID="txtContractorEmail" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                   
+
                     <div class="col-md-4" id="SupervisorEmail" runat="server" visible="true">
                         <label>Supervisor Email</label>
                         <asp:TextBox class="form-control" ID="txtSupervisorEmail" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
@@ -273,12 +274,12 @@
                     </div>
                 </div>
             </div>
-             <div class="card-title" style="margin-bottom: 5px; font-size: 17px; font-weight: 600; margin-left: -10px; margin-bottom: 15px;">
+            <div class="card-title" style="margin-bottom: 5px; font-size: 17px; font-weight: 600; margin-left: -10px; margin-bottom: 15px;">
                 Transaction Details
             </div>
             <div class="card" id="Div5" runat="server" visible="true" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                 <div class="row">
-                      <div class="col-md-4" runat="server"  id="transactionId" visible="true">
+                    <div class="col-md-4" runat="server" id="transactionId" visible="true">
                         <label>Transaction Id(GRN Number)</label>
                         <asp:TextBox class="form-control" ID="txtTransactionId" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
@@ -332,8 +333,8 @@
                             </asp:TemplateField>
                         </Columns>
                         <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
-                    </asp:GridView>                   
-                        <asp:Label ID="Lblgrd_Documemnts" runat="server"></asp:Label>
+                    </asp:GridView>
+                    <asp:Label ID="Lblgrd_Documemnts" runat="server"></asp:Label>
                 </div>
                 <%--<div class="row" style="margin-bottom: 25px;">
       <div class="col-md-4">
@@ -363,10 +364,37 @@
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="ActionTaken" HeaderText="ActionTaken">
+                            <%--                            <asp:BoundField DataField="ActionTaken" HeaderText="ActionTaken">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
-                            </asp:BoundField>
+                            </asp:BoundField>--%>
+                            <asp:TemplateField HeaderText="ActionTaken">
+                                <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" />
+                                <ItemTemplate>
+                                    <asp:Label ID="lblActionTaken" runat="server" Text='<%# Eval("ActionTaken") %>' Visible="false" />
+                                    <asp:Label ID="lblInspectionId" runat="server" Text='<%# Eval("Id") %>' Visible="false" />
+
+                                    <!-- If ActionTaken is RETURN, show LinkButton -->
+                                    <asp:LinkButton
+                                        ID="lnkReturn"
+                                        runat="server"
+                                        Text="Return"
+                                        CommandName="ShowReturnPopup"
+                                        CommandArgument='<%# Eval("Id") %>'
+                                        OnCommand="lnkReturn_Command"
+                                        CssClass="text-danger"
+                                        Visible='<%# Eval("ActionTaken").ToString() == "Return" %>' />
+
+                                    <!-- Otherwise, show normal text -->
+                                    <asp:Label
+                                        ID="lblNormalStatus"
+                                        runat="server"
+                                        Text='<%# Eval("ActionTaken") %>'
+                                        Visible='<%# Eval("ActionTaken").ToString() != "Return" %>' />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+
                             <%--  <asp:BoundField DataField="TestRportId" HeaderText="TestReportId" Visible="false">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
@@ -383,7 +411,7 @@
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
-                          <%--  <asp:BoundField DataField="ReturnDate" HeaderText="ReturnDate">
+                            <%--  <asp:BoundField DataField="ReturnDate" HeaderText="ReturnDate">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>--%>
@@ -393,8 +421,8 @@
                             </asp:BoundField>
                         </Columns>
                         <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
-                    </asp:GridView>                  
-                        <asp:Label ID="LblGridView1" runat="server"></asp:Label>
+                    </asp:GridView>
+                    <asp:Label ID="LblGridView1" runat="server"></asp:Label>
                 </div>
             </div>
             <div class="row" id="Div2" runat="server" visible="true">
@@ -446,7 +474,7 @@
                             </asp:TemplateField>
                         </Columns>
                     </asp:GridView>
-                     <asp:Label ID="LblGridView2" runat="server"></asp:Label>
+                    <asp:Label ID="LblGridView2" runat="server"></asp:Label>
                 </div>
             </div>
             <asp:UpdatePanel ID="updatepanel1" runat="server">
@@ -455,34 +483,34 @@
                         <div class="card-title" style="margin-bottom: 20px; margin-top: 15px; font-size: 17px; font-weight: 600; margin-left: 5px;">
                             Action Required
                         </div>
-                          <div class="row">
-                        <div class="col-md-12">
-                            <asp:RadioButtonList ID="RadioButtonAction" OnSelectedIndexChanged="RadioButtonAction_SelectedIndexChanged" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25">
-                                <asp:ListItem Text="Process" Value="0" style="margin-top: auto; margin-bottom: auto; padding-left: 10px;"></asp:ListItem>
-                                <asp:ListItem Text="Transfer" Value="1" style="margin-top: auto; margin-bottom: auto; padding-left: 10px;"></asp:ListItem>
-                            </asp:RadioButtonList>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <asp:RadioButtonList ID="RadioButtonAction" OnSelectedIndexChanged="RadioButtonAction_SelectedIndexChanged" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25">
+                                    <asp:ListItem Text="Process" Value="0" style="margin-top: auto; margin-bottom: auto; padding-left: 10px;"></asp:ListItem>
+                                    <asp:ListItem Text="Transfer" Value="1" style="margin-top: auto; margin-bottom: auto; padding-left: 10px;"></asp:ListItem>
+                                </asp:RadioButtonList>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row" id="TransferButton" runat="server" visible="false">
-                        <div class="col-md-3" id="ApprovalRequired" runat="server">
-                            <br />
-                            <br />
-                            <label>
-                                Division
+                        <div class="row" id="TransferButton" runat="server" visible="false">
+                            <div class="col-md-3" id="ApprovalRequired" runat="server">
+                                <br />
+                                <br />
+                                <label>
+                                    Division
                                 <samp style="color: red">* </samp>
-                            </label>
-                            <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlDivisions" Style="width: 100% !important;" OnSelectedIndexChanged="ddlDivisions_SelectedIndexChanged">
-                            </asp:DropDownList>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="ddlDivisions" runat="server" InitialValue="0" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                                </label>
+                                <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlDivisions" Style="width: 100% !important;" OnSelectedIndexChanged="ddlDivisions_SelectedIndexChanged">
+                                </asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="ddlDivisions" runat="server" InitialValue="0" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                            </div>
+                            <div class="col-md-3" id="DivToAssign" runat="server">
+                                <br />
+                                <br />
+                                <label>To Assign Staff</label>
+                                <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlToAssign" selectionmode="Multiple" Style="width: 100% !important;">
+                                </asp:DropDownList>
+                            </div>
                         </div>
-                        <div class="col-md-3" id="DivToAssign" runat="server">
-                            <br />
-                            <br />
-                            <label>To Assign Staff</label>
-                            <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlToAssign" selectionmode="Multiple" Style="width: 100% !important;">
-                            </asp:DropDownList>
-                        </div>
-                    </div>
                         <div class="row" id="Action" runat="server" visible="false">
                             <asp:RadioButtonList ID="RdbtnAccptReturn" AutoPostBack="true" OnSelectedIndexChanged="RdbtnAccptReturn_SelectedIndexChanged" runat="server" RepeatDirection="Horizontal" TabIndex="25">
                                 <asp:ListItem Text="Yes(Accept)" Value="0" style="margin-top: auto; margin-bottom: auto; padding-left: 10px;"></asp:ListItem>
@@ -520,6 +548,7 @@
                     <%-- To Reject Inspection END--%>
                 </ContentTemplate>
             </asp:UpdatePanel>
+                  <uc1:InspectionReturnDetails runat="server" id="InspectionReturnDetails" /> 
             <div class="row" style="margin-top: 25px;">
                 <div class="col-6" style="text-align: end;">
                     <asp:Button ID="btnUpdate" Text="Save" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" OnClick="btnUpdate_Click" Style="padding-left: 30px; padding-right: 30px;" />
@@ -529,6 +558,7 @@
                 </div>
             </div>
         </div>
+         <script src="/Assets/js/js/vendor.bundle.base.js"></script> 
     </div>
 </asp:Content>
 

@@ -269,14 +269,14 @@ namespace CEIHaryana.Officers
         }
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            if (e.Row.RowType == DataControlRowType.DataRow)
-            {
-                string status = DataBinder.Eval(e.Row.DataItem, "Status").ToString();
-                if (status == "RETURN")
-                {
-                    e.Row.Cells[2].ForeColor = System.Drawing.Color.Red;
-                }
-            }
+            //if (e.Row.RowType == DataControlRowType.DataRow)
+            //{
+            //    string status = DataBinder.Eval(e.Row.DataItem, "Status").ToString();
+            //    if (status == "RETURN")
+            //    {
+            //        e.Row.Cells[2].ForeColor = System.Drawing.Color.Red;
+            //    }
+            //}
             if (e.Row.RowType == DataControlRowType.Header)
             {
                 e.Row.Cells[2].BackColor = ColorTranslator.FromHtml("#9292cc");
@@ -693,6 +693,12 @@ namespace CEIHaryana.Officers
                 ds.Dispose();
             }
             catch (Exception ex) { }
+        }
+        protected void lnkReturn_Command(object sender, CommandEventArgs e)
+        {
+            string inspectionId = e.CommandArgument.ToString();
+            InspectionReturnDetails.GetReturnDetails(inspectionId);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowReturnModal", "$('#ownerModal').modal('show');", true);
         }
     }
 }

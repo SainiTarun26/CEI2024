@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Officers/Officers.Master" AutoEventWireup="true" CodeBehind="PeriodicInspection.aspx.cs" Inherits="CEIHaryana.Officers.PeriodicInspection" %>
 
+<%@ Register Src="~/UserCPages/InspectionReturnDetails.ascx" TagPrefix="uc1" TagName="InspectionReturnDetails" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
@@ -14,7 +15,7 @@
     <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://kit.fontawesome.com/57676f1d80.js" crossorigin="anonymous"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript">
         function isNumberKey(evt) {
             var charCode = (evt.which) ? evt.which : event.keyCode
@@ -159,7 +160,7 @@
         th.headercolor {
             background: #9292cc;
             color: white;
-            width:1% !important;
+            width: 1% !important;
         }
     </style>
 
@@ -242,7 +243,7 @@
                         <label>Address</label>
                         <asp:TextBox class="form-control" ID="txtAddress" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                     <div class="col-md-4" runat="server">
+                    <div class="col-md-4" runat="server">
                         <label>District</label>
                         <asp:TextBox class="form-control" ID="txtDistrict" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
@@ -250,7 +251,7 @@
                         <label>Contractor Name</label>
                         <asp:TextBox class="form-control" ID="txtContractorName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                     <div class="col-md-4" id="SupervisorName" visible="true" runat="server">
+                    <div class="col-md-4" id="SupervisorName" visible="true" runat="server">
                         <label>Supervisor Name</label>
                         <asp:TextBox class="form-control" ID="txtSupervisorName" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
@@ -262,7 +263,7 @@
                         <label>Contractor Phone No.</label>
                         <asp:TextBox class="form-control" ID="txtContractorPhoneNo" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                     <div class="col-4" runat="server">
+                    <div class="col-4" runat="server">
                         <label>Supervisor Contact No.</label>
                         <asp:TextBox class="form-control" ID="txtSupervisorContact" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
@@ -270,16 +271,16 @@
                         <label>Contractor Email</label>
                         <asp:TextBox class="form-control" ID="txtContractorEmail" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>--%>
-                   
-                   <%-- <div class="col-md-4" id="SupervisorEmail" visible="true" runat="server">
+
+                    <%-- <div class="col-md-4" id="SupervisorEmail" visible="true" runat="server">
                         <label>Supervisor Email</label>
                         <asp:TextBox class="form-control" ID="txtSupervisorEmail" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                    </div>  --%>   
-                     <div class="col-md-4" id="Div2" runat="server" visible="true">
+                    </div>  --%>
+                    <div class="col-md-4" id="Div2" runat="server" visible="true">
                         <label>Contact Person Email</label>
                         <asp:TextBox class="form-control" ID="txtContactPersonEmail" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                     <div class="col-md-4" id="ContractorEmail" runat="server" visible="true">
+                    <div class="col-md-4" id="ContractorEmail" runat="server" visible="true">
                         <label>Contractor Email</label>
                         <asp:TextBox class="form-control" ID="txtContractorEmail" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
@@ -289,89 +290,115 @@
                     </div>
                 </div>
             </div>
-             <div id="TranscationDetails" runat="server">
+            <div id="TranscationDetails" runat="server">
                 <div class="card-title" style="margin-top: -15px; margin-bottom: 20px; margin-top: 20px; font-size: 17px; font-weight: 600; margin-left: -10px;">
                     Transaction Details
                 </div>
                 <div class="card" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                     <div class="row">
                         <div class="col-md-4" runat="server" id="transactionId" visible="true">
-                         <label>Transaction ID(GRN Number)</label>
-                        <asp:TextBox class="form-control" ID="txtTransactionId" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                    </div>
-                    <div class="col-md-4" runat="server"  id="transactionDate" visible="true">
-                        <label>Transaction Date</label>
-                        <asp:TextBox class="form-control" ID="txtTranscationDate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                    </div>
-                    <div class="col-md-4" runat="server">
-                        <label>Fees Amount</label>
-                        <asp:TextBox class="form-control" ID="txtAmount" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <label>Transaction ID(GRN Number)</label>
+                            <asp:TextBox class="form-control" ID="txtTransactionId" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                        </div>
+                        <div class="col-md-4" runat="server" id="transactionDate" visible="true">
+                            <label>Transaction Date</label>
+                            <asp:TextBox class="form-control" ID="txtTranscationDate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                        </div>
+                        <div class="col-md-4" runat="server">
+                            <label>Fees Amount</label>
+                            <asp:TextBox class="form-control" ID="txtAmount" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="card-title" style="margin-bottom: 5px; font-size: 17px; margin-bottom: 20px; font-weight: 600; margin-left: -10px;">
-                Documents Attached
-            </div>
-            <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
-                <div class="row">
-                    <div class="col-md-12">
-                        <asp:GridView ID="grd_Documemnts" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowCommand="grd_Documemnts_RowCommand" AutoGenerateColumns="false" >
+                <div class="card-title" style="margin-bottom: 5px; font-size: 17px; margin-bottom: 20px; font-weight: 600; margin-left: -10px;">
+                    Documents Attached
+                </div>
+                <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <asp:GridView ID="grd_Documemnts" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowCommand="grd_Documemnts_RowCommand" AutoGenerateColumns="false">
+                                <HeaderStyle BackColor="#B7E2F0" />
+                                <Columns>
+                                    <asp:TemplateField HeaderText="SNo">
+                                        <HeaderStyle Width="5%" CssClass="headercolor" />
+                                        <ItemStyle Width="5%" />
+                                        <ItemTemplate>
+                                            <%#Container.DataItemIndex+1 %>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                    <asp:BoundField DataField="InstallationType" HeaderText="Installation Type" Visible="false">
+                                        <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                        <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="DocumentName" HeaderText="Documents Name">
+                                        <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                        <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                    </asp:BoundField>
+                                    <asp:TemplateField HeaderText="Uploaded Documents" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+                                        <ItemTemplate>
+                                            <asp:LinkButton ID="LnkDocumemtPath" runat="server" CommandArgument='<%# Bind("DocumentPath") %>' CommandName="Select">Click here to view document </asp:LinkButton>
+                                        </ItemTemplate>
+                                        <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
+                                        <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                                    </asp:TemplateField>
+                                </Columns>
+                                <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
+                            </asp:GridView>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" id="TRAttached" runat="server" visible="true">
+                    <div class="card-title" style="margin-bottom: 20px; margin-top: 15px; font-size: 17px; font-weight: 600; margin-left: 5px;">
+                        Inspection Detail
+                    </div>
+                </div>
+                <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;" id="TRAttachedGrid" runat="server" visible="true">
+                    <div class="col-12" style="padding: 0px;">
+                        <asp:GridView ID="GridView1" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowDataBound="GridView1_RowDataBound" OnRowCommand="grd_Documemnts_RowCommand" AutoGenerateColumns="false">
                             <HeaderStyle BackColor="#B7E2F0" />
                             <Columns>
                                 <asp:TemplateField HeaderText="SNo">
-                                    <HeaderStyle Width="5%" CssClass="headercolor" />
-                                    <ItemStyle Width="5%" />
+                                    <HeaderStyle CssClass="headercolor" />
+                                    <ItemStyle />
                                     <ItemTemplate>
                                         <%#Container.DataItemIndex+1 %>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                <asp:BoundField DataField="InstallationType" HeaderText="Installation Type" Visible="false">
-                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
-                                </asp:BoundField>
-                                <asp:BoundField DataField="DocumentName" HeaderText="Documents Name">
-                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
-                                </asp:BoundField>
-                                <asp:TemplateField HeaderText="Uploaded Documents" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
-                                    <ItemTemplate>
-                                        <asp:LinkButton ID="LnkDocumemtPath" runat="server" CommandArgument='<%# Bind("DocumentPath") %>' CommandName="Select">Click here to view document </asp:LinkButton>
-                                    </ItemTemplate>
-                                    <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
+                                <asp:BoundField DataField="InstallationType" HeaderText="Installation Type">
                                     <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="Left" />
+                                </asp:BoundField>
+                                <%--                            <asp:BoundField DataField="ActionTaken" HeaderText="ActionTaken">
+                                <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" />
+                            </asp:BoundField>--%>
+                                <asp:TemplateField HeaderText="ActionTaken">
+                                    <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="Left" />
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblActionTaken" runat="server" Text='<%# Eval("ActionTaken") %>' Visible="false" />
+                                        <asp:Label ID="lblInspectionId" runat="server" Text='<%# Eval("Id") %>' Visible="false" />
+
+                                        <!-- If ActionTaken is RETURN, show LinkButton -->
+                                        <asp:LinkButton
+                                            ID="lnkReturn"
+                                            runat="server"
+                                            Text="Return"
+                                            CommandName="ShowReturnPopup"
+                                            CommandArgument='<%# Eval("Id") %>'
+                                            OnCommand="lnkReturn_Command"
+                                            CssClass="text-danger"
+                                            Visible='<%# Eval("ActionTaken").ToString() == "Return" %>' />
+
+                                        <!-- Otherwise, show normal text -->
+                                        <asp:Label
+                                            ID="lblNormalStatus"
+                                            runat="server"
+                                            Text='<%# Eval("ActionTaken") %>'
+                                            Visible='<%# Eval("ActionTaken").ToString() != "Return" %>' />
+                                    </ItemTemplate>
                                 </asp:TemplateField>
-                            </Columns>
-                            <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
-                        </asp:GridView>
-                    </div>
-                </div>
-            </div>
-            <div class="row" id="TRAttached" runat="server" visible="true">
-                <div class="card-title" style="margin-bottom: 20px; margin-top: 15px; font-size: 17px; font-weight: 600; margin-left: 5px;">
-                    Inspection Detail
-                </div>
-            </div>
-            <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;" id="TRAttachedGrid" runat="server" visible="true">
-                <div class="col-12" style="padding: 0px;">
-                    <asp:GridView ID="GridView1" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowDataBound="GridView1_RowDataBound" OnRowCommand="grd_Documemnts_RowCommand" AutoGenerateColumns="false">
-                        <HeaderStyle BackColor="#B7E2F0" />
-                        <Columns>
-                            <asp:TemplateField HeaderText="SNo">
-                                <HeaderStyle CssClass="headercolor" />
-                                <ItemStyle />
-                                <ItemTemplate>
-                                    <%#Container.DataItemIndex+1 %>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:BoundField DataField="InstallationType" HeaderText="Installation Type">
-                                <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="Left" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="ActionTaken" HeaderText="ActionTaken">
-                                <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="Left" />
-                            </asp:BoundField>
-                           <%-- <asp:BoundField DataField="TestRportId" HeaderText="TestReportId" Visible="false">
+                                <%-- <asp:BoundField DataField="TestRportId" HeaderText="TestReportId" Visible="false">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
@@ -386,129 +413,132 @@
                                 <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
                                 <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
                             </asp:TemplateField>--%>
-                            <asp:BoundField DataField="ActionDate" HeaderText="ActionDate">
-                                <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="Left" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="AssignTo" HeaderText="AssignTo">
-                                <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="Left" />
-                            </asp:BoundField>
-                          <%--  <asp:BoundField DataField="ReturnDate" HeaderText="ReturnDate">
+                                <asp:BoundField DataField="ActionDate" HeaderText="ActionDate">
+                                    <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="Left" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="AssignTo" HeaderText="AssignTo">
+                                    <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="Left" />
+                                </asp:BoundField>
+                                <%--  <asp:BoundField DataField="ReturnDate" HeaderText="ReturnDate">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>--%>
-                            <asp:BoundField DataField="Remarks" HeaderText="Remarks">
-                                <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="Left" />
-                            </asp:BoundField>
-                            <%--<asp:BoundField DataField="ReturnBased" HeaderText="Return Based">
+                                <asp:BoundField DataField="Remarks" HeaderText="Remarks">
+                                    <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="Left" />
+                                </asp:BoundField>
+                                <%--<asp:BoundField DataField="ReturnBased" HeaderText="Return Based">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>--%>
-                        </Columns>
-                        <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
-                    </asp:GridView>
+                            </Columns>
+                            <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
+                        </asp:GridView>
+                    </div>
                 </div>
-            </div>
-            <div class="row" id="Div1" runat="server" visible="true">
-                <div class="card-title" style="margin-bottom: 20px; margin-top: 15px; font-size: 17px; font-weight: 600; margin-left: 5px;">
-                    Test Report Detail
+                <div class="row" id="Div1" runat="server" visible="true">
+                    <div class="card-title" style="margin-bottom: 20px; margin-top: 15px; font-size: 17px; font-weight: 600; margin-left: 5px;">
+                        Test Report Detail
+                    </div>
                 </div>
-            </div>
-            <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;" id="DivViewCart" runat="server" visible="false">
-                <div class="col-12" style="padding: 0px;">
-                    <asp:GridView ID="GridView2" CssClass="table table-bordered table-striped table-responsive" runat="server" AutoGenerateColumns="false">
-                        <HeaderStyle BackColor="#B7E2F0" />
-                        <Columns>
-                            <asp:TemplateField HeaderText="SNo">
-                                <HeaderStyle Width="5%" CssClass="headercolor" />
-                                <ItemStyle Width="5%" />
-                                <ItemTemplate>
-                                    <%# Container.DataItemIndex + 1 %>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:BoundField DataField="InstallationType" HeaderText="InstallationType">
-                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="Left" Width="15%" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="TestReportId" HeaderText="TestReportId" Visible="false">
-                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="Left" Width="15%" />
-                            </asp:BoundField>
-                            <asp:TemplateField HeaderText="Id" Visible="False">
-                                <ItemTemplate>
-                                    <asp:Label ID="LblInstallationName" runat="server" Text='<%#Eval("InstallationName") %>'></asp:Label>
-                                    <asp:Label ID="LblTestReportCount" runat="server" Text='<%#Eval("TestReportCount") %>'></asp:Label>
-                                    <asp:Label ID="LblNewInspectionId" runat="server" Text='<%#Eval("NewInspectionId") %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:BoundField DataField="Voltage" HeaderText="Voltage(In Volts)">
-                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="Left" Width="15%" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="Capacity" HeaderText="Capacity(In KVA)">
-                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="Left" Width="15%" />
-                            </asp:BoundField>
-                            <asp:TemplateField HeaderText="View TestReports" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
-                                <ItemTemplate>
-                                    <asp:LinkButton ID="lnkRedirect1" runat="server" Text="View Test Report" OnClick="lnkRedirect1_Click" CommandName="ViewTestReport" CommandArgument='<%# Eval("TestReportId") %>' />
-                                </ItemTemplate>
-                                <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
-                                <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
-                            </asp:TemplateField>
-                        </Columns>
-                    </asp:GridView>
+                <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;" id="DivViewCart" runat="server" visible="false">
+                    <div class="col-12" style="padding: 0px;">
+                        <asp:GridView ID="GridView2" CssClass="table table-bordered table-striped table-responsive" runat="server" AutoGenerateColumns="false">
+                            <HeaderStyle BackColor="#B7E2F0" />
+                            <Columns>
+                                <asp:TemplateField HeaderText="SNo">
+                                    <HeaderStyle Width="5%" CssClass="headercolor" />
+                                    <ItemStyle Width="5%" />
+                                    <ItemTemplate>
+                                        <%# Container.DataItemIndex + 1 %>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:BoundField DataField="InstallationType" HeaderText="InstallationType">
+                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="TestReportId" HeaderText="TestReportId" Visible="false">
+                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                </asp:BoundField>
+                                <asp:TemplateField HeaderText="Id" Visible="False">
+                                    <ItemTemplate>
+                                        <asp:Label ID="LblInstallationName" runat="server" Text='<%#Eval("InstallationName") %>'></asp:Label>
+                                        <asp:Label ID="LblTestReportCount" runat="server" Text='<%#Eval("TestReportCount") %>'></asp:Label>
+                                        <asp:Label ID="LblNewInspectionId" runat="server" Text='<%#Eval("NewInspectionId") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:BoundField DataField="Voltage" HeaderText="Voltage(In Volts)">
+                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="Capacity" HeaderText="Capacity(In KVA)">
+                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                </asp:BoundField>
+                                <asp:TemplateField HeaderText="View TestReports" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="lnkRedirect1" runat="server" Text="View Test Report" OnClick="lnkRedirect1_Click" CommandName="ViewTestReport" CommandArgument='<%# Eval("TestReportId") %>' />
+                                    </ItemTemplate>
+                                    <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
+                                    <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                                </asp:TemplateField>
+                            </Columns>
+                        </asp:GridView>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <asp:TextBox class="form-control" Visible="false" ID="txtTestReportId" ReadOnly="true" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                  <uc1:InspectionReturnDetails runat="server" id="InspectionReturnDetails" /> 
+                <div class="row">
+                    <div class="col-md-4">
+                        <asp:TextBox class="form-control" Visible="false" ID="txtTestReportId" ReadOnly="true" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
                 </div>
-            </div>
-            <%--    <asp:UpdatePanel ID="Updatepanel1" runat="server">
+                <%--    <asp:UpdatePanel ID="Updatepanel1" runat="server">
                 <ContentTemplate>--%>
-            <div class="row">
-                <p style="margin-top: auto; margin-bottom: auto;">Action Required
+                <div class="row">
+                    <p style="margin-top: auto; margin-bottom: auto;">
+                        Action Required
                     <samp style="color: red">* </samp>
-                </p>
-                <asp:RadioButtonList ID="RadioButtonList2" OnSelectedIndexChanged="RadioButtonList2_SelectedIndexChanged" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25">
-                    <asp:ListItem Text="Yes(Accept)" Value="0"></asp:ListItem>
-                    <asp:ListItem Text="No(Return)" Value="1" style="margin-top: auto; margin-bottom: auto;"></asp:ListItem>
-                    <asp:ListItem Text="Reject" Value="2" style="margin-top: auto; margin-bottom: auto; margin-left: 8px;"></asp:ListItem>
-                </asp:RadioButtonList>
-            </div>
-            <div class="row" id="Rejection" runat="server" visible="false">
-                <div class="col-md-6">
-                    <label>
-                        ReasonType:        
-                    </label>
-                    <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" ID="ddlReasonType" TabIndex="8" runat="server" Enabled="false">
-                        <asp:ListItem Value="0" Text="Based On TestReport"></asp:ListItem>
-                        <asp:ListItem Value="1" Text="Based On Documents" Selected="True"></asp:ListItem>
-                    </asp:DropDownList>
-                    <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" Visible="false" ID="ddlRejectionReasonType" TabIndex="8" runat="server">
-                        <asp:ListItem Value="0" Text="Incorrect Data in WorkIntimation"></asp:ListItem>
-                    </asp:DropDownList>
+                    </p>
+                    <asp:RadioButtonList ID="RadioButtonList2" OnSelectedIndexChanged="RadioButtonList2_SelectedIndexChanged" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25">
+                        <asp:ListItem Text="Yes(Accept)" Value="0"></asp:ListItem>
+                        <asp:ListItem Text="No(Return)" Value="1" style="margin-top: auto; margin-bottom: auto;"></asp:ListItem>
+                        <asp:ListItem Text="Reject" Value="2" style="margin-top: auto; margin-bottom: auto; margin-left: 8px;"></asp:ListItem>
+                    </asp:RadioButtonList>
                 </div>
-                <div class="col-md-6" id="RejectionReason" runat="server" visible="false">
-                    <label>
-                        Reason<samp style="color: red"> * </samp>
-                    </label>
-                    <asp:TextBox class="form-control" ID="txtRejected" TextMode="MultiLine" Rows="2" MaxLength="200" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator60" ControlToValidate="txtRejected" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
-                </div>
-            </div>
-            <%--     </ContentTemplate>
+                <div class="row" id="Rejection" runat="server" visible="false">
+                    <div class="col-md-6">
+                        <label>
+                            ReasonType:        
+                        </label>
+                        <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" ID="ddlReasonType" TabIndex="8" runat="server" Enabled="false">
+                            <asp:ListItem Value="0" Text="Based On TestReport"></asp:ListItem>
+                            <asp:ListItem Value="1" Text="Based On Documents" Selected="True"></asp:ListItem>
+                        </asp:DropDownList>
+                        <asp:DropDownList Style="width: 100% !important;" class="form-control select-form select2" Visible="false" ID="ddlRejectionReasonType" TabIndex="8" runat="server">
+                            <asp:ListItem Value="0" Text="Incorrect Data in WorkIntimation"></asp:ListItem>
+                        </asp:DropDownList>
+                    </div>
+                    <div class="col-md-6" id="RejectionReason" runat="server" visible="false">
+                        <label>
+                            Reason<samp style="color: red"> * </samp>
+                        </label>
+                        <asp:TextBox class="form-control" ID="txtRejected" TextMode="MultiLine" Rows="2" MaxLength="200" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                        <asp:RequiredFieldValidator ID="RequiredFieldValidator60" ControlToValidate="txtRejected" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                    </div>
+                </div> 
+                <%--     </ContentTemplate>
             </asp:UpdatePanel>--%>
-        </div>
-        <div class="row">
-            <div class="col-md-4"></div>
-            <div class="col-md-4" style="text-align: center;">
-                <asp:Button ID="btnSubmit" Text="Submit" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" OnClick="btnSubmit_Click" />
-                <asp:Button ID="btnBack" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnBack_Click" />
+            </div>
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4" style="text-align: center;">
+                    <asp:Button ID="btnSubmit" Text="Submit" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" OnClick="btnSubmit_Click" />
+                    <asp:Button ID="btnBack" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnBack_Click" />
+                </div>
             </div>
         </div>
-    </div>
+        <script src="/Assets/js/js/vendor.bundle.base.js"></script>
 </asp:Content>

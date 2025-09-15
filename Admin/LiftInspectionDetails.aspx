@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin_Master.Master" AutoEventWireup="true" CodeBehind="LiftInspectionDetails.aspx.cs" Inherits="CEIHaryana.Admin.LiftInspectionDetails" %>
-
+<%@ Register Src="~/UserCPages/InspectionReturnDetails.ascx" TagPrefix="uc1" TagName="InspectionReturnDetails" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
@@ -250,7 +250,7 @@
             margin: 15% auto;
             padding: 20px;
             border: 1px solid #888;
-            width: 80%;
+            width: 100%;
         }
 
         input#ContentPlaceHolder1_BtnAddSuggestion {
@@ -436,10 +436,36 @@
                                     <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
                                     <ItemStyle HorizontalAlign="Left" />
                                 </asp:BoundField>
-                                <asp:BoundField DataField="ActionTaken" HeaderText="ActionTaken">
+                               <%-- <asp:BoundField DataField="ActionTaken" HeaderText="ActionTaken">
                                     <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
                                     <ItemStyle HorizontalAlign="Left" />
-                                </asp:BoundField>
+                                </asp:BoundField>--%>
+                                <asp:TemplateField HeaderText="ActionTaken">
+                                    <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="Left" />
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblActionTaken" runat="server" Text='<%# Eval("ActionTaken") %>' Visible="false" />
+                                        <asp:Label ID="lblInspectionId" runat="server" Text='<%# Eval("Id") %>' Visible="false" />
+
+                                        <!-- If ActionTaken is RETURN, show LinkButton -->
+                                        <asp:LinkButton
+                                            ID="lnkReturn"
+                                            runat="server"
+                                            Text="Return"
+                                            CommandName="ShowReturnPopup"
+                                            CommandArgument='<%# Eval("Id") %>'
+                                            OnCommand="lnkReturn_Command"
+                                            CssClass="text-danger"
+                                            Visible='<%# Eval("ActionTaken").ToString() == "Return" %>' />
+
+                                        <!-- Otherwise, show normal text -->
+                                        <asp:Label
+                                            ID="lblNormalStatus"
+                                            runat="server"
+                                            Text='<%# Eval("ActionTaken") %>'
+                                            Visible='<%# Eval("ActionTaken").ToString() != "Return" %>' />
+                                    </ItemTemplate>
+                                </asp:TemplateField>                                
                                 <asp:BoundField DataField="ActionDate" HeaderText="ActionDate">
                                     <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
                                     <ItemStyle HorizontalAlign="Left" />
@@ -667,6 +693,7 @@
         No  any Document Attach                                             
     </label>
                         </div>--%>
+                    <uc1:InspectionReturnDetails runat="server" id="InspectionReturnDetails" />                        
 </div>
     </div>
 </div>

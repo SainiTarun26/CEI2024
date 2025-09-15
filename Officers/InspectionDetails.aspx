@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Officers/Officers.Master" AutoEventWireup="true" CodeBehind="InspectionDetails.aspx.cs" Inherits="CEIHaryana.Officers.InspectionDetails" %>
-
+<%@ Register Src="~/UserCPages/InspectionReturnDetails.ascx" TagPrefix="uc1" TagName="InspectionReturnDetails" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
@@ -15,6 +15,7 @@
     <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://kit.fontawesome.com/57676f1d80.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript">
         function isNumberKey(evt) {
@@ -58,7 +59,7 @@
         th.headercolor {
             background: #9292cc;
             color: white;
-            width:1% !important;
+            width: 1% !important;
         }
 
         .submit {
@@ -255,7 +256,7 @@
             </div>
             <div class="row">
                 <div class="col-12">
-                    <asp:GridView ID="grd_Documemnts" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowCommand="grd_Documemnts_RowCommand" AutoGenerateColumns="false" >
+                    <asp:GridView ID="grd_Documemnts" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowCommand="grd_Documemnts_RowCommand" AutoGenerateColumns="false">
                         <HeaderStyle BackColor="#B7E2F0" />
                         <Columns>
                             <asp:TemplateField HeaderText="SNo">
@@ -284,7 +285,7 @@
         </div>
         <div class="card" id="TestReport_Card" runat="server" visible="true" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
             <div class="col-12" style="padding: 0px;">
-                <asp:GridView ID="GridView2" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowCommand="grd_Documemnts_RowCommand" OnRowDataBound="GridView2_RowDataBound1" AutoGenerateColumns="false" >
+                <asp:GridView ID="GridView2" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowCommand="grd_Documemnts_RowCommand" OnRowDataBound="GridView2_RowDataBound1" AutoGenerateColumns="false">
                     <HeaderStyle BackColor="#B7E2F0" />
                     <Columns>
                         <asp:TemplateField HeaderText="SNo">
@@ -298,11 +299,38 @@
                             <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
                             <ItemStyle HorizontalAlign="Left" />
                         </asp:BoundField>
-                        <asp:BoundField DataField="ActionTaken" HeaderText="ActionTaken">
+                        <%--                        <asp:BoundField DataField="ActionTaken" HeaderText="ActionTaken">
                             <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
                             <ItemStyle HorizontalAlign="Left" />
-                        </asp:BoundField>
-                       <%-- <asp:TemplateField HeaderText="View Test Reports" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%" Visible="false">
+                        </asp:BoundField>--%>
+                        <asp:TemplateField HeaderText="ActionTaken">
+                            <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                            <ItemStyle HorizontalAlign="Left" />
+                            <ItemTemplate>
+                                <asp:Label ID="lblActionTaken" runat="server" Text='<%# Eval("ActionTaken") %>' Visible="false" />
+                                <asp:Label ID="lblInspectionId" runat="server" Text='<%# Eval("Id") %>' Visible="false" />
+
+                                <!-- If ActionTaken is RETURN, show LinkButton -->
+                                <asp:LinkButton
+                                    ID="lnkReturn"
+                                    runat="server"
+                                    Text="Return"
+                                    CommandName="ShowReturnPopup"
+                                    CommandArgument='<%# Eval("Id") %>'
+                                    OnCommand="lnkReturn_Command"
+                                    CssClass="text-danger"
+                                    Visible='<%# Eval("ActionTaken").ToString() == "Return" %>' />
+
+                                <!-- Otherwise, show normal text -->
+                                <asp:Label
+                                    ID="lblNormalStatus"
+                                    runat="server"
+                                    Text='<%# Eval("ActionTaken") %>'
+                                    Visible='<%# Eval("ActionTaken").ToString() != "Return" %>' />
+                            </ItemTemplate>
+                        </asp:TemplateField>
+
+                        <%-- <asp:TemplateField HeaderText="View Test Reports" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%" Visible="false">
                             <ItemTemplate>
                                 <asp:LinkButton ID="lnkRedirect" runat="server" Text="View Test Report" OnClick="lnkRedirect_Click" CommandName="ViewTestReport" CommandArgument='<%# Eval("TestRportId") %>' />
                             </ItemTemplate>
@@ -317,11 +345,11 @@
                             <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
                             <ItemStyle HorizontalAlign="Left" />
                         </asp:BoundField>
-                         <asp:BoundField DataField="Remarks" HeaderText="Remarks">
+                        <asp:BoundField DataField="Remarks" HeaderText="Remarks">
                             <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
                             <ItemStyle HorizontalAlign="Left" />
                         </asp:BoundField>
-                      <%--  <asp:BoundField DataField="ReturnDate" HeaderText="Return Date">
+                        <%--  <asp:BoundField DataField="ReturnDate" HeaderText="Return Date">
                             <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                             <ItemStyle HorizontalAlign="Left" Width="15%" />
                         </asp:BoundField>
@@ -468,6 +496,7 @@
                 </asp:GridView>
             </div>
         </div>
+         <uc1:InspectionReturnDetails runat="server" id="InspectionReturnDetails" /> 
         <div class="row">
             <div class="col-md-4">
                 <label>
@@ -552,5 +581,6 @@
             <asp:Button ID="btnBack" Style="padding-left: 35px; padding-right: 35px;" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnBack_Click" />
         </div>
     </div>
+     <script src="/Assets/js/js/vendor.bundle.base.js"></script>    
 </asp:Content>
 

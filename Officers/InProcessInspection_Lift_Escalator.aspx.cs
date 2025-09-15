@@ -2,6 +2,7 @@
 using CEI_PRoject;
 using CEIHaryana.Contractor;
 using CEIHaryana.Model.Industry;
+using CEIHaryana.UserCPages;
 using CEIHaryana.UserPages;
 using StackExchange.Redis;
 using System;
@@ -446,8 +447,8 @@ namespace CEIHaryana.Officers
                     }
                     grd_Documemnts.Columns[1].Visible = true;
 
-                    GridView1.Columns[5].Visible = false;
-                    GridView1.Columns[3].Visible = false;
+                    //GridView1.Columns[5].Visible = false;
+                    //GridView1.Columns[3].Visible = false;
 
                     DivTestReports.Visible = true;
                     GridToViewTestReports();
@@ -1481,7 +1482,12 @@ namespace CEIHaryana.Officers
             else
                 return string.Empty;
         }
-
+        protected void lnkReturn_Command(object sender, CommandEventArgs e)
+        {
+            string inspectionId = e.CommandArgument.ToString();
+            InspectionReturnDetails.GetReturnDetails(inspectionId);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowReturnModal", "$('#ownerModal').modal('show');", true);
+        }
 
     }
 }

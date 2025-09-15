@@ -1,5 +1,6 @@
 ﻿using CEI_PRoject;
 using CEIHaryana.Model.Industry;
+using CEIHaryana.UserCPages;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -1461,6 +1462,13 @@ namespace CEIHaryana.Officers
                 return txtSiteOwnerName.Text;
             else
                 return string.Empty;
+        }
+
+        protected void lnkReturn_Command(object sender, CommandEventArgs e)
+        {
+            string inspectionId = e.CommandArgument.ToString();
+            InspectionReturnDetails.GetReturnDetails(inspectionId);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowReturnModal", "$('#ownerModal').modal('show');", true);
         }
     }
 }

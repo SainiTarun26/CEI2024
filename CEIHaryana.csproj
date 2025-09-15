@@ -2208,6 +2208,7 @@
     <Content Include="TestReport\TestReport.aspx" />
     <Content Include="ToVerifyRegistration.aspx" />
     <Content Include="Upload_Image_Sign.aspx" />
+    <Content Include="UserCPages\InspectionReturnDetails.ascx" />
     <Content Include="UserCPages\LicenceHeaderDetails.ascx" />
     <Content Include="UserCPages\LicenceTCDetails.ascx" />
     <Content Include="UserManual\Flow-Chart-for-LiftSolar-Panel-DG-Set-Renewable-Sources.jpg" />
@@ -5032,6 +5033,13 @@
     </Compile>
     <Compile Include="Upload_Image_Sign.aspx.designer.cs">
       <DependentUpon>Upload_Image_Sign.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserCPages\InspectionReturnDetails.ascx.cs">
+      <DependentUpon>InspectionReturnDetails.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserCPages\InspectionReturnDetails.ascx.designer.cs">
+      <DependentUpon>InspectionReturnDetails.ascx</DependentUpon>
     </Compile>
     <Compile Include="UserCPages\LicenceHeaderDetails.ascx.cs">
       <DependentUpon>LicenceHeaderDetails.ascx</DependentUpon>

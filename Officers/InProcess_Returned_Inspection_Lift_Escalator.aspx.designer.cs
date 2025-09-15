@@ -447,6 +447,15 @@ namespace CEIHaryana.Officers
         protected global::System.Web.UI.WebControls.TextBox txtTestReportId;
 
         /// <summary>
+        /// InspectionReturnDetails control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::CEIHaryana.UserCPages.InspectionReturnDetails InspectionReturnDetails;
+
+        /// <summary>
         /// ApprovalRequired control.
         /// </summary>
         /// <remarks>

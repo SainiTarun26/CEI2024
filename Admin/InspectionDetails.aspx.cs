@@ -593,5 +593,11 @@ namespace CEIHaryana.Admin
                 Response.Redirect("/AdminLogout.aspx", false);
             }
         }
+        protected void lnkReturn_Command(object sender, CommandEventArgs e)
+        {
+            string inspectionId = e.CommandArgument.ToString();
+            InspectionReturnDetails.GetReturnDetails(inspectionId);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowReturnModal", "$('#ownerModal').modal('show');", true);
+        }
     }
 }

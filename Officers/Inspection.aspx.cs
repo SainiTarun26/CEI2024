@@ -1308,5 +1308,12 @@ namespace CEIHaryana.Officers
                 txtRemarks1.Text = string.Empty;
             }
         }
+
+        protected void lnkReturn_Command(object sender, CommandEventArgs e)
+        {
+            string inspectionId = e.CommandArgument.ToString();
+            InspectionReturnDetails.GetReturnDetails(inspectionId);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowReturnModal", "$('#ownerModal').modal('show');", true);
+        }
     }
 }

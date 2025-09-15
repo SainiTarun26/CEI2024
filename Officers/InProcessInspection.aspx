@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Officers/Officers.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="InProcessInspection.aspx.cs" Inherits="CEIHaryana.Officers.InProcessInspection" %>
 
+<%@ Register Src="~/UserCPages/InspectionReturnDetails.ascx" TagPrefix="uc1" TagName="InspectionReturnDetails" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
@@ -32,7 +33,7 @@
     <style>
         th.headercolor {
             color: white !important;
-            width:1%;
+            width: 1%;
         }
 
         .multiselect {
@@ -292,7 +293,7 @@
                         <asp:TextBox class="form-control" ID="txtVoltage" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
 
-                   <%-- <div class="col-md-4" runat="server" visible="true">
+                    <%-- <div class="col-md-4" runat="server" visible="true">
                         <label>Fees Amount</label>
                         <asp:TextBox class="form-control" ID="txtAmount" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>--%>
@@ -337,11 +338,11 @@
                         <label>Supervisor Phone No.</label>
                         <asp:TextBox class="form-control" ID="txtSupervisorMobile" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                     <div class="col-md-4" id="Div2" runat="server" visible="true">
+                    <div class="col-md-4" id="Div2" runat="server" visible="true">
                         <label>Contact Person Email</label>
                         <asp:TextBox class="form-control" ID="txtContactPersonEmail" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                    </div>                                        
-                     <div class="col-md-4" id="ContractorEmail" runat="server" visible="true">
+                    </div>
+                    <div class="col-md-4" id="ContractorEmail" runat="server" visible="true">
                         <label>Contractor Email</label>
                         <asp:TextBox class="form-control" ID="txtContractorEmail" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
@@ -349,7 +350,7 @@
                         <label>Supervisor Email</label>
                         <asp:TextBox class="form-control" ID="txtSupervisorEmail" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
-                    
+
 
                     <%--<div class="col-md-4" id="Inspection_Type" runat="server" visible="false">
                         <label>Inspection Type</label>
@@ -357,25 +358,25 @@
                     </div>--%>
                 </div>
             </div>
-             <div class="card-title" style="margin-bottom: 5px; font-size: 17px; margin-top: 20px; font-weight: 600; margin-left: -10px; margin-bottom: 20px;">
-                    Transaction Details
-                </div>
-                <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
-                    <div class="row">
-                        <div class="col-md-4" runat="server" id="transactionId" visible="true">
-                            <label>Transaction ID(GRN Number)</label>
-                            <asp:TextBox class="form-control" ID="txtTransactionId" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                        </div>
-                        <div class="col-md-4" runat="server"  id="transactionDate" visible="true">
-                            <label>Transaction Date</label>
-                            <asp:TextBox class="form-control" ID="txtTranscationDate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                        </div>
-                        <div class="col-md-4" runat="server">
-                            <label>Fees Amount</label>
-                            <asp:TextBox class="form-control" ID="txtAmount" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                        </div>
+            <div class="card-title" style="margin-bottom: 5px; font-size: 17px; margin-top: 20px; font-weight: 600; margin-left: -10px; margin-bottom: 20px;">
+                Transaction Details
+            </div>
+            <div class="card" style="margin: -11px; padding: 11px; margin-bottom: 20px; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
+                <div class="row">
+                    <div class="col-md-4" runat="server" id="transactionId" visible="true">
+                        <label>Transaction ID(GRN Number)</label>
+                        <asp:TextBox class="form-control" ID="txtTransactionId" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
+                    <div class="col-md-4" runat="server" id="transactionDate" visible="true">
+                        <label>Transaction Date</label>
+                        <asp:TextBox class="form-control" ID="txtTranscationDate" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
+                    <div class="col-md-4" runat="server">
+                        <label>Fees Amount</label>
+                        <asp:TextBox class="form-control" ID="txtAmount" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
                 </div>
+            </div>
 
             <div class="card-title" style="margin-bottom: 5px; font-size: 17px; font-weight: 600; margin-left: -10px;">
                 Documents Attached
@@ -430,7 +431,7 @@
                 <div class="card" style="padding-top: 10px; margin-left: 0px !important;">
 
 
-                    <asp:GridView ID="GridView1" CssClass="table table-bordered table-striped table-responsive" runat="server"  OnRowCommand="grd_Documemnts_RowCommand" AutoGenerateColumns="false">
+                    <asp:GridView ID="GridView1" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowCommand="grd_Documemnts_RowCommand" AutoGenerateColumns="false">
                         <HeaderStyle BackColor="#B7E2F0" />
                         <Columns>
                             <asp:TemplateField HeaderText="SNo">
@@ -444,12 +445,39 @@
                                 <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="ActionTaken" HeaderText="ActionTaken">
+                            <%--                            <asp:BoundField DataField="ActionTaken" HeaderText="ActionTaken">
                                 <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" />
-                            </asp:BoundField>
+                            </asp:BoundField>--%>
 
-                           <%-- <asp:TemplateField HeaderText="View TestReports" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%" Visible="false">
+                            <asp:TemplateField HeaderText="ActionTaken">
+                                <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" />
+                                <ItemTemplate>
+                                    <asp:Label ID="lblActionTaken" runat="server" Text='<%# Eval("ActionTaken") %>' Visible="false" />
+                                    <asp:Label ID="lblInspectionId" runat="server" Text='<%# Eval("Id") %>' Visible="false" />
+
+                                    <!-- If ActionTaken is RETURN, show LinkButton -->
+                                    <asp:LinkButton
+                                        ID="lnkReturn"
+                                        runat="server"
+                                        Text="Return"
+                                        CommandName="ShowReturnPopup"
+                                        CommandArgument='<%# Eval("Id") %>'
+                                        OnCommand="lnkReturn_Command"
+                                        CssClass="text-danger"
+                                        Visible='<%# Eval("ActionTaken").ToString() == "Return" %>' />
+
+                                    <!-- Otherwise, show normal text -->
+                                    <asp:Label
+                                        ID="lblNormalStatus"
+                                        runat="server"
+                                        Text='<%# Eval("ActionTaken") %>'
+                                        Visible='<%# Eval("ActionTaken").ToString() != "Return" %>' />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+
+                            <%-- <asp:TemplateField HeaderText="View TestReports" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%" Visible="false">
                                 <ItemTemplate>
                                     <asp:LinkButton ID="lnkRedirect" runat="server" Text="View Test Report" OnClick="lnkRedirect_Click" CommandName="ViewTestReport" CommandArgument='<%# Eval("TestRportId") %>' />
                                 </ItemTemplate>
@@ -464,7 +492,7 @@
                                 <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" />
                             </asp:BoundField>
-                          <%--  <asp:BoundField DataField="ReturnDate" HeaderText="ReturnDate">
+                            <%--  <asp:BoundField DataField="ReturnDate" HeaderText="ReturnDate">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>--%>
@@ -472,7 +500,7 @@
                                 <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" />
                             </asp:BoundField>
-                           <%-- <asp:BoundField DataField="ReturnBased" HeaderText="Return Based">
+                            <%-- <asp:BoundField DataField="ReturnBased" HeaderText="Return Based">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>--%>
@@ -596,7 +624,7 @@
                             <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
                             <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
                         </asp:TemplateField>
-                      <%--  <asp:BoundField DataField="Remarks" HeaderText="Remarks">
+                        <%--  <asp:BoundField DataField="Remarks" HeaderText="Remarks">
                             <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                             <ItemStyle HorizontalAlign="Left" Width="15%" />
                         </asp:BoundField>--%>
@@ -641,20 +669,20 @@
                 </div>
                 <div class="col-md-4" id="InspectionDate" runat="server">
                     <label for="StartDate">
-                        Inspection Date<samp style="color: red"> * </samp>                          
+                        Inspection Date<samp style="color: red"> * </samp>
                     </label>
                     <asp:TextBox class="form-control" ID="txtInspectionDate" TabIndex="16" autocomplete="off" Type="Date" min='0000-01-01' max='9999-01-01' runat="server" Style="margin-left: 18px"></asp:TextBox>
 
                 </div>
-                  <div class="row">
-      <div class="col-12" id="ExNote" runat="server" visible="false" style="margin-bottom:25px;">
-          <label>
-              Note
-          </label>
-          <asp:TextBox class="form-control" ID="txtNote" autocomplete="off" TabIndex="7" MaxLength="500" TextMode="MultiLine" Rows="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-        
-      </div>
-  </div>
+                <div class="row">
+                    <div class="col-12" id="ExNote" runat="server" visible="false" style="margin-bottom: 25px;">
+                        <label>
+                            Note
+                        </label>
+                        <asp:TextBox class="form-control" ID="txtNote" autocomplete="off" TabIndex="7" MaxLength="500" TextMode="MultiLine" Rows="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-12" id="Rejection" runat="server" visible="false">
                         <label>
@@ -683,29 +711,30 @@
 
 
                 </div>
-             
-                    
+
+
                 <div class="row" style="margin-top: 25px;">
 
                     <div class="col-12" id="Suggestion" runat="server" visible="false">
 
-                        <asp:TextBox class="form-control" ID="txtSuggestion" TextMode="MultiLine" Rows="2" MaxLength="1000" autocomplete="off" TabIndex="7" runat="server"  Style="margin-left: 18px"></asp:TextBox>
+                        <asp:TextBox class="form-control" ID="txtSuggestion" TextMode="MultiLine" Rows="2" MaxLength="1000" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
                 </div>
-         
+
 
 
 
             </div>
         </div>
+         <uc1:InspectionReturnDetails runat="server" id="InspectionReturnDetails" /> 
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-6" style="text-align: center;">
-                <asp:Button ID="btnSuggestions" Text="Save Suggestions" runat="server" Visible="false" class="btn btn-primary mr-2" OnClick="btnSuggestions_Click" />  
-                <asp:Button ID="btnPreview" Text="Preview" runat="server" Visible="false" class="btn btn-primary mr-2" OnClick="btnPreview_Click" />             
+                <asp:Button ID="btnSuggestions" Text="Save Suggestions" runat="server" Visible="false" class="btn btn-primary mr-2" OnClick="btnSuggestions_Click" />
+                <asp:Button ID="btnPreview" Text="Preview" runat="server" Visible="false" class="btn btn-primary mr-2" OnClick="btnPreview_Click" />
                 <asp:Button ID="btnSubmit" Text="Submit" runat="server" class="btn btn-primary mr-2" ValidationGroup="Submit" OnClick="btnSubmit_Click" />
                 <asp:Button ID="btnBack" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="btnBack_Click" />
-                 <asp:Button ID="Backbtn" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="Backbtn_Click" Visible="false" />
+                <asp:Button ID="Backbtn" Text="Back" runat="server" class="btn btn-primary mr-2" OnClick="Backbtn_Click" Visible="false" />
             </div>
         </div>
     </div>

@@ -215,8 +215,8 @@ namespace CEIHaryana.Admin
                     txtDistrict.Text = ds.Tables[0].Rows[0]["District"].ToString();
                     string SiteInspectionDate = ds.Tables[0].Rows[0]["InspectionDate"].ToString();
                     grd_Documemnts.Columns[1].Visible = true;
-                    GridView1.Columns[5].Visible = false;
-                    GridView1.Columns[3].Visible = false;
+                    //GridView1.Columns[5].Visible = false;
+                    //GridView1.Columns[3].Visible = false;
                     DivTestReports.Visible = true;
                     GridToViewTestReports(ID);
                     GridBindDocument(ID);
@@ -385,16 +385,16 @@ namespace CEIHaryana.Admin
 
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            if (e.Row.RowType == DataControlRowType.DataRow)
-            {
-                string status = DataBinder.Eval(e.Row.DataItem, "ActionTaken").ToString();
-                //Label lblSubmittedDate = (Label)e.Row.FindControl("lblSubmittedDate");
-                //Session["lblSubmittedDate"] = lblSubmittedDate.Text;
-                if (status == "RETURN")
-                {
-                    e.Row.Cells[2].ForeColor = System.Drawing.Color.Red;
-                }
-            }
+            //if (e.Row.RowType == DataControlRowType.DataRow)
+            //{
+            //    string status = DataBinder.Eval(e.Row.DataItem, "ActionTaken").ToString();
+            //    //Label lblSubmittedDate = (Label)e.Row.FindControl("lblSubmittedDate");
+            //    //Session["lblSubmittedDate"] = lblSubmittedDate.Text;
+            //    if (status == "RETURN")
+            //    {
+            //        e.Row.Cells[2].ForeColor = System.Drawing.Color.Red;
+            //    }
+            //}
 
             if (e.Row.RowType == DataControlRowType.Header)
             {
@@ -712,6 +712,12 @@ namespace CEIHaryana.Admin
         protected void btnBack_Click(object sender, EventArgs e)
         {
             Response.Redirect("/Admin/AdminMaster.aspx", false);
+        }
+        protected void lnkReturn_Command(object sender, CommandEventArgs e)
+        {
+            string inspectionId = e.CommandArgument.ToString();
+            InspectionReturnDetails.GetReturnDetails(inspectionId);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowReturnModal", "$('#ownerModal').modal('show');", true);
         }
     }
 }
