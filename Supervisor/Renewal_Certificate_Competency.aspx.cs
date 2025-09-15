@@ -27,6 +27,7 @@ namespace CEIHaryana.Supervisor
             if (Convert.ToString(Session["Renwal"]) != "" && Convert.ToString(Session["Renwal"]) != null)
             {
                 this.Page.MasterPageFile = "~/Supervisor/Supervisor_Renewal.Master";
+
                 Session["double_Clickbutton"] = "1";
             }
             else
@@ -34,6 +35,8 @@ namespace CEIHaryana.Supervisor
                 this.Page.MasterPageFile = "~/Supervisor/Supervisor.Master";
             }
         }
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -49,6 +52,7 @@ namespace CEIHaryana.Supervisor
                         userID = Session["SupervisorID"].ToString();
                         HdnUserId.Value = userID;
                         HdnUserType.Value = "Supervisor";
+                        GetRenewalData(userID);
                         GetSupervisorDetails(userID);
 
                     }
@@ -60,6 +64,28 @@ namespace CEIHaryana.Supervisor
             }
         }
 
+        public void GetRenewalData(string userID)
+        {
+            try
+            {
+                DataTable ds = new DataTable();
+
+                ds = CEI.GetRenewalData(userID);
+                if (ds.Rows.Count > 0)
+                {
+                    Response.Redirect("/Supervisor/RenewalHistory.aspx", false);
+                }
+                else
+                {
+                    return;
+                }
+                ds.Dispose();
+            }
+            catch (Exception ex)
+            {
+                //throw;
+            }
+        }
         public void GetSupervisorDetails(string userID)
         {
             //string UserID = Session["SupervisorID"].ToString();
@@ -166,6 +192,7 @@ namespace CEIHaryana.Supervisor
                         if (check)
                         {
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('You have already submitted a renewal application.')", true);
+                            Response.Redirect("/Supervisor/RenewalHistory.aspx", false);
                             return;
 
                         }
@@ -210,6 +237,7 @@ namespace CEIHaryana.Supervisor
                                     Session["double_Clickbutton"] = null;
 
                                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Added Successfully !!!')", true);
+                                    Response.Redirect("/Supervisor/RenewalHistory.aspx", false);
                                     resetfeilds();
                                 }
                                 catch (Exception ex2)

@@ -401,7 +401,7 @@
                                     <i class="icon-grid menu-icon"></i>
                                     <span class="menu-title">Test Report History</span>
                                 </a></li>
-                          <%--  <li class="nav-item">
+                            <%--  <li class="nav-item">
                                 <a class="nav-link" href="DeAttacted_Staff.aspx">
                                     <i class="icon-grid menu-icon"></i>
                                     <span class="menu-title">DeAttached-Request</span>
@@ -442,6 +442,13 @@
                                     <i class="icon-grid menu-icon"></i>
                                     <span class="menu-title">Licence Upgradation</span>
                                 </a></li>--%>
+                            <li class="nav-item">
+                                <a id="RenewalMenuItem" runat="server" visible="false" class="nav-link" href="/Supervisor/Renewal_Certificate_Competency.aspx">
+                                    <i class="icon-grid menu-icon"></i>
+                                    <span class="menu-title">Renewal Contractor<br />
+                                        Licence</span>
+                                </a>
+                            </li>
                         </ul>
                     </nav>
                     <div class="main-panel">

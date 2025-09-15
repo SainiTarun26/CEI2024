@@ -22,10 +22,14 @@ namespace CEIHaryana.Supervisor
 
                         lblName.Text = Request.Cookies["SupervisorID"].Value;
                     }
-                    else
+                    else   
                     {
                         lblName.Text = Convert.ToString(Session["SupervisorID"]);
                     }
+                    string UserId = Convert.ToString(Session["SupervisorID"]);
+                    bool showRenewal = CEI.IsExpiryNear(UserId);
+                  
+                    RenewalMenuItem.Visible = showRenewal;
                 }
                 else if (Session["SupervisorID"] == null)
                 {

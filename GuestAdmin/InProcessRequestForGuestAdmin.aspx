@@ -209,11 +209,17 @@
                                 AutoGenerateColumns="false" OnPageIndexChanging="GridView1_PageIndexChanging"
                                 AllowPaging="true" PageSize="500" BorderWidth="1px" BorderColor="#dbddff">
                                 <Columns>
+
                                     <asp:TemplateField HeaderText="Id" Visible="False">
                                         <ItemTemplate>
                                             <asp:Label ID="lblID" runat="server" Text='<%#Eval("InspectionId") %>'></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
+                                    <%-- <asp:TemplateField HeaderText="Id" Visible="False">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblIntimationId" runat="server" Text='<%#Eval("IntimationId") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField> --%>
                                     <asp:TemplateField HeaderText="Id" Visible="False">
                                         <ItemTemplate>
                                             <asp:Label ID="lblApplicantFor" runat="server" Text='<%#Eval("ApplicantFor") %>'></asp:Label>
@@ -247,15 +253,15 @@
 
                                         <ItemStyle HorizontalAlign="center" Width="15%" />
                                     </asp:BoundField>
-                                    <%--<asp:BoundField DataField="RequestDate" HeaderText="Request Date">
+                                    <asp:BoundField DataField="RequestDate" HeaderText="Request Date">
                                         <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
 
                                         <ItemStyle HorizontalAlign="center" Width="15%" />
-                                    </asp:BoundField>--%>
-                                    <%--<asp:BoundField DataField="RequestStatus" HeaderText="Status">
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="ApplicationStatus" HeaderText="Status">
                                         <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                         <ItemStyle HorizontalAlign="center" Width="15%" />
-                                    </asp:BoundField>--%>
+                                    </asp:BoundField>
                                     <asp:TemplateField HeaderText="">
                                         <HeaderTemplate>
                                             <div class="headercolor" style="text-align: center; width: 100%;">
@@ -269,6 +275,7 @@
                                         <HeaderStyle HorizontalAlign="center" Width="15%" />
                                         <ItemStyle HorizontalAlign="center" Width="15%" />
                                     </asp:TemplateField>
+
 
                                 </Columns>
                                 <FooterStyle BackColor="White" ForeColor="#000066" />

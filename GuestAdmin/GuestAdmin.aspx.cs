@@ -31,7 +31,7 @@ namespace CEIHaryana.GuestAdmin
                     else
                     {
                         Session["GuestAdmin"] = "";
-                        Response.Redirect("/LogOut.aspx");
+                        Response.Redirect("/GuestAdminLogout.aspx");
                     }
                 }
                 catch (Exception ex)

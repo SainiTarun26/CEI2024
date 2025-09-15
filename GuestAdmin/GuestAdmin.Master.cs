@@ -32,19 +32,19 @@ namespace CEIHaryana.GuestAdmin
                 {
                     HttpContext.Current.Response.Cache.SetCacheability(HttpCacheability.NoCache);
                     HttpContext.Current.Response.Cache.SetNoStore();
-                    Response.Redirect("/LogOut.aspx");
+                    Response.Redirect("/GuestAdminLogout.aspx");
                 }
                 else
                 {
 
                     Session["GuestAdmin"] = "";
-                    Response.Redirect("/LogOut.aspx");
+                    Response.Redirect("/GuestAdminLogout.aspx");
                 }
             }
             catch (Exception Ex)
             {
                 Session["GuestAdmin"] = "";
-                Response.Redirect("/LogOut.aspx");
+                Response.Redirect("/GuestAdminLogout.aspx");
             }
 
 
@@ -54,7 +54,7 @@ namespace CEIHaryana.GuestAdmin
                 Session.Abandon();
                 Response.Cookies["GuestAdmin"].Expires = DateTime.Now.AddDays(-1);
                 Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(-1);
-            Response.Redirect("/LogOut.aspx");
+            Response.Redirect("/GuestAdminLogout.aspx");
         }
 
             protected void BtnChangePassword_Click(object sender, EventArgs e)

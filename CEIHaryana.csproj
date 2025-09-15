@@ -1854,6 +1854,7 @@
     <Content Include="Global.asax" />
     <Content Include="GuestAdmin\AcceptedOrRejectedRequestForGuestAdmin.aspx" />
     <Content Include="GuestAdmin\GuestAdmin.aspx" />
+    <Content Include="GuestAdmin\GuestAdminLogout.aspx" />
     <Content Include="GuestAdmin\InProcessRequestForGuestAdmin.aspx" />
     <Content Include="GuestAdmin\NewRequestInspectionForGuestAdmin.aspx" />
     <Content Include="GuestAdmin\TotalRequestInspectionForGuestAdmin.aspx" />
@@ -2170,6 +2171,7 @@
     <Content Include="Supervisor\LineTestReport.aspx" />
     <Content Include="Supervisor\PrintRenewalCertificateSupervisor.aspx" />
     <Content Include="Supervisor\RenewalCertificateSupervisor.aspx" />
+    <Content Include="Supervisor\RenewalHistory.aspx" />
     <Content Include="Supervisor\Renewal_Certificate_Competency.aspx" />
     <Content Include="Supervisor\ReportsHistory.aspx" />
     <Content Include="Supervisor\SubstationTestReport.aspx" />
@@ -2247,6 +2249,7 @@
     <Content Include="Web.config" />
     <Content Include="Wiremen\CertificateRenewal.aspx" />
     <Content Include="Wiremen\CompetencyRenewalCertificate.aspx" />
+    <Content Include="Wiremen\RenewalHistoryWireman.aspx" />
     <Content Include="Wiremen\Renewal_Certificate_Wiremen.aspx" />
     <Content Include="Wiremen\WiremenCompetencyCertificate.aspx" />
     <Content Include="Wiremen\WiremenDashboard.aspx" />
@@ -3050,6 +3053,13 @@
     </Compile>
     <Compile Include="GuestAdmin\GuestAdmin.Master.designer.cs">
       <DependentUpon>GuestAdmin.Master</DependentUpon>
+    </Compile>
+    <Compile Include="GuestAdmin\GuestAdminLogout.aspx.cs">
+      <DependentUpon>GuestAdminLogout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GuestAdmin\GuestAdminLogout.aspx.designer.cs">
+      <DependentUpon>GuestAdminLogout.aspx</DependentUpon>
     </Compile>
     <Compile Include="GuestAdmin\InProcessRequestForGuestAdmin.aspx.cs">
       <DependentUpon>InProcessRequestForGuestAdmin.aspx</DependentUpon>
@@ -4743,6 +4753,13 @@
     <Compile Include="Supervisor\RenewalCertificateSupervisor.aspx.designer.cs">
       <DependentUpon>RenewalCertificateSupervisor.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Supervisor\RenewalHistory.aspx.cs">
+      <DependentUpon>RenewalHistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Supervisor\RenewalHistory.aspx.designer.cs">
+      <DependentUpon>RenewalHistory.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Supervisor\Renewal_Certificate_Competency.aspx.cs">
       <DependentUpon>Renewal_Certificate_Competency.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -5288,6 +5305,13 @@
     </Compile>
     <Compile Include="Wiremen\CompetencyRenewalCertificate.aspx.designer.cs">
       <DependentUpon>CompetencyRenewalCertificate.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Wiremen\RenewalHistoryWireman.aspx.cs">
+      <DependentUpon>RenewalHistoryWireman.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Wiremen\RenewalHistoryWireman.aspx.designer.cs">
+      <DependentUpon>RenewalHistoryWireman.aspx</DependentUpon>
     </Compile>
     <Compile Include="Wiremen\Renewal_Certificate_Wiremen.aspx.cs">
       <DependentUpon>Renewal_Certificate_Wiremen.aspx</DependentUpon>

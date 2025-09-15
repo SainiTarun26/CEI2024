@@ -42,8 +42,9 @@ namespace CEIHaryana.Officers
             {
                 string LoginID = string.Empty;
                 LoginID = Session["StaffID"].ToString();
+                string searchText = txtSearch.Text.Trim();
                 DataSet ds = new DataSet();
-                ds = CEI.AcceptOrReject(LoginID);
+                ds = CEI.AcceptOrReject(LoginID, searchText);
                 if (ds != null && ds.Tables.Count > 0)
                 {
                     GridView1.DataSource = ds;
@@ -350,6 +351,12 @@ namespace CEIHaryana.Officers
         }
         #endregion
 
-
+        #region kalpana global search
+        protected void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            string searchText = txtSearch.Text.Trim();
+            GridBind();
+        }
+        #endregion
     }
 }

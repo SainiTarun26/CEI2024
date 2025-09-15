@@ -3473,10 +3473,7 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_NewRequestReceived", Id);
         }
-        public DataSet AcceptOrReject(string Id)
-        {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_AcceptRejectInspection", Id);
-        }
+       
         public DataSet TotalRequest(string Id)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_TotalRequestOfInspection", Id);
@@ -3484,20 +3481,13 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         #endregion
         #region forAdmin    
         //By neeraj 27-Feb-2025
-        public DataSet TotalRequestInspectionForAdmin(string LoginId, string Division = null, string InstallationType = null)
-        {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_TotalRequestInspectionForAdmin", LoginId, string.IsNullOrEmpty(Division) ? (object)DBNull.Value : Division, string.IsNullOrEmpty(InstallationType) ? (object)DBNull.Value : InstallationType);
-        }
+        
 
         public DataSet InProcessRequestInspectionForAdmin(string LoginId, string Division = null, string InstallationType = null)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetProcessRequestForAdmin", LoginId, string.IsNullOrEmpty(Division) ? (object)DBNull.Value : Division, string.IsNullOrEmpty(InstallationType) ? (object)DBNull.Value : InstallationType);
-        }
-        public DataSet AcceptRejectReturnedInspectionATAdmin(string LoginId, string Division = null, string InstallationType = null)
-        {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_AcceptRejectReturnedInspectionATAdmin", LoginId, string.IsNullOrEmpty(Division) ? (object)DBNull.Value : Division, string.IsNullOrEmpty(InstallationType) ? (object)DBNull.Value : InstallationType);
+        }        
 
-        }
         //
         public DataSet AcceptedOrRejectedRequestInspectionForAdmin(string LoginId)
         {
@@ -7157,11 +7147,7 @@ string PrimaryVoltage, string SecondoryVoltage, string MakeType, string CreatedB
 
         #endregion
 
-        public DataSet TotalRequestInspectionForAdmin(string LoginId, string Division = null)
-        {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_TotalRequestInspectionForAdmin", LoginId, string.IsNullOrEmpty(Division) ? (object)DBNull.Value : Division);
-        }
-        
+             
       
         public DataSet AcceptedOrRejectedRequestInspectionForAdmin(string LoginId, string Division = null)
         {
@@ -14707,6 +14693,66 @@ string dbPathCompetency, string dbPathMedicalCertificate, string userId)
         public DataTable GetActiveContractorData()
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "GetActiveContractorDetails");
+        }
+        #endregion
+        #region kalpana Renewaldetails and global search
+        public bool IsExpiryNear(string UserId)
+        {
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+            using (SqlCommand cmd = new SqlCommand("sp_CheckExpiryNearOrNot", con))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+
+
+                cmd.Parameters.AddWithValue("@UserId", UserId);
+
+
+                SqlParameter output = new SqlParameter("@isExpiryNear", SqlDbType.Bit)
+                {
+                    Direction = ParameterDirection.Output
+                };
+                cmd.Parameters.Add(output);
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+
+                return Convert.ToBoolean(output.Value);
+            }
+        }
+        public DataTable GetRenewalData(string userId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "GetRenewalHistory", userId);
+        }
+        public DataSet InspectionModal(string LoginId, string searchText)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InspectionForAdmin", LoginId, searchText);
+        }
+        public DataSet InspectionModalforofficer(string LoginId, string searchText)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_TotalRequestOfInspection", LoginId, searchText);
+        }
+
+
+        public DataSet TotalRequestInspectionForAdmin(string LoginId, string Division = null, string InstallationType = null, string searchText = null)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_TotalRequestInspectionForAdmin", LoginId, string.IsNullOrEmpty(Division) ? (object)DBNull.Value : Division, string.IsNullOrEmpty(InstallationType) ? (object)DBNull.Value : InstallationType, string.IsNullOrEmpty(searchText) ? (object)DBNull.Value : searchText);
+        }
+        public DataSet AcceptRejectReturnedInspectionATAdmin(string LoginId, string Division = null, string InstallationType = null, string searchText = null)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_AcceptRejectReturnedInspectionATAdmin", LoginId, string.IsNullOrEmpty(Division) ? (object)DBNull.Value : Division, string.IsNullOrEmpty(InstallationType) ? (object)DBNull.Value : InstallationType, string.IsNullOrEmpty(searchText) ? (object)DBNull.Value : searchText);
+        }
+
+
+
+        public DataSet TotalRequest(string Id, string searchText = null)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_TotalRequestOfInspection", Id, string.IsNullOrEmpty(searchText) ? (object)DBNull.Value : searchText);
+        }
+
+        public DataSet AcceptOrReject(string AssignTo, string SearchText = null)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_AcceptRejectInspection", AssignTo, string.IsNullOrEmpty(SearchText) ? (object)DBNull.Value : SearchText);
         }
         #endregion
     }

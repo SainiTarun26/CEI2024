@@ -43,6 +43,7 @@ namespace CEIHaryana.Wiremen
                         userID = Session["WiremanId"].ToString();
                         HdnUserId.Value = userID;
                         HdnUserType.Value = "Wireman";
+                        GetRenewalData(userID);
                         GetSupervisorDetails(userID);
                     }
                 }
@@ -53,6 +54,29 @@ namespace CEIHaryana.Wiremen
             }
         }
 
+
+        public void GetRenewalData(string userID)
+        {
+            try
+            {
+                DataTable ds = new DataTable();
+
+                ds = CEI.GetRenewalData(userID);
+                if (ds.Rows.Count > 0)
+                {
+                    Response.Redirect("/Wiremen/RenewalHistoryWireman.aspx", false);
+                }
+                else
+                {
+                    return;
+                }
+                ds.Dispose();
+            }
+            catch (Exception ex)
+            {
+                //throw;
+            }
+        }
         public void GetSupervisorDetails(string userID)
         {
             //string UserID = Session["SupervisorID"].ToString();
@@ -197,6 +221,7 @@ namespace CEIHaryana.Wiremen
                                 tran.Commit();
 
                                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Documents Added Successfully !!!')", true);
+                                Response.Redirect("/Wiremen/RenewalHistoryWireman.aspx", false);
                                 resetfeilds();
                             }
                             catch (Exception ex2)

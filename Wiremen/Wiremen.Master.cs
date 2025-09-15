@@ -8,5 +8,13 @@ namespace CEIHaryana.Wiremen
         {
 
         }
+
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Response.Cookies["WiremanId"].Expires = DateTime.Now.AddDays(-1);
+            Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(-1);
+            Response.Redirect("/SupervisorLogout.aspx");
+        }
     }
 }

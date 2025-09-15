@@ -7,31 +7,31 @@
     <!-- CSS -->
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-<!-- DataTables with Bootstrap 4 CSS -->
-<link href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <!-- DataTables with Bootstrap 4 CSS -->
+    <link href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
 
-<!-- Select2 CSS -->
-<link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+    <!-- Select2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
 
-<!-- Font Awesome 6.5.2 CSS -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" />
-<!-- jQuery 3.5.1 (must be first) -->
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- Font Awesome 6.5.2 CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" />
+    <!-- jQuery 3.5.1 (must be first) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
-<!-- DataTables Core -->
-<script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
+    <!-- DataTables Core -->
+    <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
 
-<!-- Popper.js (required by Bootstrap dropdowns/modals) -->
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <!-- Popper.js (required by Bootstrap dropdowns/modals) -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 
-<!-- Bootstrap 4.6.2 JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
+    <!-- Bootstrap 4.6.2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
 
-<!-- Select2 JS -->
-<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+    <!-- Select2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
 
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -162,6 +162,9 @@
             height: 100% !important;
             width: 100% !important;
         }
+        th {
+    background: #9292cc;
+}
     </style>
 
 </asp:Content>
@@ -207,15 +210,21 @@
                     </div>
 
 
-                    <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%" 
+                    <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%"
                         AutoGenerateColumns="false" AllowPaging="true" PageSize="500" OnPageIndexChanging="GridView1_PageIndexChanging" BorderWidth="1px" BorderColor="#dbddff">
                         <Columns>
 
+                            
                             <asp:TemplateField HeaderText="Id" Visible="False">
                                 <ItemTemplate>
                                     <asp:Label ID="lblID" runat="server" Text='<%#Eval("InspectionId") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
+                            <%-- <asp:TemplateField HeaderText="Id" Visible="False">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblIntimationId" runat="server" Text='<%#Eval("IntimationId") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField> --%>
                             <asp:TemplateField HeaderText="Id" Visible="False">
                                 <ItemTemplate>
                                     <asp:Label ID="lblApplicantFor" runat="server" Text='<%#Eval("ApplicantFor") %>'></asp:Label>
@@ -230,55 +239,48 @@
                                     <%#Container.DataItemIndex+1 %>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                                                               <asp:BoundField DataField="InspectionId" HeaderText="Inspection Id">
+                            <asp:BoundField DataField="InspectionId" HeaderText="Inspection Id">
                                 <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor" />
+
                                 <ItemStyle HorizontalAlign="center" Width="28%" />
                             </asp:BoundField>
-                                    
-
-                                            <asp:BoundField DataField="OwnerName" HeaderText="Owner Name">
-    <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor" />
-    <ItemStyle HorizontalAlign="center" Width="28%" />
-</asp:BoundField>
 
 
-                            <asp:TemplateField HeaderText="Contractor Name">
-                                <HeaderStyle HorizontalAlign="center" Width="32%" CssClass="headercolor textjustify" />
-                                <ItemStyle HorizontalAlign="center" Width="32%" CssClass="textjustify" />
-                                <ItemTemplate>
-                                    <asp:Label ID="lblContractorName" runat="server" Text='<%# Eval("ContractorName") %>' CssClass="break-text-10"></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-
-                        
-                            <asp:TemplateField>
-                                <HeaderTemplate>
-                                    Inspection<br>
-                                    Type
-                                </HeaderTemplate>
+                            <asp:BoundField DataField="OwnerName" HeaderText="Owner Name">
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
-                                <ItemTemplate>
-                                    <asp:Label ID="lblInspectionType" runat="server" Text='<%# Eval("TypeOfInspection") %>' CssClass="break-space"></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
+                            </asp:BoundField>
 
 
+                            <asp:BoundField DataField="AssignTo" HeaderText="Assign To">
+                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+
+                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                            </asp:BoundField>
                             <asp:BoundField DataField="RequestDate" HeaderText="Request Date">
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
 
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>
-                         
-                            <asp:BoundField DataField="AssignTo" HeaderText="Assigned<br>To" HtmlEncode="false">
+                            <asp:BoundField DataField="ApplicationStatus" HeaderText="Status">
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>
+                            <asp:TemplateField HeaderText="">
+                                <HeaderTemplate>
+                                    <div class="headercolor" style="text-align: center; width: 100%;">
+                                        Inspection<br />
+                                        Type
+                                    </div>
+                                </HeaderTemplate>
 
-                            <asp:BoundField DataField="PendingDays" HeaderText="Assigned<br>Days" HtmlEncode="false">
-                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                <ItemTemplate>
+                                    <%# Eval("TypeOfInspection") %>
+                                </ItemTemplate>
+                                <HeaderStyle HorizontalAlign="center" Width="15%" />
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
-                            </asp:BoundField>
+                            </asp:TemplateField>
 
 
                         </Columns>
@@ -292,7 +294,7 @@
                         <SortedDescendingCellStyle BackColor="#CAC9C9" />
                         <SortedDescendingHeaderStyle BackColor="#00547E" />
                     </asp:GridView>
-        
+
                 </div>
             </div>
         </div>
@@ -391,14 +393,14 @@
             $('#ownerModal').modal('show');
         }
     </script>
-      <script>
-          $(document).ready(function () {
-              // Initialize DataTables on specific table only
-              $('#myTable').DataTable();
+    <script>
+        $(document).ready(function () {
+            // Initialize DataTables on specific table only
+            $('#myTable').DataTable();
 
-              // Re-initialize dropdown (in case DataTables interferes)
-              $('.dropdown-toggle').dropdown();
-          });
-      </script>
+            // Re-initialize dropdown (in case DataTables interferes)
+            $('.dropdown-toggle').dropdown();
+        });
+    </script>
 </asp:Content>
 
