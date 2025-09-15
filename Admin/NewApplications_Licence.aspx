@@ -457,8 +457,9 @@
                         <div class="div-4" style="margin-top: 2px;">
                             <label>&nbsp;</label>
                             <asp:Button ID="Button1" Text="Forward To Committee" OnClick="Button1_Click" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" />
+                              <label>&nbsp;</label>
                             <asp:Button ID="btnReturn" Text="Return" Visible="false" OnClick="btnReturn_Click" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" />
-                            <asp:Button ID="btnReJect" Text="Reject" Visible="false" OnClick="btnReJect_Click" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" />
+                            <asp:Button ID="btnReJect" Text="Reject"  OnClick="btnReJect_Click" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" />
 
                         </div>
                     </div>

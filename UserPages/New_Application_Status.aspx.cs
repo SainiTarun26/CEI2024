@@ -126,6 +126,29 @@ namespace CEIHaryana.UserPages
                         ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
 
                     }
+                    else if (e.CommandName == "Reapply")
+                    {
+
+                        if (category == "Supervisor" )
+                        {
+                            Session["InsertedCategory"] = "Supervisor";
+                            Session["UserIdForEdit"] = idValue;
+                            Session["SupervisorID"] = idValue;
+                            Response.Redirect("~/UserPages/Update_Supervisor_Qualification.aspx");
+                        }
+                        else if (category == "Wireman")
+                        {
+                            Session["InsertedCategory"] = "Wireman";
+                            Session["UserIdForEdit"] = idValue;
+                            Session["WiremanId"] = idValue;
+                            Response.Redirect("~/UserPages/Update_Wireman_Qualification.aspx");
+                        }
+                        else if (category == "Contractor")
+                        {
+                            Session["ContractorID"] = idValue;
+                            Response.Redirect("~/UserPages/Update_Contractor_Application_Form.aspx");
+                        }
+                    }
                 }
             }
         }
@@ -154,15 +177,13 @@ namespace CEIHaryana.UserPages
                 }
 
 
-                if (status == "Returned")
+                if (status == "Returned"|| status == "Rejected")
                 {
-                    btnEdit.Visible = true;
-                    lblUpdate.Visible = true;
+                    GridView1.Columns[12].Visible = true;
                 }
                 else
                 {
-                    btnEdit.Visible = false;
-                    lblUpdate.Visible = false;
+                    GridView1.Columns[12].Visible = false;
                 }
             }
         }

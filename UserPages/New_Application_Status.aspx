@@ -1015,6 +1015,14 @@
                                                                     </ItemTemplate>
 
                                                                 </asp:TemplateField>
+                                                                
+                                                                <asp:TemplateField  HeaderStyle-CssClass="headercolor" ItemStyle-HorizontalAlign="Center">
+                                                                    <ItemTemplate>
+                                                                        <asp:LinkButton ID="lnkReapply" runat="server" CommandName="Reapply" CssClass="btn btn-link" >
+                                                                          Reapply
+                                                                        </asp:LinkButton>
+                                                                    </ItemTemplate>
+                                                                </asp:TemplateField>
                                                             </Columns>
                                                             <FooterStyle BackColor="White" ForeColor="#000066" />
                                                             <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />

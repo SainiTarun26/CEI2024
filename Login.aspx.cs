@@ -374,7 +374,7 @@ namespace CEIHaryana
                                     {
                                         Response.Redirect("/UserPages/DocumentsForContractor.aspx", false);
                                     }
-                                    else if (ApplicationStatus.Trim() == "Submit")
+                                    else
                                     {
                                         Response.Redirect("/UserPages/New_Application_Status.aspx", false);
                                     }
@@ -403,7 +403,7 @@ namespace CEIHaryana
                                     {
                                         Response.Redirect("/UserPages/Documents.aspx", false);
                                     }
-                                    else if (ApplicationStatus.Trim() == "Submit")
+                                    else 
                                     {
                                         Response.Redirect("/UserPages/New_Application_Status.aspx", false);
                                     }
@@ -429,7 +429,7 @@ namespace CEIHaryana
                                     {
                                         Response.Redirect("/UserPages/Documents.aspx", false);
                                     }
-                                    else if (ApplicationStatus.Trim() == "Submit")
+                                    else 
                                     {
                                         Response.Redirect("/UserPages/New_Application_Status.aspx", false);
                                     }
