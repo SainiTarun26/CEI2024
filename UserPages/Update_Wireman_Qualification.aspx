@@ -1361,7 +1361,7 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                <tr id="TrApprenticeship" runat="server" visible="true" autopostback="true">
+                                                              <%--  <tr id="TrApprenticeship" runat="server" visible="true" autopostback="true">
                                                                     <td>
                                                                         <asp:TextBox class="form-control" autocomplete="off" ID="txtApprenticeship" Text="Apprenticeship Certificate" ReadOnly="true" runat="server" > </asp:TextBox>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator92" runat="server" ControlToValidate="txtApprenticeship"
@@ -1394,12 +1394,13 @@
                                                                         <asp:CompareValidator ID="CompareValidator13" runat="server" ControlToCompare="Apprenticesdatefrom" ControlToValidate="Apprenticesdateto" Operator="GreaterThan"
                                                                             ErrorMessage="From Date must be greater than to To Date" Display="Dynamic" ForeColor="Red" />
                                                                     </td>
-                                                                </tr>
+                                                                </tr>--%>
                                                                 <tr id="Experience" runat="server" visible="false">
                                                                     <td>
                                                                         <asp:DropDownList class="select-form select2" ID="ddlExperience" runat="server" TabIndex="36" AutoPostBack="true">
                                                                             <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                                                             <asp:ListItem Text="Electrical Wiring and installation work" Value="1"></asp:ListItem>
+                                                                             <asp:ListItem Text="Apprenticeship Certificate" Value="2"></asp:ListItem>
 
                                                                         </asp:DropDownList>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator52" runat="server" ControlToValidate="ddlExperience" InitialValue="0" ForeColor="Red" ValidationGroup="Submit" Display="Dynamic" ErrorMessage="Please Select ExperienceIn"></asp:RequiredFieldValidator>
@@ -1412,7 +1413,8 @@
                                                                             <asp:ListItem Text="State government" Value="3"></asp:ListItem>
                                                                             <asp:ListItem Text="Semi government department" Value="4"></asp:ListItem>
                                                                             <asp:ListItem Text="Organisation" Value="5"></asp:ListItem>
-                                                                        </asp:DropDownList>
+                                                                             <asp:ListItem Text="Apprenticeship Act,1961(Central Act 52 of 1961)" Value="6"></asp:ListItem>
+</asp:DropDownList>
                                                                     </td>
                                                                     <td>
                                                                         <asp:TextBox class="form-control" autocomplete="off" ID="txtExperienceEmployer" MaxLength="30" TabIndex="38" runat="server" onkeyup="convertToUpperCase(this.id);"> </asp:TextBox>
@@ -2059,7 +2061,7 @@
 
                 }
             </script>
-            <script type="text/javascript">
+        <%--    <script type="text/javascript">
                 function validateApprenticesDate() {
                     var from = document.getElementById('<%=Apprenticesdatefrom.ClientID %>');
            var to = document.getElementById('<%=Apprenticesdateto.ClientID %>');
@@ -2104,16 +2106,17 @@
                         }
                     }
                 }
-            </script>
+            </script>--%>
    <script type="text/javascript">
        function validateExperienceDate2() {
            var from = document.getElementById('<%=txtExperienceFrom.ClientID %>');
            var to = document.getElementById('<%=txtExperienceTo.ClientID %>');
 
-           var apprenticeTo = document.getElementById('<%=Apprenticesdateto.ClientID %>');
+        <%--   var apprenticeTo = document.getElementById('<%=Apprenticesdateto.ClientID %>');--%>
 
            var today = new Date();
            today.setHours(0, 0, 0, 0);
+
 
            if (from.value) {
                var fromDate = new Date(from.value);
@@ -2122,16 +2125,6 @@
                    from.value = '';
                    from.focus();
                    return;
-               }
-
-               if (apprenticeTo.value) {
-                   var apprenticeToDate = new Date(apprenticeTo.value);
-                   if (fromDate <= apprenticeToDate) {
-                       alert('Next Experience "From Date" should be greater than Last Experience "To Date".');
-                       from.value = '';
-                       from.focus();
-                       return;
-                   }
                }
            }
 
@@ -2714,14 +2707,14 @@
                         }
                     }
 
-                    var ApprenticeCretificate = document.getElementById('txtApprenticeship');
-                    if (ApprenticeCretificate && ApprenticeCretificate.style.visibility !== 'hidden') {
-                        validateField(document.getElementById('txtAppretinceExperience'), 'AppretinceExperience');
-                        validateField(document.getElementById('txtApprenticeshipEmployer'), 'ExperienceEmployer');
-                        validateField(document.getElementById('txtApprenticesPost'), 'PostDescription');
-                        validateField(document.getElementById('Apprenticesdatefrom'), 'ExperienceFrom');
-                        validateField(document.getElementById('Apprenticesdateto'), 'ExperienceTo');
-                    }
+                    ////var ApprenticeCretificate = document.getElementById('txtApprenticeship');
+                    ////if (ApprenticeCretificate && ApprenticeCretificate.style.visibility !== 'hidden') {
+                    ////    validateField(document.getElementById('txtAppretinceExperience'), 'AppretinceExperience');
+                    ////    validateField(document.getElementById('txtApprenticeshipEmployer'), 'ExperienceEmployer');
+                    ////    validateField(document.getElementById('txtApprenticesPost'), 'PostDescription');
+                    ////    validateField(document.getElementById('Apprenticesdatefrom'), 'ExperienceFrom');
+                    ////    validateField(document.getElementById('Apprenticesdateto'), 'ExperienceTo');
+                    ////}
 
                     var Experience = document.getElementById('Experience');
                     if (Experience && Experience.style.visibility !== 'hidden') {
@@ -2903,14 +2896,14 @@
                         validateField(document.getElementById('txtmarksmax4'), 'Percentage');
                     }
 
-                    var ApprenticeCretificate = document.getElementById('txtApprenticeship');
-                    if (ApprenticeCretificate && ApprenticeCretificate.style.visibility !== 'hidden') {
-                        validateField(document.getElementById('txtAppretinceExperience'), 'AppretinceExperience');
-                        validateField(document.getElementById('txtApprenticeshipEmployer'), 'ExperienceEmployer');
-                        validateField(document.getElementById('txtApprenticesPost'), 'PostDescription');
-                        validateField(document.getElementById('Apprenticesdatefrom'), 'ExperienceFrom');
-                        validateField(document.getElementById('Apprenticesdateto'), 'ExperienceTo');
-                    }
+                    //var ApprenticeCretificate = document.getElementById('txtApprenticeship');
+                    //if (ApprenticeCretificate && ApprenticeCretificate.style.visibility !== 'hidden') {
+                    //    validateField(document.getElementById('txtAppretinceExperience'), 'AppretinceExperience');
+                    //    validateField(document.getElementById('txtApprenticeshipEmployer'), 'ExperienceEmployer');
+                    //    validateField(document.getElementById('txtApprenticesPost'), 'PostDescription');
+                    //    validateField(document.getElementById('Apprenticesdatefrom'), 'ExperienceFrom');
+                    //    validateField(document.getElementById('Apprenticesdateto'), 'ExperienceTo');
+                    //}
 
 
                     for (var i = 0; i <= 9; i++) {
@@ -3260,14 +3253,14 @@
                     }
 
 
-                    var ApprenticeCretificate = document.getElementById('txtApprenticeship');
-                    if (ApprenticeCretificate && ApprenticeCretificate.style.visibility !== 'hidden') {
-                        validateField(document.getElementById('txtAppretinceExperience'), 'AppretinceExperience');
-                        validateField(document.getElementById('txtApprenticeshipEmployer'), 'ExperienceEmployer');
-                        validateField(document.getElementById('txtApprenticesPost'), 'PostDescription');
-                        validateField(document.getElementById('Apprenticesdatefrom'), 'ExperienceFrom');
-                        validateField(document.getElementById('Apprenticesdateto'), 'ExperienceTo');
-                    }
+                    //var ApprenticeCretificate = document.getElementById('txtApprenticeship');
+                    //if (ApprenticeCretificate && ApprenticeCretificate.style.visibility !== 'hidden') {
+                    //    validateField(document.getElementById('txtAppretinceExperience'), 'AppretinceExperience');
+                    //    validateField(document.getElementById('txtApprenticeshipEmployer'), 'ExperienceEmployer');
+                    //    validateField(document.getElementById('txtApprenticesPost'), 'PostDescription');
+                    //    validateField(document.getElementById('Apprenticesdatefrom'), 'ExperienceFrom');
+                    //    validateField(document.getElementById('Apprenticesdateto'), 'ExperienceTo');
+                    //}
 
                     for (var i = 0; i <= 9; i++) {
                         var exp = document.getElementById('Experience' + (i === 0 ? '' : i));

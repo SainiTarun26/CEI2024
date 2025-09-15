@@ -110,31 +110,31 @@ namespace CEIHaryana.UserPages
 
                 if (dt != null && dt.Rows.Count > 0)
                 {
-                    if (!string.IsNullOrWhiteSpace(dt.Rows[0]["ApprenticePostDescription"].ToString()) ||
-                        !string.IsNullOrWhiteSpace(dt.Rows[0]["ApprenticenameofEmployer"].ToString()))
-                    {
+                    //if (!string.IsNullOrWhiteSpace(dt.Rows[0]["ApprenticePostDescription"].ToString()) ||
+                    //    !string.IsNullOrWhiteSpace(dt.Rows[0]["ApprenticenameofEmployer"].ToString()))
+                    //{
 
-                        txtApprenticeship.Text = dt.Rows[0]["ApprenticeExperience"].ToString();
-                        txtAppretinceExperience.Text = dt.Rows[0]["ApprenticeTrainingUnder"].ToString();
-                        txtApprenticeshipEmployer.Text = dt.Rows[0]["ApprenticenameofEmployer"].ToString();
-                        txtApprenticesPost.Text = dt.Rows[0]["ApprenticePostDescription"].ToString();
+                    //    txtApprenticeship.Text = dt.Rows[0]["ApprenticeExperience"].ToString();
+                    //    txtAppretinceExperience.Text = dt.Rows[0]["ApprenticeTrainingUnder"].ToString();
+                    //    txtApprenticeshipEmployer.Text = dt.Rows[0]["ApprenticenameofEmployer"].ToString();
+                    //    txtApprenticesPost.Text = dt.Rows[0]["ApprenticePostDescription"].ToString();
 
-                        if (DateTime.TryParse(dt.Rows[0]["ApprenticeExperienceFromDate"].ToString(), out DateTime apprenticeFrom))
-                        {
-                            Apprenticesdatefrom.Text = apprenticeFrom.ToString("yyyy-MM-dd");
-                        }
+                    //    if (DateTime.TryParse(dt.Rows[0]["ApprenticeExperienceFromDate"].ToString(), out DateTime apprenticeFrom))
+                    //    {
+                    //        Apprenticesdatefrom.Text = apprenticeFrom.ToString("yyyy-MM-dd");
+                    //    }
 
-                        if (DateTime.TryParse(dt.Rows[0]["ApprenticeExperienceToDate"].ToString(), out DateTime apprenticeTo))
-                        {
-                            Apprenticesdateto.Text = apprenticeTo.ToString("yyyy-MM-dd");
-                        }
+                    //    if (DateTime.TryParse(dt.Rows[0]["ApprenticeExperienceToDate"].ToString(), out DateTime apprenticeTo))
+                    //    {
+                    //        Apprenticesdateto.Text = apprenticeTo.ToString("yyyy-MM-dd");
+                    //    }
 
-                        TrApprenticeship.Visible = true;
-                    }
-                    else
-                    {
-                        TrApprenticeship.Visible = false;
-                    }
+                    //    TrApprenticeship.Visible = true;
+                    //}
+                    //else
+                    //{
+                    //    TrApprenticeship.Visible = false;
+                    //}
 
 
 

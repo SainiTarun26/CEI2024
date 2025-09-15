@@ -126,12 +126,12 @@ namespace CEIHaryana.UserPages
                     txtmarksmax1.Text = dt.Rows[0]["MarksMax12thorITI"].ToString();
                     txtprcntg1.Text = dt.Rows[0]["Percentage12thorITI"].ToString();
                     certificatewireman.Visible = true;
-                    TrApprenticeship.Visible = true;
+                    ////TrApprenticeship.Visible = true;
                 }
                 else
                 {
                     certificatewireman.Visible = true;
-                    TrApprenticeship.Visible = false;
+                    ////TrApprenticeship.Visible = false;
                 }
 
 
@@ -212,16 +212,16 @@ namespace CEIHaryana.UserPages
                     bool isCertificateInvalid = string.IsNullOrEmpty(certificateWirman) || certificateWirman.Equals("Select", StringComparison.OrdinalIgnoreCase);
                     bool isUniversityInvalid = string.IsNullOrEmpty(UniversityNameWirman);
 
-                    if (isCertificateInvalid && isUniversityInvalid)
-                    {
-                        TrApprenticeship.Visible = false;
+                    ////if (isCertificateInvalid && isUniversityInvalid)
+                    ////{
+                    ////    TrApprenticeship.Visible = false;
 
-                        // Reset fields
-                        txtApprenticeshipEmployer.Text = "";
-                        txtApprenticesPost.Text = "";
-                        Apprenticesdatefrom.Text = "";
-                        Apprenticesdateto.Text = "";
-                    }
+                    ////    // Reset fields
+                    ////    txtApprenticeshipEmployer.Text = "";
+                    ////    txtApprenticesPost.Text = "";
+                    ////    Apprenticesdatefrom.Text = "";
+                    ////    Apprenticesdateto.Text = "";
+                    ////}
 
 
                     string NameofDiplomaDegree = ddlQualification1.SelectedItem.ToString();
@@ -252,8 +252,8 @@ namespace CEIHaryana.UserPages
                         certificateWirman, UniversityNameWirman, PassingYearWirman, MarksObtainedWirman, MarksMaxWirman, PercentageWirman,
                          NameofDiplomaDegree, UniversityNameDiplomaorDegree, PassingYearDiplomaorDegree, MarksObtainedDiplomaorDegree, MarksMaxDiplomaorDegree, PercentageDiplomaorDegree,
                         NameofDegree, UniversityNamePG, PassingYearPG, MarksObtainedPG, MarksMaxPG, PercentagePG,
-                        NameofMasters, MastersUniversityName, MastersPassingYear, MasterMarksObtained, MastersMarksMax, MatersPercentage
-                        , txtApprenticeshipEmployer.Text.Trim(), txtApprenticesPost.Text.Trim(), Apprenticesdatefrom.Text.Trim(), Apprenticesdateto.Text.Trim());
+                        NameofMasters, MastersUniversityName, MastersPassingYear, MasterMarksObtained, MastersMarksMax, MatersPercentage);
+                    //, txtApprenticeshipEmployer.Text.Trim(), txtApprenticesPost.Text.Trim(), Apprenticesdatefrom.Text.Trim(), Apprenticesdateto.Text.Trim()
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Details Updated Successfully !!!')", true);
                 }
                 else
@@ -422,31 +422,31 @@ namespace CEIHaryana.UserPages
 
                 if (dt != null && dt.Rows.Count > 0)
                 {
-                    if (!string.IsNullOrWhiteSpace(dt.Rows[0]["ApprenticePostDescription"].ToString()) ||
-                        !string.IsNullOrWhiteSpace(dt.Rows[0]["ApprenticenameofEmployer"].ToString()))
-                    {
+                    ////if (!string.IsNullOrWhiteSpace(dt.Rows[0]["ApprenticePostDescription"].ToString()) ||
+                    ////    !string.IsNullOrWhiteSpace(dt.Rows[0]["ApprenticenameofEmployer"].ToString()))
+                    ////{
 
-                        //txtApprenticeship.Text = dt.Rows[0]["ApprenticeExperience"].ToString();
-                        txtAppretinceExperience.Text = dt.Rows[0]["ApprenticeTrainingUnder"].ToString();
-                        txtApprenticeshipEmployer.Text = dt.Rows[0]["ApprenticenameofEmployer"].ToString();
-                        txtApprenticesPost.Text = dt.Rows[0]["ApprenticePostDescription"].ToString();
+                    ////    //txtApprenticeship.Text = dt.Rows[0]["ApprenticeExperience"].ToString();
+                    ////    txtAppretinceExperience.Text = dt.Rows[0]["ApprenticeTrainingUnder"].ToString();
+                    ////    txtApprenticeshipEmployer.Text = dt.Rows[0]["ApprenticenameofEmployer"].ToString();
+                    ////    txtApprenticesPost.Text = dt.Rows[0]["ApprenticePostDescription"].ToString();
 
-                        if (DateTime.TryParse(dt.Rows[0]["ApprenticeExperienceFromDate"].ToString(), out DateTime apprenticeFrom))
-                        {
-                            Apprenticesdatefrom.Text = apprenticeFrom.ToString("yyyy-MM-dd");
-                        }
+                    ////    if (DateTime.TryParse(dt.Rows[0]["ApprenticeExperienceFromDate"].ToString(), out DateTime apprenticeFrom))
+                    ////    {
+                    ////        Apprenticesdatefrom.Text = apprenticeFrom.ToString("yyyy-MM-dd");
+                    ////    }
 
-                        if (DateTime.TryParse(dt.Rows[0]["ApprenticeExperienceToDate"].ToString(), out DateTime apprenticeTo))
-                        {
-                            Apprenticesdateto.Text = apprenticeTo.ToString("yyyy-MM-dd");
-                        }
+                    ////    if (DateTime.TryParse(dt.Rows[0]["ApprenticeExperienceToDate"].ToString(), out DateTime apprenticeTo))
+                    ////    {
+                    ////        Apprenticesdateto.Text = apprenticeTo.ToString("yyyy-MM-dd");
+                    ////    }
 
-                        //TrApprenticeship.Visible = true;
-                    }
-                    else
-                    {
-                        //TrApprenticeship.Visible = false;
-                    }
+                    ////    //TrApprenticeship.Visible = true;
+                    ////}
+                    ////else
+                    ////{
+                    ////    //TrApprenticeship.Visible = false;
+                    ////}
 
 
 
@@ -724,12 +724,12 @@ namespace CEIHaryana.UserPages
                 {
                     userid = hdnId.Value;
 
-                    string Apprenticesexperience = txtApprenticeship.Text;
-                    string Apprenticestraining = txtAppretinceExperience.Text;
-                    string Apprenticesname = txtApprenticeshipEmployer.Text;
-                    string Apprenticesjobdesc = txtApprenticesPost.Text;
-                    string Apprenticesexpfrom = Apprenticesdatefrom.Text;
-                    string Apprenticesexpto = Apprenticesdateto.Text;
+                    ////string Apprenticesexperience = txtApprenticeship.Text;
+                    ////string Apprenticestraining = txtAppretinceExperience.Text;
+                    ////string Apprenticesname = txtApprenticeshipEmployer.Text;
+                    ////string Apprenticesjobdesc = txtApprenticesPost.Text;
+                    ////string Apprenticesexpfrom = Apprenticesdatefrom.Text;
+                    ////string Apprenticesexpto = Apprenticesdateto.Text;
 
                     string experience = ddlExperience.SelectedItem.ToString();
                     string trainingUnder = ddlTrainingUnder.SelectedItem.ToString();
@@ -793,7 +793,7 @@ namespace CEIHaryana.UserPages
                     string expTo9 = txtExperienceTo9.Text;
                     string totalExperience = txtTotalExperience.Text;
                     CEI.updateExperienceforWireman(userid,
-                        Apprenticesexperience, Apprenticestraining, Apprenticesname, Apprenticesjobdesc, Apprenticesexpfrom, Apprenticesexpto,
+                       //// Apprenticesexperience, Apprenticestraining, Apprenticesname, Apprenticesjobdesc, Apprenticesexpfrom, Apprenticesexpto,
                         experience, trainingUnder, employer, postDescription, expFrom, expTo,
                                 experience1, trainingUnder1, employer1, postDescription1, expFrom1, expTo1,
                                 experience2, trainingUnder2, employer2, postDescription2, expFrom2, expTo2,
@@ -1365,10 +1365,17 @@ namespace CEIHaryana.UserPages
             hdnTotalExperience.Value = "";
             txtTotalExperience.Text = "";
 
-            TextBox[] fromArray = new TextBox[] {Apprenticesdatefrom,txtExperienceFrom, txtExperienceFrom1, txtExperienceFrom2, txtExperienceFrom3,
+        //    TextBox[] fromArray = new TextBox[] {Apprenticesdatefrom,txtExperienceFrom, txtExperienceFrom1, txtExperienceFrom2, txtExperienceFrom3,
+        //            txtExperienceFrom4, txtExperienceFrom5, txtExperienceFrom6, txtExperienceFrom7, txtExperienceFrom8, txtExperienceFrom9
+        //};
+        //    TextBox[] toArray = new TextBox[] {Apprenticesdateto, txtExperienceTo, txtExperienceTo1, txtExperienceTo2, txtExperienceTo3,
+        //            txtExperienceTo4, txtExperienceTo5, txtExperienceTo6, txtExperienceTo7, txtExperienceTo8, txtExperienceTo9
+        //};
+
+            TextBox[] fromArray = new TextBox[] { txtExperienceFrom, txtExperienceFrom1, txtExperienceFrom2, txtExperienceFrom3,
                     txtExperienceFrom4, txtExperienceFrom5, txtExperienceFrom6, txtExperienceFrom7, txtExperienceFrom8, txtExperienceFrom9
         };
-            TextBox[] toArray = new TextBox[] {Apprenticesdateto, txtExperienceTo, txtExperienceTo1, txtExperienceTo2, txtExperienceTo3,
+            TextBox[] toArray = new TextBox[] { txtExperienceTo, txtExperienceTo1, txtExperienceTo2, txtExperienceTo3,
                     txtExperienceTo4, txtExperienceTo5, txtExperienceTo6, txtExperienceTo7, txtExperienceTo8, txtExperienceTo9
         };
             int totalYears = 0, totalMonths = 0, totalDays = 0;
@@ -1851,28 +1858,36 @@ namespace CEIHaryana.UserPages
 
         protected void ddlQualification_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ddlQualification.SelectedValue == "0")
+            ////if (ddlQualification.SelectedValue == "0")
+            ////{
+            ////    ////TrApprenticeship.Visible = false;
+            ////    txtUniversity1.Text = "";
+            ////    DropDownList1.SelectedValue = "0";
+            ////    txtmarksObtained1.Text = "";
+            ////    txtmarksmax1.Text = "";
+            ////    txtprcntg1.Text = "";
+
+            ////    txtApprenticeshipEmployer.Text = "";
+            ////    txtApprenticesPost.Text = "";
+            ////    Apprenticesdatefrom.Text = "";
+            ////    Apprenticesdateto.Text = "";
+            ////    ToCalculateExperience();
+            ////}
+            ////else if (ddlQualification.SelectedValue == "1")
+            ////{
+            ////    TrApprenticeship.Visible = true;
+            ////}
+            ////else
+            ////{
+            ////    TrApprenticeship.Visible = false;
+            ////}
+             if (ddlQualification.SelectedValue == "0")
             {
-                TrApprenticeship.Visible = false;
                 txtUniversity1.Text = "";
                 DropDownList1.SelectedValue = "0";
                 txtmarksObtained1.Text = "";
                 txtmarksmax1.Text = "";
                 txtprcntg1.Text = "";
-
-                txtApprenticeshipEmployer.Text = "";
-                txtApprenticesPost.Text = "";
-                Apprenticesdatefrom.Text = "";
-                Apprenticesdateto.Text = "";
-                ToCalculateExperience();
-            }
-            else if (ddlQualification.SelectedValue == "1")
-            {
-                TrApprenticeship.Visible = true;
-            }
-            else
-            {
-                TrApprenticeship.Visible = false;
             }
         }
     }

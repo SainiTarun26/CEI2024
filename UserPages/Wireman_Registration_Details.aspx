@@ -1085,7 +1085,7 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr id="TrApprenticeship" runat="server" visible="true" autopostback="true">
+                                                       <%-- <tr id="TrApprenticeship" runat="server" visible="true" autopostback="true">
                                                             <td>
                                                                 <asp:TextBox class="form-control" autocomplete="off" ID="txtApprenticeship" Text="Apprenticeship Certificate" ReadOnly="true" runat="server" onkeyup="convertToUpperCase(this.id);"> </asp:TextBox>
                                                             </td>
@@ -1104,7 +1104,7 @@
                                                             <td>
                                                                 <asp:TextBox ID="Apprenticesdateto" class="form-control" autocomplete="off" ReadOnly="true" runat="server"> </asp:TextBox>
                                                             </td>
-                                                        </tr>
+                                                        </tr>--%>
                                                         <tr id="Experience" runat="server" visible="false">
                                                             <td>
                                                                 <%-- <asp:DropDownList class="select-form select2" ID="ddlExperience" runat="server" TabIndex="36" AutoPostBack="true">

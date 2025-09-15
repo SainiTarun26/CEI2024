@@ -35,8 +35,8 @@ namespace CEIHaryana.UserPages
                         UserID = Session["SupervisorID"].ToString();
                         HdnUserId.Value = UserID;
                         HdnUserType.Value = "Supervisor";
-                        Apprenticecertificate.Visible = false;
-                        Hdn_Apprenticecertificatevisible.Value = "";
+                        ////Apprenticecertificate.Visible = false;
+                        ////Hdn_Apprenticecertificatevisible.Value = "";
 
                         DetailsforDocuments(UserID);
                     }
@@ -60,6 +60,7 @@ namespace CEIHaryana.UserPages
         }
         private void DetailsforDocuments(string userID)
         {
+            
             DataSet ds = CEI.ToGetNewUserDetails(UserID);
 
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
@@ -73,7 +74,8 @@ namespace CEIHaryana.UserPages
                 string NameofDegree = ds.Tables[0].Rows[0]["NameofDegree"].ToString();
                 string NameofMasters = ds.Tables[0].Rows[0]["NameofMasters"].ToString();
 
-
+                
+                string HaveApprenticeCertificate = ds.Tables[0].Rows[0]["ExperiencedIn"].ToString();
                 string Exp = ds.Tables[0].Rows[0]["ExperienceEmployerName"].ToString();
                 string Exp1 = ds.Tables[0].Rows[0]["ExperienceEmployerName1"].ToString();
                 string Exp2 = ds.Tables[0].Rows[0]["ExperienceEmployerName2"].ToString();
@@ -91,7 +93,7 @@ namespace CEIHaryana.UserPages
                 HdnNameofDiplomaDegree.Value = NameofDiplomaDegree;
                 HdnNameofDegree.Value = NameofDegree;
                 HdnNameofMasters.Value = NameofMasters;
-                HdnApprenticeExperience.Value = ApprenticeExperience;
+                HdnApprenticeExperience.Value = HaveApprenticeCertificate;
 
                 LblExp.Text = Exp;
                 LblExp1.Text = Exp1;
@@ -147,7 +149,8 @@ namespace CEIHaryana.UserPages
 
 
 
-            if (string.IsNullOrEmpty(HdnApprenticeExperience.Value) || HdnApprenticeExperience.Value == "Select")
+            //if (string.IsNullOrEmpty(HdnApprenticeExperience.Value) || HdnApprenticeExperience.Value == "Select")
+            if (HdnApprenticeExperience.Value != "Apprenticeship Certificate")
             {
                 Apprenticecertificate.Visible = false;
                 Hdn_Apprenticecertificatevisible.Value = "";

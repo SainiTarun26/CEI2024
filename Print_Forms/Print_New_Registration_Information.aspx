@@ -822,7 +822,7 @@ Basis.</h4>
                                                             <asp:Label ReadOnly="true" class="form-control uppercase-label" autocomplete="off" AutoPostBack="true" min='0000-01-01' max='9999-01-01' ID="ExperienceTo" TabIndex="41" onchange="validateDates2()" runat="server"></asp:Label>
                                                         </td>
                                                     </tr>--%>
-                                                    <tr id="TrApprenticeship" runat="server" visible="true" autopostback="true">
+                                                  <%--  <tr id="TrApprenticeship" runat="server" visible="true" autopostback="true">
                                                         <td>
                                                             <asp:Label ReadOnly="true" class="form-control" autocomplete="off" ID="txtApprenticeship" Text="Apprenticeship Certificate" TabIndex="32" MaxLength="30" runat="server"></asp:Label>
 
@@ -847,7 +847,7 @@ Basis.</h4>
                                                             <asp:Label ReadOnly="true" class="form-control uppercase-label" autocomplete="off" ID="Apprenticesdateto" TabIndex="32" MaxLength="30" runat="server"></asp:Label>
 
                                                         </td>
-                                                    </tr>
+                                                    </tr>--%>
                                                     <tr id="Experience" runat="server" visible="false" autopostback="true">
                                                         <td>
                                                             <asp:Label ReadOnly="true" class="form-control" autocomplete="off" ID="ddlExperience" TabIndex="32" MaxLength="30" runat="server"></asp:Label>

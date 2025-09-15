@@ -37,12 +37,12 @@
     <link rel="shortcut icon" href="/images/favicon.png" />
 
     <style>
+        td {
+            padding-left: 10px !important;
+            padding-right: 10px !important;
+            text-align: center !important;
+        }
 
-td {
-    padding-left: 10px !important;
-    padding-right: 10px !important;
-    text-align: center !important;
-}
         ul#profile_drop {
             margin-left: -86px;
             width: 120px;
@@ -573,22 +573,22 @@ td {
                                             <h4 class="card-title">APPLICANT'S DETAIL</h4>
                                         </div>
                                     </div>
-                                   <%-- <asp:UpdatePanel ID="UpdatePanelCalculatedMonths" runat="server">
+                                    <%-- <asp:UpdatePanel ID="UpdatePanelCalculatedMonths" runat="server">
                                         <ContentTemplate>--%>
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <div class="form-group row">
-                                                        <label for="exampleInputUsername2" class="col-sm-2 col-form-label" style="display: flex; align-items: center; justify-content: flex-start; font-size: 15px;">
-                                                            Applying For  
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group row">
+                                                <label for="exampleInputUsername2" class="col-sm-2 col-form-label" style="display: flex; align-items: center; justify-content: flex-start; font-size: 15px;">
+                                                    Applying For  
                                                             :</label>
-                                                        <div class="col-sm-3" style="display: flex; align-items: center; margin-top: -6px; justify-content: flex-start;">
-                                                            <asp:TextBox ReadOnly="true" class="form-control" ID="txtApplyingFor" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                <div class="col-sm-3" style="display: flex; align-items: center; margin-top: -6px; justify-content: flex-start;">
+                                                    <asp:TextBox ReadOnly="true" class="form-control" ID="txtApplyingFor" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
 
-                                                        </div>
-                                                    </div>
                                                 </div>
                                             </div>
-                                       <%-- </ContentTemplate>
+                                        </div>
+                                    </div>
+                                    <%-- </ContentTemplate>
                                     </asp:UpdatePanel>--%>
                                     <hr />
                                     <div class="row">
@@ -633,7 +633,7 @@ td {
                                                                     <asp:TextBox ReadOnly="true" class="form-control" ID="txtphone" autocomplete="off" onkeypress="return isNumberKey(event)" onkeyup="return isvalidphoneno();" runat="server" TabIndex="16" MaxLength="10" Style="width: 100%;"> </asp:TextBox>
                                                                 </div>
                                                             </div>
-                                                           
+
                                                         </div>
                                                         <div class="col-md-2">
                                                             <div class="forms-sample">
@@ -659,16 +659,16 @@ td {
                                                                     </label>
                                                                     <asp:TextBox ReadOnly="true" class="form-control" ID="txtNationailty" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
                                                                 </div>
-                                                                 <div class="form-group">
+                                                                <div class="form-group">
                                                                     <label for="Gender">
                                                                         Aadhaar Card No.  
                                                                     </label>
                                                                     <asp:TextBox ReadOnly="true" class="form-control" ID="txtAadhar" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server" Style="width: 100%;"> </asp:TextBox>
                                                                 </div>
-                                                               
+
                                                             </div>
                                                         </div>
-                                                         <div class="col-md-2">
+                                                        <div class="col-md-2">
                                                             <div class="forms-sample">
                                                                 <div class="form-group">
                                                                     <label for="Gender">
@@ -678,14 +678,14 @@ td {
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                         <div class="col-md-2">
+                                                        <div class="col-md-2">
                                                             <div class="forms-sample">
                                                                 <%--<img src="path_to_your_image.jpg" alt="Sample Image"
                                                                     style="width: 100px; height: 100px; object-fit: cover;">--%>
-                                                            <asp:Image ID="imgPhoto" runat="server" Width="100px" Height="100px" style="object-fit: cover;" />
+                                                                <asp:Image ID="imgPhoto" runat="server" Width="100px" Height="100px" Style="object-fit: cover;" />
                                                             </div>
                                                         </div>
-                                                       
+
                                                     </div>
                                                     <div class="row">
                                                         <div class="col-md-6">
@@ -703,565 +703,562 @@ td {
                                                             <asp:TextBox ReadOnly="true" class="form-control" ID="txtpermanentAddress" autocomplete="off" runat="server" TabIndex="7" MaxLength="200" Style="width: 97%;"> </asp:TextBox>
                                                         </div>
                                                     </div>
-                                                  
+
                                                     <hr style="margin-top: 15px;" />
                                                 </div>
                                                 <div class="row" style="display: none;">
-                                                    <div class="col-sm-6">                                                      
-                                                                <div class="form-group">
-                                                                    <asp:CheckBox ID="CheckBox1" runat="server" Text="&nbsp;&nbsp;Permanent Address" Font-Size="Medium" Font-Bold="True" AutoPostBack="true" TabIndex="11" />
-                                                                    <%--<asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" ID="txtPermanentAddress" TextMode="MultiLine" TabIndex="12" runat="server" MaxLength="200"> </asp:TextBox>--%>
-                                                                </div>                                                             
-                                                                        <div class="form-group">
-                                                                            <div class="row">                                                                  
-                                                                </div>                                           
+                                                    <div class="col-sm-6">
+                                                        <div class="form-group">
+                                                            <asp:CheckBox ID="CheckBox1" runat="server" Text="&nbsp;&nbsp;Permanent Address" Font-Size="Medium" Font-Bold="True" AutoPostBack="true" TabIndex="11" />
+                                                            <%--<asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" ID="txtPermanentAddress" TextMode="MultiLine" TabIndex="12" runat="server" MaxLength="200"> </asp:TextBox>--%>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="card-body">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <h4 class="card-title">Qualification DETAIL</h4>
+                                                <div class="card-body">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <h4 class="card-title">Qualification DETAIL</h4>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="table-responsive">
-                                                        <table class="table table-bordered">
-                                                            <thead>
-                                                                <tr style="text-align: center;">
+                                                    <div class="row">
+                                                        <div class="table-responsive">
+                                                            <table class="table table-bordered">
+                                                                <thead>
+                                                                    <tr style="text-align: center;">
 
-                                                                    <th scope="col" style="width: 20% !important;">Exam Name</th>
-                                                                    <th scope="col">Board/University Name</th>
-                                                                    <th scope="col" style="width: 0% !important;">Passing Year</th>
-                                                                    <th scope="col" style="width: 0% !important;">Obtained Marks&nbsp;/&nbsp;Max Marks                                                      
-                                                                    </th>
-                                                                    <th scope="col" style="width: 10% !important;">% </th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td style="text-align: center; font-size: 15px !important;">10th
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox ReadOnly="true" class="form-control" ID="txtUniversity" runat="server" autocomplete="off"> </asp:TextBox>
+                                                                        <th scope="col" style="width: 20% !important;">Exam Name</th>
+                                                                        <th scope="col">Board/University Name</th>
+                                                                        <th scope="col" style="width: 0% !important;">Passing Year</th>
+                                                                        <th scope="col" style="width: 0% !important;">Obtained Marks&nbsp;/&nbsp;Max Marks                                                      
+                                                                        </th>
+                                                                        <th scope="col" style="width: 10% !important;">% </th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td style="text-align: center; font-size: 15px !important;">10th
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:TextBox ReadOnly="true" class="form-control" ID="txtUniversity" runat="server" autocomplete="off"> </asp:TextBox>
 
-                                                                    </td>
-                                                                    <td>
+                                                                        </td>
+                                                                        <td>
 
-                                                                        <asp:TextBox ReadOnly="true" class="form-control" ID="txtPassingyear"    runat="server" min='0000-01-01' max='9999-01-01' autocomplete="off"> </asp:TextBox>
-                                                                        <div>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="row">
-                                                                            <div class="col-md-6">
-                                                                                <asp:TextBox ReadOnly="true" class="form-control" ID="txtmarksObtained" MaxLength="3" onKeyPress="return isNumberKey(event);" autocomplete="off" runat="server"> </asp:TextBox>
-
+                                                                            <asp:TextBox ReadOnly="true" class="form-control" ID="txtPassingyear" runat="server" min='0000-01-01' max='9999-01-01' autocomplete="off"> </asp:TextBox>
+                                                                            <div>
                                                                             </div>
-                                                                            <div class="col-md-6">
-                                                                                <asp:TextBox ReadOnly="true" class="form-control" ID="txtmarksmax" MaxLength="3" onKeyPress="return isNumberKey(event);" autocomplete="off" runat="server" AutoPostBack="true"> </asp:TextBox>
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="row">
+                                                                                <div class="col-md-6">
+                                                                                    <asp:TextBox ReadOnly="true" class="form-control" ID="txtmarksObtained" MaxLength="3" onKeyPress="return isNumberKey(event);" autocomplete="off" runat="server"> </asp:TextBox>
 
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <asp:TextBox ReadOnly="true" class="form-control" ID="txtmarksmax" MaxLength="3" onKeyPress="return isNumberKey(event);" autocomplete="off" runat="server" AutoPostBack="true"> </asp:TextBox>
+
+                                                                                </div>
                                                                             </div>
-                                                                        </div>
 
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox ReadOnly="true" class="form-control" ID="txtprcntg" MaxLength="3" onKeyPress="return isNumberKey(event);" autocomplete="off" runat="server"> </asp:TextBox>
-                                                                </tr>
-                                                                <tr id="Tr_Qualification2" runat="server" visible="false">                                                                   
-                                                                    <td>
-                                                                        <asp:TextBox ReadOnly="true" class="form-control" ID="txtExam1" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:TextBox ReadOnly="true" class="form-control" ID="txtprcntg" MaxLength="3" onKeyPress="return isNumberKey(event);" autocomplete="off" runat="server"> </asp:TextBox>
+                                                                    </tr>
+                                                                    <tr id="Tr_Qualification2" runat="server" visible="false">
+                                                                        <td>
+                                                                            <asp:TextBox ReadOnly="true" class="form-control" ID="txtExam1" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
 
-                                                                    </td>                                                                
-                                                                    <td>
-                                                                        <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" ID="txtUniversity1" runat="server"> </asp:TextBox>
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" ID="txtUniversity1" runat="server"> </asp:TextBox>
 
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off"    min='0000-01-01' max='9999-01-01' ID="txtPassingyear1" runat="server"> </asp:TextBox>
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" min='0000-01-01' max='9999-01-01' ID="txtPassingyear1" runat="server"> </asp:TextBox>
 
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="row">
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="row">
 
-                                                                            <div class="col-md-6">
-                                                                                <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" MaxLength="3" onKeyPress="return isNumberKey(event);" ID="txtmarksObtained1" runat="server"> </asp:TextBox>
+                                                                                <div class="col-md-6">
+                                                                                    <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" MaxLength="3" onKeyPress="return isNumberKey(event);" ID="txtmarksObtained1" runat="server"> </asp:TextBox>
 
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" MaxLength="3" onKeyPress="return isNumberKey(event);" ID="txtmarksmax1" runat="server" AutoPostBack="true"> </asp:TextBox>
+
+                                                                                </div>
                                                                             </div>
-                                                                            <div class="col-md-6">
-                                                                                <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" MaxLength="3" onKeyPress="return isNumberKey(event);" ID="txtmarksmax1" runat="server" AutoPostBack="true"> </asp:TextBox>
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:TextBox class="form-control" autocomplete="off" MaxLength="3" onKeyPress="return isNumberKey(event);" ID="txtprcntg1" ReadOnly="true" runat="server"> </asp:TextBox>
 
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr id="Tr_Qualification3" runat="server" visible="false">
+
+                                                                        <td style="text-align: center;">
+                                                                            <asp:TextBox ReadOnly="true" class="form-control" ID="txtExam2" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:TextBox ReadOnly="true" class="form-control" ID="txtUniversity2" autocomplete="off" runat="server"> </asp:TextBox>
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" min='0000-01-01' max='9999-01-01' ID="txtPassingyear2" runat="server"> </asp:TextBox>
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="row">
+                                                                                <div class="col-md-6">
+                                                                                    <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" MaxLength="3" onKeyPress="return isNumberKey(event);" ID="txtmarksObtained2" runat="server"> </asp:TextBox>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" MaxLength="3" onKeyPress="return isNumberKey(event);" ID="txtmarksmax2" runat="server" AutoPostBack="true"> </asp:TextBox>
+                                                                                </div>
                                                                             </div>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox class="form-control" autocomplete="off" MaxLength="3" onKeyPress="return isNumberKey(event);" ID="txtprcntg1" ReadOnly="true" runat="server"> </asp:TextBox>
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:TextBox class="form-control" autocomplete="off" MaxLength="3" onKeyPress="return isNumberKey(event);" ID="txtprcntg2" ReadOnly="true" runat="server"> </asp:TextBox>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr id="DdlDegree" runat="server" visible="false">
 
-                                                                    </td>
-                                                                </tr>
-                                                                <tr id="Tr_Qualification3" runat="server" visible="false">
-
-                                                                    <td style="text-align: center;">
-                                                                        <asp:TextBox ReadOnly="true" class="form-control" ID="txtExam2" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox ReadOnly="true" class="form-control" ID="txtUniversity2" autocomplete="off" runat="server"> </asp:TextBox>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox ReadOnly="true" class="form-control"    autocomplete="off" min='0000-01-01' max='9999-01-01' ID="txtPassingyear2" runat="server"> </asp:TextBox>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="row">
-                                                                            <div class="col-md-6">
-                                                                                <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" MaxLength="3" onKeyPress="return isNumberKey(event);" ID="txtmarksObtained2" runat="server"> </asp:TextBox>
+                                                                        <td style="text-align: center;">
+                                                                            <asp:TextBox ReadOnly="true" class="form-control" ID="txtExam3" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" ID="txtUniversity3" runat="server"> </asp:TextBox>
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" min='0000-01-01' max='9999-01-01' ID="txtPassingyear3" runat="server"> </asp:TextBox>
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="row">
+                                                                                <div class="col-md-6">
+                                                                                    <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" MaxLength="3" onKeyPress="return isNumberKey(event);" ID="txtmarksObtained3" runat="server"> </asp:TextBox>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" MaxLength="3" onKeyPress="return isNumberKey(event);" ID="txtmarksmax3" runat="server" AutoPostBack="true"> </asp:TextBox>
+                                                                                </div>
                                                                             </div>
-                                                                            <div class="col-md-6">
-                                                                                <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" MaxLength="3" onKeyPress="return isNumberKey(event);" ID="txtmarksmax2" runat="server" AutoPostBack="true"> </asp:TextBox>
-                                                                            </div>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox class="form-control" autocomplete="off" MaxLength="3" onKeyPress="return isNumberKey(event);" ID="txtprcntg2" ReadOnly="true" runat="server"> </asp:TextBox>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr id="DdlDegree" runat="server" visible="false">
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:TextBox class="form-control" autocomplete="off" ID="txtprcntg3" MaxLength="3" onKeyPress="return isNumberKey(event);" ReadOnly="true" runat="server"> </asp:TextBox>
 
-                                                                    <td style="text-align: center;">
-                                                                        <asp:TextBox ReadOnly="true" class="form-control" ID="txtExam3" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" ID="txtUniversity3" runat="server"> </asp:TextBox>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off"    min='0000-01-01' max='9999-01-01' ID="txtPassingyear3" runat="server"> </asp:TextBox>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="row">
-                                                                            <div class="col-md-6">
-                                                                                <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" MaxLength="3" onKeyPress="return isNumberKey(event);" ID="txtmarksObtained3" runat="server"> </asp:TextBox>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" MaxLength="3" onKeyPress="return isNumberKey(event);" ID="txtmarksmax3" runat="server" AutoPostBack="true"> </asp:TextBox>
-                                                                            </div>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox class="form-control" autocomplete="off" ID="txtprcntg3" MaxLength="3" onKeyPress="return isNumberKey(event);" ReadOnly="true" runat="server"> </asp:TextBox>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr id="DdlMasters" visible="false" runat="server">
 
-                                                                    </td>
-                                                                </tr>
-                                                                <tr id="DdlMasters" visible="false" runat="server">
-
-                                                                    <td style="text-align: center;">
-                                                                        <asp:TextBox ReadOnly="true" class="form-control" ID="txtExam4" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox class="form-control" autocomplete="off" ID="txtUniversity4" runat="server"> </asp:TextBox>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox class="form-control" autocomplete="off"    min='0000-01-01' max='9999-01-01' ID="txtPassingyear4" runat="server"> </asp:TextBox>
-                                                                    </td>
-                                                                    <td>
-                                                                        <div class="row">
-                                                                            <div class="col-md-6">
-                                                                                <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" MaxLength="3" onKeyPress="return isNumberKey(event);" ID="txtmarksObtained4" runat="server"> </asp:TextBox>
+                                                                        <td style="text-align: center;">
+                                                                            <asp:TextBox ReadOnly="true" class="form-control" ID="txtExam4" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:TextBox class="form-control" autocomplete="off" ID="txtUniversity4" runat="server"> </asp:TextBox>
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:TextBox class="form-control" autocomplete="off" min='0000-01-01' max='9999-01-01' ID="txtPassingyear4" runat="server"> </asp:TextBox>
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="row">
+                                                                                <div class="col-md-6">
+                                                                                    <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" MaxLength="3" onKeyPress="return isNumberKey(event);" ID="txtmarksObtained4" runat="server"> </asp:TextBox>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" MaxLength="3" onKeyPress="return isNumberKey(event);" ID="txtmarksmax4" runat="server" AutoPostBack="true"> </asp:TextBox>
+                                                                                </div>
                                                                             </div>
-                                                                            <div class="col-md-6">
-                                                                                <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" MaxLength="3" onKeyPress="return isNumberKey(event);" ID="txtmarksmax4" runat="server" AutoPostBack="true"> </asp:TextBox>
-                                                                            </div>
-                                                                        </div>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox class="form-control" autocomplete="off" ID="txtprcntg4" MaxLength="3" onKeyPress="return isNumberKey(event);" ReadOnly="true" runat="server"> </asp:TextBox>
-                                                                    </td>
-                                                                </tr>
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:TextBox class="form-control" autocomplete="off" ID="txtprcntg4" MaxLength="3" onKeyPress="return isNumberKey(event);" ReadOnly="true" runat="server"> </asp:TextBox>
+                                                                        </td>
+                                                                    </tr>
 
-                                                            </tbody>
-                                                        </table>
+                                                                </tbody>
+                                                            </table>
 
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <hr />
-                                                <div class="row" style="margin-top: 15px;">
-                                                    <div class="col-md-10">
-                                                        <h4 class="card-title" style="font-size: 15px;">Whether you are holder of
+                                                    <hr />
+                                                    <div class="row" style="margin-top: 15px;">
+                                                        <div class="col-md-10">
+                                                            <h4 class="card-title" style="font-size: 15px;">Whether you are holder of
                                             certificate of competency/Wireman Permit issued by any state licincing
                                             board/chief electrical inspector.</h4>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <asp:RadioButtonList ID="RadioButtonList2" Enabled="false" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25">
+                                                                <asp:ListItem Text="Yes" Value="0"></asp:ListItem>
+                                                                <asp:ListItem Text="No" Value="1"></asp:ListItem>
+                                                            </asp:RadioButtonList>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-md-2">
-                                                        <asp:RadioButtonList ID="RadioButtonList2" Enabled="false" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" TabIndex="25">
-                                                            <asp:ListItem Text="Yes" Value="0" ></asp:ListItem>
-                                                            <asp:ListItem Text="No" Value="1"></asp:ListItem>
-                                                        </asp:RadioButtonList>
-                                                    </div>
-                                                </div>
-                                                <div class="row" id="competency" runat="server" visible="true">
-                                                    <div class="table-responsive" runat="server">
-                                                        <table class="table table-bordered">
-                                                            <thead>
-                                                                <tr style="text-align: center;">
-                                                                    <th scope="col">Sno.</th>
-                                                                    <th scope="col">&nbsp; &nbsp; &nbsp; &nbsp; Category &nbsp;
+                                                    <div class="row" id="competency" runat="server" visible="true">
+                                                        <div class="table-responsive" runat="server">
+                                                            <table class="table table-bordered">
+                                                                <thead>
+                                                                    <tr style="text-align: center;">
+                                                                        <th scope="col">Sno.</th>
+                                                                        <th scope="col">&nbsp; &nbsp; &nbsp; &nbsp; Category &nbsp;
                                                         &nbsp;&nbsp; &nbsp; </th>
-                                                                    <th scope="col">Permit No.</th>
-                                                                    <th scope="col">Issuing Authority</th>
-                                                                    <th scope="col">Issue Date</th>
-                                                                    <th scope="col">Expiry Date</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td style="text-align: center; font-size: 13px;">1
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" ID="txtCategory" TabIndex="26" MaxLength="30" runat="server"> </asp:TextBox>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" ID="txtPermitNo" TabIndex="27" MaxLength="20" runat="server"> </asp:TextBox>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" ID="txtIssuingAuthority" TabIndex="28" MaxLength="50" runat="server"> </asp:TextBox>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox ReadOnly="true" class="form-control"    min='0000-01-01' max='9999-01-01' autocomplete="off" TabIndex="29" ID="txtIssuingDate" runat="server" onchange="validateDates()"> </asp:TextBox>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox ReadOnly="true" class="form-control"    min='0000-01-01' max='9999-01-01' autocomplete="off" ID="txtExpiryDate" runat="server" TabIndex="30" onchange="validateDates()"> </asp:TextBox>
-                                                                          </td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
+                                                                        <th scope="col">Permit No.</th>
+                                                                        <th scope="col">Issuing Authority</th>
+                                                                        <th scope="col">Issue Date</th>
+                                                                        <th scope="col">Expiry Date</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td style="text-align: center; font-size: 13px;">1
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" ID="txtCategory" TabIndex="26" MaxLength="30" runat="server"> </asp:TextBox>
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" ID="txtPermitNo" TabIndex="27" MaxLength="20" runat="server"> </asp:TextBox>
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" ID="txtIssuingAuthority" TabIndex="28" MaxLength="50" runat="server"> </asp:TextBox>
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:TextBox ReadOnly="true" class="form-control" min='0000-01-01' max='9999-01-01' autocomplete="off" TabIndex="29" ID="txtIssuingDate" runat="server" onchange="validateDates()"> </asp:TextBox>
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:TextBox ReadOnly="true" class="form-control" min='0000-01-01' max='9999-01-01' autocomplete="off" ID="txtExpiryDate" runat="server" TabIndex="30" onchange="validateDates()"> </asp:TextBox>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <hr />
-                                                <div class="row" style="margin-top: 15px;">
-                                                    <div class="col-md-5">
-                                                        <h4 class="card-title" style="font-size: 15px;">Are you Employed on Permanent
+                                                    <hr />
+                                                    <div class="row" style="margin-top: 15px;">
+                                                        <div class="col-md-5">
+                                                            <h4 class="card-title" style="font-size: 15px;">Are you Employed on Permanent
                                             Basis.</h4>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <asp:RadioButtonList ID="RadioButtonList3" Enabled="false" runat="server" AutoPostBack="true" RepeatDirection="Horizontal" TabIndex="31">
+                                                                <asp:ListItem Text="Yes" Value="0" Selected="True"></asp:ListItem>
+                                                                <asp:ListItem Text="No" Value="1"></asp:ListItem>
+                                                            </asp:RadioButtonList>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-md-2">
-                                                        <asp:RadioButtonList ID="RadioButtonList3" Enabled="false" runat="server" AutoPostBack="true" RepeatDirection="Horizontal" TabIndex="31">
-                                                            <asp:ListItem Text="Yes" Value="0" Selected="True"></asp:ListItem>
-                                                            <asp:ListItem Text="No" Value="1"></asp:ListItem>
-                                                        </asp:RadioButtonList>
-                                                    </div>
-                                                </div>
-                                                <div class="row" id="PermanentEmployee" visible="false" runat="server">
-                                                    <div class="table-responsive">
-                                                        <table class="table table-bordered">
-                                                            <thead>
-                                                                <tr style="text-align: center;">
-                                                                    <th scope="col">Sno.</th>
-                                                                    <th scope="col">&nbsp; &nbsp; &nbsp; &nbsp; Name of Employer &nbsp;
+                                                    <div class="row" id="PermanentEmployee" visible="false" runat="server">
+                                                        <div class="table-responsive">
+                                                            <table class="table table-bordered">
+                                                                <thead>
+                                                                    <tr style="text-align: center;">
+                                                                        <th scope="col">Sno.</th>
+                                                                        <th scope="col">&nbsp; &nbsp; &nbsp; &nbsp; Name of Employer &nbsp;
                                                                       &nbsp;&nbsp; &nbsp; </th>
-                                                                    <th scope="col">Post Description</th>
-                                                                    <th scope="col">From</th>
-                                                                    <th scope="col">To</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td style="text-align: center; font-size: 13px;">1
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" ID="txtPermanentEmployerName" TabIndex="32" MaxLength="30" runat="server"> </asp:TextBox>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" ID="txtPermanentDescription" TabIndex="33" MaxLength="50" runat="server"> </asp:TextBox>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off"    min='0000-01-01' max='9999-01-01' ID="txtPermanentFrom" TabIndex="34" runat="server" onchange="validateDates1()"> </asp:TextBox>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off"    min='0000-01-01' max='9999-01-01' ID="txtPermanentTo" TabIndex="35" runat="server" onchange="validateDates1()"> </asp:TextBox>
-                                                                           </td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
+                                                                        <th scope="col">Post Description</th>
+                                                                        <th scope="col">From</th>
+                                                                        <th scope="col">To</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td style="text-align: center; font-size: 13px;">1
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" ID="txtPermanentEmployerName" TabIndex="32" MaxLength="30" runat="server"> </asp:TextBox>
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" ID="txtPermanentDescription" TabIndex="33" MaxLength="50" runat="server"> </asp:TextBox>
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" min='0000-01-01' max='9999-01-01' ID="txtPermanentFrom" TabIndex="34" runat="server" onchange="validateDates1()"> </asp:TextBox>
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" min='0000-01-01' max='9999-01-01' ID="txtPermanentTo" TabIndex="35" runat="server" onchange="validateDates1()"> </asp:TextBox>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <hr />
-                                                <%-- <a href="ContractorApplicationForm.aspx">ContractorApplicationForm.aspx</a>--%>
-                                                <div class="row" style="margin-top: 15px;">
-                                                    <div class="col-md-5">
-                                                        <h4 class="card-title" style="font-size: 15px;">Detail of Experience.</h4>
+                                                    <hr />
+                                                    <%-- <a href="ContractorApplicationForm.aspx">ContractorApplicationForm.aspx</a>--%>
+                                                    <div class="row" style="margin-top: 15px;">
+                                                        <div class="col-md-5">
+                                                            <h4 class="card-title" style="font-size: 15px;">Detail of Experience.</h4>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="table-responsive">
-                                                        <table class="table table-bordered">
-                                                            <thead>
-                                                                <tr style="text-align: center;">
-                                                                    <%--  <th scope="col">Sno.</th>--%>
-                                                                    <th scope="col">&nbsp; &nbsp; &nbsp; &nbsp; Experienced in &nbsp;
-                                                        &nbsp;&nbsp; &nbsp; </th>
-                                                                    <th scope="col">&nbsp; &nbsp; &nbsp; &nbsp; Training Under &nbsp;
-&nbsp;&nbsp; &nbsp; </th>
-                                                                    <th scope="col">&nbsp; &nbsp; &nbsp; &nbsp; Name of Employer &nbsp;
-&nbsp;&nbsp; &nbsp; </th>
-                                                                    <th scope="col">Post Description</th>
-                                                                    <th scope="col">From</th>
-                                                                    <th scope="col">To</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
+                                                    <div class="row">
+                                                        <div class="table-responsive">
+                                                            <table class="table table-bordered">
+                                                                <thead>
+                                                                    <tr style="text-align: center;">
+                                                                        <%--  <th scope="col">Sno.</th>--%>
+                                                                        <th scope="col">&nbsp; &nbsp; &nbsp; &nbsp; Experienced in &nbsp;&nbsp;&nbsp; &nbsp; </th>
+                                                                        <th scope="col">&nbsp; &nbsp; &nbsp; &nbsp; Training Under &nbsp;&nbsp;&nbsp; &nbsp; </th>
+                                                                        <th scope="col">&nbsp; &nbsp; &nbsp; &nbsp; Name of Employer &nbsp;&nbsp;&nbsp; &nbsp; </th>
+                                                                        <th scope="col">Post Description</th>
+                                                                        <th scope="col">From</th>
+                                                                        <th scope="col">To</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
 
-                                                                  <tr id="TrApprenticeship" runat="server"  visible="true" autopostback="true">
-      <td>
-          <asp:Label ReadOnly="true" class="form-control" autocomplete="off" ID="txtApprenticeship"  Text="Apprenticeship Certificate" TabIndex="32" MaxLength="30" runat="server"></asp:Label>
+                                                                 <%--   <tr id="TrApprenticeship" runat="server" visible="true" autopostback="true">
+                                                                        <td>
+                                                                            <asp:Label ReadOnly="true" class="form-control" autocomplete="off" ID="txtApprenticeship" Text="Apprenticeship Certificate" TabIndex="32" MaxLength="30" runat="server"></asp:Label>
 
-      </td>
-      <td>
-          <asp:Label ReadOnly="true" class="form-control" autocomplete="off" ID="txtAppretinceExperience" TabIndex="32" MaxLength="30" runat="server"></asp:Label>
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:Label ReadOnly="true" class="form-control" autocomplete="off" ID="txtAppretinceExperience" TabIndex="32" MaxLength="30" runat="server"></asp:Label>
 
-      </td>
-      <td>
-          <asp:Label ReadOnly="true" class="form-control uppercase-label" autocomplete="off" ID="txtApprenticeshipEmployer" TabIndex="32" MaxLength="30" runat="server"></asp:Label>
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:Label ReadOnly="true" class="form-control uppercase-label" autocomplete="off" ID="txtApprenticeshipEmployer" TabIndex="32" MaxLength="30" runat="server"></asp:Label>
 
-      </td>
-      <td>
-          <asp:Label ReadOnly="true" class="form-control uppercase-label" autocomplete="off" ID="txtApprenticesPost" TabIndex="32" MaxLength="30" runat="server"></asp:Label>
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:Label ReadOnly="true" class="form-control uppercase-label" autocomplete="off" ID="txtApprenticesPost" TabIndex="32" MaxLength="30" runat="server"></asp:Label>
 
-      </td>
-      <td>
-          <asp:Label ReadOnly="true" class="form-control uppercase-label" autocomplete="off" ID="Apprenticesdatefrom" TabIndex="32" MaxLength="30" runat="server"></asp:Label>
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:Label ReadOnly="true" class="form-control uppercase-label" autocomplete="off" ID="Apprenticesdatefrom" TabIndex="32" MaxLength="30" runat="server"></asp:Label>
 
-      </td>
-      <td>
-          <asp:Label ReadOnly="true" class="form-control uppercase-label" autocomplete="off" ID="Apprenticesdateto" TabIndex="32" MaxLength="30" runat="server"></asp:Label>
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:Label ReadOnly="true" class="form-control uppercase-label" autocomplete="off" ID="Apprenticesdateto" TabIndex="32" MaxLength="30" runat="server"></asp:Label>
 
-      </td>
-  </tr>
-                                                                <tr>
-                                                                    <%--  <td style="text-align: center; font-size: 13px;">1
+                                                                        </td>
+                                                                    </tr>--%>
+                                                                    <tr>
+                                                                        <%--  <td style="text-align: center; font-size: 13px;">1
                                                             </td>--%>
-                                                                    <td>
-                                                                        <asp:TextBox ReadOnly="true" class="form-control" ID="txtExperience" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox ReadOnly="true" class="form-control" ID="txtTrainingunder" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" ID="txtExperienceEmployer" MaxLength="30" TabIndex="38" runat="server"> </asp:TextBox>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" ID="txtPostDescription" MaxLength="50" TabIndex="39" runat="server"> </asp:TextBox>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off"    min='0000-01-01' max='9999-01-01' ID="txtExperienceFrom" TabIndex="40" onchange="validateDates2()" runat="server"> </asp:TextBox>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off"    AutoPostBack="true" min='0000-01-01' max='9999-01-01' ID="txtExperienceTo" TabIndex="41" onchange="validateDates2()" runat="server"> </asp:TextBox>
+                                                                        <td>
+                                                                            <asp:TextBox ReadOnly="true" class="form-control" ID="txtExperience" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:TextBox ReadOnly="true" class="form-control" ID="txtTrainingunder" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" ID="txtExperienceEmployer" MaxLength="30" TabIndex="38" runat="server"> </asp:TextBox>
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" ID="txtPostDescription" MaxLength="50" TabIndex="39" runat="server"> </asp:TextBox>
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" min='0000-01-01' max='9999-01-01' ID="txtExperienceFrom" TabIndex="40" onchange="validateDates2()" runat="server"> </asp:TextBox>
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" AutoPostBack="true" min='0000-01-01' max='9999-01-01' ID="txtExperienceTo" TabIndex="41" onchange="validateDates2()" runat="server"> </asp:TextBox>
 
-                                                                    </td>
-                                                                </tr>
-                                                                <tr id="Experience1" runat="server" visible="false">
-                                                                    <%--  <td style="text-align: center; font-size: 13px;">1
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr id="Experience1" runat="server" visible="false">
+                                                                        <%--  <td style="text-align: center; font-size: 13px;">1
     </td>--%>
-                                                                    <td>
-                                                                        <asp:TextBox ReadOnly="true" class="form-control" ID="txtExperience1" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox ReadOnly="true" class="form-control" ID="txtTrainingunder1" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" ID="txtExperienceEmployer1" MaxLength="30" TabIndex="44" runat="server"> </asp:TextBox>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" ID="txtPostDescription1" MaxLength="50" TabIndex="45" runat="server"> </asp:TextBox>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off"    min='0000-01-01' max='9999-01-01' ID="txtExperienceFrom1" TabIndex="46" onchange="validateDates3()" runat="server"> </asp:TextBox>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox ReadOnly="true" class="form-control" AutoPostBack="true" autocomplete="off"    min='0000-01-01' max='9999-01-01' ID="txtExperienceTo1" TabIndex="47" onchange="validateDates3()" runat="server"> </asp:TextBox>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr id="Experience2" runat="server" visible="false">
-                                                                    <td>
-                                                                        <asp:TextBox ReadOnly="true" class="form-control" ID="txtExperience2" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox ReadOnly="true" class="form-control" ID="txtTrainingunder2" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" ID="txtExperienceEmployer2" MaxLength="30" TabIndex="49" runat="server"> </asp:TextBox>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" ID="txtPostDescription2" MaxLength="50" TabIndex="50" runat="server"> </asp:TextBox>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off"    min='0000-01-01' max='9999-01-01' ID="txtExperienceFrom2" TabIndex="51" onchange="validateDates4()" runat="server"> </asp:TextBox>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off"    AutoPostBack="true" min='0000-01-01' max='9999-01-01' ID="txtExperienceTo2" TabIndex="52" onchange="validateDates4()" runat="server"> </asp:TextBox>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr id="Experience3" runat="server" visible="false">
-                                                                    <%--  <td style="text-align: center; font-size: 13px;">1
+                                                                        <td>
+                                                                            <asp:TextBox ReadOnly="true" class="form-control" ID="txtExperience1" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:TextBox ReadOnly="true" class="form-control" ID="txtTrainingunder1" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" ID="txtExperienceEmployer1" MaxLength="30" TabIndex="44" runat="server"> </asp:TextBox>
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" ID="txtPostDescription1" MaxLength="50" TabIndex="45" runat="server"> </asp:TextBox>
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" min='0000-01-01' max='9999-01-01' ID="txtExperienceFrom1" TabIndex="46" onchange="validateDates3()" runat="server"> </asp:TextBox>
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:TextBox ReadOnly="true" class="form-control" AutoPostBack="true" autocomplete="off" min='0000-01-01' max='9999-01-01' ID="txtExperienceTo1" TabIndex="47" onchange="validateDates3()" runat="server"> </asp:TextBox>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr id="Experience2" runat="server" visible="false">
+                                                                        <td>
+                                                                            <asp:TextBox ReadOnly="true" class="form-control" ID="txtExperience2" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:TextBox ReadOnly="true" class="form-control" ID="txtTrainingunder2" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" ID="txtExperienceEmployer2" MaxLength="30" TabIndex="49" runat="server"> </asp:TextBox>
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" ID="txtPostDescription2" MaxLength="50" TabIndex="50" runat="server"> </asp:TextBox>
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" min='0000-01-01' max='9999-01-01' ID="txtExperienceFrom2" TabIndex="51" onchange="validateDates4()" runat="server"> </asp:TextBox>
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" AutoPostBack="true" min='0000-01-01' max='9999-01-01' ID="txtExperienceTo2" TabIndex="52" onchange="validateDates4()" runat="server"> </asp:TextBox>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr id="Experience3" runat="server" visible="false">
+                                                                        <%--  <td style="text-align: center; font-size: 13px;">1
     </td>--%>
-                                                                    <td>
-                                                                        <asp:TextBox ReadOnly="true" class="form-control" ID="txtExperience3" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox ReadOnly="true" class="form-control" ID="txtTrainingunder3" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" ID="txtExperienceEmployer3" MaxLength="30" TabIndex="55" runat="server"> </asp:TextBox>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" ID="txtPostDescription3" MaxLength="50" TabIndex="56" runat="server"> </asp:TextBox>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off"    min='0000-01-01' max='9999-01-01' ID="txtExperienceFrom3" TabIndex="57" onchange="validateDates5()" runat="server"> </asp:TextBox>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox ReadOnly="true" class="form-control" AutoPostBack="true" autocomplete="off"    min='0000-01-01' max='9999-01-01' ID="txtExperienceTo3" TabIndex="58" onchange="validateDates5()" runat="server"> </asp:TextBox>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr id="Experience4" runat="server" visible="false">
-                                                                    <td>
-                                                                        <asp:TextBox ReadOnly="true" class="form-control" ID="txtExperience4" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox ReadOnly="true" class="form-control" ID="txtTrainingunder4" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" ID="txtExperienceEmployer4" MaxLength="30" TabIndex="61" runat="server"> </asp:TextBox>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" ID="txtPostDescription4" MaxLength="50" TabIndex="62" runat="server"> </asp:TextBox>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off"    min='0000-01-01' max='9999-01-01' ID="txtExperienceFrom4" TabIndex="63" onchange="validateDates6()" runat="server"> </asp:TextBox>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off"    AutoPostBack="true" min='0000-01-01' max='9999-01-01' ID="txtExperienceTo4" TabIndex="64" onchange="validateDates6()" runat="server"> </asp:TextBox>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td colspan="4" style="font-size: 12px;"></td>
-                                                                    <td colspan="2" style="font-size: 12px;">
-                                                                        <p style="font-size: 12px;">Total Experience:</p>
-                                                                        <asp:TextBox class="form-control" ReadOnly="true" autocomplete="off" ID="txtTotalExperience" runat="server"> </asp:TextBox>
-                                                                    </td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
+                                                                        <td>
+                                                                            <asp:TextBox ReadOnly="true" class="form-control" ID="txtExperience3" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:TextBox ReadOnly="true" class="form-control" ID="txtTrainingunder3" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" ID="txtExperienceEmployer3" MaxLength="30" TabIndex="55" runat="server"> </asp:TextBox>
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" ID="txtPostDescription3" MaxLength="50" TabIndex="56" runat="server"> </asp:TextBox>
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" min='0000-01-01' max='9999-01-01' ID="txtExperienceFrom3" TabIndex="57" onchange="validateDates5()" runat="server"> </asp:TextBox>
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:TextBox ReadOnly="true" class="form-control" AutoPostBack="true" autocomplete="off" min='0000-01-01' max='9999-01-01' ID="txtExperienceTo3" TabIndex="58" onchange="validateDates5()" runat="server"> </asp:TextBox>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr id="Experience4" runat="server" visible="false">
+                                                                        <td>
+                                                                            <asp:TextBox ReadOnly="true" class="form-control" ID="txtExperience4" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:TextBox ReadOnly="true" class="form-control" ID="txtTrainingunder4" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" ID="txtExperienceEmployer4" MaxLength="30" TabIndex="61" runat="server"> </asp:TextBox>
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" ID="txtPostDescription4" MaxLength="50" TabIndex="62" runat="server"> </asp:TextBox>
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" min='0000-01-01' max='9999-01-01' ID="txtExperienceFrom4" TabIndex="63" onchange="validateDates6()" runat="server"> </asp:TextBox>
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" AutoPostBack="true" min='0000-01-01' max='9999-01-01' ID="txtExperienceTo4" TabIndex="64" onchange="validateDates6()" runat="server"> </asp:TextBox>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td colspan="4" style="font-size: 12px;"></td>
+                                                                        <td colspan="2" style="font-size: 12px;">
+                                                                            <p style="font-size: 12px;">Total Experience:</p>
+                                                                            <asp:TextBox class="form-control" ReadOnly="true" autocomplete="off" ID="txtTotalExperience" runat="server"> </asp:TextBox>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <hr />
-                                                <div class="row" style="margin-top: 15px;">
-                                                    <div class="col-md-5">
-                                                        <h4 class="card-title" style="font-size: 15px;">Are you a Retired Engineer.</h4>
+                                                    <hr />
+                                                    <div class="row" style="margin-top: 15px;">
+                                                        <div class="col-md-5">
+                                                            <h4 class="card-title" style="font-size: 15px;">Are you a Retired Engineer.</h4>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                            <asp:RadioButtonList ID="RadioButtonList1" Enabled="false" runat="server" AutoPostBack="true" RepeatDirection="Horizontal">
+                                                                <asp:ListItem Text="Yes" Value="0" Selected="True"></asp:ListItem>
+                                                                <asp:ListItem Text="No" Value="1"></asp:ListItem>
+                                                            </asp:RadioButtonList>
+                                                        </div>
                                                     </div>
-                                                    <div class="col-md-2">
-                                                        <asp:RadioButtonList ID="RadioButtonList1" Enabled="false" runat="server" AutoPostBack="true" RepeatDirection="Horizontal">
-                                                            <asp:ListItem Text="Yes" Value="0" Selected="True"></asp:ListItem>
-                                                            <asp:ListItem Text="No" Value="1"></asp:ListItem>
-                                                        </asp:RadioButtonList>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="table-responsive" id="RetiredEmployee" visible="false" runat="server">
-                                                        <table class="table table-bordered">
-                                                            <thead>
-                                                                <tr style="text-align: center;">
-                                                                    <th scope="col">Sno.</th>
-                                                                    <th scope="col">&nbsp; &nbsp; &nbsp; &nbsp; Name of Employer &nbsp;
+                                                    <div class="row">
+                                                        <div class="table-responsive" id="RetiredEmployee" visible="false" runat="server">
+                                                            <table class="table table-bordered">
+                                                                <thead>
+                                                                    <tr style="text-align: center;">
+                                                                        <th scope="col">Sno.</th>
+                                                                        <th scope="col">&nbsp; &nbsp; &nbsp; &nbsp; Name of Employer &nbsp;
                                                                  &nbsp;&nbsp; &nbsp; </th>
-                                                                    <th scope="col">Post Description</th>
-                                                                    <th scope="col">From</th>
-                                                                    <th scope="col">To</th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td style="text-align: center; font-size: 13px;">1
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" ID="txtEmployerName2" runat="server"> </asp:TextBox>
-                                                                    </td>
-                                                                    <td>
+                                                                        <th scope="col">Post Description</th>
+                                                                        <th scope="col">From</th>
+                                                                        <th scope="col">To</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td style="text-align: center; font-size: 13px;">1
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" ID="txtEmployerName2" runat="server"> </asp:TextBox>
+                                                                        </td>
+                                                                        <td>
 
-                                                                        <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" ID="txtDescription2" runat="server"> </asp:TextBox>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off"    min='0000-01-01' max='9999-01-01' ID="txtFrom2" runat="server"> </asp:TextBox>
-                                                                    </td>
-                                                                    <td>
-                                                                        <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off"    min='0000-01-01' max='9999-01-01' ID="txtTo2" runat="server"> </asp:TextBox>
-                                                                    </td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
+                                                                            <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" ID="txtDescription2" runat="server"> </asp:TextBox>
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" min='0000-01-01' max='9999-01-01' ID="txtFrom2" runat="server"> </asp:TextBox>
+                                                                        </td>
+                                                                        <td>
+                                                                            <asp:TextBox ReadOnly="true" class="form-control" autocomplete="off" min='0000-01-01' max='9999-01-01' ID="txtTo2" runat="server"> </asp:TextBox>
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div class="card-body" style="padding: 0px;">
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <h4 class="card-title" style="    margin-bottom: 5px; margin-top: 15px;">Checklist for submission of documents</h4>
-                                                            <%--<h6>The candidates are requested to ensure that the documents are genuine and
+                                                    <div class="card-body" style="padding: 0px;">
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <h4 class="card-title" style="margin-bottom: 5px; margin-top: 15px;">Checklist for submission of documents</h4>
+                                                                <%--<h6>The candidates are requested to ensure that the documents are genuine and
                                             should be self attested.</h6>--%>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <%-- Add gridview here --%>
-                    <%-- add gridview here --%>
-                    <asp:GridView ID="grd_Documemnts" CssClass="table table-bordered table-striped table-responsive" runat="server"  autopostback="true" OnRowCommand="grd_Documemnts_RowCommand" OnRowDataBound="grd_Documemnts_RowDataBound"  AutoGenerateColumns="false">
-                        <HeaderStyle BackColor="#B7E2F0" />
-                        <Columns>
-                            <asp:TemplateField HeaderText="SNo">
-                                <HeaderStyle Width="5%" CssClass="headercolor tdwidth" />
-                                <ItemStyle Width="5%" />
-                                <ItemTemplate>
-                                    <%#Container.DataItemIndex+1 %>
-                                </ItemTemplate>
-                            </asp:TemplateField>                          
-                            <asp:BoundField DataField="DocumentName" HeaderText="Documents Name">
-                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="Left" Width="15%" />
-                            </asp:BoundField>
-                            <asp:TemplateField HeaderText="Documents" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
-                                <ItemTemplate>
-                                    <asp:LinkButton ID="LnkDocumemtPath" runat="server" CommandArgument='<%# Bind("DocumentPath") %>' CommandName="Select">Click here to view document </asp:LinkButton>
-                                </ItemTemplate>
-                                <ItemStyle HorizontalAlign="Center" Width="2%"></ItemStyle>
-                                <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
-                            </asp:TemplateField>                                                     
-                        </Columns>
-                        <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
-                    </asp:GridView>                    
-               
-                                                             
+                                                        <div class="row">
+                                                            <div class="col-md-12">
+                                                                <%-- Add gridview here --%>
+                                                                <%-- add gridview here --%>
+                                                                <asp:GridView ID="grd_Documemnts" CssClass="table table-bordered table-striped table-responsive" runat="server" autopostback="true" OnRowCommand="grd_Documemnts_RowCommand" OnRowDataBound="grd_Documemnts_RowDataBound" AutoGenerateColumns="false">
+                                                                    <HeaderStyle BackColor="#B7E2F0" />
+                                                                    <Columns>
+                                                                        <asp:TemplateField HeaderText="SNo">
+                                                                            <HeaderStyle Width="5%" CssClass="headercolor tdwidth" />
+                                                                            <ItemStyle Width="5%" />
+                                                                            <ItemTemplate>
+                                                                                <%#Container.DataItemIndex+1 %>
+                                                                            </ItemTemplate>
+                                                                        </asp:TemplateField>
+                                                                        <asp:BoundField DataField="DocumentName" HeaderText="Documents Name">
+                                                                            <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
+                                                                            <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                                                        </asp:BoundField>
+                                                                        <asp:TemplateField HeaderText="Documents" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+                                                                            <ItemTemplate>
+                                                                                <asp:LinkButton ID="LnkDocumemtPath" runat="server" CommandArgument='<%# Bind("DocumentPath") %>' CommandName="Select">Click here to view document </asp:LinkButton>
+                                                                            </ItemTemplate>
+                                                                            <ItemStyle HorizontalAlign="Center" Width="2%"></ItemStyle>
+                                                                            <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                                                                        </asp:TemplateField>
+                                                                    </Columns>
+                                                                    <PagerSettings FirstPageText="First" LastPageText="Last" Mode="NumericFirstLast" />
+                                                                </asp:GridView>
+
+
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-md-5">&nbsp;</div> 
-                                                         <div class="col-6" style="text-align: end">
+                                                        <div class="row">
+                                                            <div class="col-md-5">&nbsp;</div>
+                                                            <div class="col-6" style="text-align: end">
 
-                               <asp:Image ID="mySignature" runat="server" Width="300" Height="90" Style="bottom: 140px; margin-left: -300px;" />
-                               <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18PX; font-weight: 700; margin-right: 55px;">Signature of Applicant</h6>
+                                                                <asp:Image ID="mySignature" runat="server" Width="300" Height="90" Style="bottom: 140px; margin-left: -300px;" />
+                                                                <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18PX; font-weight: 700; margin-right: 55px;">Signature of Applicant</h6>
 
-                           </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row" style="margin-left: 0px;">
+                                                            <div class="col-md-6" style="padding-left: 0px;">
+                                                                <asp:Button type="button" ID="btnBack" Text="Back" runat="server" class="btn btn-primary" OnClick="btnBack_Click" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" />
+                                                            </div>
+                                                            <div class="col-md-6" style="text-align: end;">
+                                                                <%--<asp:Button type="button" ValidationGroup="Submit" AutoPostback="true" ID="btnNext" Text="Submit" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" />--%>
+                                                            </div>
+                                                            <asp:HiddenField ID="hdnId" runat="server" />
+                                                        </div>
+
+
                                                     </div>
-                                                     <div class="row" style="margin-left: 0px;">
-                                                <div class="col-md-6" style="padding-left: 0px;">
-                                                    <asp:Button type="button" ID="btnBack" Text="Back" runat="server" class="btn btn-primary" OnClick="btnBack_Click" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" />
                                                 </div>
-                                                <div class="col-md-6" style="text-align: end;">
-                                                    <%--<asp:Button type="button" ValidationGroup="Submit" AutoPostback="true" ID="btnNext" Text="Submit" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" />--%>
-                                                </div>
-                                                <asp:HiddenField ID="hdnId" runat="server" />
+
                                             </div>
-                                                        
-                                                           
-                                                                                                    </div>
-                                              </div>
-                                              
-                                            </div>
-                                           
+
                                         </div>
                                     </div>
                                 </div>

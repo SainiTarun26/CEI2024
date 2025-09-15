@@ -12298,19 +12298,19 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
 
 
         public void updateExperienceforWireman(string userid,
-            string Apprenticesexperience, string Apprenticestraining, string Apprenticesname, string Apprenticesjobdesc, string Apprenticesexpfrom, string Apprenticesexpto,
-            string Experience, string TraningUnder, string ExperienceEmployerName, string ExperiencePostDescription, string ExperienceFromDate, string ExperienceToDate,
-            string Experience1, string TraningUnder1, string ExperienceEmployerName1, string ExperiencePostDescription1, string ExperienceFromDate1, string ExperienceToDate1,
-            string Experience2, string TraningUnder2, string ExperienceEmployerName2, string ExperiencePostDescription2, string ExperienceFromDate2, string ExperienceToDate2,
-            string Experience3, string TraningUnder3, string ExperienceEmployerName3, string ExperiencePostDescription3, string ExperienceFromDate3, string ExperienceToDate3,
-            string Experience4, string TraningUnder4, string ExperienceEmployerName4, string ExperiencePostDescription4, string ExperienceFromDate4, string ExperienceToDate4,
-            string Experience5, string TraningUnder5, string ExperienceEmployerName5, string ExperiencePostDescription5, string ExperienceFromDate5, string ExperienceToDate5,
-            string Experience6, string TraningUnder6, string ExperienceEmployerName6, string ExperiencePostDescription6, string ExperienceFromDate6, string ExperienceToDate6,
-            string Experience7, string TraningUnder7, string ExperienceEmployerName7, string ExperiencePostDescription7, string ExperienceFromDate7, string ExperienceToDate7,
-            string Experience8, string TraningUnder8, string ExperienceEmployerName8, string ExperiencePostDescription8, string ExperienceFromDate8, string ExperienceToDate8,
-            string Experience9, string TraningUnder9, string ExperienceEmployerName9, string ExperiencePostDescription9, string ExperienceFromDate9, string ExperienceToDate9,
-            string TotalExperience
-)
+             ////string Apprenticesexperience, string Apprenticestraining, string Apprenticesname, string Apprenticesjobdesc, string Apprenticesexpfrom, string Apprenticesexpto,
+             string Experience, string TraningUnder, string ExperienceEmployerName, string ExperiencePostDescription, string ExperienceFromDate, string ExperienceToDate,
+             string Experience1, string TraningUnder1, string ExperienceEmployerName1, string ExperiencePostDescription1, string ExperienceFromDate1, string ExperienceToDate1,
+             string Experience2, string TraningUnder2, string ExperienceEmployerName2, string ExperiencePostDescription2, string ExperienceFromDate2, string ExperienceToDate2,
+             string Experience3, string TraningUnder3, string ExperienceEmployerName3, string ExperiencePostDescription3, string ExperienceFromDate3, string ExperienceToDate3,
+             string Experience4, string TraningUnder4, string ExperienceEmployerName4, string ExperiencePostDescription4, string ExperienceFromDate4, string ExperienceToDate4,
+             string Experience5, string TraningUnder5, string ExperienceEmployerName5, string ExperiencePostDescription5, string ExperienceFromDate5, string ExperienceToDate5,
+             string Experience6, string TraningUnder6, string ExperienceEmployerName6, string ExperiencePostDescription6, string ExperienceFromDate6, string ExperienceToDate6,
+             string Experience7, string TraningUnder7, string ExperienceEmployerName7, string ExperiencePostDescription7, string ExperienceFromDate7, string ExperienceToDate7,
+             string Experience8, string TraningUnder8, string ExperienceEmployerName8, string ExperiencePostDescription8, string ExperienceFromDate8, string ExperienceToDate8,
+             string Experience9, string TraningUnder9, string ExperienceEmployerName9, string ExperiencePostDescription9, string ExperienceFromDate9, string ExperienceToDate9,
+             string TotalExperience
+ )
         {
 
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString);
@@ -12322,26 +12322,26 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
             SqlCommand cmd = new SqlCommand("sp_updateExperienceforWireman", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@userid", userid);
-            cmd.Parameters.AddWithValue("@ApprenticeExperience", String.IsNullOrEmpty(Apprenticesexperience) ? (object)DBNull.Value : Apprenticesexperience);
-            cmd.Parameters.AddWithValue("@ApprenticeTrainingUnder", Apprenticestraining == "Select" ? (object)DBNull.Value : Apprenticestraining);
-            cmd.Parameters.AddWithValue("@ApprenticenameofEmployer", String.IsNullOrEmpty(Apprenticesname) ? (object)DBNull.Value : Apprenticesname);
-            cmd.Parameters.AddWithValue("@ApprenticePostDescription", String.IsNullOrEmpty(Apprenticesjobdesc) ? (object)DBNull.Value : Apprenticesjobdesc);
-            if (string.IsNullOrWhiteSpace(Apprenticesexpfrom))
-            {
-                cmd.Parameters.AddWithValue("@ApprenticeExperienceFromDate", DBNull.Value);
-            }
-            else
-            {
-                cmd.Parameters.AddWithValue("@ApprenticeExperienceFromDate", Convert.ToDateTime(Apprenticesexpfrom).Date);
-            }
-            if (string.IsNullOrWhiteSpace(Apprenticesexpto))
-            {
-                cmd.Parameters.AddWithValue("@ApprenticeExperienceToDate", DBNull.Value);
-            }
-            else
-            {
-                cmd.Parameters.AddWithValue("@ApprenticeExperienceToDate", Convert.ToDateTime(Apprenticesexpto).Date);
-            }
+            ////cmd.Parameters.AddWithValue("@ApprenticeExperience", String.IsNullOrEmpty(Apprenticesexperience) ? (object)DBNull.Value : Apprenticesexperience);
+            ////cmd.Parameters.AddWithValue("@ApprenticeTrainingUnder", Apprenticestraining == "Select" ? (object)DBNull.Value : Apprenticestraining);
+            ////cmd.Parameters.AddWithValue("@ApprenticenameofEmployer", String.IsNullOrEmpty(Apprenticesname) ? (object)DBNull.Value : Apprenticesname);
+            ////cmd.Parameters.AddWithValue("@ApprenticePostDescription", String.IsNullOrEmpty(Apprenticesjobdesc) ? (object)DBNull.Value : Apprenticesjobdesc);
+            ////if (string.IsNullOrWhiteSpace(Apprenticesexpfrom))
+            ////{
+            ////    cmd.Parameters.AddWithValue("@ApprenticeExperienceFromDate", DBNull.Value);
+            ////}
+            ////else
+            ////{
+            ////    cmd.Parameters.AddWithValue("@ApprenticeExperienceFromDate", Convert.ToDateTime(Apprenticesexpfrom).Date);
+            ////}
+            ////if (string.IsNullOrWhiteSpace(Apprenticesexpto))
+            ////{
+            ////    cmd.Parameters.AddWithValue("@ApprenticeExperienceToDate", DBNull.Value);
+            ////}
+            ////else
+            ////{
+            ////    cmd.Parameters.AddWithValue("@ApprenticeExperienceToDate", Convert.ToDateTime(Apprenticesexpto).Date);
+            ////}
 
             cmd.Parameters.AddWithValue("@ExperiencedIn", Experience == "Select" ? (object)DBNull.Value : Experience);
             cmd.Parameters.AddWithValue("@TrainingUnder", TraningUnder == "Select" ? (object)DBNull.Value : TraningUnder);
@@ -12560,11 +12560,11 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
         }
 
         public void UpdateEducationDetailsByIdforWireman(string UserId, string UniversityName10th, int PassingYear10th, string MarksObtained10th, string MarksMax10th, string Percentage10th,
-        string certificateWirman, string UniversityNameWirman, int PassingYearWirman, string MarksObtainedWirman, string MarksMaxWirman, string PercentageWirman,
-  string NameofDiplomaDegree, string UniversityNameDiplomaorDegree, int PassingYearDiplomaorDegree, string MarksObtainedDiplomaorDegree, string MarksMaxDiplomaorDegree, string PercentageDiplomaorDegree,
-  string NameofDegree, string UniversityNamePG, int PassingYearPG, string MarksObtainedPG, string MarksMaxPG, string PercentagePG,
-  string NameofMasters, string MastersUniversityName, int MastersPassingYear, string MasterMarksObtained, string MastersMarksMax, string MatersPercentage, string ApprenticeshipEmployer,
-  string ApprenticesPost, string Apprenticesdatefrom, string Apprenticesdateto)
+       string certificateWirman, string UniversityNameWirman, int PassingYearWirman, string MarksObtainedWirman, string MarksMaxWirman, string PercentageWirman,
+ string NameofDiplomaDegree, string UniversityNameDiplomaorDegree, int PassingYearDiplomaorDegree, string MarksObtainedDiplomaorDegree, string MarksMaxDiplomaorDegree, string PercentageDiplomaorDegree,
+ string NameofDegree, string UniversityNamePG, int PassingYearPG, string MarksObtainedPG, string MarksMaxPG, string PercentagePG,
+ string NameofMasters, string MastersUniversityName, int MastersPassingYear, string MasterMarksObtained, string MastersMarksMax, string MatersPercentage)
+        ////string ApprenticeshipEmployer, string ApprenticesPost, string Apprenticesdatefrom, string Apprenticesdateto)
         {
 
 
@@ -12616,24 +12616,24 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
             cmd.Parameters.AddWithValue("@MastersMarksMax", String.IsNullOrEmpty(MastersMarksMax) ? null : MastersMarksMax);
             cmd.Parameters.AddWithValue("@MastersPercentage", String.IsNullOrEmpty(MatersPercentage) ? null : MatersPercentage);
 
-            cmd.Parameters.AddWithValue("@ApprenticenameofEmployer", String.IsNullOrEmpty(ApprenticeshipEmployer) ? (object)DBNull.Value : ApprenticeshipEmployer);
-            cmd.Parameters.AddWithValue("@ApprenticePostDescription", String.IsNullOrEmpty(ApprenticesPost) ? (object)DBNull.Value : ApprenticesPost);
-            if (string.IsNullOrWhiteSpace(Apprenticesdatefrom))
-            {
-                cmd.Parameters.AddWithValue("@ApprenticeExperienceFromDate", DBNull.Value);
-            }
-            else
-            {
-                cmd.Parameters.AddWithValue("@ApprenticeExperienceFromDate", Convert.ToDateTime(Apprenticesdatefrom).Date);
-            }
-            if (string.IsNullOrWhiteSpace(Apprenticesdateto))
-            {
-                cmd.Parameters.AddWithValue("@ApprenticeExperienceToDate", DBNull.Value);
-            }
-            else
-            {
-                cmd.Parameters.AddWithValue("@ApprenticeExperienceToDate", Convert.ToDateTime(Apprenticesdateto).Date);
-            }
+            ////cmd.Parameters.AddWithValue("@ApprenticenameofEmployer", String.IsNullOrEmpty(ApprenticeshipEmployer) ? (object)DBNull.Value : ApprenticeshipEmployer);
+            ////cmd.Parameters.AddWithValue("@ApprenticePostDescription", String.IsNullOrEmpty(ApprenticesPost) ? (object)DBNull.Value : ApprenticesPost);
+            ////if (string.IsNullOrWhiteSpace(Apprenticesdatefrom))
+            ////{
+            ////    cmd.Parameters.AddWithValue("@ApprenticeExperienceFromDate", DBNull.Value);
+            ////}
+            ////else
+            ////{
+            ////    cmd.Parameters.AddWithValue("@ApprenticeExperienceFromDate", Convert.ToDateTime(Apprenticesdatefrom).Date);
+            ////}
+            ////if (string.IsNullOrWhiteSpace(Apprenticesdateto))
+            ////{
+            ////    cmd.Parameters.AddWithValue("@ApprenticeExperienceToDate", DBNull.Value);
+            ////}
+            ////else
+            ////{
+            ////    cmd.Parameters.AddWithValue("@ApprenticeExperienceToDate", Convert.ToDateTime(Apprenticesdateto).Date);
+            ////}
 
             cmd.ExecuteNonQuery();
             con.Close();
@@ -12976,26 +12976,26 @@ string DaysDelay, string RenewalTime, string amount, string GRNno, string Challa
         }
 
         public void InsertWiremanQualification(
-     string UserId, string UniversityName10th, int PassingYear10th, string MarksObtained10th, string MarksMax10th, string Percentage10th,
-     string Name12ITIDiploma, string UniversityName12thorITI, int PassingYear12thorITI, string MarksObtained12thorITI, string MarksMax12thorITI, string Percentage12thorITI,
-     string NameofDiplomaDegree, string UniversityNameDiplomaorDegree, int PassingYearDiplomaorDegree, string MarksObtainedDiplomaorDegree, string MarksMaxDiplomaorDegree, string PercentageDiplomaorDegree,
-     string NameofDegree, string UniversityNamePG, int PassingYearPG, string MarksObtainedPG, string MarksMaxPG, string PercentagePG,
-     string NameofMasters, string MastersUniversityName, int MastersPassingYear, string MasterMarksObtained, string MastersMarksMax, string MatersPercentage,
-     string IsCertificateofCompetency, string CertificateofCompetency1, string PermitNo1, string IssuingAuthority1, string IssueDate1, string ExpiryDate,
-     string EmployedPermanent, string PermanentEmployerName, string PostDescription, string FromDate, string ToDate,
-     string Apprenticesexperience, string Apprenticestraining, string Apprenticesname, string Apprenticesjobdesc, string Apprenticesexpfrom, string Apprenticesexpto,
-     string Experience, string TraningUnder, string ExperienceEmployerName, string ExperiencePostDescription, string ExperienceFromDate, string ExperienceToDate,
-     string Experience1, string TraningUnder1, string ExperienceEmployerName1, string ExperiencePostDescription1, string ExperienceFromDate1, string ExperienceToDate1,
-     string Experience2, string TraningUnder2, string ExperienceEmployerName2, string ExperiencePostDescription2, string ExperienceFromDate2, string ExperienceToDate2,
-     string Experience3, string TraningUnder3, string ExperienceEmployerName3, string ExperiencePostDescription3, string ExperienceFromDate3, string ExperienceToDate3,
-     string Experience4, string TraningUnder4, string ExperienceEmployerName4, string ExperiencePostDescription4, string ExperienceFromDate4, string ExperienceToDate4,
-     string Experience5, string TraningUnder5, string ExperienceEmployerName5, string ExperiencePostDescription5, string ExperienceFromDate5, string ExperienceToDate5,
-     string Experience6, string TraningUnder6, string ExperienceEmployerName6, string ExperiencePostDescription6, string ExperienceFromDate6, string ExperienceToDate6,
-     string Experience7, string TraningUnder7, string ExperienceEmployerName7, string ExperiencePostDescription7, string ExperienceFromDate7, string ExperienceToDate7,
-     string Experience8, string TraningUnder8, string ExperienceEmployerName8, string ExperiencePostDescription8, string ExperienceFromDate8, string ExperienceToDate8,
-     string Experience9, string TraningUnder9, string ExperienceEmployerName9, string ExperiencePostDescription9, string ExperienceFromDate9, string ExperienceToDate9,
-     string TotalExperience, string RetiredEngineer, string RetiredEmployerName, string RetiredPostDescription, string RetiredFromDate, string RetiredToDate
- )
+      string UserId, string UniversityName10th, int PassingYear10th, string MarksObtained10th, string MarksMax10th, string Percentage10th,
+      string Name12ITIDiploma, string UniversityName12thorITI, int PassingYear12thorITI, string MarksObtained12thorITI, string MarksMax12thorITI, string Percentage12thorITI,
+      string NameofDiplomaDegree, string UniversityNameDiplomaorDegree, int PassingYearDiplomaorDegree, string MarksObtainedDiplomaorDegree, string MarksMaxDiplomaorDegree, string PercentageDiplomaorDegree,
+      string NameofDegree, string UniversityNamePG, int PassingYearPG, string MarksObtainedPG, string MarksMaxPG, string PercentagePG,
+      string NameofMasters, string MastersUniversityName, int MastersPassingYear, string MasterMarksObtained, string MastersMarksMax, string MatersPercentage,
+      string IsCertificateofCompetency, string CertificateofCompetency1, string PermitNo1, string IssuingAuthority1, string IssueDate1, string ExpiryDate,
+      string EmployedPermanent, string PermanentEmployerName, string PostDescription, string FromDate, string ToDate,
+      //// string Apprenticesexperience, string Apprenticestraining, string Apprenticesname, string Apprenticesjobdesc, string Apprenticesexpfrom, string Apprenticesexpto,
+      string Experience, string TraningUnder, string ExperienceEmployerName, string ExperiencePostDescription, string ExperienceFromDate, string ExperienceToDate,
+      string Experience1, string TraningUnder1, string ExperienceEmployerName1, string ExperiencePostDescription1, string ExperienceFromDate1, string ExperienceToDate1,
+      string Experience2, string TraningUnder2, string ExperienceEmployerName2, string ExperiencePostDescription2, string ExperienceFromDate2, string ExperienceToDate2,
+      string Experience3, string TraningUnder3, string ExperienceEmployerName3, string ExperiencePostDescription3, string ExperienceFromDate3, string ExperienceToDate3,
+      string Experience4, string TraningUnder4, string ExperienceEmployerName4, string ExperiencePostDescription4, string ExperienceFromDate4, string ExperienceToDate4,
+      string Experience5, string TraningUnder5, string ExperienceEmployerName5, string ExperiencePostDescription5, string ExperienceFromDate5, string ExperienceToDate5,
+      string Experience6, string TraningUnder6, string ExperienceEmployerName6, string ExperiencePostDescription6, string ExperienceFromDate6, string ExperienceToDate6,
+      string Experience7, string TraningUnder7, string ExperienceEmployerName7, string ExperiencePostDescription7, string ExperienceFromDate7, string ExperienceToDate7,
+      string Experience8, string TraningUnder8, string ExperienceEmployerName8, string ExperiencePostDescription8, string ExperienceFromDate8, string ExperienceToDate8,
+      string Experience9, string TraningUnder9, string ExperienceEmployerName9, string ExperiencePostDescription9, string ExperienceFromDate9, string ExperienceToDate9,
+      string TotalExperience, string RetiredEngineer, string RetiredEmployerName, string RetiredPostDescription, string RetiredFromDate, string RetiredToDate
+  )
         {
 
             {
@@ -13083,26 +13083,26 @@ string DaysDelay, string RenewalTime, string amount, string GRNno, string Challa
                     cmd.Parameters.AddWithValue("@ToDate", Convert.ToDateTime(ToDate).Date);
                 }
 
-                cmd.Parameters.AddWithValue("@ApprenticeExperience", String.IsNullOrEmpty(Apprenticesexperience) ? null : Apprenticesexperience);
-                cmd.Parameters.AddWithValue("@ApprenticeTrainingUnder", Apprenticestraining == "Select" ? null : Apprenticestraining);
-                cmd.Parameters.AddWithValue("@ApprenticenameofEmployer", String.IsNullOrEmpty(Apprenticesname) ? null : Apprenticesname);
-                cmd.Parameters.AddWithValue("@ApprenticePostDescription", String.IsNullOrEmpty(Apprenticesjobdesc) ? null : Apprenticesjobdesc);
-                if (string.IsNullOrWhiteSpace(Apprenticesexpfrom))
-                {
-                    cmd.Parameters.AddWithValue("@ApprenticeExperienceFromDate", DBNull.Value);
-                }
-                else
-                {
-                    cmd.Parameters.AddWithValue("@ApprenticeExperienceFromDate", Convert.ToDateTime(Apprenticesexpfrom).Date);
-                }
-                if (string.IsNullOrWhiteSpace(Apprenticesexpto))
-                {
-                    cmd.Parameters.AddWithValue("@ApprenticeExperienceToDate", DBNull.Value);
-                }
-                else
-                {
-                    cmd.Parameters.AddWithValue("@ApprenticeExperienceToDate", Convert.ToDateTime(Apprenticesexpto).Date);
-                }
+                ////cmd.Parameters.AddWithValue("@ApprenticeExperience", String.IsNullOrEmpty(Apprenticesexperience) ? null : Apprenticesexperience);
+                ////cmd.Parameters.AddWithValue("@ApprenticeTrainingUnder", Apprenticestraining == "Select" ? null : Apprenticestraining);
+                ////cmd.Parameters.AddWithValue("@ApprenticenameofEmployer", String.IsNullOrEmpty(Apprenticesname) ? null : Apprenticesname);
+                ////cmd.Parameters.AddWithValue("@ApprenticePostDescription", String.IsNullOrEmpty(Apprenticesjobdesc) ? null : Apprenticesjobdesc);
+                ////if (string.IsNullOrWhiteSpace(Apprenticesexpfrom))
+                ////{
+                ////    cmd.Parameters.AddWithValue("@ApprenticeExperienceFromDate", DBNull.Value);
+                ////}
+                ////else
+                ////{
+                ////    cmd.Parameters.AddWithValue("@ApprenticeExperienceFromDate", Convert.ToDateTime(Apprenticesexpfrom).Date);
+                ////}
+                ////if (string.IsNullOrWhiteSpace(Apprenticesexpto))
+                ////{
+                ////    cmd.Parameters.AddWithValue("@ApprenticeExperienceToDate", DBNull.Value);
+                ////}
+                ////else
+                ////{
+                ////    cmd.Parameters.AddWithValue("@ApprenticeExperienceToDate", Convert.ToDateTime(Apprenticesexpto).Date);
+                ////}
 
                 cmd.Parameters.AddWithValue("@ExperiencedIn", Experience == "Select" ? null : Experience);
                 cmd.Parameters.AddWithValue("@TrainingUnder", TraningUnder == "Select" ? null : TraningUnder);
@@ -13998,9 +13998,9 @@ string DaysDelay, string RenewalTime, string amount, string GRNno, string Challa
 
             smtpClient.Send(mailMessage);
         }
-        public DataSet GetContractorList(string SupervisiorId)
+        public DataSet GetContractorList()
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetContractorList", SupervisiorId);
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetContractorList");
         }
         public DataTable GetContractorViewDetails(string ContractorId)
         {

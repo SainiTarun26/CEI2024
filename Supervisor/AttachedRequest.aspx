@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Supervisor/Supervisor.Master" AutoEventWireup="true" CodeBehind="AttachedRequest.aspx.cs" Inherits="CEIHaryana.Supervisor.AttachedRequest" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
@@ -211,56 +212,57 @@
             overflow: hidden;
             padding: 0px 4px 0px 6px;
         }
+
         td {
-    padding: 10px 10px 10px 10px !important;
-}
+            padding: 10px 10px 10px 10px !important;
+        }
     </style>
-        <script type="text/javascript">
-            function isNumberKey(evt) {
-                var charCode = (evt.which) ? evt.which : event.keyCode
-                if (charCode > 31 && (charCode < 48 || charCode > 57)) {
-                    return false;
-                }
+    <script type="text/javascript">
+        function isNumberKey(evt) {
+            var charCode = (evt.which) ? evt.which : event.keyCode
+            if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+                return false;
+            }
+            return true;
+        }
+
+        //Allow Only Aplhabet, Delete and Backspace
+
+        function isAlpha(keyCode) {
+
+            return ((keyCode >= 65 && keyCode <= 90) || keyCode == 8 || keyCode == 32 || keyCode == 190)
+
+        }
+
+        function alphabetKey(e) {
+            var allow = ' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz \b'
+            var k;
+            k = document.all ? parseInt(e.keyCode) : parseInt(e.which);
+            return (allow.indexOf(String.fromCharCode(k)) != -1);
+        }
+    </script>
+    <script type="text/javascript">
+        function isvalidphoneno() {
+
+            var Phone1 = document.getElementById("<%=TxtContactNo.ClientID %>");
+            phoneNo = Phone1.value;
+            var lblErrorContect = document.getElementById("lblErrorContect");
+            lblErrorContect.innerHTML = "";
+            var expr = /^[6-9]\d{9}$/;
+            if (phoneNo == "") {
+                lblErrorContect.innerHTML = "Please Enter Contact Number" + "\n";
+                return false;
+            }
+            else if (expr.test(phoneNo)) {
+                lblErrorContect.innerHTML = "";
                 return true;
             }
-
-            //Allow Only Aplhabet, Delete and Backspace
-
-            function isAlpha(keyCode) {
-
-                return ((keyCode >= 65 && keyCode <= 90) || keyCode == 8 || keyCode == 32 || keyCode == 190)
-
+            else {
+                lblErrorContect.innerHTML = "Invalid Contact Number" + "\n";
+                return false;
             }
-
-            function alphabetKey(e) {
-                var allow = ' ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz \b'
-                var k;
-                k = document.all ? parseInt(e.keyCode) : parseInt(e.which);
-                return (allow.indexOf(String.fromCharCode(k)) != -1);
-            }
-        </script>
-     <script type="text/javascript">
-         function isvalidphoneno() {
-
-             var Phone1 = document.getElementById("<%=TxtContactNo.ClientID %>");
-             phoneNo = Phone1.value;
-             var lblErrorContect = document.getElementById("lblErrorContect");
-             lblErrorContect.innerHTML = "";
-             var expr = /^[6-9]\d{9}$/;
-             if (phoneNo == "") {
-                 lblErrorContect.innerHTML = "Please Enter Contact Number" + "\n";
-                 return false;
-             }
-             else if (expr.test(phoneNo)) {
-                 lblErrorContect.innerHTML = "";
-                 return true;
-             }
-             else {
-                 lblErrorContect.innerHTML = "Invalid Contact Number" + "\n";
-                 return false;
-             }
-         }
-     </script>
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>
@@ -289,116 +291,97 @@
                             </div>
                         </div>
                         <br />
-                              <h7 class="card-title fw-semibold mb-4">Contractor Details</h7>
+                        <h7 class="card-title fw-semibold mb-4">Contractor Details</h7>
                         <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                             <div class="row" style="margin-bottom: 15px;">
                                 <asp:HiddenField ID="hdnId" runat="server" />
-                                  <div class="col-md-4" runat="server" visible="false">
+                                <div class="col-md-4" runat="server" visible="false">
                                     <label>
-                                       Contractor Id
-           <samp style="color: red">* </samp>
+                                        Contractor Id<samp style="color: red">* </samp>
                                     </label>
-                                   
-    <asp:TextBox class="form-control" ID="txtControctorId" runat="server" autocomplete="off" ReadOnly="true" onKeyPress="return alphabetKey(event);" TabIndex="1"
-        MaxLength="200" Style="margin-left: 18px;">
-    </asp:TextBox>
-</div>
-                                <div class="col-md-4">
-                            <label for="Division">
-                                Contractor List<samp style="color: red"> * </samp>
-                            </label>
-                           <asp:DropDownList Style="width: 100% !important;" class="form-control  select-form select2" ID="ddlContractor" runat="server" TabIndex="16" AutoPostBack="true" OnSelectedIndexChanged="ddlContractor_SelectedIndexChanged">
-                      </asp:DropDownList>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" Text="Please Select any Contractor" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlContractor" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-                        </div>
-                    <div class="col-md-4" id="UserId" runat="server" visible="false">
-                                    <label>
-                                       Contractor Name
-           <samp style="color: red">* </samp>
-                                    </label>
-                                   
-    <asp:TextBox class="form-control" ID="txtReId" runat="server" autocomplete="off"  onKeyPress="return alphabetKey(event);" TabIndex="1"
-        MaxLength="200" Style="margin-left: 18px;">
-    </asp:TextBox>
-</div>
-                                 <div class="col-md-4">
-                                     <label>
-                                        Contractor Name
-            <samp style="color: red">* </samp>
-                                     </label>
-                                    
-     <asp:TextBox class="form-control" ID="txtContractorName" runat="server" autocomplete="off"  onKeyPress="return alphabetKey(event);" TabIndex="1"
-         MaxLength="200" Style="margin-left: 18px;">
-     </asp:TextBox>
- </div>
-                                <div class="col-md-4">
-                                    <label>
-                                        Contractor Licence No.
-                                        <samp style="color: red">* </samp>
-                                    </label>
-
-                                    <asp:TextBox class="form-control" ID="txtLicenceNo" runat="server"  autocomplete="off" TabIndex="1"
+                                    <asp:TextBox class="form-control" ID="txtControctorId" runat="server" autocomplete="off" ReadOnly="true" onKeyPress="return alphabetKey(event);" TabIndex="1"
                                         MaxLength="200" Style="margin-left: 18px;">
                                     </asp:TextBox>
                                 </div>
-                          <div class="row" style="margin-top:15px; margin-left:4px;">
-    <div class="col-md-4">
-        <label>
-            Firm Name <samp style="color: red">*</samp>
-        </label>
-        <asp:TextBox class="form-control" ID="txtFirmName" runat="server" autocomplete="off" TabIndex="1"
-            MaxLength="200" Style="margin-left: 18px;">
-        </asp:TextBox>
-    </div>
-
-    <div class="col-md-4">
-        <label>
-            Email Id <samp style="color: red">*</samp>
-        </label>
-        <asp:TextBox class="form-control" ID="TxtEmailId" runat="server" autocomplete="off" TabIndex="1"
-            MaxLength="200" Style="margin-left: 18px;">
-        </asp:TextBox>
-    </div>
-
-    <div class="col-md-4">
-        <label>
-            Contact No. <samp style="color: red">*</samp>
-        </label>
-        <asp:TextBox class="form-control" ID="TxtContactNo" runat="server" onKeyPress="return isNumberKey(event);" onkeyup="return isvalidphoneno();" autocomplete="off" TabIndex="1"
-            MaxLength="10" Style="margin-left: 18px;">
-        </asp:TextBox>
-          <span id="lblErrorContect" style="color: red"></span>
-    </div>
-
- 
-</div>
-
-   <div class="col-md-4">
-       <label>
-           Attachment <samp style="color: red">*</samp>
-       </label>
-       <asp:FileUpload ID="fileAttachment" runat="server" CssClass="form-control" TabIndex="1"
-           Style="margin-left: 18px; padding-top: 2px; padding-left: 5px;" accept=".pdf" />
-       <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server"
-           ControlToValidate="fileAttachment" ErrorMessage="Required" ValidationGroup="Submit"
-           Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-   </div>
-
+                                <div class="col-md-4">
+                                    <label for="Division">
+                                        Contractor List<samp style="color: red"> * </samp>
+                                    </label>
+                                    <asp:DropDownList Style="width: 100% !important;" class="form-control  select-form select2" ID="ddlContractor" runat="server" TabIndex="16" AutoPostBack="true" OnSelectedIndexChanged="ddlContractor_SelectedIndexChanged">
+                                    </asp:DropDownList>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" Text="Please Select any Contractor" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlContractor" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                </div>
+                                <div class="col-md-4" id="UserId" runat="server" visible="false">
+                                    <label>
+                                        Contractor Name <samp style="color: red">* </samp>
+                                    </label>
+                                    <asp:TextBox class="form-control" ID="txtReId" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
+                                        MaxLength="200" Style="margin-left: 18px;">
+                                    </asp:TextBox>
+                                </div>
+                                <div class="col-md-4">
+                                    <label>
+                                        Contractor Name <samp style="color: red">* </samp>
+                                    </label>
+                                    <asp:TextBox class="form-control" ID="txtContractorName" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
+                                        MaxLength="200" Style="margin-left: 18px;">
+                                    </asp:TextBox>
+                                </div>
+                                <div class="col-md-4">
+                                    <label>
+                                        Contractor Licence No. <samp style="color: red">* </samp>
+                                    </label>
+                                    <asp:TextBox class="form-control" ID="txtLicenceNo" runat="server" autocomplete="off" TabIndex="1"
+                                        MaxLength="200" Style="margin-left: 18px;">
+                                    </asp:TextBox>
+                                </div>
+                                <div class="col-md-4" style="margin-top: 15px;">
+                                    <label>
+                                        Firm Name <samp style="color: red">*</samp>
+                                    </label>
+                                    <asp:TextBox class="form-control" ID="txtFirmName" runat="server" autocomplete="off" TabIndex="1"
+                                        MaxLength="200" Style="margin-left: 18px;">
+                                    </asp:TextBox>
+                                </div>
+                                <div class="col-md-4" style="margin-top: 15px;">
+                                    <label>
+                                        Email Id <samp style="color: red">*</samp>
+                                    </label>
+                                    <asp:TextBox class="form-control" ID="TxtEmailId" runat="server" autocomplete="off" TabIndex="1"
+                                        MaxLength="200" Style="margin-left: 18px;">
+                                    </asp:TextBox>
+                                </div>
+                                <div class="col-md-4" style="margin-top: 15px;">
+                                    <label>
+                                        Contact No. <samp style="color: red">*</samp>
+                                    </label>
+                                    <asp:TextBox class="form-control" ID="TxtContactNo" runat="server" onKeyPress="return isNumberKey(event);" onkeyup="return isvalidphoneno();" autocomplete="off" TabIndex="1"
+                                        MaxLength="10" Style="margin-left: 18px;">
+                                    </asp:TextBox>
+                                    <span id="lblErrorContect" style="color: red"></span>
+                                </div>
+                                <div class="col-md-4" style="margin-top: 15px;">
+                                    <label>
+                                        Attachment <samp style="color: red">*</samp>
+                                    </label>
+                                    <asp:FileUpload ID="fileAttachment" runat="server" CssClass="form-control" TabIndex="1"
+                                        Style="margin-left: 18px; padding-top: 2px; padding-left: 5px;" accept=".pdf" />
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server"
+                                        ControlToValidate="fileAttachment" ErrorMessage="Required" ValidationGroup="Submit"
+                                        Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                                </div>
                             </div>
-                            
-                            <div class="row" style="margin-top:15px;">
+                            <div class="row" style="margin-top: 15px;">
                                 <div class="col-md-12">
                                     <label>
-                                        Remarks
-                                        <samp style="color: red">* </samp>
+                                        Remarks <samp style="color: red">* </samp>
                                     </label>
-                               
-<asp:TextBox class="form-control" ID="txtRemarks" runat="server" TextMode="MultiLine"
-    Rows="2"  autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
-    MaxLength="200" Style="margin-left: 18px;" >
-</asp:TextBox>
-                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtRemarks" ValidationGroup="Submit" ForeColor="Red">Please Enter Remarks</asp:RequiredFieldValidator>
-                                                                     </div>
+                                    <asp:TextBox class="form-control" ID="txtRemarks" runat="server" TextMode="MultiLine"
+                                        Rows="2" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
+                                        MaxLength="200" Style="margin-left: 18px;">
+                                    </asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtRemarks" ValidationGroup="Submit" ForeColor="Red">Please Enter Remarks</asp:RequiredFieldValidator>
+                                </div>
                             </div>
                         </div>
                     </ContentTemplate>
@@ -451,5 +434,5 @@
         }
     </script>
     <!-- partial -->
-    
+
 </asp:Content>

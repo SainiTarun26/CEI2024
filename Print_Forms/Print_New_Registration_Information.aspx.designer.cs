@@ -591,69 +591,6 @@ namespace CEIHaryana.Print_Forms
         protected global::System.Web.UI.WebControls.Label PermanentTo;
 
         /// <summary>
-        /// TrApprenticeship control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow TrApprenticeship;
-
-        /// <summary>
-        /// txtApprenticeship control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtApprenticeship;
-
-        /// <summary>
-        /// txtAppretinceExperience control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtAppretinceExperience;
-
-        /// <summary>
-        /// txtApprenticeshipEmployer control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtApprenticeshipEmployer;
-
-        /// <summary>
-        /// txtApprenticesPost control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label txtApprenticesPost;
-
-        /// <summary>
-        /// Apprenticesdatefrom control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Apprenticesdatefrom;
-
-        /// <summary>
-        /// Apprenticesdateto control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Apprenticesdateto;
-
-        /// <summary>
         /// Experience control.
         /// </summary>
         /// <remarks>

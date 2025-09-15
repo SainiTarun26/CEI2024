@@ -35,14 +35,16 @@ namespace CEIHaryana.Supervisor
                             }
                             else
                             {
-                                ddlContractorList(hdnId.Value);
+                                //ddlContractorList(hdnId.Value);
+                                ddlContractorList();
                             }
                         }
                         else
                         {
-                            ddlContractorList(hdnId.Value);
+                            //ddlContractorList(hdnId.Value);
+                            ddlContractorList();
                         }
-                       // ddlContractorList(hdnId.Value);
+                        // ddlContractorList(hdnId.Value);
                     }
                     else
                     {
@@ -58,14 +60,14 @@ namespace CEIHaryana.Supervisor
             }
         }
 
-        private void ddlContractorList(string SupervisiorId)
+        private void ddlContractorList()
         {
             try
             {
                 DataSet ds = new DataSet();
-                ds = CEI.GetContractorList(SupervisiorId);
+                ds = CEI.GetContractorList();
                 ddlContractor.DataSource = ds;
-                ddlContractor.DataTextField = "Name";
+                ddlContractor.DataTextField = "ConName";
                 ddlContractor.DataValueField = "UserId";
                 ddlContractor.DataBind();
                 ddlContractor.Items.Insert(0, new ListItem("Select", "0"));
@@ -138,7 +140,7 @@ namespace CEIHaryana.Supervisor
                 return false;
             }
 
-            if (string.IsNullOrWhiteSpace(TxtContactNo.Text))                
+            if (string.IsNullOrWhiteSpace(TxtContactNo.Text))
             {
                 TxtContactNo.Focus();
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('Contact number does not exist.');", true);
@@ -193,8 +195,8 @@ namespace CEIHaryana.Supervisor
                     {
                         Directory.CreateDirectory(directoryPath);
                     }
-                 
-                        string fileName = "Attached" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ext;
+
+                    string fileName = "Attached" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ext;
                     string fullPath = Path.Combine(directoryPath, fileName);
                     string filePathInfo = "/Attachment/Supervisior/Attached/" + txtReId.Text + "/" + fileName;
 
@@ -205,7 +207,7 @@ namespace CEIHaryana.Supervisor
                     if (x > 0)
                     {
 
-                        CEI.emailForDeattachmentRequest(TxtEmailId.Text);
+                        // CEI.emailForDeattachmentRequest(TxtEmailId.Text);
                         string script = $"alert('Attachment request submitted successfully!!.'); window.location='DeattachmentRequest.aspx';";
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
                     }
