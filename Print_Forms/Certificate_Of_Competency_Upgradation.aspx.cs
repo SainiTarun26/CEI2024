@@ -18,17 +18,35 @@ namespace CEIHaryana.Print_Forms
         CEI CEI = new CEI();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            try
             {
-                if (Convert.ToString(Session["AdminId"]) != null && Convert.ToString(Session["AdminId"]) != string.Empty)
+                if (!IsPostBack)
                 {
-                    if (Convert.ToString(Session["ApplicationId"]) != null && Convert.ToString(Session["ApplicationId"]) != string.Empty)
+                    if (Convert.ToString(Session["AdminId"]) != null && Convert.ToString(Session["AdminId"]) != string.Empty)
                     {
-                        String ApplicationId = Convert.ToString(Session["ApplicationId"]);
-                        GetLicenceDetails(ApplicationId);
-                        GetCEISignatureForUpgradation();
+                        if (Convert.ToString(Session["ApplicationId"]) != null && Convert.ToString(Session["ApplicationId"]) != string.Empty)
+                        {
+                            String ApplicationId = Convert.ToString(Session["ApplicationId"]);
+                            GetLicenceDetails(ApplicationId);
+                            GetCEISignatureForUpgradation();
+                        }
+                        else
+                        {
+                            Session["ApplicationId"] = "";
+                            Response.Redirect("/Admin/UpgradationRequestHistory.aspx", false);
+                        }
+                    }
+                    else
+                    {
+                        Session["AdminId"] = "";
+                        Response.Redirect("/AdminLogout.aspx", false);
                     }
                 }
+            }
+            catch
+            {
+                Session["AdminId"] = "";
+                Response.Redirect("/AdminLogout.aspx", false);
             }
         }
 
@@ -58,12 +76,14 @@ namespace CEIHaryana.Print_Forms
                 {
                     dt.Rows[0]["QRCode"] = GenerateQrCode("Certificate_No = " + dt.Rows[0]["Certificate_No"].ToString());
                     lblCertificateNo.Text = dt.Rows[0]["LicenceNo"].ToString();
-                    lblWEF.Text = dt.Rows[0]["VoltageWithEffect"].ToString();
+                    lblWEF.Text = dt.Rows[0]["VoltageEffectedOn"].ToString();
+                    lblValidUpto.Text = dt.Rows[0]["DateofExpiry"].ToString();
                     lblAuthorizedUpto.Text = dt.Rows[0]["Votagelevel"].ToString();
                     lblName.Text = dt.Rows[0]["Name"].ToString();
                     lblFatherName.Text = dt.Rows[0]["FatherName"].ToString();
                     lblAddress.Text = dt.Rows[0]["FullAddress"].ToString();
                     lblApprovedDate.Text = dt.Rows[0]["CreatedDate"].ToString();
+                    lblDob.Text = dt.Rows[0]["DOB"].ToString();
                     imgQRCode.ImageUrl = "data:image/jpeg;base64," + Convert.ToBase64String((byte[])dt.Rows[0]["QRCode"]);
 
                             string CandidateImg = dt.Rows[0]["Image"].ToString(); 

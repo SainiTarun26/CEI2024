@@ -324,6 +324,9 @@
 <%-- <asp:Label ID="Label1" runat="server" Text="" Style="font-size: 16px !important;text-decoration:underline;"></asp:Label>--%>
                                      <asp:Label ID="lblWEF" runat="server" Text="" Style="font-size: 16px !important; text-decoration: underline;"></asp:Label>
                                                                          </h6>
+                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 15PX; text-align: end;">Valid Upto:
+     <asp:Label ID="lblValidUpto" runat="server" Text="" Style="font-size: 16px !important; text-decoration: underline;"></asp:Label>
+ </h6>
                                 </div>
                             </div>
                             <br />
@@ -335,7 +338,7 @@
                             <br />
                             <div class="row">
                                 <div class="col-12">
-                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 16px; font-weight: 600; text-align: justify; line-height: 2;">
+                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 16px; font-weight: 600; text-align: justify; line-height: 2;"> Shri/M/s.
                                         <%--                                        <asp:Label Style="font-weight: 700 !important; text-decoration: underline;" ID="Label10" runat="server" Text="tarunpreet singh"></asp:Label>--%>
                                         <asp:Label
                                             ID="lblName"
