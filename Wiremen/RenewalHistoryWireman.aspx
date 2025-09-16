@@ -217,7 +217,7 @@
                         runat="server"
                         AutoGenerateColumns="false"
                         AllowPaging="true"
-                         OnRowCommand="GridView1_RowCommand"
+                         OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound"
                         CssClass="table table-striped table-hover table-bordered table-responsive text-center"
                         BorderWidth="1px"
                         BorderColor="#dbddff">
@@ -265,6 +265,13 @@
                                 <HeaderStyle CssClass="headercolor text-center" />
                                 <ItemStyle CssClass="text-center" />
                             </asp:BoundField>
+                                            <asp:TemplateField HeaderStyle-CssClass="headercolor" ItemStyle-HorizontalAlign="Center">
+                    <ItemTemplate>
+                        <asp:LinkButton ID="lnkReapply" runat="server" CommandName="Reapply" CssClass="btn btn-link">
+Reapply
+                        </asp:LinkButton>
+                    </ItemTemplate>
+                </asp:TemplateField>
                         </Columns>
 
                         <PagerStyle CssClass="pagination-outer" HorizontalAlign="Center" />

@@ -75,9 +75,31 @@ namespace CEIHaryana.Supervisor
                 string RegNo = e.CommandArgument.ToString();
 
                 Session["NewApplicationRegistrationNo"] = RegNo;
-                 Response.Write("<script>window.open('/UserPages/Certificate_Renewal_Details_Preview.aspx','_blank');</script>");                                                        
-                }
+                Response.Write("<script>window.open('/UserPages/Certificate_Renewal_Details_Preview.aspx','_blank');</script>");
+            }
+            else if (e.CommandName == "Reapply")
+            {
+                Session["Renwal"] = "No";
+                Response.Redirect("~/Supervisor/Renewal_Certificate_Competency.aspx");
+            }
 
+        }
+        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                string status = DataBinder.Eval(e.Row.DataItem, "ApplicationStatus")?.ToString();
+              
+
+                if (status == "Returned" || status == "Rejected")
+                {
+                    GridView1.Columns[7].Visible = true;
+                }
+                else
+                {
+                    GridView1.Columns[7].Visible = false;
+                }
             }
         }
+    }
 }

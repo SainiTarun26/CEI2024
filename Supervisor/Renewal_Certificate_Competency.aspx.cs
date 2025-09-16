@@ -52,7 +52,10 @@ namespace CEIHaryana.Supervisor
                         userID = Session["SupervisorID"].ToString();
                         HdnUserId.Value = userID;
                         HdnUserType.Value = "Supervisor";
-                        GetRenewalData(userID);
+                        if (Convert.ToString(Session["Renwal"]).Trim()== "Yes") 
+                        {
+                            GetRenewalData(userID);
+                        }
                         GetSupervisorDetails(userID);
 
                     }
