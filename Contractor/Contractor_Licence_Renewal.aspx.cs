@@ -45,6 +45,7 @@ namespace CEIHaryana.Contractor
                         userID = Session["ContractorID"].ToString();
                         HdnUserId.Value = userID;
                         HdnUserType.Value = "Contractor";
+                        GetRenewalData(userID);
                         ddlLoadBindState1();
                         GetDetails(userID);
                         StaffData(userID);
@@ -56,6 +57,31 @@ namespace CEIHaryana.Contractor
                 Response.Redirect("/LogOut.aspx", false);
             }
         }
+
+
+        public void GetRenewalData(string userID)
+        {
+            try
+            {
+                DataTable ds = new DataTable();
+
+                ds = CEI.GetRenewalData(userID);
+                if (ds.Rows.Count > 0)
+                {
+                    Response.Redirect("/Contractor/RenewalHistoryContractor.aspx", false);
+                }
+                else
+                {
+                    return;
+                }
+                ds.Dispose();
+            }
+            catch (Exception ex)
+            {
+                //throw;
+            }
+        }
+
         public void GetDetails(string userID)
         {
             DataTable dt = new DataTable();
@@ -313,72 +339,75 @@ namespace CEIHaryana.Contractor
 
                             try
                             {
+                                CEI.InsertRenewalDataforContractor(con, tran,
+        HdnUserType?.Value ?? string.Empty,
+        txtname?.Text.Trim() ?? string.Empty,
+        txtFatherName?.Text.Trim() ?? string.Empty,
+        txtDOB?.Text.Trim() ?? string.Empty,
+        txtage?.Text.Trim() ?? string.Empty,
+        DateTime.TryParse(txtage55?.Text, out var dt55) ? dt55 : (DateTime)SqlDateTime.Null,
+        txtPANNo?.Text.Trim() ?? string.Empty,
+        txtLicenceNew?.Text.Trim() ?? string.Empty,
+        txtLicenceOld?.Text.Trim() ?? string.Empty,
+        txtexpirydate?.Text ?? string.Empty,
+        txtaddress?.Text.Trim() ?? string.Empty,
+        txtDistrict?.Text.Trim() ?? string.Empty,
+        txtPhone?.Text.Trim() ?? string.Empty,
+        txtEmail?.Text.Trim() ?? string.Empty,
+        rblChangeAddress.SelectedItem?.ToString() ?? string.Empty,
+        txtAddressNew?.Text ?? string.Empty,
+        ddlState1.SelectedItem?.ToString() ?? string.Empty,
+        ddlDistrict1.SelectedItem?.ToString() ?? string.Empty,
+        txtPincodeNew?.Text ?? string.Empty,
+        rdlchangedonlicence.SelectedItem?.ToString() ?? string.Empty,
+        rblbelated.SelectedItem?.ToString() ?? string.Empty,
+        txtdays?.Text.Trim() ?? string.Empty,
+        rdlEquipmentsTested.SelectedItem?.ToString() ?? string.Empty,
+        ddlRenewalTime.SelectedItem?.ToString() ?? string.Empty,
+        txtgrnno?.Text.Trim() ?? string.Empty,
+        txtdate?.Text ?? string.Empty,
+        txtamount?.Text.Trim() ?? string.Empty,
+        rblChangeInStaff.SelectedItem?.ToString() ?? string.Empty,
+        txtintimationDate?.Text ?? string.Empty,
+        CreatedBy
+    );
 
-                                string intimationdate = txtintimationDate.Text;
-                                if (intimationdate == "")
-                                {
-                                    intimationdate = "1888-11-10";
-                                }
-                                   CEI.InsertRenewalDataforContractor(con, tran,
-                                    HdnUserType.Value ?? string.Empty,
-                                     txtFatherName?.Text.Trim() ?? string.Empty,
-                                     txtDOB?.Text.Trim() ?? string.Empty,
-                                     txtage?.Text.Trim() ?? string.Empty,
-                                    DateTime.TryParse(txtage55?.Text, out var dt55) ? dt55 : (DateTime)SqlDateTime.Null,
-                                     txtPANNo?.Text.Trim() ?? string.Empty,
-                                     txtLicenceNew?.Text.Trim() ?? string.Empty,
-                                     txtLicenceOld?.Text.Trim() ?? string.Empty,
-                                     txtPhone?.Text.Trim() ?? string.Empty,
-                                     txtEmail?.Text.Trim() ?? string.Empty,
-                                      rblChangeAddress.SelectedItem?.ToString() ?? string.Empty,
-                                     txtAddressNew?.Text ?? string.Empty,
-                                     ddlState1.SelectedItem?.ToString() ?? string.Empty,
-                                     ddlDistrict1.SelectedItem?.ToString() ?? string.Empty,
-                                     txtPincodeNew?.Text ?? string.Empty,
-                                     rdlchangedonlicence.SelectedItem?.ToString() ?? string.Empty,
-                                      rblbelated.SelectedItem?.ToString() ?? string.Empty,
-                                       txtdays?.Text.Trim() ?? "0", rdlEquipmentsTested.SelectedItem?.ToString() ?? string.Empty,
-                                     ddlRenewalTime.SelectedItem?.ToString() ?? string.Empty,
-                                    txtgrnno?.Text.Trim() ?? string.Empty,
-                                    txtdate?.Text ?? string.Empty, txtamount?.Text.Trim() ?? "0",
-                                    rblChangeInStaff.SelectedItem?.ToString() ?? string.Empty,
-                                     txtintimationDate?.Text ?? string.Empty, CreatedBy
-                                     );
 
                                 if (!string.IsNullOrEmpty(ContractorLicense))
-                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Electrical Contractor Licence", ContractorLicense, 1, CreatedBy);
+                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Contractor License", ContractorLicense, 1, CreatedBy);
 
                                 if (!string.IsNullOrEmpty(certificate))
-                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Competency CertificateCertificate of Competency and Wireman Permit, who are working with the Firm", certificate, 1, CreatedBy);
+                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Competency Certificate", certificate, 1, CreatedBy);
 
                                 if (!string.IsNullOrEmpty(Incometax))
-                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Income Tax Returns and Balance Sheet as specified in the conditions.", Incometax, 1, CreatedBy);
+                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Income Tax Return", Incometax, 1, CreatedBy);
 
                                 if (!string.IsNullOrEmpty(Calibrationtertificate))
-                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Calibration Certificate from NABL or Government Testing Laboratory in respect of Electrical", Calibrationtertificate, 1, CreatedBy);
+                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Calibration Certificate", Calibrationtertificate, 1, CreatedBy);
 
                                 if (!string.IsNullOrEmpty(WorksExecuted))
-                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Details of works executed annually on the basis of Electrical Contractor License", WorksExecuted, 1, CreatedBy);
+                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Works Executed", WorksExecuted, 1, CreatedBy);
 
                                 if (!string.IsNullOrEmpty(annexureIII))
-                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Copy of Annexure III", annexureIII, 1, CreatedBy);
+                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Annexure III", annexureIII, 1, CreatedBy);
 
                                 if (!string.IsNullOrEmpty(FormE1))
-                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Copy of Form \"E\"", FormE1, 1, CreatedBy);
+                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Form E", FormE1, 1, CreatedBy);
 
                                 if (!string.IsNullOrEmpty(Challanfp))
-                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Deposited Treasury Challan of fees, for the purpose.\r\nHead of A/c: 0043-51-800-99-51—Other Receipt.", Challanfp, 1, CreatedBy);
+                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Challan", Challanfp, 1, CreatedBy);
 
                                 if (!string.IsNullOrEmpty(Candidateimage))
-                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Candidate Image", Candidateimage, 1, CreatedBy);
+                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Challan", Candidateimage, 1, CreatedBy);
 
                                 if (!string.IsNullOrEmpty(Candidatesignature))
-                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Candidate Signature", Candidatesignature, 1, CreatedBy);
+                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Challan", Candidatesignature, 1, CreatedBy);
 
 
                                 tran.Commit();
 
                                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Application submitted successfully!')", true);
+                                Response.Redirect("/Contractor/RenewalHistoryContractor.aspx", false);
                                 resetfeild();
 
                             }

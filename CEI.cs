@@ -12761,8 +12761,9 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
         }
         public void InsertRenewalDataforContractor(
  SqlConnection con, SqlTransaction tran,
- string Category, string FatherName, string DOB, string Age, DateTime Dateturn55,
- string PanCardNo, string LicenceNew, string LicenceOld, string PhoneNo, string Email,
+ string Category, string ApplicantName, string FatherName, string DOB, string Age, DateTime Dateturn55,
+ string PanCardNo, string LicenceNew, string LicenceOld, string ExpiryDate,
+ string Address, string District, string PhoneNo, string Email,
  string ChangeInAddress, string NewAddress, string NewState, string NewDistrict, string NewPincode,
  string NeedToChangeOnLicence, string DelayedOrNot, string DaysDelay, string EquipmentsTested,
  string RenewalTime, string GRNNo, string ChallanDate, string TotalAmount,
@@ -12773,6 +12774,7 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.Parameters.AddWithValue("@Category", Category);
+                cmd.Parameters.AddWithValue("@ApplicantName", ApplicantName);
                 cmd.Parameters.AddWithValue("@FatherName", FatherName);
                 DateTime dob;
                 if (DateTime.TryParse(DOB, out dob))
@@ -12788,6 +12790,17 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
                 cmd.Parameters.AddWithValue("@PanCardNo", PanCardNo);
                 cmd.Parameters.AddWithValue("@LicenceNew", LicenceNew);
                 cmd.Parameters.AddWithValue("@LicenceOld", LicenceOld);
+                DateTime expiry;
+                if (DateTime.TryParse(ExpiryDate, out expiry))
+                {
+                    cmd.Parameters.AddWithValue("@ExpiryDate", expiry);
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@ExpiryDate", DBNull.Value);
+                }
+                cmd.Parameters.AddWithValue("@Address", Address);
+                cmd.Parameters.AddWithValue("@District", District);
                 cmd.Parameters.AddWithValue("@PhoneNo", PhoneNo);
                 cmd.Parameters.AddWithValue("@Email", Email);
                 cmd.Parameters.AddWithValue("@ChangeInAddress", ChangeInAddress);
