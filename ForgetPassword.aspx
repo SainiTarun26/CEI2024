@@ -341,11 +341,11 @@
         <header id="header" class="d-flex align-items-center"
             style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; background: #d1e6ff;">
             <div class="container d-flex align-items-center justify-content-between">
-                <a href="Login.aspx" class="logo">
+                <a href="AdminLogout.aspx" class="logo">
                     <img src="/Assets/haryana.png" alt="" />
                 </a>
                 <h1 class="logo">
-                    <a href="Login.aspx">
+                    <a href="AdminLogout.aspx">
                         <span style="font-size: 25px; margin-left: -30px;">CEI,
             Haryana
                         </span>

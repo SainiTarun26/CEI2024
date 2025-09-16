@@ -145,7 +145,7 @@
     <script type="text/javascript">
         function alertWithRedirectdata() {
             if (confirm('Registration Successfull Please Activate your Account through given Email ID.')) {
-                window.location.href = "/Login.aspx";
+                window.location.href = "/AdminLogout.aspx";
             } else {
             }
         }

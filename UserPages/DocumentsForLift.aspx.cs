@@ -29,7 +29,7 @@ namespace CEIHaryana.UserPages
             }
             catch (Exception ex)
             {
-                Response.Redirect("/Login.aspx");
+                Response.Redirect("/AdminLogout.aspx");
             }
         }
 
@@ -239,12 +239,12 @@ namespace CEIHaryana.UserPages
 
                         int x = CEI.LiftEsculatorDocument(flpPhotourl, flpPhotourl1, flpPhotourl2, flpPhotourl3, flpPhotourl4, flpPhotourl5, flpPhotourl6, REID);
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowAlert", "alert('Documents are Uploaded successfull')", true);
-                        Response.Redirect("/Login.aspx", false);
+                        Response.Redirect("/AdminLogout.aspx", false);
                     }
                     else
                     {
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowAlert", "alert(Please select file in pdf formate and size must be less then 2Mb)", true);
-                        Response.Redirect("/Login.aspx");
+                        Response.Redirect("/AdminLogout.aspx");
                     }
                 }
                 else
@@ -257,7 +257,7 @@ namespace CEIHaryana.UserPages
             catch (Exception ex)
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('An Error Occured, please login again')", true);
-                Response.Redirect("/Login.aspx");
+                Response.Redirect("/AdminLogout.aspx");
                 throw;
             }
 
@@ -268,7 +268,7 @@ namespace CEIHaryana.UserPages
             Session.Abandon();
             Response.Cookies["LiftId"].Expires = DateTime.Now.AddDays(-1);
             Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(-1);
-            Response.Redirect("/Login.aspx");
+            Response.Redirect("/AdminLogout.aspx");
         }
 
         protected void btnBack_Click(object sender, EventArgs e)

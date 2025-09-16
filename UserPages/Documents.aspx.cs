@@ -288,7 +288,7 @@ namespace CEIHaryana.UserPages
         protected void btnLogout_Click(object sender, EventArgs e)
         {
             Session.Abandon();
-            Response.Redirect("/Login.aspx");
+            Response.Redirect("/AdminLogout.aspx");
         }
         private string SaveDocumentWithTransaction(FileUpload fileUpload, Button uploadbutton, int DocumentId, LinkButton deleteButton, LinkButton tickButton, string documentName, string Utrn, string challandate)
         {
@@ -819,7 +819,7 @@ namespace CEIHaryana.UserPages
                             Session["TempUniqueId"] = "";
                             Session["TempUniqueId"] = null;
                             // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "if (confirm('New User Registration Process completed successfully.')) { window.location.href = '/Login.aspx'; }", true);
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "if (confirm('New User Registration Process completed successfully.')) { window.location.href = '/AdminLogout.aspx'; }", true);
                             Response.Redirect("/UserPages/New_Application_Status.aspx", false);
 
                         }

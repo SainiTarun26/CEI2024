@@ -100,7 +100,7 @@ namespace CEIHaryana.UserPages
             }
             catch (Exception ex)
             {
-                Response.Redirect("/Login.aspx", false);
+                Response.Redirect("/AdminLogout.aspx", false);
 
             }
 

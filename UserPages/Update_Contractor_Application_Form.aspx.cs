@@ -346,7 +346,7 @@ namespace CEIHaryana.UserPages
         protected void btnLogout_Click(object sender, EventArgs e)
         {
             Session.Abandon();
-            Response.Redirect("/Login.aspx");
+            Response.Redirect("/AdminLogout.aspx");
         }
 
         protected void btnupdate1_Click(object sender, EventArgs e)

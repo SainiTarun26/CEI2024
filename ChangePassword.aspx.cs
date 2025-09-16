@@ -84,7 +84,7 @@ namespace CEIHaryana
 
                     
 
-                        string successScript = "alert('Password changed successfully.'); window.location='Login.aspx';";
+                        string successScript = "alert('Password changed successfully.'); window.location='AdminLogout.aspx';";
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", successScript, true);
                
                       

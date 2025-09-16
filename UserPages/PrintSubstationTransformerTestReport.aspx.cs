@@ -95,7 +95,7 @@ namespace CEIHaryana.UserPages
             }
             catch
             {
-                Response.Redirect("/Login.aspx", false);
+                Response.Redirect("/AdminLogout.aspx", false);
             }
         }
 

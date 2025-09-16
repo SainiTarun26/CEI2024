@@ -1276,7 +1276,7 @@ namespace CEIHaryana.UserPages
             Session.Abandon();
             Session.Clear();
             Session.RemoveAll();
-            Response.Redirect("/Login.aspx");
+            Response.Redirect("/AdminLogout.aspx");
         }
 
         protected void ddlQualification2_SelectedIndexChanged(object sender, EventArgs e)

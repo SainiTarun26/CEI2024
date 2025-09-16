@@ -1230,7 +1230,7 @@
     <script type="text/javascript">
         function alertWithRedirectdata() {
             if (confirm('Registration Successfull Your UserId Will be sent through email Login For Further process')) {
-                window.location.href = "/Login.aspx";
+                window.location.href = "/AdminLogout.aspx";
             } else {
             }
         }

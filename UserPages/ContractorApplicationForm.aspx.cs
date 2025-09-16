@@ -422,7 +422,7 @@ namespace CEIHaryana.UserPages
         {
             Session.Abandon();
             Response.Cookies["ContractorID"].Expires = DateTime.Now.AddDays(-1);
-            Response.Redirect("/Login.aspx");
+            Response.Redirect("/AdminLogout.aspx");
         }
 
 

@@ -159,7 +159,7 @@ namespace CEIHaryana.UserPages
             Session.Abandon();
             Session.Clear();
             Session.RemoveAll();
-            Response.Redirect("/Login.aspx");
+            Response.Redirect("/AdminLogout.aspx");
         }
 
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)

@@ -49,7 +49,7 @@ namespace CEIHaryana.UserPages
                         else
                         {
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('An Error Occurred While Login.');", true);
-                            Response.Redirect("/Login.aspx");
+                            Response.Redirect("/AdminLogout.aspx");
                         }
                     }
                     else
@@ -643,7 +643,7 @@ namespace CEIHaryana.UserPages
             Session.Abandon();
             Session.Clear();
             Session.RemoveAll();
-            Response.Redirect("/Login.aspx");
+            Response.Redirect("/AdminLogout.aspx");
         }
         protected void ddlQualification_SelectedIndexChanged(object sender, EventArgs e)
         {

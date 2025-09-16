@@ -20,7 +20,7 @@
                       // Check if user is already logged in another tab
                       localStorage.removeItem('activeSession');
                       sessionStorage.clear();
-                      window.location.href = 'Login.aspx';
+                      window.location.href = 'AdminLogout.aspx';
                   }
               </script>
 

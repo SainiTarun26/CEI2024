@@ -1438,7 +1438,7 @@ namespace CEIHaryana.UserPages
             Session.Abandon();
             Session.Clear();
             Session.RemoveAll();
-            Response.Redirect("/Login.aspx");
+            Response.Redirect("/AdminLogout.aspx");
         }
 
         protected void btnDeleteExp_Click(object sender, EventArgs e)

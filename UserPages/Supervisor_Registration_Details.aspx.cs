@@ -613,7 +613,7 @@ namespace CEIHaryana.UserPages
             Session.Abandon();
             Session.Clear();
             Session.RemoveAll();
-            Response.Redirect("/Login.aspx");
+            Response.Redirect("/AdminLogout.aspx");
         }
     }
 }

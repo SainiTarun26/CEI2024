@@ -284,11 +284,11 @@ namespace CEIHaryana.UserPages
             Session.Abandon();
             Response.Cookies["LiftId"].Expires = DateTime.Now.AddDays(-1);
             Response.Cookies["logintype"].Expires = DateTime.Now.AddDays(-1);
-            Response.Redirect("/Login.aspx");
+            Response.Redirect("/AdminLogout.aspx");
         }
         protected void btnBack_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Login.aspx",false);
+            Response.Redirect("/AdminLogout.aspx", false);
         }
     }
 }

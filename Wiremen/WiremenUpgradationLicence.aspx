@@ -568,7 +568,7 @@
     <script type="text/javascript">
         function alertWithRedirect() {
             if (confirm('Not able to find Your Information Please Login Again or Try Again later')) {
-                window.location.href = "/Login.aspx";
+                window.location.href = "/AdminLogout.aspx";
             } else {
             }
         }

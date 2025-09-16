@@ -44,7 +44,7 @@ namespace CEIHaryana.UserPages
                     else
                     {
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('An Error Occurred While Login.');", true);
-                        Response.Redirect("/Login.aspx");
+                        Response.Redirect("/AdminLogout.aspx");
                     }
                 }
             }

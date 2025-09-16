@@ -262,7 +262,7 @@ namespace CEIHaryana.UserPages
                             {
                                 CEI.SiteOwnerCredentials(txtEmail.Text, PanTanNumber);
                                 Reset();
-                                string script = "alert('Registration Succesffuly,Your userId And Password is sent to email'); window.location='/Login.aspx';";
+                                string script = "alert('Registration Succesffuly,Your userId And Password is sent to email'); window.location='/AdminLogout.aspx';";
                                 //string script = "alert('Registration Succesffuly,Your userId And Password is sent to email');";
                                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
                             }

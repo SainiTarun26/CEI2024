@@ -219,7 +219,7 @@ namespace CEIHaryana
 
         protected void btnBack_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Login.aspx", false);
+            Response.Redirect("AdminLogout.aspx", false);
         }
 
         protected void btnRefresh_Click(object sender, ImageClickEventArgs e)

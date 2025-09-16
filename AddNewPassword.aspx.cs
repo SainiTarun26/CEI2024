@@ -33,7 +33,7 @@ namespace CEIHaryana
             if (string.IsNullOrEmpty(txtUserId.Text))
             {
 
-                string alertScript = "alert('User does not exist.'); window.location='Login.aspx';";
+                string alertScript = "alert('User does not exist.'); window.location='AdminLogout.aspx';";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
                 return;
 
@@ -50,7 +50,7 @@ namespace CEIHaryana
             {
                 DataSet ds1 = CEI.SavePassword(txtUserId.Text, txtNewPassword.Text);
                 //Session["UserId"] = "";
-                string successScript = "alert('Password Update successfully.'); window.location='Login.aspx';";
+                string successScript = "alert('Password Update successfully.'); window.location='AdminLogout.aspx';";
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", successScript, true);
                 return;
             }

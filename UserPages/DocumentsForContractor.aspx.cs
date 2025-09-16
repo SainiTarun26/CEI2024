@@ -515,14 +515,14 @@ namespace CEIHaryana.UserPages
 
                             Response.Redirect("/UserPages/Contractor_Declaration.aspx", false);
 
-                            //string UniqueNumber = Session["TempUniqueId"].ToString().Trim();
-                            //if (Convert.ToString(UniqueNumber) != null && Convert.ToString(UniqueNumber) != "")
-                            //{
-                            //    CEI.ToSaveDocumentsdataofNewregistration(UniqueNumber, HdnUserId.Value, "Contractor");
-                            //    Session["TempUniqueId"] = "";
-                            //    Session["TempUniqueId"] = null;
-                            //    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "if (confirm('New User Registration Process completed successfully.')) { window.location.href = '/Login.aspx'; }", true);
-                            //}
+                        //string UniqueNumber = Session["TempUniqueId"].ToString().Trim();
+                        //if (Convert.ToString(UniqueNumber) != null && Convert.ToString(UniqueNumber) != "")
+                        //{
+                        //    CEI.ToSaveDocumentsdataofNewregistration(UniqueNumber, HdnUserId.Value, "Contractor");
+                        //    Session["TempUniqueId"] = "";
+                        //    Session["TempUniqueId"] = null;
+                        //    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "if (confirm('New User Registration Process completed successfully.')) { window.location.href = '/AdminLogout.aspx'; }", true);
+                        //}
                         //}
                         //else
                         //{
@@ -547,7 +547,7 @@ namespace CEIHaryana.UserPages
         protected void btnLogout_Click(object sender, EventArgs e)
         {
             Session.Abandon();
-            Response.Redirect("/Login.aspx");
+            Response.Redirect("/AdminLogout.aspx");
         }
 
         private string SaveDocumentWithTransactionIfPhoto(FileUpload fileUpload, Button uploadbutton, int DocumentId, LinkButton deleteButton, string documentName, string Utrn, string challandate)

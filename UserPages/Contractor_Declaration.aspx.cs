@@ -71,7 +71,7 @@ namespace CEIHaryana.UserPages
                     Session["TempUniqueId"] = "";
                     Session["TempUniqueId"] = null;
 
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "if (confirm('New User Registration Process completed successfully.')) { window.location.href = '/Login.aspx'; }", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "if (confirm('New User Registration Process completed successfully.')) { window.location.href = '/AdminLogout.aspx'; }", true);
                     Response.Redirect("/UserPages/New_Application_Status.aspx", false);
                 }
                 else
