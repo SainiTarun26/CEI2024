@@ -18,34 +18,49 @@ namespace CEIHaryana.Admin
         string Type = string.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Convert.ToString(Session["AdminId"]) != null && Convert.ToString(Session["AdminId"]) != "")
+            try
             {
-                if (Convert.ToString(Session["InspectionId"]) != null && Convert.ToString(Session["InspectionId"]) != "")
+                if (!IsPostBack)
                 {
-                    String InspectionID = Convert.ToString(Session["InspectionId"]);
-                    GetData(InspectionID);
-                    GetTestReportData(InspectionID);
-                    //if (Type == "New")
-                    //{
-                    //    GetTestReportData();
-                    //}
-                    //else if (Type == "Periodic")
-                    //{
-                    //    GetTestReportDataIfPeriodic();
-                    //}
-                }
-                else
-                {
-                    Session["InspectionId"] = "";
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "scriptMessage", "alert('An Error occured.');", true);
+                    if (Request.UrlReferrer != null)
+                    {
+                        Session["PreviousPage"] = Request.UrlReferrer.ToString();
+                    }
+                    if (Convert.ToString(Session["AdminId"]) != null && Convert.ToString(Session["AdminId"]) != "")
+                    {
+                        if (Convert.ToString(Session["InspectionId"]) != null && Convert.ToString(Session["InspectionId"]) != "")
+                        {
+                            String InspectionID = Convert.ToString(Session["InspectionId"]);
+                            GetData(InspectionID);
+                            GetTestReportData(InspectionID);
+                            //if (Type == "New")
+                            //{
+                            //    GetTestReportData();
+                            //}
+                            //else if (Type == "Periodic")
+                            //{
+                            //    GetTestReportDataIfPeriodic();
+                            //}
+                        }
+                        else
+                        {
+                            Session["InspectionId"] = "";
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "scriptMessage", "alert('An Error occured.');", true);
+                        }
+                    }
+                    else
+                    {
+                        Session["AdminId"] = "";
+                        Response.Redirect("/AdminLogout.aspx", false);
+                    }
                 }
             }
-            else
+            catch (Exception ex)
             {
-                Session["AdminId"] = "";
                 Response.Redirect("/AdminLogout.aspx", false);
             }
         }
+
         private void GetData(string ID)
         {
             try
@@ -711,7 +726,19 @@ namespace CEIHaryana.Admin
 
         protected void btnBack_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Admin/AdminMaster.aspx", false);
+            ////  Response.Redirect("/Admin/AdminMaster.aspx", false);
+            try
+            {
+                string previousPageUrl = Session["PreviousPage"] as string;
+                if (!string.IsNullOrEmpty(previousPageUrl))
+                {
+
+                    Response.Redirect(previousPageUrl, false);
+                    Session["PreviousPage"] = null;
+
+                }
+            }
+            catch { }
         }
         protected void lnkReturn_Command(object sender, CommandEventArgs e)
         {

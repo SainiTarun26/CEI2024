@@ -23,6 +23,10 @@ namespace CEIHaryana.Admin
             {
                 if (!IsPostBack)
                 {
+                    if (Request.UrlReferrer != null)
+                    {
+                        Session["PreviousPage"] = Request.UrlReferrer.ToString();
+                    }
                     if (Convert.ToString(Session["AdminId"]) != null && Convert.ToString(Session["AdminId"]) != string.Empty)
                     {
                         if (Convert.ToString(Session["InspectionId"]) != null && Convert.ToString(Session["InspectionId"]) != string.Empty)
@@ -226,7 +230,19 @@ namespace CEIHaryana.Admin
         }
         protected void btnBack_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Admin/AdminMaster.aspx", false);
+            ////Response.Redirect("/Admin/AdminMaster.aspx", false);
+            try
+            {
+                string previousPageUrl = Session["PreviousPage"] as string;
+                if (!string.IsNullOrEmpty(previousPageUrl))
+                {
+
+                    Response.Redirect(previousPageUrl, false);
+                    Session["PreviousPage"] = null;
+
+                }
+            }
+            catch { }
         }
         protected void grd_Documemnts_RowCommand(object sender, GridViewCommandEventArgs e)
         {
