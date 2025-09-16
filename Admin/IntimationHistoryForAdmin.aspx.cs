@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Xml.Linq;
 
 namespace CEIHaryana.Admin
 {
@@ -130,6 +131,28 @@ namespace CEIHaryana.Admin
                         ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "alert(\"No Record Found\");", true);
                     }
                 }
+                //Added by Aslam 12 sep 2025 to show popup 
+                else if (e.CommandName == "ShowDetails")
+                {
+                    Control ctrl = e.CommandSource as Control;
+                    GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
+                    Label lbllblApplicantFor = (Label)row.FindControl("lblApplicantFor");
+
+                    if (lbllblApplicantFor.Text == "Power Utility")
+                    {
+                        LinkButton lnkbtnshowdetails = (LinkButton)row.FindControl("LnkResetButton");
+                        string CreatedBy = e.CommandArgument.ToString();
+                        ScriptManager.RegisterStartupScript(this, GetType(), "ModalScript", "$('#ownerModal').modal('show');", true);
+                        PowerUtility(CreatedBy);
+                    }
+                    else
+                    {
+                        LinkButton lnkbtnshowdetails = (LinkButton)row.FindControl("LnkResetButton");
+                        string CreatedBy = e.CommandArgument.ToString();
+                        ScriptManager.RegisterStartupScript(this, GetType(), "ModalScript", "$('#ownerModal').modal('show');", true);
+                        NonPowerUtility(CreatedBy);
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -147,6 +170,70 @@ namespace CEIHaryana.Admin
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+            }
+        }
+        protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                //Powerutility condition aded by aslam 12-sep-2025
+                Label lbllblApplicantFor = (Label)e.Row.FindControl("lblApplicantFor");
+
+                if (lbllblApplicantFor != null && lbllblApplicantFor.Text == "Power Utility")
+                {
+                    e.Row.CssClass = "PowerUtilityRowColor";
+                }
+                //
+            }
+        }
+        protected void NonPowerUtility(string CreatedBy)
+        {
+            DataTable dt = CEI.DetailsofSiteOwner(CreatedBy);
+
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                txttypeofapplicant.Text = dt.Rows[0]["ApplicantType"].ToString();
+                txtPANTan.Text = dt.Rows[0]["UserID"].ToString();
+                txtElectricalInstallation.Text = dt.Rows[0]["ContractorType"].ToString();
+                txtName.Text = dt.Rows[0]["OwnerName"].ToString();
+                txtAddress.Text = dt.Rows[0]["Address"].ToString();
+                txtDistrict.Text = dt.Rows[0]["District"].ToString();
+                txtPin.Text = dt.Rows[0]["Pincode"].ToString();
+                txtPhone.Text = dt.Rows[0]["ContactNo"].ToString();
+                txtEmail.Text = dt.Rows[0]["Email"].ToString();
+                HdnPanFilePath.Value = dt.Rows[0]["CopyofPanNumber"].ToString();
+            }
+        }
+        protected void PowerUtility(string CreatedBy)
+        {
+            DataTable dt = CEI.DetailsforPowerUtility(CreatedBy);
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                txttypeofapplicant.Text = dt.Rows[0]["ApplicantType"].ToString();
+                txtPANTan.Text = dt.Rows[0]["PANNumber"].ToString();
+                txtElectricalInstallation.Text = dt.Rows[0]["ContractorType"].ToString();
+                txtName.Text = dt.Rows[0]["OwnerName"].ToString();
+                txtAddress.Text = dt.Rows[0]["Address"].ToString();
+                txtDistrict.Text = dt.Rows[0]["District"].ToString();
+                txtPin.Text = dt.Rows[0]["Pincode"].ToString();
+                txtPhone.Text = dt.Rows[0]["ContactNo"].ToString();
+                txtEmail.Text = dt.Rows[0]["Email"].ToString();
+                HdnPanFilePath.Value = dt.Rows[0]["CopyofPanNumber"].ToString();
+            }
+        }
+        protected void LnkDocumemtPath_Click(object sender, EventArgs e)
+        {
+            string filePath = HdnPanFilePath.Value;
+            if (!string.IsNullOrEmpty(filePath))
+            {
+                string baseUrl = Request.Url.GetLeftPart(UriPartial.Authority);
+                string fileUrl = baseUrl + filePath;
+                string script = $@"<script>window.open('{fileUrl}', '_blank');</script>";
+                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Siteowner has not uploaded the PAN card yet!');", true);
             }
         }
     }

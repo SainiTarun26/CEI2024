@@ -114,41 +114,42 @@ namespace CEIHaryana.Superintendent
 
 
             }
-            else if (e.CommandName == "Print")
-            {
-                Label lblLicenceType = (Label)row.FindControl("lblLicenceType");
-                string LicenceType = lblLicenceType != null ? lblLicenceType.Text : string.Empty;
+            //Commented By Aslam on 16 sep 2025 because its not required here. . 
+            //else if (e.CommandName == "Print")
+            //{
+            //    Label lblLicenceType = (Label)row.FindControl("lblLicenceType");
+            //    string LicenceType = lblLicenceType != null ? lblLicenceType.Text : string.Empty;
 
-                if (LicenceType == "New")
-                {
-                    if (lblCategory.Text == "Contractor")
-                    {
+            //    if (LicenceType == "New")
+            //    {
+            //        if (lblCategory.Text == "Contractor")
+            //        {
 
-                        Session["NewApplication_Contractor_RegNo"] = lblRegistrationId.Text;
-                        Response.Redirect("/UserPages/New_Registration_Information_Contractor.aspx", false);
-                    }
-                    else
-                    {
-                        Session["NewApplicationRegistrationNo"] = lblRegistrationId.Text;
-                        Response.Redirect("/UserPages/New_Registration_Information.aspx", false);
-                    }
-                }
-                else
-                {
-                    string Id = CEI.GetIDfForRenewalPrint(lblID.Text);
-                    if (lblCategory.Text == "Contractor")
-                    {
-                        Session["NewApplicationRegistrationNo"] = Id;
-                        Response.Redirect("/UserPages/Contractor_Renewal_Details_Preview.aspx", false);
-                    }
-                    else
-                    {
-                        Session["NewApplicationRegistrationNo"] = Id;
-                        Response.Redirect("/UserPages/Certificate_Renewal_Details_Preview.aspx", false);
-                    }
+            //            Session["NewApplication_Contractor_RegNo"] = lblRegistrationId.Text;
+            //            Response.Redirect("/UserPages/New_Registration_Information_Contractor.aspx", false);
+            //        }
+            //        else
+            //        {
+            //            Session["NewApplicationRegistrationNo"] = lblRegistrationId.Text;
+            //            Response.Redirect("/UserPages/New_Registration_Information.aspx", false);
+            //        }
+            //    }
+            //    else
+            //    {
+            //        string Id = CEI.GetIDfForRenewalPrint(lblID.Text);
+            //        if (lblCategory.Text == "Contractor")
+            //        {
+            //            Session["NewApplicationRegistrationNo"] = Id;
+            //            Response.Redirect("/UserPages/Contractor_Renewal_Details_Preview.aspx", false);
+            //        }
+            //        else
+            //        {
+            //            Session["NewApplicationRegistrationNo"] = Id;
+            //            Response.Redirect("/UserPages/Certificate_Renewal_Details_Preview.aspx", false);
+            //        }
 
-                }
-            }
+            //    }
+            //}
         }
 
         protected void ddlSearchBy_SelectedIndexChanged(object sender, EventArgs e)

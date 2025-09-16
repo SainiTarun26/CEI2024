@@ -15,8 +15,20 @@
     <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://kit.fontawesome.com/57676f1d80.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style type="text/css">
+        .fade.show {
+            height: 100%;
+            width: 100%;
+        }
+
+        .modal-dialog {
+            max-width: 100%;
+            width: 80%;
+            margin-left: 18%;
+        }
+
         .pagination-ys {
             /*display: inline-block;*/
             padding-left: 0;
@@ -85,6 +97,10 @@
         .form-group {
             margin-bottom: 3rem;
         }
+
+        .PowerUtilityRowColor {
+            background-color: rgb(255, 205, 210) !important;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -110,7 +126,7 @@
                         </div>
                     </div>
                     <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server"
-                        Width="100%" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" AllowPaging="true" PageSize="500" OnPageIndexChanging="GridView1_PageIndexChanging" BorderWidth="1px" BorderColor="#dbddff">
+                        Width="100%" AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" AllowPaging="true" OnRowDataBound="GridView1_RowDataBound" PageSize="500" OnPageIndexChanging="GridView1_PageIndexChanging" BorderWidth="1px" BorderColor="#dbddff">
                         <PagerStyle CssClass="pagination-ys" />
                         <Columns>
                             <asp:TemplateField HeaderText="SNo">
@@ -122,6 +138,7 @@
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Id" Visible="False">
                                 <ItemTemplate>
+                                    <asp:Label ID="lblApplicantFor" runat="server" Text='<%#Eval("ApplicantType") %>'></asp:Label>
                                     <asp:Label ID="lblID" runat="server" Text='<%#Eval("Id") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
@@ -157,13 +174,23 @@
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>
 
-                            <asp:TemplateField HeaderText="Owner Name">
+                            <%--                            <asp:TemplateField HeaderText="Owner Name">
                                 <HeaderStyle Width="35%" CssClass="headercolor textjustify" />
                                 <ItemStyle Width="35%" CssClass="owner-name" />
                                 <ItemTemplate>
                                     <asp:Label ID="lblInspectionOwnerName" runat="server" Text='<%# Eval("InspectionOwnerName") %>' CssClass="break-text"></asp:Label>
                                 </ItemTemplate>
+                            </asp:TemplateField>--%>
+                            <asp:TemplateField HeaderText="Owner Name">
+                                <HeaderStyle Width="35%" CssClass="headercolor textjustify" />
+                                <ItemStyle Width="35%" CssClass="owner-name" />
+                                <ItemTemplate>
+                                    <asp:LinkButton runat="server" ID="lnkOwnerName" Text='<%# Eval("InspectionOwnerName") %>' CssClass="break-text"
+                                        CommandName="ShowDetails" CommandArgument='<%# Eval("CreatedBy") %>' />
+                                </ItemTemplate>
                             </asp:TemplateField>
+
+
                             <asp:TemplateField HeaderText="Contractor Name">
                                 <HeaderStyle Width="35%" CssClass="headercolor textjustify" />
                                 <ItemStyle Width="35%" CssClass="owner-name" />
@@ -198,6 +225,115 @@
                             <sorteddescendingheaderstyle backcolor="#00547E" />--%>
                         </Columns>
                     </asp:GridView>
+                    <div class="modal fade" id="ownerModal" tabindex="-1" role="dialog" aria-labelledby="ownerModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="ownerModalLabel">Owner Details</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body" id="modalBodyContent">
+                                    <!-- Your custom static HTML or dynamic content -->
+                                    <div class="row">
+
+                                        <div class="col-md-4">
+                                            <label>
+                                                Applicant Type
+                                                <samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:TextBox class="form-control" ID="txttypeofapplicant" Visible="true" ReadOnly="true" TabIndex="1" MaxLength="10" oninput="this.value = this.value.toUpperCase();" AutoPostBack="true" autocomplete="off" runat="server"></asp:TextBox>
+                                        </div>
+
+                                        <div class="col-md-4" runat="server" id="DivPancard_TanNo" visible="true">
+
+                                            <label id="LblTanNumber" runat="server" visible="true" for="TanNumber">
+                                                PAN/TAN Number
+                       <samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:TextBox class="form-control" ID="txtPANTan" Visible="true" ReadOnly="true" TabIndex="1" MaxLength="10" oninput="this.value = this.value.toUpperCase();" AutoPostBack="true" autocomplete="off" runat="server"></asp:TextBox>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>
+                                                Electrical Installation For<samp style="color: red"> * </samp>
+                                            </label>
+                                            <asp:TextBox class="form-control" ID="txtElectricalInstallation" Visible="true" ReadOnly="true" TabIndex="1" MaxLength="10" oninput="this.value = this.value.toUpperCase();" AutoPostBack="true" autocomplete="off" runat="server"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+
+
+                                        <div class="col-md-4" id="individual" runat="server">
+                                            <label id="LblNameofOwner" runat="server" for="Name">
+                                                Name of Owner/ Org.<samp style="color: red"> * </samp>
+                                            </label>
+
+                                            <div class="input-box" style="padding-left: 0px !important;">
+                                                <asp:TextBox class="form-control" ID="txtName" ReadOnly="true" TabIndex="4" onkeydown="return preventEnterSubmit(event)" onKeyPress="return alphabetKey(event)" MaxLength="50" placeholder="As Per Demand Notice of Utility or Electricity Bill" autocomplete="off" runat="server" Style="padding-left: 10px !important; padding: 0px; height: 30px; box-shadow: none !important; font-size: inherit;"></asp:TextBox>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <label for="Address">
+                                                Address of Site(As Per Demand Notice of Utility/Electricity Bill)
+    <samp style="color: red">* </samp>
+                                            </label>
+                                            <%-- <asp:TextBox class="form-control" ID="txtAddress" onkeydown="return preventEnterSubmit(event)" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>--%>
+                                            <asp:TextBox class="form-control" ID="txtAddress" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" MaxLength="100" TabIndex="5" runat="server" Style="width: 100%;"></asp:TextBox>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+
+                                        <div class="col-md-4" runat="server">
+                                            <label for="Pin">State</label>
+                                            <asp:TextBox class="form-control" ID="txtState" MaxLength="6" Text="Haryana" ReadOnly="true" autocomplete="off" runat="server"></asp:TextBox>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label>
+                                                District
+                                                    <samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:TextBox class="form-control" ID="txtDistrict" ReadOnly="true" Visible="true" TabIndex="1" MaxLength="10" oninput="this.value = this.value.toUpperCase();" AutoPostBack="true" autocomplete="off" runat="server"></asp:TextBox>
+                                        </div>
+                                        <div class="col-md-4" runat="server">
+                                            <label for="Pin">PinCode</label>
+                                            <asp:TextBox class="form-control" ID="txtPin" TabIndex="7" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onKeyPress="return isNumberKey(event);" autocomplete="off" runat="server"></asp:TextBox>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-4" style="margin-top: 20px;">
+                                            <label for="Phone">
+                                                Contact Number
+                                                <samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:TextBox class="form-control" ID="txtPhone" TabIndex="8" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onKeyPress="return isNumberKey(event);" MaxLength="10" autocomplete="off" runat="server"></asp:TextBox>
+                                        </div>
+                                        <div class="col-md-4" runat="server" style="margin-top: 20px;">
+                                            <label for="Email">
+                                                Email
+    <samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:TextBox class="form-control" ID="txtEmail" ReadOnly="true" TabIndex="9" MaxLength="50" onkeydown="return preventEnterSubmit(event)" onkeyup="return ValidateEmail();" autocomplete="off" runat="server"></asp:TextBox>
+
+                                        </div>
+                                        <div class="col-md-4" runat="server" style="margin-top: 45px;">
+                                            <label for="copyofpan">
+                                                Copy of PanNumber
+                                            </label>
+                                            <asp:LinkButton ID="LnkDocumemtPath" runat="server" OnClick="LnkDocumemtPath_Click"> View document </asp:LinkButton>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <asp:HiddenField ID="HdnPanFilePath" runat="server" />
                 </div>
             </div>
         </div>
@@ -269,5 +405,6 @@
                 element.innerHTML = formattedText.trim(); // Remove any trailing <br>
             });
         });
-</script>
+    </script>
+    <script src="/Assets/js/js/vendor.bundle.base.js"></script>
 </asp:Content>

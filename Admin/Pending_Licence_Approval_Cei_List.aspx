@@ -173,6 +173,11 @@
                                 <ItemStyle HorizontalAlign="center" Width="32%" />
                             </asp:BoundField>
 
+                            <asp:BoundField DataField="LicenceType" HeaderText="LicenceType">
+                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                            </asp:BoundField>
+
                             <asp:BoundField DataField="Categary" HeaderText="Categary">
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
@@ -182,7 +187,7 @@
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>
                             <asp:TemplateField HeaderText="ApplicationStatus">
-                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                 <ItemTemplate>
                                     <asp:Label ID="lblApplicationStatus" runat="server" Text='<%#Eval("ApplicationStatus") %>'></asp:Label>
                                 </ItemTemplate>
@@ -191,7 +196,6 @@
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>--%>
-
                         </Columns>
                         <FooterStyle BackColor="White" ForeColor="#000066" />
                         <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
@@ -203,7 +207,7 @@
                         <SortedDescendingCellStyle BackColor="#CAC9C9" />
                         <SortedDescendingHeaderStyle BackColor="#00547E" />
                     </asp:GridView>
-            
+
                 </div>
             </div>
         </div>

@@ -309,7 +309,8 @@
 
                                 <ItemStyle HorizontalAlign="center" Width="15%" CssClass="break-text" />
                             </asp:BoundField>
-                            <asp:TemplateField HeaderText="">
+<%--                            Commented By Aslam on 16 sep 2025 because its not required here. .--%> 
+                          <%--  <asp:TemplateField HeaderText="">
                                 <HeaderStyle Width="10%" CssClass="headercolor" />
                                 <ItemStyle Width="10%" />
                                 <ItemTemplate>
@@ -323,7 +324,7 @@
                                  <i class="fas fa-eye"></i> 
                                     </asp:LinkButton>
                                 </ItemTemplate>
-                            </asp:TemplateField>
+                            </asp:TemplateField>--%>
 
 
                         </Columns>
