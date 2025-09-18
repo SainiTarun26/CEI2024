@@ -6,32 +6,32 @@
     <!-- CSS -->
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
-   <!-- Bootstrap 4.6.2 CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Bootstrap 4.6.2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-<!-- DataTables with Bootstrap 4 CSS -->
-<link href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <!-- DataTables with Bootstrap 4 CSS -->
+    <link href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
 
-<!-- Select2 CSS -->
-<link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+    <!-- Select2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
 
-<!-- Font Awesome 6.5.2 CSS -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" />
-<!-- jQuery 3.5.1 (must be first) -->
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- Font Awesome 6.5.2 CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" />
+    <!-- jQuery 3.5.1 (must be first) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
-<!-- DataTables Core -->
-<script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
+    <!-- DataTables Core -->
+    <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
 
-<!-- Popper.js (required by Bootstrap dropdowns/modals) -->
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <!-- Popper.js (required by Bootstrap dropdowns/modals) -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 
-<!-- Bootstrap 4.6.2 JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
+    <!-- Bootstrap 4.6.2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
 
-<!-- Select2 JS -->
-<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+    <!-- Select2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
 
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -179,7 +179,7 @@
                             <div class="form-group row">
                                 <label for="search" class="col-sm-3 col-form-label" style="margin-top: -6px;">Search:</label>
                                 <div class="col-sm-9" style="margin-left: -35px;">
-                                    <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Auto Search" class="form-control" Font-Size="15px" onkeydown="return SearchOnEnter(event);" onkeyup="Search_Gridview(this)"></asp:TextBox><br />
+                                    <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Auto Search" class="form-control" Font-Size="15px" AutoPostBack="true" OnTextChanged="txtSearch_TextChanged"></asp:TextBox><br />
                                 </div>
                             </div>
                         </div>
@@ -202,7 +202,7 @@
                         </div>
                     </div>
                     <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%"
-                        AutoGenerateColumns="false" AllowPaging="true" PageSize="500" OnPageIndexChanging="GridView1_PageIndexChanging" BorderWidth="1px" BorderColor="#dbddff" >
+                        AutoGenerateColumns="false" AllowPaging="true" PageSize="500" OnRowCommand="GridView1_RowCommand" OnPageIndexChanging="GridView1_PageIndexChanging" BorderWidth="1px" BorderColor="#dbddff">
                         <Columns>
 
                             <asp:TemplateField HeaderText="Id" Visible="False">
@@ -228,26 +228,36 @@
                                 <ItemTemplate>
                                     <%#Container.DataItemIndex+1 %>
                                 </ItemTemplate>
-                            </asp:TemplateField>                          
-                            <asp:BoundField DataField="InspectionId" HeaderText="Inspection Id">
+                            </asp:TemplateField>
+                            <%--                            <asp:BoundField DataField="InspectionId" HeaderText="Inspection Id">
                                 <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor" />
 
                                 <ItemStyle HorizontalAlign="center" Width="28%" />
-                            </asp:BoundField>
-                       
-                             
+                            </asp:BoundField>--%>
+                            <asp:TemplateField>
+                                <HeaderStyle Width="35%" CssClass="headercolor" />
+                                <ItemStyle Width="35%" />
+                                <HeaderTemplate>
+                                    Inspection<br />
+                                    Id
+                                </HeaderTemplate>
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("InspectionId") %> ' CommandName="Select"><%#Eval("InspectionId") %></asp:LinkButton>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+
                             <asp:BoundField DataField="OwnerName" HeaderText="Owner Name">
-    <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
 
-    <ItemStyle HorizontalAlign="center" Width="15%" />
-</asp:BoundField>
-                    
-                            
+                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                            </asp:BoundField>
+
+
                             <asp:BoundField DataField="AssignTo" HeaderText="Assign To">
-    <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
 
-    <ItemStyle HorizontalAlign="center" Width="15%" />
-</asp:BoundField>
+                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                            </asp:BoundField>
                             <asp:BoundField DataField="RequestDate" HeaderText="Request Date">
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
 
@@ -283,7 +293,7 @@
                         <SortedDescendingCellStyle BackColor="#CAC9C9" />
                         <SortedDescendingHeaderStyle BackColor="#00547E" />
                     </asp:GridView>
-                  
+
                     <asp:HiddenField ID="HdnPanFilePath" runat="server" />
 
                 </div>
@@ -296,7 +306,7 @@
     <script>
         new DataTable('#example');
     </script>
-    <script type="text/javascript">
+<%--    <script type="text/javascript">
         function Search_Gridview(strKey) {
             var strData = strKey.value.toLowerCase().split(" ");
             var tblData = document.getElementById("<%=GridView1.ClientID %>");
@@ -322,7 +332,7 @@
                 Search_Gridview(document.getElementById('txtSearch'));
             }
         }
-    </script>
+    </script>--%>
     <script type="text/javascript">
         document.addEventListener("DOMContentLoaded", function () {
             const elements = document.querySelectorAll('.break-text');

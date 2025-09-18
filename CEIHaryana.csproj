@@ -1853,10 +1853,13 @@
     <Content Include="GenerateCaptcha.aspx" />
     <Content Include="GetPassword.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="GuestAdminLogout.aspx" />
     <Content Include="GuestAdmin\AcceptedOrRejectedRequestForGuestAdmin.aspx" />
+    <Content Include="GuestAdmin\CinemaInspectionDetailsGuestAdmin.aspx" />
     <Content Include="GuestAdmin\GuestAdmin.aspx" />
-    <Content Include="GuestAdmin\GuestAdminLogout.aspx" />
     <Content Include="GuestAdmin\InProcessRequestForGuestAdmin.aspx" />
+    <Content Include="GuestAdmin\InspectionDetailsGuestAdmin.aspx" />
+    <Content Include="GuestAdmin\LiftInspectionDetailsGuestAdmin.aspx" />
     <Content Include="GuestAdmin\NewRequestInspectionForGuestAdmin.aspx" />
     <Content Include="GuestAdmin\TotalRequestInspectionForGuestAdmin.aspx" />
     <Content Include="Image\Image\Emblem_of_Haryana.svg.png" />
@@ -3044,12 +3047,26 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="GuestAdminLogout.aspx.cs">
+      <DependentUpon>GuestAdminLogout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GuestAdminLogout.aspx.designer.cs">
+      <DependentUpon>GuestAdminLogout.aspx</DependentUpon>
+    </Compile>
     <Compile Include="GuestAdmin\AcceptedOrRejectedRequestForGuestAdmin.aspx.cs">
       <DependentUpon>AcceptedOrRejectedRequestForGuestAdmin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="GuestAdmin\AcceptedOrRejectedRequestForGuestAdmin.aspx.designer.cs">
       <DependentUpon>AcceptedOrRejectedRequestForGuestAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GuestAdmin\CinemaInspectionDetailsGuestAdmin.aspx.cs">
+      <DependentUpon>CinemaInspectionDetailsGuestAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GuestAdmin\CinemaInspectionDetailsGuestAdmin.aspx.designer.cs">
+      <DependentUpon>CinemaInspectionDetailsGuestAdmin.aspx</DependentUpon>
     </Compile>
     <Compile Include="GuestAdmin\GuestAdmin.aspx.cs">
       <DependentUpon>GuestAdmin.aspx</DependentUpon>
@@ -3065,19 +3082,26 @@
     <Compile Include="GuestAdmin\GuestAdmin.Master.designer.cs">
       <DependentUpon>GuestAdmin.Master</DependentUpon>
     </Compile>
-    <Compile Include="GuestAdmin\GuestAdminLogout.aspx.cs">
-      <DependentUpon>GuestAdminLogout.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="GuestAdmin\GuestAdminLogout.aspx.designer.cs">
-      <DependentUpon>GuestAdminLogout.aspx</DependentUpon>
-    </Compile>
     <Compile Include="GuestAdmin\InProcessRequestForGuestAdmin.aspx.cs">
       <DependentUpon>InProcessRequestForGuestAdmin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="GuestAdmin\InProcessRequestForGuestAdmin.aspx.designer.cs">
       <DependentUpon>InProcessRequestForGuestAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GuestAdmin\InspectionDetailsGuestAdmin.aspx.cs">
+      <DependentUpon>InspectionDetailsGuestAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GuestAdmin\InspectionDetailsGuestAdmin.aspx.designer.cs">
+      <DependentUpon>InspectionDetailsGuestAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GuestAdmin\LiftInspectionDetailsGuestAdmin.aspx.cs">
+      <DependentUpon>LiftInspectionDetailsGuestAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GuestAdmin\LiftInspectionDetailsGuestAdmin.aspx.designer.cs">
+      <DependentUpon>LiftInspectionDetailsGuestAdmin.aspx</DependentUpon>
     </Compile>
     <Compile Include="GuestAdmin\NewRequestInspectionForGuestAdmin.aspx.cs">
       <DependentUpon>NewRequestInspectionForGuestAdmin.aspx</DependentUpon>

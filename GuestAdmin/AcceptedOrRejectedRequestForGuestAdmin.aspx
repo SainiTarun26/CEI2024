@@ -181,7 +181,7 @@
                             <div class="form-group row">
                                 <label for="search" class="col-sm-3 col-form-label" style="margin-top: -6px;">Search:</label>
                                 <div class="col-sm-9" style="margin-left: -35px;">
-                                    <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Auto Search" class="form-control" Font-Size="12px" onkeydown="return SearchOnEnter(event);" onkeyup="Search_Gridview(this)"></asp:TextBox><br />
+                                    <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Auto Search" class="form-control" Font-Size="12px" AutoPostBack="true" OnTextChanged="txtSearch_TextChanged"></asp:TextBox><br />
                                 </div>
                             </div>
                         </div>
@@ -206,7 +206,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%"
-                                AutoGenerateColumns="false" AllowPaging="true" PageSize="500" OnPageIndexChanging="GridView1_PageIndexChanging" BorderWidth="1px" BorderColor="#dbddff">
+                                AutoGenerateColumns="false" AllowPaging="true" PageSize="500" OnPageIndexChanging="GridView1_PageIndexChanging" OnRowCommand="GridView1_RowCommand" BorderWidth="1px" BorderColor="#dbddff">
                                 <Columns>
 
                                     <asp:TemplateField HeaderText="Id" Visible="False">
@@ -233,11 +233,18 @@
                                             <%#Container.DataItemIndex+1 %>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    <asp:BoundField DataField="InspectionId" HeaderText="Inspection Id">
-                                        <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor" />
-
-                                        <ItemStyle HorizontalAlign="center" Width="28%" />
-                                    </asp:BoundField>
+                                    <asp:TemplateField>
+                                        <HeaderStyle Width="35%" CssClass="headercolor" />
+                                        <ItemStyle Width="35%" />
+                                        <HeaderTemplate>
+                                            Inspection<br />
+                                            Id
+    
+                                        </HeaderTemplate>
+                                        <ItemTemplate>
+                                            <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("InspectionId") %> ' CommandName="Select"><%#Eval("InspectionId") %></asp:LinkButton>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
 
 
                                     <asp:BoundField DataField="OwnerName" HeaderText="Owner Name">
@@ -299,7 +306,7 @@
     <script>
         new DataTable('#example');
     </script>
-    <script type="text/javascript">
+    <%-- <script type="text/javascript">
         function Search_Gridview(strKey) {
             var strData = strKey.value.toLowerCase().split(" ");
             var tblData = document.getElementById("<%=GridView1.ClientID %>");
@@ -325,7 +332,7 @@
                 Search_Gridview(document.getElementById('txtSearch'));
             }
         }
-    </script>
+    </script>--%>
     <script type="text/javascript">
         document.addEventListener("DOMContentLoaded", function () {
             const elements = document.querySelectorAll('.break-text-10');

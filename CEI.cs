@@ -14663,9 +14663,9 @@ string dbPathCompetency, string dbPathMedicalCertificate, string userId)
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_RequestsForGuestAdmin", 1);
         }
-        public DataTable TotalRequestInspectionForGuestAdmin(string LoginId, string Division = null, string InstallationType = null)
+        public DataTable TotalRequestInspectionForGuestAdmin(string LoginId, string Division = null, string InstallationType = null, string searchText = null)
         {
-            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_TotalRequestInspectionForGuestAdmin", LoginId, string.IsNullOrEmpty(Division) ? (object)DBNull.Value : Division, string.IsNullOrEmpty(InstallationType) ? (object)DBNull.Value : InstallationType);
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_TotalRequestInspectionForGuestAdmin", LoginId, string.IsNullOrEmpty(Division) ? (object)DBNull.Value : Division, string.IsNullOrEmpty(InstallationType) ? (object)DBNull.Value : InstallationType, string.IsNullOrEmpty(searchText) ? (object)DBNull.Value : searchText);
         }
 
         public DataTable AllInspectionHistoryForGuestAdmin()
@@ -14679,9 +14679,9 @@ string dbPathCompetency, string dbPathMedicalCertificate, string userId)
         }
 
 
-        public DataTable AcceptRejectReturnedInspectionForGuestAdmin(string LoginId, string Division = null, string InstallationType = null)
+        public DataTable AcceptRejectReturnedInspectionForGuestAdmin(string LoginId, string Division = null, string InstallationType = null, string searchText = null)
         {
-            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_AcceptRejectReturnedInspectionForGuestAdmin", LoginId, string.IsNullOrEmpty(Division) ? (object)DBNull.Value : Division, string.IsNullOrEmpty(InstallationType) ? (object)DBNull.Value : InstallationType);
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_AcceptRejectReturnedInspectionForGuestAdmin", LoginId, string.IsNullOrEmpty(Division) ? (object)DBNull.Value : Division, string.IsNullOrEmpty(InstallationType) ? (object)DBNull.Value : InstallationType, string.IsNullOrEmpty(searchText) ? (object)DBNull.Value : searchText);
 
         }
 

@@ -162,9 +162,10 @@
             height: 100% !important;
             width: 100% !important;
         }
+
         th {
-    background: #9292cc;
-}
+            background: #9292cc;
+        }
     </style>
 
 </asp:Content>
@@ -211,10 +212,10 @@
 
 
                     <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%"
-                        AutoGenerateColumns="false" AllowPaging="true" PageSize="500" OnPageIndexChanging="GridView1_PageIndexChanging" BorderWidth="1px" BorderColor="#dbddff">
+                        AutoGenerateColumns="false" AllowPaging="true" PageSize="500" OnPageIndexChanging="GridView1_PageIndexChanging" OnRowCommand="GridView1_RowCommand" BorderWidth="1px" BorderColor="#dbddff">
                         <Columns>
 
-                            
+
                             <asp:TemplateField HeaderText="Id" Visible="False">
                                 <ItemTemplate>
                                     <asp:Label ID="lblID" runat="server" Text='<%#Eval("InspectionId") %>'></asp:Label>
@@ -239,11 +240,19 @@
                                     <%#Container.DataItemIndex+1 %>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:BoundField DataField="InspectionId" HeaderText="Inspection Id">
-                                <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor" />
 
-                                <ItemStyle HorizontalAlign="center" Width="28%" />
-                            </asp:BoundField>
+                            <asp:TemplateField>
+                                <HeaderStyle Width="35%" CssClass="headercolor" />
+                                <ItemStyle Width="35%" />
+                                <HeaderTemplate>
+                                    Inspection<br />
+                                    Id
+    
+                                </HeaderTemplate>
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("InspectionId") %> ' CommandName="Select"><%#Eval("InspectionId") %></asp:LinkButton>
+                                </ItemTemplate>
+                            </asp:TemplateField>
 
 
                             <asp:BoundField DataField="OwnerName" HeaderText="Owner Name">

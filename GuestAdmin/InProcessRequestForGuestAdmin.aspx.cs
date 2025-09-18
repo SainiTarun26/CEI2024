@@ -110,5 +110,37 @@ namespace CEIHaryana.GuestAdmin
             string InstallationType = RadioButtonList1.SelectedValue.ToString();
             GridBind();
         }
+
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+
+            Control ctrl = e.CommandSource as Control;
+            GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
+            if (e.CommandName == "Select")
+            {
+                //if (e.CommandName == "Select")
+                //{
+                Label lblID = (Label)row.FindControl("lblID");
+                Label lblApproval = (Label)row.FindControl("lblApproval");
+                Session["Approval"] = lblApproval.Text.Trim();
+                Label lblInstallationFor = (Label)row.FindControl("lblInstallationFor");
+                string id = lblID.Text;
+                Session["InspectionId"] = id;
+
+                if (lblInstallationFor.Text == "Cinema_Videos Talkies")
+                {
+                    Response.Redirect("/GuestAdmin/CinemaInspectionDetailsGuestAdmin.aspx", false);
+                }
+                else if (lblInstallationFor.Text == "Lift" || lblInstallationFor.Text == "Escalator" || lblInstallationFor.Text == "Lift/Escalator" || lblInstallationFor.Text == "MultiLift" || lblInstallationFor.Text == "MultiEscalator")
+                {
+                    Response.Redirect("/GuestAdmin/LiftInspectionDetailsGuestAdmin.aspx", false);
+                }
+                else
+                {
+                    Response.Redirect("/GuestAdmin/InspectionDetailsGuestAdmin.aspx", false);
+                }
+
+            }
+        }
     }
 }

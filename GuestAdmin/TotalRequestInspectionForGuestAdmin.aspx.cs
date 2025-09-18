@@ -51,8 +51,9 @@ namespace CEIHaryana.GuestAdmin
                 LoginId = Convert.ToString(Session["GuestAdmin"]);
                 string id = ddldivision.SelectedValue.ToString();
                 string InstallationType = RadioButtonList1.SelectedValue.ToString();
+                string searchText = txtSearch.Text.Trim();
                 DataTable ds = new DataTable();
-                ds = CEI.TotalRequestInspectionForGuestAdmin(LoginId, id, InstallationType);
+                ds = CEI.TotalRequestInspectionForGuestAdmin(LoginId, id, InstallationType , searchText);
                 if (ds.Rows.Count > 0)
                 {
                     GridView1.DataSource = ds;
@@ -116,6 +117,45 @@ namespace CEIHaryana.GuestAdmin
         {
             string InstallationType = RadioButtonList1.SelectedValue.ToString();
             GridBind();
+        }
+
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+
+            Control ctrl = e.CommandSource as Control;
+            GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
+            if (e.CommandName == "Select")
+            {
+                //if (e.CommandName == "Select")
+                //{
+                Label lblID = (Label)row.FindControl("lblID");
+                Label lblApproval = (Label)row.FindControl("lblApproval");
+                Session["Approval"] = lblApproval.Text.Trim();
+                Label lblInstallationFor = (Label)row.FindControl("lblInstallationFor");
+                string id = lblID.Text;
+                Session["InspectionId"] = id;
+
+                if (lblInstallationFor.Text == "Cinema_Videos Talkies")
+                {
+                    Response.Redirect("/GuestAdmin/CinemaInspectionDetailsGuestAdmin.aspx", false);
+                }
+                else if (lblInstallationFor.Text == "Lift" || lblInstallationFor.Text == "Escalator" || lblInstallationFor.Text == "Lift/Escalator" || lblInstallationFor.Text == "MultiLift" || lblInstallationFor.Text == "MultiEscalator")
+                {
+                    Response.Redirect("/GuestAdmin/LiftInspectionDetailsGuestAdmin.aspx", false);
+                }
+                else
+                {
+                    Response.Redirect("/GuestAdmin/InspectionDetailsGuestAdmin.aspx", false);
+                }
+
+            }
+        }
+
+        protected void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            string searchText = txtSearch.Text.Trim();
+            GridBind();
+        
         }
     }
 }
