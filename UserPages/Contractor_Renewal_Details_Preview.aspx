@@ -287,7 +287,7 @@
                                                         </div>
                                                         <div class="col-md-4">
                                                             <label id="Label5" runat="server" visible="true">
-                                                                Supervisor Competency Certificate No.
+                                                                 Competency Certificate No.
                                                             </label>
                                                             <asp:TextBox ReadOnly="true" class="form-control" ID="txtCompeencyCertificate" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
                                                         </div>
