@@ -492,7 +492,7 @@
                                     <ul class="nav flex-column sub-menu">
                                         <li class="nav-item"><a class="nav-link" href="/Admin/SldApproval.aspx">Request Recevied</a></li>
                                         <li class="nav-item"><a class="nav-link" href="/Admin/SldApprovalRequest.aspx">Approval Request</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="/Admin/SLDHistory.asp">History</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="/Admin/SLDHistory.aspx">History</a></li>
                                     </ul>
                                 </div>
                             </li>
