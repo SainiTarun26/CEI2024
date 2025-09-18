@@ -249,9 +249,9 @@ namespace CEIHaryana.SiteOwnerPages
         protected void txtRegistrationNo_TextChanged(object sender, EventArgs e)
         {
             string CreatedBy = HdnUserID.Value;
-            //int result = Convert.ToInt32(CEI.ToCheckeitherLiftOrEsclatorRegistered(txtRegistrationNo.Text.Trim(), CreatedBy));
-            //if (result == 1)
-            //{
+            int result = Convert.ToInt32(CEI.ToCheckeitherLiftOrEsclatorRegistered(txtRegistrationNo.Text.Trim(), CreatedBy));
+            if (result == 1)
+            {
                 DataSet ds = CEI.GetRenewalLiftData(ddlInstallationType.SelectedItem.ToString(), txtRegistrationNo.Text.Trim(), CreatedBy);
                 if (ds.Tables[0].Rows.Count > 0 && ds != null)
                 {
@@ -347,17 +347,17 @@ namespace CEIHaryana.SiteOwnerPages
                     //txtRegistrationNo.Text = "";
                     //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('An application with the same Registration No. already exists for another user.')", true);
                 }
-            //}
-            //else if (result == 0)
-            //{
-            //    Reset();
-            //    txtRegistrationNo.Text = "";
-            //    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('An application with the same Registration No. already exists for another user.')", true);
-            //}
-            //else
-            //{
-            //    Reset();
-            //}
+            }
+            else if (result == 2)
+            {
+                Reset();
+                txtRegistrationNo.Text = "";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('An application with the same Registration No. already exists for another user.Please contact to Admin Office')", true);
+            }
+            else
+            {
+                Reset();
+            }
         }
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
@@ -472,139 +472,170 @@ namespace CEIHaryana.SiteOwnerPages
 
             try
             {
-                string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ToString();
-                connection = new SqlConnection(connectionString);
-                connection.Open();
-                transaction = connection.BeginTransaction();
-
-                if (Convert.ToString(HdnUserID.Value) != null && Convert.ToString(HdnUserID.Value) != "")
+                if (Convert.ToString(Session["SiteOwnerId"]) != null && Convert.ToString(Session["SiteOwnerId"]) != "")
                 {
-                    string SiteOwnerID = HdnUserID.Value;
+                    string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ToString();
+                    connection = new SqlConnection(connectionString);
+                    connection.Open();
+                    transaction = connection.BeginTransaction();
 
-                    //int result = Convert.ToInt32(CEI.ToCheckeitherLiftOrEsclatorRegistered(txtRegistrationNo.Text.Trim(), SiteOwnerID));
-                    //if (result == -1)
-                    //{
-
-                        DateTime lastExpiryDate = Convert.ToDateTime(txtExpiryDate.Text);
-                        DateTime memoDate = Convert.ToDateTime(txtMemoDate.Text);
-                        DateTime erectionDate = Convert.ToDateTime(txtDateofErection.Text);
-                    //LastdateOfPayment changed by navneet as per instructions of vinod sir
-                    DateTime LastdateOfPayment ;
-                       DateTime Lastexpirydate = Convert.ToDateTime(txtExpiryDate.Text);
-                    if (Convert.ToString(txtLastdateOfPayment.Text) != "")
+                    //if (Convert.ToString(HdnUserID.Value) != null && Convert.ToString(HdnUserID.Value) != "")
+                    if (Convert.ToString(HdnUserID.Value) != Convert.ToString(Session["SiteOwnerId"]) && Convert.ToString(HdnUserID.Value) != "")
                     {
+                        int result = Convert.ToInt32( CEI.ToCheckIfLiftOrEsclatorExistWithAnotherUser( txtRegistrationNo.Text.Trim(), Convert.ToString(HdnUserID.Value) ) );
 
-                        LastdateOfPayment = Convert.ToDateTime(txtLastdateOfPayment.Text);
-                        //validation for erection & memo dates
-                        string errorMsg = "";
-                        if (!ValidateErectionAndMemoDates(Lastexpirydate, LastdateOfPayment, erectionDate, memoDate, out errorMsg))
+                        if (result == 2)
                         {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "Error", $"alert('{errorMsg}');", true);
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('An application with the same Registration No. already exists for another user.Please contact to Admin Office')", true);
                             return;
-                        }
-                    }
-                   //
-
-                        //Check for memo vs expiry logic
-                        ////if (!ToCheckDatesForLiftRenewal(lastExpiryDate, memoDate))
-                        ////{
-                        ////    Response.Write("<script>alert('The date (month and day) of the FirstExpiryDate from Memo Date must match the Last Expiry Date.');</script>");
-                        ////    return;
-                        ////}
-
-                        string filePathInfo = "";
-                        // Other fields
-                        string districtValue = ddlDistrict.Visible ? ddlDistrict.SelectedItem.ToString() : txtDistrict.Text;
-                        string Type = RadioBtnType.Visible ? RadioBtnType.SelectedItem.Text : (RadioBtnEscType.Visible ? RadioBtnEscType.SelectedItem.Text : "");
-
-                        decimal weight = 0.0m;
-                        decimal.TryParse(txtWeight.Text, out weight);
-                        string TRID = "";
-                        if (Session["ReturnedValue"].ToString() != "1")
-                        {
-                            TRID = CEI.InsertPeriodicLiftData(
-                                ddlInstallationType.SelectedItem.ToString(), txtRegistrationNo.Text, txtExpiryDate.Text,
-                                filePathInfo, txtLastdateOfPayment.Text, txtDateofErection.Text, txtMake.Text,
-                                txtSerialNo.Text, Type, txtControlType.Text, txtCapacity.Text, weight,
-                                districtValue, txtMemoNo.Text, txtMemoDate.Text, txtSiteAddress.Text,
-                                SiteOwnerID, transaction);
                         }
                         else
                         {
-                            string TestReportId = Session["EscalatorTestReportID"].ToString();
-                            int InspectionId = int.Parse(Session["InspectionId"].ToString());
-                            DataTable dt = CEI.InsertReturnPeriodicLiftData(
-                                TestReportId, ddlInstallationType.SelectedItem.ToString(), txtRegistrationNo.Text,
-                                txtExpiryDate.Text, filePathInfo, txtLastdateOfPayment.Text, txtDateofErection.Text,
-                                txtMake.Text, txtSerialNo.Text, Type, txtControlType.Text, txtCapacity.Text,
-                                weight, districtValue, txtMemoNo.Text, txtMemoDate.Text, txtSiteAddress.Text,
-                                InspectionId, SiteOwnerID);
-                            TRID = dt.Rows[0]["TestReportId"].ToString();
-                        }
+                            int exist = CEI.CheckExistenceBeforeInsertPeriodicLiftData(txtRegistrationNo.Text.Trim(), HdnUserID.Value);
 
-                        // Upload supporting documents
-                        bool allRequiredDocumentsAreUploaded = true;
-                        foreach (GridViewRow row in Grd_Document.Rows)
-                        {
-                            Label LblDocumentID = (Label)row.FindControl("LblDocumentID");
-                            Label LblDocumentName = (Label)row.FindControl("LblDocumentName");
-                            Label LblShortName = (Label)row.FindControl("LblShortName");
-
-                            string fileName = LblShortName.Text;
-                            string fileNameWithoutExtension = fileName.Contains(".pdf") ? fileName.Substring(0, fileName.IndexOf(".pdf")) : fileName;
-
-                            FileUpload fileUploadDoc1 = row.FindControl("FileUpload1") as FileUpload;
-                            // Check if it's a required document or "Other Document"
-                            bool isOtherDocument = LblDocumentName.Text.Trim().ToLower() == "other document";
-
-                            if (fileUploadDoc1 != null && fileUploadDoc1.HasFile)
+                            if (exist == 0)
                             {
-                                string folderPath = $"/Attachment/{SiteOwnerID}/{txtRegistrationNo.Text}/CheckListDocuments";
-                                string absolutePath = Server.MapPath(folderPath);
-
-                                if (!Directory.Exists(absolutePath)) Directory.CreateDirectory(absolutePath);
-
-                                string fileName1 = fileNameWithoutExtension + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
-                                string filePathInfo1 = Path.Combine(absolutePath, fileName1);
-                                fileUploadDoc1.PostedFile.SaveAs(filePathInfo1);
-
-                                CEI.UploadDocumentforLiftPeriodic(TRID, txtRegistrationNo.Text, ddlInstallationType.SelectedItem.ToString(),
-                                    LblDocumentID.Text, LblDocumentName.Text, fileName, folderPath + "/" + fileName1, SiteOwnerID, transaction);
+                                string script = "alert('Your request with Registration No is already in Pending status.');";
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertAndRedirect", script, true);
                             }
                             else
                             {
-                                if (!isOtherDocument)
+                                string SiteOwnerID = HdnUserID.Value;
+
+                                //int result = Convert.ToInt32(CEI.ToCheckeitherLiftOrEsclatorRegistered(txtRegistrationNo.Text.Trim(), SiteOwnerID));
+                                //if (result == -1)
+                                //{
+
+                                DateTime lastExpiryDate = Convert.ToDateTime(txtExpiryDate.Text);
+                                DateTime memoDate = Convert.ToDateTime(txtMemoDate.Text);
+                                DateTime erectionDate = Convert.ToDateTime(txtDateofErection.Text);
+                                //LastdateOfPayment changed by navneet as per instructions of vinod sir
+                                DateTime LastdateOfPayment;
+                                DateTime Lastexpirydate = Convert.ToDateTime(txtExpiryDate.Text);
+                                if (Convert.ToString(txtLastdateOfPayment.Text) != "")
                                 {
-                                    allRequiredDocumentsAreUploaded = false;
-                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Error", $"alert('Please upload the document: {LblDocumentName.Text}');", true);
-                                    return;
+
+                                    LastdateOfPayment = Convert.ToDateTime(txtLastdateOfPayment.Text);
+                                    //validation for erection & memo dates
+                                    string errorMsg = "";
+                                    if (!ValidateErectionAndMemoDates(Lastexpirydate, LastdateOfPayment, erectionDate, memoDate, out errorMsg))
+                                    {
+                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "Error", $"alert('{errorMsg}');", true);
+                                        return;
+                                    }
                                 }
+                                //
+
+                                //Check for memo vs expiry logic
+                                ////if (!ToCheckDatesForLiftRenewal(lastExpiryDate, memoDate))
+                                ////{
+                                ////    Response.Write("<script>alert('The date (month and day) of the FirstExpiryDate from Memo Date must match the Last Expiry Date.');</script>");
+                                ////    return;
+                                ////}
+
+                                string filePathInfo = "";
+                                // Other fields
+                                string districtValue = ddlDistrict.Visible ? ddlDistrict.SelectedItem.ToString() : txtDistrict.Text;
+                                string Type = RadioBtnType.Visible ? RadioBtnType.SelectedItem.Text : (RadioBtnEscType.Visible ? RadioBtnEscType.SelectedItem.Text : "");
+
+                                decimal weight = 0.0m;
+                                decimal.TryParse(txtWeight.Text, out weight);
+                                string TRID = "";
+                                //if (Session["ReturnedValue"].ToString() != "1")
+                                if (exist == 2)
+                                {
+                                    TRID = CEI.InsertPeriodicLiftData(
+                                        ddlInstallationType.SelectedItem.ToString(), txtRegistrationNo.Text, txtExpiryDate.Text,
+                                        filePathInfo, txtLastdateOfPayment.Text, txtDateofErection.Text, txtMake.Text,
+                                        txtSerialNo.Text, Type, txtControlType.Text, txtCapacity.Text, weight,
+                                        districtValue, txtMemoNo.Text, txtMemoDate.Text, txtSiteAddress.Text,
+                                        SiteOwnerID, transaction);
+                                }
+                                else if (exist == 1) //Return
+                                {
+                                    string TestReportId = Session["EscalatorTestReportID"].ToString();
+                                    int InspectionId = int.Parse(Session["InspectionId"].ToString());
+                                    DataTable dt = CEI.InsertReturnPeriodicLiftData(
+                                        TestReportId, ddlInstallationType.SelectedItem.ToString(), txtRegistrationNo.Text,
+                                        txtExpiryDate.Text, filePathInfo, txtLastdateOfPayment.Text, txtDateofErection.Text,
+                                        txtMake.Text, txtSerialNo.Text, Type, txtControlType.Text, txtCapacity.Text,
+                                        weight, districtValue, txtMemoNo.Text, txtMemoDate.Text, txtSiteAddress.Text,
+                                        InspectionId, SiteOwnerID);
+                                    TRID = dt.Rows[0]["TestReportId"].ToString();
+                                }
+
+                                // Upload supporting documents
+                                bool allRequiredDocumentsAreUploaded = true;
+                                foreach (GridViewRow row in Grd_Document.Rows)
+                                {
+                                    Label LblDocumentID = (Label)row.FindControl("LblDocumentID");
+                                    Label LblDocumentName = (Label)row.FindControl("LblDocumentName");
+                                    Label LblShortName = (Label)row.FindControl("LblShortName");
+
+                                    string fileName = LblShortName.Text;
+                                    string fileNameWithoutExtension = fileName.Contains(".pdf") ? fileName.Substring(0, fileName.IndexOf(".pdf")) : fileName;
+
+                                    FileUpload fileUploadDoc1 = row.FindControl("FileUpload1") as FileUpload;
+                                    // Check if it's a required document or "Other Document"
+                                    bool isOtherDocument = LblDocumentName.Text.Trim().ToLower() == "other document";
+
+                                    if (fileUploadDoc1 != null && fileUploadDoc1.HasFile)
+                                    {
+                                        string folderPath = $"/Attachment/{SiteOwnerID}/{txtRegistrationNo.Text}/CheckListDocuments";
+                                        string absolutePath = Server.MapPath(folderPath);
+
+                                        if (!Directory.Exists(absolutePath)) Directory.CreateDirectory(absolutePath);
+
+                                        string fileName1 = fileNameWithoutExtension + "_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
+                                        string filePathInfo1 = Path.Combine(absolutePath, fileName1);
+                                        fileUploadDoc1.PostedFile.SaveAs(filePathInfo1);
+
+                                        CEI.UploadDocumentforLiftPeriodic(TRID, txtRegistrationNo.Text, ddlInstallationType.SelectedItem.ToString(),
+                                            LblDocumentID.Text, LblDocumentName.Text, fileName, folderPath + "/" + fileName1, SiteOwnerID, transaction);
+                                    }
+                                    else
+                                    {
+                                        if (!isOtherDocument)
+                                        {
+                                            allRequiredDocumentsAreUploaded = false;
+                                            ScriptManager.RegisterStartupScript(this, this.GetType(), "Error", $"alert('Please upload the document: {LblDocumentName.Text}');", true);
+                                            return;
+                                        }
+                                    }
+                                }
+                                transaction.Commit();
+
+                                // Redirect or show confirmation
+                                ////if (Session["ReturnedValue"].ToString() != "1")
+                                if (exist == 2)
+                                {
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true); //SuccessfulSubmit         
+                                }
+                                else if (exist == 1)
+                                {
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithReturnRedirectdata();", true);  //Returned-Application SuccessfulSubmit                        
+                                }
+                                Reset();
+                                //}
+                                //else
+                                //{
+                                //    Reset();
+                                //    txtRegistrationNo.Text = "";
+                                //    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('An application with the same Registration No. already exists for another user.')", true);
+                                //}
                             }
                         }
-                        transaction.Commit();
-
-                        // Redirect or show confirmation
-                        if (Session["ReturnedValue"].ToString() != "1")
-                        {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true); //SuccessfulSubmit         
-                        }
-                        else
-                        {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithReturnRedirectdata();", true);  //Returned-Application SuccessfulSubmit                        
-                        }
-                        Reset();
-                    //}
-                    //else
-                    //{
-                    //    Reset();
-                    //    txtRegistrationNo.Text = "";
-                    //    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('An application with the same Registration No. already exists for another user.')", true);
-                    //}
+                    }
+                    else
+                    {
+                        //Reset();
+                        //txtRegistrationNo.Text = "";
+                        Response.Redirect("/LogOut.aspx");
+                    }
                 }
                 else
                 {
-                    Reset();
-                    txtRegistrationNo.Text = "";
+                    Response.Redirect("/LogOut.aspx");
                 }
             }
             catch (Exception ex)
@@ -621,7 +652,7 @@ namespace CEIHaryana.SiteOwnerPages
             }
         }
 
-        private bool ValidateErectionAndMemoDates(DateTime Lastexpirydate, DateTime LastApprovalDate,DateTime erectionDate, DateTime memoDate, out string errorMsg)
+        private bool ValidateErectionAndMemoDates(DateTime Lastexpirydate, DateTime LastApprovalDate, DateTime erectionDate, DateTime memoDate, out string errorMsg)
         {
             errorMsg = "";
             DateTime currentDate = DateTime.Today;
@@ -638,12 +669,12 @@ namespace CEIHaryana.SiteOwnerPages
                 return false;
             }
             //2 date checks added by navneet on instructions of vinod sir
-            if (Lastexpirydate  <= LastApprovalDate)
+            if (Lastexpirydate <= LastApprovalDate)
             {
                 errorMsg = "Date of Renewal must be Greater than or equal to Last date of payment";
                 return false;
             }
-           
+
             return true;
         }
     }

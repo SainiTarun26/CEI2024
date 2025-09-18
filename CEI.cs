@@ -14768,6 +14768,39 @@ string dbPathCompetency, string dbPathMedicalCertificate, string userId)
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_AcceptRejectInspection", AssignTo, string.IsNullOrEmpty(SearchText) ? (object)DBNull.Value : SearchText);
         }
         #endregion
+        #region Neha 18-sept-2025
+        public static int CheckExistenceBeforeInsertPeriodicLiftData(string registrationNo, string createdBy)
+        {
+            return DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_CheckExistenceBeforeInsertPeriodicLiftData", registrationNo, createdBy);
+        }
+        public int ToCheckIfLiftOrEsclatorExistWithAnotherUser(string registrationNo, string userId)
+        {
+            int result = -1; // Default: Not Found
+
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ToString()))
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_ToCheckIfLiftOrEsclatorExistWithAnotherUser", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@RegistrationNo", registrationNo);
+                    cmd.Parameters.AddWithValue("@CreatedBy", userId);
+
+                    // Explicitly define the return value parameter
+                    SqlParameter returnValue = new SqlParameter("@ReturnVal", SqlDbType.Int);
+                    returnValue.Direction = ParameterDirection.ReturnValue;
+                    cmd.Parameters.Add(returnValue);
+
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+
+                    result = Convert.ToInt32(returnValue.Value);
+                }
+            }
+
+            return result;
+        }
+        #endregion
     }
 }
 
