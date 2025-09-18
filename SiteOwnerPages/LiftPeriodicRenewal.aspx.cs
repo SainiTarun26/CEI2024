@@ -479,27 +479,30 @@ namespace CEIHaryana.SiteOwnerPages
                     connection.Open();
                     transaction = connection.BeginTransaction();
 
-                    //if (Convert.ToString(HdnUserID.Value) != null && Convert.ToString(HdnUserID.Value) != "")
-                    if (Convert.ToString(HdnUserID.Value) != Convert.ToString(Session["SiteOwnerId"]) && Convert.ToString(HdnUserID.Value) != "")
+                    if (Convert.ToString(HdnUserID.Value) != null && Convert.ToString(HdnUserID.Value) != "")
+                    //if (Convert.ToString(HdnUserID.Value) != Convert.ToString(Session["SiteOwnerId"]) && Convert.ToString(HdnUserID.Value) != "")
                     {
-                        int result = Convert.ToInt32( CEI.ToCheckIfLiftOrEsclatorExistWithAnotherUser( txtRegistrationNo.Text.Trim(), Convert.ToString(HdnUserID.Value) ) );
 
-                        if (result == 2)
+                        if (Convert.ToString(Session["SiteOwnerId"]) == Convert.ToString(HdnUserID.Value))
                         {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('An application with the same Registration No. already exists for another user.Please contact to Admin Office')", true);
-                            return;
-                        }
-                        else
-                        {
-                            int exist = CEI.CheckExistenceBeforeInsertPeriodicLiftData(txtRegistrationNo.Text.Trim(), HdnUserID.Value);
+                            int result = Convert.ToInt32(CEI.ToCheckIfLiftOrEsclatorExistWithAnotherUser(txtRegistrationNo.Text.Trim(), Convert.ToString(HdnUserID.Value)));
 
-                            if (exist == 0)
+                            if (result == 2)
                             {
-                                string script = "alert('Your request with Registration No is already in Pending status.');";
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertAndRedirect", script, true);
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('An application with the same Registration No. already exists for another user.Please contact to Admin Office')", true);
+                                return;
                             }
                             else
                             {
+                                //int exist = CEI.CheckExistenceBeforeInsertPeriodicLiftData(txtRegistrationNo.Text.Trim(), HdnUserID.Value);
+
+                                //if (exist == 0)
+                                //{
+                                //    string script = "alert('Your request with Registration No is already in Pending status.');";
+                                //    ScriptManager.RegisterStartupScript(this, this.GetType(), "alertAndRedirect", script, true);
+                                //}
+                                //else
+                                //{
                                 string SiteOwnerID = HdnUserID.Value;
 
                                 //int result = Convert.ToInt32(CEI.ToCheckeitherLiftOrEsclatorRegistered(txtRegistrationNo.Text.Trim(), SiteOwnerID));
@@ -541,8 +544,8 @@ namespace CEIHaryana.SiteOwnerPages
                                 decimal weight = 0.0m;
                                 decimal.TryParse(txtWeight.Text, out weight);
                                 string TRID = "";
-                                //if (Session["ReturnedValue"].ToString() != "1")
-                                if (exist == 2)
+                                if (Session["ReturnedValue"].ToString() != "1")
+
                                 {
                                     TRID = CEI.InsertPeriodicLiftData(
                                         ddlInstallationType.SelectedItem.ToString(), txtRegistrationNo.Text, txtExpiryDate.Text,
@@ -551,7 +554,7 @@ namespace CEIHaryana.SiteOwnerPages
                                         districtValue, txtMemoNo.Text, txtMemoDate.Text, txtSiteAddress.Text,
                                         SiteOwnerID, transaction);
                                 }
-                                else if (exist == 1) //Return
+                                else
                                 {
                                     string TestReportId = Session["EscalatorTestReportID"].ToString();
                                     int InspectionId = int.Parse(Session["InspectionId"].ToString());
@@ -606,12 +609,11 @@ namespace CEIHaryana.SiteOwnerPages
                                 transaction.Commit();
 
                                 // Redirect or show confirmation
-                                ////if (Session["ReturnedValue"].ToString() != "1")
-                                if (exist == 2)
+                                if (Session["ReturnedValue"].ToString() != "1")
                                 {
                                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true); //SuccessfulSubmit         
                                 }
-                                else if (exist == 1)
+                                else
                                 {
                                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithReturnRedirectdata();", true);  //Returned-Application SuccessfulSubmit                        
                                 }
@@ -623,8 +625,14 @@ namespace CEIHaryana.SiteOwnerPages
                                 //    txtRegistrationNo.Text = "";
                                 //    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('An application with the same Registration No. already exists for another user.')", true);
                                 //}
+                                // }
                             }
                         }
+                        else
+                        {
+                            Response.Redirect("/LogOut.aspx");
+                        }
+
                     }
                     else
                     {
