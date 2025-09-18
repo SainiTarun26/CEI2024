@@ -39,8 +39,8 @@ namespace CEIHaryana.Supervisor
             }
             catch
             {
-                Response.Redirect("/SupervisorLogout.aspx");
-            }
+                    Response.Redirect("/Logout.aspx", false);
+                 }
         }
 
         private void GridToBindData(string Id)
@@ -60,6 +60,22 @@ namespace CEIHaryana.Supervisor
                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
             dt.Dispose();
+        }
+
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Print")
+            {
+                Control ctrl = e.CommandSource as Control;
+                GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
+                Label lblID = (Label)row.FindControl("lblID");
+               Session["id"] = lblID.Text;
+               Response.Redirect("/Print_Forms/Print_Supervisor_Upgradation_Details.aspx", false);     
+            }
+            else
+            {
+                Response.Redirect("/Supervisor/SupervisorUpgradationHistory.aspx");
+            }
         }
     }
 }

@@ -63,5 +63,26 @@ namespace CEIHaryana.Contractor
             }
             dt.Dispose();
         }
+
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            try
+            {
+               
+                if (e.CommandName == "Print")
+                {
+                    Control ctrl = e.CommandSource as Control;
+                    GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
+                    Label lblID = (Label)row.FindControl("lblID");
+                    Session["id"] = lblID.Text;
+                    Response.Redirect("/Print_Forms/Print_Contractor_Upgradation_Details.aspx", false);
+                   
+                }
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "aleert", "alert('" + ex.Message + "');", true);
+            }
+        }
     }
 }

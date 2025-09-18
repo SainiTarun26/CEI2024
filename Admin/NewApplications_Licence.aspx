@@ -442,8 +442,22 @@
 
                     </div>
                     <div class="row" id="ForWardToCommittee" runat="server" visible="false" style="margin-top: 35px; margin-left: 0px;">
-                        <div class="div-4">
-                           <%-- <asp:Label ID="Label1" runat="server" Text="Commettiee Id.:" />--%>
+                        <div class="div-4" style="width:9%;">
+                            <%-- <asp:Label ID="Label1" runat="server" Text="Commettiee Id.:" />--%>
+                            <label>Action:</label>
+                            <%--                                <asp:TextBox CssClass="form-control" ReadOnly="true" ID="txtCommittee" runat="server" autocomplete="off"
+                                    TabIndex="1" MaxLength="200"
+                                    Style="width: calc(100% - 40px);">
+                </asp:TextBox>--%>
+
+                            <asp:DropDownList class="form-control  select-form select2" runat="server" ID="ddlAction" AutoPostBack="true" Style="width: 94% !important; height: 25px; padding: 0px; font-size: 13px;" OnSelectedIndexChanged="ddlAction_SelectedIndexChanged">
+                                <asp:ListItem Value="1" Selected="True">Forward</asp:ListItem>
+                                <asp:ListItem Value="3">Reject</asp:ListItem>
+                            </asp:DropDownList>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator" ControlToValidate="ddlAction" runat="server" InitialValue="0" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
+                        </div>
+                        <div class="div-4" runat="server" id="ForwardCommiitte1">
+                            <%-- <asp:Label ID="Label1" runat="server" Text="Commettiee Id.:" />--%>
                             <label>Commettiee Id.:</label>
                             <%--                                <asp:TextBox CssClass="form-control" ReadOnly="true" ID="txtCommittee" runat="server" autocomplete="off"
                                     TabIndex="1" MaxLength="200"
@@ -454,12 +468,21 @@
                             </asp:DropDownList>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="ddlCommittee" runat="server" InitialValue="0" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                         </div>
-                        <div class="div-4" style="margin-top: 2px;">
+                        <div class="div-4" style="margin-top: 2px;" runat="server" id="ForwardCommiitte2">
                             <label>&nbsp;</label>
                             <asp:Button ID="Button1" Text="Forward To Committee" OnClick="Button1_Click" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" />
-                              <label>&nbsp;</label>
+                            <label>&nbsp;</label>
+
+                        </div>
+                        <div class="div-4" runat="server" id="Reason" visible="false" style="width:20%;">
+                            <label>Reason:</label>
+                            <asp:TextBox ID="txtReason" TextMode="MultiLine" class="form-control" runat="server" MaxLength="200"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtReason" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please enter</asp:RequiredFieldValidator>
+
+                        </div>
+                        <div class="div-4" runat="server" id="Returnreject" style="padding:2.5%;">
                             <asp:Button ID="btnReturn" Text="Return" Visible="false" OnClick="btnReturn_Click" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" />
-                            <asp:Button ID="btnReJect" Text="Reject"  OnClick="btnReJect_Click" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" />
+                            <asp:Button ID="btnReJect" Text="Reject" Visible="false" OnClick="btnReJect_Click" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" />
 
                         </div>
                     </div>

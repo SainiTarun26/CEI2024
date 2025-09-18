@@ -603,7 +603,7 @@ namespace CEIHaryana.Admin
                         {
 
                             lblRegistrationNo = (Label)row.FindControl("lblRegistrationNo");
-                            cei.UpdatestatusOfReturnLicenseapplication("Return", "New", lblRegistrationNo.Text);
+                            cei.UpdatestatusOfReturnLicenseapplication("Return", "New", txtReason.Text, lblRegistrationNo.Text);
                             GridViewBind(null, null, null);
 
                             ScriptManager.RegisterStartupScript(this, GetType(), "UploadError",
@@ -665,13 +665,13 @@ namespace CEIHaryana.Admin
                         {
 
                             lblRegistrationNo = (Label)row.FindControl("lblRegistrationNo");
-                            cei.UpdatestatusOfReturnLicenseapplication("Reject", "New", lblRegistrationNo.Text);
+                            cei.UpdatestatusOfReturnLicenseapplication("Reject", "New", txtReason.Text, lblRegistrationNo.Text);
                         }
                         else
                         {
 
                             lblRegistrationNo = (Label)row.FindControl("lblId");
-                            cei.UpdatestatusOfReturnLicenseapplication("Reject", "ReNew", lblRegistrationNo.Text);
+                            cei.UpdatestatusOfReturnLicenseapplication("Reject", "ReNew", txtReason.Text, lblRegistrationNo.Text);
                         }
 
                         ScriptManager.RegisterStartupScript(this, GetType(), "UploadError",
@@ -688,8 +688,35 @@ namespace CEIHaryana.Admin
                 return;
             }
         }
-            
-        
+
+
         #endregion
+
+        protected void ddlAction_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlAction.SelectedValue == "3")
+            {
+                ForwardCommiitte1.Visible = false;
+                ForwardCommiitte2.Visible = false;
+                Reason.Visible = true;
+                btnReJect.Visible = true;
+            }
+            else if (ddlAction.SelectedValue == "2")
+            {
+                ForwardCommiitte1.Visible = false;
+                ForwardCommiitte2.Visible = false;
+                Reason.Visible = true;
+                btnReturn.Visible = true;
+
+            }
+            else
+            {
+                ForwardCommiitte1.Visible = true;
+                ForwardCommiitte2.Visible = true;
+                Reason.Visible = false;
+                btnReturn.Visible = false;
+                btnReJect.Visible = false;
+            }
+        }
     }
 }

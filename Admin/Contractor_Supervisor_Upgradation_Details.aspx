@@ -344,7 +344,17 @@
                                             <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
                                             <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems" />
                                         </asp:BoundField>
+                                                                        <asp:TemplateField HeaderText="ApplicationForm">
+    <HeaderStyle Width="10%" CssClass="headercolor" />
+    <ItemStyle Width="10%" />
+    <ItemTemplate>
+        <asp:LinkButton ID="LinkButton2" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;" runat="server"
+            Text="<i class='fa fa-print' style='color:white !important;'></i>" CssClass='greenButton btn-primary' CommandName="Print" CommandArgument="<%# Container.DataItemIndex %>">
+        </asp:LinkButton>
+    </ItemTemplate>
+</asp:TemplateField>
                                     </Columns>
+
                                     <FooterStyle BackColor="White" ForeColor="#000066" />
                                     <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
                                     <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />

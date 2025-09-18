@@ -2047,6 +2047,7 @@
     <Content Include="Print_Forms\InspectionRequestPrint.aspx" />
     <Content Include="Print_Forms\Licence_Renewal_Print.aspx" />
     <Content Include="Print_Forms\LiftApprovalCertificate.aspx" />
+    <Content Include="Print_Forms\Print_Contractor_Upgradation_Details.aspx" />
     <Content Include="Print_Forms\Print_New_Registration_Information.aspx" />
     <Content Include="Print_Forms\Print_New_Registration_Information_Contractor.aspx" />
     <Content Include="Print_Forms\Print_Renewal_Of_Lift.aspx" />
@@ -2060,6 +2061,7 @@
     <Content Include="Print_Forms\PrintCertificate3.aspx" />
     <Content Include="Print_Forms\PrintCertificate4.aspx" />
     <Content Include="Print_Forms\Print_Renewal_Of_LiftOLD.aspx" />
+    <Content Include="Print_Forms\Print_Supervisor_Upgradation_Details.aspx" />
     <Content Include="Print_Forms\VerificationLetter.aspx" />
     <Content Include="Procedure_for_Electrical _Installation.aspx" />
     <Content Include="Procedure_for_grant_of_approval.aspx" />
@@ -3893,6 +3895,13 @@
     <Compile Include="Print_Forms\LiftApprovalCertificate.aspx.designer.cs">
       <DependentUpon>LiftApprovalCertificate.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Print_Forms\Print_Contractor_Upgradation_Details.aspx.cs">
+      <DependentUpon>Print_Contractor_Upgradation_Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Print_Forms\Print_Contractor_Upgradation_Details.aspx.designer.cs">
+      <DependentUpon>Print_Contractor_Upgradation_Details.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Print_Forms\Print_New_Registration_Information.aspx.cs">
       <DependentUpon>Print_New_Registration_Information.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3983,6 +3992,13 @@
     </Compile>
     <Compile Include="Print_Forms\Print_Renewal_Of_LiftOLD.aspx.designer.cs">
       <DependentUpon>Print_Renewal_Of_LiftOLD.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Print_Forms\Print_Supervisor_Upgradation_Details.aspx.cs">
+      <DependentUpon>Print_Supervisor_Upgradation_Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Print_Forms\Print_Supervisor_Upgradation_Details.aspx.designer.cs">
+      <DependentUpon>Print_Supervisor_Upgradation_Details.aspx</DependentUpon>
     </Compile>
     <Compile Include="Print_Forms\VerificationLetter.aspx.cs">
       <DependentUpon>VerificationLetter.aspx</DependentUpon>

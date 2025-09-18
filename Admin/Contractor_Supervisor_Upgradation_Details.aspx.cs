@@ -22,6 +22,10 @@ namespace CEIHaryana.Admin
                 {
                     GetSubmittedUpgradationApplications(null);
                 }
+                else
+                {
+                    Response.Redirect("/Logout.aspx", false);
+                }
             }
         }
 
@@ -76,6 +80,22 @@ namespace CEIHaryana.Admin
                 else if (lblType.Text == "Contractor")
                 {
                     Response.Redirect("/Admin/Contractor_Upgradation_Details.aspx", false);
+                }
+            }
+            else if(e.CommandName == "Print")
+            {
+                Control ctrl = e.CommandSource as Control;
+                GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
+                Label lblID = (Label)row.FindControl("lblID");
+                Label lblType = (Label)row.FindControl("lblType");
+                Session["id"] = lblID.Text;
+                if (lblType.Text == "Supervisor")
+                {
+                    Response.Redirect("/Print_Forms/Print_Supervisor_Upgradation_Details.aspx", false);
+                }
+                else if (lblType.Text == "Contractor")
+                {
+                    Response.Redirect("/Print_Forms/Print_Contractor_Upgradation_Details.aspx", false);
                 }
             }
             else

@@ -173,7 +173,7 @@
                     </div>
                     <div style="margin-top: 3%">
                         <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" AutoPostBack="true" runat="server" Width="100%" AutoGenerateColumns="false"
-                            AllowPaging="true" BorderWidth="1px" BorderColor="#dbddff">
+                            AllowPaging="true" BorderWidth="1px" BorderColor="#dbddff" OnRowcommand="GridView1_RowCommand">
                             <PagerStyle CssClass="pagination-ys" />
                             <Columns>
                                 <asp:TemplateField HeaderText="SNo">
@@ -183,6 +183,11 @@
                                         <%#Container.DataItemIndex+1 %>
                                     </ItemTemplate>
                                 </asp:TemplateField>
+                                  <asp:TemplateField HeaderText="Id" Visible="False">
+      <ItemTemplate>
+          <asp:Label ID="lblID" runat="server" Text='<%#Eval("Id") %>'></asp:Label>
+      </ItemTemplate>
+  </asp:TemplateField>
                                 <asp:BoundField DataField="ApplicationID" HeaderText="Application ID">
                                     <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
                                     <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems itemstylecss" />
@@ -215,7 +220,15 @@
                                     <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
                                     <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems" />
                                 </asp:BoundField>
-
+                                                                                                        <asp:TemplateField HeaderText="ApplicationForm">
+    <HeaderStyle Width="10%" CssClass="headercolor" />
+    <ItemStyle Width="10%" />
+    <ItemTemplate>
+        <asp:LinkButton ID="LinkButton2" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;" runat="server"
+            Text="<i class='fa fa-print' style='color:white !important;'></i>" CssClass='greenButton btn-primary' CommandName="Print" CommandArgument="<%# Container.DataItemIndex %>">
+        </asp:LinkButton>
+    </ItemTemplate>
+</asp:TemplateField>
                             </Columns>
                             <FooterStyle BackColor="White" ForeColor="#000066" />
                             <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
