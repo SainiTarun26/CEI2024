@@ -37,6 +37,49 @@
     <link rel="shortcut icon" href="/images/favicon.png" />
 
     <style>
+            .navbar ul {
+        margin-left: 20px;
+    }
+
+    li.dropdown {
+        padding: 0px !important;
+    }
+
+    li {
+        padding: 0px !important;
+    }
+
+    .container.d-flex.align-items-center.justify-content-between {
+        max-width: 1650px;
+    }
+
+    body {
+        overflow-x: hidden;
+    }
+
+    #header .logo img {
+        max-height: 44px !important;
+        margin-left: 0px !important;
+    }
+
+    a:hover {
+        font-weight: 700;
+        transition: all .02s ease;
+    }
+
+    /* New code for menu wrapping */
+    ul {
+        display: flex;
+        flex-wrap: wrap; /* allows li to break into next line */
+        gap: 10px; /* spacing between li items */
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+
+        ul li {
+            white-space: normal; /* allow li text to wrap */
+        }
         ul#profile_drop {
             margin-left: -86px;
             width: 120px;
@@ -420,21 +463,21 @@
             alert("The Aadhar number or PAN Card number Or Email is already in use. Please register with a different Aadhar number or PAN Card number or Email.");
 
             var aadharInput = document.getElementById('<%= txtAadhaar.ClientID %>');
-         if (aadharInput) {
-             aadharInput.value = "";
-             aadharInput.focus();
-         }
-         var pancard = document.getElementById('<%= txtpancard.ClientID %>');
-         if (pancard) {
-             pancard.value = "";
+            if (aadharInput) {
+                aadharInput.value = "";
+                aadharInput.focus();
+            }
+            var pancard = document.getElementById('<%= txtpancard.ClientID %>');
+            if (pancard) {
+                pancard.value = "";
 
-         }
+            }
          var Email = document.getElementById('<%= txtEmailID.ClientID %>');
             if (Email) {
                 Email.value = "";
-            }
         }
- </script>
+        }
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -469,55 +512,110 @@
             </div>
         </section>
         <!-- ======= Header ======= -->
-        <header id="header" class="d-flex align-items-center"
-            style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; background: #d1e6ff;">
-            <div class="container d-flex align-items-center justify-content-between" style="margin-left: -36px;">
-                <a href="index.html" class="logo">
-                    <img src="../Assets/Add a heading (1).png" />
-                </a>
-                <!-- Uncomment below if you prefer to use an image logo -->
-                <nav id="navbar" class="navbar" style="box-shadow: none !important; margin-left: 40px;">
-                    <ul>
-                        <li class="dropdown">
-                            <a href="#">
-                                <span>Home</span>
-                                <i class="bi bi-chevron-down"></i>
-                            </a>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#">
-                                <span>Lift & Esclator</span>
-                                <i class="bi bi-chevron-down"></i>
-                            </a>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#">
-                                <span>Licensing</span>
-                                <i class="bi bi-chevron-down"></i>
-                            </a>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#">
-                                <span>Inspection</span>
-                                <i class="bi bi-chevron-down"></i>
-                            </a>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#">
-                                <span>Services</span>
-                                <i class="bi bi-chevron-down"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="nav-link scrollto" href="#contact">Contact Us</a>
-                        </li>
-                    </ul>
-                    <i class="bi bi-list mobile-nav-toggle"></i>
-                </nav>
-                <!-- .navbar -->
-            </div>
+     <header id="header" class="d-flex align-items-center"
+    style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; background: #d1e6ff;">
+    <div class="container d-flex align-items-center justify-content-between">
+        <a href="/Login.aspx" class="logo">
+            <img src="/Assets/Add a heading (1).png" alt="Logo" />
+        </a>
 
-        </header>
+        <nav id="navbar" class="navbar">
+            <ul>
+                <li class="dropdown">
+                    <a href="#"><span>Home</span> <i class="bi bi-chevron-down"></i></a>
+                    <ul>
+                        <li><a href="/AboutCEI.aspx">About CEI</a></li>
+                        <li><a href="/StateLicensingBoard.aspx">State Licensing Board, Haryana</a></li>
+                        <li><a href="/Functions.aspx">Functions</a></li>
+                    </ul>
+                </li>
+                <li>|</li>
+
+                <li class="dropdown">
+                    <a href="#"><span>Lift & Escalator</span> <i class="bi bi-chevron-down"></i></a>
+                    <ul>
+                        <li><a href="/Procedure_For_Registration_Lift_Exclator.aspx">Procedure For Registration /<br />
+                            Inspection Lifts and Escalators</a></li>
+                        <li><a href="/Login.aspx" target="_blank">Apply for New</a></li>
+                        <li><a href="/Login.aspx" target="_blank">Apply for Renewal Lift</a></li>
+                        <li><a href="/StaticPage2.aspx" target="_blank">List of Lift Inspectors</a></li>
+                        <li><a href="/UserManual/Procedure_and_Check_List_for_Lift.pdf" target="_blank">Checklist for Registration/<br />
+                            Inspection of Lifts and Elevators</a></li>
+                        <li><a href="/UserManual/forms.pdf" target="_blank">Forms</a></li>
+                    </ul>
+                </li>
+                <li>|</li>
+
+                <li class="dropdown">
+                    <a href="#"><span>Licensing</span> <i class="bi bi-chevron-down"></i></a>
+                    <ul>
+                        <li><a href="/UserManual/Haryana-Electrical-Contractor-Licence-Certificate-of.pdf" target="_blank">Electrical Licensing Rules-2021</a></li>
+                        <li><a href="/UserManual/form_split.pdf" target="_blank">Forms & Fees</a></li>
+                        <li><a href="/UserPages/Instructions.aspx" target="_blank">For New Licence</a></li>
+                    </ul>
+                </li>
+                <li>|</li>
+
+                <li class="dropdown">
+                    <a href="#"><span>Inspection</span> <i class="bi bi-chevron-down"></i></a>
+                    <ul>
+                        <li><a href="/Procedure_for_Electrical_Installation.aspx">Procedure for Electrical Installation</a></li>
+                        <li><a href="/Procedure_for_grant_of_approval.aspx">Procedure for Grant of<br />
+                            Approval for Energisation of<br />
+                            New Electrical Installation</a></li>
+                    </ul>
+                </li>
+                <li>|</li>
+
+                <li><a href="/OurOnlineServices.aspx"><span>Services</span></a></li>
+                <li>|</li>
+
+                <li class="dropdown">
+                    <a href="#"><span>Orders</span> <i class="bi bi-chevron-down"></i></a>
+                    <ul>
+                        <li><a href="/UserManual/BRAP_Griviance.pdf" target="_blank">BRAP-2024 Grievance Mechanism</a></li>
+                        <li><a href="/UserManual/office order 223.pdf" target="_blank">Mandate Regarding Risk Profile</a></li>
+                        <li><a href="/UserManual/CamScanner 01-09-2025 13.37_1.pdf" target="_blank">Mandate Regarding Registration and Renewal of Lift/Escalator</a></li>
+                        <li><a href="/UserManual/Mendate%20Regarding%20Electrical%20Installations.pdf" target="_blank">Mandate Regarding Electrical Installations</a></li>
+                        <li><a href="/UserManual/Authorization-of-Chartered-Electrical-Safety-EngineerCESE.pdf" target="_blank">Authorization of Chartered Electrical Safety Engineer (CESE)</a></li>
+                        <li><a href="/UserManual/cancellation-order.pdf" target="_blank">Cancellation Order</a></li>
+                        <li class="dropdown">
+                            <a href="#"><span>Fees Details</span> <i class="bi bi-chevron-right"></i></a>
+                            <ul>
+                                <li><a href="/UserManual/Adobe Scan 13-Jan-2025.pdf" target="_blank">Fees for New Installation Inspection</a></li>
+                                <li><a href="/UserManual/Adobe Scan 13-Jan-2025.pdf" target="_blank">Fees for Periodical Inspection</a></li>
+                                <li><a href="/UserManual/Adobe Scan 13-Jan-2025.pdf" target="_blank">Fees for Certificates & Licences</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="/UserManual/Orderof22authorisedCharteredElectricalSafetyEngineersdated28.11.2016.pdf" target="_blank">Order of 22 Chartered Electrical Safety Engineers (2016)</a></li>
+                        <li><a href="/UserManual/OrderofauthorisedCharteredElectricalSafetyEngineers.pdf" target="_blank">Order of 209 Chartered Electrical Safety Engineers (2016)</a></li>
+                    </ul>
+                </li>
+                <li>|</li>
+
+                <li class="dropdown">
+                    <a href="#"><span>EODB Compliance's</span> <i class="bi bi-chevron-down"></i></a>
+                    <ul>
+                        <li><a href="/StaticPage1.aspx" target="_blank">Checklist/Procedure/<br />
+                            Fees Structure for Lift</a></li>
+                        <li><a href="/StaticPage2.aspx" target="_blank">List of Lift Inspectors</a></li>
+                        <li><a href="/StaticPage3.aspx" target="_blank">EODB Dashboard</a></li>
+                    </ul>
+                </li>
+                <li>|</li>
+
+                <li><a href="https://grs.hartron.io/#/" target="_blank">Grievance Redressal</a></li>
+                <li>|</li>
+
+                <li><a href="/VerifyCertificate.aspx">Verify Certificate</a></li>
+                <li>|</li>
+
+                <li><a href="/UserPages/OurServices.aspx">User Manual</a><%--<img src="/Assets/new1.gif" />--%></li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav>
+    </div>
+</header>
         <!-- End Header -->
         <main id="main">
             <section id="about" class="about section-bg" style="padding-top: 20px;">
