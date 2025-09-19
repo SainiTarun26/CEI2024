@@ -1,24 +1,26 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteOwnerPages/SiteOwner.Master" AutoEventWireup="true" CodeBehind="SldHistory.aspx.cs" Inherits="CEIHaryana.SiteOwnerPages.SldHistory" %>
+<%@ Register Src="~/UserCPages/SldReturnDetails.ascx" TagPrefix="uc1" TagName="InspectionReturnDetails" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
 
-    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+
     <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://kit.fontawesome.com/57676f1d80.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style type="text/css">
         th {
-    background: #9292cc;
-}
+            background: #9292cc;
+        }
 
         .pagination-ys {
             /*display: inline-block;*/
@@ -85,9 +87,8 @@
         }
 
         .ReturnedRowColor {
-     background-color: #f9c7c7 !important;
-}
-     
+            background-color: #f9c7c7 !important;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -112,22 +113,22 @@
                             </div>
                         </div>
                     </div>
-                                  <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView1" runat="server" Width="100%" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound"
-                   OnPageIndexChanging="GridView1_PageIndexChanging"
-                   AutoGenerateColumns="false" AllowPaging="true" PageSize="10" BorderWidth="1px" BorderColor="#dbddff">
-                   <PagerStyle CssClass="pagination-ys" />
-                   <Columns>
-                       <asp:BoundField DataField="SLD_ID" HeaderText="SLD Id">
-                           <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                           <ItemStyle HorizontalAlign="center" Width="15%" />
-                       </asp:BoundField>
+                    <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView1" runat="server" Width="100%" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound"
+                        OnPageIndexChanging="GridView1_PageIndexChanging"
+                        AutoGenerateColumns="false" AllowPaging="true" PageSize="10" BorderWidth="1px" BorderColor="#dbddff">
+                        <PagerStyle CssClass="pagination-ys" />
+                        <Columns>
+                            <asp:BoundField DataField="SLD_ID" HeaderText="SLD Id">
+                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                            </asp:BoundField>
 
-                       <asp:BoundField DataField="SiteOwnerAddress" HeaderText="Address">
-                           <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                           <ItemStyle HorizontalAlign="center" Width="15%" />
-                       </asp:BoundField>
+                            <asp:BoundField DataField="SiteOwnerAddress" HeaderText="Address">
+                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                            </asp:BoundField>
 
-                       <%--  <asp:TemplateField HeaderText="Document Name">
+                            <%--  <asp:TemplateField HeaderText="Document Name">
     <HeaderStyle Width="5%" CssClass="headercolor" />
     <ItemStyle Width="5%" />
     <ItemTemplate>
@@ -136,75 +137,102 @@
     </ItemTemplate>
 </asp:TemplateField>--%>
 
-                       <asp:BoundField DataField="Status_type" HeaderText="Application Status">
+                            <%--                       <asp:BoundField DataField="Status_type" HeaderText="Application Status">
                            <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                            <ItemStyle HorizontalAlign="center" Width="15%" />
-                       </asp:BoundField>
+                       </asp:BoundField>--%>
+
+                            <asp:TemplateField HeaderText="Application Status">
+                                <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" />
+                                <ItemTemplate>
+                                    <asp:Label ID="lblActionTaken" runat="server" Text='<%# Eval("Status_type") %>' Visible="false" />
+                                    <asp:Label ID="lblInspectionId" runat="server" Text='<%# Eval("SLD_ID") %>' Visible="false" />
+
+                                    <!-- If ActionTaken is RETURN, show LinkButton -->
+                                    <asp:LinkButton
+                                        ID="lnkReturn"
+                                        runat="server"
+                                        Text="Return"
+                                        CommandName="ShowReturnPopup"
+                                        CommandArgument='<%# Eval("SLD_ID") %>'
+                                        OnCommand="lnkReturn_Command"
+                                        CssClass="text-danger"
+                                        Visible='<%# Eval("Status_type").ToString() == "Returned" %>' />
+
+                                    <!-- Otherwise, show normal text -->
+                                    <asp:Label
+                                        ID="lblNormalStatus"
+                                        runat="server"
+                                        Text='<%# Eval("Status_type") %>'
+                                        Visible='<%# Eval("Status_type").ToString() != "Returned" %>' />
+                                </ItemTemplate>
+                            </asp:TemplateField>
 
 
-                       <asp:TemplateField HeaderText=" SLD Document" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
-                           <HeaderStyle Width="5%" CssClass="headercolor" />
-                           <ItemTemplate>
-                               <%-- <asp:LinkButton ID="LnkDocumemtPath" runat="server" CommandArgument='<%# Bind("SLDApproved") %>' CommandName="Select">View document </asp:LinkButton>--%>
-                               <asp:LinkButton ID="LinkButton1" runat="server" CommandArgument='<%# Bind("Path") %>' CommandName="Select1">View document </asp:LinkButton>
-                           </ItemTemplate>
-                           <ItemStyle HorizontalAlign="Center" Width="2%"></ItemStyle>
-                           <HeaderStyle HorizontalAlign="Left" />
-                       </asp:TemplateField>
-                       <asp:TemplateField HeaderText=" Request Letter" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
-                           <HeaderStyle Width="5%" CssClass="headercolor" />
-                           <ItemTemplate>
-                               <asp:LinkButton ID="Lnkbtn" runat="server" CommandArgument='<%# Bind("RequestLetter") %>' CommandName="Print">View document </asp:LinkButton>
+                            <asp:TemplateField HeaderText=" SLD Document" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+                                <HeaderStyle Width="5%" CssClass="headercolor" />
+                                <ItemTemplate>
+                                    <%-- <asp:LinkButton ID="LnkDocumemtPath" runat="server" CommandArgument='<%# Bind("SLDApproved") %>' CommandName="Select">View document </asp:LinkButton>--%>
+                                    <asp:LinkButton ID="LinkButton1" runat="server" CommandArgument='<%# Bind("Path") %>' CommandName="Select1">View document </asp:LinkButton>
+                                </ItemTemplate>
+                                <ItemStyle HorizontalAlign="Center" Width="2%"></ItemStyle>
+                                <HeaderStyle HorizontalAlign="Left" />
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText=" Request Letter" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+                                <HeaderStyle Width="5%" CssClass="headercolor" />
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="Lnkbtn" runat="server" CommandArgument='<%# Bind("RequestLetter") %>' CommandName="Print">View document </asp:LinkButton>
 
-                           </ItemTemplate>
-                           <ItemStyle HorizontalAlign="Center" Width="2%"></ItemStyle>
-                           <HeaderStyle HorizontalAlign="Left" />
-                       </asp:TemplateField>
-                       <asp:TemplateField HeaderText=" SLD Approved" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
-                           <HeaderStyle Width="5%" CssClass="headercolor" />
-                           <ItemTemplate>
-                               <asp:LinkButton ID="LnkDocumemtPath" runat="server" CommandArgument='<%# Bind("SLDApproved") %>' CommandName="Select">View document </asp:LinkButton>
+                                </ItemTemplate>
+                                <ItemStyle HorizontalAlign="Center" Width="2%"></ItemStyle>
+                                <HeaderStyle HorizontalAlign="Left" />
+                            </asp:TemplateField>
+                            <asp:TemplateField HeaderText=" SLD Approved" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
+                                <HeaderStyle Width="5%" CssClass="headercolor" />
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="LnkDocumemtPath" runat="server" CommandArgument='<%# Bind("SLDApproved") %>' CommandName="Select">View document </asp:LinkButton>
 
-                           </ItemTemplate>
-                           <ItemStyle HorizontalAlign="Center" Width="2%"></ItemStyle>
-                           <HeaderStyle HorizontalAlign="Left" />
-                       </asp:TemplateField>
-                       <asp:BoundField DataField="SubmittedDate" HeaderText="Submitted Date">
-                           <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                           <ItemStyle HorizontalAlign="center" Width="15%" />
-                       </asp:BoundField>
-                       <asp:BoundField DataField="AcceptedOrReturnDate" HeaderText="Accepted/Returned Date">
-                           <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                           <ItemStyle HorizontalAlign="center" Width="15%" />
-                       </asp:BoundField>
-                       <asp:BoundField DataField="Rejection" HeaderText="ReturnOrRejection Reason">
-                           <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                           <ItemStyle HorizontalAlign="center" Width="15%" />
-                       </asp:BoundField>
-                       <asp:BoundField DataField="ApprovedOrRejectedDate" HeaderText="Approved/Rejected Date">
-                           <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                           <ItemStyle HorizontalAlign="center" Width="15%" />
-                       </asp:BoundField>
-                       <asp:BoundField DataField="Remarks" HeaderText="Remarks">
-                           <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                           <ItemStyle HorizontalAlign="center" Width="15%" />
-                       </asp:BoundField>
+                                </ItemTemplate>
+                                <ItemStyle HorizontalAlign="Center" Width="2%"></ItemStyle>
+                                <HeaderStyle HorizontalAlign="Left" />
+                            </asp:TemplateField>
+                            <asp:BoundField DataField="SubmittedDate" HeaderText="Submitted Date">
+                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="AcceptedOrReturnDate" HeaderText="Accepted/Returned Date">
+                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Rejection" HeaderText="ReturnOrRejection Reason">
+                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="ApprovedOrRejectedDate" HeaderText="Approved/Rejected Date">
+                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="Remarks" HeaderText="Remarks">
+                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                            </asp:BoundField>
 
-                   </Columns>
-                   <FooterStyle BackColor="White" ForeColor="#000066" />
-                   <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
-                   <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
-                   <RowStyle ForeColor="#000066" />
-                   <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                   <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                   <SortedAscendingHeaderStyle BackColor="#007DBB" />
-                   <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                   <SortedDescendingHeaderStyle BackColor="#00547E" />
-               </asp:GridView>
+                        </Columns>
+                        <FooterStyle BackColor="White" ForeColor="#000066" />
+                        <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                        <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                        <RowStyle ForeColor="#000066" />
+                        <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                        <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                        <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                        <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                        <SortedDescendingHeaderStyle BackColor="#00547E" />
+                    </asp:GridView>
                 </div>
             </div>
         </div>
-
+        <uc1:InspectionReturnDetails runat="server" id="InspectionReturnDetails" /> 
     </div>
     <footer class="footer">
     </footer>
@@ -273,5 +301,6 @@
                 element.innerHTML = formattedText.trim(); // Remove any trailing <br>
             });
         });
-</script>
+    </script>
+       <script src="/Assets/js/js/vendor.bundle.base.js"></script>
 </asp:Content>

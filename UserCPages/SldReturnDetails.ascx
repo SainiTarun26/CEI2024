@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="InspectionReturnDetails.ascx.cs" Inherits="CEIHaryana.UserCPages.InspectionReturnDetails" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="SldReturnDetails.ascx.cs" Inherits="CEIHaryana.UserCPages.SldReturnDetails" %>
 <style>
     .modal-dialog.modal-xl {
         width: 100%;
@@ -25,12 +25,20 @@
     .modal-dialog.modal-xl {
         left: 9%;
     }
-    th {
-    background: #9292cc !important;
+
+    a.text-danger:link {
+        color: red !important;
+    }
+    .modal-content {
+    width: 1056px !important;
+    right: 10px !important;
 }
+/*    th {
+    background: #f2f2f2;
+}*/
 </style>
 
-<div class="modal fade" id="ownerModal" tabindex="-1" role="dialog" aria-labelledby="ownerModalLabel" aria-hidden="true">
+<div class="modal fade" id="ownerModalSld" tabindex="-1" role="dialog" aria-labelledby="ownerModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
         <!-- Made modal wider -->
         <div class="modal-content">
@@ -49,13 +57,6 @@
                         <asp:GridView ID="gvReturnHistory" runat="server" CssClass="table table-bordered table-striped"
                             AutoGenerateColumns="false" EmptyDataText="No return history available.">
                             <Columns>
-                                <asp:TemplateField HeaderText="ReasonType">
-                                    <HeaderStyle HorizontalAlign="Center" CssClass="header-class reasontype" />
-                                    <ItemStyle HorizontalAlign="Left" CssClass="item-class" />
-                                    <ItemTemplate>
-                                        <%# Eval("ReasonTypeValue") %>
-                                    </ItemTemplate>
-                                </asp:TemplateField>
 
                                 <asp:TemplateField HeaderText="Component">
                                     <HeaderStyle HorizontalAlign="Center" CssClass="header-class component" />
@@ -67,9 +68,17 @@
 
                                 <asp:TemplateField HeaderText="Reason for Return">
                                     <HeaderStyle HorizontalAlign="Center" CssClass="header-class reason" />
-                                    <ItemStyle HorizontalAlign="Left" CssClass="item-class break-text-10" />
+                                    <ItemStyle HorizontalAlign="Left" CssClass="item-class break-text-20" />
                                     <ItemTemplate>
                                         <%# Eval("ReasonForReturn") %>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+
+                                <asp:TemplateField HeaderText="ActionDate">
+                                    <HeaderStyle HorizontalAlign="Center" CssClass="header-class reason" />
+                                    <ItemStyle HorizontalAlign="Left" CssClass="item-class break-text-10" />
+                                    <ItemTemplate>
+                                        <%# Eval("ReturnedDate") %>
                                     </ItemTemplate>
                                 </asp:TemplateField>
 
@@ -103,7 +112,7 @@
 
 <script type="text/javascript">
     document.addEventListener("DOMContentLoaded", function () {
-        const elements = document.querySelectorAll('.break-text-10');
+        const elements = document.querySelectorAll('.break-text-20');
 
         elements.forEach(function (element) {
             let text = element.innerText;
@@ -112,9 +121,9 @@
 
             while (currentIndex < text.length) {
                 // Take a chunk of up to 20 characters
-                let chunk = text.slice(currentIndex, currentIndex + 80);
+                let chunk = text.slice(currentIndex, currentIndex + 100);
 
-                if (chunk.length < 80) {
+                if (chunk.length < 100) {
                     // If the chunk is less than 20 characters, add it without breaking
                     formattedText += chunk;
                     break; // Exit the loop as we've processed the remaining text

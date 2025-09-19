@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Officers/Officers.Master" AutoEventWireup="true" CodeBehind="SLDHistory_AtOfficer.aspx.cs" Inherits="CEIHaryana.Officers.SLDHistory_AtOfficer" %>
 
+<%@ Register Src="~/UserCPages/SldReturnDetails.ascx" TagPrefix="uc1" TagName="InspectionReturnDetails" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
@@ -219,15 +220,19 @@
             width: 101% !important;
             height: 100% !important;
         }
+
         th.headercolor {
-    text-align: justify;
-}
+            text-align: justify;
+        }
+
         td {
-    text-align: justify;
-}
-        a:link, a:visited, a:active{
+            text-align: justify;
+        }
+
+        a:link, a:visited, a:active {
             color: #007bff !important;
         }
+
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -261,39 +266,29 @@
                                 </p>
                             </div>
                         </div>
-                    </asp:LinkButton>
-                </div>
-
-
-                <!-- Card 2 -->
-                <div class="col-sm-6 col-lg-3">
+                    </asp:LinkButton></div><!-- Card 2 --><div class="col-sm-6 col-lg-3">
                     <asp:LinkButton runat="server" ID="LinkButton2"
                         CommandName="All" CommandArgument="Approved,Returned,Rejected" OnCommand="DashboardCard_Command"
                         Style="text-decoration: none; display: block;">
                         <div class="dashboard-card" style="background-color: #64c395; color: black;">
                             <!-- SVG Icon -->
-                           <svg xmlns="http://www.w3.org/2000/svg"
-     width="32" height="32"
-     viewBox="0 0 16 16"
-     fill="currentColor"
-     style="width: 32px !important; height: 32px !important;"
-     class="bi bi-file-earmark-check">
-  <path d="M10.854 7.854a.5.5 0 0 0-.708-.708L7.5 9.793 6.354 8.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0z"/>
-  <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"/>
-</svg>
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                width="32" height="32"
+                                viewBox="0 0 16 16"
+                                fill="currentColor"
+                                style="width: 32px !important; height: 32px !important;"
+                                class="bi bi-file-earmark-check">
+                                <path d="M10.854 7.854a.5.5 0 0 0-.708-.708L7.5 9.793 6.354 8.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0z" />
+                                <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z" />
+                            </svg>
 
                             <div class="dashboard-text">
                                 <h3>
                                     <asp:Literal ID="lit_App_Rej_Ret" runat="server" /></h3>
-                                <p style="font-size:13px;">Approved/Rejected/Returned</p>
+                                <p style="font-size: 13px;">Approved/Rejected/Returned</p>
                             </div>
                         </div>
-                    </asp:LinkButton>
-
-                </div>
-
-                <!-- Card 3 -->
-                <div class="col-sm-6 col-lg-3">
+                    </asp:LinkButton></div><!-- Card 3 --><div class="col-sm-6 col-lg-3">
                     <asp:LinkButton runat="server" ID="LinkButton3"
                         CommandName="All" CommandArgument="InProcess" OnCommand="DashboardCard_Command"
                         Style="text-decoration: none; display: block;">
@@ -307,14 +302,10 @@
                             <div class="dashboard-text">
                                 <h3>
                                     <asp:Literal ID="LitInprocess" runat="server" /></h3>
-                                <p style="font-size:13px;">In Process</p>
+                                <p style="font-size: 13px;">In Process</p>
                             </div>
                         </div>
-                    </asp:LinkButton>
-                </div>
-
-                <!-- Card 4 -->
-                <div class="col-sm-6 col-lg-3">
+                    </asp:LinkButton></div><!-- Card 4 --><div class="col-sm-6 col-lg-3">
                     <asp:LinkButton runat="server" ID="LinkButton4"
                         CommandName="All" CommandArgument="Submitted" OnCommand="DashboardCard_Command"
                         Style="text-decoration: none; display: block;">
@@ -326,26 +317,15 @@
                             <div class="dashboard-text">
                                 <h3>
                                     <asp:Literal ID="LitNew" runat="server" /></h3>
-                                <p style="font-size:13px;">New Application</p>
+                                <p style="font-size: 13px;">New Application</p>
                             </div>
                         </div>
-                    </asp:LinkButton>
-                </div>
-
-            </div>
-
-
-        </div>
-
-
-        <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
+                    </asp:LinkButton></div></div></div><div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
             <div class="card-body">
                 <div class="row ">
                     <div class="col-sm-4 col-md-4">
                         <h6 class="card-title fw-semibold mb-4">
-                            <asp:Label ID="lblData" runat="server"></asp:Label>SINGLE LINE DOCUMENT HISTORY</h6>
-                    </div>
-                    <div class="col-sm-6 col-md-6"></div>
+                            <asp:Label ID="lblData" runat="server"></asp:Label>SINGLE LINE DOCUMENT HISTORY</h6></div><div class="col-sm-6 col-md-6"></div>
                 </div>
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px;">
                     <%-- <div class="row" style="margin-bottom: -30px;">
@@ -363,11 +343,8 @@
                             <div class="col-md-6">
                                 <div class="form-group row">
                                     <label for="search" class="col-md-2 col-form-label" style="margin-top: 3px; padding: 0px;">
-                                        Search:</label>
-                                    <div class="col-md-6" style="margin-left: -35px;">
-                                        <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Auto Search" class="form-control" Font-Size="12px"></asp:TextBox><br />
-                                    </div>
-                                    <div class="col-md-2">
+                                        Search:</label> <div class="col-md-6" style="margin-left: -35px;">
+                                        <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Auto Search" class="form-control" Font-Size="12px"></asp:TextBox><br /></div><div class="col-md-2">
                                         <asp:Button ID="btnSearch" runat="server" class="btn btn-primary" OnClick="btnSearch_Click" Text="Search" Style="padding-top: 1px; padding-bottom: 1px;" />
                                     </div>
                                     <div class="col-md-2">
@@ -416,10 +393,37 @@
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" CssClass="break-text-10" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="Status_type" HeaderText="Status">
+                            <%--                            <asp:BoundField DataField="Status_type" HeaderText="Status">
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
-                            </asp:BoundField>
+                            </asp:BoundField>--%>
+                            <asp:TemplateField HeaderText="Application Status">
+                                <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" />
+                                <ItemTemplate>
+                                    <asp:Label ID="lblActionTaken" runat="server" Text='<%# Eval("Status_type") %>' Visible="false" />
+                                    <asp:Label ID="lblInspectionId" runat="server" Text='<%# Eval("SLD_ID") %>' Visible="false" />
+
+                                    <!-- If ActionTaken is RETURN, show LinkButton -->
+                                    <asp:LinkButton
+                                        ID="lnkReturn"
+                                        runat="server"
+                                        Text="Returned"
+                                        CommandName="ShowReturnPopup"
+                                        CommandArgument='<%# Eval("SLD_ID") %>'
+                                        OnCommand="lnkReturn_Command"
+                                        CssClass="text-danger"
+                                        Visible='<%# Eval("Status_type").ToString() == "Returned" %>' />
+
+                                    <!-- Otherwise, show normal text -->
+                                    <asp:Label
+                                        ID="lblNormalStatus"
+                                        runat="server"
+                                        Text='<%# Eval("Status_type") %>'
+                                        Visible='<%# Eval("Status_type").ToString() != "Returned" %>' />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+
                             <asp:BoundField DataField="PendingAt" HeaderText="PendingAt">
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
@@ -428,25 +432,19 @@
                             <asp:TemplateField HeaderText=" Attached Document" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
                                 <HeaderStyle Width="5%" CssClass="headercolor" />
                                 <ItemTemplate>
-                                    <asp:LinkButton ID="LinkButton1" runat="server" CommandArgument='<%# Bind("Path") %>' CommandName="Select1">View document </asp:LinkButton>
-                                </ItemTemplate>
-                                <ItemStyle HorizontalAlign="Center" Width="2%"></ItemStyle>
+                                    <asp:LinkButton ID="LinkButton1" runat="server" CommandArgument='<%# Bind("Path") %>' CommandName="Select1">View document </asp:LinkButton></ItemTemplate><ItemStyle HorizontalAlign="Center" Width="2%"></ItemStyle>
                                 <HeaderStyle HorizontalAlign="Left" />
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText=" SLD Approved" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
                                 <HeaderStyle Width="5%" CssClass="headercolor" />
                                 <ItemTemplate>
-                                    <asp:LinkButton ID="LnkDocumemtPath" runat="server" CommandArgument='<%# Bind("SLDApproved") %>' CommandName="Select">View document </asp:LinkButton>
-                                </ItemTemplate>
-                                <ItemStyle HorizontalAlign="Center" Width="2%"></ItemStyle>
+                                    <asp:LinkButton ID="LnkDocumemtPath" runat="server" CommandArgument='<%# Bind("SLDApproved") %>' CommandName="Select">View document </asp:LinkButton></ItemTemplate><ItemStyle HorizontalAlign="Center" Width="2%"></ItemStyle>
                                 <HeaderStyle HorizontalAlign="Left" />
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Request Letter" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
                                 <HeaderStyle Width="5%" CssClass="headercolor" />
                                 <ItemTemplate>
-                                    <asp:LinkButton ID="Lnkbtn" runat="server" CommandArgument='<%# Bind("RequestLetter") %>' CommandName="Print">View document </asp:LinkButton>
-                                </ItemTemplate>
-                                <ItemStyle HorizontalAlign="Center" Width="2%"></ItemStyle>
+                                    <asp:LinkButton ID="Lnkbtn" runat="server" CommandArgument='<%# Bind("RequestLetter") %>' CommandName="Print">View document </asp:LinkButton></ItemTemplate><ItemStyle HorizontalAlign="Center" Width="2%"></ItemStyle>
                                 <HeaderStyle HorizontalAlign="Left" />
                             </asp:TemplateField>
                             <asp:BoundField DataField="SubmittedDate" HeaderText="Submit Date">
@@ -480,81 +478,37 @@
                         <SortedDescendingCellStyle BackColor="#CAC9C9" />
                         <SortedDescendingHeaderStyle BackColor="#00547E" />
                     </asp:GridView>
-
+                    <uc1:InspectionReturnDetails runat="server" ID="InspectionReturnDetails" />
                     <div class="modal fade" id="ownerModal" tabindex="-1" role="dialog" aria-labelledby="ownerModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="ownerModalLabel">Owner Details</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body" id="modalContent">
+                                    <h5 class="modal-title" id="ownerModalLabel">Owner Details</h5><button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span></button></div><div class="modal-body" id="modalContent">
                                     <!-- Dynamic content will go here -->
                                     <div class="row">
 
                                         <div class="col-md-6">
                                             <div id="OwnerNameDiv" runat="server">
-                                                <asp:Label ID="lblOwnerName" runat="server" Text="Name of Owner"></asp:Label>
-
-                                                <asp:TextBox CssClass="form-control" ID="txtNameOfOwner" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px" />
+                                                <asp:Label ID="lblOwnerName" runat="server" Text="Name of Owner"></asp:Label><asp:TextBox CssClass="form-control" ID="txtNameOfOwner" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px" />
                                             </div>
                                             <div id="AgencyNameDiv" runat="server">
-                                                <asp:Label ID="lblAgencyName" runat="server" Text="Name of Agency"></asp:Label>
-                                                <asp:TextBox CssClass="form-control" ID="txtNameOfAgency" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px" />
+                                                <asp:Label ID="lblAgencyName" runat="server" Text="Name of Agency"></asp:Label><asp:TextBox CssClass="form-control" ID="txtNameOfAgency" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px" />
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <label>
-                                                PanNo
-                                            </label>
-                                            <asp:TextBox class="form-control" ID="txtPanNoOrTanNo" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                        </div>
-
-                                        <div class="col-md-12">
+                                                PanNo </label><asp:TextBox class="form-control" ID="txtPanNoOrTanNo" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox></div><div class="col-md-12">
                                             <label>
-                                                Address
-                                      
-                                            </label>
-                                            <asp:TextBox class="form-control" ID="txtAddress" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-
-                                        </div>
-
-
-                                        <div class="col-md-6">
+                                                Address </label><asp:TextBox class="form-control" ID="txtAddress" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox></div><div class="col-md-6">
                                             <label>
-                                                ContactNo
-                                            </label>
-                                            <asp:TextBox class="form-control" ID="txtContactNo" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                        </div>
-
-                                        <div class="col-md-6">
+                                                ContactNo </label><asp:TextBox class="form-control" ID="txtContactNo" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox></div><div class="col-md-6">
                                             <label>
-                                                Email
-                                            </label>
-                                            <asp:TextBox class="form-control" ID="txtEmail" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                        </div>
-
-                                        <div class="col-md-6">
+                                                Email </label><asp:TextBox class="form-control" ID="txtEmail" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox></div><div class="col-md-6">
                                             <label>
-                                                Applicant Type
-                                      
-                                            </label>
-                                            <asp:TextBox class="form-control" ID="txtApplicant" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-
-
-                                        </div>
-                                        <div class="col-md-6">
+                                                Applicant Type </label><asp:TextBox class="form-control" ID="txtApplicant" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox></div><div class="col-md-6">
                                             <label>
-                                                ContractorType
-                                            </label>
-                                            <asp:TextBox class="form-control" ID="txtContractorType" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                        </div>
-
-
-                                    </div>
-                                    <div class="row">
+                                                ContractorType </label><asp:TextBox class="form-control" ID="txtContractorType" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox></div></div><div class="row">
                                         <div class="col-md-12">
                                         </div>
                                     </div>

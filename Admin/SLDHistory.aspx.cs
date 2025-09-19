@@ -276,6 +276,13 @@ namespace CEIHaryana.Admin
             { 
             }
         }
-
+        #region aslam sld history
+        protected void lnkReturn_Command(object sender, CommandEventArgs e)
+        {
+            string inspectionId = e.CommandArgument.ToString();
+            InspectionReturnDetails.GetReturnDetails(inspectionId);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowReturnModal", "$('#ownerModalSld').modal('show');", true);
+        }
+        #endregion
     }
 }
