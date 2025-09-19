@@ -207,32 +207,49 @@
                                                                 <tbody>
                                                                     <!-- Wireman -->
                                                                     <tr>
-                                                                        <td rowspan="3">Wireman</td>
+                                                                        <td rowspan="5">Wireman</td>
                                                                         <td>New</td>
-                                                                        <td>400/- Rs for One Year</td>
+                                                                        <td>240/- Rs for One Year</td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Renewal</td>
-                                                                        <td>450/- Rs for Five Year, 100/- Rs for One Year</td>
+                                                                        <td>120/- Rs Annual</td>
+
                                                                     </tr>
                                                                     <tr>
-                                                                        <td>Late Fee</td>
-                                                                        <td>50/- Rs After 14 days Grace Period, 100/- Rs After 30 days Annual</td>
+                                                                        <td></td>
+                                                                        <td>60/- Rs After 14 days Upto 30 days</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td></td>
+                                                                        <td>120/- Rs More then 30 up to 365,Annually late fees</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td></td>
+                                                                        <td>540/- Rs for Five years</td>
                                                                     </tr>
 
                                                                     <!-- Supervisor -->
                                                                     <tr>
-                                                                        <td rowspan="4">Supervisor</td>
+                                                                        <td rowspan="6">Supervisor</td>
                                                                         <td>New</td>
-                                                                        <td>950/- Rs for Five Year</td>
+                                                                        <td>480/- Rs for Five Year</td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Renewal</td>
-                                                                        <td>200/- Rs for One Year, 200/- Rs for One Year</td>
+                                                                        <td>240/- Rs for One Year</td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Late Fee</td>
-                                                                        <td>100/- Rs After 14 days Grace Period, 200/- Rs After 30 days Annual</td>
+                                                                        <td>120/- Rs After 14 days Upto 30 days</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td></td>
+                                                                        <td>240/- Rs More then 30 up to 365</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td></td>
+                                                                        <td>1140/- Rs For five years</td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Upgradation Fee</td>
@@ -241,21 +258,27 @@
 
                                                                     <!-- Contractor -->
                                                                     <tr>
-                                                                        <td rowspan="4">Contractor</td>
+                                                                        <td rowspan="5">Contractor</td>
                                                                         <td>New</td>
-                                                                        <td>3350/- Rs for One Year</td>
+                                                                        <td>4020/- Rs for One Year</td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Renewal</td>
-                                                                        <td>5250/- Rs for Five Year, 1050/- Rs for One Year</td>
+                                                                        <td>6300/- Rs for Five Year</td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Late Fee</td>
-                                                                        <td>300/- Rs After 14 days Grace Period, 8600/- Rs After 30 days Annual</td>
+                                                                        <td>360/- Rs After 14 days Upto 30 days
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td></td>
+                                                                        <td>4020/- Rs More then 30 up to endless
+                                                                        </td>
                                                                     </tr>
                                                                     <tr>
                                                                         <td>Upgradation Fee</td>
-                                                                        <td>2100/- Rs for HT/EHT</td>
+                                                                        <td>2520/- Rs </td>
                                                                     </tr>
                                                                 </tbody>
                                                             </table>

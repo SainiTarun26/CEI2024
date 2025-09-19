@@ -1392,6 +1392,15 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.LinkButton lnkbtn_Delete28;
 
         /// <summary>
+        /// LblChallanAmount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LblChallanAmount;
+
+        /// <summary>
         /// txtUtrNo control.
         /// </summary>
         /// <remarks>
@@ -1597,6 +1606,15 @@ namespace CEIHaryana.UserPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox chkDeclaration;
+
+        /// <summary>
+        /// lblDeclarationType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDeclarationType;
 
         /// <summary>
         /// btnNext control.

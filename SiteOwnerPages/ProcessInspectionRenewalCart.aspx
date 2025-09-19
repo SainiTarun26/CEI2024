@@ -415,8 +415,10 @@
                         <label for="Phone">
                             Transaction Id (GRN Number)<samp style="color: red">* </samp>
                         </label>
-                        <asp:TextBox class="form-control" ID="txtTransactionId" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                        <asp:TextBox class="form-control" ID="txtTransactionId" autocomplete="off" runat="server" Style="margin-left: 18px" MaxLength="10" onkeypress="return isAlphaNumeric(event);" ></asp:TextBox>
                         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtTransactionId" ValidationGroup="Submit" ForeColor="Red">Please Enter TransactionId</asp:RequiredFieldValidator>
+                                                                                                                         <asp:RegularExpressionValidator runat="server"  ControlToValidate="txtTransactionId" ValidationGroup="Submit" 
+ForeColor="Red"  ErrorMessage="GRN No. must be exactly 10 alphanumeric characters." ValidationExpression="^[a-zA-Z0-9]{10}$"> </asp:RegularExpressionValidator>
                     </div>
                     <div class="col-md-4" runat="server">
                         <label for="Email">
@@ -464,4 +466,17 @@
             document.getElementById('<%= txtTransactiondate.ClientID %>').setAttribute('max', today);
         }
 </script>
+    <script type="text/javascript">
+        function isAlphaNumeric(evt) {
+            var charCode = evt.which ? evt.which : evt.keyCode;
+            var charStr = String.fromCharCode(charCode);
+            // Allow only letters (a-z, A-Z) and digits (0-9)
+            if (!/^[a-zA-Z0-9]$/.test(charStr)) {
+                evt.preventDefault();
+                return false;
+            }
+            return true;
+        }
+    </script>
+
 </asp:Content>

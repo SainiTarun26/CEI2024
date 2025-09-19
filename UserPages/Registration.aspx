@@ -599,7 +599,7 @@
                                                                         Nationality
                                                                 <samp style="color: red">* </samp>
                                                                     </label>
-                                                                    <asp:TextBox class="form-control" ID="txtNationality" runat="server" TabIndex="2" placeholder="INDIA" ReadOnly="true" MaxLength="30"> </asp:TextBox>
+                                                                    <asp:TextBox class="form-control" ID="txtNationality" runat="server"  placeholder="INDIA" ReadOnly="true" MaxLength="30"> </asp:TextBox>
                                                                 </div>
                                                                 <asp:UpdatePanel ID="UpdatePanelCalculatedYears" runat="server">
                                                                     <ContentTemplate>
@@ -1141,6 +1141,16 @@
             }
             return true; // Allow postback if valid
         }
+    </script>
+    <script>
+        $(document).ready(function () {
+            $(document).on("keydown", function (e) {
+                if (e.key === "Enter") {
+                    e.preventDefault();
+                    $("#<%= btnNext.ClientID %>").click();
+            }
+        });
+    });
     </script>
 </body>
 </html>

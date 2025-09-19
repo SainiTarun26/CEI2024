@@ -22,12 +22,17 @@
     <!-- Template Main CSS File -->
     <link href="/assetsnew/css/style.css" rel="stylesheet" />
     <style type="text/css">
-        li.dropdown {
-            padding: 10px 0 10px 20px !important;
+        .navbar ul {
+        margin-left:20px;
         }
-
+        li.dropdown {
+            padding: 0px !important;
+        }
+    li {
+padding:0px !important;
+}
         .container.d-flex.align-items-center.justify-content-between {
-            max-width: 1550px;
+            max-width: 1650px;
         }
 
         body {
@@ -35,8 +40,8 @@
         }
 
         #header .logo img {
-            max-height: 80px;
-            margin-left: -50px;
+            max-height: 44px;
+            margin-left: 0px;
         }
 
         #footer .copyright {
@@ -280,8 +285,7 @@
             }
 
         a:hover {
-            /*            text-decoration: underline;
-*/ font-weight: 700;
+            font-weight: 700;
             transition: all .02s ease;
         }
 
@@ -315,6 +319,20 @@
         b {
             text-decoration: underline !important;
         }
+
+        /* ✅ New code for breaking <li> into next line */
+        ul {
+            display: flex;
+            flex-wrap: wrap; /* allow breaking into new line */
+            gap: 10px; /* spacing between li */
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+            ul li {
+                white-space: normal; /* allow text inside li to wrap */
+            }
     </style>
 </head>
 <body style="zoom: 90% !important;">
@@ -348,20 +366,20 @@
                     </div>
                 </div>
             </section>
-            <!-- ======= Header ======= -->
+          <!-- ======= Header ======= -->
             <header id="header" class="d-flex align-items-center"
                 style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; background: #d1e6ff;">
                 <div class="container d-flex align-items-center justify-content-between">
                     <a href="Login.aspx" class="logo">
-                        <img src="/Assets/haryana.png" alt="" />
+                        <img src="../Assets/Add a heading (1).png" alt="" />
                     </a>
-                    <h1 class="logo">
+                   <%-- <h1 class="logo">
                         <a href="Login.aspx">
                             <span style="font-size: 25px; margin-left: -30px;">CEI,
             Haryana
                             </span>
                         </a>
-                    </h1>
+                    </h1>--%>
                     <!-- Uncomment below if you prefer to use an image logo -->
                     <nav id="navbar" class="navbar">
                         <ul>
@@ -391,6 +409,7 @@
                                     </li>
                                 </ul>
                             </li>
+                            <li style="padding:0px !important;">|</li>
                             <li class="dropdown">
                                 <a href="#">
                                     <span>Lift & Esclator</span>
@@ -444,6 +463,7 @@
                                     </li>
                                 </ul>
                             </li>
+                             <li style="padding:0px !important;">|</li>
                             <li class="dropdown">
                                 <a href="#">
                                     <span>Licensing</span>
@@ -476,14 +496,15 @@
                                     <li>
                                         <a href="UserManual/form_split.pdf" target="_blank">Forms & Fees
                                         </a>
+
                                     </li>
                                     <li>
-                                        <a href="/UserPages/Instructions.aspx" target="_blank">Apply for New Licence
+                                        <a href="/UserPages/Instructions.aspx" target="_blank">For New Licence
                                         </a>
                                     </li>
-
                                 </ul>
                             </li>
+                             <li style="padding:0px !important;">|</li>
                             <li class="dropdown">
                                 <a href="#">
                                     <span>Inspection</span>
@@ -516,7 +537,7 @@
                                     </li>
                                 </ul>
                             </li>
-
+                             <li style="padding:0px !important;">|</li>
                             <li class="dropdown">
                                 <a href="OurOnlineServices.aspx">
                                     <span>Services</span>
@@ -524,6 +545,7 @@
                                 </a>
 
                             </li>
+                             <li style="padding:0px !important;">|</li>
                             <li class="dropdown">
                                 <a href="#">
                                     <span>Orders</span>
@@ -572,7 +594,7 @@
                                     </li>
                                 </ul>
                             </li>
-
+                             <li style="padding:0px !important;">|</li>
                             <li class="dropdown">
                                 <a href="#">
                                     <span>EODB Compliance's
@@ -596,12 +618,15 @@
                             <%--  <li style="display: flex;">
                                 <a href="/VerifyCertificate.aspx" id="alertLink1" style="position: relative; z-index: 1;">Verify Certificate</a>
                             </li>--%>
+                             <li style="padding:0px !important;">|</li>
                             <li style="display: flex;">
                                 <a href="https://grs.hartron.io/#/" target="_blank" id="alertLink2" style="position: relative; z-index: 1;">Grievance Redressal</a>
                             </li>
+                             <li style="padding:0px !important;">|</li>
                             <li style="display: flex;">
                                 <a href="VerifyCertificate.aspx" style="position: relative; z-index: 1;">Verify Certificate</a>
                             </li>
+                             <li style="padding:0px !important;">|</li>
                             <li style="display: flex;">
                                 <a href="UserPages/OurServices.aspx" id="alertLink" style="position: relative; z-index: 1;">User Manual</a><img src="Assets/new1.gif" id="alertGif" />
                             </li>

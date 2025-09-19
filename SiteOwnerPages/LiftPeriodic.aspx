@@ -404,8 +404,10 @@
                                 <label>
                                     GRN Number<samp style="color: red"> * </samp>
                                 </label>
-                                <asp:TextBox ID="txttransactionId" runat="server" class="form-control" MaxLength="20" Font-Size="12px" Style="height: 30px;"></asp:TextBox><br />
+                                <asp:TextBox ID="txttransactionId" runat="server" class="form-control" MaxLength="20" Font-Size="12px" Style="height: 30px;" onkeypress="return isAlphaNumeric(event);" ></asp:TextBox><br />
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="txttransactionId" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                                                                    <asp:RegularExpressionValidator runat="server"  ControlToValidate="txttransactionId" ValidationGroup="Submit" 
+ForeColor="Red"  ErrorMessage="GRN No. must be exactly 10 alphanumeric characters." ValidationExpression="^[a-zA-Z0-9]{10}$"> </asp:RegularExpressionValidator>
                             </div>
                             <div class="col-4">
                                 <label>
@@ -513,4 +515,16 @@
         // Call the function to set the max date when the page loads
         window.onload = disableFutureDates;
     </script>
+       <script type="text/javascript">
+           function isAlphaNumeric(evt) {
+               var charCode = evt.which ? evt.which : evt.keyCode;
+               var charStr = String.fromCharCode(charCode);
+               // Allow only letters (a-z, A-Z) and digits (0-9)
+               if (!/^[a-zA-Z0-9]$/.test(charStr)) {
+                   evt.preventDefault();
+                   return false;
+               }
+               return true;
+           }
+       </script>
 </asp:Content>

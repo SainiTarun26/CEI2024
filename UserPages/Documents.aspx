@@ -869,15 +869,18 @@
 
 
                                                         <tr>
-                                                            <td style="text-align: justify; padding-top: 20px !important;">Copy of treasury challan of fees (₹400/-) deposited in any treasury of Haryana.(<span style="color: red;">★</span>)
+                                                        <%--    Previously amount is 400 for both--%>
+                                                            <td style="text-align: justify; padding-top: 20px !important;">Copy of treasury challan of fees (₹<asp:Label ID="LblChallanAmount" runat="server" Text="Label"></asp:Label>/-) deposited in any treasury of Haryana.(<span style="color: red;">★</span>)
                                                                 <div class="row" style="margin-top: 15px; margin-bottom: 10px;">
                                                                     <div class="col-md-6">
                                                                         <div class="form-group" style="margin-bottom: 0px !important;">
                                                                             <label for="State1">
-                                                                                UTR No.<samp style="color: red">* </samp>
+                                                                                GRN No.<samp style="color: red">* </samp>
                                                                             </label>
-                                                                            <asp:TextBox class="form-control" ID="txtUtrNo" MaxLength="50" autocomplete="off" runat="server" Style="margin-bottom: 15px;"> </asp:TextBox>
-                                                                            <asp:RequiredFieldValidator runat="server" ControlToValidate="txtUtrNo" ValidationGroup="Submit" ForeColor="Red">Enter UTR No.</asp:RequiredFieldValidator>
+                                                                            <asp:TextBox class="form-control" ID="txtUtrNo" MaxLength="10" autocomplete="off" runat="server" onkeypress="return isAlphaNumeric(event);" Style="margin-bottom: 15px;"> </asp:TextBox>
+                                                                            <asp:RequiredFieldValidator runat="server" ControlToValidate="txtUtrNo" ValidationGroup="Submit" ForeColor="Red">Enter GRN No.</asp:RequiredFieldValidator>
+                                                                            <asp:RegularExpressionValidator runat="server" ControlToValidate="txtUtrNo" ValidationGroup="Submit"
+                                                                                ForeColor="Red" ErrorMessage="GRN No. must be exactly 10 alphanumeric characters." ValidationExpression="^[a-zA-Z0-9]{10}$"> </asp:RegularExpressionValidator>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-6">
@@ -953,7 +956,12 @@
                                                 <div class="form-check">
                                                     <asp:CheckBox ID="chkDeclaration" runat="server" CssClass="form-check-input" Style="padding: 0px 4px 15px 1px !important; border: 0px solid black !important; margin-top: .1em !important;" />
                                                     <label class="form-check-label" for="<%= chkDeclaration.ClientID %>" style="margin-left: 0px;">
-                                                        I hereby declare that the information furnished in this application is correct, that all registers and books as prescribed under the licensing conditions of Haryana are being duly maintained, and that I am authorized to sign this application as the contractor or on behalf of the contractor.
+                                                        <%-- I hereby declare that the information furnished in this application is correct, that all registers and books as prescribed under the licensing conditions of Haryana are being duly maintained, and that I am authorized to sign this application as the contractor or on behalf of the contractor.
+                                                        --%> 
+                                                        I hereby declare that the information furnished and the documents uploaded above are correct to the best of my knowledge. 
+                                                        I also agree to the cancellation of my <asp:Label ID="lblDeclarationType" runat="server" Text="Label"></asp:Label> to be issued pursuant
+                                                        to this application, in case the particulars furnished in the application are found to be incorrect or false at any stage.
+
                                                     </label>
                                                 </div>
                                             </div>
@@ -1154,7 +1162,18 @@
             }
         }
     </script>
-
+    <script type="text/javascript">
+        function isAlphaNumeric(evt) {
+            var charCode = evt.which ? evt.which : evt.keyCode;
+            var charStr = String.fromCharCode(charCode);
+            // Allow only letters (a-z, A-Z) and digits (0-9)
+            if (!/^[a-zA-Z0-9]$/.test(charStr)) {
+                evt.preventDefault();
+                return false;
+            }
+            return true;
+        }
+    </script>
 
 
 </body>

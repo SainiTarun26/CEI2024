@@ -234,12 +234,14 @@
                                 GST Number<samp style="color: red"> * </samp>
                             </label>
                             <asp:TextBox class="form-control" ID="txtGST" runat="server" TabIndex="4" autocomplete="off" onkeydown="return preventEnterSubmit(event)"
-                                MaxLength="30" Style="margin-left: 18px; text-transform: uppercase">
+                                MaxLength="15" Style="margin-left: 18px; text-transform: uppercase">
                             </asp:TextBox>
-                            <asp:RegularExpressionValidator ID="regexValidatorGST" runat="server" ControlToValidate="txtGST"
-                                ValidationExpression="^(06|04)[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$" ValidationGroup="Submit"
-                                ErrorMessage="GST is incorrect. Only Haryana's GST is valid" ForeColor="Red" Display="Dynamic">
-                            </asp:RegularExpressionValidator>
+                        <asp:RegularExpressionValidator ID="regexValidatorGST" runat="server" ControlToValidate="txtGST"
+    ValidationExpression="^(06|04|07)[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$"
+    ValidationGroup="Submit"
+    ErrorMessage="GST is incorrect. Only GST numbers from Haryana (06), Chandigarh (04), and Delhi (07) are allowed."
+    ForeColor="Red" Display="Dynamic">
+</asp:RegularExpressionValidator>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtGST" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please Enter GST</asp:RequiredFieldValidator>
 
                         </div>

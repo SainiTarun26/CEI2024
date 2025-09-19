@@ -590,7 +590,9 @@
                                         <asp:TextBox class="form-control" ID="txtGstNumber" autocomplete="off" ReadOnly="true" runat="server" onKeyPress="return isNumberKey(event) || alphabetKey(event);" TabIndex="1" MaxLength="15"> </asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtGstNumber"
                                             CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
-                                        <asp:RegularExpressionValidator ID="regexValidatorGST" runat="server" ControlToValidate="txtGstNumber" ValidationExpression="^(06)[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$" ValidationGroup="Submit" ErrorMessage="GST is incorrect. Only Haryana's GST is valid" ForeColor="Red" Display="Dynamic"></asp:RegularExpressionValidator>
+                                        <asp:RegularExpressionValidator ID="regexValidatorGST" runat="server" ControlToValidate="txtGstNumber"  ValidationExpression="^(06|04|07)[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$"
+ ValidationGroup="Submit"
+ ErrorMessage="GST is incorrect. Only GST numbers from Haryana (06), Chandigarh (04), and Delhi (07) are allowed." ForeColor="Red" Display="Dynamic"></asp:RegularExpressionValidator>
 
                                     </div>
                                 </div>
@@ -1057,7 +1059,7 @@
                                             <label for="Gender">
                                                 Total Amount<samp style="color: red">* </samp>
                                             </label>
-                                            <asp:TextBox class="form-control" ID="txtTotalAmount" autocomplete="off" Text="2100/-" ReadOnly="true" runat="server"> </asp:TextBox>
+                                            <asp:TextBox class="form-control" ID="txtTotalAmount" autocomplete="off" Text="2520/-" ReadOnly="true" runat="server"> </asp:TextBox>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator45" runat="server" ControlToValidate="txtTotalAmount"
                                                 CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
                                         </div>
@@ -1069,9 +1071,11 @@
                                             <label for="Gender">
                                                 GRN No.<samp style="color: red">* </samp>
                                             </label>
-                                            <asp:TextBox class="form-control" ID="txtGrNNo" autocomplete="off" MaxLength="10" runat="server"> </asp:TextBox>
+                                            <asp:TextBox class="form-control" ID="txtGrNNo" autocomplete="off" MaxLength="10" runat="server" onkeypress="return isAlphaNumeric(event);" > </asp:TextBox>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator46" runat="server" ControlToValidate="txtGrNNo"
                                                 CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                                                                                <asp:RegularExpressionValidator runat="server"  ControlToValidate="txtGrNNo" ValidationGroup="Submit" 
+ForeColor="Red"  ErrorMessage="GRN No. must be exactly 10 alphanumeric characters." ValidationExpression="^[a-zA-Z0-9]{10}$"> </asp:RegularExpressionValidator>
                                         </div>
                                     </div>
                                 </div>
@@ -2313,5 +2317,16 @@
             }
         }
     </script>
-
+      <script type="text/javascript">
+          function isAlphaNumeric(evt) {
+              var charCode = evt.which ? evt.which : evt.keyCode;
+              var charStr = String.fromCharCode(charCode);
+              // Allow only letters (a-z, A-Z) and digits (0-9)
+              if (!/^[a-zA-Z0-9]$/.test(charStr)) {
+                  evt.preventDefault();
+                  return false;
+              }
+              return true;
+          }
+      </script>
 </asp:Content>

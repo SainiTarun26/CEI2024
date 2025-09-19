@@ -1,6 +1,7 @@
 ﻿using CEI_PRoject;
 using Org.BouncyCastle.Asn1.X500;
 using Org.BouncyCastle.Bcpg.OpenPgp;
+using Org.BouncyCastle.Crypto.Tls;
 using StackExchange.Redis;
 using System;
 using System.Configuration;
@@ -14,6 +15,7 @@ using System.Web.Helpers;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Windows.Documents;
+using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
 
 namespace CEIHaryana.UserPages
 {
@@ -37,7 +39,8 @@ namespace CEIHaryana.UserPages
                         HdnUserType.Value = "Supervisor";
                         ////Apprenticecertificate.Visible = false;
                         ////Hdn_Apprenticecertificatevisible.Value = "";
-
+                        LblChallanAmount.Text = "480";
+                        lblDeclarationType.Text = "Certificate of Competency";
                         DetailsforDocuments(UserID);
                     }
                     else if (Convert.ToString(Session["WiremanId"]) != null && Convert.ToString(Session["WiremanId"]) != "")
@@ -49,6 +52,8 @@ namespace CEIHaryana.UserPages
                         HdnUserType.Value = "Wireman";
                         //Apprenticecertificate.Visible = true;
                         //Hdn_Apprenticecertificatevisible.Value = "yes";
+                        LblChallanAmount.Text = "240";
+                        lblDeclarationType.Text = "Certificate of Permit";
                         DetailsforDocuments(UserID);
                     }
                 }
