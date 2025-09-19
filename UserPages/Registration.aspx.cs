@@ -107,7 +107,7 @@ namespace CEIHaryana.UserPages
                         GetIP();
 
                         #region kalpana 30-July-2025
-                        int Aadhar = CEI.CheckAadharOrPANExist(txtAadhaar.Text.Trim(), txtpancard.Text.Trim());
+                        int Aadhar = CEI.CheckAadharOrPANExist(txtAadhaar.Text.Trim(), txtpancard.Text.Trim(),txtEmailID.Text.Trim());
                         if (Aadhar > 0)
                         {
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "AadharAlert();", true);

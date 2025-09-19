@@ -12639,7 +12639,7 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
             con.Close();
 
         }
-        public int CheckAadharOrPANExist(string aadhar, string PanCardNo)
+        public int CheckAadharOrPANExist(string aadhar, string PanCardNo, string Email)
         {
             int count = 0;
 
@@ -12658,7 +12658,7 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
                     cmd.Parameters.AddWithValue("@PanCardNo", PanCardNo);
                 else
                     cmd.Parameters.AddWithValue("@PanCardNo", DBNull.Value);
-
+                cmd.Parameters.AddWithValue("@Email", Email);
                 con.Open();
                 object result = cmd.ExecuteScalar();
                 if (result != null && result != DBNull.Value)

@@ -417,20 +417,24 @@
     </script>
     <script type="text/javascript">
         function AadharAlert() {
-            alert("The Aadhar number or PAN Card number is already in use. Please register with a different Aadhar number or PAN Card number.");
+            alert("The Aadhar number or PAN Card number Or Email is already in use. Please register with a different Aadhar number or PAN Card number or Email.");
 
             var aadharInput = document.getElementById('<%= txtAadhaar.ClientID %>');
-            if (aadharInput) {
-                aadharInput.value = "";
-                aadharInput.focus();
-            }
-            var pancard = document.getElementById('<%= txtpancard.ClientID %>');
-            if (pancard) {
-                pancard.value = "";
+         if (aadharInput) {
+             aadharInput.value = "";
+             aadharInput.focus();
+         }
+         var pancard = document.getElementById('<%= txtpancard.ClientID %>');
+         if (pancard) {
+             pancard.value = "";
 
+         }
+         var Email = document.getElementById('<%= txtEmailID.ClientID %>');
+            if (Email) {
+                Email.value = "";
             }
         }
-    </script>
+ </script>
 </head>
 <body>
     <form id="form1" runat="server">

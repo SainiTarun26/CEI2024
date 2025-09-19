@@ -1529,7 +1529,7 @@
                                                                                                                 Type of Authority<samp style="color: red">* </samp>
                                                                                                             </label>
                                                                                                             <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
-                                                                                                                ID="ddlAuthority" runat="server" TabIndex="5">
+                                                                                                                ID="ddlAuthority" runat="server" TabIndex="1">
                                                                                                                 <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                                                                                                 <asp:ListItem Text="Director" Value="1"></asp:ListItem>
                                                                                                                 <asp:ListItem Text="Partner" Value="2"></asp:ListItem>
@@ -1544,7 +1544,7 @@
                                                                                                             <label id="Label8" runat="server" visible="true">
                                                                                                                 Full Name<samp style="color: red">* </samp>
                                                                                                             </label>
-                                                                                                            <asp:TextBox class="form-control" ID="txtName" autocomplete="off" onKeyPress="return alphabetKey(event);" runat="server" TabIndex="6"> </asp:TextBox>
+                                                                                                            <asp:TextBox class="form-control" ID="txtName" autocomplete="off" onKeyPress="return alphabetKey(event);" runat="server" TabIndex="2"> </asp:TextBox>
                                                                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator22" ErrorMessage="Required" ControlToValidate="txtName" runat="server" Display="Dynamic" ValidationGroup="ModalSubmit" ForeColor="Red" />
                                                                                                         </div>
                                                                                                     </div>
@@ -1555,7 +1555,7 @@
                                                                                                             <label id="Label9" runat="server" visible="true">
                                                                                                                 Address<samp style="color: red">* </samp>
                                                                                                             </label>
-                                                                                                            <asp:TextBox class="form-control" ID="txtAddress" autocomplete="off" runat="server" TabIndex="7"> </asp:TextBox>
+                                                                                                            <asp:TextBox class="form-control" ID="txtAddress" autocomplete="off" runat="server" TabIndex="3"> </asp:TextBox>
                                                                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator23" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="txtAddress" runat="server" ValidationGroup="ModalSubmit" ForeColor="Red" />
                                                                                                         </div>
                                                                                                     </div>
@@ -1569,7 +1569,7 @@
                                                                                                                 State<samp style="color: red">* </samp>
                                                                                                             </label>
                                                                                                             <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
-                                                                                                                ID="ddlState" AutoPostBack="true" runat="server" TabIndex="8" OnSelectedIndexChanged="ddlState_SelectedIndexChanged">
+                                                                                                                ID="ddlState" AutoPostBack="true" runat="server" TabIndex="4" OnSelectedIndexChanged="ddlState_SelectedIndexChanged">
                                                                                                             </asp:DropDownList>
                                                                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator24" Text="Please Select State" ErrorMessage="Required" ControlToValidate="ddlState" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="ModalSubmit" ForeColor="Red" />
                                                                                                         </div>
@@ -1582,7 +1582,7 @@
                                                                                                                 District<samp style="color: red">* </samp>
                                                                                                             </label>
                                                                                                             <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
-                                                                                                                ID="ddlDistrict" runat="server" TabIndex="9">
+                                                                                                                ID="ddlDistrict" runat="server" TabIndex="5">
                                                                                                             </asp:DropDownList>
                                                                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator25" ErrorMessage="Required" ControlToValidate="ddlDistrict" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="ModalSubmit" ForeColor="Red" />
                                                                                                         </div>
@@ -1594,7 +1594,7 @@
                                                                                                             <label id="Label11" runat="server" visible="true">
                                                                                                                 Pin Code<samp style="color: red">* </samp>
                                                                                                             </label>
-                                                                                                            <asp:TextBox class="form-control" ID="txtPinCode" autocomplete="off" onKeyPress="return isNumberKey(event);" runat="server" MaxLength="6" TabIndex="10"> </asp:TextBox>
+                                                                                                            <asp:TextBox class="form-control" ID="txtPinCode" autocomplete="off" onKeyPress="return isNumberKey(event);" runat="server" MaxLength="6" TabIndex="6"> </asp:TextBox>
                                                                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator26" runat="server" ControlToValidate="txtPinCode"
                                                                                                                 ErrorMessage="Required" ValidationGroup="ModalSubmit" ForeColor="Red"></asp:RequiredFieldValidator>
                                                                                                         </div>
@@ -1611,7 +1611,7 @@
                                                                                         <div class="row" style="margin-top: 40px;">
                                                                                             <asp:GridView class="table-responsive table table-hover table-striped table-bordered" ID="GridView1" runat="server" Width="100%"
                                                                                                 AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff" DataKeyNames="Id" OnRowCommand="GridView1_RowCommand">
-                                                                                       
+
                                                                                                 <PagerStyle CssClass="pagination-ys" />
                                                                                                 <Columns>
                                                                                                     <asp:BoundField DataField="TypeOfAuthority" HeaderText="Type Of Authority">
@@ -1672,7 +1672,7 @@
                                                                             <asp:TextBox class="form-control" ID="txtGstNumber" autocomplete="off" runat="server" onKeyPress="return isNumberKey(event) || alphabetKey(event);" TabIndex="1" MaxLength="15"> </asp:TextBox>
                                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtGstNumber"
                                                                                 CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
-                                                                            <asp:RegularExpressionValidator ID="regexValidatorGST" runat="server" ControlToValidate="txtGstNumber"  ValidationExpression="^(06|04|07)[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$" ValidationGroup="Submit" ErrorMessage="GST is incorrect. Only the GST numbers from Haryana, Delhi, and Chandigarh are valid" ForeColor="Red" Display="Dynamic"></asp:RegularExpressionValidator>
+                                                                            <asp:RegularExpressionValidator ID="regexValidatorGST" runat="server" ControlToValidate="txtGstNumber" ValidationExpression="^(06)[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$" ValidationGroup="Submit" ErrorMessage="GST is incorrect. Only Haryana's GST is valid" ForeColor="Red" Display="Dynamic"></asp:RegularExpressionValidator>
 
                                                                         </div>
                                                                     </div>
@@ -1697,7 +1697,7 @@
                                                                             <label id="Label2" runat="server" visible="true">
                                                                                 Full Name of Agent/Manager<samp style="color: red">* </samp>
                                                                             </label>
-                                                                            <asp:TextBox class="form-control" ID="txtAgentName" autocomplete="off" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                                            <asp:TextBox class="form-control" TabIndex="3" ID="txtAgentName" autocomplete="off" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
                                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="txtAgentName"
                                                                                 CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
                                                                         </div>
@@ -1716,7 +1716,7 @@
                                                                             <label id="Lbl4" runat="server" visible="false">
                                                                                 Name Of Partnership Firm<samp style="color: red">* </samp>
                                                                             </label>
-                                                                            <asp:TextBox class="form-control" ID="txtNameOfCompany" autocomplete="off" runat="server" MaxLength="100"> </asp:TextBox>
+                                                                            <asp:TextBox class="form-control" ID="txtNameOfCompany" autocomplete="off" TabIndex="4" runat="server" MaxLength="100"> </asp:TextBox>
                                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator29" runat="server" ControlToValidate="txtNameOfCompany" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
                                                                         </div>
                                                                     </div>
@@ -1726,7 +1726,7 @@
                                                                                 Registered office in (Haryana/UT Chandigarh/ NCT Delhi)<samp style="color: red">* </samp>
                                                                             </label>
                                                                             <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
-                                                                                ID="ddlOffice" runat="server" TabIndex="3">
+                                                                                ID="ddlOffice" runat="server" TabIndex="5">
                                                                                 <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                                                                 <asp:ListItem Text="YES" Value="1"></asp:ListItem>
                                                                                 <asp:ListItem Text="NO" Value="2"></asp:ListItem>
@@ -1739,7 +1739,7 @@
                                                                             <label>
                                                                                 Business Address<samp style="color: red">* </samp>
                                                                             </label>
-                                                                            <asp:TextBox class="form-control" ID="txtBusinessAddress" autocomplete="off" runat="server" MaxLength="250"> </asp:TextBox>
+                                                                            <asp:TextBox class="form-control" ID="txtBusinessAddress" TabIndex="6" autocomplete="off" runat="server" MaxLength="250"> </asp:TextBox>
                                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator28" runat="server" ControlToValidate="txtBusinessAddress" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
                                                                         </div>
                                                                     </div>
@@ -1749,7 +1749,7 @@
                                                                                 State<samp style="color: red">* </samp>
                                                                             </label>
 
-                                                                            <asp:DropDownList ID="ddlBusinessState" class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlBusinessState_SelectedIndexChanged"></asp:DropDownList>
+                                                                            <asp:DropDownList ID="ddlBusinessState" class="select-form select2" TabIndex="7" Style="border: 1px solid #ced4da; border-radius: 5px;" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlBusinessState_SelectedIndexChanged"></asp:DropDownList>
                                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ErrorMessage="Required" ControlToValidate="ddlBusinessState" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                                                         </div>
                                                                     </div>
@@ -1759,7 +1759,7 @@
                                                                                 District<samp style="color: red">* </samp>
                                                                             </label>
                                                                             <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px; width: 100%; height: 25px; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;"
-                                                                                ID="ddlBusinessDistrict" AutoPostBack="true" runat="server" TabIndex="9">
+                                                                                ID="ddlBusinessDistrict" AutoPostBack="true" runat="server" TabIndex="8">
                                                                                 <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                                                             </asp:DropDownList>
                                                                             <%--   <asp:DropDownList ID="ddlBusinessDistrict" class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlBusinessState_SelectedIndexChanged"></asp:DropDownList>
@@ -1772,7 +1772,7 @@
                                                                             <label>
                                                                                 Business Pin Code<samp style="color: red">* </samp>
                                                                             </label>
-                                                                            <asp:TextBox class="form-control" ID="txtBusinessPin" autocomplete="off" runat="server" onKeyPress="return isNumberKey(event);" MaxLength="6"> </asp:TextBox>
+                                                                            <asp:TextBox class="form-control" ID="txtBusinessPin" autocomplete="off" runat="server" onKeyPress="return isNumberKey(event);" MaxLength="6" TabIndex="9"> </asp:TextBox>
                                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txtBusinessPin" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
                                                                             <asp:RegularExpressionValidator
                                                                                 ID="RegexPin" runat="server" ControlToValidate="txtBusinessPin" ErrorMessage="Enter valid 6-digit Pin Code" ForeColor="Red" Display="Dynamic" ValidationGroup="Submit" ValidationExpression="^[1-9][0-9]{5}$">
@@ -1785,7 +1785,7 @@
                                                                             <label>
                                                                                 Business E-mail<samp style="color: red">* </samp>
                                                                             </label>
-                                                                            <asp:TextBox class="form-control" ID="txtBusinessEmail" autocomplete="off" runat="server" MaxLength="50" onkeyup="return ValidateEmail();"> </asp:TextBox>
+                                                                            <asp:TextBox class="form-control" ID="txtBusinessEmail" TabIndex="10" autocomplete="off" runat="server" MaxLength="50" onkeyup="return ValidateEmail();"> </asp:TextBox>
                                                                             <span id="lblError" style="color: red"></span>
                                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator16" CssClass="validation_required" runat="server" ControlToValidate="txtBusinessEmail"
                                                                                 ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
@@ -1798,7 +1798,7 @@
                                                                             <label>
                                                                                 Business Phone No.<samp style="color: red">* </samp>
                                                                             </label>
-                                                                            <asp:TextBox class="form-control" ID="txtBusinessPhoneNo" autocomplete="off" runat="server" onkeyup="return isvalidphoneno();" onKeyPress="return isNumberKey(event);" MaxLength="10"> </asp:TextBox>
+                                                                            <asp:TextBox class="form-control" ID="txtBusinessPhoneNo" TabIndex="11" autocomplete="off" runat="server" onkeyup="return isvalidphoneno();" onKeyPress="return isNumberKey(event);" MaxLength="10"> </asp:TextBox>
                                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator27" runat="server" ControlToValidate="txtBusinessPhoneNo" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
                                                                             <asp:RegularExpressionValidator ID="revPhone" runat="server" ControlToValidate="txtBusinessPhoneNo" ValidationExpression="^[6-9]\d{9}$" ErrorMessage="Enter a valid phone number" ValidationGroup="Submit" ForeColor="Red" Display="Dynamic">
                                                                             </asp:RegularExpressionValidator>
@@ -1809,7 +1809,7 @@
                                                                             <label>
                                                                                 Name of authorized person signing document<samp style="color: red">* </samp>
                                                                             </label>
-                                                                            <asp:TextBox class="form-control" ID="txtauthorizedperson" autocomplete="off" runat="server" onKeyPress="return alphabetKey(event);" MaxLength="150"> </asp:TextBox>
+                                                                            <asp:TextBox class="form-control" ID="txtauthorizedperson" TabIndex="12" autocomplete="off" runat="server" onKeyPress="return alphabetKey(event);" MaxLength="150"> </asp:TextBox>
                                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator31" runat="server" ControlToValidate="txtauthorizedperson" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
 
                                                                         </div>
@@ -1831,7 +1831,7 @@
                                                                         <label id="Label4" runat="server" visible="true">
                                                                             Is Applicant a manufacturing firm or production unit<samp style="color: red">* </samp>
                                                                         </label>
-                                                                        <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
+                                                                        <asp:DropDownList class="select-form select2" TabIndex="13" Style="border: 1px solid #ced4da; border-radius: 5px;"
                                                                             ID="ddlUnitOrNot" runat="server">
                                                                             <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                                                             <asp:ListItem Text="YES" Value="1"></asp:ListItem>
@@ -1844,7 +1844,7 @@
                                                                             Is Contractor License Previously Granted with same name<samp style="color: red">* </samp>
                                                                         </label>
                                                                         <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
-                                                                            ID="ddlSameNameLicense" runat="server" OnSelectedIndexChanged="ddlSameNameLicense_SelectedIndexChanged" AutoPostBack="true">
+                                                                            ID="ddlSameNameLicense" runat="server" TabIndex="14" OnSelectedIndexChanged="ddlSameNameLicense_SelectedIndexChanged" AutoPostBack="true">
                                                                             <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                                                             <asp:ListItem Text="YES" Value="1"></asp:ListItem>
                                                                             <asp:ListItem Text="NO" Value="2"></asp:ListItem>
@@ -1856,7 +1856,7 @@
                                                                         <label id="Label14" runat="server" visible="true">
                                                                             Enter License No.<samp style="color: red">* </samp>
                                                                         </label>
-                                                                        <asp:TextBox class="form-control" ID="txtLicenseNo" autocomplete="off" MaxLength="10" onkeypress="return isValidLicenseKey(event);" runat="server"> </asp:TextBox>
+                                                                        <asp:TextBox class="form-control" ID="txtLicenseNo" autocomplete="off" TabIndex="15" MaxLength="10" onkeypress="return isValidLicenseKey(event);" runat="server"> </asp:TextBox>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="txtLicenseNo"
                                                                             CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
                                                                     </div>
@@ -1864,7 +1864,7 @@
                                                                         <label id="Labe20" runat="server" visible="true">
                                                                             Date of Issue<samp style="color: red">* </samp>
                                                                         </label>
-                                                                        <asp:TextBox class="form-control" type="date" autocomplete="off" ID="txtLicenseIssue" Onchange="validateDate()" placeholder="dd/mm/yyyy" runat="server" AutoPostBack="true"> </asp:TextBox>
+                                                                        <asp:TextBox class="form-control" type="date" autocomplete="off" TabIndex="16" ID="txtLicenseIssue" Onchange="validateDate()" placeholder="dd/mm/yyyy" runat="server" AutoPostBack="true"> </asp:TextBox>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator20" runat="server" ControlToValidate="txtLicenseIssue"
                                                                             CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
                                                                     </div>
@@ -1873,7 +1873,7 @@
                                                                             Is Contractor License Previously Granted with same name from other state<samp style="color: red">* </samp>
                                                                         </label>
                                                                         <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
-                                                                            ID="ddlLicenseGranted" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlLicenseGranted_SelectedIndexChanged">
+                                                                            ID="ddlLicenseGranted" runat="server" AutoPostBack="true" TabIndex="17" OnSelectedIndexChanged="ddlLicenseGranted_SelectedIndexChanged">
                                                                             <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                                                             <asp:ListItem Text="YES" Value="1"></asp:ListItem>
                                                                             <asp:ListItem Text="NO" Value="2"></asp:ListItem>
@@ -1884,7 +1884,7 @@
                                                                         <label id="Label7" runat="server" visible="true">
                                                                             Name of Issuing Authority<samp style="color: red">* </samp>
                                                                         </label>
-                                                                        <asp:TextBox class="form-control" ID="txtIssusuingName" autocomplete="off" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                                        <asp:TextBox class="form-control" ID="txtIssusuingName" TabIndex="18" autocomplete="off" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="txtIssusuingName"
                                                                             CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
                                                                     </div>
@@ -1892,7 +1892,7 @@
                                                                         <label>
                                                                             Date of Issue<samp style="color: red">* </samp>
                                                                         </label>
-                                                                        <asp:TextBox class="form-control" type="date" autocomplete="off" ID="txtIssuedateOtherState" Onchange="validateDate1()" placeholder="dd/mm/yyyy" runat="server" AutoPostBack="true"> </asp:TextBox>
+                                                                        <asp:TextBox class="form-control" type="date" autocomplete="off" TabIndex="19" ID="txtIssuedateOtherState" Onchange="validateDate1()" placeholder="dd/mm/yyyy" runat="server" AutoPostBack="true"> </asp:TextBox>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="txtIssuedateOtherState"
                                                                             CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
                                                                     </div>
@@ -1900,7 +1900,7 @@
                                                                         <label id="Label15" runat="server" visible="true">
                                                                             Date of License Expiry<samp style="color: red">* </samp>
                                                                         </label>
-                                                                        <asp:TextBox class="form-control" type="date" autocomplete="off" ID="txtLicenseExpiry" placeholder="dd/mm/yyyy" runat="server" AutoPostBack="true" onchange="validateDates1()"> </asp:TextBox>
+                                                                        <asp:TextBox class="form-control" type="date" autocomplete="off" TabIndex="20" ID="txtLicenseExpiry" placeholder="dd/mm/yyyy" runat="server" AutoPostBack="true" onchange="validateDates1()"> </asp:TextBox>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="txtLicenseExpiry"
                                                                             CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
                                                                     </div>
@@ -1908,7 +1908,7 @@
                                                                         <label id="Label21" runat="server" visible="true">
                                                                             Details of work permit to be undertaken.<samp style="color: red">* </samp>
                                                                         </label>
-                                                                        <asp:TextBox class="form-control" ID="txtWorkPermitUndertaken" autocomplete="off" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                                        <asp:TextBox class="form-control" ID="txtWorkPermitUndertaken" TabIndex="21" autocomplete="off" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
                                                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator30" runat="server" ControlToValidate="txtWorkPermitUndertaken"
                                                                             CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
                                                                     </div>
@@ -1928,7 +1928,7 @@
                                                                                 Whether the company have Partner/Director<samp style="color: red">* </samp>
                                                                             </label>
                                                                             <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;" AutoPostBack="true"
-                                                                                ID="DdlPartnerOrDirector" runat="server" OnSelectedIndexChanged="DdlPartnerOrDirector_SelectedIndexChanged" TabIndex="4" Enabled="true">
+                                                                                ID="DdlPartnerOrDirector" runat="server" OnSelectedIndexChanged="DdlPartnerOrDirector_SelectedIndexChanged" TabIndex="22" Enabled="true">
                                                                                 <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                                                                 <asp:ListItem Text="YES" Value="1" data-bs-toggle="modal" data-bs-target="#myModal"></asp:ListItem>
                                                                                 <asp:ListItem Text="NO" Value="2"></asp:ListItem>
@@ -2008,7 +2008,7 @@
                                                             <div class="row">
                                                                 <div class="col-md-3">
                                                                     <asp:Label ID="typeemp" runat="server" Style="font-size: 12px;">Type of Employee<samp style="color: red">* </samp></asp:Label>
-                                                                    <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;" AutoPostBack="true"
+                                                                    <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;" TabIndex="23" AutoPostBack="true"
                                                                         ID="ddlEmployer1" runat="server" OnSelectedIndexChanged="ddlEmployer1_SelectedIndexChanged">
                                                                         <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                                                         <asp:ListItem Text="Supervisor" Value="Supervisor"></asp:ListItem>
@@ -2175,7 +2175,7 @@
                                                                             </label>
 
                                                                             <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
-                                                                                ID="DdlWorkUnderLicenceConditionsandregulation29" runat="server">
+                                                                                ID="DdlWorkUnderLicenceConditionsandregulation29" runat="server" TabIndex="24">
                                                                                 <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                                                                 <asp:ListItem Text="YES" Value="1"></asp:ListItem>
                                                                                 <asp:ListItem Text="NO" Value="2"></asp:ListItem>
@@ -2206,7 +2206,7 @@
                                                             <label for="Gender">
                                                                 Whether E library/library as per ANNEXURE-2 Available<samp style="color: red">* </samp>
                                                             </label>
-                                                            <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
+                                                            <asp:DropDownList class="select-form select2" TabIndex="25" Style="border: 1px solid #ced4da; border-radius: 5px;"
                                                                 ID="ddlAnnexureOrNot" runat="server">
                                                                 <asp:ListItem Text="SELECT" Value="0"></asp:ListItem>
                                                                 <asp:ListItem Text="YES" Value="1"></asp:ListItem>
@@ -2223,7 +2223,7 @@
                                                             <label id="Label12" runat="server" visible="true">
                                                                 Do company/firm have any <b>Penalties or Punishments</b>?<samp style="color: red">* </samp>
                                                             </label>
-                                                            <asp:DropDownList class="select-form select2" AutoPostBack="true" Style="border: 1px solid #ced4da; border-radius: 5px;"
+                                                            <asp:DropDownList class="select-form select2" TabIndex="26" AutoPostBack="true" Style="border: 1px solid #ced4da; border-radius: 5px;"
                                                                 ID="DropDownList2" runat="server" OnSelectedIndexChanged="DropDownList2_SelectedIndexChanged">
                                                                 <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                                                 <asp:ListItem Text="YES" Value="1"></asp:ListItem>
@@ -2239,7 +2239,7 @@
                                                             <label id="Label10" runat="server" visible="true">
                                                                 Select penalties or punishments<samp style="color: red">* </samp>
                                                             </label>
-                                                            <asp:DropDownList ID="ddlPenalities" runat="server"
+                                                            <asp:DropDownList ID="ddlPenalities" TabIndex="27" runat="server"
                                                                 CssClass="select-form select2 form-control"
                                                                 AutoPostBack="false"
                                                                 onchange="updatePenalityText(this)">
@@ -2342,6 +2342,14 @@
         <script src="/js2/typeahead.js"></script>
         <script src="/js2/select2.js"></script>
     </form>
+    <script type="text/javascript">
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "Enter") {
+                event.preventDefault(); // prevent default form submit
+                document.getElementById("<%= Button2.ClientID %>").click();
+               }
+           });
+    </script>
 
     <%-- Multiselect Dropdown --%>
     <script>
@@ -3151,25 +3159,25 @@
             return false; // Block everything else
         }
     </script>
-       <script type="text/javascript">
-           function FocusOnError(validationGroup) {
-               if (typeof (Page_ClientValidate) == 'function') {
-                   if (!Page_ClientValidate(validationGroup)) {
-                       for (var i = 0; i < Page_Validators.length; i++) {
-                           var validator = Page_Validators[i];
-                           if (!validator.isvalid && validator.validationGroup === validationGroup) {
-                               var control = document.getElementById(validator.controltovalidate);
-                               if (control) {
-                                   control.focus();
-                                   break;
-                               }
-                           }
-                       }
-                       return false; // Prevent postback
-                   }
-               }
-               return true; // Allow postback if valid
-           }
-       </script>
+    <script type="text/javascript">
+        function FocusOnError(validationGroup) {
+            if (typeof (Page_ClientValidate) == 'function') {
+                if (!Page_ClientValidate(validationGroup)) {
+                    for (var i = 0; i < Page_Validators.length; i++) {
+                        var validator = Page_Validators[i];
+                        if (!validator.isvalid && validator.validationGroup === validationGroup) {
+                            var control = document.getElementById(validator.controltovalidate);
+                            if (control) {
+                                control.focus();
+                                break;
+                            }
+                        }
+                    }
+                    return false; // Prevent postback
+                }
+            }
+            return true; // Allow postback if valid
+        }
+    </script>
 </body>
 </html>
