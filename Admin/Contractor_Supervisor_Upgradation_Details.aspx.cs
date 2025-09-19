@@ -2,7 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO.Compression;
+using System.IO;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -66,14 +69,15 @@ namespace CEIHaryana.Admin
 
         protected void GridView3_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+
+            Control ctrl = e.CommandSource as Control;
+            GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
             if (e.CommandName == "Select")
             {
-                Control ctrl = e.CommandSource as Control;
-                GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
                 Label lblID = (Label)row.FindControl("lblID");
                 Label lblType = (Label)row.FindControl("lblType");
                 Session["id"] = lblID.Text;
-                if(lblType.Text== "Supervisor")
+                if (lblType.Text == "Supervisor")
                 {
                     Response.Redirect("/Admin/Supervisor_Upgradation_Details.aspx", false);
                 }
@@ -82,10 +86,8 @@ namespace CEIHaryana.Admin
                     Response.Redirect("/Admin/Contractor_Upgradation_Details.aspx", false);
                 }
             }
-            else if(e.CommandName == "Print")
+            else if (e.CommandName == "Print")
             {
-                Control ctrl = e.CommandSource as Control;
-                GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
                 Label lblID = (Label)row.FindControl("lblID");
                 Label lblType = (Label)row.FindControl("lblType");
                 Session["id"] = lblID.Text;
@@ -98,6 +100,99 @@ namespace CEIHaryana.Admin
                     Response.Redirect("/Print_Forms/Print_Contractor_Upgradation_Details.aspx", false);
                 }
             }
+           
+
+            else if (e.CommandName == "Download")
+            {
+                string RegNo = e.CommandArgument.ToString();
+                Label Categary = (Label)row.FindControl("lblType");
+                Label lblApplicationID = (Label)row.FindControl("lblApplicationID");
+
+                DataTable dt = CEI.GetUpgradationOSupervisorRecordsDataAtAdmin(Convert.ToInt32(RegNo));
+
+                using (MemoryStream memoryStream = new MemoryStream())
+                {
+                    using (ZipArchive zip = new ZipArchive(memoryStream, ZipArchiveMode.Create, true))
+                    {
+                        // Collect file URLs safely
+                        List<string> fileUrls = new List<string>();
+
+                        if (dt.Rows.Count > 0)
+                        {
+                            if (!string.IsNullOrEmpty(dt.Rows[0]["CerificateOfCompetency"]?.ToString()))
+                                fileUrls.Add("https://uat.ceiharyana.com" + dt.Rows[0]["CerificateOfCompetency"]);
+
+                            if (!string.IsNullOrEmpty(dt.Rows[0]["CertificateOfExperience"]?.ToString()))
+                                fileUrls.Add("https://uat.ceiharyana.com" + dt.Rows[0]["CertificateOfExperience"]);
+
+                            if (!string.IsNullOrEmpty(dt.Rows[0]["CertificateOfMedical"]?.ToString()))
+                                fileUrls.Add("https://uat.ceiharyana.com" + dt.Rows[0]["CertificateOfMedical"]);
+                        }
+
+                        using (var client = new System.Net.WebClient())
+                        {
+                            foreach (string fileUrl in fileUrls)
+                            {
+                                try
+                                {
+                                    byte[] fileBytes = client.DownloadData(fileUrl);
+                                    string fileName = Path.GetFileName(fileUrl);
+
+                                    ZipArchiveEntry entry = zip.CreateEntry(fileName, CompressionLevel.Fastest);
+                                    using (var entryStream = entry.Open())
+                                    {
+                                        entryStream.Write(fileBytes, 0, fileBytes.Length);
+                                    }
+                                }
+                                catch (Exception ex)
+                                {
+                                    // log download error
+                                }
+                            }
+                        }
+
+                        try
+                        {
+                            Session["id"] = RegNo;
+                            if (Categary.Text == "Contractor")
+                            {
+                                ExportUtility.ExportCleanHtmlToZip(
+                                   pagePath: "/Print_Forms/Print_Contractor_Upgradation_Details.aspx",
+                                   queryString: "RegNo=" + RegNo,
+                                   zip: zip,
+                                   outputFileName: "RegistrationInfo.html"
+                               );
+                            }
+                            else
+                            {
+                                ExportUtility.ExportCleanHtmlToZip(
+                                    pagePath: "/Print_Forms/Print_Supervisor_Upgradation_Details.aspx",
+                                    queryString: "RegNo=" + RegNo,
+                                    zip: zip,
+                                    outputFileName: "RegistrationInfo.html"
+                                );
+                            }
+
+                            Session["id"] = "";
+                        }
+                        catch (Exception ex)
+                        {
+                            // log if page not reachable
+                        }
+                    }
+
+                    // ⚡ Now send ZIP after archive is closed
+                    Response.Clear();
+                    Response.ContentType = "application/zip";
+                    Response.AddHeader("content-disposition", "attachment; filename=" + lblApplicationID.Text + "_Documents.zip");
+                    memoryStream.Position = 0; // reset pointer
+                    memoryStream.CopyTo(Response.OutputStream);
+                    Response.Flush();
+                    Response.End();
+                }
+            }
+
+
             else
             {
                 GetSubmittedUpgradationApplications(null);

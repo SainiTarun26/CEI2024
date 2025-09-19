@@ -2,23 +2,20 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
-    <link rel="stylesheet" href="/css2/style.css" />
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet" />
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!------ Include the above in your HEAD tag ---------->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-    <!---------------------   Dropdown With Search Option   ---------------------->
-    <%-- <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>--%>
-
-    <link href="ScriptCalendar/jquery-ui.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="ScriptCalender/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="ScriptCalender/jquery-ui.min.js"></script>
+  <link rel="stylesheet" href="/css2/style.css" />
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet" />
+  <link href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+  <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
+  <script src="https://kit.fontawesome.com/57676f1d80.js" crossorigin="anonymous"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
         button, input, optgroup, select, textarea {
             margin: 0;
@@ -246,8 +243,6 @@
     <div class="content-wrapper">
         <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
             <div class="card-body">
-                <asp:UpdatePanel runat="server" ID="updatePanel">
-                    <ContentTemplate>
                         <div class="row">
                             <div class="col-md-4"></div>
                             <div class="col-md-4" style="text-align: center; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding-top: 8px; padding-bottom: 8px; border-radius: 10px; top: 0px; left: 0px;">
@@ -301,7 +296,8 @@
                                         <asp:TemplateField HeaderText="Id" Visible="False">
                                             <ItemTemplate>
                                                 <asp:Label ID="lblID" runat="server" Text='<%#Eval("Id") %>'></asp:Label>
-                                                     <asp:Label ID="lblType" runat="server" Text='<%#Eval("ApplicationType") %>'></asp:Label>
+                                                <asp:Label ID="lblType" runat="server" Text='<%#Eval("ApplicationType") %>'></asp:Label>
+                                                <asp:Label ID="lblApplicationID" runat="server" Text='<%#Eval("ApplicationID") %>'></asp:Label>
                                             </ItemTemplate>
                                         </asp:TemplateField>
                                         <asp:TemplateField HeaderText="Application ID">
@@ -344,15 +340,14 @@
                                             <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
                                             <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems" />
                                         </asp:BoundField>
-                                                                        <asp:TemplateField HeaderText="ApplicationForm">
-    <HeaderStyle Width="10%" CssClass="headercolor" />
-    <ItemStyle Width="10%" />
-    <ItemTemplate>
-        <asp:LinkButton ID="LinkButton2" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;" runat="server"
-            Text="<i class='fa fa-print' style='color:white !important;'></i>" CssClass='greenButton btn-primary' CommandName="Print" CommandArgument="<%# Container.DataItemIndex %>">
-        </asp:LinkButton>
-    </ItemTemplate>
-</asp:TemplateField>
+                                        <asp:TemplateField HeaderText="Download">
+                                            <HeaderStyle Width="10%" CssClass="headercolor" />
+                                            <ItemStyle Width="10%" CssClass="text-wrap" />
+                                            <ItemTemplate>
+                                                <asp:LinkButton ID="LinkDownload" runat="server" CommandArgument=' <%#Eval("Id") %> ' CommandName="Download">Download</asp:LinkButton>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
+                                       
                                     </Columns>
 
                                     <FooterStyle BackColor="White" ForeColor="#000066" />
@@ -368,41 +363,12 @@
                             </div>
                         </div>                                  
                         </div>
-                    </ContentTemplate>
-                </asp:UpdatePanel>
             </div>
         </div>
     </div>
     <!-- partial:../../partials/_footer.html -->
     <footer class="footer">
     </footer>
-    <script src="/assetsnew/vendor/purecounter/purecounter_vanilla.js"></script>
-    <script src="/assetsnew/vendor/aos/aos.js"></script>
-    <script src="/assetsnew/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="/assetsnew/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="/assetsnew/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="/assetsnew/vendor/swiper/swiper-bundle.min.js"></script>
-    <script src="/assetsnew/vendor/waypoints/noframework.waypoints.js"></script>
-    <script src="/assetsnew/vendor/php-email-form/validate.js"></script>
-    <!-- Template Main JS File -->
-    <script src="/assetsnew/js/main.js"></script>
-    <script src="/vendors/js/vendor.bundle.base.js"></script>
-    <!-- endinject -->
-    <!-- Plugin js for this page -->
-    <script src="/vendors/typeahead.js/typeahead.bundle.min.js"></script>
-    <script src="/vendors/select2/select2.min.js"></script>
-    <!-- End plugin js for this page -->
-    <!-- inject:js -->
-    <script src="/js2/off-canvas.js"></script>
-    <script src="/js2/hoverable-collapse.js"></script>
-    <script src="/js2/template.js"></script>
-    <script src="/js2/settings.js"></script>
-    <script src="/js2/todolist.js"></script>
-    <!-- endinject -->
-    <!-- Custom js for this page-->
-    <script src="/js2/file-upload.js"></script>
-    <script src="/js2/typeahead.js"></script>
-    <script src="/js2/select2.js"></script>
     <script>
         function preventEnterSubmit(event) {
             if (event.keyCode === 13) {
