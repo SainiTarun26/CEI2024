@@ -86,22 +86,7 @@ namespace CEIHaryana.Admin
                     Response.Redirect("/Admin/Contractor_Upgradation_Details.aspx", false);
                 }
             }
-            else if (e.CommandName == "Print")
-            {
-                Label lblID = (Label)row.FindControl("lblID");
-                Label lblType = (Label)row.FindControl("lblType");
-                Session["id"] = lblID.Text;
-                if (lblType.Text == "Supervisor")
-                {
-                    Response.Redirect("/Print_Forms/Print_Supervisor_Upgradation_Details.aspx", false);
-                }
-                else if (lblType.Text == "Contractor")
-                {
-                    Response.Redirect("/Print_Forms/Print_Contractor_Upgradation_Details.aspx", false);
-                }
-            }
-           
-
+            #region download in zip made by navneet
             else if (e.CommandName == "Download")
             {
                 string RegNo = e.CommandArgument.ToString();
@@ -191,7 +176,7 @@ namespace CEIHaryana.Admin
                     Response.End();
                 }
             }
-
+            #endregion
 
             else
             {
