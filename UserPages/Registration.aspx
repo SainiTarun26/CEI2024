@@ -37,6 +37,19 @@
     <link rel="shortcut icon" href="/images/favicon.png" />
 
     <style>
+                    /* Apply only when nav is in mobile mode */
+nav#navbar.navbar-mobile {
+    position: absolute;
+    
+    left: 0;
+    width: 100%;
+    height: 459px !important;
+    background: #d1e6ff; /* keep same bg as header */
+    overflow-y: auto;    /* scroll if menu items overflow */
+    z-index: 999;        /* stay above content */
+    padding: 15px 0;
+    border-top: 1px solid #ccc;
+}
             .navbar ul {
         margin-left: 20px;
     }
@@ -460,7 +473,7 @@
     </script>
     <script type="text/javascript">
         function AadharAlert() {
-            alert("The Aadhar number or PAN Card number Or Email is already in use. Please register with a different Aadhar number or PAN Card number or Email.");
+            alert("The Aadhar number or PAN Card number Or Email is already in use. Please register with a different Aadhar number or PAN Card number.");
 
             var aadharInput = document.getElementById('<%= txtAadhaar.ClientID %>');
             if (aadharInput) {
@@ -473,10 +486,10 @@
 
             }
          var Email = document.getElementById('<%= txtEmailID.ClientID %>');
-            if (Email) {
-                Email.value = "";
-        }
-        }
+     if (Email) {
+         Email.value = "";
+ }
+ } 
     </script>
 </head>
 <body>
@@ -701,7 +714,7 @@
                                                                         Nationality
                                                                 <samp style="color: red">* </samp>
                                                                     </label>
-                                                                    <asp:TextBox class="form-control" ID="txtNationality" runat="server"  placeholder="INDIA" ReadOnly="true" MaxLength="30"> </asp:TextBox>
+                                                                    <asp:TextBox class="form-control" ID="txtNationality" runat="server" TabIndex="2" placeholder="INDIA" ReadOnly="true" MaxLength="30"> </asp:TextBox>
                                                                 </div>
                                                                 <asp:UpdatePanel ID="UpdatePanelCalculatedYears" runat="server">
                                                                     <ContentTemplate>
@@ -1243,16 +1256,16 @@
             }
             return true; // Allow postback if valid
         }
-    </script>
-    <script>
-        $(document).ready(function () {
-            $(document).on("keydown", function (e) {
-                if (e.key === "Enter") {
-                    e.preventDefault();
-                    $("#<%= btnNext.ClientID %>").click();
-            }
-        });
-    });
+ </script>
+ <script>
+     $(document).ready(function () {
+         $(document).on("keydown", function (e) {
+             if (e.key === "Enter") {
+                 e.preventDefault();
+                 $("#<%= btnNext.ClientID %>").click();
+         }
+     });
+ });
     </script>
 </body>
 </html>
