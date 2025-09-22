@@ -383,143 +383,131 @@
                         </div>
                     </div>
                     <nav class="sidebar sidebar-offcanvas" id="sidebar" style="background-color: #263247;">
-                        <ul class="nav">
-                            <li class="nav-item">
-                                <a class="nav-link" href="/Officers/OfficerDashboard.aspx">
-                                    <i class="icon-grid menu-icon"></i>
-                                    <span class="menu-title">Dashboard</span>
-                                </a>
-                            </li>
-                            <%-- <li class="nav-item">
-                                 <a class="nav-link" href="/Officers/InstallationIntimationDetails.aspx">
-                                    <i class="icon-layout menu-icon"></i>
-                                    <span class="menu-title">Pending Inspections</span>
-                                </a>
-                            </li>
-                           <li class="nav-item">
-                                 <a class="nav-link" href="/Officers/ActionTakenInspections.aspx">
-                                    <i class="icon-layout menu-icon"></i>
-                                    <span class="menu-title">Action Taken Inspections</span>
-                                </a>
-                            </li>--%>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/Officers/NewApplications.aspx">
-                                    <i class="icon-layout menu-icon"></i>
-                                    <span class="menu-title">New Applications</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/Officers/InProcessRequest.aspx">
-                                    <i class="icon-layout menu-icon"></i>
-                                    <span class="menu-title">In Process Request</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/Officers/TotalRequest.aspx">
-                                    <i class="icon-grid menu-icon"></i>
-                                    <span class="menu-title">TotalRequest</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/Officers/AcceptedOrReject.aspx">
-                                    <i class="icon-grid menu-icon"></i>
-                                    <span class="menu-title">Accepted/Reject/<br />
-                                        Returned Request</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/Officers/Self-CertificateRequest.aspx">
-                                    <i class="icon-grid menu-icon"></i>
-                                    <span class="menu-title">Self-Certificate</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/Officers/Self_CertificationStatus.aspx">
-                                    <i class="icon-grid menu-icon"></i>
-                                    <span class="menu-title">Self-Certificate Status</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/Officers/AccidentialReports.aspx">
-                                    <i class="icon-grid menu-icon"></i>
-                                    <span class="menu-title">Accidential<br />
-                                        Reports</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/Officers/TotalRequestInspectionForOfficer_SearchWithCafId.aspx">
-                                    <i class="icon-grid menu-icon"></i>
-                                    <span class="menu-title">Search By CAF Id</span>
-                                </a>
-                            </li>
+  <ul class="nav" id="sidebar-accordion">
 
-                            <li class="nav-item" id="DisconnectionNotice" runat="server" visible="false">
-                                <a class="nav-link" href="/Officers/DisconnectionNotice.aspx">
-                                    <i class="icon-grid menu-icon"></i>
-                                    <span class="menu-title">Disconnection Notice</span>
-                                </a>
-                            </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/Officers/OfficerDashboard.aspx">
+        <i class="icon-grid menu-icon"></i>
+        <span class="menu-title">Dashboard</span>
+      </a>
+    </li>
 
-                            <li class="nav-item" id="DisconnectionNoticeRequest" runat="server" visible="false">
-                                <a class="nav-link" href="/Officers/DisconnectionRequest.aspx">
-                                    <i class="icon-grid menu-icon"></i>
-                                    <span class="menu-title">Disconnection Request
-                                        <br />
-                                        Status</span>
-                                </a>
-                            </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/Officers/NewApplications.aspx">
+        <i class="icon-layout menu-icon"></i>
+        <span class="menu-title">New Applications</span>
+      </a>
+    </li>
 
+    <li class="nav-item">
+      <a class="nav-link" href="/Officers/InProcessRequest.aspx">
+        <i class="icon-layout menu-icon"></i>
+        <span class="menu-title">In Process Request</span>
+      </a>
+    </li>
 
-                            <li class="nav-item" runat="server">
-                                <a class="nav-link" href="/Officers/SldApproval_Officer.aspx">
-                                    <i class="icon-grid menu-icon"></i>
-                                    <span class="menu-title">SLD Request Recevied</span>
-                                </a>
-                            </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/Officers/TotalRequest.aspx">
+        <i class="icon-grid menu-icon"></i>
+        <span class="menu-title">Total Request</span>
+      </a>
+    </li>
 
-                            <li class="nav-item" runat="server">
-                                <a class="nav-link" href="/Officers/SldApprovalRequest_AtOfficer.aspx">
-                                    <i class="icon-grid menu-icon"></i>
-                                    <span class="menu-title">SLD Approval Request</span>
-                                </a>
-                            </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/Officers/AcceptedOrReject.aspx">
+        <i class="icon-grid menu-icon"></i>
+        <span class="menu-title">Accepted/Reject/Returned Request</span>
+      </a>
+    </li>
 
-                            <li class="nav-item" runat="server">
-                                <a class="nav-link" href="/Officers/SLDHistory_AtOfficer.aspx">
-                                    <i class="icon-grid menu-icon"></i>
-                                    <span class="menu-title">SLD History</span>
-                                </a>
-                            </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/Officers/Self-CertificateRequest.aspx">
+        <i class="icon-grid menu-icon"></i>
+        <span class="menu-title">Self-Certificate</span>
+      </a>
+    </li>
 
+    <li class="nav-item">
+      <a class="nav-link" href="/Officers/Self_CertificationStatus.aspx">
+        <i class="icon-grid menu-icon"></i>
+        <span class="menu-title">Self-Certificate Status</span>
+      </a>
+    </li>
 
-                            <li class="nav-item" runat="server" id="Transfer_Sld" visible="false" >
-                                <a class="nav-link" href="/Officers/Transfer_Sld_ToLowerStaff_ByOfficer.aspx">
-                                    <i class="icon-grid menu-icon"></i>
-                                    <span class="menu-title">Transfer Slds</span>
-                                </a>
-                            </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/Officers/AccidentialReports.aspx">
+        <i class="icon-grid menu-icon"></i>
+        <span class="menu-title">Accidential Reports</span>
+      </a>
+    </li>
 
-                            <li class="nav-item" id="NewApplications" runat="server" visible="false">
-                                <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="20" fill="#ffffff" width="20" viewBox="0 0 576 512">
-                                        <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
-                                        <path d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm80 256h64c44.2 0 80 35.8 80 80c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16c0-44.2 35.8-80 80-80zm-32-96a64 64 0 1 1 128 0 64 64 0 1 1 -128 0zm256-32H496c8.8 0 16 7.2 16 16s-7.2 16-16 16H368c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64H496c8.8 0 16 7.2 16 16s-7.2 16-16 16H368c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64H496c8.8 0 16 7.2 16 16s-7.2 16-16 16H368c-8.8 0-16-7.2-16-16s7.2-16 16-16z" />
-                                    </svg>
-                                    <span class="menu-title">New Applications</span>
-                                    <i class="menu-arrow"></i>
-                                </a>
-                                <div class="collapse" id="ui-basic">
-                                    <ul class="nav flex-column sub-menu">
-                                        <li class="nav-item"><a class="nav-link" href="/Officers/PendingPhysicalVerification_Gridview.aspx">Pending Application</a></li>
-<%--                                        <li class="nav-item"><a class="nav-link" href="/Officers/Pending_Final_Recommendations_List.aspx">Final Recommendation</a></li>--%>
-                                        <li class="nav-item"><a class="nav-link" href="/Officers/Approved_Final_Recommendations_List.aspx">Application History</a></li>
-                                        
-                                    </ul>
-                                </div>
-                            </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/Officers/TotalRequestInspectionForOfficer_SearchWithCafId.aspx">
+        <i class="icon-grid menu-icon"></i>
+        <span class="menu-title">Search By CAF Id</span>
+      </a>
+    </li>
 
-                        </ul>
-                    </nav>
+    <li class="nav-item" id="DisconnectionNotice" runat="server" visible="false">
+      <a class="nav-link" href="/Officers/DisconnectionNotice.aspx">
+        <i class="icon-grid menu-icon"></i>
+        <span class="menu-title">Disconnection Notice</span>
+      </a>
+    </li>
+
+    <li class="nav-item" id="DisconnectionNoticeRequest" runat="server" visible="false">
+      <a class="nav-link" href="/Officers/DisconnectionRequest.aspx">
+        <i class="icon-grid menu-icon"></i>
+        <span class="menu-title">Disconnection Request Status</span>
+      </a>
+    </li>
+
+    <li class="nav-item" runat="server">
+      <a class="nav-link" href="/Officers/SldApproval_Officer.aspx">
+        <i class="icon-grid menu-icon"></i>
+        <span class="menu-title">SLD Request Received</span>
+      </a>
+    </li>
+
+    <li class="nav-item" runat="server">
+      <a class="nav-link" href="/Officers/SldApprovalRequest_AtOfficer.aspx">
+        <i class="icon-grid menu-icon"></i>
+        <span class="menu-title">SLD Approval Request</span>
+      </a>
+    </li>
+
+    <li class="nav-item" runat="server">
+      <a class="nav-link" href="/Officers/SLDHistory_AtOfficer.aspx">
+        <i class="icon-grid menu-icon"></i>
+        <span class="menu-title">SLD History</span>
+      </a>
+    </li>
+
+    <li class="nav-item" runat="server" id="Transfer_Sld" visible="false">
+      <a class="nav-link" href="/Officers/Transfer_Sld_ToLowerStaff_ByOfficer.aspx">
+        <i class="icon-grid menu-icon"></i>
+        <span class="menu-title">Transfer SLDs</span>
+      </a>
+    </li>
+
+    <!-- Collapsible Section -->
+    <li class="nav-item" id="NewApplications" runat="server" visible="false">
+      <a class="nav-link" data-toggle="collapse" href="#officer-newapps" aria-expanded="false" aria-controls="officer-newapps">
+        <i class="icon-layout menu-icon"></i>
+        <span class="menu-title">New Applications</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="officer-newapps" data-parent="#sidebar-accordion">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"><a class="nav-link" href="/Officers/PendingPhysicalVerification_Gridview.aspx">Pending Application</a></li>
+          <li class="nav-item"><a class="nav-link" href="/Officers/Approved_Final_Recommendations_List.aspx">Application History</a></li>
+        </ul>
+      </div>
+    </li>
+
+  </ul>
+</nav>
+
                     <div class="main-panel">
                         <div class="card" id="PageDetails">
                             <div class="row">

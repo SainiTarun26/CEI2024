@@ -50,6 +50,26 @@
         svg {
             margin-right: 10px;
         }
+   /* Reset parent collapse toggle highlight */
+.sidebar .nav .nav-item .nav-link[aria-expanded="true"],
+.sidebar .nav .nav-item .nav-link[aria-expanded="true"]:hover {
+    background: transparent !important;
+    color: #ffffff !important;  /* default color */
+}
+
+/* Active state ONLY for the actual clicked submenu link */
+.sidebar .nav .nav-item .sub-menu .nav-link.active {
+    background: #4b49ac !important;  /* highlight color */
+    color: #fff !important;
+}
+
+/* Prevent parent icon/arrow from being highlighted */
+.sidebar .nav .nav-item .nav-link.active:not([data-toggle="collapse"]) {
+    background: #4b49ac !important; 
+    color: #fff !important;
+}
+
+
     </style>
 </head>
 <body>
@@ -159,12 +179,12 @@
                         <div class="tab-content" id="setting-content">
                             <div class="tab-pane fade show active scroll-wrapper" id="todo-section" role="tabpanel" aria-labelledby="todo-section">
                                 <div class="add-items d-flex px-3 mb-0">
-                                    <form class="form w-100">
+                                   
                                         <div class="form-group d-flex">
                                             <input type="text" class="form-control todo-list-input" placeholder="Add To-do">
                                             <button type="submit" class="add btn btn-primary todo-list-add-btn" id="add-task">Add</button>
                                         </div>
-                                    </form>
+                                  
                                 </div>
                                 <div class="list-wrapper px-3">
                                     <ul class="d-flex flex-column-reverse todo-list">
@@ -307,238 +327,204 @@
                         </div>
                     </div>
                     <nav class="sidebar sidebar-offcanvas" id="sidebar" style="background-color: #263247;">
-                        <ul class="nav">
-                            <%--   <li class="nav-item">
-                                <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-                                    <i class="icon-layout menu-icon"></i>
-                                    <span class="menu-title">Test Reports</span>
-                                    <i class="menu-arrow"></i>
-                                </a>
-                                <div class="collapse" id="ui-basic">
-                                    <ul class="nav flex-column sub-menu">
-                                        <li class="nav-item"><a class="nav-link" href="/SiteOwnerPages/TestReportData.aspx">Line</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="/SiteOwnerPages/SubstationHistory.aspx">Substation Transformer</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="/SiteOwnerPages/GeneratingSet.aspx">Generating Station</a></li>
-                                    </ul>
-                                </div>
-                            </li>--%>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <i class="icon-layout menu-icon"></i>
-                                    <span class="menu-title">Dashboard</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/SiteOwnerPages/InspectionHistory.aspx">
-                                    <i class="icon-layout menu-icon"></i>
-                                    <span class="menu-title">Inspection History</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/SiteOwnerPages/CreateTestReports.aspx">
-                                    <i class="icon-layout menu-icon"></i>
-                                
-                                    <span class="menu-title">For New Installation</span>
-                                </a>
-                            </li>
-                            <%--  <li class="nav-item">
-                                <a class="nav-link" href="/SiteOwnerPages/ExistingInspectionRequest.aspx">
-                                    <i class="icon-layout menu-icon"></i>
-                                     <span class="menu-title">Existing  Request For
-                                        <br />
-                                        Inspection</span>
-                                    <span class="menu-title">Existing Installations<br />
-                                        /Periodic Inspection<br />
-                                        (Recently tested by<br />
-                                        Contractor)</span>
-                                </a>
-                            </li> 
-                                <li class="nav-item">
-                                <a class="nav-link" href="/SiteOwnerPages/InspectionHistory.aspx">
-                                    <i class="icon-layout menu-icon"></i>
-                                    <span class="menu-title">Inspection History</span>
-                                </a>
-                            </li> 
-                                <li class="nav-item">
-                                <a class="nav-link" href="/PaymentPage.aspx">
-                                    <i class="icon-layout menu-icon"></i>
-                                    <span class="menu-title">Payment History</span>
-                                </a>
-                            </li>
-                                <li class="nav-item">
-                                <a class="nav-link" href="/SiteOwnerPages/PendingPayment.aspx">
-                                    <i class="icon-layout menu-icon"></i>
-                                    <span class="menu-title">Pending Payments</span>
-                                </a>
-                            </li>
-                                <li class="nav-item">
-                                <a class="nav-link" href="/SiteOwnerPages/PeroidicInspection.aspx">
-                                    <i class="icon-layout menu-icon"></i>
-                                    <span class="menu-title">Periodic Inspection</span>
-                                </a>
-                            </li>--%>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="20" fill="#ffffff" width="20" viewBox="0 0 576 512">
-                                        <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
-                                        <path d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm80 256h64c44.2 0 80 35.8 80 80c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16c0-44.2 35.8-80 80-80zm-32-96a64 64 0 1 1 128 0 64 64 0 1 1 -128 0zm256-32H496c8.8 0 16 7.2 16 16s-7.2 16-16 16H368c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64H496c8.8 0 16 7.2 16 16s-7.2 16-16 16H368c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64H496c8.8 0 16 7.2 16 16s-7.2 16-16 16H368c-8.8 0-16-7.2-16-16s7.2-16 16-16z" />
-                                    </svg>
-                                    <span class="menu-title">Periodic Renewal</span>
-                                    <i class="menu-arrow"></i>
-                                </a>
-                                <div class="collapse" id="ui-basic">
-                                    <ul class="nav flex-column sub-menu">
-                                        <li class="nav-item"><a class="nav-link" href="/SiteOwnerPages/PeriodicRenewal.aspx">Periodic Renewal</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="/SiteOwnerPages/InspectionRenewalCart.aspx">Renewal Cart</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="/SiteOwnerPages/RatingOfInstallations.aspx">Rating Of Installations</a></li>
-                                   <li class="nav-item"><a class="nav-link" href="/SiteOwnerPages/LiftPeriodic.aspx">Periodic Renewal<br/> Of Lift/Escalator</a></li>
-                                        </ul>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="collapse" href="#ui-basic3" aria-expanded="false" aria-controls="ui-basic">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="20" fill="#ffffff" width="20" viewBox="0 0 576 512">
-                                        <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
-                                        <path d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm80 256h64c44.2 0 80 35.8 80 80c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16c0-44.2 35.8-80 80-80zm-32-96a64 64 0 1 1 128 0 64 64 0 1 1 -128 0zm256-32H496c8.8 0 16 7.2 16 16s-7.2 16-16 16H368c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64H496c8.8 0 16 7.2 16 16s-7.2 16-16 16H368c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64H496c8.8 0 16 7.2 16 16s-7.2 16-16 16H368c-8.8 0-16-7.2-16-16s7.2-16 16-16z" />
-                                    </svg>
-                                    <span class="menu-title">Lift/Escelator</span>
-                                    <i class="menu-arrow"></i>
-                                </a>
-                                <div class="collapse" id="ui-basic3">
-                                    <ul class="nav flex-column sub-menu">
-                                        <li class="nav-item"><a class="nav-link" href="LiftSiteDetails.aspx">Site Details</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="LiftIntimations.aspx">Lift/Escalator Details</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="/SiteOwnerPages/CreateTestReport_Lift.aspx">For New Installation</a></li>
-                                    </ul>
+  <ul class="nav" id="sidebar-accordion">
+    <li class="nav-item">
+      <a class="nav-link" href="#">
+        <i class="icon-layout menu-icon"></i>
+        <span class="menu-title">Dashboard</span>
+      </a>
+    </li>
 
-                                </div>
-                            </li>
-                            <li class="nav-item">
-    <a class="nav-link" data-toggle="collapse" href="#Cinema_Sidebar" aria-expanded="false" aria-controls="ui-basic">
+    <li class="nav-item">
+      <a class="nav-link" href="/SiteOwnerPages/InspectionHistory.aspx">
+        <i class="icon-layout menu-icon"></i>
+        <span class="menu-title">Inspection History</span>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" href="/SiteOwnerPages/CreateTestReports.aspx">
+        <i class="icon-layout menu-icon"></i>
+        <span class="menu-title">For New Installation</span>
+      </a>
+    </li>
+
+    <!-- Periodic Renewal -->
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
         <svg xmlns="http://www.w3.org/2000/svg" height="20" fill="#ffffff" width="20" viewBox="0 0 576 512">
-            <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
-            <path d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm80 256h64c44.2 0 80 35.8 80 80c0 8.8-7.2 16-16 16H80c-8.8 0-16-7.2-16-16c0-44.2 35.8-80 80-80zm-32-96a64 64 0 1 1 128 0 64 64 0 1 1 -128 0zm256-32H496c8.8 0 16 7.2 16 16s-7.2 16-16 16H368c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64H496c8.8 0 16 7.2 16 16s-7.2 16-16 16H368c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64H496c8.8 0 16 7.2 16 16s-7.2 16-16 16H368c-8.8 0-16-7.2-16-16s7.2-16 16-16z" />
+          <path d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zm80 
+          256h64c44.2 0 80 35.8 80 80c0 8.8-7.2 16-16 
+          16H80c-8.8 0-16-7.2-16-16c0-44.2 35.8-80 
+          80-80zm-32-96a64 64 0 1 1 128 0 64 64 0 
+          1 1 -128 0zm256-32H496c8.8 0 16 7.2 16 
+          16s-7.2 16-16 16H368c-8.8 0-16-7.2-16-
+          16s7.2-16 16-16zm0 64H496c8.8 0 16 7.2 
+          16 16s-7.2 16-16 16H368c-8.8 0-16-7.2-
+          16-16s7.2-16 16-16zm0 64H496c8.8 0 16 
+          7.2 16 16s-7.2 16-16 16H368c-8.8 0-16-
+          7.2-16-16s7.2-16 16-16z" />
+        </svg>
+        <span class="menu-title">Periodic Renewal</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="ui-basic" data-parent="#sidebar-accordion">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"><a class="nav-link" href="/SiteOwnerPages/PeriodicRenewal.aspx">Periodic Renewal</a></li>
+          <li class="nav-item"><a class="nav-link" href="/SiteOwnerPages/InspectionRenewalCart.aspx">Renewal Cart</a></li>
+          <li class="nav-item"><a class="nav-link" href="/SiteOwnerPages/RatingOfInstallations.aspx">Rating Of Installations</a></li>
+          <li class="nav-item"><a class="nav-link" href="/SiteOwnerPages/LiftPeriodic.aspx">Periodic Renewal Of Lift/Escalator</a></li>
+        </ul>
+      </div>
+    </li>
+
+    <!-- Lift/Escelator -->
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#ui-basic3" aria-expanded="false" aria-controls="ui-basic3">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" fill="#ffffff" width="20" viewBox="0 0 576 512">
+          <path d="M64 32C28.7 32 0 60.7 0 96V416c0 
+          35.3 28.7 64 64 64H512c35.3 0 
+          64-28.7 64-64V96c0-35.3-28.7-64-
+          64-64H64zm80 256h64c44.2 0 80 
+          35.8 80 80c0 8.8-7.2 16-16 
+          16H80c-8.8 0-16-7.2-16-16c0-
+          44.2 35.8-80 80-80zm-32-96a64 
+          64 0 1 1 128 0 64 64 0 1 1 -
+          128 0zm256-32H496c8.8 0 16 7.2 
+          16 16s-7.2 16-16 16H368c-8.8 
+          0-16-7.2-16-16s7.2-16 
+          16-16zm0 64H496c8.8 0 16 7.2 
+          16 16s-7.2 16-16 16H368c-8.8 
+          0-16-7.2-16-16s7.2-16 
+          16-16zm0 64H496c8.8 0 16 
+          7.2 16 16s-7.2 16-16 
+          16H368c-8.8 0-16-7.2-16-
+          16s7.2-16 16-16z" />
+        </svg>
+        <span class="menu-title">Lift/Escelator</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="ui-basic3" data-parent="#sidebar-accordion">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"><a class="nav-link" href="LiftSiteDetails.aspx">Site Details</a></li>
+          <li class="nav-item"><a class="nav-link" href="LiftIntimations.aspx">Lift/Escalator Details</a></li>
+          <li class="nav-item"><a class="nav-link" href="/SiteOwnerPages/CreateTestReport_Lift.aspx">For New Installation</a></li>
+        </ul>
+      </div>
+    </li>
+
+    <!-- Cinema/Video Talkies -->
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#Cinema_Sidebar" aria-expanded="false" aria-controls="Cinema_Sidebar">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" fill="#ffffff" width="20" viewBox="0 0 576 512">
+          <path d="M64 32C28.7 32 0 60.7 0 
+          96V416c0 35.3 28.7 64 64 
+          64H512c35.3 0 64-28.7 
+          64-64V96c0-35.3-28.7-64-
+          64-64H64zm80 256h64c44.2 0 
+          80 35.8 80 80c0 8.8-7.2 16-16 
+          16H80c-8.8 0-16-7.2-16-16c0-
+          44.2 35.8-80 80-80zm-32-96a64 
+          64 0 1 1 128 0 64 64 0 1 1 
+          -128 0zm256-32H496c8.8 0 
+          16 7.2 16 16s-7.2 16-16 
+          16H368c-8.8 0-16-7.2-16-
+          16s7.2-16 16-16zm0 64H496c8.8 
+          0 16 7.2 16 16s-7.2 16-16 
+          16H368c-8.8 0-16-7.2-16-
+          16s7.2-16 16-16zm0 64H496c8.8 
+          0 16 7.2 16 16s-7.2 16-16 
+          16H368c-8.8 0-16-7.2-16-
+          16s7.2-16 16-16z" />
         </svg>
         <span class="menu-title">Cinema/Video Talkies</span>
         <i class="menu-arrow"></i>
-    </a>
-    <div class="collapse" runat="server" id="Cinema_Sidebar">
+      </a>
+      <div class="collapse" runat="server" id="Cinema_Sidebar" data-parent="#sidebar-accordion">
         <ul class="nav flex-column sub-menu">
-            <li class="nav-item"><a class="nav-link" href="Work_Intimation_Cinema_Video_Talkies.aspx">Intimation</a></li>
-            <li class="nav-item"><a class="nav-link" href="Intimation_Cinema_HistoryGridView.aspx">Intimation History</a></li>
-            <li class="nav-item"><a class="nav-link" href="CinemaIntimationDetails.aspx">Test Report</a></li>
-            <li class="nav-item"><a class="nav-link" href="Create_Test_Report_Cinema_Video_Talkies.aspx">New Inspection</a></li>
-            <li class="nav-item"><a class="nav-link" href="PeriodicRenewalInspection_Cinema_Video_Talkies.aspx">Periodic Inspection <br /> Cinema</a></li>
+          <li class="nav-item"><a class="nav-link" href="Work_Intimation_Cinema_Video_Talkies.aspx">Intimation</a></li>
+          <li class="nav-item"><a class="nav-link" href="Intimation_Cinema_HistoryGridView.aspx">Intimation History</a></li>
+          <li class="nav-item"><a class="nav-link" href="CinemaIntimationDetails.aspx">Test Report</a></li>
+          <li class="nav-item"><a class="nav-link" href="Create_Test_Report_Cinema_Video_Talkies.aspx">New Inspection</a></li>
+          <li class="nav-item"><a class="nav-link" href="PeriodicRenewalInspection_Cinema_Video_Talkies.aspx">Periodic Inspection Cinema</a></li>
         </ul>
+      </div>
+    </li>
 
-    </div>
-</li>
-                            <%-- <li class="nav-item">
-                                <a class="nav-link" href="/SiteOwnerPages/PeriodicRenewal.aspx">
-                                    <i class="icon-layout menu-icon"></i>
-                                    <span class="menu-title">Periodic Renewal</span>
-                                </a>
-                            </li>
+    <!-- SLD -->
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic1">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" fill="#ffffff" width="20" viewBox="0 0 640 512">
+          <path d="M96 128a128 128 0 1 1 256 0A128 
+          128 0 1 1 96 128zM0 482.3C0 383.8 
+          79.8 304 178.3 304h91.4C368.2 
+          304 448 383.8 448 482.3c0 
+          16.4-13.3 29.7-29.7 
+          29.7H29.7C13.3 512 0 
+          498.7 0 482.3zM504 
+          312V248H440c-13.3 
+          0-24-10.7-24-24s10.7-
+          24 24-24h64V136c0-13.3 
+          10.7-24 24-24s24 10.7 
+          24 24v64h64c13.3 0 24 
+          10.7 24 24s-10.7 24-
+          24 24H552v64c0 13.3-
+          10.7 24-24 24s-24-
+          10.7-24-24z" />
+        </svg>
+        <span class="menu-title">SLD</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="ui-basic1" data-parent="#sidebar-accordion">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"><a class="nav-link" href="/SiteOwnerPages/SldUpload.aspx">SLD Request</a></li>
+          <li class="nav-item"><a class="nav-link" href="/SiteOwnerPages/SldHistory.aspx">SLD History</a></li>
+        </ul>
+      </div>
+    </li>
 
-                            <li class="nav-item">
-                                <a class="nav-link" href="/SiteOwnerPages/InspectionRenewalCart.aspx">
-                                    <i class="icon-layout menu-icon"></i>
-                                    <span class="menu-title">Periodic Renewal Cart</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/SiteOwnerPages/DetailsOfInstallations.aspx">
-                                    <i class="icon-layout menu-icon"></i>
-                                    <span class="menu-title">Details Of Installations</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/SiteOwnerPages/RatingOfInstallations.aspx">
-                                    <i class="icon-layout menu-icon"></i>
-                                    <span class="menu-title">Rating Of Installations</span>
-                                </a>
-                            </li>--%>
-                            <%-- <li class="nav-item">
-                                <a class="nav-link" href="/SiteOwnerPages/SldUpload.aspx">
-                                    <i class="icon-layout menu-icon"></i>
-                                    <span class="menu-title">SLD Request</span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/SiteOwnerPages/SldHistory.aspx">
-                                    <i class="icon-layout menu-icon"></i>
-                                    <span class="menu-title">SLD History</span>
-                                </a>
-                            </li>--%>
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" height="20" fill="#ffffff" width="20" viewBox="0 0 640 512">
-                                        <!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
-                                        <path d="M96 128a128 128 0 1 1 256 0A128 128 0 1 1 96 128zM0 482.3C0 383.8 79.8 304 178.3 304h91.4C368.2 304 448 383.8 448 482.3c0 16.4-13.3 29.7-29.7 29.7H29.7C13.3 512 0 498.7 0 482.3zM504 312V248H440c-13.3 0-24-10.7-24-24s10.7-24 24-24h64V136c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24H552v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z" />
-                                    </svg>
-                                    <span class="menu-title">SLD</span>
-                                    <i class="menu-arrow"></i>
-                                </a>
-                                <div class="collapse" id="ui-basic1">
-                                    <ul class="nav flex-column sub-menu">
-                                        <li class="nav-item"><a class="nav-link" href="/SiteOwnerPages/SldUpload.aspx">SLD Request</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="/SiteOwnerPages/SldHistory.aspx">SLD History</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/SiteOwnerPages/ReturnInspections.aspx">
-                                    <i class="icon-layout menu-icon"></i>
-                                    <span class="menu-title">Return Inspection</span>
-                                </a>
-                            </li>
+    <!-- Return Inspection -->
+    <li class="nav-item">
+      <a class="nav-link" href="/SiteOwnerPages/ReturnInspections.aspx">
+        <i class="icon-layout menu-icon"></i>
+        <span class="menu-title">Return Inspection</span>
+      </a>
+    </li>
 
-                            <li class="nav-item" runat="server" id="powerutilitySiteowner1" visible="false">
-                                <a class="nav-link" href="/SiteOwnerPages/InvestigationOfElectricalAccidents.aspx">
-                                    <i class="icon-layout menu-icon"></i>
-                                    <span class="menu-title">Accident</span>
-                                </a>
-                            </li>
-                            <li class="nav-item" runat="server" id="powerutilitySiteowner2" visible="false">
-                                <a class="nav-link" href="/SiteOwnerPages/AccidentialHistory_SiteOwner.aspx">
-                                    <i class="icon-layout menu-icon"></i>
-                                    <span class="menu-title">Accident History</span>
-                                </a>
-                            </li>
-                           <%-- <li class="nav-item" runat="server" id="SelfCertification" visible="true">
-                                <a class="nav-link" href="/SiteOwnerPages/SelfCertification.aspx">
-                                    <i class="icon-layout menu-icon"></i>
-                                    <span class="menu-title">Self-Certification</span>
-                                </a>
-                            </li>
-                            <li class="nav-item" runat="server" id="SelfStatus" visible="true">
-                                <a class="nav-link" href="/SiteOwnerPages/SelfCertificationStatus.aspx">
-                                    <i class="icon-layout menu-icon"></i>
-                                    <span class="menu-title">Self-Certification Status</span>
-                                </a>
-                            </li>--%>
-                            <li class="nav-item" runat="server" id="DisconnectionRequest" visible="false">
-                                <a class="nav-link" href="/SiteOwnerPages/DSCRequest.aspx">
-                                    <i class="icon-layout menu-icon"></i>
-                                    <span class="menu-title">Disconnection Request</span>
-                                </a>
-                            </li>
-                            <li class="nav-item" runat="server" id="DisconnectionStatus" visible="false">
-                                <a class="nav-link" href="/SiteOwnerPages/DisconnectionStatus.aspx">
-                                    <i class="icon-layout menu-icon"></i>
-                                    <span class="menu-title">Disconnection Request
-              <br />
-                                        Status</span>
-                                </a>
-                            </li>
-                            <%--<li class="nav-item">
-                                <a class="nav-link" href="/SiteOwnerPages/CreateTestReport_Lift.aspx">
-                                    <i class="icon-layout menu-icon"></i>                                  
-                                    <span class="menu-title">For New Installation Lift</span>
-                                </a>
-                            </li>--%>
-                        </ul>
-                    </nav>
+    <!-- Accident -->
+    <li class="nav-item" runat="server" id="powerutilitySiteowner1" visible="false">
+      <a class="nav-link" href="/SiteOwnerPages/InvestigationOfElectricalAccidents.aspx">
+        <i class="icon-layout menu-icon"></i>
+        <span class="menu-title">Accident</span>
+      </a>
+    </li>
+
+    <!-- Accident History -->
+    <li class="nav-item" runat="server" id="powerutilitySiteowner2" visible="false">
+      <a class="nav-link" href="/SiteOwnerPages/AccidentialHistory_SiteOwner.aspx">
+        <i class="icon-layout menu-icon"></i>
+        <span class="menu-title">Accident History</span>
+      </a>
+    </li>
+
+    <!-- Disconnection Request -->
+    <li class="nav-item" runat="server" id="DisconnectionRequest" visible="false">
+      <a class="nav-link" href="/SiteOwnerPages/DSCRequest.aspx">
+        <i class="icon-layout menu-icon"></i>
+        <span class="menu-title">Disconnection Request</span>
+      </a>
+    </li>
+
+    <!-- Disconnection Status -->
+    <li class="nav-item" runat="server" id="DisconnectionStatus" visible="false">
+      <a class="nav-link" href="/SiteOwnerPages/DisconnectionStatus.aspx">
+        <i class="icon-layout menu-icon"></i>
+        <span class="menu-title">Disconnection Request Status</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
                     <div class="main-panel">
                         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                         </asp:ContentPlaceHolder>
