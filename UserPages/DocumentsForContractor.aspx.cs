@@ -923,7 +923,7 @@ namespace CEIHaryana.UserPages
         {
             if (IsSessionValid())
             {
-                string Result = SaveDocumentWithTransaction(FileUpload16, Button16, 56, lnkbtn_Delete16, lnkbtn_Save16, "Invoice of instruments and calibrate", null, null);
+                string Result = SaveDocumentWithTransaction(FileUpload16, Button16, 56, lnkbtn_Delete16, lnkbtn_Save16, "Invoice of instrument", null, null);
                 if (Result != null && Result != "")
                 {
                     HdnField_Document16.Value = "1";

@@ -1064,7 +1064,7 @@ ForeColor="Red"  ErrorMessage="GRN No. must be exactly 10 alphanumeric character
                                                         <tr>
                                                             <td style="">
                                                                 <p>
-                                                                    Invoice of instruments and calibrate(<span style="color: red;">★</span>)<br />
+                                                                    Invoice of instrument(<span style="color: red;">★</span>)<br />
                                                                 </p>
                                                             </td>
                                                             <td style="text-align: center !important;">

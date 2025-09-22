@@ -1239,11 +1239,15 @@ Basis.</h4>
 
                             <div class="row">
                                 <div class="col-12">
-                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18PX; font-weight: 600; text-align: justify;">I hereby declare that the particulars stated above are correct to the best of my knowledge. I am not a holder of
+                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18PX; font-weight: 600; text-align: justify;"><%--I hereby declare that the particulars stated above are correct to the best of my knowledge. I am not a holder of
 Supervisor Competency Certificate issued by the State Licensing Board/Chief Electrical Inspector other than those
 indicated in the<bold>Column 10</bold>. I also agree to the cancellation of my Certificate of Competency to be issued in
 pursuance of this application, in case the particulars furnished in the application are found incorrect or false at any
-stage
+stage--%>
+                                          I hereby declare that the information furnished and the documents uploaded above are correct to the best of my knowledge. 
+  I also agree to the cancellation of my <asp:Label ID="lblDeclarationType" runat="server" Text="Label"></asp:Label> to be issued pursuant
+  to this application, in case the particulars furnished in the application are found to be incorrect or false at any stage.
+
                                     </h6>
                                 </div>
                             </div>

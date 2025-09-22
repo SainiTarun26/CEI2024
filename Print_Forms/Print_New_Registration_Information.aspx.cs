@@ -48,6 +48,16 @@ namespace CEIHaryana.Print_Forms
                 {
                     string UserId = dt.Rows[0]["CreatedBy"].ToString();
                     ApplyingFor.Text = dt.Rows[0]["ApplicationFor"].ToString();
+                    string ApplicationType = ApplyingFor.Text;
+                    if (ApplicationType== "Supervisor")
+                    {
+                        lblDeclarationType.Text = "Certificate of Competency";
+                    }
+                    else if(ApplicationType == "Wireman Permit")
+                    {
+                        lblDeclarationType.Text = "Certificate of Permit";
+                    }
+                  
                     Name.Text = dt.Rows[0]["Name"].ToString();
                     FatherName.Text = dt.Rows[0]["FatherName"].ToString();
                     gender.Text = dt.Rows[0]["Gender"].ToString();

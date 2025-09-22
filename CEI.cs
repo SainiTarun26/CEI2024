@@ -14693,6 +14693,14 @@ string dbPathCompetency, string dbPathMedicalCertificate, string userId)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_NewRequestReceivedForGuestAdmin", LoginId, string.IsNullOrEmpty(Division) ? (object)DBNull.Value : Division, string.IsNullOrEmpty(InstallationType) ? (object)DBNull.Value : InstallationType);
         }
+        //2-sept
+        public DataTable RequestPendingDivisionGuestAdmin(string UserID)
+
+        {
+
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "GetRecordsAccordingToDaysGuestAdmin", UserID);
+
+        }
         #endregion
 
         #region navneet Return licenses new 
