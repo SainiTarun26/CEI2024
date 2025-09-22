@@ -94,10 +94,12 @@ namespace CEIHaryana.Supervisor
                 if (status == "Returned" || status == "Rejected")
                 {
                     GridView1.Columns[7].Visible = true;
+                    GridView1.Columns[8].Visible = true;
                 }
                 else
                 {
                     GridView1.Columns[7].Visible = false;
+                    GridView1.Columns[8].Visible = false;
                 }
             }
         }

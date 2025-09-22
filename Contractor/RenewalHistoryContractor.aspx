@@ -273,6 +273,10 @@
                                     </asp:LinkButton>
                                 </ItemTemplate>
                             </asp:TemplateField>
+                            <asp:BoundField DataField="ReasonOfReturnOrReject" HeaderText="Reason">
+    <HeaderStyle CssClass="headercolor text-center" />
+    <ItemStyle CssClass="text-center" />
+</asp:BoundField>
                         </Columns>
 
                         <PagerStyle CssClass="pagination-outer" HorizontalAlign="Center" />

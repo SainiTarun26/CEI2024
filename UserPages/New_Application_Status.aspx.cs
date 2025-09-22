@@ -180,10 +180,12 @@ namespace CEIHaryana.UserPages
                 if (status == "Returned"|| status == "Rejected")
                 {
                     GridView1.Columns[12].Visible = true;
+                    GridView1.Columns[13].Visible = true;
                 }
                 else
                 {
                     GridView1.Columns[12].Visible = false;
+                    GridView1.Columns[13].Visible = false;
                 }
             }
         }

@@ -1023,6 +1023,11 @@
                                                                         </asp:LinkButton>
                                                                     </ItemTemplate>
                                                                 </asp:TemplateField>
+                                                                <asp:TemplateField HeaderText="Reason" HeaderStyle-CssClass="headercolor" ItemStyle-HorizontalAlign="Center">
+                                                                    <ItemTemplate>
+                                                                        <%# Eval("ReasonOfReturnOrReject") %>
+                                                                    </ItemTemplate>
+                                                                </asp:TemplateField>
                                                             </Columns>
                                                             <FooterStyle BackColor="White" ForeColor="#000066" />
                                                             <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
