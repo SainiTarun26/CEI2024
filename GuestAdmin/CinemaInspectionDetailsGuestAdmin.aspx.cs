@@ -41,7 +41,7 @@ namespace CEIHaryana.GuestAdmin
                     else
                     {
                         Session["GuestAdmin"] = "";
-                        Response.Redirect("/GuestAdmin/GuestAdminLogout.aspx", false);
+                        Response.Redirect("/GuestAdminLogout.aspx", false);
                     }
                 }
             }
@@ -105,7 +105,7 @@ namespace CEIHaryana.GuestAdmin
                 else
                 {
                     Session["GuestAdmin"] = "";
-                    Response.Redirect("/GuestAdmin/GuestAdminLogout.aspx", false);
+                    Response.Redirect("/GuestAdminLogout.aspx", false);
                 }
             }
             catch (Exception ex)
@@ -210,7 +210,7 @@ namespace CEIHaryana.GuestAdmin
             else
             {
                 Session["GuestAdmin"] = "";
-                Response.Redirect("/GuestAdmin/GuestAdminLogout.aspx", false);
+                Response.Redirect("/GuestAdminLogout.aspx", false);
             }
         }
 

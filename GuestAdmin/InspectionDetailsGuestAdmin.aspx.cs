@@ -49,19 +49,19 @@ namespace CEIHaryana.GuestAdmin
                         else
                         {
                             Session["InspectionId"] = "";
-                            Response.Redirect("/GuestAdmin/GuestAdminLogout.aspx", false);
+                            Response.Redirect("/GuestAdminLogout.aspx", false);
                         }
                     }
                     else
                     {
                         Session["GuestAdmin"] = "";
-                        Response.Redirect("/GuestAdmin/GuestAdminLogout.aspx", false);
+                        Response.Redirect("/GuestAdminLogout.aspx", false);
                     }
                 }
             }
             catch (Exception ex)
             {
-                Response.Redirect("/GuestAdmin/GuestAdminLogout.aspx", false);
+                Response.Redirect("/GuestAdminLogout.aspx", false);
             }
         }
         private void BindDivisions(string District)
@@ -222,7 +222,7 @@ namespace CEIHaryana.GuestAdmin
             catch (Exception ex)
             {
                 Session["GuestAdmin"] = "";
-                Response.Redirect("/GuestAdmin/GuestAdminLogout.aspx", false);
+                Response.Redirect("/GuestAdminLogout.aspx", false);
             }
         }
         protected void btnBack_Click(object sender, EventArgs e)
@@ -258,7 +258,7 @@ namespace CEIHaryana.GuestAdmin
             catch (Exception ex)
             {
                 Session["GuestAdmin"] = "";
-                Response.Redirect("/GuestAdmin/GuestAdminLogout.aspx", false);
+                Response.Redirect("/GuestAdminLogout.aspx", false);
             }
         }
         private void BindDropDownToAssign(string Division)
@@ -277,7 +277,7 @@ namespace CEIHaryana.GuestAdmin
             catch (Exception ex)
             {
                 Session["GuestAdmin"] = "";
-                Response.Redirect("/GuestAdmin/GuestAdminLogout.aspx", false);
+                Response.Redirect("/GuestAdminLogout.aspx", false);
             }
         }
         protected void ddlDivisions_SelectedIndexChanged(object sender, EventArgs e)
@@ -369,7 +369,7 @@ namespace CEIHaryana.GuestAdmin
             catch (Exception ex)
             {
                 Session["GuestAdmin"] = "";
-                Response.Redirect("/GuestAdmin/GuestAdminLogout.aspx", false);
+                Response.Redirect("/GuestAdminLogout.aspx", false);
             }
         }
         private void GetTestReportData(string InspectionId)
@@ -401,7 +401,7 @@ namespace CEIHaryana.GuestAdmin
             catch (Exception ex)
             {
                 Session["GuestAdmin"] = "";
-                Response.Redirect("/GuestAdmin/GuestAdminLogout.aspx", false);
+                Response.Redirect("/GuestAdminLogout.aspx", false);
             }
         }
         // add below code by gurmeet 8Nov2024 to visible testreport gridview in case of periodic/multiple
@@ -427,7 +427,7 @@ namespace CEIHaryana.GuestAdmin
             catch (Exception ex)
             {
                 Session["GuestAdmin"] = "";
-                Response.Redirect("/GuestAdmin/GuestAdminLogout.aspx", false);
+                Response.Redirect("/GuestAdminLogout.aspx", false);
             }
         }
         protected void lnkRedirect1_Click(object sender, EventArgs e)
@@ -456,7 +456,7 @@ namespace CEIHaryana.GuestAdmin
             catch (Exception ex)
             {
                 Session["GuestAdmin"] = "";
-                Response.Redirect("/GuestAdmin/GuestAdminLogout.aspx", false);
+                Response.Redirect("/GuestAdminLogout.aspx", false);
             }
         }
         private void GetTestReportDataIfPeriodic(string InspectionId)
@@ -488,7 +488,7 @@ namespace CEIHaryana.GuestAdmin
             catch (Exception ex)
             {
                 Session["GuestAdmin"] = "";
-                Response.Redirect("/GuestAdmin/GuestAdminLogout.aspx", false);
+                Response.Redirect("/GuestAdminLogout.aspx", false);
             }
         }
         protected void Grid_MultipleInspectionTR_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -523,8 +523,8 @@ namespace CEIHaryana.GuestAdmin
             catch
             {
                 Session["GuestAdmin"] = "";
-                Response.Redirect("/GuestAdmin/GuestAdminLogout.aspx", false);
-            }
+                Response.Redirect("/GuestAdminLogout.aspx", false);
+            }   
         }
         protected void Grid_MultipleInspectionTR_RowCommand(object sender, GridViewCommandEventArgs e)
         {
@@ -604,7 +604,7 @@ namespace CEIHaryana.GuestAdmin
             catch (Exception ex)
             {
                 Session["GuestAdmin"] = "";
-                Response.Redirect("/GuestAdmin/GuestAdminLogout.aspx", false);
+                Response.Redirect("/GuestAdminLogout.aspx", false);
             }
         }
         protected void lnkReturn_Command(object sender, CommandEventArgs e)

@@ -6,31 +6,31 @@
     <!-- CSS -->
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-<!-- DataTables with Bootstrap 4 CSS -->
-<link href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <!-- DataTables with Bootstrap 4 CSS -->
+    <link href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
 
-<!-- Select2 CSS -->
-<link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+    <!-- Select2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
 
-<!-- Font Awesome 6.5.2 CSS -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" />
-<!-- jQuery 3.5.1 (must be first) -->
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <!-- Font Awesome 6.5.2 CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet" />
+    <!-- jQuery 3.5.1 (must be first) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
-<!-- DataTables Core -->
-<script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
+    <!-- DataTables Core -->
+    <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
 
-<!-- Popper.js (required by Bootstrap dropdowns/modals) -->
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <!-- Popper.js (required by Bootstrap dropdowns/modals) -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 
-<!-- Bootstrap 4.6.2 JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
+    <!-- Bootstrap 4.6.2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
 
-<!-- Select2 JS -->
-<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+    <!-- Select2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
@@ -181,8 +181,8 @@
                             <div class="form-group row">
                                 <label for="search" class="col-sm-3 col-form-label" style="margin-top: -6px;">Search:</label>
                                 <div class="col-sm-9" style="margin-left: -35px;">
-                                   <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Search" class="form-control" Font-Size="15px" AutoPostBack="true" OnTextChanged="txtSearch_TextChanged"></asp:TextBox><br />
-                                 </div>
+                                    <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Search" class="form-control" Font-Size="15px" AutoPostBack="true" OnTextChanged="txtSearch_TextChanged"></asp:TextBox><br />
+                                </div>
                             </div>
                         </div>
                         <div class="col-4" style="text-align: center;">
@@ -294,6 +294,11 @@
                                         </ItemTemplate>
                                     </asp:TemplateField>
 
+                                    <asp:BoundField DataField="AssignTo" HeaderText="Assign To">
+                                        <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+
+                                        <ItemStyle HorizontalAlign="center" Width="15%" />
+                                    </asp:BoundField>
                                     <asp:BoundField DataField="RequestDate" HeaderText="Request Date">
                                         <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                         <ItemStyle HorizontalAlign="center" Width="15%" />
@@ -545,13 +550,13 @@
             $('#ownerModal').modal('show');
         }
     </script>
-        <script>
-            $(document).ready(function () {
-                // Initialize DataTables on specific table only
-                $('#myTable').DataTable();
+    <script>
+        $(document).ready(function () {
+            // Initialize DataTables on specific table only
+            $('#myTable').DataTable();
 
-                // Re-initialize dropdown (in case DataTables interferes)
-                $('.dropdown-toggle').dropdown();
-            });
-        </script>
+            // Re-initialize dropdown (in case DataTables interferes)
+            $('.dropdown-toggle').dropdown();
+        });
+    </script>
 </asp:Content>

@@ -273,7 +273,7 @@ var myDoughnutChart = new Chart(ctx, {{
 
                 }
                 DataTable ds = new DataTable();
-                ds = cei.RequestPendingDivision(Division);
+                ds = cei.RequestPendingDivisionGuestAdmin(Division);
                 if (ds.Rows.Count > 0)
                 {
                     GridView2.DataSource = ds;
