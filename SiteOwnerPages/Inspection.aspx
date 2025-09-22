@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteOwnerPages/SiteOwner.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="Inspection.aspx.cs" Inherits="CEIHaryana.SiteOwnerPages.Inspection" %>
-
+<%@ Register Src="~/UserCPages/InspectionReturnDetails.ascx" TagPrefix="uc1" TagName="InspectionReturnDetails" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
@@ -13,6 +13,7 @@
     <script src="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js"></script>
     <link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet" />
     <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript">
         function isNumberKey(evt) {
             var charCode = (evt.which) ? evt.which : event.keyCode
@@ -39,10 +40,10 @@
     </script>
 
     <script type="text/javascript">
-         function alertWithRedirectdata1() {
-             alert('Successfully submitted to contractor.');
-             window.location.href = 'InspectionHistory.aspx';
-         }
+        function alertWithRedirectdata1() {
+            alert('Successfully submitted to contractor.');
+            window.location.href = 'InspectionHistory.aspx';
+        }
 
     </script>
     <style>
@@ -161,21 +162,24 @@
             background: #9292cc;
             color: white;
         }
+
         h6#maincard {
-    font-size: 20px !important;
-    color: #010101;
-    text-transform: capitalize;
-    font-weight: 700;
-}
+            font-size: 20px !important;
+            color: #010101;
+            text-transform: capitalize;
+            font-weight: 700;
+        }
+
         h7#maincard1 {
-    font-size: 18px !important;
-    color: #010101;
-    text-transform: capitalize;
-    font-weight: 700;
-}
-       div#ContentPlaceHolder1_Div1{
-           margin-left:0px;
-       }
+            font-size: 18px !important;
+            color: #010101;
+            text-transform: capitalize;
+            font-weight: 700;
+        }
+
+        div#ContentPlaceHolder1_Div1 {
+            margin-left: 0px;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -298,10 +302,37 @@
                                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
                                 </asp:BoundField>
-                                <asp:BoundField DataField="ActionTaken" HeaderText="ActionTaken">
+                                <%--                                <asp:BoundField DataField="ActionTaken" HeaderText="ActionTaken">
                                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
-                                </asp:BoundField>
+                                </asp:BoundField>--%>
+                                <asp:TemplateField HeaderText="ActionTaken">
+                                    <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="Left" />
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblActionTaken" runat="server" Text='<%# Eval("ActionTaken") %>' Visible="false" />
+                                        <asp:Label ID="lblInspectionId" runat="server" Text='<%# Eval("Id") %>' Visible="false" />
+
+                                        <!-- If ActionTaken is RETURN, show LinkButton -->
+                                        <asp:LinkButton
+                                            ID="lnkReturn"
+                                            runat="server"
+                                            Text="Return"
+                                            CommandName="ShowReturnPopup"
+                                            CommandArgument='<%# Eval("Id") %>'
+                                            OnCommand="lnkReturn_Command"
+                                            CssClass="text-danger"
+                                            Visible='<%# Eval("ActionTaken").ToString() == "Return" %>' />
+
+                                        <!-- Otherwise, show normal text -->
+                                        <asp:Label
+                                            ID="lblNormalStatus"
+                                            runat="server"
+                                            Text='<%# Eval("ActionTaken") %>'
+                                            Visible='<%# Eval("ActionTaken").ToString() != "Return" %>' />
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+
                                 <%-- <asp:BoundField DataField="TestRportId" HeaderText="TestReportId" Visible="false">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
@@ -476,6 +507,7 @@
                     <label id="LblGridView3" runat="server"></label>
                 </div>
             </div>
+            <uc1:InspectionReturnDetails runat="server" id="InspectionReturnDetails" /> 
             <%-- <div class="row" id="Remarks" runat="server" visible="false">
                 <div class="col-12">
                     <label>Remarks For Contractor<samp style="color: red">* </samp></label>
@@ -504,4 +536,5 @@
             </div>
         </div>
     </div>
+       <script src="/Assets/js/js/vendor.bundle.base.js"></script>    
 </asp:Content>

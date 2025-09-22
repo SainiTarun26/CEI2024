@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteOwnerPages/SiteOwner.Master" AutoEventWireup="true" CodeBehind="ReapplyReturnINspection.aspx.cs" Inherits="CEIHaryana.SiteOwnerPages.ReapplyReturnINspection" %>
 
+<%@ Register Src="~/UserCPages/InspectionReturnDetails.ascx" TagPrefix="uc1" TagName="InspectionReturnDetails" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
@@ -231,11 +232,12 @@
         .col-4 {
             margin-bottom: 15px;
         }
-.form-control:disabled, .form-control[readonly] {
-    background-color: #e9ecef;
-    opacity: 1;
-    font-size: 1rem !important;
-}
+
+        .form-control:disabled, .form-control[readonly] {
+            background-color: #e9ecef;
+            opacity: 1;
+            font-size: 1rem !important;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -303,7 +305,7 @@
                         <div class="row" style="margin-top: -40px !important;">
                             <div class="col-4">
                                 <label>
-                                     Transaction ID(GRN Number)
+                                    Transaction ID(GRN Number)
                                 </label>
                                 <asp:TextBox ID="txttransactionId" runat="server" ReadOnly="true" class="form-control" Font-Size="12px" Style="height: 30px;"></asp:TextBox><br />
                             </div>
@@ -325,7 +327,7 @@
 
                             </div>
 
-                            <div class="col-4" style="text-align: center;">  
+                            <div class="col-4" style="text-align: center;">
                                 <asp:HiddenField ID="hnOwnerId" runat="server" />
                                 <asp:HiddenField ID="hnReturnStatus" runat="server" />
                             </div>
@@ -347,7 +349,7 @@
                                             <%#Container.DataItemIndex+1 %>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                 <%--   <asp:BoundField DataField="Id" HeaderText="Inspection Id">
+                                    <%--   <asp:BoundField DataField="Id" HeaderText="Inspection Id">
                                         <HeaderStyle HorizontalAlign="Left" Width="22%" CssClass="headercolor" />
                                         <ItemStyle HorizontalAlign="Left" Width="22%" />
                                     </asp:BoundField>--%>
@@ -355,10 +357,37 @@
                                         <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                         <ItemStyle HorizontalAlign="Left" Width="15%" />
                                     </asp:BoundField>
-                                    <asp:BoundField DataField="ActionTaken" HeaderText="ActionTaken">
+                                    <%--                                    <asp:BoundField DataField="ActionTaken" HeaderText="ActionTaken">
                                         <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                         <ItemStyle HorizontalAlign="Left" Width="15%" />
-                                    </asp:BoundField>
+                                    </asp:BoundField>--%>
+
+                                    <asp:TemplateField HeaderText="ActionTaken">
+                                        <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                                        <ItemStyle HorizontalAlign="Left" />
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblActionTaken" runat="server" Text='<%# Eval("ActionTaken") %>' Visible="false" />
+                                            <asp:Label ID="lblInspectionId" runat="server" Text='<%# Eval("Id") %>' Visible="false" />
+
+                                            <!-- If ActionTaken is RETURN, show LinkButton -->
+                                            <asp:LinkButton
+                                                ID="lnkReturn"
+                                                runat="server"
+                                                Text="Return"
+                                                CommandName="ShowReturnPopup"
+                                                CommandArgument='<%# Eval("Id") %>'
+                                                OnCommand="lnkReturn_Command"
+                                                CssClass="text-danger"
+                                                Visible='<%# Eval("ActionTaken").ToString() == "Return" %>' />
+
+                                            <!-- Otherwise, show normal text -->
+                                            <asp:Label
+                                                ID="lblNormalStatus"
+                                                runat="server"
+                                                Text='<%# Eval("ActionTaken") %>'
+                                                Visible='<%# Eval("ActionTaken").ToString() != "Return" %>' />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
                                     <asp:BoundField DataField="ActionDate" HeaderText="ActionDate">
                                         <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                         <ItemStyle HorizontalAlign="Left" Width="15%" />
@@ -367,11 +396,11 @@
                                         <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                         <ItemStyle HorizontalAlign="center" Width="15%" CssClass="red-text" />
                                     </asp:BoundField>
-                                  <%--  <asp:BoundField DataField="ReturnDate" HeaderText="ReturnDate">
+                                    <%--  <asp:BoundField DataField="ReturnDate" HeaderText="ReturnDate">
                                         <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                         <ItemStyle HorizontalAlign="center" Width="15%" />
                                     </asp:BoundField>--%>
-                                     <asp:BoundField DataField="Remarks" HeaderText="Remarks">
+                                    <asp:BoundField DataField="Remarks" HeaderText="Remarks">
                                         <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                         <ItemStyle HorizontalAlign="center" Width="15%" />
                                     </asp:BoundField>
@@ -384,7 +413,7 @@
                 <div id="UploadDocuments" runat="server" visible="true">
                     <h7 class="card-title fw-semibold mb-4">Checklist Document</h7>
                     <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-                      <h7 class="card-title" style="color: #a52a2a; margin-bottom: 5px;">Note: Size of all the Attachments should not be more than 10mb.</h7>
+                        <h7 class="card-title" style="color: #a52a2a; margin-bottom: 5px;">Note: Size of all the Attachments should not be more than 10mb.</h7>
                         <div class="row">
                             <div class="col-12">
                                 <asp:GridView ID="grd_Documemnts" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowDataBound="grd_Documemnts_RowDataBound" OnRowCommand="grd_Documemnts_RowCommand" AutoGenerateColumns="false">
@@ -524,7 +553,8 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> 
+                <uc1:InspectionReturnDetails runat="server" id="InspectionReturnDetails" /> 
                 <div>
                     <div class="row">
                         <div class="col-12" style="text-align: center;">
@@ -559,4 +589,5 @@
             }
         }
     </script>
+    <script src="/Assets/js/js/vendor.bundle.base.js"></script>
 </asp:Content>

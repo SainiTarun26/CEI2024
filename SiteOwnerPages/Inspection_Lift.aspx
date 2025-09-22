@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteOwnerPages/SiteOwner.Master" AutoEventWireup="true" CodeBehind="Inspection_Lift.aspx.cs" Inherits="CEIHaryana.SiteOwnerPages.Inspection_Lift" %>
 
+<%@ Register Src="~/UserCPages/InspectionReturnDetails.ascx" TagPrefix="uc1" TagName="InspectionReturnDetails" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
@@ -13,6 +14,7 @@
     <script src="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js"></script>
     <link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet" />
     <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript">
         function isNumberKey(evt) {
             var charCode = (evt.which) ? evt.which : event.keyCode
@@ -242,7 +244,7 @@
                                         <asp:Label ID="lblID1" runat="server" Text='<%#Eval("DocumentID") %>'></asp:Label>
                                     </ItemTemplate>
                                 </asp:TemplateField>--%>
-                                 <asp:TemplateField HeaderText="Id" Visible="False">
+                                <asp:TemplateField HeaderText="Id" Visible="False">
                                     <ItemTemplate>
                                         <asp:Label ID="LblCurrentDocument" runat="server" Text='<%#Eval("CurrentDocumentPath") %>'></asp:Label>
                                         <asp:Label ID="LblPreviousDocument" runat="server" Text='<%#Eval("PreviousDocumentPath") %>'></asp:Label>
@@ -267,7 +269,7 @@
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Previous Documents" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="LnkPreviousDocumemtPath" runat="server"  CommandArgument='<%# Bind("PreviousDocumentPath") %>' CommandName="Select">                                           
+                                        <asp:LinkButton ID="LnkPreviousDocumemtPath" runat="server" CommandArgument='<%# Bind("PreviousDocumentPath") %>' CommandName="Select">                                           
                                         Click here to view document  </asp:LinkButton>
                                     </ItemTemplate>
                                     <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
@@ -307,16 +309,43 @@
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="ActionTaken" HeaderText="ActionTaken">
+                            <%--                            <asp:BoundField DataField="ActionTaken" HeaderText="ActionTaken">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
-                            </asp:BoundField>
+                            </asp:BoundField>--%>
+                            <asp:TemplateField HeaderText="ActionTaken">
+                                <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" />
+                                <ItemTemplate>
+                                    <asp:Label ID="lblActionTaken" runat="server" Text='<%# Eval("ActionTaken") %>' Visible="false" />
+                                    <asp:Label ID="lblInspectionId" runat="server" Text='<%# Eval("Id") %>' Visible="false" />
+
+                                    <!-- If ActionTaken is RETURN, show LinkButton -->
+                                    <asp:LinkButton
+                                        ID="lnkReturn"
+                                        runat="server"
+                                        Text="Return"
+                                        CommandName="ShowReturnPopup"
+                                        CommandArgument='<%# Eval("Id") %>'
+                                        OnCommand="lnkReturn_Command"
+                                        CssClass="text-danger"
+                                        Visible='<%# Eval("ActionTaken").ToString() == "Return" %>' />
+
+                                    <!-- Otherwise, show normal text -->
+                                    <asp:Label
+                                        ID="lblNormalStatus"
+                                        runat="server"
+                                        Text='<%# Eval("ActionTaken") %>'
+                                        Visible='<%# Eval("ActionTaken").ToString() != "Return" %>' />
+                                </ItemTemplate>
+                            </asp:TemplateField>
+
                             <%-- <asp:BoundField DataField="TestRportId" HeaderText="TestReportId" Visible="false">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>--%>
 
-                           <%-- <asp:TemplateField HeaderText="View TestReports" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%" Visible="false">
+                            <%-- <asp:TemplateField HeaderText="View TestReports" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%" Visible="false">
                                 <ItemTemplate>
                                     <asp:LinkButton ID="lnkRedirect" runat="server" Text="View Test Report" OnClick="lnkRedirect_Click" CommandName="ViewTestReport" CommandArgument='<%# Eval("TestRportId") %>' />
                                 </ItemTemplate>
@@ -337,7 +366,7 @@
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
 
-                           <%-- <asp:BoundField DataField="ReasonForReturn" HeaderText="Return Reason">
+                            <%-- <asp:BoundField DataField="ReasonForReturn" HeaderText="Return Reason">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
@@ -446,7 +475,7 @@
                 </div>
             </div>
 
-
+             <uc1:InspectionReturnDetails runat="server" id="InspectionReturnDetails" /> 
 
             <div class="row">
 
@@ -496,6 +525,6 @@
 
         </div>
     </div>
-
+     <script src="/Assets/js/js/vendor.bundle.base.js"></script> 
 
 </asp:Content>

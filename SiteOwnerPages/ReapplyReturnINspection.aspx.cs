@@ -10,6 +10,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using CEI_PRoject;
 using CEIHaryana.Officers;
+using CEIHaryana.UserCPages;
 using Pipelines.Sockets.Unofficial.Arenas;
 using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
 
@@ -785,6 +786,12 @@ namespace CEIHaryana.SiteOwnerPages
                     fileUpload.Visible = !string.IsNullOrEmpty(returnedReason);
                 }
             }
+        }
+        protected void lnkReturn_Command(object sender, CommandEventArgs e)
+        {
+            string inspectionId = e.CommandArgument.ToString();
+            InspectionReturnDetails.GetReturnDetails(inspectionId);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowReturnModal", "$('#ownerModal').modal('show');", true);
         }
     }
 }

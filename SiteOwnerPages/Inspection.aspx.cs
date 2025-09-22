@@ -10,6 +10,7 @@ using System.Xml.Linq;
 using System.IO;
 using System.Diagnostics;
 using System.Drawing;
+using CEIHaryana.UserCPages;
 
 namespace CEIHaryana.SiteOwnerPages
 {
@@ -1233,6 +1234,12 @@ namespace CEIHaryana.SiteOwnerPages
                 Session["InspectionId"] = "";
                 Response.Redirect("InspectionHistory.aspx", false);
             }
+        }
+        protected void lnkReturn_Command(object sender, CommandEventArgs e)
+        {
+            string inspectionId = e.CommandArgument.ToString();
+            InspectionReturnDetails.GetReturnDetails(inspectionId);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowReturnModal", "$('#ownerModal').modal('show');", true);
         }
     }
 }

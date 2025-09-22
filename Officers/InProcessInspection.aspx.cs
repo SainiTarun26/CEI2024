@@ -331,7 +331,8 @@ namespace CEIHaryana.Officers
                         Grid_MultipleInspectionTR.Columns[7].Visible = false;
                         ddlReview.Attributes.Add("disabled", "true");
 
-                        divTestReportAttachment.Visible = false;
+                        //commented By aslam because in return case log grid is hidden. on 22 sep 2025
+                        //divTestReportAttachment.Visible = false;
 
 
 
