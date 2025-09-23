@@ -572,6 +572,96 @@ namespace CEIHaryana.Contractor
 
                         try
                         {
+
+                            #region for LT,HT,EHT conditions
+                            string voltageAppliedForLicence = ddlVoltageLevel.Text.Trim();
+
+                            // Count the total
+                            int totalRows = GridView4.Rows.Count;
+
+                            // If no rows exist
+                            if (totalRows == 0)
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('You are not eligible for this. At least one Supervisor or Wireman is required.');", true);
+                                return;
+                            }
+
+                            int supervisorCount = 0;
+                            int wiremanCount = 0;
+
+                            // count Supervisor/Wireman
+                            foreach (GridViewRow row in GridView4.Rows)
+                            {
+                                Label lblCategory = row.FindControl("lblCategory") as Label;
+                                string role = lblCategory?.Text.Trim();
+
+                                if (role == "Supervisor")
+                                {
+                                    supervisorCount++;
+                                }
+                                else if (role == "Wireman")
+                                {
+                                    wiremanCount++;
+                                }
+                            }
+
+                            // Validate based on voltage level
+                            if (voltageAppliedForLicence == "650V")
+                            {
+                                if ((supervisorCount + wiremanCount) < 2)
+                                {
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert",
+                                        "alert('For 650V, minimum 2 employees required.');", true);
+                                    return;
+                                }
+
+                                if (supervisorCount < 1)
+                                {
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert",
+                                        "alert('At least 1 Supervisor is required.');", true);
+                                    return;
+                                }
+                            }
+                            else if (voltageAppliedForLicence == "11KV" || voltageAppliedForLicence == "33KV")
+                            {
+                                if ((supervisorCount + wiremanCount) < 3)
+                                {
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert",
+                                        "alert('For 11KV/33KV, minimum 3 employees required.');", true);
+                                    return;
+                                }
+
+                                if (supervisorCount < 1)
+                                {
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert",
+                                        "alert('At least 1 Supervisor is required.');", true);
+                                    return;
+                                }
+                            }
+                            else if (voltageAppliedForLicence == "66KV" || voltageAppliedForLicence == "132KV" ||
+                                     voltageAppliedForLicence == "220KV" || voltageAppliedForLicence == "EHT Level")
+                            {
+                                if ((supervisorCount + wiremanCount) < 5)
+                                {
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert",
+                                        "alert('For 66KV and above, minimum 5 employees required.');", true);
+                                    return;
+                                }
+
+                                if (supervisorCount < 2)
+                                {
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert",
+                                        "alert('At least 2 Supervisor is required.');", true);
+                                    return;
+                                }
+                            }
+                            else
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('You are are not eligible for this.');", true);
+                                return;
+                            }
+                            #endregion
+
                             // Collect form data
                             string name = txtContractName.Text.Trim();
                             string FirmName = txtFirmName.Text.Trim();
