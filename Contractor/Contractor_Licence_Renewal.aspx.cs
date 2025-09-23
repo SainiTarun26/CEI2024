@@ -398,10 +398,10 @@ namespace CEIHaryana.Contractor
                                     CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Challan", Challanfp, 1, CreatedBy);
 
                                 if (!string.IsNullOrEmpty(Candidateimage))
-                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Challan", Candidateimage, 1, CreatedBy);
+                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Candidate Image", Candidateimage, 1, CreatedBy);
 
                                 if (!string.IsNullOrEmpty(Candidatesignature))
-                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Challan", Candidatesignature, 1, CreatedBy);
+                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Candidate Signature", Candidatesignature, 1, CreatedBy);
 
 
                                 tran.Commit();
