@@ -1118,6 +1118,7 @@ namespace CEIHaryana.Supervisor
                 ddlGeneratingSetType.SelectedValue = "0";
             }
 
+            ddlGeneratingSetType.Items.Add(new ListItem("Steam Turbine", "5"));
         }
     }
 }
