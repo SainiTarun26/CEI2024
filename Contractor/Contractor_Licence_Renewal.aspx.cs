@@ -1,4 +1,4 @@
-﻿using CEI_PRoject;
+﻿   using CEI_PRoject;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -111,6 +111,7 @@ namespace CEIHaryana.Contractor
             txtLicenceOld.Text = dt.Rows[0]["LicenceOld"].ToString();
             txtaddress.Text = dt.Rows[0]["ContractorAddress"].ToString();
             txtDistrict.Text = dt.Rows[0]["Districtoffirm"].ToString();
+            txtVoltageLevel.Text = dt.Rows[0]["Votagelevel"].ToString();
             txtPhone.Text = dt.Rows[0]["ContactNo"].ToString();
             if (!string.IsNullOrEmpty(txtPhone.Text))
             {
@@ -164,12 +165,13 @@ namespace CEIHaryana.Contractor
             {
                 GridView1.DataSource = dt;
                 GridView1.DataBind();
-
+                NoStaffLable.Visible=false;
             }
             else
             {
                 GridView1.DataSource = null;
                 GridView1.DataBind();
+                NoStaffLable.Visible=true;
 
             }
             dt.Dispose();
@@ -307,6 +309,95 @@ namespace CEIHaryana.Contractor
             {
                 if (chkDeclaration.Checked && chkdeclaration2.Checked && chkdeclaration3.Checked)
                 {
+                    #region for LT,HT,EHT conditions
+                    string voltageAppliedForLicence = txtVoltageLevel.Text.Trim();
+
+                    // Count the total
+                    int totalRows = GridView1.Rows.Count;
+
+                    // If no rows exist
+                    if (totalRows == 0)
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('You are not eligible for this. At least one Supervisor or Wireman is required.');", true);
+                        return;
+                    }
+
+                    int supervisorCount = 0;
+                    int wiremanCount = 0;
+
+                    // count Supervisor/Wireman
+                    foreach (GridViewRow row in GridView1.Rows)
+                    {
+                        Label lblCategory = row.FindControl("lblCategory") as Label;
+                        string role = lblCategory?.Text.Trim();
+
+                        if (role == "Supervisor")
+                        {
+                            supervisorCount++;
+                        }
+                        else if (role == "Wireman")
+                        {
+                            wiremanCount++;
+                        }
+                    }
+
+                    // Validate based on voltage level
+                    if (voltageAppliedForLicence == "650V")
+                    {
+                        if ((supervisorCount + wiremanCount) < 2)
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert",
+                                "alert('For 650V, minimum 2 employees required.');", true);
+                            return;
+                        }
+
+                        if (supervisorCount < 1)
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert",
+                                "alert('At least 1 Supervisor is required.');", true);
+                            return;
+                        }
+                    }
+                    else if (voltageAppliedForLicence == "11KV" || voltageAppliedForLicence == "33KV")
+                    {
+                        if ((supervisorCount + wiremanCount) < 3)
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert",
+                                "alert('For 11KV/33KV, minimum 3 employees required.');", true);
+                            return;
+                        }
+
+                        if (supervisorCount < 1)
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert",
+                                "alert('At least 1 Supervisor is required.');", true);
+                            return;
+                        }
+                    }
+                    else if (voltageAppliedForLicence == "66KV" || voltageAppliedForLicence == "132KV" ||
+                             voltageAppliedForLicence == "220KV" || voltageAppliedForLicence == "EHT Level")
+                    {
+                        if ((supervisorCount + wiremanCount) < 5)
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert",
+                                "alert('For 66KV and above, minimum 5 employees required.');", true);
+                            return;
+                        }
+
+                        if (supervisorCount < 2)
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert",
+                                "alert('At least 2 Supervisor is required.');", true);
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('You are are not eligible for this.');", true);
+                        return;
+                    }
+                    #endregion
+
                     string CreatedBy = HdnUserId.Value;
                     int maxFileSize = 1024 * 1024; // 1 MB
 
@@ -321,6 +412,8 @@ namespace CEIHaryana.Contractor
                     string Challanfp = SaveFile(Challan.PostedFile, "Challan", "Challan", CreatedBy, maxFileSize);
                     string Candidateimage = SaveFile(CandidateImage.PostedFile, "Candidate Image", "Candidate Image", CreatedBy, maxFileSize);
                     string Candidatesignature = SaveFile(CandidateSignature.PostedFile, "Candidate Signature", "Candidate Signature", CreatedBy, maxFileSize);
+                    string AuthorizationLetter = SaveFile(Authorizationletter.PostedFile, "Authorization letter", "Authorization letter", CreatedBy, maxFileSize);
+                    string Otherdocument = SaveFile(OtherDocument.PostedFile, "Other Document", "Other Document", CreatedBy, maxFileSize);
 
                     bool check = CEI.CheckIfRenewalApplicationExist(CreatedBy);
                     if (check)
@@ -369,6 +462,7 @@ namespace CEIHaryana.Contractor
         txtamount?.Text.Trim() ?? string.Empty,
         rblChangeInStaff.SelectedItem?.ToString() ?? string.Empty,
         txtintimationDate?.Text ?? string.Empty,
+        txtVoltageLevel.Text ?? string.Empty,
         CreatedBy
     );
 
@@ -403,6 +497,14 @@ namespace CEIHaryana.Contractor
                                 if (!string.IsNullOrEmpty(Candidatesignature))
                                     CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Candidate Signature", Candidatesignature, 1, CreatedBy);
 
+                                if (!string.IsNullOrEmpty(AuthorizationLetter))
+                                {
+                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Authorization Letter", AuthorizationLetter, 1, CreatedBy);
+                                }
+                                if (!string.IsNullOrEmpty(Otherdocument))
+                                {
+                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Other Document", Otherdocument, 1, CreatedBy);
+                                }
 
                                 tran.Commit();
 

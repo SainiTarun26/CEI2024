@@ -12767,7 +12767,7 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
  string ChangeInAddress, string NewAddress, string NewState, string NewDistrict, string NewPincode,
  string NeedToChangeOnLicence, string DelayedOrNot, string DaysDelay, string EquipmentsTested,
  string RenewalTime, string GRNNo, string ChallanDate, string TotalAmount,
- string ChangeInStaff, string IntimationDate, string CreatedBy)
+ string ChangeInStaff, string IntimationDate, string VoltageLevel, string CreatedBy)
         {
             using (SqlCommand cmd = new SqlCommand("sp_RenewalDetailsOfContractor", con, tran))
             {
@@ -12834,7 +12834,7 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
                 {
                     cmd.Parameters.AddWithValue("@IntimationDate", DBNull.Value);
                 }
-
+                cmd.Parameters.AddWithValue("@VoltageLevel", VoltageLevel);
                 cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
 
                 cmd.ExecuteNonQuery();
@@ -14654,6 +14654,10 @@ string dbPathCompetency, string dbPathMedicalCertificate, string userId)
         }
         #endregion
         #region kalpana Guest admin
+        public DataTable getStaffdesignation(string StaffID)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetdesignationofStaff", StaffID);
+        }
         public DataTable DasboardPieChartCalculationsForGuestAdmin()
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_BindDashboardPiechartForGuestAdmin", 1);

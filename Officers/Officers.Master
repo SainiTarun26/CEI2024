@@ -513,7 +513,7 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <asp:Label ID="LoginType" runat="server" Text="Officer"></asp:Label><%--<span id="Slash">></span>--%>
-                                    <%--  <asp:Label ID="PageName" runat="server" Text="Work Intimation"></asp:Label>--%>
+                                      (<asp:Label ID="designation" runat="server" Text=""></asp:Label>)
                                 </div>
                                 <div class="col-sm-6" style="text-align: end;">
                                     <asp:Label ID="PersonDetails" runat="server"></asp:Label>

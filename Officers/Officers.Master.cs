@@ -22,6 +22,7 @@ namespace CEIHaryana.Officers
                 {
                     lblName.Text = Convert.ToString(Session["StaffID"]);
                     PersonDetails.Text = lblName.Text.Trim();
+                    Getdesignation();
                     #region neeraj disconnection 29-May-2025
                     DataTable ds = new DataTable();
                         ds = CEI.GetOfficerDisconnection(lblName.Text);
@@ -79,6 +80,21 @@ namespace CEIHaryana.Officers
                 Session["StaffID"] = "";
                 Response.Redirect("/OfficerLogout.aspx");
             }
+        }
+        private void Getdesignation()
+        {
+            try
+            {
+                string StaffID  = Convert.ToString(Session["StaffID"]);
+                DataTable ds = new DataTable();
+                ds = CEI.getStaffdesignation(StaffID);
+                if (ds.Rows.Count > 0)
+                {
+                    designation.Text = ds.Rows[0]["Designation"].ToString();
+                }
+
+            }
+            catch { }
         }
         protected void btnLogout_Click(object sender, EventArgs e)
         {

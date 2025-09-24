@@ -377,7 +377,7 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator16" CssClass="validation_required" Text="Required" ErrorMessage="Required" ControlToValidate="txtPANNo" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
 
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4" style="margin-top: 0px;">
                             <label>
                                 Contractor Old Licence
                                 <samp style="color: red">* </samp>
@@ -389,7 +389,7 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator17" CssClass="validation_required" Text="Required" ErrorMessage="Required" ControlToValidate="txtLicenceOld" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
 
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4" style="margin-top: 0px;">
                             <label>
                                 Contractor New Licence
                                 <samp style="color: red">* </samp>
@@ -401,7 +401,7 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator18" CssClass="validation_required" Text="Required" ErrorMessage="Required" ControlToValidate="txtLicenceNew" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
 
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4" style="margin-top: 0px;">
                             <label>
                                 Date of Expiry
                                 <samp style="color: red">* </samp>
@@ -466,7 +466,7 @@
                             <label>
                                 Whether there is any change of Address
                                 <samp style="color: red">* </samp>
-                                &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             </label>
                             <asp:RadioButtonList runat="server" ID="rblChangeAddress" OnSelectedIndexChanged="rblChangeAddress_SelectedIndexChanged"
                                 RepeatDirection="Horizontal" CssClass="radio-inline" AutoPostBack="true">
@@ -568,6 +568,18 @@
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator28" CssClass="validation_required" ErrorMessage="Required" ControlToValidate="txtdays" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
 
                         </div>
+                        <div class="col-md-4" runat="server" visible="true" id="Div1">
+                            <label>
+                                Voltage Level 
+         <samp style="color: red">* </samp>
+                            </label>
+
+                            <asp:TextBox class="form-control" ID="txtVoltageLevel" runat="server" autocomplete="off" ReadOnly="true" onKeyPress="return alphabetKey(event);" TabIndex="1"
+                                MaxLength="200" Style="margin-left: 18px;">
+                            </asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator37" CssClass="validation_required" ErrorMessage="Required" ControlToValidate="txtdays" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+
+                        </div>
                         <div class="col-md-8">
                             <label>
                                 Whether the equipment have been tested as required in the conditions for licencing of Haryana
@@ -597,6 +609,10 @@
                             </label>
                             <asp:DropDownList ID="ddlRenewalTime" CssClass="form-control" runat="server" OnSelectedIndexChanged="ddlRenewalTime_SelectedIndexChanged" AutoPostBack="true">
                                 <asp:ListItem Value="0" Text="Select"></asp:ListItem>
+                                <%--   <asp:ListItem Value="1" Text="1 Year"></asp:ListItem>
+                                <asp:ListItem Value="2" Text="2 Year"></asp:ListItem>
+                                <asp:ListItem Value="3" Text="3 Year"></asp:ListItem>
+                                <asp:ListItem Value="4" Text="4 Year"></asp:ListItem>--%>
                                 <asp:ListItem Value="5" Text="5 Year"></asp:ListItem>
                             </asp:DropDownList>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator" runat="server" InitialValue="0" ControlToValidate="ddlRenewalTime" ValidationGroup="Submit" ForeColor="Red">Please select</asp:RequiredFieldValidator>
@@ -688,6 +704,9 @@
                                 <SortedDescendingHeaderStyle BackColor="#00547E" />
                             </asp:GridView>
                         </div>
+                            <div class="col-md-8">
+                        <asp:Label runat="server" Visible="false" ID="NoStaffLable"> No Staff is attached</asp:Label>
+                                </div>
                         <div class="col-md-8">
                             <label>
                                 Whether there was any change in staff? if so, date of intimation to Chief Electrical Inspector, Haryana be specified.
@@ -997,6 +1016,39 @@ Head of A/c: 0043-51-800-99-51—Other Receipt. (<span style="color: red; displa
 </div>--%>
                                                 <input type="file" id="CandidateSignature" name="CandidateSignature" accept=".jpg,.jpeg,.png" runat="server" class="form-control" />
                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator36" runat="server" ControlToValidate="CandidateSignature" ValidationGroup="Submit" ForeColor="Red">Please Upload Image</asp:RequiredFieldValidator>
+
+                                            </div>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td style="width: 60%; white-space: nowrap; vertical-align: middle;">Authorization letter(if any)
+                                        </td>
+
+                                        <td>
+
+                                            <div class="form-group">
+                                                <label style="font-size: 9px;">
+                                                    (PLEASE UPLOAD PDF ONLY NO MORE THAN 1MB)
+                                                </label>
+
+                                                <input type="file" id="Authorizationletter" name="Authorizationletter" accept=".pdf" runat="server" class="form-control" />
+
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td style="width: 60%; white-space: nowrap; vertical-align: middle;">Other Document
+                                        </td>
+
+                                        <td>
+
+                                            <div class="form-group">
+                                                <label style="font-size: 9px;">
+                                                    (PLEASE UPLOAD PDF ONLY NO MORE THAN 1MB)
+                                                </label>
+
+                                                <input type="file" id="OtherDocument" name="OtherDocument" accept=".pdf" runat="server" class="form-control" />
 
                                             </div>
                                         </td>
