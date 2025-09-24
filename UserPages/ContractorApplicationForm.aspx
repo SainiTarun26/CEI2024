@@ -975,7 +975,8 @@
         th.headercolor {
             width: 1% !important;
         }
-           img#ProfilePhoto {
+
+        img#ProfilePhoto {
             height: 100px;
             width: 100px;
             box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0
@@ -1024,20 +1025,18 @@
             ul li {
                 white-space: normal; /* allow li text to wrap */
             }
-            /* Apply only when nav is in mobile mode */
-nav#navbar.navbar-mobile {
-    position: absolute;
-    
-    left: 0;
-    width: 100%;
-    height: 459px !important;
-    background: #d1e6ff; /* keep same bg as header */
-    overflow-y: auto;    /* scroll if menu items overflow */
-    z-index: 999;        /* stay above content */
-    padding: 15px 0;
-    border-top: 1px solid #ccc;
-}
-
+        /* Apply only when nav is in mobile mode */
+        nav#navbar.navbar-mobile {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 459px !important;
+            background: #d1e6ff; /* keep same bg as header */
+            overflow-y: auto; /* scroll if menu items overflow */
+            z-index: 999; /* stay above content */
+            padding: 15px 0;
+            border-top: 1px solid #ccc;
+        }
     </style>
 
     <script type="text/javascript">
@@ -1113,107 +1112,107 @@ nav#navbar.navbar-mobile {
             </div>
         </section>
         <!-- ======= Header ======= -->
-                        <header id="header" class="d-flex align-items-center"
-      style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; background: #d1e6ff;">
-      <div class="container d-flex align-items-center justify-content-between">
-          <a href="/Login.aspx" class="logo">
-              <img src="/Assets/Add a heading (1).png" alt="Logo" />
-          </a>
+        <header id="header" class="d-flex align-items-center"
+            style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; background: #d1e6ff;">
+            <div class="container d-flex align-items-center justify-content-between">
+                <a href="/Login.aspx" class="logo">
+                    <img src="/Assets/Add a heading (1).png" alt="Logo" />
+                </a>
 
-          <nav id="navbar" class="navbar">
-              <ul>
-                  <li class="dropdown">
-                      <a href="#"><span>Home</span> <i class="bi bi-chevron-down"></i></a>
-                      <ul>
-                          <li><a href="/AboutCEI.aspx">About CEI</a></li>
-                          <li><a href="/StateLicensingBoard.aspx">State Licensing Board, Haryana</a></li>
-                          <li><a href="/Functions.aspx">Functions</a></li>
-                      </ul>
-                  </li>
-                  <li>|</li>
+                <nav id="navbar" class="navbar">
+                    <ul>
+                        <li class="dropdown">
+                            <a href="#"><span>Home</span> <i class="bi bi-chevron-down"></i></a>
+                            <ul>
+                                <li><a href="/AboutCEI.aspx">About CEI</a></li>
+                                <li><a href="/StateLicensingBoard.aspx">State Licensing Board, Haryana</a></li>
+                                <li><a href="/Functions.aspx">Functions</a></li>
+                            </ul>
+                        </li>
+                        <li>|</li>
 
-                  <li class="dropdown">
-                      <a href="#"><span>Lift & Escalator</span> <i class="bi bi-chevron-down"></i></a>
-                      <ul>
-                          <li><a href="/Procedure_For_Registration_Lift_Exclator.aspx">Procedure For Registration /<br />
-                              Inspection Lifts and Escalators</a></li>
-                          <li><a href="/Login.aspx" target="_blank">Apply for New</a></li>
-                          <li><a href="/Login.aspx" target="_blank">Apply for Renewal Lift</a></li>
-                          <li><a href="/StaticPage2.aspx" target="_blank">List of Lift Inspectors</a></li>
-                          <li><a href="/UserManual/Procedure_and_Check_List_for_Lift.pdf" target="_blank">Checklist for Registration/<br />
-                              Inspection of Lifts and Elevators</a></li>
-                          <li><a href="/UserManual/forms.pdf" target="_blank">Forms</a></li>
-                      </ul>
-                  </li>
-                  <li>|</li>
+                        <li class="dropdown">
+                            <a href="#"><span>Lift & Escalator</span> <i class="bi bi-chevron-down"></i></a>
+                            <ul>
+                                <li><a href="/Procedure_For_Registration_Lift_Exclator.aspx">Procedure For Registration /<br />
+                                    Inspection Lifts and Escalators</a></li>
+                                <li><a href="/Login.aspx" target="_blank">Apply for New</a></li>
+                                <li><a href="/Login.aspx" target="_blank">Apply for Renewal Lift</a></li>
+                                <li><a href="/StaticPage2.aspx" target="_blank">List of Lift Inspectors</a></li>
+                                <li><a href="/UserManual/Procedure_and_Check_List_for_Lift.pdf" target="_blank">Checklist for Registration/<br />
+                                    Inspection of Lifts and Elevators</a></li>
+                                <li><a href="/UserManual/forms.pdf" target="_blank">Forms</a></li>
+                            </ul>
+                        </li>
+                        <li>|</li>
 
-                  <li class="dropdown">
-                      <a href="#"><span>Licensing</span> <i class="bi bi-chevron-down"></i></a>
-                      <ul>
-                          <li><a href="/UserManual/Haryana-Electrical-Contractor-Licence-Certificate-of.pdf" target="_blank">Electrical Licensing Rules-2021</a></li>
-                          <li><a href="/UserManual/form_split.pdf" target="_blank">Forms & Fees</a></li>
-                          <li><a href="/UserPages/Instructions.aspx" target="_blank">For New Licence</a></li>
-                      </ul>
-                  </li>
-                  <li>|</li>
+                        <li class="dropdown">
+                            <a href="#"><span>Licensing</span> <i class="bi bi-chevron-down"></i></a>
+                            <ul>
+                                <li><a href="/UserManual/Haryana-Electrical-Contractor-Licence-Certificate-of.pdf" target="_blank">Electrical Licensing Rules-2021</a></li>
+                                <li><a href="/UserManual/form_split.pdf" target="_blank">Forms & Fees</a></li>
+                                <li><a href="/UserPages/Instructions.aspx" target="_blank">For New Licence</a></li>
+                            </ul>
+                        </li>
+                        <li>|</li>
 
-                  <li class="dropdown">
-                      <a href="#"><span>Inspection</span> <i class="bi bi-chevron-down"></i></a>
-                      <ul>
-                          <li><a href="/Procedure_for_Electrical_Installation.aspx">Procedure for Electrical Installation</a></li>
-                          <li><a href="/Procedure_for_grant_of_approval.aspx">Procedure for Grant of<br />
-                              Approval for Energisation of<br />
-                              New Electrical Installation</a></li>
-                      </ul>
-                  </li>
-                  <li>|</li>
+                        <li class="dropdown">
+                            <a href="#"><span>Inspection</span> <i class="bi bi-chevron-down"></i></a>
+                            <ul>
+                                <li><a href="/Procedure_for_Electrical_Installation.aspx">Procedure for Electrical Installation</a></li>
+                                <li><a href="/Procedure_for_grant_of_approval.aspx">Procedure for Grant of<br />
+                                    Approval for Energisation of<br />
+                                    New Electrical Installation</a></li>
+                            </ul>
+                        </li>
+                        <li>|</li>
 
-                  <li><a href="/OurOnlineServices.aspx"><span>Services</span></a></li>
-                  <li>|</li>
+                        <li><a href="/OurOnlineServices.aspx"><span>Services</span></a></li>
+                        <li>|</li>
 
-                  <li class="dropdown">
-                      <a href="#"><span>Orders</span> <i class="bi bi-chevron-down"></i></a>
-                      <ul>
-                          <li><a href="/UserManual/BRAP_Griviance.pdf" target="_blank">BRAP-2024 Grievance Mechanism</a></li>
-                          <li><a href="/UserManual/office order 223.pdf" target="_blank">Mandate Regarding Risk Profile</a></li>
-                          <li><a href="/UserManual/CamScanner 01-09-2025 13.37_1.pdf" target="_blank">Mandate Regarding Registration and Renewal of Lift/Escalator</a></li>
-                          <li><a href="/UserManual/Mendate%20Regarding%20Electrical%20Installations.pdf" target="_blank">Mandate Regarding Electrical Installations</a></li>
-                          <li><a href="/UserManual/Authorization-of-Chartered-Electrical-Safety-EngineerCESE.pdf" target="_blank">Authorization of Chartered Electrical Safety Engineer (CESE)</a></li>
-                          <li><a href="/UserManual/cancellation-order.pdf" target="_blank">Cancellation Order</a></li>
-                          <li class="dropdown">
-                              <a href="#"><span>Fees Details</span> <i class="bi bi-chevron-right"></i></a>
-                              <ul>
-                                  <li><a href="/UserManual/Adobe Scan 13-Jan-2025.pdf" target="_blank">Fees for New Installation Inspection</a></li>
-                                  <li><a href="/UserManual/Adobe Scan 13-Jan-2025.pdf" target="_blank">Fees for Periodical Inspection</a></li>
-                                  <li><a href="/UserManual/Adobe Scan 13-Jan-2025.pdf" target="_blank">Fees for Certificates & Licences</a></li>
-                              </ul>
-                          </li>
-                          <li><a href="/UserManual/Orderof22authorisedCharteredElectricalSafetyEngineersdated28.11.2016.pdf" target="_blank">Order of 22 Chartered Electrical Safety Engineers (2016)</a></li>
-                          <li><a href="/UserManual/OrderofauthorisedCharteredElectricalSafetyEngineers.pdf" target="_blank">Order of 209 Chartered Electrical Safety Engineers (2016)</a></li>
-                      </ul>
-                  </li>
-                  <li>|</li>
+                        <li class="dropdown">
+                            <a href="#"><span>Orders</span> <i class="bi bi-chevron-down"></i></a>
+                            <ul>
+                                <li><a href="/UserManual/BRAP_Griviance.pdf" target="_blank">BRAP-2024 Grievance Mechanism</a></li>
+                                <li><a href="/UserManual/office order 223.pdf" target="_blank">Mandate Regarding Risk Profile</a></li>
+                                <li><a href="/UserManual/CamScanner 01-09-2025 13.37_1.pdf" target="_blank">Mandate Regarding Registration and Renewal of Lift/Escalator</a></li>
+                                <li><a href="/UserManual/Mendate%20Regarding%20Electrical%20Installations.pdf" target="_blank">Mandate Regarding Electrical Installations</a></li>
+                                <li><a href="/UserManual/Authorization-of-Chartered-Electrical-Safety-EngineerCESE.pdf" target="_blank">Authorization of Chartered Electrical Safety Engineer (CESE)</a></li>
+                                <li><a href="/UserManual/cancellation-order.pdf" target="_blank">Cancellation Order</a></li>
+                                <li class="dropdown">
+                                    <a href="#"><span>Fees Details</span> <i class="bi bi-chevron-right"></i></a>
+                                    <ul>
+                                        <li><a href="/UserManual/Adobe Scan 13-Jan-2025.pdf" target="_blank">Fees for New Installation Inspection</a></li>
+                                        <li><a href="/UserManual/Adobe Scan 13-Jan-2025.pdf" target="_blank">Fees for Periodical Inspection</a></li>
+                                        <li><a href="/UserManual/Adobe Scan 13-Jan-2025.pdf" target="_blank">Fees for Certificates & Licences</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="/UserManual/Orderof22authorisedCharteredElectricalSafetyEngineersdated28.11.2016.pdf" target="_blank">Order of 22 Chartered Electrical Safety Engineers (2016)</a></li>
+                                <li><a href="/UserManual/OrderofauthorisedCharteredElectricalSafetyEngineers.pdf" target="_blank">Order of 209 Chartered Electrical Safety Engineers (2016)</a></li>
+                            </ul>
+                        </li>
+                        <li>|</li>
 
-                  <li class="dropdown">
-                      <a href="#"><span>EODB Compliance's</span> <i class="bi bi-chevron-down"></i></a>
-                      <ul>
-                          <li><a href="/StaticPage1.aspx" target="_blank">Checklist/Procedure/<br />
-                              Fees Structure for Lift</a></li>
-                          <li><a href="/StaticPage2.aspx" target="_blank">List of Lift Inspectors</a></li>
-                          <li><a href="/StaticPage3.aspx" target="_blank">EODB Dashboard</a></li>
-                      </ul>
-                  </li>
-                  <li>|</li>
+                        <li class="dropdown">
+                            <a href="#"><span>EODB Compliance's</span> <i class="bi bi-chevron-down"></i></a>
+                            <ul>
+                                <li><a href="/StaticPage1.aspx" target="_blank">Checklist/Procedure/<br />
+                                    Fees Structure for Lift</a></li>
+                                <li><a href="/StaticPage2.aspx" target="_blank">List of Lift Inspectors</a></li>
+                                <li><a href="/StaticPage3.aspx" target="_blank">EODB Dashboard</a></li>
+                            </ul>
+                        </li>
+                        <li>|</li>
 
-                  <li><a href="https://grs.hartron.io/#/" target="_blank">Grievance Redressal</a></li>
-                  <li>|</li>
+                        <li><a href="https://grs.hartron.io/#/" target="_blank">Grievance Redressal</a></li>
+                        <li>|</li>
 
-                  <li><a href="/VerifyCertificate.aspx">Verify Certificate</a></li>
-                  <li>|</li>
+                        <li><a href="/VerifyCertificate.aspx">Verify Certificate</a></li>
+                        <li>|</li>
 
-                  <li><a href="/UserPages/OurServices.aspx">User Manual</a><%--<img src="/Assets/new1.gif" />--%></li>
-                  <li>|</li>
-                                          <li class="dropdown" id="logout">
+                        <li><a href="/UserPages/OurServices.aspx">User Manual</a><%--<img src="/Assets/new1.gif" />--%></li>
+                        <li>|</li>
+                        <li class="dropdown" id="logout">
                             <a href="#">
                                 <span id="user">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
@@ -1241,11 +1240,11 @@ nav#navbar.navbar-mobile {
                                 </li>
                             </ul>
                         </li>
-              </ul>
-              <i class="bi bi-list mobile-nav-toggle"></i>
-          </nav>
-      </div>
-  </header>
+                    </ul>
+                    <i class="bi bi-list mobile-nav-toggle"></i>
+                </nav>
+            </div>
+        </header>
         <!-- End Header -->
         <main id="main">
             <section id="about" class="about section-bg" style="padding-top: 20px;">
@@ -1784,7 +1783,8 @@ nav#navbar.navbar-mobile {
                                                                             <asp:TextBox class="form-control" ID="txtGstNumber" autocomplete="off" runat="server" onKeyPress="return isNumberKey(event) || alphabetKey(event);" TabIndex="1" MaxLength="15"> </asp:TextBox>
                                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtGstNumber"
                                                                                 CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
-                                                                            <asp:RegularExpressionValidator ID="regexValidatorGST" runat="server" ControlToValidate="txtGstNumber" ValidationExpression="^(06)[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$" ValidationGroup="Submit" ErrorMessage="GST is incorrect. Only Haryana's GST is valid" ForeColor="Red" Display="Dynamic"></asp:RegularExpressionValidator>
+                                                                            <asp:RegularExpressionValidator ID="regexValidatorGST" runat="server" ControlToValidate="txtGstNumber" ValidationExpression="^(06|04|07)[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$"
+                                                                                ErrorMessage="GST is incorrect. Only GST numbers from Haryana (06), Chandigarh (04), and Delhi (07) are allowed." ValidationGroup="Submit" ForeColor="Red" Display="Dynamic"></asp:RegularExpressionValidator>
 
                                                                         </div>
                                                                     </div>
@@ -1800,6 +1800,7 @@ nav#navbar.navbar-mobile {
                                                                                 <asp:ListItem Text="Company(Limited)" Value="2"></asp:ListItem>
                                                                                 <asp:ListItem Text="Firm(Registered under the company's act.)" Value="3"></asp:ListItem>
                                                                                 <asp:ListItem Text="Partnership Firm" Value="4"></asp:ListItem>
+                                                                                <asp:ListItem Text="Registered Society" Value="5"></asp:ListItem>
                                                                             </asp:DropDownList>
                                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator19" ErrorMessage="Required" ControlToValidate="ddlCompanyStyle" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                                                         </div>
@@ -1827,6 +1828,9 @@ nav#navbar.navbar-mobile {
                                                                             </label>
                                                                             <label id="Lbl4" runat="server" visible="false">
                                                                                 Name Of Partnership Firm<samp style="color: red">* </samp>
+                                                                            </label>
+                                                                            <label id="lb5" runat="server" visible="false">
+                                                                                Name of Registered Society<samp style="color: red">* </samp>
                                                                             </label>
                                                                             <asp:TextBox class="form-control" ID="txtNameOfCompany" autocomplete="off" TabIndex="4" runat="server" MaxLength="100"> </asp:TextBox>
                                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator29" runat="server" ControlToValidate="txtNameOfCompany" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
@@ -2459,8 +2463,8 @@ nav#navbar.navbar-mobile {
             if (event.key === "Enter") {
                 event.preventDefault(); // prevent default form submit
                 document.getElementById("<%= Button2.ClientID %>").click();
-               }
-           });
+            }
+        });
     </script>
 
     <%-- Multiselect Dropdown --%>

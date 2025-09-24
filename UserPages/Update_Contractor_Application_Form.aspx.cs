@@ -71,10 +71,47 @@ namespace CEIHaryana.UserPages
                         if (item.Text == "Company(Limited)")
                         {
                             DivAgentName.Visible = true;
-                            txtAgentName.Text = ds.Rows[0]["AgentName"].ToString();
+                            txtAgentName.Text = ds.Rows[0]["AgentName"].ToString();                           
+                            Lbl1.Visible=false;
+                            Lbl2.Visible=true;
+                            Lbl3.Visible=false;
+                            Lbl4.Visible=false;
+                            lb5.Visible=false;
                         }
-                        else
+                        else if(item.Text == "Proprietary Concern")
                         {
+                            Lbl1.Visible=true;
+                            Lbl2.Visible=false;
+                            Lbl3.Visible=false;
+                            Lbl4.Visible=false;
+                            lb5.Visible=false;
+                            DivAgentName.Visible = false;
+                        }
+                        else if(item.Text == "Firm(Registered under the company's act.)")
+                        {
+                            Lbl1.Visible=false;
+                            Lbl2.Visible=false;
+                            Lbl3.Visible=true;
+                            Lbl4.Visible=false;
+                            lb5.Visible=false;
+                            DivAgentName.Visible = false;
+                        }
+                        else if(item.Text =="Partnership Firm")
+                        {
+                            Lbl1.Visible=false;
+                            Lbl2.Visible=false;
+                            Lbl3.Visible=false;
+                            Lbl4.Visible=true;
+                            lb5.Visible=false;
+                            DivAgentName.Visible = false;
+                        }
+                        else if(item.Text == "Registered Society")
+                        {
+                            Lbl1.Visible=false;
+                            Lbl2.Visible=false;
+                            Lbl3.Visible=false;
+                            Lbl4.Visible=false;
+                            lb5.Visible=true;
                             DivAgentName.Visible = false;
                         }
                     }
@@ -121,6 +158,7 @@ namespace CEIHaryana.UserPages
                     txtauthorizedperson.Text = ds.Rows[0]["NameOfAuthorizedperson"].ToString();
 
                     txtNameOfCompany.Text = ds.Rows[0]["NameOfCompany"].ToString();
+
 
                     DdlPartnerOrDirector.SelectedItem.Text = ds.Rows[0]["CompanyPartnerOrDirector"].ToString();
 
@@ -764,6 +802,7 @@ namespace CEIHaryana.UserPages
                 Lbl2.Visible = false;
                 Lbl3.Visible = false;
                 Lbl4.Visible = false;
+                lb5.Visible=false;
                 DivAgentName.Visible = false;
                 txtAgentName.Text = "";
             }
@@ -773,6 +812,7 @@ namespace CEIHaryana.UserPages
                 Lbl2.Visible = true;
                 Lbl3.Visible = false;
                 Lbl4.Visible = false;
+                lb5.Visible=false;
                 DivAgentName.Visible = true;
             }
             else if (ddlCompanyStyle.SelectedValue == "3")
@@ -781,6 +821,7 @@ namespace CEIHaryana.UserPages
                 Lbl2.Visible = false;
                 Lbl3.Visible = true;
                 Lbl4.Visible = false;
+                lb5.Visible=false;
                 DivAgentName.Visible = false;
                 txtAgentName.Text = "";
             }
@@ -790,6 +831,17 @@ namespace CEIHaryana.UserPages
                 Lbl2.Visible = false;
                 Lbl3.Visible = false;
                 Lbl4.Visible = true;
+                lb5.Visible=false;
+                DivAgentName.Visible = false;
+                txtAgentName.Text = "";
+            }
+            else if (ddlCompanyStyle.SelectedValue == "5")
+            {
+                Lbl1.Visible = false;
+                Lbl2.Visible = false;
+                Lbl3.Visible = false;
+                Lbl4.Visible = false;
+                lb5.Visible=true;
                 DivAgentName.Visible = false;
                 txtAgentName.Text = "";
             }

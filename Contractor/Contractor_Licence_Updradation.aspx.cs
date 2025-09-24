@@ -337,6 +337,7 @@ namespace CEIHaryana.Contractor
                 Lbl2.Visible = false;
                 Lbl3.Visible = false;
                 Lbl4.Visible = false;
+                lb5.Visible=false;
                 DivAgentName.Visible = false;
                 txtAgentName.Text = "";
             }
@@ -346,6 +347,7 @@ namespace CEIHaryana.Contractor
                 Lbl2.Visible = true;
                 Lbl3.Visible = false;
                 Lbl4.Visible = false;
+                lb5.Visible=false;
                 DivAgentName.Visible = true;
             }
             else if (ddlCompanyStyle.SelectedValue == "3")
@@ -354,6 +356,7 @@ namespace CEIHaryana.Contractor
                 Lbl2.Visible = false;
                 Lbl3.Visible = true;
                 Lbl4.Visible = false;
+                lb5.Visible=false;
                 DivAgentName.Visible = false;
                 txtAgentName.Text = "";
             }
@@ -363,6 +366,17 @@ namespace CEIHaryana.Contractor
                 Lbl2.Visible = false;
                 Lbl3.Visible = false;
                 Lbl4.Visible = true;
+                lb5.Visible=false;
+                DivAgentName.Visible = false;
+                txtAgentName.Text = "";
+            }
+            else if (ddlCompanyStyle.SelectedValue == "5")
+            {
+                Lbl1.Visible = false;
+                Lbl2.Visible = false;
+                Lbl3.Visible = false;
+                Lbl4.Visible = false;
+                lb5.Visible=true;
                 DivAgentName.Visible = false;
                 txtAgentName.Text = "";
             }
@@ -582,7 +596,7 @@ namespace CEIHaryana.Contractor
                             // If no rows exist
                             if (totalRows == 0)
                             {
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('You are not eligible because there should be at least two employee with one supervisor is required.');", true); 
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('You are not eligible for this. At least one Supervisor or Wireman is required.');", true);
                                 return;
                             }
 

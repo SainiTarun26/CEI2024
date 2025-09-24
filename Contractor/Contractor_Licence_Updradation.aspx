@@ -20,50 +20,51 @@
     <script type="text/javascript" src="ScriptCalender/jquery-1.11.0.min.js"></script>
     <script type="text/javascript" src="ScriptCalender/jquery-ui.min.js"></script>
     <style>
-          textarea#txtPenalities {
-      height: 100px;
-      margin-top: 19px;
-  }
+        textarea#txtPenalities {
+            height: 100px;
+            margin-top: 19px;
+        }
 
-  #penaltyContainer {
-      min-height: 100px;
-      padding: 8px;
-      border: 1px solid #ced4da;
-      border-radius: 5px;
-      display: flex;
-      flex-wrap: wrap;
-  }
+        #penaltyContainer {
+            min-height: 100px;
+            padding: 8px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            display: flex;
+            flex-wrap: wrap;
+        }
 
-  .penalty-tag {
-      background: white;
-      border: 1px solid black;
-      color: black;
-      padding: 10px 10px;
-      border-radius: 20px;
-      margin: 4px;
-      display: flex;
-      align-items: center;
-      font-size: 14px;
-      height: 30px;
-  }
+        .penalty-tag {
+            background: white;
+            border: 1px solid black;
+            color: black;
+            padding: 10px 10px;
+            border-radius: 20px;
+            margin: 4px;
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            height: 30px;
+        }
 
-      .penalty-tag span.remove-icon {
-          cursor: pointer;
-          margin-left: 10px;
-          font-weight: bold;
-          color: red;
-          font-size: 11px;
-          background: #cbcbcb;
-          border-radius: 40px;
-          height: 16px;
-          padding-left: 4px;
-          padding-right: 4px;
-      }
+            .penalty-tag span.remove-icon {
+                cursor: pointer;
+                margin-left: 10px;
+                font-weight: bold;
+                color: red;
+                font-size: 11px;
+                background: #cbcbcb;
+                border-radius: 40px;
+                height: 16px;
+                padding-left: 4px;
+                padding-right: 4px;
+            }
 
         .modal-backdrop.show {
-    opacity: .5;
-    display: none;
-}
+            opacity: .5;
+            display: none;
+        }
+
         button, input, optgroup, select, textarea {
             margin: 0;
             font-family: inherit;
@@ -294,127 +295,123 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-   
+
     <div class="content-wrapper">
-         <asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>
+        <asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>
         <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
             <div class="card-body">
-            
-                        <div class="row">
-                            <div class="col-md-4"></div>
-                            <div class="col-md-4" style="text-align: center; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding-top: 8px; padding-bottom: 8px; border-radius: 10px; top: 0px; left: 0px;">
-                                <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;">LICENCE UPGRADATION REQUEST</h6>
-                            </div>
-                            <br />
-                            <div class="col-md-4"></div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4"></div>
-                            <div class="col-md-4" style="text-align: center;">
-                                <label id="DataUpdated" runat="server" visible="false" style="color: red; font-size: 1.125rem">
-                                    Data Updated Successfully !!!.
-                                </label>
-                                <label id="DataSaved" runat="server" visible="false" style="color: red; font-size: 1.125rem">
-                                    Data Saved Successfully !!!.
-                                </label>
-                            </div>
-                        </div>
-                        <br />
-                        <h7 class="card-title fw-semibold mb-4">Personal Details</h7>
-                        <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-                            <div class="row">
-                                
-                                
-                                
-                             
-                            </div>
+
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4" style="text-align: center; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding-top: 8px; padding-bottom: 8px; border-radius: 10px; top: 0px; left: 0px;">
+                        <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;">LICENCE UPGRADATION REQUEST</h6>
+                    </div>
+                    <br />
+                    <div class="col-md-4"></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4" style="text-align: center;">
+                        <label id="DataUpdated" runat="server" visible="false" style="color: red; font-size: 1.125rem">
+                            Data Updated Successfully !!!.
+                        </label>
+                        <label id="DataSaved" runat="server" visible="false" style="color: red; font-size: 1.125rem">
+                            Data Saved Successfully !!!.
+                        </label>
+                    </div>
+                </div>
+                <br />
+                <h7 class="card-title fw-semibold mb-4">Personal Details</h7>
+                <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                    <div class="row">
+                    </div>
 
 
 
 
-                            <div class="row">
-                                <div class="col-md-4">
-                                <div class="form-group">
-    <label>
-        Level of licence applied for upgradation
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>
+                                    Level of licence applied for upgradation
       <samp style="color: red">* </samp>
-    </label>
-    <asp:DropDownList Style="width: 100% !important;" class="form-control  select-form select2" ID="ddlVoltageLevel" runat="server" TabIndex="16">
-    </asp:DropDownList>
-    <asp:RequiredFieldValidator ID="RequiredFieldValidator43" ErrorMessage="Required" ControlToValidate="ddlVoltageLevel" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-</div>
-                                    </div>
-                              
-                                    <div class="col-md-4">
-    <label>
-        Firm Name<samp style="color: red">* </samp>
-    </label>
-    <asp:TextBox class="form-control" ID="txtFirmName" runat="server" autocomplete="off" TabIndex="1" MaxLength="200" Style="margin-left: 18px;" AutoPostBack="true">
-    </asp:TextBox>
-    <asp:RequiredFieldValidator ID="RequiredFieldValidator54" ErrorMessage="Required" ControlToValidate="txtFirmName" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-</div>
-                               <div class="col-md-4">
-    <label>
-        Name<samp style="color: red">* </samp>
-    </label>
-    <asp:TextBox class="form-control" ID="txtContractName" runat="server" autocomplete="off" TabIndex="1" MaxLength="100" Style="margin-left: 18px;" AutoPostBack="true">
-    </asp:TextBox>
-    <asp:RequiredFieldValidator ID="RequiredFieldValidator55" ErrorMessage="Required" ControlToValidate="txtContractName" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-</div> 
-                                                               <div class="col-md-4">
-                                   
-                                     <div class="form-group">
-     <label>
-         Current Level of licence 
-       <samp style="color: red">* </samp>
-     </label>
-     <asp:TextBox class="form-control" ID="txtCurrentVoltage" runat="server" autocomplete="off" ReadOnly="true" TabIndex="1" MaxLength="200" Style="margin-left: 18px;" AutoPostBack="true">
-</asp:TextBox>
-     <asp:RequiredFieldValidator ID="RequiredFieldValidator56" ErrorMessage="Required" ControlToValidate="txtCurrentVoltage" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-                              </div>
-                                                                   </div>
-                                                                      <div class="col-md-4">
-       <label>
-           Date Of Birth<samp style="color: red">* </samp>
-       </label>
-       <asp:TextBox class="form-control" ID="txtDob" runat="server" Type="Date" autocomplete="off" TabIndex="1"
-           MaxLength="200" Style="margin-left: 18px;" OnTextChanged="txtDob_TextChanged" AutoPostBack="true" onchange="validateDOB();">
-       </asp:TextBox>
-       <asp:RequiredFieldValidator ID="RequiredFieldValidator39" ErrorMessage="Required" ControlToValidate="txtDob" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-   </div>
-   <div class="col-md-4">
-       <label>
-           Current Age<samp style="color: red">* </samp>
-       </label>
-       <asp:TextBox class="form-control" ID="txtCurrentAge" runat="server" autocomplete="off" TabIndex="1" ReadOnly="true"
-           MaxLength="200" Style="margin-left: 18px;">
-       </asp:TextBox>
-       <asp:RequiredFieldValidator ID="RequiredFieldValidator40" ErrorMessage="Required" ControlToValidate="txtCurrentAge" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-   </div>
-
-   <div class="col-md-4">
-       <label>
-           Old Certificate No.<samp style="color: red">* </samp>
-       </label>
-       <asp:TextBox class="form-control" ID="txtOldCertificateNo" runat="server" autocomplete="off" TabIndex="1"
-           MaxLength="10" Style="margin-left: 18px;">
-       </asp:TextBox>
-       <asp:RequiredFieldValidator ID="RequiredFieldValidator41" ErrorMessage="Required" ControlToValidate="txtOldCertificateNo" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-   </div>
-   <div class="col-md-4">
-       <label>
-           New Certificate No.<samp style="color: red">* </samp>
-       </label>
-       <asp:TextBox class="form-control" ID="txtNewCertificateNo" runat="server" autocomplete="off" TabIndex="1"
-           MaxLength="10" Style="margin-left: 18px;">
-       </asp:TextBox>
-       <asp:RequiredFieldValidator ID="RequiredFieldValidator42" ErrorMessage="Required" ControlToValidate="txtNewCertificateNo" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-   </div>
-                               </div>
+                                </label>
+                                <asp:DropDownList Style="width: 100% !important;" class="form-control  select-form select2" ID="ddlVoltageLevel" runat="server" TabIndex="16">
+                                </asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator43" ErrorMessage="Required" ControlToValidate="ddlVoltageLevel" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                             </div>
-                      
+                        </div>
+
+                        <div class="col-md-4">
+                            <label>
+                                Firm Name<samp style="color: red">* </samp>
+                            </label>
+                            <asp:TextBox class="form-control" ID="txtFirmName" runat="server" autocomplete="off" TabIndex="1" MaxLength="200" Style="margin-left: 18px;" AutoPostBack="true">
+                            </asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator54" ErrorMessage="Required" ControlToValidate="txtFirmName" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                        </div>
+                        <div class="col-md-4">
+                            <label>
+                                Name<samp style="color: red">* </samp>
+                            </label>
+                            <asp:TextBox class="form-control" ID="txtContractName" runat="server" autocomplete="off" TabIndex="1" MaxLength="100" Style="margin-left: 18px;" AutoPostBack="true">
+                            </asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator55" ErrorMessage="Required" ControlToValidate="txtContractName" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                        </div>
+                        <div class="col-md-4">
+
+                            <div class="form-group">
+                                <label>
+                                    Current Level of licence 
+       <samp style="color: red">* </samp>
+                                </label>
+                                <asp:TextBox class="form-control" ID="txtCurrentVoltage" runat="server" autocomplete="off" ReadOnly="true" TabIndex="1" MaxLength="200" Style="margin-left: 18px;" AutoPostBack="true">
+                                </asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RequiredFieldValidator56" ErrorMessage="Required" ControlToValidate="txtCurrentVoltage" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <label>
+                                Date Of Birth<samp style="color: red">* </samp>
+                            </label>
+                            <asp:TextBox class="form-control" ID="txtDob" runat="server" Type="Date" autocomplete="off" TabIndex="1"
+                                MaxLength="200" Style="margin-left: 18px;" OnTextChanged="txtDob_TextChanged" AutoPostBack="true" onchange="validateDOB();">
+                            </asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator39" ErrorMessage="Required" ControlToValidate="txtDob" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                        </div>
+                        <div class="col-md-4">
+                            <label>
+                                Current Age<samp style="color: red">* </samp>
+                            </label>
+                            <asp:TextBox class="form-control" ID="txtCurrentAge" runat="server" autocomplete="off" TabIndex="1" ReadOnly="true"
+                                MaxLength="200" Style="margin-left: 18px;">
+                            </asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator40" ErrorMessage="Required" ControlToValidate="txtCurrentAge" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                        </div>
+
+                        <div class="col-md-4">
+                            <label>
+                                Old Certificate No.<samp style="color: red">* </samp>
+                            </label>
+                            <asp:TextBox class="form-control" ID="txtOldCertificateNo" runat="server" autocomplete="off" TabIndex="1"
+                                MaxLength="10" Style="margin-left: 18px;">
+                            </asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator41" ErrorMessage="Required" ControlToValidate="txtOldCertificateNo" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                        </div>
+                        <div class="col-md-4">
+                            <label>
+                                New Certificate No.<samp style="color: red">* </samp>
+                            </label>
+                            <asp:TextBox class="form-control" ID="txtNewCertificateNo" runat="server" autocomplete="off" TabIndex="1"
+                                MaxLength="10" Style="margin-left: 18px;">
+                            </asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator42" ErrorMessage="Required" ControlToValidate="txtNewCertificateNo" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                        </div>
+                    </div>
+                </div>
+
                 <asp:UpdatePanel runat="server" ID="updatePanel">
-        <ContentTemplate>
+                    <ContentTemplate>
                         <br />
                         <h7 class="card-title fw-semibold mb-4">Organisation Details</h7>
                         <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
@@ -424,7 +421,7 @@
                                         Open modal
                                     </button>
                                     <div class="modal" id="myModal">
-                                        <div class="modal-dialog" style="width: 60%; max-width: 70%; margin-left: 30%;box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
+                                        <div class="modal-dialog" style="width: 60%; max-width: 70%; margin-left: 30%; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;">
                                             <div class="modal-content">
                                                 <!-- Modal Header -->
                                                 <div class="modal-header">
@@ -521,67 +518,67 @@
                                                         </div>
                                                     </div>
                                                     <hr style="margin-top: 45px; margin-bottom: 10px;" />
-                                                   
-                                                           <div class="row">
-                                                                <asp:GridView class="table-responsive table table-hover table-striped table-bordered" ID="GridView1" runat="server" Width="100%"
-                                                                    AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff" DataKeyNames="Id" OnRowCommand="GridView1_RowCommand">
 
-                                                                    <PagerStyle CssClass="pagination-ys" />
-                                                                    <Columns>
-                                                                        <asp:BoundField DataField="TypeOfAuthority" HeaderText="Type Of Authority">
-                                                                            <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
-                                                                            <ItemStyle HorizontalAlign="center" CssClass="tdpadding" />
-                                                                        </asp:BoundField>
-                                                                        <asp:BoundField DataField="Name" HeaderText="Name">
-                                                                            <HeaderStyle HorizontalAlign="left" CssClass="headercolor" />
-                                                                            <ItemStyle HorizontalAlign="left" CssClass="tdpadding" />
-                                                                        </asp:BoundField>
-                                                                        <asp:BoundField DataField="State" HeaderText="State">
-                                                                            <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
-                                                                            <ItemStyle HorizontalAlign="center" CssClass="tdpadding" />
-                                                                        </asp:BoundField>
-                                                                        <asp:BoundField DataField="District" HeaderText="District">
-                                                                            <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
-                                                                            <ItemStyle HorizontalAlign="center" CssClass="tdpadding" />
-                                                                        </asp:BoundField>
-                                                                        <asp:BoundField DataField="PinCode" HeaderText="PinCode">
-                                                                            <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
-                                                                            <ItemStyle HorizontalAlign="center" CssClass="tdpadding" />
-                                                                        </asp:BoundField>
-                                                                        <asp:BoundField DataField="Address" HeaderText="Address">
-                                                                            <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
-                                                                            <ItemStyle HorizontalAlign="center" CssClass="tdpadding" />
-                                                                        </asp:BoundField>
-                                                                        <asp:TemplateField HeaderText="Delete">
-                                                                            <ItemTemplate>
-                                                                                <asp:LinkButton ID="lnkDelete" runat="server" CommandName="DeleteRecord"
-                                                                                    Text="Delete" ForeColor="Red" CommandArgument='<%# Eval("Id") %>'>
-                                                                                </asp:LinkButton>
-                                                                            </ItemTemplate>
-                                                                            <HeaderStyle HorizontalAlign="Center" CssClass="headercolor" />
-                                                                            <ItemStyle HorizontalAlign="Center" CssClass="tdpadding" />
-                                                                        </asp:TemplateField>
-                                                                    </Columns>
-                                                                    <FooterStyle BackColor="White" ForeColor="#000066" />
-                                                                    <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
-                                                                    <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
-                                                                    <RowStyle ForeColor="#000066" CssClass="gridViewRow" />
-                                                                    <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                                                                    <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                                                                    <SortedAscendingHeaderStyle BackColor="#007DBB" />
-                                                                    <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                                                                    <SortedDescendingHeaderStyle BackColor="#00547E" />
-                                                                </asp:GridView>
-                                                            </div>
-                                                       
+                                                    <div class="row">
+                                                        <asp:GridView class="table-responsive table table-hover table-striped table-bordered" ID="GridView1" runat="server" Width="100%"
+                                                            AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff" DataKeyNames="Id" OnRowCommand="GridView1_RowCommand">
 
-                                                   
+                                                            <PagerStyle CssClass="pagination-ys" />
+                                                            <Columns>
+                                                                <asp:BoundField DataField="TypeOfAuthority" HeaderText="Type Of Authority">
+                                                                    <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
+                                                                    <ItemStyle HorizontalAlign="center" CssClass="tdpadding" />
+                                                                </asp:BoundField>
+                                                                <asp:BoundField DataField="Name" HeaderText="Name">
+                                                                    <HeaderStyle HorizontalAlign="left" CssClass="headercolor" />
+                                                                    <ItemStyle HorizontalAlign="left" CssClass="tdpadding" />
+                                                                </asp:BoundField>
+                                                                <asp:BoundField DataField="State" HeaderText="State">
+                                                                    <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
+                                                                    <ItemStyle HorizontalAlign="center" CssClass="tdpadding" />
+                                                                </asp:BoundField>
+                                                                <asp:BoundField DataField="District" HeaderText="District">
+                                                                    <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
+                                                                    <ItemStyle HorizontalAlign="center" CssClass="tdpadding" />
+                                                                </asp:BoundField>
+                                                                <asp:BoundField DataField="PinCode" HeaderText="PinCode">
+                                                                    <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
+                                                                    <ItemStyle HorizontalAlign="center" CssClass="tdpadding" />
+                                                                </asp:BoundField>
+                                                                <asp:BoundField DataField="Address" HeaderText="Address">
+                                                                    <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
+                                                                    <ItemStyle HorizontalAlign="center" CssClass="tdpadding" />
+                                                                </asp:BoundField>
+                                                                <asp:TemplateField HeaderText="Delete">
+                                                                    <ItemTemplate>
+                                                                        <asp:LinkButton ID="lnkDelete" runat="server" CommandName="DeleteRecord"
+                                                                            Text="Delete" ForeColor="Red" CommandArgument='<%# Eval("Id") %>'>
+                                                                        </asp:LinkButton>
+                                                                    </ItemTemplate>
+                                                                    <HeaderStyle HorizontalAlign="Center" CssClass="headercolor" />
+                                                                    <ItemStyle HorizontalAlign="Center" CssClass="tdpadding" />
+                                                                </asp:TemplateField>
+                                                            </Columns>
+                                                            <FooterStyle BackColor="White" ForeColor="#000066" />
+                                                            <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                                                            <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                                                            <RowStyle ForeColor="#000066" CssClass="gridViewRow" />
+                                                            <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                                                            <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                                            <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                                                            <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                                            <SortedDescendingHeaderStyle BackColor="#00547E" />
+                                                        </asp:GridView>
+                                                    </div>
+
+
+
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                               
+
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label id="contractor" runat="server" visible="true">
@@ -590,9 +587,9 @@
                                         <asp:TextBox class="form-control" ID="txtGstNumber" autocomplete="off" ReadOnly="true" runat="server" onKeyPress="return isNumberKey(event) || alphabetKey(event);" TabIndex="1" MaxLength="15"> </asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtGstNumber"
                                             CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
-                                        <asp:RegularExpressionValidator ID="regexValidatorGST" runat="server" ControlToValidate="txtGstNumber"  ValidationExpression="^(06|04|07)[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$"
- ValidationGroup="Submit"
- ErrorMessage="GST is incorrect. Only GST numbers from Haryana (06), Chandigarh (04), and Delhi (07) are allowed." ForeColor="Red" Display="Dynamic"></asp:RegularExpressionValidator>
+                                        <asp:RegularExpressionValidator ID="regexValidatorGST" runat="server" ControlToValidate="txtGstNumber" ValidationExpression="^(06|04|07)[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$"
+                                            ValidationGroup="Submit"
+                                            ErrorMessage="GST is incorrect. Only GST numbers from Haryana (06), Chandigarh (04), and Delhi (07) are allowed." ForeColor="Red" Display="Dynamic"></asp:RegularExpressionValidator>
 
                                     </div>
                                 </div>
@@ -608,6 +605,7 @@
                                             <asp:ListItem Text="Company(Limited)" Value="2"></asp:ListItem>
                                             <asp:ListItem Text="Firm(Registered under the company's act.)" Value="3"></asp:ListItem>
                                             <asp:ListItem Text="Partnership Firm" Value="4"></asp:ListItem>
+                                            <asp:ListItem Text="Registered Society" Value="5"></asp:ListItem>
                                         </asp:DropDownList>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator16" ErrorMessage="Required" ControlToValidate="ddlCompanyStyle" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                     </div>
@@ -636,11 +634,14 @@
                                         <label id="Lbl4" runat="server" visible="false">
                                             Name Of Partnership Firm<samp style="color: red">* </samp>
                                         </label>
+                                        <label id="lb5" runat="server" visible="false">
+                                            Name of Registered Society<samp style="color: red">* </samp>
+                                        </label>
                                         <asp:TextBox class="form-control" ID="txtNameOfCompany" autocomplete="off" runat="server" MaxLength="100"> </asp:TextBox>
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator29" runat="server" ControlToValidate="txtNameOfCompany" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
                                     </div>
                                 </div>
-                                
+
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>
@@ -713,7 +714,7 @@
                                         </asp:RegularExpressionValidator>
                                     </div>
                                 </div>
-                                <div class="col-md-4" style="margin-top:-30px;">
+                                <div class="col-md-4" style="margin-top: -30px;">
                                     <div class="form-group">
                                         <label>
                                             Name of authorized person signing document<samp style="color: red">* </samp>
@@ -722,20 +723,20 @@
                                         <asp:RequiredFieldValidator ID="RequiredFieldValidator44" runat="server" ControlToValidate="txtauthorizedperson" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
                                     </div>
                                 </div>
-                                <div class="col-md-4" style="margin-top:-30px;">
-    <div class="form-group">
-        <label for="Gender">
-            Registered office in (Haryana/UT Chandigarh/ NCT Delhi)<samp style="color: red">* </samp>
-        </label>
-        <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
-            ID="ddlOffice" runat="server" TabIndex="3">
-            <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-            <asp:ListItem Text="YES" Value="1"></asp:ListItem>
-            <asp:ListItem Text="NO" Value="2"></asp:ListItem>
-        </asp:DropDownList>
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator28" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlOffice" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-    </div>
-</div>
+                                <div class="col-md-4" style="margin-top: -30px;">
+                                    <div class="form-group">
+                                        <label for="Gender">
+                                            Registered office in (Haryana/UT Chandigarh/ NCT Delhi)<samp style="color: red">* </samp>
+                                        </label>
+                                        <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
+                                            ID="ddlOffice" runat="server" TabIndex="3">
+                                            <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                                            <asp:ListItem Text="YES" Value="1"></asp:ListItem>
+                                            <asp:ListItem Text="NO" Value="2"></asp:ListItem>
+                                        </asp:DropDownList>
+                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator28" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlOffice" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <h7 class="card-title fw-semibold mb-4">Other Organisation Details</h7>
@@ -853,56 +854,56 @@
                                 </div>
                             </div>
                             <hr />
-                           
-                                <asp:GridView class="table-responsive table table-hover table-striped table-bordered" ID="GridView2" runat="server" Width="100%"
-                                    AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" BorderWidth="1px" BorderColor="#dbddff" DataKeyNames="Id">
-                                    <PagerStyle CssClass="pagination-ys" />
-                                    <Columns>
-                                        <asp:BoundField DataField="TypeOfAuthority" HeaderText="Type Of Authority">
-                                            <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
-                                            <ItemStyle HorizontalAlign="center" CssClass="tdpadding" />
-                                        </asp:BoundField>
-                                        <asp:BoundField DataField="Name" HeaderText="Name">
-                                            <HeaderStyle HorizontalAlign="left" CssClass="headercolor" />
-                                            <ItemStyle HorizontalAlign="left" CssClass="tdpadding" />
-                                        </asp:BoundField>
-                                        <asp:BoundField DataField="State" HeaderText="State">
-                                            <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
-                                            <ItemStyle HorizontalAlign="center" CssClass="tdpadding" />
-                                        </asp:BoundField>
-                                        <asp:BoundField DataField="District" HeaderText="District">
-                                            <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
-                                            <ItemStyle HorizontalAlign="center" CssClass="tdpadding" />
-                                        </asp:BoundField>
-                                        <asp:BoundField DataField="PinCode" HeaderText="PinCode">
-                                            <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
-                                            <ItemStyle HorizontalAlign="center" CssClass="tdpadding" />
-                                        </asp:BoundField>
-                                        <asp:BoundField DataField="Address" HeaderText="Address">
-                                            <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
-                                            <ItemStyle HorizontalAlign="center" CssClass="tdpadding" />
-                                        </asp:BoundField>
-                                        <asp:TemplateField HeaderText="Delete">
-                                            <ItemTemplate>
-                                                <asp:LinkButton ID="lnkDelete" runat="server" CommandName="DeleteRecord"
-                                                    Text="Delete" ForeColor="Red" CommandArgument='<%# Eval("Id") %>'>
-                                                </asp:LinkButton>
-                                            </ItemTemplate>
-                                            <HeaderStyle HorizontalAlign="Center" CssClass="headercolor" />
-                                            <ItemStyle HorizontalAlign="Center" CssClass="tdpadding" />
-                                        </asp:TemplateField>
-                                    </Columns>
-                                    <FooterStyle BackColor="White" ForeColor="#000066" />
-                                    <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
-                                    <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
-                                    <RowStyle ForeColor="#000066" CssClass="gridViewRow" />
-                                    <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                                    <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                                    <SortedAscendingHeaderStyle BackColor="#007DBB" />
-                                    <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                                    <SortedDescendingHeaderStyle BackColor="#00547E" />
-                                </asp:GridView>
-                            
+
+                            <asp:GridView class="table-responsive table table-hover table-striped table-bordered" ID="GridView2" runat="server" Width="100%"
+                                AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" BorderWidth="1px" BorderColor="#dbddff" DataKeyNames="Id">
+                                <PagerStyle CssClass="pagination-ys" />
+                                <Columns>
+                                    <asp:BoundField DataField="TypeOfAuthority" HeaderText="Type Of Authority">
+                                        <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
+                                        <ItemStyle HorizontalAlign="center" CssClass="tdpadding" />
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="Name" HeaderText="Name">
+                                        <HeaderStyle HorizontalAlign="left" CssClass="headercolor" />
+                                        <ItemStyle HorizontalAlign="left" CssClass="tdpadding" />
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="State" HeaderText="State">
+                                        <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
+                                        <ItemStyle HorizontalAlign="center" CssClass="tdpadding" />
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="District" HeaderText="District">
+                                        <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
+                                        <ItemStyle HorizontalAlign="center" CssClass="tdpadding" />
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="PinCode" HeaderText="PinCode">
+                                        <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
+                                        <ItemStyle HorizontalAlign="center" CssClass="tdpadding" />
+                                    </asp:BoundField>
+                                    <asp:BoundField DataField="Address" HeaderText="Address">
+                                        <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
+                                        <ItemStyle HorizontalAlign="center" CssClass="tdpadding" />
+                                    </asp:BoundField>
+                                    <asp:TemplateField HeaderText="Delete">
+                                        <ItemTemplate>
+                                            <asp:LinkButton ID="lnkDelete" runat="server" CommandName="DeleteRecord"
+                                                Text="Delete" ForeColor="Red" CommandArgument='<%# Eval("Id") %>'>
+                                            </asp:LinkButton>
+                                        </ItemTemplate>
+                                        <HeaderStyle HorizontalAlign="Center" CssClass="headercolor" />
+                                        <ItemStyle HorizontalAlign="Center" CssClass="tdpadding" />
+                                    </asp:TemplateField>
+                                </Columns>
+                                <FooterStyle BackColor="White" ForeColor="#000066" />
+                                <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                                <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                                <RowStyle ForeColor="#000066" CssClass="gridViewRow" />
+                                <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                                <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                                <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                <SortedDescendingHeaderStyle BackColor="#00547E" />
+                            </asp:GridView>
+
                         </div>
                         <h7 class="card-title fw-semibold mb-4">Employees Details (from here you can add Supervisor and Wireman)</h7>
                         <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
@@ -964,19 +965,19 @@
                                     </asp:DropDownList>
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator22" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="DdlWorkUnderLicenceConditionsandregulation29" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                 </div>
-                                 <div class="col-md-12" id="divbluePrint" runat="server" style="margin-top:20px;">
-     <label>
-         Whether adequate drawing office facilities for preration of drawings,blue prints etc. is available(in case of above 650 Volt) ?
+                                <div class="col-md-12" id="divbluePrint" runat="server" style="margin-top: 20px;">
+                                    <label>
+                                        Whether adequate drawing office facilities for preration of drawings,blue prints etc. is available(in case of above 650 Volt) ?
          <samp style="color: red">* </samp>
-     </label>
-     <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
-         ID="ddlBluePrint" runat="server">
-         <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-         <asp:ListItem Text="YES" Value="1"></asp:ListItem>
-         <asp:ListItem Text="NO" Value="2"></asp:ListItem>
-     </asp:DropDownList>
-     <asp:RequiredFieldValidator ID="RequiredFieldValidator57" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlBluePrint" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
- </div>
+                                    </label>
+                                    <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;"
+                                        ID="ddlBluePrint" runat="server">
+                                        <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                                        <asp:ListItem Text="YES" Value="1"></asp:ListItem>
+                                        <asp:ListItem Text="NO" Value="2"></asp:ListItem>
+                                    </asp:DropDownList>
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator57" Text="Required" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlBluePrint" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                </div>
                             </div>
                         </div>
                         <h7 class="card-title fw-semibold mb-4">Other Details</h7>
@@ -1071,11 +1072,11 @@
                                             <label for="Gender">
                                                 GRN No.<samp style="color: red">* </samp>
                                             </label>
-                                            <asp:TextBox class="form-control" ID="txtGrNNo" autocomplete="off" MaxLength="10" runat="server" onkeypress="return isAlphaNumeric(event);" > </asp:TextBox>
+                                            <asp:TextBox class="form-control" ID="txtGrNNo" autocomplete="off" MaxLength="10" runat="server" onkeypress="return isAlphaNumeric(event);"> </asp:TextBox>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator46" runat="server" ControlToValidate="txtGrNNo"
                                                 CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
-                                                                                                                <asp:RegularExpressionValidator runat="server"  ControlToValidate="txtGrNNo" ValidationGroup="Submit" 
-ForeColor="Red"  ErrorMessage="GRN No. must be exactly 10 alphanumeric characters." ValidationExpression="^[a-zA-Z0-9]{10}$"> </asp:RegularExpressionValidator>
+                                            <asp:RegularExpressionValidator runat="server" ControlToValidate="txtGrNNo" ValidationGroup="Submit"
+                                                ForeColor="Red" ErrorMessage="GRN No. must be exactly 10 alphanumeric characters." ValidationExpression="^[a-zA-Z0-9]{10}$"> </asp:RegularExpressionValidator>
                                         </div>
                                     </div>
                                 </div>
@@ -1101,7 +1102,7 @@ ForeColor="Red"  ErrorMessage="GRN No. must be exactly 10 alphanumeric character
                                         <tbody>
                                             <tr>
                                                 <th>Document Name</th>
-                                                <th style="text-align:center;">Upload Document</th>
+                                                <th style="text-align: center;">Upload Document</th>
                                             </tr>
                                             <tr>
                                                 <td style="margin-top: auto; margin-bottom: auto;">Certificate of Competency and Wireman Permit, who are working with the<br />
@@ -1183,7 +1184,7 @@ ForeColor="Red"  ErrorMessage="GRN No. must be exactly 10 alphanumeric character
                                                 </td>
                                             </tr>
 
-                                        <%--    <tr>
+                                            <%--    <tr>
                                                 <td style="margin-top: auto; margin-bottom: auto;">Head of accounts: ‗0043-Taxes and Duties on Electricity –Other Receipts<br />
                                                     i.e. 0043-51-800-99-51—Other Receipts‘.
                 (<span style="color: red; display: inline; padding: 0;">★</span>)
@@ -1330,14 +1331,14 @@ ForeColor="Red"  ErrorMessage="GRN No. must be exactly 10 alphanumeric character
                 <div class="row">
                     <div class="col-md-4"></div>
                     <div class="col-md-4" style="text-align: center;">
-                        <asp:Button ID="Btn_Submit" Text="Submit" OnClick="Btn_Submit_Click" runat="server"  OnClientClick="return FocusOnError('Submit');" ValidationGroup="Submit" class="btn btn-primary mr-2" />
+                        <asp:Button ID="Btn_Submit" Text="Submit" OnClick="Btn_Submit_Click" runat="server" OnClientClick="return FocusOnError('Submit');" ValidationGroup="Submit" class="btn btn-primary mr-2" />
                     </div>
                 </div>
             </div>
-             <asp:HiddenField ID="HFVoltage" runat="server" /> 
+            <asp:HiddenField ID="HFVoltage" runat="server" />
         </div>
-   </div>
-    
+    </div>
+
 
     <!-- partial:../../partials/_footer.html -->
     <footer class="footer">
@@ -1947,26 +1948,26 @@ ForeColor="Red"  ErrorMessage="GRN No. must be exactly 10 alphanumeric character
         }
     </script>
 
-     <script type="text/javascript">
-         function FocusOnError(validationGroup) {
-             if (typeof (Page_ClientValidate) == 'function') {
-                 if (!Page_ClientValidate(validationGroup)) {
-                     for (var i = 0; i < Page_Validators.length; i++) {
-                         var validator = Page_Validators[i];
-                         if (!validator.isvalid && validator.validationGroup === validationGroup) {
-                             var control = document.getElementById(validator.controltovalidate);
-                             if (control) {
-                                 control.focus();
-                                 break;
-                             }
-                         }
-                     }
-                     return false; // Prevent postback
-                 }
-             }
-             return true; // Allow postback if valid
-         }
-     </script>
+    <script type="text/javascript">
+        function FocusOnError(validationGroup) {
+            if (typeof (Page_ClientValidate) == 'function') {
+                if (!Page_ClientValidate(validationGroup)) {
+                    for (var i = 0; i < Page_Validators.length; i++) {
+                        var validator = Page_Validators[i];
+                        if (!validator.isvalid && validator.validationGroup === validationGroup) {
+                            var control = document.getElementById(validator.controltovalidate);
+                            if (control) {
+                                control.focus();
+                                break;
+                            }
+                        }
+                    }
+                    return false; // Prevent postback
+                }
+            }
+            return true; // Allow postback if valid
+        }
+    </script>
     <script type="text/javascript">
         function validateForm() {
             var isValid = true;
@@ -2317,16 +2318,16 @@ ForeColor="Red"  ErrorMessage="GRN No. must be exactly 10 alphanumeric character
             }
         }
     </script>
-      <script type="text/javascript">
-          function isAlphaNumeric(evt) {
-              var charCode = evt.which ? evt.which : evt.keyCode;
-              var charStr = String.fromCharCode(charCode);
-              // Allow only letters (a-z, A-Z) and digits (0-9)
-              if (!/^[a-zA-Z0-9]$/.test(charStr)) {
-                  evt.preventDefault();
-                  return false;
-              }
-              return true;
-          }
-      </script>
+    <script type="text/javascript">
+        function isAlphaNumeric(evt) {
+            var charCode = evt.which ? evt.which : evt.keyCode;
+            var charStr = String.fromCharCode(charCode);
+            // Allow only letters (a-z, A-Z) and digits (0-9)
+            if (!/^[a-zA-Z0-9]$/.test(charStr)) {
+                evt.preventDefault();
+                return false;
+            }
+            return true;
+        }
+    </script>
 </asp:Content>

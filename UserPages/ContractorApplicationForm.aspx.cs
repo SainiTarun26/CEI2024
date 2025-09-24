@@ -608,6 +608,7 @@ namespace CEIHaryana.UserPages
                 Lbl2.Visible = false;
                 Lbl3.Visible = false;
                 Lbl4.Visible = false;
+                lb5.Visible=false;
                 DivAgentName.Visible = false;
                 txtAgentName.Text = "";
             }
@@ -617,6 +618,7 @@ namespace CEIHaryana.UserPages
                 Lbl2.Visible = true;
                 Lbl3.Visible = false;
                 Lbl4.Visible = false;
+                lb5.Visible=false;
                 DivAgentName.Visible = true;
             }
             else if (ddlCompanyStyle.SelectedValue == "3")
@@ -625,6 +627,7 @@ namespace CEIHaryana.UserPages
                 Lbl2.Visible = false;
                 Lbl3.Visible = true;
                 Lbl4.Visible = false;
+                lb5.Visible=false;
                 DivAgentName.Visible = false;
                 txtAgentName.Text = "";
             }
@@ -634,6 +637,17 @@ namespace CEIHaryana.UserPages
                 Lbl2.Visible = false;
                 Lbl3.Visible = false;
                 Lbl4.Visible = true;
+                lb5.Visible=false;
+                DivAgentName.Visible = false;
+                txtAgentName.Text = "";
+            }
+            else if (ddlCompanyStyle.SelectedValue == "5")
+            {
+                Lbl1.Visible = false;
+                Lbl2.Visible = false;
+                Lbl3.Visible = false;
+                Lbl4.Visible = false;
+                lb5.Visible=true;
                 DivAgentName.Visible = false;
                 txtAgentName.Text = "";
             }

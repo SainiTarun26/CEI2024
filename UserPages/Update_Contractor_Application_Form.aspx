@@ -1402,10 +1402,12 @@
                                                                                 GST No.<samp style="color: red">* </samp>
                                                                             </label>
                                                                             <asp:TextBox class="form-control" ID="txtGstNumber" autocomplete="off" runat="server" onKeyPress="return isNumberKey(event) || alphabetKey(event);" TabIndex="1" MaxLength="15"> </asp:TextBox>
-                                                                              <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtGstNumber"
-       CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit1" ForeColor="Red"></asp:RequiredFieldValidator>
-   <asp:RegularExpressionValidator ID="regexValidatorGST" runat="server" ControlToValidate="txtGstNumber" ValidationExpression="^(06)[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$" ValidationGroup="Submit1" ErrorMessage="GST is incorrect. Only Haryana's GST is valid" ForeColor="Red" Display="Dynamic"></asp:RegularExpressionValidator>
-</div>
+                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtGstNumber"
+                                                                                CssClass="validation_required" ErrorMessage="Required" ValidationGroup="Submit1" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                                            <asp:RegularExpressionValidator ID="regexValidatorGST" runat="server" ControlToValidate="txtGstNumber" ValidationExpression="^(06|04|07)[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$"
+                                                                                ErrorMessage="GST is incorrect. Only GST numbers from Haryana (06), Chandigarh (04), and Delhi (07) are allowed." ValidationGroup="Submit" ForeColor="Red" Display="Dynamic"></asp:RegularExpressionValidator>
+
+                                                                        </div>
                                                                     </div>
                                                                     <div class="col-md-4">
                                                                         <div class="form-group">
@@ -1419,6 +1421,7 @@
                                                                                 <asp:ListItem Text="Company(Limited)" Value="2"></asp:ListItem>
                                                                                 <asp:ListItem Text="Firm(Registered under the company's act.)" Value="3"></asp:ListItem>
                                                                                 <asp:ListItem Text="Partnership Firm" Value="4"></asp:ListItem>
+                                                                                <asp:ListItem Text="Registered Society" Value="5"></asp:ListItem>
                                                                             </asp:DropDownList>
                                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator19" ErrorMessage="Required" ControlToValidate="ddlCompanyStyle" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit1" ForeColor="Red" />
                                                                         </div>
@@ -1446,6 +1449,9 @@
                                                                             </label>
                                                                             <label id="Lbl4" runat="server" visible="false">
                                                                                 Name Of Partnership Firm<samp style="color: red">* </samp>
+                                                                            </label>
+                                                                            <label id="lb5" runat="server" visible="false">
+                                                                                Name of Registered Society<samp style="color: red">* </samp>
                                                                             </label>
                                                                             <asp:TextBox class="form-control" ID="txtNameOfCompany" autocomplete="off" runat="server" MaxLength="100"> </asp:TextBox>
                                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator29" runat="server" ControlToValidate="txtNameOfCompany" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit1" ForeColor="Red">Required</asp:RequiredFieldValidator>
@@ -1512,10 +1518,10 @@
                                                                             </label>
                                                                             <asp:TextBox class="form-control" ID="txtBusinessEmail" autocomplete="off" runat="server" MaxLength="50" onkeyup="return ValidateEmail();"> </asp:TextBox>
                                                                             <span id="lblError" style="color: red"></span>
-                                                                           <asp:RequiredFieldValidator ID="RequiredFieldValidator16" CssClass="validation_required" runat="server" ControlToValidate="txtBusinessEmail"
-     ErrorMessage="Required" ValidationGroup="Submit1" ForeColor="Red"></asp:RequiredFieldValidator>
- <asp:RegularExpressionValidator ID="revEmail" runat="server" ControlToValidate="txtBusinessEmail" ValidationExpression="^[^@\s]+@[^@\s]+\.[^@\s]+$" ErrorMessage="Invalid Email Address" ValidationGroup="Submit1"
-     ForeColor="Red"></asp:RegularExpressionValidator>
+                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator16" CssClass="validation_required" runat="server" ControlToValidate="txtBusinessEmail"
+                                                                                ErrorMessage="Required" ValidationGroup="Submit1" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                                            <asp:RegularExpressionValidator ID="revEmail" runat="server" ControlToValidate="txtBusinessEmail" ValidationExpression="^[^@\s]+@[^@\s]+\.[^@\s]+$" ErrorMessage="Invalid Email Address" ValidationGroup="Submit1"
+                                                                                ForeColor="Red"></asp:RegularExpressionValidator>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-4">
@@ -1525,20 +1531,20 @@
                                                                             </label>
                                                                             <asp:TextBox class="form-control" ID="txtBusinessPhoneNo" autocomplete="off" runat="server" onkeyup="return isvalidphoneno();" onKeyPress="return isNumberKey(event);" MaxLength="10"> </asp:TextBox>
                                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator27" runat="server" ControlToValidate="txtBusinessPhoneNo" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit1" ForeColor="Red">Required</asp:RequiredFieldValidator>
- <asp:RegularExpressionValidator ID="revPhone" runat="server" ControlToValidate="txtBusinessPhoneNo" ValidationExpression="^[6-9]\d{9}$" ErrorMessage="Enter a valid phone number" ValidationGroup="Submit1" ForeColor="Red" Display="Dynamic">
- </asp:RegularExpressionValidator>
+                                                                            <asp:RegularExpressionValidator ID="revPhone" runat="server" ControlToValidate="txtBusinessPhoneNo" ValidationExpression="^[6-9]\d{9}$" ErrorMessage="Enter a valid phone number" ValidationGroup="Submit1" ForeColor="Red" Display="Dynamic">
+                                                                            </asp:RegularExpressionValidator>
                                                                         </div>
                                                                     </div>
-                                                                <div class="col-md-4">
-    <div class="form-group">
-        <label>
-            Name of authorized person signing document<samp style="color: red">* </samp>
-        </label>
-        <asp:TextBox class="form-control" ID="txtauthorizedperson" autocomplete="off" runat="server" onKeyPress="return alphabetKey(event);" MaxLength="150"> </asp:TextBox>
-        <asp:RequiredFieldValidator ID="RequiredFieldValidator31" runat="server" ControlToValidate="txtauthorizedperson" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit1" ForeColor="Red">Required</asp:RequiredFieldValidator>
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label>
+                                                                                Name of authorized person signing document<samp style="color: red">* </samp>
+                                                                            </label>
+                                                                            <asp:TextBox class="form-control" ID="txtauthorizedperson" autocomplete="off" runat="server" onKeyPress="return alphabetKey(event);" MaxLength="150"> </asp:TextBox>
+                                                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator31" runat="server" ControlToValidate="txtauthorizedperson" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit1" ForeColor="Red">Required</asp:RequiredFieldValidator>
 
-    </div>
-</div>
+                                                                        </div>
+                                                                    </div>
                                                                     <div class="col-md-12" style="text-align: end;">
                                                                         <asp:Button ID="btnupdate1" OnClick="btnupdate1_Click" runat="server" ValidationGroup="Submit1" Text="Update" Class="btn btn-primary" />
 
@@ -1837,9 +1843,9 @@
                                                                                                 </ItemTemplate>
                                                                                             </asp:TemplateField>
                                                                                             <asp:TemplateField HeaderText="Select">
-                                                                                               <ItemTemplate>
-    <asp:LinkButton ID="lnkSelect" runat="server" CommandName="Select" CommandArgument='<%# Container.DataItemIndex %>' Text="Select" ForeColor="Blue" />
-</ItemTemplate>
+                                                                                                <ItemTemplate>
+                                                                                                    <asp:LinkButton ID="lnkSelect" runat="server" CommandName="Select" CommandArgument='<%# Container.DataItemIndex %>' Text="Select" ForeColor="Blue" />
+                                                                                                </ItemTemplate>
                                                                                                 <HeaderStyle HorizontalAlign="Center" CssClass="headercolor" />
                                                                                                 <ItemStyle HorizontalAlign="Center" CssClass="tdpadding" />
                                                                                             </asp:TemplateField>
@@ -2738,21 +2744,21 @@
             }
         }
     </script>
-   <script type="text/javascript">
-       function ValidateEmail() {
-           var email = document.getElementById("<%= txtBusinessEmail.ClientID %>").value;
-           var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-           var lblError = document.getElementById("lblError");
+    <script type="text/javascript">
+        function ValidateEmail() {
+            var email = document.getElementById("<%= txtBusinessEmail.ClientID %>").value;
+            var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            var lblError = document.getElementById("lblError");
 
-           if (email.length > 0 && !regex.test(email)) {
-               lblError.innerHTML = "Invalid Email Address";
-               return false;
-           } else {
-               lblError.innerHTML = "";
-               return true;
-           }
-       }
-   </script>
+            if (email.length > 0 && !regex.test(email)) {
+                lblError.innerHTML = "Invalid Email Address";
+                return false;
+            } else {
+                lblError.innerHTML = "";
+                return true;
+            }
+        }
+    </script>
     <script type="text/javascript">
         function isvalidphoneno() {
 
@@ -2871,32 +2877,32 @@
         }
     </script>
 
-      <script type="text/javascript">
-          function isValidLicenseKey(evt) {
-              var charCode = evt.which ? evt.which : evt.keyCode;
+    <script type="text/javascript">
+        function isValidLicenseKey(evt) {
+            var charCode = evt.which ? evt.which : evt.keyCode;
 
-              // Allow alphabets (A-Z, a-z)
-              if ((charCode >= 65 && charCode <= 90) || (charCode >= 97 && charCode <= 122)) {
-                  return true;
-              }
+            // Allow alphabets (A-Z, a-z)
+            if ((charCode >= 65 && charCode <= 90) || (charCode >= 97 && charCode <= 122)) {
+                return true;
+            }
 
-              // Allow numbers (0-9)
-              if (charCode >= 48 && charCode <= 57) {
-                  return true;
-              }
+            // Allow numbers (0-9)
+            if (charCode >= 48 && charCode <= 57) {
+                return true;
+            }
 
-              // Allow - and /
-              if (charCode === 45 || charCode === 47) {
-                  return true;
-              }
+            // Allow - and /
+            if (charCode === 45 || charCode === 47) {
+                return true;
+            }
 
-              // Allow backspace, tab, delete, arrow keys
-              if (charCode === 8 || charCode === 9 || charCode === 46 || (charCode >= 37 && charCode <= 40)) {
-                  return true;
-              }
+            // Allow backspace, tab, delete, arrow keys
+            if (charCode === 8 || charCode === 9 || charCode === 46 || (charCode >= 37 && charCode <= 40)) {
+                return true;
+            }
 
-              return false; // Block everything else
-          }
-      </script>
+            return false; // Block everything else
+        }
+    </script>
 </body>
 </html>

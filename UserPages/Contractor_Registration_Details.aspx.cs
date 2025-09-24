@@ -67,7 +67,7 @@ namespace CEIHaryana.UserPages
                 txtEmail.Text = dt.Rows[0]["Email"].ToString();
                 txtNationality.Text = dt.Rows[0]["Nationality"].ToString();
             }
-            catch
+            catch (Exception ex )
             {
             }
         }
