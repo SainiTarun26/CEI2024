@@ -582,7 +582,7 @@ namespace CEIHaryana.Contractor
                             // If no rows exist
                             if (totalRows == 0)
                             {
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('You are not eligible for this. At least one Supervisor or Wireman is required.');", true);
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('You are not eligible because there should be at least two employee with one supervisor is required.');", true); 
                                 return;
                             }
 
