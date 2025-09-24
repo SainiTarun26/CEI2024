@@ -2237,11 +2237,17 @@
                                     </label>
                                     <asp:TextBox class="form-control" AutoPostBack="true" ReadOnly="true" ID="txtTransformerCapacity" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 </div>
-                                <div class="col-4">
+                                <div class="col-2">
                                     <label>
                                         Type of transformer
                                     </label>
                                     <asp:TextBox class="form-control" AutoPostBack="true" ID="txtTransformerType" ReadOnly="true" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                </div>
+                                <div class="col-2">
+                                    <label>
+                                         Year of Manufacturing
+                                    </label>
+                                    <asp:TextBox class="form-control" AutoPostBack="true" ID="txtManufacturingyear" ReadOnly="true" MaxLength="10" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                 </div>
                             </div>
                             <div id="InCaseOfOil" runat="server" visible="false">

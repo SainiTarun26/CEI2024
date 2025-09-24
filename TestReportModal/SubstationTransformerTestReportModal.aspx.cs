@@ -247,6 +247,7 @@ namespace CEIHaryana.TestReportModal
                 txtTransformerSerialNumber.Text = ds.Tables[0].Rows[0]["TransformerSerialNumber"].ToString();
                 txtTransformerCapacityType.Text = ds.Tables[0].Rows[0]["TransformerCapacityType"].ToString();
                 txtTransformerType.Text = ds.Tables[0].Rows[0]["TranformerType"].ToString();
+                txtManufacturingyear.Text = ds.Tables[0].Rows[0]["YearOfManufacturing"].ToString();
                 //TextStatus.Text = ds.Tables[0].Rows[0]["ApprovedOrRejectFromContractor"].ToString();
                 //TextReject.Text = ds.Tables[0].Rows[0]["ReasonForRejection"].ToString();
                 DateTime createdDate = Convert.ToDateTime(ds.Tables[0].Rows[0]["SubmittedDate"]);

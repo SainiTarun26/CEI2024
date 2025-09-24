@@ -468,6 +468,7 @@
                                                 <asp:ListItem Text="Gas Engine" Value="2"></asp:ListItem>
                                                 <asp:ListItem Text="Solar Power Plant" Value="3"></asp:ListItem>
                                                 <asp:ListItem Text="Bio Fuel" Value="4"></asp:ListItem>
+                                                <asp:ListItem Text="Steam Turbine" Value="5"></asp:ListItem>
                                             </asp:DropDownList>
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ForeColor="Red" ControlToValidate="ddlGeneratingSetType" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Please Select Generator Set Type"></asp:RequiredFieldValidator>
                                         </div>

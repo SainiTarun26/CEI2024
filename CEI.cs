@@ -850,7 +850,7 @@ namespace CEI_PRoject
         #endregion
 
         #region Insert Substation Data
-        public void InsertSubstationData(string IdUpdate, string Count, string TestReportId, string IntimationId, string TransformerSerialNumber, string TransformerCapacityType, string TransformerCapacity, string TranformerType,
+        public void InsertSubstationData(string IdUpdate, string Count, string TestReportId, string IntimationId, string TransformerSerialNumber, string TransformerCapacityType, string TransformerCapacity, string TranformerType,string YearOfManufacturing,
     string PrimaryVoltage, string SecondoryVoltage, string OilCapacity, string BreakDownVoltageofOil, string HtInsulationHVEarth,
     string LtInsulationLVEarth, string LowestvaluebetweenHTLTSide, string LightningArrestorLocation, string OtherLALocation,
     string TypeofHTPrimarySideSwitch, string NumberOfEarthing, string EarthingType1, string Valueinohms1,
@@ -994,6 +994,7 @@ namespace CEI_PRoject
             cmd.Parameters.AddWithValue("@TransformerCapacityType", String.IsNullOrEmpty(TransformerCapacityType) ? null : TransformerCapacityType);
             cmd.Parameters.AddWithValue("@TransformerCapacity", String.IsNullOrEmpty(TransformerCapacity) ? null : TransformerCapacity);
             cmd.Parameters.AddWithValue("@TranformerType", TranformerType == "Select" ? null : TranformerType);
+            cmd.Parameters.AddWithValue("@YearOfManufacturing ", String.IsNullOrEmpty(YearOfManufacturing) ? null : YearOfManufacturing);
             cmd.Parameters.AddWithValue("@PrimaryVoltage", PrimaryVoltage == "Select" ? null : PrimaryVoltage);
             cmd.Parameters.AddWithValue("@SecondoryVoltage", SecondoryVoltage == "Select" ? null : SecondoryVoltage);
             cmd.Parameters.AddWithValue("@OilCapacity", String.IsNullOrEmpty(OilCapacity) ? null : OilCapacity);

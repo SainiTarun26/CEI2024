@@ -410,14 +410,14 @@
                             <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                                 <ContentTemplate>
                                     <div class="row">
-                                        <div class="col-3" id="Div121" runat="server">
+                                        <div class="col" id="Div121" runat="server">
                                             <label for="Voltage">
                                                 Serial number of transformer <samp style="color: red">* </samp>
                                             </label>
                                             <asp:TextBox class="form-control" AutoPostBack="true" ID="txtTransformerSerialNumber" MaxLength="20" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="1" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             <asp:RequiredFieldValidator ID="rvftransformerSerialnumber" ForeColor="Red" ControlToValidate="txtTransformerSerialNumber" runat="server" ErrorMessage="Please Enter Serial Number" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                                         </div>
-                                        <div class="col-3">
+                                        <div class="col">
                                             <label>
                                                 Unit of transformer<samp style="color: red">* </samp>
                                             </label>
@@ -429,7 +429,7 @@
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ForeColor="Red" ControlToValidate="ddltransformerCapacity" runat="server" InitialValue="0" ErrorMessage="Please Select Transformer Capacity" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                                             <%-- <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlTransformerCapacity" selectionmode="Multiple" Style="width: 100% !important"> </asp:DropDownList>--%>
                                         </div>
-                                        <div class="col-3">
+                                        <div class="col">
                                             <label>
                                                 Capacity of transformer <samp style="color: red">* </samp>
                                             </label>
@@ -437,7 +437,16 @@
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" ForeColor="Red" ControlToValidate="txtTransformerCapacity" runat="server" ErrorMessage="Please Enter Transformer Capacity" ValidationGroup="Submit"></asp:RequiredFieldValidator>
                                             <%-- <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlTransformerCapacity" selectionmode="Multiple" Style="width: 100% !important"> </asp:DropDownList>--%>
                                         </div>
-                                        <div class="col-3">
+                                        <div class="col">
+                                            <label>
+                                                Year of Manufacturing
+                                                <samp style="color: red">* </samp>
+                                            </label>
+                                            <asp:TextBox class="form-control" AutoPostBack="true" ID="txtManufacturingyear" MaxLength="5" onKeyPress="return isNumberKey(event);" onkeydown="return preventEnterSubmit(event)" placeholder="" autocomplete="off" TabIndex="3" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:RequiredFieldValidator ID="RequiredFieldValidator107" ForeColor="Red" ControlToValidate="txtManufacturingyear" runat="server" ErrorMessage="Please Enter Transformer Capacity" ValidationGroup="Submit"></asp:RequiredFieldValidator>
+                                            <%-- <asp:DropDownList class="form-control  select-form select2" TabIndex="6" runat="server" AutoPostBack="true" ID="ddlTransformerCapacity" selectionmode="Multiple" Style="width: 100% !important"> </asp:DropDownList>--%>
+                                        </div>
+                                        <div class="col">
                                             <label>
                                                 Type of transformer<samp style="color: red">* </samp>
                                             </label>
