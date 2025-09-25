@@ -248,7 +248,7 @@
                 <div class="row">
                     <div class="col-md-2"></div>
                     <div class="col-md-8" style="text-align: center; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding-top: 8px; padding-bottom: 8px; border-radius: 10px; top: 0px; left: 0px;">
-                        <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;">APPLICATION FOR RENEWAL OF CERTIFICATE OF COMPETENCY PERMIT</h6>
+                        <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;">APPLICATION FOR RENEWAL OF CERTIFICATE OF COMPETENCY</h6>
                     </div>
                     <br />
                     <div class="col-md-2"></div>

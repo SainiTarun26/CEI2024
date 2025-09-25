@@ -682,7 +682,7 @@
                                                             <div class="forms-sample">
                                                                 <%--<img src="path_to_your_image.jpg" alt="Sample Image"
                                                                     style="width: 100px; height: 100px; object-fit: cover;">--%>
-                                                                <asp:Image ID="imgPhoto" runat="server" Width="100px" Height="100px" Style="object-fit: cover;" />
+                                                                <asp:Image ID="imgPhoto" runat="server" Width="100px" Height="100px" Style="object-fit: contain;" />
                                                             </div>
                                                         </div>
 

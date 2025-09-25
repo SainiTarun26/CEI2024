@@ -687,7 +687,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="col-md-2" style="margin-top: auto; margin-bottom: auto;">
-                                                            <asp:Image ID="imgPhoto" runat="server" Width="145px" Height="160px" Style="object-fit: cover;" />
+                                                            <asp:Image ID="imgPhoto" runat="server" Width="145px" Height="160px" Style="object-fit: contain;" />
                                                         </div>
                                                     </div>
 
