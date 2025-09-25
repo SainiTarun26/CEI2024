@@ -12640,37 +12640,11 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
             con.Close();
 
         }
-        public int CheckAadharOrPANExist(string aadhar, string PanCardNo, string Email)
+        public string CheckAadharOrPANExist(string aadhar, string PanCardNo, string Email)
         {
-            int count = 0;
-
-            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
-            {
-                SqlCommand cmd = new SqlCommand("sp_CheckAadhar", con);
-                cmd.CommandType = CommandType.StoredProcedure;
-
-                // Add parameters only if not null or empty
-                if (!string.IsNullOrEmpty(aadhar))
-                    cmd.Parameters.AddWithValue("@Aadhar", aadhar);
-                else
-                    cmd.Parameters.AddWithValue("@Aadhar", DBNull.Value);
-
-                if (!string.IsNullOrEmpty(PanCardNo))
-                    cmd.Parameters.AddWithValue("@PanCardNo", PanCardNo);
-                else
-                    cmd.Parameters.AddWithValue("@PanCardNo", DBNull.Value);
-                cmd.Parameters.AddWithValue("@Email", Email);
-                con.Open();
-                object result = cmd.ExecuteScalar();
-                if (result != null && result != DBNull.Value)
-                {
-                    count = Convert.ToInt32(result);
-                }
-            }
-
-            return count;
+            object result = DBTask.ExecuteScalar(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_CheckAadhar", aadhar, PanCardNo, Email);
+            return result?.ToString();
         }
-
         public void InserNewUserData(string ApplicationFor, string Name, string Age, string CalculatedAge, string FatherName,
  string gender, string aadhar, string PanCardNo, string Address, string District, string State, string PinCode, string PhoneNo, string Email,
  string Category, string CreatedBy, string UserId,

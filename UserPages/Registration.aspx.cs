@@ -107,10 +107,24 @@ namespace CEIHaryana.UserPages
                         GetIP();
 
                         #region kalpana 30-July-2025
-                        int Aadhar = CEI.CheckAadharOrPANExist(txtAadhaar.Text.Trim(), txtpancard.Text.Trim(),txtEmailID.Text.Trim());
-                        if (Aadhar > 0)
+                        string duplicate = CEI.CheckAadharOrPANExist(txtAadhaar.Text.Trim(), txtpancard.Text.Trim(),txtEmailID.Text.Trim());
+                        if (duplicate == "Aadhar")
                         {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "AadharAlert();", true);
+                            //ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "AadharAlert();", true);
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Aadhar number is aready in use. Please use Different Aadhar Number ');", true);
+                            txtAadhaar.Text="";
+                            return;
+                        }
+                        else if (duplicate == "PanCardNo")
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('PanCard number is aready in use. Please use Different PanCard Number ');", true);
+                            txtpancard.Text="";
+                            return;
+                        }
+                        else if (duplicate == "Email")
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Email is aready in use. Please use Different Email');", true);
+                            txtEmailID.Text="";
                             return;
                         }
 

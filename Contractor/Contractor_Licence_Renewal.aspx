@@ -675,10 +675,11 @@
                                         <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
                                         <ItemStyle HorizontalAlign="center" CssClass="tdpadding" />
                                     </asp:BoundField>
-                                    <asp:BoundField DataField="Category" HeaderText="Category">
-                                        <HeaderStyle HorizontalAlign="left" CssClass="headercolor" />
-                                        <ItemStyle HorizontalAlign="left" CssClass="tdpadding" />
-                                    </asp:BoundField>
+                                    <asp:TemplateField HeaderText="Id">
+                                        <ItemTemplate>
+                                            <asp:Label ID="lblCategory" runat="server" Text='<%#Eval("Category") %>'></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
                                     <asp:BoundField DataField="CertificateOld" HeaderText="Certificate Old">
                                         <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
                                         <ItemStyle HorizontalAlign="center" CssClass="tdpadding" />
@@ -704,9 +705,9 @@
                                 <SortedDescendingHeaderStyle BackColor="#00547E" />
                             </asp:GridView>
                         </div>
-                            <div class="col-md-8">
-                        <asp:Label runat="server" Visible="false" ID="NoStaffLable"> No Staff is attached</asp:Label>
-                                </div>
+                        <div class="col-md-8">
+                            <asp:Label runat="server" Visible="false" ID="NoStaffLable"> No Staff is attached</asp:Label>
+                        </div>
                         <div class="col-md-8">
                             <label>
                                 Whether there was any change in staff? if so, date of intimation to Chief Electrical Inspector, Haryana be specified.

@@ -476,21 +476,21 @@ nav#navbar.navbar-mobile {
             alert("The Aadhar number/PAN Card number Or Email is already in use. Please register with a different Aadhar number/PAN Card number OR Email.");
 
             var aadharInput = document.getElementById('<%= txtAadhaar.ClientID %>');
-           if (aadharInput) {
-               aadharInput.value = "";
-               aadharInput.focus();
-           }
-           var pancard = document.getElementById('<%= txtpancard.ClientID %>');
-           if (pancard) {
-               pancard.value = "";
-
-           }
-           var Email = document.getElementById('<%= txtEmailID.ClientID %>');
-            if (Email) {
-                Email.value = "";
+            if (aadharInput) {
+                aadharInput.value = "";
+                aadharInput.focus();
             }
-        }
-   </script>
+            var pancard = document.getElementById('<%= txtpancard.ClientID %>');
+            if (pancard) {
+                pancard.value = "";
+
+            }
+         var Email = document.getElementById('<%= txtEmailID.ClientID %>');
+     if (Email) {
+         Email.value = "";
+ }
+ } 
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -1100,7 +1100,7 @@ nav#navbar.navbar-mobile {
                 return false;
             }
             else if (expr.test(phoneNo)) {
-                lblErrorContect.innerHTML = "";
+                lblErrorContect.innerHTML = "";y
                 return true;
             }
             else {
