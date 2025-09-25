@@ -10,7 +10,7 @@
 
         <div class="col-md-4">
             <label>
-                GrNo/UtrnNo 
+                GRN No.
             </label>
             <asp:TextBox class="form-control" ID="txtGrUtrno" ReadOnly="true" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
         </div>
