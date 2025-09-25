@@ -91,7 +91,7 @@ namespace CEIHaryana.Contractor
             else if (e.CommandName == "Reapply")
             {
                 Session["Renwal"] = "No";
-                Response.Redirect("~/Supervisor/Renewal_Certificate_Competency.aspx");
+                Response.Redirect("~/Contractor/Contractor_Licence_Renewal.aspx");
             }
 
         }

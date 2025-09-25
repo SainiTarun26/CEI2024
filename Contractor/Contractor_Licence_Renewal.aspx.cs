@@ -45,7 +45,10 @@ namespace CEIHaryana.Contractor
                         userID = Session["ContractorID"].ToString();
                         HdnUserId.Value = userID;
                         HdnUserType.Value = "Contractor";
-                        GetRenewalData(userID);
+                        if (Convert.ToString(Session["Renwal"]).Trim() == "Yes")
+                        {
+                            GetRenewalData(userID);
+                        }
                         ddlLoadBindState1();
                         GetDetails(userID);
                         StaffData(userID);
