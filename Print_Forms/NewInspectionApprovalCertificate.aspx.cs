@@ -71,7 +71,7 @@ namespace CEIHaryana.Print_Forms
                     txtCreatedDate.Text = dt.Rows[0]["CreatedDate"].ToString();
                     TxtMemo.Text = dt.Rows[0]["MemoNo"].ToString();
                     txtMemoDate.Text = dt.Rows[0]["ApprovedDate"].ToString();
-                    LblMonth.Text = dt.Rows[0]["FinalMonth"].ToString();
+                    //LblMonth.Text = dt.Rows[0]["FinalMonth"].ToString();
                     string[] str = dt.Rows[0]["Suggestion"].ToString().Split('\n');
                     suggestion1.Visible = false;
                     suggestion2.Visible = false;
@@ -146,7 +146,7 @@ namespace CEIHaryana.Print_Forms
                         suggestion4.InnerText = str[3];
                         suggestion4.Visible = true;
                     }
-                    LblMonth.Text = ds.Tables[0].Rows[0]["FinalMonth"].ToString();                  
+                    //LblMonth.Text = ds.Tables[0].Rows[0]["FinalMonth"].ToString();                  
                     myImage.ImageUrl = "data:image/jpeg;base64," + Convert.ToBase64String((byte[])ds.Tables[0].Rows[0]["Signature"]);
                     lblstamp1.Text = ds.Tables[0].Rows[0]["Stamp1"].ToString();
                     lblstamp2.Text = ds.Tables[0].Rows[0]["Stamp2"].ToString();

@@ -336,7 +336,7 @@ nav#navbar.navbar-mobile {
        <tr>
            <td rowspan="6">Supervisor</td>
            <td>New</td>
-           <td>480/- Rs for Five Year</td>
+           <td>480/- Rs for One Year</td>
        </tr>
        <tr>
            <td>Renewal</td>
@@ -376,7 +376,7 @@ nav#navbar.navbar-mobile {
        </tr>
        <tr>
            <td></td>
-           <td>4020/- Rs More then 30 up to endless
+           <td>4020/- Rs More then 30 days
            </td>
        </tr>
        <tr>

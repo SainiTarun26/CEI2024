@@ -329,11 +329,11 @@ by the manufacturer or by the relevant code of practice of the bureau of Indian 
                                     </p>
                                 
                                 <div id="lowerdiv" style="margin-top:20px;">
-    <p style="margin-left:10%;">
+    <%--<p style="margin-left:10%;">
         Your next inspection shall fall due in the month of
         <asp:Label ID="LblMonth" runat="server" ></asp:Label>
         every year. You are therefore requested to deposit inspection fees as per schedule under the Head of A/c "0043--Taxes and Duties on Electricity Fees payable and apply online to this office one month before the due date."
-    </p>
+    </p>--%>
                                                                                                                          <div class="row" style="padding-right: 5px !important;">
     <div class="col-md-12" style="padding-left:65px;text-align:justify;">
     <asp:Label ID="lblNote" runat="server"  Style="margin-left:0%;font-size:18px;"></asp:Label>
