@@ -462,6 +462,75 @@ nav#navbar.navbar-mobile {
             border-radius: 5px;
             width: 100%;
         }
+                nav#navbar {
+    box-shadow: none !important;
+}
+
+        img#ProfilePhoto {
+            height: 100px;
+            width: 100px;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0
+        }
+
+        .navbar ul {
+            margin-left: 20px;
+        }
+
+        li.dropdown {
+            padding: 0px !important;
+        }
+
+        li {
+            padding: 0px !important;
+        }
+
+        .container.d-flex.align-items-center.justify-content-between {
+            max-width: 1650px;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        #header .logo img {
+            max-height: 44px;
+            margin-left: 0px;
+        }
+
+        a:hover {
+            font-weight: 700;
+            transition: all .02s ease;
+        }
+
+        /* New code for menu wrapping */
+        ul {
+            display: flex;
+            flex-wrap: wrap; /* allows li to break into next line */
+            gap: 10px; /* spacing between li items */
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+            ul li {
+                white-space: normal; /* allow li text to wrap */
+            }
+            /* Apply only when nav is in mobile mode */
+nav#navbar.navbar-mobile {
+    position: absolute;
+    
+    left: 0;
+    width: 100%;
+    height: 459px !important;
+    background: #d1e6ff; /* keep same bg as header */
+    overflow-y: auto;    /* scroll if menu items overflow */
+    z-index: 999;        /* stay above content */
+    padding: 15px 0;
+    border-top: 1px solid #ccc;
+}
+.container.d-flex.justify-content-center.justify-content-md-between {
+    max-width: 1650px;
+}
     </style>
     <script type="text/javascript">
         function alertWithRedirectdata() {

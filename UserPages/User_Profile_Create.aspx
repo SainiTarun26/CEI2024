@@ -37,6 +37,21 @@
     <link rel="shortcut icon" href="/images/favicon.png" />
 
     <style>
+                                                .container.d-flex.align-items-center.justify-content-between{
+            max-width:1650px;
+        }
+                    #header .logo img {
+    max-height: 44px !important;
+    margin-left: 0px !important;
+}
+                       li#logout {
+    background: #4B49AC !important;
+    border-radius: 51px !important;
+    padding: 7px 5px 7px 5px !important;
+}
+                                  nav#navbar {
+    box-shadow: none !important;
+}
         ul#profile_drop {
             margin-left: -86px;
             width: 120px;
@@ -56,16 +71,6 @@
             max-height: 62px;
             margin-left: 41px;
             margin-top: 6px;
-        }
-
-
-        li#logout {
-            padding-left: 10px !important;
-            background: #4B49AC !important;
-            border-radius: 51px !important;
-            padding-right: 10px !important;
-            padding-top: 10px !important;
-            padding-bottom: 10px !important;
         }
 
         img#ProfilePhoto {
@@ -410,154 +415,164 @@
     <form id="form1" runat="server">
         <!-- ======= Top Bar ======= -->
         <asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>
-        <section id="topbar" class="d-flex align-items-center">
-            <div class="container d-flex justify-content-center justify-content-md-between">
-                <div class="contact-info d-flex align-items-center">
-                    <i class="bi bi-envelope d-flex align-items-center">
-                        <a href="mailto:cei_goh@yahoo.com">cei_goh@yahoo.com</a>
-                    </i>
-                    <i class="bi bi-phone d-flex align-items-center ms-4">
-                        <span>0172 2704090</span>
-                    </i>
-                </div>
-                <div class="social-links d-none d-md-flex align-items-center">
-                    <a href="#" class="twitter">
-                        <i class="bi bi-twitter"></i>
-                    </a>
-                    <a href="#" class="facebook">
-                        <i class="bi bi-facebook"></i>
-                    </a>
-                    <a href="#" class="instagram">
-                        <i class="bi bi-instagram"></i>
-                    </a>
-                    <a href="#" class="linkedin">
-                        <i class="bi bi-linkedin"></i>
-
-                    </a>
-                </div>
-            </div>
-        </section>
+                                                                                          <section id="topbar" class="d-flex align-items-center">
+     <div class="container d-flex justify-content-center justify-content-md-between" style="max-width: 1680px;">
+         <div class="contact-info d-flex align-items-center">
+             <i class="bi bi-envelope d-flex align-items-center">
+                 <a href="mailto:cei_goh@yahoo.com">cei_goh@yahoo.com</a>
+             </i>
+             <i class="bi bi-phone d-flex align-items-center ms-4">
+                 <span>0172 2704090</span>
+             </i>
+         </div>
+         <div class="social-links d-none d-md-flex align-items-center">
+             <a href="#" class="twitter">
+                 <i class="bi bi-twitter"></i>
+             </a>
+             <a href="#" class="facebook">
+                 <i class="bi bi-facebook"></i>
+             </a>
+             <a href="#" class="instagram">
+                 <i class="bi bi-instagram"></i>
+             </a>
+             <a href="#" class="linkedin">
+                 <i class="bi bi-linkedin"></i>
+             </a>
+         </div>
+     </div>
+ </section>
         <!-- ======= Header ======= -->
+
         <header id="header" class="d-flex align-items-center"
             style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; background: #d1e6ff;">
-            <div class="container d-flex align-items-center justify-content-between" style="margin-left: -36px;">
-                <a href="index.html" class="logo">
-                    <img src="../Assets/Add a heading (1).png" />
+            <div class="container d-flex align-items-center justify-content-between">
+                <a href="/Login.aspx" class="logo">
+                    <img src="/Assets/Add a heading (1).png" alt="Logo" />
                 </a>
-                <%--<h1 class="logo">
-            <a href="index.html">
-                <span style="font-size: 18px; margin-left: -30px;">CEI, Haryana<span>.</span></span>
-            </a>
-        </h1>--%>
-                <!-- Uncomment below if you prefer to use an image logo -->
-                <nav id="navbar" class="navbar" style="box-shadow: none !important; margin-left: 40px;">
-                    <ul>
-                        <li class="dropdown">
-                            <a href="#">
-                                <span>Home</span>
-                                <i class="bi bi-chevron-down"></i>
-                            </a>
-                            <%--<ul>
-                    <li>
-                        <a href="#">About CEI</a>
-                    </li>
-                    <li>
-                        <a href="#">State Licensing Board, Haryana</a>
-                    </li>
-                    <li>
-                        <a href="#">Functions</a>
-                    </li>
-                </ul>--%>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#">
-                                <span>Lift & Esclator</span>
-                                <i class="bi bi-chevron-down"></i>
-                            </a>
-                            <%--<ul>
-                    <li>
-                        <a href="#">Procedure For Registration/
-                        <br>
-                            Inspection Lifts and Esclators
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">Checklist for Registration/
-                        <br>
-                            Inspection of Lifts and Esclators
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">Forms</a>
-                    </li>
-                </ul>--%>
 
+                <nav id="navbar" class="navbar">
+                    <ul>
+                        <%--<li class="dropdown">
+                            <a href="#"><span>Home</span> <i class="bi bi-chevron-down"></i></a>
+                            <ul>
+                                <li><a href="/AboutCEI.aspx">About CEI</a></li>
+                                <li><a href="/StateLicensingBoard.aspx">State Licensing Board, Haryana</a></li>
+                                <li><a href="/Functions.aspx">Functions</a></li>
+                            </ul>
                         </li>
+                        <li>|</li>
+
                         <li class="dropdown">
-                            <a href="#">
-                                <span>Licensing</span>
-                                <i class="bi bi-chevron-down"></i>
-                            </a>
-                            <%--<ul>
-                    <li>
-                        <a href="#">Procedure/ Condition
-                        <br>
-                            for Various Licences/ Certificates
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">Electrical Supervisor Competency
-                        <br />
-                            Certificate(Excemption)
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">Forms(Licence)</a>
-                    </li>
-                </ul>--%>
+                            <a href="#"><span>Lift & Escalator</span> <i class="bi bi-chevron-down"></i></a>
+                            <ul>
+                                <li><a href="/Procedure_For_Registration_Lift_Exclator.aspx">Procedure For Registration /<br />
+                                    Inspection Lifts and Escalators</a></li>
+                                <li><a href="/Login.aspx" target="_blank">Apply for New</a></li>
+                                <li><a href="/Login.aspx" target="_blank">Apply for Renewal Lift</a></li>
+                                <li><a href="/StaticPage2.aspx" target="_blank">List of Lift Inspectors</a></li>
+                                <li><a href="/UserManual/Procedure_and_Check_List_for_Lift.pdf" target="_blank">Checklist for Registration/<br />
+                                    Inspection of Lifts and Elevators</a></li>
+                                <li><a href="/UserManual/forms.pdf" target="_blank">Forms</a></li>
+                            </ul>
                         </li>
+                        <li>|</li>
+
                         <li class="dropdown">
-                            <a href="#">
-                                <span>Inspection</span>
-                                <i class="bi bi-chevron-down"></i>
-                            </a>
-                            <%--<ul>
-                    <li>
-                        <a href="#">Checklist for Online Service(Inspection)</a>
-                    </li>
-                    <li>
-                        <a href="#">Procedure for Electrical Installation</a>
-                    </li>
-                    <li>
-                        <a href="#">Procedure for Grant of
-                        <br>
-                            approval for Energisation of
-                        <br>
-                            New Electrical Installation
-                        </a>
-                    </li>
-                </ul>--%>
+                            <a href="#"><span>Licensing</span> <i class="bi bi-chevron-down"></i></a>
+                            <ul>
+                                <li><a href="/UserManual/Haryana-Electrical-Contractor-Licence-Certificate-of.pdf" target="_blank">Electrical Licensing Rules-2021</a></li>
+                                <li><a href="/UserManual/form_split.pdf" target="_blank">Forms & Fees</a></li>
+                                <li><a href="/UserPages/Instructions.aspx" target="_blank">For New Licence</a></li>
+                            </ul>
                         </li>
+                        <li>|</li>
+
                         <li class="dropdown">
+                            <a href="#"><span>Inspection</span> <i class="bi bi-chevron-down"></i></a>
+                            <ul>
+                                <li><a href="/Procedure_for_Electrical_Installation.aspx">Procedure for Electrical Installation</a></li>
+                                <li><a href="/Procedure_for_grant_of_approval.aspx">Procedure for Grant of<br />
+                                    Approval for Energisation of<br />
+                                    New Electrical Installation</a></li>
+                            </ul>
+                        </li>
+                        <li>|</li>
+
+                        <li><a href="/OurOnlineServices.aspx"><span>Services</span></a></li>
+                        <li>|</li>
+
+                        <li class="dropdown">
+                            <a href="#"><span>Orders</span> <i class="bi bi-chevron-down"></i></a>
+                            <ul>
+                                <li><a href="/UserManual/BRAP_Griviance.pdf" target="_blank">BRAP-2024 Grievance Mechanism</a></li>
+                                <li><a href="/UserManual/office order 223.pdf" target="_blank">Mandate Regarding Risk Profile</a></li>
+                                <li><a href="/UserManual/CamScanner 01-09-2025 13.37_1.pdf" target="_blank">Mandate Regarding Registration and Renewal of Lift/Escalator</a></li>
+                                <li><a href="/UserManual/Mendate%20Regarding%20Electrical%20Installations.pdf" target="_blank">Mandate Regarding Electrical Installations</a></li>
+                                <li><a href="/UserManual/Authorization-of-Chartered-Electrical-Safety-EngineerCESE.pdf" target="_blank">Authorization of Chartered Electrical Safety Engineer (CESE)</a></li>
+                                <li><a href="/UserManual/cancellation-order.pdf" target="_blank">Cancellation Order</a></li>
+                                <li class="dropdown">
+                                    <a href="#"><span>Fees Details</span> <i class="bi bi-chevron-right"></i></a>
+                                    <ul>
+                                        <li><a href="/UserManual/Adobe Scan 13-Jan-2025.pdf" target="_blank">Fees for New Installation Inspection</a></li>
+                                        <li><a href="/UserManual/Adobe Scan 13-Jan-2025.pdf" target="_blank">Fees for Periodical Inspection</a></li>
+                                        <li><a href="/UserManual/Adobe Scan 13-Jan-2025.pdf" target="_blank">Fees for Certificates & Licences</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="/UserManual/Orderof22authorisedCharteredElectricalSafetyEngineersdated28.11.2016.pdf" target="_blank">Order of 22 Chartered Electrical Safety Engineers (2016)</a></li>
+                                <li><a href="/UserManual/OrderofauthorisedCharteredElectricalSafetyEngineers.pdf" target="_blank">Order of 209 Chartered Electrical Safety Engineers (2016)</a></li>
+                            </ul>
+                        </li>
+                        <li>|</li>
+
+                        <li class="dropdown">
+                            <a href="#"><span>EODB Compliance's</span> <i class="bi bi-chevron-down"></i></a>
+                            <ul>
+                                <li><a href="/StaticPage1.aspx" target="_blank">Checklist/Procedure/<br />
+                                    Fees Structure for Lift</a></li>
+                                <li><a href="/StaticPage2.aspx" target="_blank">List of Lift Inspectors</a></li>
+                                <li><a href="/StaticPage3.aspx" target="_blank">EODB Dashboard</a></li>
+                            </ul>
+                        </li>
+                        <li>|</li>
+
+                        <li><a href="https://grs.hartron.io/#/" target="_blank">Grievance Redressal</a></li>
+                        <li>|</li>
+
+                        <li><a href="/VerifyCertificate.aspx">Verify Certificate</a></li>
+                        <li>|</li>
+
+                        <li><a href="/UserPages/OurServices.aspx">User Manual</a></li>
+                        <li>|</li>--%>
+                                                     <li class="dropdown" id="logout">
                             <a href="#">
-                                <span>Services</span>
-                                <i class="bi bi-chevron-down"></i>
+                                <span id="user">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+                                    </svg></span>
                             </a>
-                            <%--<ul>
-                    <li>
-                        <a href="#">Our Services</a>
-                    </li>
-                </ul>--%>
+                            <ul id="profile_drop">
+                                <li id="ProfileUser"><a href="/UserPages/User_Profile_Create.aspx">
+                                    <span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-badge" viewBox="0 0 16 16">
+                          User      
+<path d="M6.5 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1zM11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                                        <path d="M4.5 0A2.5 2.5 0 0 0 2 2.5V14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2.5A2.5 2.5 0 0 0 11.5 0zM3 2.5A1.5 1.5 0 0 1 4.5 1h7A1.5 1.5 0 0 1 13 2.5v10.795a4.2 4.2 0 0 0-.776-.492C11.392 12.387 10.063 12 8 12s-3.392.387-4.224.803a4.2 4.2 0 0 0-.776.492z" />
+                                    </svg>&nbsp;&nbsp;Profile</span>
+                                </a></li>
+                                <li id="ProfileLogout">
+                                    <a href="#">
+                                        <asp:Button ID="btnLogout" Text="Logout" runat="server" Style="background: #4b49ac; border-color: #4b49ac; color: white; border-radius: 5px;" />
+                                        <%--OnClick="btnLogout_Click"--%>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
-                        <li>
-                            <a class="nav-link scrollto" href="#contact">Contact Us</a>
-                        </li>
+
                     </ul>
                     <i class="bi bi-list mobile-nav-toggle"></i>
                 </nav>
-                <!-- .navbar -->
             </div>
-
         </header>
         <!-- End Header -->
         <main id="main">
@@ -641,11 +656,8 @@
                                                                     <asp:TextBox class="form-control" ID="txtFatherNmae" MaxLength="50" autocomplete="off" TabIndex="3" onKeyPress="return alphabetKey(event);" runat="server" ReadOnly="true"> </asp:TextBox>
                                                                 </div>
                                                                 <div class="form-group" style="margin-bottom: 0px;">
-                                                                    <label for="Aadhaar" runat="server" id="Aadhaar" visible="true">
+                                                                    <label for="Aadhaar">
                                                                         Aadhaar Card No.<samp style="color: red">* </samp>
-                                                                    </label>
-                                                                    <label for="Pancard" runat="server" id="Pancard" visible="false">
-                                                                        PAN Card No.<samp style="color: red">* </samp>
                                                                     </label>
                                                                     <asp:TextBox class="form-control" ID="txtAadhaar" autocomplete="off" MaxLength="14" onkeypress="return isNumberKey(event)" ReadOnly="true" oninput="formatAadhaarInput()" TabIndex="5" runat="server"> </asp:TextBox>
                                                                 </div>
@@ -811,7 +823,7 @@
 
                                         <div class="row" style="margin-left: 0px;">
                                             <div class="col-md-6" style="padding-left: 0px;">
-                                                <asp:Button type="button" ID="btnBack" OnClick="btnBack_Click" Text="Back" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" />
+                                                <asp:Button type="button" ID="btnBack" onclick="btnBack_Click" Text="Back" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" />
 
                                             </div>
 

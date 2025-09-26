@@ -37,6 +37,10 @@
     <link rel="shortcut icon" href="/images/favicon.png" />
 
     <style>
+        nav#navbar {
+    box-shadow: none !important;
+}
+
         img#ProfilePhoto {
             height: 100px;
             width: 100px;
@@ -99,7 +103,9 @@ nav#navbar.navbar-mobile {
     padding: 15px 0;
     border-top: 1px solid #ccc;
 }
-
+.container.d-flex.justify-content-center.justify-content-md-between {
+    max-width: 1650px;
+}
     </style>
 </head>
 <body>

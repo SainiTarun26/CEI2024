@@ -135,14 +135,14 @@
             margin-top: 8px !important;
         }
 
-        li#logout {
-            padding-left: 10px !important;
-            background: #4B49AC !important;
-            border-radius: 51px !important;
-            padding-right: 10px !important;
-            padding-top: 10px !important;
-            padding-bottom: 10px !important;
-        }
+                      li#logout {
+    background: #4B49AC !important;
+    border-radius: 51px !important;
+    padding: 7px 5px 7px 5px !important;
+}
+                          nav#navbar {
+    box-shadow: none !important;
+}
 
         #header .logo img {
             max-height: 62px;
@@ -1084,34 +1084,34 @@
     <form id="form1" runat="server">
         <!-- ======= Top Bar ======= -->
         <asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>
-        <section id="topbar" class="d-flex align-items-center">
-            <div class="container d-flex justify-content-center justify-content-md-between">
-                <div class="contact-info d-flex align-items-center">
-                    <i class="bi bi-envelope d-flex align-items-center">
-                        <a href="mailto:cei_goh@yahoo.com">cei_goh@yahoo.com</a>
-                    </i>
-                    <i class="bi bi-phone d-flex align-items-center ms-4">
-                        <span>0172 2704090</span>
-                    </i>
-                </div>
-                <div class="social-links d-none d-md-flex align-items-center">
-                    <a href="#" class="twitter">
-                        <i class="bi bi-twitter"></i>
-                    </a>
-                    <a href="#" class="facebook">
-                        <i class="bi bi-facebook"></i>
-                    </a>
-                    <a href="#" class="instagram">
-                        <i class="bi bi-instagram"></i>
-                    </a>
-                    <a href="#" class="linkedin">
-                        <i class="bi bi-linkedin"></i>
-
-                    </a>
-                </div>
-            </div>
-        </section>
+                 <section id="topbar" class="d-flex align-items-center">
+     <div class="container d-flex justify-content-center justify-content-md-between" style="max-width: 1680px;">
+         <div class="contact-info d-flex align-items-center">
+             <i class="bi bi-envelope d-flex align-items-center">
+                 <a href="mailto:cei_goh@yahoo.com">cei_goh@yahoo.com</a>
+             </i>
+             <i class="bi bi-phone d-flex align-items-center ms-4">
+                 <span>0172 2704090</span>
+             </i>
+         </div>
+         <div class="social-links d-none d-md-flex align-items-center">
+             <a href="#" class="twitter">
+                 <i class="bi bi-twitter"></i>
+             </a>
+             <a href="#" class="facebook">
+                 <i class="bi bi-facebook"></i>
+             </a>
+             <a href="#" class="instagram">
+                 <i class="bi bi-instagram"></i>
+             </a>
+             <a href="#" class="linkedin">
+                 <i class="bi bi-linkedin"></i>
+             </a>
+         </div>
+     </div>
+ </section>
         <!-- ======= Header ======= -->
+
         <header id="header" class="d-flex align-items-center"
             style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; background: #d1e6ff;">
             <div class="container d-flex align-items-center justify-content-between">
@@ -1121,7 +1121,7 @@
 
                 <nav id="navbar" class="navbar">
                     <ul>
-                        <li class="dropdown">
+                        <%--<li class="dropdown">
                             <a href="#"><span>Home</span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
                                 <li><a href="/AboutCEI.aspx">About CEI</a></li>
@@ -1210,36 +1210,34 @@
                         <li><a href="/VerifyCertificate.aspx">Verify Certificate</a></li>
                         <li>|</li>
 
-                        <li><a href="/UserPages/OurServices.aspx">User Manual</a><%--<img src="/Assets/new1.gif" />--%></li>
-                        <li>|</li>
-                        <li class="dropdown" id="logout">
+                        <li><a href="/UserPages/OurServices.aspx">User Manual</a></li>
+                        <li>|</li>--%>
+                                                     <li class="dropdown" id="logout">
                             <a href="#">
                                 <span id="user">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
                                         <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
                                         <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
                                     </svg></span>
                             </a>
                             <ul id="profile_drop">
-                                <li id="ProfileUser">
-                                    <a href="#">
-                                        <span>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-badge" viewBox="0 0 16 16">
+                                <li id="ProfileUser"><a href="/UserPages/User_Profile_Create.aspx">
+                                    <span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-badge" viewBox="0 0 16 16">
                           User      
 <path d="M6.5 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1zM11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
                                         <path d="M4.5 0A2.5 2.5 0 0 0 2 2.5V14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2.5A2.5 2.5 0 0 0 11.5 0zM3 2.5A1.5 1.5 0 0 1 4.5 1h7A1.5 1.5 0 0 1 13 2.5v10.795a4.2 4.2 0 0 0-.776-.492C11.392 12.387 10.063 12 8 12s-3.392.387-4.224.803a4.2 4.2 0 0 0-.776.492z" />
-                                    </svg>&nbsp;&nbsp;</span>
-                                    </a>
-                                </li>
+                                    </svg>&nbsp;&nbsp;Profile</span>
+                                </a></li>
                                 <li id="ProfileLogout">
                                     <a href="#">
-                                        <span>
-                                            <asp:Button ID="Button1" OnClick="btnLogout_Click" Text="Logout" runat="server" Style="background: #4b49ac; border-color: #4b49ac; color: white; border-radius: 5px;" />
-                                        </span>
+                                        <asp:Button ID="btnLogout" Text="Logout" OnClick="btnLogout_Click" runat="server" Style="background: #4b49ac; border-color: #4b49ac; color: white; border-radius: 5px;" />
+                                        <%--OnClick="btnLogout_Click"--%>
                                     </a>
                                 </li>
                             </ul>
                         </li>
+
                     </ul>
                     <i class="bi bi-list mobile-nav-toggle"></i>
                 </nav>
