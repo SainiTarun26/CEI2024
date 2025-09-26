@@ -12738,7 +12738,7 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
  SqlConnection con, SqlTransaction tran,
  string Category, string ApplicantName, string FatherName, string DOB, string Age, DateTime Dateturn55,
  string PanCardNo, string LicenceNew, string LicenceOld, string ExpiryDate,
- string Address, string District, string PhoneNo, string Email,
+ string PhoneNo, string Email,
  string ChangeInAddress, string NewAddress, string NewState, string NewDistrict, string NewPincode,
  string NeedToChangeOnLicence, string DelayedOrNot, string DaysDelay, string EquipmentsTested,
  string RenewalTime, string GRNNo, string ChallanDate, string TotalAmount,
@@ -12764,7 +12764,7 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
                 cmd.Parameters.AddWithValue("@Dateturn55", Dateturn55);
                 cmd.Parameters.AddWithValue("@PanCardNo", PanCardNo);
                 cmd.Parameters.AddWithValue("@LicenceNew", LicenceNew);
-                cmd.Parameters.AddWithValue("@LicenceOld", LicenceOld);
+                cmd.Parameters.AddWithValue("@LicenceOld", string.IsNullOrEmpty(LicenceOld) ? (object)DBNull.Value : LicenceOld);
                 DateTime expiry;
                 if (DateTime.TryParse(ExpiryDate, out expiry))
                 {
@@ -12774,15 +12774,13 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
                 {
                     cmd.Parameters.AddWithValue("@ExpiryDate", DBNull.Value);
                 }
-                cmd.Parameters.AddWithValue("@Address", Address);
-                cmd.Parameters.AddWithValue("@District", District);
                 cmd.Parameters.AddWithValue("@PhoneNo", PhoneNo);
                 cmd.Parameters.AddWithValue("@Email", Email);
                 cmd.Parameters.AddWithValue("@ChangeInAddress", ChangeInAddress);
-                cmd.Parameters.AddWithValue("@NewAddress", string.IsNullOrEmpty(NewAddress) ? (object)DBNull.Value : NewAddress);
-                cmd.Parameters.AddWithValue("@NewState", NewState == "Select" ? DBNull.Value : (object)NewState);
-                cmd.Parameters.AddWithValue("@NewDistrict", NewDistrict == "Select" ? DBNull.Value : (object)NewDistrict);
-                cmd.Parameters.AddWithValue("@NewPincode", string.IsNullOrEmpty(NewPincode) ? (object)DBNull.Value : NewPincode);
+                cmd.Parameters.AddWithValue("@NewAddress", NewAddress);
+                cmd.Parameters.AddWithValue("@NewState", NewState);
+                cmd.Parameters.AddWithValue("@NewDistrict", NewDistrict);
+                cmd.Parameters.AddWithValue("@NewPincode", NewPincode);
                 cmd.Parameters.AddWithValue("@NeedToChangeOnLicence", string.IsNullOrEmpty(NeedToChangeOnLicence) ? (object)DBNull.Value : NeedToChangeOnLicence);
                 cmd.Parameters.AddWithValue("@DelayedOrNot", DelayedOrNot);
                 cmd.Parameters.AddWithValue("@DaysDelay", DaysDelay);
@@ -12968,7 +12966,7 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
 
         public DataTable GetStaffDate(string userid)
         {
-            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_StaffDetailsOfContractor", userid);
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings ["DBConnection"].ToString(), "sp_StaffDetailsOfContractor", userid);
         }
         public bool IsContractorExpiryNear(string UserId)
         {

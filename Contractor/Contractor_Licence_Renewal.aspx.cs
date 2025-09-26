@@ -113,6 +113,11 @@ namespace CEIHaryana.Contractor
             txtLicenceNew.Text = dt.Rows[0]["LicenceNew"].ToString();
             txtLicenceOld.Text = dt.Rows[0]["LicenceOld"].ToString();
             txtaddress.Text = dt.Rows[0]["ContractorAddress"].ToString();
+            txtAddressNew.Text = dt.Rows[0]["RegisteredOffice"].ToString();
+            ddlState1.SelectedItem.Text =dt.Rows[0]["State"].ToString();
+            ddlLoadBindDistrict1(ddlState1.SelectedItem.Text);
+            ddlDistrict1.SelectedItem.Text=dt.Rows[0]["Districtoffirm"].ToString();
+            txtPincodeNew.Text=dt.Rows[0]["PinCode"].ToString();
             txtDistrict.Text = dt.Rows[0]["Districtoffirm"].ToString();
             txtVoltageLevel.Text = dt.Rows[0]["Votagelevel"].ToString();
             txtPhone.Text = dt.Rows[0]["ContactNo"].ToString();
@@ -156,7 +161,6 @@ namespace CEIHaryana.Contractor
             ddlState1.DataTextField = "StateName";
             ddlState1.DataValueField = "StateID";
             ddlState1.DataBind();
-            ddlState1.Items.Insert(0, new ListItem("Select", "0"));
             dsState.Clear();
         }
 
@@ -198,10 +202,10 @@ namespace CEIHaryana.Contractor
                 NewDistrict.Visible = false;
                 NewPincode.Visible = false;
                 changedInAddress.Visible = false;
-                txtAddressNew.Text = "";
-                ddlState1.SelectedIndex = 0;
-                ddlDistrict1.SelectedIndex = 0;
-                txtPincodeNew.Text = "";
+                //txtAddressNew.Text = "";
+                //ddlState1.SelectedIndex = 0;
+                //ddlDistrict1.SelectedIndex = 0;
+                //txtPincodeNew.Text = "";
                 rdlchangedonlicence.ClearSelection();
 
 
@@ -446,8 +450,6 @@ namespace CEIHaryana.Contractor
         txtLicenceNew?.Text.Trim() ?? string.Empty,
         txtLicenceOld?.Text.Trim() ?? string.Empty,
         txtexpirydate?.Text ?? string.Empty,
-        txtaddress?.Text.Trim() ?? string.Empty,
-        txtDistrict?.Text.Trim() ?? string.Empty,
         txtPhone?.Text.Trim() ?? string.Empty,
         txtEmail?.Text.Trim() ?? string.Empty,
         rblChangeAddress.SelectedItem?.ToString() ?? string.Empty,
@@ -627,10 +629,6 @@ namespace CEIHaryana.Contractor
             txtEmail.Text = "";
             rdlEquipmentsTested.SelectedIndex = -1;
             rblChangeAddress.SelectedIndex = -1;
-            txtAddressNew.Text = "";
-            txtPincodeNew.Text = "";
-            ddlState1.SelectedValue = "0";
-            ddlDistrict1.Text = "0";
             rdlchangedonlicence.SelectedIndex = -1;
 
             rblChangeInStaff.SelectedIndex = -1;

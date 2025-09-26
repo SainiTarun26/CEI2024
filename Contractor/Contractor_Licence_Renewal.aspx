@@ -380,14 +380,10 @@
                         <div class="col-md-4" style="margin-top: 0px;">
                             <label>
                                 Contractor Old Licence
-                                <samp style="color: red">* </samp>
-                            </label>
-
+                            </label>  
                             <asp:TextBox class="form-control" ID="txtLicenceOld" runat="server" autocomplete="off" ReadOnly="false" TabIndex="1"
                                 MaxLength="200" Style="margin-left: 18px;">
                             </asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator17" CssClass="validation_required" Text="Required" ErrorMessage="Required" ControlToValidate="txtLicenceOld" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-
                         </div>
                         <div class="col-md-4" style="margin-top: 0px;">
                             <label>
@@ -496,9 +492,9 @@
 
                             <asp:DropDownList class="select-form select2" AutoPostBack="true"
                                 ID="ddlState1" runat="server" OnSelectedIndexChanged="ddlState1_SelectedIndexChanged">
-                                <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                                <%--<asp:ListItem Text="Select" Value="0"></asp:ListItem>--%>
                             </asp:DropDownList>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator12" CssClass="validation_required" Text="Required" ErrorMessage="Required" ControlToValidate="ddlState1" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                        <%--    <asp:RequiredFieldValidator ID="RequiredFieldValidator12" CssClass="validation_required" Text="Required" ErrorMessage="Required" ControlToValidate="ddlState1" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />--%>
 
                         </div>
                         <div class="col-md-4" id="NewDistrict" runat="server" visible="false">
@@ -509,9 +505,9 @@
 
                             <asp:DropDownList class="select-form select2"
                                 ID="ddlDistrict1" AutoPostBack="true" runat="server" TabIndex="9">
-                                <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                              <%--  <asp:ListItem Text="Select" Value="0"></asp:ListItem>--%>
                             </asp:DropDownList>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator13" CssClass="validation_required" ErrorMessage="Required" ControlToValidate="ddlDistrict1" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                        <%--    <asp:RequiredFieldValidator ID="RequiredFieldValidator13" CssClass="validation_required" ErrorMessage="Required" ControlToValidate="ddlDistrict1" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />--%>
 
                         </div>
                         <div class="col-md-4" id="NewPincode" runat="server" visible="false">
@@ -577,7 +573,7 @@
                             <asp:TextBox class="form-control" ID="txtVoltageLevel" runat="server" autocomplete="off" ReadOnly="true" onKeyPress="return alphabetKey(event);" TabIndex="1"
                                 MaxLength="200" Style="margin-left: 18px;">
                             </asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator37" CssClass="validation_required" ErrorMessage="Required" ControlToValidate="txtdays" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+<%--                            <asp:RequiredFieldValidator ID="RequiredFieldValidator37" CssClass="validation_required" ErrorMessage="Required" ControlToValidate="txtdays" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />--%>
 
                         </div>
                         <div class="col-md-8">
