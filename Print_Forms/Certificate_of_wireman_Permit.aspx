@@ -194,14 +194,15 @@
                 padding: 8px 0 8px 20px; /* Add space for numbers */
                 border-bottom: 1px dotted black;
             }
-              img#imgQRCode {
-      max-width: 142px;
-  }
 
-  img#imgPhoto {
-      max-width: 113px;
-      margin-left: 6px;
-  }
+        img#imgQRCode {
+            max-width: 142px;
+        }
+
+        img#imgPhoto {
+            max-width: 113px;
+            margin-left: 6px;
+        }
     </style>
 
     <script type="text/javascript">
@@ -284,30 +285,30 @@
                             </div>
                             <hr />
                             <br />
-                                                        <div class="row align-items-center" style="margin-bottom: 15px;">
-    <!-- Left QR/Barcode Placeholder -->
-    <div class="col-sm-3 d-flex justify-content-start">
-        <div style="width: 150px; height: 150px; border: 2px solid black; display: flex; align-items: center; justify-content: center;">
-            <span style="font-size: 12px;">
-                <asp:Image ID="imgQRCode" runat="server" /></span>
-        </div>
-    </div>
+                            <div class="row align-items-center" style="margin-bottom: 15px;">
+                                <!-- Left QR/Barcode Placeholder -->
+                                <div class="col-sm-3 d-flex justify-content-start">
+                                    <div style="width: 150px; height: 150px; border: 2px solid black; display: flex; align-items: center; justify-content: center;">
+                                        <span style="font-size: 12px;">
+                                            <asp:Image ID="imgQRCode" runat="server" /></span>
+                                    </div>
+                                </div>
 
-    <!-- Center Text -->
-    <div class="col-sm-6 text-center">
-        <h6 class="card-title fw-semibold mb-1" style="font-size: 19PX;">FORM III</h6>
-        <h6 class="card-title fw-semibold mb-1" style="font-size: 19PX;">{See rule 6 (3)}</h6>
-    </div>
+                                <!-- Center Text -->
+                                <div class="col-sm-6 text-center">
+                                    <h6 class="card-title fw-semibold mb-1" style="font-size: 19PX;">FORM III</h6>
+                                    <h6 class="card-title fw-semibold mb-1" style="font-size: 19PX;">{See rule 6 (3)}</h6>
+                                </div>
 
-    <!-- Right Image Placeholder -->
-    <div class="col-sm-3 d-flex justify-content-end">
-        <div style="width: 130px; height: 150px; border: 2px solid black; display: flex;">
-            <span style="font-size: 12px; height: 20px; width: 20px">
-                <asp:Image ID="imgPhoto" runat="server" />
-            </span>
-        </div>
-    </div>
-</div>
+                                <!-- Right Image Placeholder -->
+                                <div class="col-sm-3 d-flex justify-content-end">
+                                    <div style="width: 130px; height: 150px; border: 2px solid black; display: flex;">
+                                        <span style="font-size: 12px; height: 20px; width: 20px">
+                                            <asp:Image ID="imgPhoto" runat="server" />
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-6">
                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 15PX;">No. 
@@ -319,6 +320,12 @@
                                 <div class="col-6">
                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 15PX; text-align: end;">Date of Birth:
                                         <asp:Label ID="lblDob" runat="server" Text="" Style="font-size: 16px !important;"></asp:Label>
+                                    </h6>
+                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 15PX; text-align: end;">w.e.f.
+                                        <asp:Label ID="lblWEF" runat="server"></asp:Label>
+                                    </h6>
+                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 15PX; text-align: end;">Valid Upto:
+                                        <asp:Label ID="lblValidUpto" runat="server" Text="" Style="font-size: 16px !important; text-decoration: underline;"></asp:Label>
                                     </h6>
                                 </div>
                             </div>
@@ -336,16 +343,17 @@
                                         <asp:Label
                                             ID="lblname"
                                             runat="server"
-                                            Style="font-weight: 700; display: inline-block;   height: 30px; padding-left: 10px;">
-                                        </asp:Label> son/daughter of sh.<asp:Label ID="lblFatherName" runat="server" Style="font-weight: 700; display: inline-block;   height: 30px; padding-left: 10px;">
+                                            Style="font-weight: 700; display: inline-block; height: 30px; padding-left: 10px;">
+                                        </asp:Label>
+                                        son/daughter of sh.<asp:Label ID="lblFatherName" runat="server" Style="font-weight: 700; display: inline-block; height: 30px; padding-left: 10px;">
                                         </asp:Label>
                                         R/o 
                                                                               
                                         <asp:Label
                                             ID="lblAddress"
                                             runat="server"
-                                            Style="font-weight: 700;display: inline-block;   height: 30px; padding-left: 10px;">
-                                        </asp:Label> 
+                                            Style="font-weight: 700; display: inline-block; height: 30px; padding-left: 10px;">
+                                        </asp:Label>
                                         having satisfied the Chief Electrical Inspector, Haryana that his/her
 qualifications and experience as certained by the Screening Committee, found eligible for grant of Wireman Permit, is herby granted this Wireman Permit.</h6>
                                 </div>
@@ -357,7 +365,7 @@ qualifications and experience as certained by the Screening Committee, found eli
                                 <div class="col-3" style="margin-top: auto;">
 
                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18px; font-weight: 700;">Initial Issue Date:
-                                        <asp:Label ID="lblApprovedDate" runat="server"  Style="font-weight: 500; font-size: 16px !important;"></asp:Label></h6>
+                                        <asp:Label ID="lblApprovedDate" runat="server" Style="font-weight: 500; font-size: 16px !important;"></asp:Label></h6>
 
                                 </div>
                                 <div class="col-9" style="text-align: end">
