@@ -12835,63 +12835,131 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
             }
         }
         public void InsertRenewalData(SqlConnection con, SqlTransaction tran, string Category,
-string DOB, string age, DateTime Dateturn55, string FatherName, string AadharNo,
- string PhoneNo, string Email, string LicenceNew, string LicenceOld, string DelayedOrNot,
-string DaysDelay, string RenewalTime, string amount, string GRNno, string ChallanDate, string changeofemployer, string CreatedBy)
+
+  string DOB, string age, DateTime Dateturn55, string FatherName, string AadharNo,
+
+   string PhoneNo, string Email, string LicenceNew, string LicenceOld, string DelayedOrNot,
+
+  string DaysDelay, string ChangeInAddress, string NewAddress, string NewState, string NewDistrict, string NewPincode, string RenewalTime, string amount, string GRNno, string ChallanDate, string changeofemployer, string CreatedBy)
+
         {
+
             using (SqlCommand cmd = new SqlCommand("sp_RenewalDetails", con, tran))
+
             {
+
                 cmd.CommandType = CommandType.StoredProcedure;
 
+
+
                 cmd.Parameters.AddWithValue("@Category", Category);
+
                 //cmd.Parameters.AddWithValue("@DOB", DOB);
+
                 DateTime dob;
+
                 if (DateTime.TryParse(DOB, out dob))
+
                 {
+
                     cmd.Parameters.AddWithValue("@DOB", dob);
+
                 }
+
                 else
+
                 {
+
                     cmd.Parameters.AddWithValue("@DOB", DBNull.Value);
+
                 }
+
                 cmd.Parameters.AddWithValue("@Age", age);
+
                 //cmd.Parameters.AddWithValue("@Dateturn55", Dateturn55);
 
+
+
                 if (Dateturn55 != DateTime.MinValue)
+
                 {
+
                     cmd.Parameters.AddWithValue("@Dateturn55", Dateturn55);
+
                 }
+
                 else
+
                 {
+
                     cmd.Parameters.AddWithValue("@Dateturn55", DBNull.Value);
+
                 }
+
                 cmd.Parameters.AddWithValue("@FatherName", FatherName);
+
                 cmd.Parameters.AddWithValue("@AadharNo", AadharNo);
+
                 cmd.Parameters.AddWithValue("@PhoneNo", PhoneNo);
+
                 cmd.Parameters.AddWithValue("@Email", Email);
+
                 cmd.Parameters.AddWithValue("@LicenceNew", LicenceNew);
-                cmd.Parameters.AddWithValue("@LicenceOld", LicenceOld);
+
+                cmd.Parameters.AddWithValue("@LicenceOld", string.IsNullOrEmpty(LicenceOld) ? (object)DBNull.Value : LicenceOld);
+
                 //cmd.Parameters.AddWithValue("@ExpiryDate", ExpiryDate);
+
                 cmd.Parameters.AddWithValue("@DelayedOrNot", DelayedOrNot);
+
                 cmd.Parameters.AddWithValue("@DaysDelay", DaysDelay);
+
+                cmd.Parameters.AddWithValue("@ChangeInAddress", ChangeInAddress);
+
+                cmd.Parameters.AddWithValue("@NewAddress", NewAddress);
+
+                cmd.Parameters.AddWithValue("@NewState", NewState);
+
+                cmd.Parameters.AddWithValue("@NewDistrict", NewDistrict);
+
+                cmd.Parameters.AddWithValue("@NewPincode", NewPincode);
+
                 cmd.Parameters.AddWithValue("@RenewalTime", RenewalTime);
+
                 cmd.Parameters.AddWithValue("@TotalAmount", amount);
+
                 cmd.Parameters.AddWithValue("@GRNno", GRNno);
+
                 // cmd.Parameters.AddWithValue("@ChallanDate", ChallanDate);
+
                 DateTime challan;
+
                 if (DateTime.TryParse(ChallanDate, out challan))
+
                 {
+
                     cmd.Parameters.AddWithValue("@ChallanDate", challan);
+
                 }
+
                 else
+
                 {
+
                     cmd.Parameters.AddWithValue("@ChallanDate", DBNull.Value);
+
                 }
+
                 cmd.Parameters.AddWithValue("@ChangeOfEmployer", changeofemployer);
+
                 cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
 
+
+
                 cmd.ExecuteNonQuery();
+
             }
+
         }
         public DataTable GetContractorDetailsforRenewal(string UserID)
         {

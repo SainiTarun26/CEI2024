@@ -237,6 +237,46 @@
         input#ContentPlaceHolder1_chkdeclaration2 {
             margin-bottom: 7px;
         }
+                select#ContentPlaceHolder1_ddlState1 {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    margin-left: 0px !important;
+    height: 30px;
+    font-size: 12px !important;
+    padding: 3px;
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s 
+ease-in-out, box-shadow .15s 
+ease-in-out;
+}
+    select#ContentPlaceHolder1_ddlDistrict1 {
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    margin-left: 0px !important;
+    height: 30px;
+    font-size: 12px !important;
+    padding: 3px;
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s 
+ease-in-out, box-shadow .15s 
+ease-in-out;
+}
     </style>
 </asp:Content>
 <asp:Content ID="Content4" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -380,7 +420,7 @@
                                     <samp style="color: red">* </samp>
                             </label>
 
-                            <asp:TextBox class="form-control" ID="txtaddress" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
+                            <asp:TextBox class="form-control" ID="txtaddress" runat="server" ReadOnly="true" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
                                 Style="margin-left: 18px;">
                             </asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator17" runat="server" ControlToValidate="txtaddress" ValidationGroup="Submit" ForeColor="Red">Please Select</asp:RequiredFieldValidator>
@@ -400,15 +440,12 @@
                         </div>
                         <div class="col-md-4" runat="server" visible="true">
                             <label>
-                                Competency Certificate No. (Old)
-                       <samp style="color: red">* </samp>
+                                Competency Certificate No. (Old)               
                             </label>
 
                             <asp:TextBox class="form-control" ID="txtcertificatenoOLD" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
                                 Style="margin-left: 18px;">
-                            </asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator18" runat="server" ControlToValidate="txtcertificatenoOLD" ValidationGroup="Submit" ForeColor="Red">Please Select</asp:RequiredFieldValidator>
-
+                            </asp:TextBox>            
                         </div>
 
                         <div class="col-md-4" runat="server" visible="true">
@@ -476,7 +513,78 @@ Please Select
                     </div>
 
 
+                    <div class="row">
 
+                        <div class="col-md-4">
+                            <label>
+                                Whether there is any change of Address
+               <samp style="color: red">* </samp>
+                                &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            </label>
+                            <asp:RadioButtonList runat="server" ID="rblChangeAddress" OnSelectedIndexChanged="rblChangeAddress_SelectedIndexChanged"
+                                RepeatDirection="Horizontal" CssClass="radio-inline" AutoPostBack="true">
+                                <asp:ListItem Value="1" Text="Yes"></asp:ListItem>
+                                <asp:ListItem Value="0" Text="No"></asp:ListItem>
+                            </asp:RadioButtonList>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" CssClass="validation_required" Text="Required" ErrorMessage="Required" ControlToValidate="rblChangeAddress" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+
+                        </div>
+                        <div class="col-md-8" id="NewAddress" runat="server" visible="false">
+                            <label>
+                                Address
+               <samp style="color: red">* </samp>
+                            </label>
+
+                            <asp:TextBox class="form-control" ID="txtAddressNew" runat="server" autocomplete="off" ReadOnly="false" onKeyPress="return alphabetKey(event);" TabIndex="1"
+                                MaxLength="200" Style="margin-left: 18px;">
+                            </asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator30" CssClass="validation_required" Text="Required" ErrorMessage="Required" ControlToValidate="txtAddressNew" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+
+                        </div>
+                        <div class="col-md-4" id="NewState" runat="server" visible="false" style="margin-top: 15px;">
+                            <label>
+                                State
+               <samp style="color: red">* </samp>
+                            </label>
+
+                            <asp:DropDownList class="select-form select2" AutoPostBack="true"
+                                ID="ddlState1" runat="server" OnSelectedIndexChanged="ddlState1_SelectedIndexChanged">
+                                <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                            </asp:DropDownList>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator31" CssClass="validation_required" Text="Required" ErrorMessage="Required" ControlToValidate="ddlState1" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+
+                        </div>
+                        <div class="col-md-4" id="NewDistrict" runat="server" visible="false" style="margin-top: 15px;">
+                            <label>
+                                District
+               <samp style="color: red">* </samp>
+                            </label>
+
+                            <asp:DropDownList class="select-form select2"
+                                ID="ddlDistrict1" AutoPostBack="true" runat="server" TabIndex="9">
+                                <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                            </asp:DropDownList>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator32" CssClass="validation_required" ErrorMessage="Required" ControlToValidate="ddlDistrict1" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+
+                        </div>
+                        <div class="col-md-4" id="NewPincode" runat="server" visible="false" style="margin-top: 15px;">
+                            <label>
+                                Pincode
+               <samp style="color: red">* </samp>
+                            </label>
+
+                            <asp:TextBox class="form-control" ID="txtPincodeNew" MaxLength="6" runat="server" autocomplete="off" onkeypress="return isNumberKey(event)" ReadOnly="false" TabIndex="1"
+                                Style="margin-left: 18px;">
+                            </asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator33" CssClass="validation_required" runat="server" ControlToValidate="txtPincodeNew"
+                                ErrorMessage="Please Enter Your Pincode" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
+                            <asp:RegularExpressionValidator
+                                ID="RegexPin" runat="server" ControlToValidate="txtPincodeNew" ErrorMessage="Enter valid 6-digit Pin Code" ForeColor="Red" Display="Dynamic" ValidationGroup="Submit" ValidationExpression="^[1-9][0-9]{5}$">
+                            </asp:RegularExpressionValidator>
+
+                        </div>
+
+                    </div>
 
                 </div>
 
@@ -822,7 +930,7 @@ Please Select
                 <div class="row">
                     <div class="col-md-12">
                         <div style="display: flex; align-items: center;">
-                            <asp:CheckBox ID="chkdeclaration2" runat="server" Text="&nbsp; &nbsp;I am authorized to sign the application as contractor/on behalf of the contractor." />
+                            <asp:CheckBox ID="chkdeclaration2" runat="server" Text="&nbsp; &nbsp;I am authorized to sign the application as WIREMAN/on behalf of the WIREMAN." />
                         </div>
 
 

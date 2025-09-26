@@ -43,7 +43,11 @@ namespace CEIHaryana.Wiremen
                         userID = Session["WiremanId"].ToString();
                         HdnUserId.Value = userID;
                         HdnUserType.Value = "Wireman";
-                        GetRenewalData(userID);
+                        if (Convert.ToString(Session["Renwal"]).Trim()== "Yes")
+                        {
+                            GetRenewalData(userID);
+                        }
+                        ddlLoadBindState1();
                         GetSupervisorDetails(userID);
                     }
                 }
@@ -105,7 +109,11 @@ namespace CEIHaryana.Wiremen
             }
 
             txtage55.Text = dt.Rows[0]["DateTurned55"].ToString();
-            txtaddress.Text = dt.Rows[0]["Address"].ToString();
+            txtaddress.Text = dt.Rows[0]["FullAddress"].ToString();
+            txtAddressNew.Text=dt.Rows[0]["Address"].ToString();
+            ddlState1.SelectedItem.Text=dt.Rows[0]["State"].ToString();
+            ddlDistrict1.SelectedItem.Text=dt.Rows[0]["District"].ToString();
+            txtPincodeNew.Text=dt.Rows[0]["PinCode"].ToString();
             txtFatherName.Text = dt.Rows[0]["FatherName"].ToString();
             txtDOB.Text = dt.Rows[0]["DOB"].ToString();
             txtPhone.Text = dt.Rows[0]["PhoneNo"].ToString();
@@ -197,8 +205,10 @@ namespace CEIHaryana.Wiremen
                                      txtage.Text.Trim(), DateTime.TryParse(txtage55?.Text, out var dt55) ? dt55 : (DateTime)SqlDateTime.Null, txtFatherName.Text.Trim(), txtaadharno.Text.Trim(),
                                       txtPhone.Text.Trim(), txtEmail.Text.Trim(),
                                      txtcertificatenoNEW.Text.Trim(), txtcertificatenoOLD.Text.Trim(),
-                                     rblbelated.Text.ToString(), txtdays.Text.Trim(), ddlRenewalTime.SelectedItem.ToString(),
-                                     txtamount.Text.Trim(), txtgrnno.Text.Trim(), txtdate.Text.Trim(), RadioButtonList1.SelectedItem.ToString(),
+                                     rblbelated.Text.ToString(), txtdays.Text.Trim(),
+                                       rblChangeAddress.SelectedItem?.ToString() ?? string.Empty, txtAddressNew?.Text ?? string.Empty, ddlState1.SelectedItem?.ToString() ?? string.Empty,
+                                        ddlDistrict1.SelectedItem?.ToString() ?? string.Empty, txtPincodeNew?.Text ?? string.Empty, ddlRenewalTime.SelectedItem.ToString(),
+                                       txtamount.Text.Trim(), txtgrnno.Text.Trim(), txtdate.Text.Trim(), RadioButtonList1.SelectedItem.ToString(),
                                      CreatedBy);
 
                                 CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Certificate of Competency/Wireman Permit. ", CertificateofCompetency, 1, CreatedBy);
@@ -348,6 +358,60 @@ namespace CEIHaryana.Wiremen
             txtPhone.Text = "";
             txtEmail.Text = "";
 
+        }
+
+        protected void rblChangeAddress_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (rblChangeAddress.SelectedValue == "1")
+            {
+                NewAddress.Visible = true;
+                NewState.Visible = true;
+                NewDistrict.Visible = true;
+                NewPincode.Visible = true;
+
+            }
+            else
+            {
+                NewAddress.Visible = false;
+                NewState.Visible = false;
+                NewDistrict.Visible = false;
+                NewPincode.Visible = false;
+
+                //txtAddressNew.Text = "";
+                //ddlState1.SelectedIndex = 0;
+                //ddlDistrict1.SelectedIndex = 0;
+                //txtPincodeNew.Text = "";
+
+
+            }
+        }
+
+        protected void ddlState1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ddlLoadBindDistrict1(ddlState1.SelectedItem.ToString());
+        }
+
+        private void ddlLoadBindDistrict1(string state)
+        {
+            DataSet dsDistrict = new DataSet();
+            dsDistrict = CEI.GetddlDrawDistrict(state);
+            ddlDistrict1.DataSource = dsDistrict;
+            ddlDistrict1.DataTextField = "District";
+            ddlDistrict1.DataValueField = "District";
+            ddlDistrict1.DataBind();
+            ddlDistrict1.Items.Insert(0, new ListItem("Select", "0"));
+            dsDistrict.Clear();
+        }
+        private void ddlLoadBindState1()
+        {
+            DataSet dsState = new DataSet();
+            dsState = CEI.GetddlDrawState();
+            ddlState1.DataSource = dsState;
+            ddlState1.DataTextField = "StateName";
+            ddlState1.DataValueField = "StateID";
+            ddlState1.DataBind();
+            ddlState1.Items.Insert(0, new ListItem("Select", "0"));
+            dsState.Clear();
         }
     }
 }

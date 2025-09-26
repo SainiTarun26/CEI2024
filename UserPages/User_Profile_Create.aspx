@@ -641,8 +641,11 @@
                                                                     <asp:TextBox class="form-control" ID="txtFatherNmae" MaxLength="50" autocomplete="off" TabIndex="3" onKeyPress="return alphabetKey(event);" runat="server" ReadOnly="true"> </asp:TextBox>
                                                                 </div>
                                                                 <div class="form-group" style="margin-bottom: 0px;">
-                                                                    <label for="Aadhaar">
+                                                                    <label for="Aadhaar" runat="server" id="Aadhaar" visible="true">
                                                                         Aadhaar Card No.<samp style="color: red">* </samp>
+                                                                    </label>
+                                                                    <label for="Pancard" runat="server" id="Pancard" visible="false">
+                                                                        PAN Card No.<samp style="color: red">* </samp>
                                                                     </label>
                                                                     <asp:TextBox class="form-control" ID="txtAadhaar" autocomplete="off" MaxLength="14" onkeypress="return isNumberKey(event)" ReadOnly="true" oninput="formatAadhaarInput()" TabIndex="5" runat="server"> </asp:TextBox>
                                                                 </div>
@@ -808,7 +811,7 @@
 
                                         <div class="row" style="margin-left: 0px;">
                                             <div class="col-md-6" style="padding-left: 0px;">
-                                                <asp:Button type="button" ID="btnBack" onclick="btnBack_Click" Text="Back" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" />
+                                                <asp:Button type="button" ID="btnBack" OnClick="btnBack_Click" Text="Back" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" />
 
                                             </div>
 

@@ -56,6 +56,17 @@ namespace CEIHaryana.UserPages
 
                 txtAadhaar.Text = dt.Rows[0]["Aadhar"].ToString();
 
+                if (string.IsNullOrEmpty(txtAadhaar.Text))
+                {
+                    txtAadhaar.Text=dt.Rows[0]["PanCardNo"].ToString();
+                    Aadhaar.Visible=false;
+                    Pancard.Visible=true;
+                }
+                else
+                {
+                    Aadhaar.Visible=true;
+                }
+
                 txtCommunicationAddress.Text = dt.Rows[0]["CommunicationAddress"].ToString();
 
                 txtState1.Text = dt.Rows[0]["CommState"].ToString();
