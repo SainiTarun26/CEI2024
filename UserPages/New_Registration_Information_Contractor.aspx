@@ -1628,13 +1628,7 @@ nav#navbar.navbar-mobile {
                                                                     <asp:GridView ID="grd_Documemnts" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowDataBound="grd_Documemnts_RowDataBound" autopostback="true" OnRowCommand="grd_Documemnts_RowCommand" AutoGenerateColumns="false">
                                                                         <HeaderStyle BackColor="#B7E2F0" />
                                                                         <Columns>
-                                                                            <asp:TemplateField HeaderText="SNo">
-                                                                                <HeaderStyle Width="5%" CssClass="headercolor tdwidth" />
-                                                                                <ItemStyle Width="5%" />
-                                                                                <ItemTemplate>
-                                                                                    <%#Container.DataItemIndex+1 %>
-                                                                                </ItemTemplate>
-                                                                            </asp:TemplateField>
+                                                                            
                                                                             <asp:BoundField DataField="DocumentName" HeaderText="Documents Name">
                                                                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                                                                 <ItemStyle HorizontalAlign="Left" Width="15%" />

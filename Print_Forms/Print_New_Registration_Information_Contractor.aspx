@@ -1115,13 +1115,13 @@
                                     <asp:GridView ID="grd_Documemnts" OnRowDataBound="grd_Documemnts_RowDataBound" autopostback="true" CssClass="table table-bordered table-striped table-responsive" runat="server" AutoGenerateColumns="false">
                                         <HeaderStyle BackColor="#B7E2F0" />
                                         <Columns>
-                                            <asp:TemplateField HeaderText="SNo">
+                                           <%-- <asp:TemplateField HeaderText="SNo">
                                                 <HeaderStyle Width="5%" CssClass="headercolor" />
                                                 <ItemStyle Width="5%" />
                                                 <ItemTemplate>
                                                     <%#Container.DataItemIndex+1 %>
                                                 </ItemTemplate>
-                                            </asp:TemplateField>
+                                            </asp:TemplateField>--%>
                                             <asp:BoundField DataField="DocumentName" HeaderText="Documents Name">
                                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor tdwidth" />
                                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
@@ -1148,7 +1148,8 @@ stage
                                 <div class="col-md-12">
                                     <ul>
                                         <li>I/we have read and understood the conditions and documents required to be attached with application for
-grant of Electrical Contractor License Class 'A' and relevant documents are attached in chronological order.</li>
+grant of Electrical Contractor License Class 'A' and relevant documents are attached in chronological order.
+</li>
                                         <li>I/we hereby declare that the staff specified in column 13 is intended exclusively for attending to the work
 under the conditions of licensing and under ―Central Electricity Authority (Measures relating to Safety and
 Electric Supply) Regulations 2010‖. The service of the staff will not be utilized for routine operations in the
@@ -1161,7 +1162,8 @@ license is granted, a breach of which will render the license liable to cancella
                                         <li>I/We hereby also agree to maintain such registers and records as may be prescribed by the Board/CEI in the
 forms specified for the purpose.</li>
                                         <li>I/we do solemnly affirm and declare that the facts submitted in the application are true and correct to the best
-of my knowledge and nothing has been concealed by me/us.</li>
+of my knowledge and nothing has been concealed by me/us.
+</li>
                                         <li>I am authorized to sign this application as individual on behalf of the firm.</li>
                                         <li>I/we are fully aware that this self declaration has the same validity as duly sworn statement of fact in a court
 of law and any false information provided by me in this application shall be liable for punishment under the
