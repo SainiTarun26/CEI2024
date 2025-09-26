@@ -82,7 +82,8 @@ namespace CEIHaryana.Print_Forms
                     lblName.Text = dt.Rows[0]["Name"].ToString();
                     lblFatherName.Text = dt.Rows[0]["FatherName"].ToString();
                     lblAddress.Text = dt.Rows[0]["FullAddress"].ToString();
-                    lblApprovedDate.Text = dt.Rows[0]["CreatedDate"].ToString();
+                    //lblApprovedDate.Text = dt.Rows[0]["CreatedDate"].ToString();
+                    lblInitialDate.Text = dt.Rows[0]["DateofIntialissue"].ToString();
                     lblDob.Text = dt.Rows[0]["DOB"].ToString();
                     imgQRCode.ImageUrl = "data:image/jpeg;base64," + Convert.ToBase64String((byte[])dt.Rows[0]["QRCode"]);
 

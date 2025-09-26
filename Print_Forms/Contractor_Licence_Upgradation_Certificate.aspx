@@ -402,8 +402,9 @@
                                     <asp:Image ID="mySignature" runat="server" Width="200" Height="90" Style="bottom: 140px; margin-right: 30px;" />
 
                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 16PX; font-weight: 700;">Signatures of Contractor</h6>
-                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 16PX; font-weight: 700;">Dated:
-                                        <asp:Label ID="lblApprovedDate" runat="server" Style="font-weight: 500; font-size: 16px !important;"></asp:Label></h6>
+                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 16PX; font-weight: 700;">Initial Issue Date:
+                                       <%-- <asp:Label ID="lblApprovedDate" runat="server" Style="font-weight: 500; font-size: 16px !important;"></asp:Label></h6>--%>
+                                         <asp:Label ID="lblInitialdate" runat="server" Style="font-weight: 500; font-size: 16px !important;"></asp:Label></h6>
 
                                 </div>
                                 <div class="col-9" style="text-align: end">

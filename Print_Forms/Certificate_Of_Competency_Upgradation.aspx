@@ -361,9 +361,9 @@ qualifications and experience as certained by the Screening Committee, found eli
                             <div class="row">
                                 <div class="col-3" style="margin-top: auto;">
 
-                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 16px; font-weight: 700;">Dated:
-                                        <asp:Label ID="lblApprovedDate" runat="server" Text="29-Aug-2025" Style="font-weight: 500; font-size: 16px !important;"></asp:Label></h6>
-
+                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 16px; font-weight: 700;">Initial Issue Date:
+                                        <%--<asp:Label ID="lblApprovedDate" runat="server" Text="29-Aug-2025" Style="font-weight: 500; font-size: 16px !important;"></asp:Label></h6>--%>
+                                        <asp:Label ID="lblInitialDate" runat="server" Style="font-weight: 500; font-size: 16px !important;"></asp:Label></h6>
                                 </div>
                                 <div class="col-9" style="text-align: end">
 
