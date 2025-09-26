@@ -10,7 +10,6 @@ using System.Xml.Linq;
 using System.IO;
 using System.Diagnostics;
 using System.Drawing;
-using CEIHaryana.UserCPages;
 
 namespace CEIHaryana.SiteOwnerPages
 {
@@ -217,7 +216,7 @@ namespace CEIHaryana.SiteOwnerPages
                     voltagelevel.Visible = true;
                     Type.Visible = true;
                     txtVoltage.Text = ds.Tables[0].Rows[0]["VoltageLevel"].ToString();
-                    txtInspectionType.Text = ds.Tables[0].Rows[0]["Inspectiontype"].ToString();
+                    txtTypeOfInspection.Text = ds.Tables[0].Rows[0]["IType"].ToString();
 
                     string Status = ds.Tables[0].Rows[0]["ApplicationStatus"].ToString();
                     if (Status == "Rejected")
@@ -273,7 +272,7 @@ namespace CEIHaryana.SiteOwnerPages
                     txtWorkType.Text = ds.Tables[0].Rows[0]["InstallationType"].ToString();
                     Session["TestReport"] = ds.Tables[0].Rows[0]["TestRportId"].ToString();
                     txtApplicationNo.Text = ds.Tables[0].Rows[0]["InspectionReportID"].ToString();
-
+                    txtTypeOfInspection.Text = ds.Tables[0].Rows[0]["IType"].ToString();
                     ReturnedBased = ds.Tables[0].Rows[0]["ReasonType"].ToString();
 
                     string createdDate = ds.Tables[0].Rows[0]["CreatedDate"].ToString();
@@ -951,8 +950,8 @@ namespace CEIHaryana.SiteOwnerPages
                     ID = Session["InspectionId"].ToString();
                     if (e.CommandName == "Select")
                     {
-                        fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
-                        // fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                        fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                        // fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
                         //lblerror.Text = fileName;
                         string script = $@"<script>window.open('{fileName}','_blank');</script>";
                         ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
@@ -1156,8 +1155,8 @@ namespace CEIHaryana.SiteOwnerPages
             else if (e.CommandName == "View")
             {
                 string fileName = "";
-                fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
-                //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
                 //lblerror.Text = fileName;
                 string script = $@"<script>window.open('{fileName}','_blank');</script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
@@ -1165,8 +1164,8 @@ namespace CEIHaryana.SiteOwnerPages
             else if (e.CommandName == "ViewInvoice")
             {
                 string fileName = "";
-                //fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
-                fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                //fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
                 string script = $@"<script>window.open('{fileName}','_blank');</script>";
                 ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
             }
@@ -1234,12 +1233,6 @@ namespace CEIHaryana.SiteOwnerPages
                 Session["InspectionId"] = "";
                 Response.Redirect("InspectionHistory.aspx", false);
             }
-        }
-        protected void lnkReturn_Command(object sender, CommandEventArgs e)
-        {
-            string inspectionId = e.CommandArgument.ToString();
-            InspectionReturnDetails.GetReturnDetails(inspectionId);
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowReturnModal", "$('#ownerModal').modal('show');", true);
         }
     }
 }

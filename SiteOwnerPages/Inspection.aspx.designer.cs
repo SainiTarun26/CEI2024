@@ -15,13 +15,13 @@ namespace CEIHaryana.SiteOwnerPages
     {
 
         /// <summary>
-        /// txtPremises control.
+        /// txtTypeOfInspection control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtPremises;
+        protected global::System.Web.UI.WebControls.TextBox txtTypeOfInspection;
 
         /// <summary>
         /// txtApplicantType control.
@@ -85,6 +85,15 @@ namespace CEIHaryana.SiteOwnerPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtApplicationNo;
+
+        /// <summary>
+        /// txtPremises control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtPremises;
 
         /// <summary>
         /// GridView1 control.
@@ -256,15 +265,6 @@ namespace CEIHaryana.SiteOwnerPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl LblGridView3;
-
-        /// <summary>
-        /// InspectionReturnDetails control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::CEIHaryana.UserCPages.InspectionReturnDetails InspectionReturnDetails;
 
         /// <summary>
         /// Reason control.

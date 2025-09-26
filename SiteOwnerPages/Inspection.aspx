@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteOwnerPages/SiteOwner.Master" AutoEventWireup="true" EnableEventValidation="false" CodeBehind="Inspection.aspx.cs" Inherits="CEIHaryana.SiteOwnerPages.Inspection" %>
-<%@ Register Src="~/UserCPages/InspectionReturnDetails.ascx" TagPrefix="uc1" TagName="InspectionReturnDetails" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
@@ -13,7 +13,6 @@
     <script src="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js"></script>
     <link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet" />
     <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript">
         function isNumberKey(evt) {
             var charCode = (evt.which) ? evt.which : event.keyCode
@@ -40,10 +39,10 @@
     </script>
 
     <script type="text/javascript">
-        function alertWithRedirectdata1() {
-            alert('Successfully submitted to contractor.');
-            window.location.href = 'InspectionHistory.aspx';
-        }
+         function alertWithRedirectdata1() {
+             alert('Successfully submitted to contractor.');
+             window.location.href = 'InspectionHistory.aspx';
+         }
 
     </script>
     <style>
@@ -161,25 +160,26 @@
         th.headercolor {
             background: #9292cc;
             color: white;
+            width:1%;
         }
-
         h6#maincard {
-            font-size: 20px !important;
-            color: #010101;
-            text-transform: capitalize;
-            font-weight: 700;
-        }
-
+    font-size: 20px !important;
+    color: #010101;
+    text-transform: capitalize;
+    font-weight: 700;
+}
         h7#maincard1 {
-            font-size: 18px !important;
-            color: #010101;
-            text-transform: capitalize;
-            font-weight: 700;
-        }
-
-        div#ContentPlaceHolder1_Div1 {
-            margin-left: 0px;
-        }
+    font-size: 18px !important;
+    color: #010101;
+    text-transform: capitalize;
+    font-weight: 700;
+}
+       div#ContentPlaceHolder1_Div1{
+           margin-left:0px;
+       }
+       th.headercolor.width {
+    width: 10%;
+}
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -201,7 +201,7 @@
 
                     <div class="col-md-4">
                         <label>Type of Inspection</label>
-                        <asp:TextBox class="form-control" ID="txtPremises" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                        <asp:TextBox class="form-control" ID="txtTypeOfInspection" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
                     </div>
                     <div class="col-4">
@@ -228,6 +228,11 @@
                         <label for="Pin">Application No.</label>
                         <asp:TextBox class="form-control" ID="txtApplicationNo" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
                     </div>
+                     <div class="col-md-4">
+                        <label>Type of Premises</label>
+                        <asp:TextBox class="form-control" ID="txtPremises" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
+                     </div>
                 </div>
             </div>
             <div class="row">
@@ -288,51 +293,24 @@
             <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                 <div class="row">
                     <div class="col-12">
-                        <asp:GridView ID="GridView2" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView2_RowDataBound" AutoGenerateColumns="false">
+                        <asp:GridView ID="GridView2" CssClass="table table-bordered table-striped table-responsive " runat="server" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView2_RowDataBound" AutoGenerateColumns="false">
                             <HeaderStyle BackColor="#B7E2F0" />
                             <Columns>
                                 <asp:TemplateField HeaderText="SNo">
-                                    <HeaderStyle Width="5%" CssClass="headercolor" />
-                                    <ItemStyle Width="5%" />
+                                    <HeaderStyle CssClass="headercolor" />
+                                    <ItemStyle />
                                     <ItemTemplate>
                                         <%#Container.DataItemIndex+1 %>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:BoundField DataField="InstallationType" HeaderText="Installation Type">
-                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                    <HeaderStyle HorizontalAlign="Left"  CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="Left"  />
                                 </asp:BoundField>
-                                <%--                                <asp:BoundField DataField="ActionTaken" HeaderText="ActionTaken">
-                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
-                                </asp:BoundField>--%>
-                                <asp:TemplateField HeaderText="ActionTaken">
+                                <asp:BoundField DataField="ActionTaken" HeaderText="ActionTaken">
                                     <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
                                     <ItemStyle HorizontalAlign="Left" />
-                                    <ItemTemplate>
-                                        <asp:Label ID="lblActionTaken" runat="server" Text='<%# Eval("ActionTaken") %>' Visible="false" />
-                                        <asp:Label ID="lblInspectionId" runat="server" Text='<%# Eval("Id") %>' Visible="false" />
-
-                                        <!-- If ActionTaken is RETURN, show LinkButton -->
-                                        <asp:LinkButton
-                                            ID="lnkReturn"
-                                            runat="server"
-                                            Text="Return"
-                                            CommandName="ShowReturnPopup"
-                                            CommandArgument='<%# Eval("Id") %>'
-                                            OnCommand="lnkReturn_Command"
-                                            CssClass="text-danger"
-                                            Visible='<%# Eval("ActionTaken").ToString() == "Return" %>' />
-
-                                        <!-- Otherwise, show normal text -->
-                                        <asp:Label
-                                            ID="lblNormalStatus"
-                                            runat="server"
-                                            Text='<%# Eval("ActionTaken") %>'
-                                            Visible='<%# Eval("ActionTaken").ToString() != "Return" %>' />
-                                    </ItemTemplate>
-                                </asp:TemplateField>
-
+                                </asp:BoundField>
                                 <%-- <asp:BoundField DataField="TestRportId" HeaderText="TestReportId" Visible="false">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
@@ -345,20 +323,20 @@
                                 <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
                             </asp:TemplateField>--%>
                                 <asp:BoundField DataField="ActionDate" HeaderText="ActionDate">
-                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                    <HeaderStyle HorizontalAlign="Left"  CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="Left"  />
                                 </asp:BoundField>
                                 <asp:BoundField DataField="AssignTo" HeaderText="AssignTo">
-                                    <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                    <ItemStyle HorizontalAlign="center" Width="15%" />
+                                    <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="center" />
                                 </asp:BoundField>
                                 <%--  <asp:BoundField DataField="ReturnDate" HeaderText="ReturnDate">
                                     <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                     <ItemStyle HorizontalAlign="Left" Width="15%" />
                                 </asp:BoundField>--%>
                                 <asp:BoundField DataField="Remarks" HeaderText="Remarks">
-                                    <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                    <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                    <HeaderStyle HorizontalAlign="Left" CssClass="headercolor width" />
+                                    <ItemStyle HorizontalAlign="Left" />
                                 </asp:BoundField>
                                 <%--  <asp:BoundField  DataField="ReturnBased" HeaderText="Return Based" >
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
@@ -507,7 +485,6 @@
                     <label id="LblGridView3" runat="server"></label>
                 </div>
             </div>
-            <uc1:InspectionReturnDetails runat="server" id="InspectionReturnDetails" /> 
             <%-- <div class="row" id="Remarks" runat="server" visible="false">
                 <div class="col-12">
                     <label>Remarks For Contractor<samp style="color: red">* </samp></label>
@@ -536,5 +513,4 @@
             </div>
         </div>
     </div>
-       <script src="/Assets/js/js/vendor.bundle.base.js"></script>    
 </asp:Content>
