@@ -37,6 +37,35 @@
     <link rel="shortcut icon" href="/images/favicon.png" />
 
     <style>
+        select#ddlState1:focus {
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background: #f3f3f3;
+    border: 1px solid #80bdff !important;
+}
+       select#ddlDistrict1:focus {
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background: #f3f3f3;
+    border: 1px solid #80bdff !important;
+}
+     select#ddlState:focus {
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background: #f3f3f3;
+    border: 1px solid #80bdff !important;
+}
+     select#ddlDistrict:focus {
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background: #f3f3f3;
+    border: 1px solid #80bdff !important;
+}
+        input#CheckBox1:focus {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background: #f3f3f3;
+    border: 1px solid #80bdff !important;
+}
                     /* Apply only when nav is in mobile mode */
 nav#navbar.navbar-mobile {
     position: absolute;
