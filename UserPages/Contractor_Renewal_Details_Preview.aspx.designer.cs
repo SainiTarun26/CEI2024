@@ -303,6 +303,15 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.TextBox txtEquipments;
 
         /// <summary>
+        /// imgPhoto control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imgPhoto;
+
+        /// <summary>
         /// Label21 control.
         /// </summary>
         /// <remarks>
@@ -382,5 +391,32 @@ namespace CEIHaryana.UserPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView Grd_Document;
+
+        /// <summary>
+        /// mySignature control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image mySignature;
+
+        /// <summary>
+        /// btnBack control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnBack;
+
+        /// <summary>
+        /// hdnId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnId;
     }
 }
