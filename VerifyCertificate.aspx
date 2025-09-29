@@ -23,6 +23,75 @@
     <!-- Template Main CSS File -->
     <link href="/assetsnew/css/style.css" rel="stylesheet" />
     <style type="text/css">
+                nav#navbar {
+    box-shadow: none !important;
+}
+
+        img#ProfilePhoto {
+            height: 100px;
+            width: 100px;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0
+        }
+
+        .navbar ul {
+            margin-left: 20px;
+        }
+
+        li.dropdown {
+            padding: 0px !important;
+        }
+
+        li {
+            padding: 0px !important;
+        }
+
+        .container.d-flex.align-items-center.justify-content-between {
+            max-width: 1650px;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+
+        #header .logo img {
+            max-height: 44px !important;
+            margin-left: 0px !important;
+        }
+
+        a:hover {
+            font-weight: 700;
+            transition: all .02s ease;
+        }
+
+        /* New code for menu wrapping */
+        ul {
+            display: flex;
+            flex-wrap: wrap; /* allows li to break into next line */
+            gap: 10px; /* spacing between li items */
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+
+            ul li {
+                white-space: normal; /* allow li text to wrap */
+            }
+            /* Apply only when nav is in mobile mode */
+nav#navbar.navbar-mobile {
+    position: absolute;
+    
+    left: 0;
+    width: 100%;
+    height: 459px !important;
+    background: #d1e6ff; /* keep same bg as header */
+    overflow-y: auto;    /* scroll if menu items overflow */
+    z-index: 999;        /* stay above content */
+    padding: 15px 0;
+    border-top: 1px solid #ccc;
+}
+.container.d-flex.justify-content-center.justify-content-md-between {
+    max-width: 1650px;
+}
         table#RadioBtnType {
             margin-top: 6px;
         }
@@ -354,7 +423,7 @@
         }
 
         .container.d-flex.align-items-center.justify-content-between {
-            max-width: 1450px;
+            max-width: 1650px;
         }
 
         .modal {
@@ -468,9 +537,15 @@ border-radius: 10px;
         <div>
             <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
             <!-- ======= Top Bar ======= -->
-            <section id="topbar" class="d-flex align-items-center">
+                      <section id="topbar" class="d-flex align-items-center">
                 <div class="container d-flex justify-content-center justify-content-md-between">
                     <div class="contact-info d-flex align-items-center">
+                        <%-- <i class="bi bi-envelope d-flex align-items-center">
+                            <a href="mailto:contact@example.com">contact@example.com</a>
+                        </i>--%>
+                        <%-- <i class="bi bi-phone d-flex align-items-center ms-4">
+                            <span>+91 7696438770</span>
+                        </i> --%>
                     </div>
                     <div class="social-links d-none d-md-flex align-items-center">
                         <a href="#" class="twitter">
@@ -484,23 +559,25 @@ border-radius: 10px;
                         </a>
                         <a href="#" class="linkedin">
                             <i class="bi bi-linkedin"></i>
+
                         </a>
                     </div>
                 </div>
             </section>
-            <!-- ======= Header ======= -->
+          <!-- ======= Header ======= -->
             <header id="header" class="d-flex align-items-center"
                 style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; background: #d1e6ff;">
                 <div class="container d-flex align-items-center justify-content-between">
                     <a href="Login.aspx" class="logo">
-                        <img src="/Assets/haryana.png" alt="" />
+                        <img src="../Assets/Add a heading (1).png" alt="" />
                     </a>
-                    <h1 class="logo">
+                   <%-- <h1 class="logo">
                         <a href="Login.aspx">
-                            <span style="font-size: 25px; margin-left: -30px;">CEI,Haryana
+                            <span style="font-size: 25px; margin-left: -30px;">CEI,
+            Haryana
                             </span>
                         </a>
-                    </h1>
+                    </h1>--%>
                     <!-- Uncomment below if you prefer to use an image logo -->
                     <nav id="navbar" class="navbar">
                         <ul>
@@ -513,6 +590,15 @@ border-radius: 10px;
                                     <li>
                                         <a href="AboutCEI.aspx">About CEI</a>
                                     </li>
+                                    <!-- <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="#">Deep Drop Down 1</a></li>
+                  <li><a href="#">Deep Drop Down 2</a></li>
+                  <li><a href="#">Deep Drop Down 3</a></li>
+                  <li><a href="#">Deep Drop Down 4</a></li>
+                  <li><a href="#">Deep Drop Down 5</a></li>
+                </ul>
+              </li> -->
                                     <li>
                                         <a href="/StateLicensingBoard.aspx">State Licensing Board, Haryana</a>
                                     </li>
@@ -521,6 +607,7 @@ border-radius: 10px;
                                     </li>
                                 </ul>
                             </li>
+                            <li style="padding:0px !important;">|</li>
                             <li class="dropdown">
                                 <a href="#">
                                     <span>Lift & Esclator</span>
@@ -528,19 +615,35 @@ border-radius: 10px;
                                 </a>
                                 <ul>
                                     <li>
-                                        <a href="Procedure_For_Registration_Lift_Exclator.aspx">Procedure For Registration /                
+                                        <a href="Procedure_For_Registration_Lift_Exclator.aspx">Procedure For Registration /
+                 
                                             <br />
                                             Inspection Lifts and Esclators
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="https://egovservices.in/" target="_blank">Apply for New / Renewal Lift
+                                        <a href="Login.aspx" target="_blank">Apply for New
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="Login.aspx" target="_blank">Apply for Renewal Lift
                                         </a>
                                     </li>
                                     <li>
                                         <a href="StaticPage2.aspx" target="_blank">List of Lift Inspectors
                                         </a>
                                     </li>
+
+
+                                    <!-- <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="#">Deep Drop Down 1</a></li>
+                  <li><a href="#">Deep Drop Down 2</a></li>
+                  <li><a href="#">Deep Drop Down 3</a></li>
+                  <li><a href="#">Deep Drop Down 4</a></li>
+                  <li><a href="#">Deep Drop Down 5</a></li>
+                </ul>
+              </li> -->
                                     <li>
                                         <a href="UserManual/Procedure_and_Check_List_for_Lift.pdf" target="_blank">Checklist for Registration/
 
@@ -548,12 +651,17 @@ border-radius: 10px;
                                             Inspection of Lifts and Elevators
                                         </a>
                                     </li>
+
+
+
+
                                     <li>
-                                        <a href="#" target="_blank">Forms
+                                        <a href="   " target="_blank">Forms
                                         </a>
                                     </li>
                                 </ul>
                             </li>
+                             <li style="padding:0px !important;">|</li>
                             <li class="dropdown">
                                 <a href="#">
                                     <span>Licensing</span>
@@ -565,35 +673,77 @@ border-radius: 10px;
                                         </a>
                                     </li>
                                     <li>
+                                        <a href="/UserPages/Active_Licence_Contractor_List.aspx" target="_blank"> List Of Active Registered Contractors
+                                        </a>
+                                    </li>
+                                    <!-- <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="#">Deep Drop Down 1</a></li>
+                  <li><a href="#">Deep Drop Down 2</a></li>
+                  <li><a href="#">Deep Drop Down 3</a></li>
+                  <li><a href="#">Deep Drop Down 4</a></li>
+                  <li><a href="#">Deep Drop Down 5</a></li>
+                </ul>
+              </li> -->
+                                    <%--<li>
+                                        <a href="#">Electrical Supervisor Competency
+                  <br>
+                                            Certificate(Excemption)
+                                        </a>
+                                    </li>--%>
+                                    <li>
                                         <a href="UserManual/form_split.pdf" target="_blank">Forms & Fees
+                                        </a>
+
+                                    </li>
+                                    <li>
+                                        <a href="/UserPages/Instructions.aspx" target="_blank">For New Licence
                                         </a>
                                     </li>
                                 </ul>
                             </li>
+                             <li style="padding:0px !important;">|</li>
                             <li class="dropdown">
                                 <a href="#">
                                     <span>Inspection</span>
                                     <i class="bi bi-chevron-down"></i>
                                 </a>
                                 <ul>
+
+                                    <!-- <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+                <ul>
+                  <li><a href="#">Deep Drop Down 1</a></li>
+                  <li><a href="#">Deep Drop Down 2</a></li>
+                  <li><a href="#">Deep Drop Down 3</a></li>
+                  <li><a href="#">Deep Drop Down 4</a></li>
+                  <li><a href="#">Deep Drop Down 5</a></li>
+                </ul>
+              </li> -->
                                     <li>
                                         <a href="/Procedure_for_Electrical _Installation.aspx">Procedure for Electrical Installation</a>
                                     </li>
                                     <li>
-                                        <a href="Procedure_for_grant_of_approval.aspx">Procedure for Grant of               
+                                        <a href="Procedure_for_grant_of_approval.aspx">Procedure for Grant of
+                 
                                             <br />
-                                            approval for Energisation of              
+                                            approval for Energisation of
+                 
                                             <br />
-                                            New Electrical Installation
+                                            New Electrical
+                  Installation
                                         </a>
                                     </li>
                                 </ul>
                             </li>
+                             <li style="padding:0px !important;">|</li>
                             <li class="dropdown">
                                 <a href="OurOnlineServices.aspx">
                                     <span>Services</span>
+
                                 </a>
+
                             </li>
+                             <li style="padding:0px !important;">|</li>
                             <li class="dropdown">
                                 <a href="#">
                                     <span>Orders</span>
@@ -601,7 +751,7 @@ border-radius: 10px;
                                 </a>
                                 <ul>
                                     <li>
-                                        <a href="/UserManual/CamScanner 01-13-2025 13.54.pdf" target="_blank">BRAP-2024 Griviance Mechanism</a>
+                                        <a href="/UserManual/BRAP_Griviance.pdf" target="_blank">BRAP-2024 Griviance Mechanism</a>
                                     </li>
                                     <li>
                                         <a href="UserManual/office order 223.pdf" target="_blank">Mendate Regarding high medium low risk profile</a>
@@ -613,9 +763,11 @@ border-radius: 10px;
                                     <li>
                                         <a href="UserManual/Mendate%20Regarding%20Electrical%20Installations.pdf" target="_blank">Mendate Regarding ELectrical Installations</a>
                                     </li>
+
                                     <li>
                                         <a href="UserManual/Authorization-of-Chartered-Electrical-Safety-EngineerCESE.pdf" target="_blank">Authorisation of Chartered<br />
                                             Electrical Safety Engineer(CESE) (New)</a>
+
                                     </li>
                                     <li>
                                         <a href="UserManual/cancellation-order.pdf" target="_blank">cancellation order</a>
@@ -640,9 +792,11 @@ border-radius: 10px;
                                     </li>
                                 </ul>
                             </li>
+                             <li style="padding:0px !important;">|</li>
                             <li class="dropdown">
                                 <a href="#">
-                                    <span>EODB Dashboard</span>
+                                    <span>EODB Compliance's
+                                    </span>
                                     <i class="bi bi-chevron-down"></i>
                                 </a>
                                 <ul>
@@ -656,11 +810,21 @@ border-radius: 10px;
                                     <li>
                                         <a href="StaticPage3.aspx" target="_blank">EODB Dashboard</a>
                                     </li>
+
                                 </ul>
                             </li>
-                            <li style="display: flex;">
+                            <%--  <li style="display: flex;">
                                 <a href="/VerifyCertificate.aspx" id="alertLink1" style="position: relative; z-index: 1;">Verify Certificate</a>
+                            </li>--%>
+                             <li style="padding:0px !important;">|</li>
+                            <li style="display: flex;">
+                                <a href="https://grs.hartron.io/#/" target="_blank" id="alertLink2" style="position: relative; z-index: 1;">Grievance Redressal</a>
                             </li>
+                             <li style="padding:0px !important;">|</li>
+                            <li style="display: flex;">
+                                <a href="VerifyCertificate.aspx" style="position: relative; z-index: 1;">Verify Certificate</a>
+                            </li>
+                             <li style="padding:0px !important;">|</li>
                             <li style="display: flex;">
                                 <a href="UserPages/OurServices.aspx" id="alertLink" style="position: relative; z-index: 1;">User Manual</a><img src="Assets/new1.gif" id="alertGif" />
                             </li>
@@ -668,9 +832,69 @@ border-radius: 10px;
                         <i class="bi bi-list mobile-nav-toggle"></i>
                     </nav>
                     <!-- .navbar -->
+                    <%--<div id="myModal" class="modal">
+                        <div class="modal-content">
+                           <div class="modal-header" style="display: flex; justify-content: center; align-items: center; position: relative;">
+    <h2 style="margin: 0;">CERTIFICATE VERIFICATION</h2>
+    <span class="close" style="position: absolute; right: 10px; font-size: 24px; cursor: pointer;">&times;</span>
+</div>
 
+
+                            <br />
+                            <div id="varification" style="display: flex; flex-direction: column; align-items: center;">
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <asp:Label ID="lblName" runat="server" Text="Enter Certificate No.:" Style="white-space: nowrap;"></asp:Label>
+                                    <asp:TextBox ID="txtName" Class="form-control" runat="server" Style="width: 300px;"></asp:TextBox>
+                                </div>
+                                <br />
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <asp:Label ID="Label1" runat="server" Text="Verification Code:" Style="white-space: nowrap; margin-left: 25px;"></asp:Label>
+                                    <asp:TextBox ID="TextBox1" Class="form-control" runat="server" Style="width: 300px;"></asp:TextBox>
+                                </div>
+                                <br />
+                                <div style="display: flex; align-items: center; gap: 10px;">
+                                    <asp:Label ID="Label2" runat="server" Text="Enter Verification Code:" Style="white-space: nowrap; margin-left: -20px;"></asp:Label>
+                                    <asp:TextBox ID="TextBox2" Class="form-control" runat="server" Style="width: 300px;"></asp:TextBox>
+                                </div>
+                                                                
+                            </div>
+                            <br />
+                            <div class="row">
+    <div class="col-md-6"></div>
+    <div class="col-md-2">
+        <asp:Button ID="Button2" Class="btn btn-primary" runat="server" Text="Verify" style="height:40px !important;"/>
+
+    </div>
+    <div class="col-md-4"></div>
+</div>
+                            <hr />
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <table class="table table-striped table-responsive table-hover">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th scope="col">Name of Owner</th>
+                                                <th scope="col">Serial No. of Lift</th>
+                                                <th scope="col">Make of Lift/Escalator</th>
+                                                <th scope="col">Download Certificate</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Test Name</td>
+                                                <td>25834fjka28437</td>
+                                                <td>Mitsubishi</td>
+                                                <td><i class="fa-solid fa-download"></i></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>--%>
                 </div>
             </header>
+
             <!-- End Header -->
             <!-- ======= Hero Section ======= -->
             <!-- End Hero -->

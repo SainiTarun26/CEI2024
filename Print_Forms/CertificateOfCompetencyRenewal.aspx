@@ -315,6 +315,11 @@
                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 15PX;">OLD No.
                                      <asp:Label ID="lblOldLicenceNo" runat="server" Text="" Style="font-size: 16px !important;"></asp:Label>
                                     </h6>
+
+                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 15PX; text-align: end;">Initial Issue Date:
+                                        <asp:Label ID="lblInitialIssueDate" runat="server" Text="" Style="font-size: 16px !important; text-decoration: underline;"></asp:Label>
+                                    </h6>
+
                                 </div>
                                 <div class="col-6">
                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 15PX; text-align: end;">Date of Birth:
@@ -368,7 +373,7 @@ qualifications and experience as certained by the Screening Committee, found eli
                             <div class="row">
                                 <div class="col-3" style="margin-top: auto;">
 
-                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 16px; font-weight: 700;">Initial Issue Date:
+                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 16px; font-weight: 700;">Dated:
                                         <asp:Label ID="lblApprovedDate" runat="server" Style="font-weight: 500; font-size: 16px !important;"></asp:Label></h6>
 
                                 </div>

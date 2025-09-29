@@ -543,7 +543,7 @@
 
                         <li><a href="/UserPages/OurServices.aspx">User Manual</a></li>
                         <li>|</li>--%>
-                                                     <li class="dropdown" id="logout">
+                                                     <%--<li class="dropdown" id="logout">
                             <a href="#">
                                 <span id="user">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
@@ -563,11 +563,11 @@
                                 <li id="ProfileLogout">
                                     <a href="#">
                                         <asp:Button ID="btnLogout" Text="Logout" runat="server" Style="background: #4b49ac; border-color: #4b49ac; color: white; border-radius: 5px;" />
-                                        <%--OnClick="btnLogout_Click"--%>
+                                      
                                     </a>
                                 </li>
                             </ul>
-                        </li>
+                        </li>--%>
 
                     </ul>
                     <i class="bi bi-list mobile-nav-toggle"></i>
