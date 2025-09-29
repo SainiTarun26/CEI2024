@@ -50,11 +50,18 @@ namespace CEIHaryana.Print_Forms
                     lblAuthorizedUpto.Text = dt.Rows[0]["Votagelevel"].ToString();
                     imgQRCode.ImageUrl = "data:image/jpeg;base64," + Convert.ToBase64String((byte[])dt.Rows[0]["QRCode"]);
                     lblOldLicenceNo.Text = dt.Rows[0]["OldLicenceNo"].ToString();
-                    lblWEF.Text = dt.Rows[0]["WitheffectDate"].ToString();
+                    lblWEF.Text = dt.Rows[0]["voltageWithEffectStarting"].ToString();
                     lblValidUpto.Text = dt.Rows[0]["ExpiryDate"].ToString();
                     lblInitialIssueDate.Text = dt.Rows[0]["InitialIssueDate"].ToString();
 
-
+                    if (string.IsNullOrEmpty(lblAuthorizedUpto.Text.Trim()) ||  lblAuthorizedUpto.Text.Trim() == "650V" )
+                    {
+                        pnlWEF.Visible = false;
+                    }
+                    else
+                    {
+                        pnlWEF.Visible = true;
+                    }
 
                 }
 

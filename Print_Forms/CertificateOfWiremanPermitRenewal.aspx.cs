@@ -49,7 +49,7 @@ namespace CEIHaryana.Print_Forms
                     imgPhoto.ImageUrl = dt.Rows[0]["ApplicantImageDocPath"].ToString();
                     imgQRCode.ImageUrl = "data:image/jpeg;base64," + Convert.ToBase64String((byte[])dt.Rows[0]["QRCode"]);
                     lblOldLicenceNo.Text = dt.Rows[0]["OldLicenceNo"].ToString();
-                    lblWEF.Text = dt.Rows[0]["WitheffectDate"].ToString();
+                    //lblWEF.Text = dt.Rows[0]["WitheffectDate"].ToString();
                     lblValidUpto.Text = dt.Rows[0]["ExpiryDate"].ToString();
                     lblInitialIssueDate.Text = dt.Rows[0]["InitialIssueDate"].ToString();
 

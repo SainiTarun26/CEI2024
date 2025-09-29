@@ -324,10 +324,11 @@
                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 15PX; text-align: end;">Authorised upto
                                         <asp:Label ID="lblAuthorizedUpto" runat="server" Text=""></asp:Label>
                                     </h6>
-
+                                     <asp:Panel ID="pnlWEF" runat="server">
                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 15PX; text-align: end;">w.e.f.
                                         <asp:Label ID="lblWEF" runat="server"></asp:Label>
                                     </h6>
+                                    </asp:Panel>
                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 15PX; text-align: end;">Valid Upto:
                                         <asp:Label ID="lblValidUpto" runat="server" Text="" Style="font-size: 16px !important; text-decoration: underline;"></asp:Label>
                                     </h6>
