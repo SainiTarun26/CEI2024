@@ -62,7 +62,9 @@ namespace CEIHaryana.Print_Forms
                     FatherName.Text = dt.Rows[0]["FatherName"].ToString();
                     gender.Text = dt.Rows[0]["Gender"].ToString();
                     Nationailty.Text = dt.Rows[0]["Nationality"].ToString();
-                    Aadhar.Text = dt.Rows[0]["Aadhar"].ToString();
+                    string aadhar = dt.Rows[0]["Aadhar"].ToString();
+                    Aadhar.Text = "XXXXXXXX" + aadhar.Substring(aadhar.Length - 4);
+                    //Aadhar.Text = dt.Rows[0]["Aadhar"].ToString();
                     dob.Text = dt.Rows[0]["DOB"].ToString();
                     Age.Text = dt.Rows[0]["CalculatedAge"].ToString();
                     phone.Text = dt.Rows[0]["PhoneNo"].ToString();

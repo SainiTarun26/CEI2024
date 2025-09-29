@@ -79,7 +79,9 @@ namespace CEIHaryana.UserPages
                 txtFatherName.Text = dt.Rows[0]["FatherName"].ToString();
                 txtDOB.Text = dt.Rows[0]["DOB"].ToString();
                 txtAge.Text = dt.Rows[0]["Age"].ToString();
-                txtAdhaar.Text = dt.Rows[0]["AadharNo"].ToString();
+                string aadhar = dt.Rows[0]["AadharNo"].ToString();
+                txtAdhaar.Text = "XXXXXXXX" + aadhar.Substring(aadhar.Length - 4);
+                //txtAdhaar.Text = dt.Rows[0]["AadharNo"].ToString();
                 txt55Years.Text = dt.Rows[0]["Dateturn55"].ToString();
                 txtAddress.Text = dt.Rows[0]["Address"].ToString();
                 txtDistrict.Text = dt.Rows[0]["District"].ToString();

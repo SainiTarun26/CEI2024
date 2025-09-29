@@ -37,7 +37,7 @@
     <link rel="shortcut icon" href="/images/favicon.png" />
 
     <style>
-        select#ddlState1:focus {
+           select#ddlState1:focus {
     width: 100%;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     background: #f3f3f3;
@@ -66,7 +66,7 @@
     background: #f3f3f3;
     border: 1px solid #80bdff !important;
 }
-                    /* Apply only when nav is in mobile mode */
+    /* Apply only when nav is in mobile mode */
 nav#navbar.navbar-mobile {
     position: absolute;
     
@@ -491,7 +491,7 @@ nav#navbar.navbar-mobile {
             border-radius: 5px;
             width: 100%;
         }
-                nav#navbar {
+                   nav#navbar {
     box-shadow: none !important;
 }
 
@@ -560,7 +560,7 @@ nav#navbar.navbar-mobile {
 .container.d-flex.justify-content-center.justify-content-md-between {
     max-width: 1650px;
 }
-    </style>
+</style>
     <script type="text/javascript">
         function alertWithRedirectdata() {
             if (confirm('Registration Successfull Please Activate your Account through given Email ID.')) {
@@ -1329,9 +1329,9 @@ nav#navbar.navbar-mobile {
     </script>
     <script type="text/javascript">
         document.addEventListener("keydown", function (e) {
-            if (e.key === "Enter" && document.activeElement.id === "<%= btnNext.ClientID %>") {
-            e.preventDefault();
-            return false;
+            if (e.key === "Enter") {
+                e.preventDefault();
+                $("#<%= btnNext.ClientID %>").click();
         }
     });
     </script>
@@ -1355,15 +1355,5 @@ nav#navbar.navbar-mobile {
             return true; // Allow postback if valid
         }
  </script>
- <script>
-     $(document).ready(function () {
-         $(document).on("keydown", function (e) {
-             if (e.key === "Enter") {
-                 e.preventDefault();
-                 $("#<%= btnNext.ClientID %>").click();
-         }
-     });
- });
-    </script>
 </body>
 </html>

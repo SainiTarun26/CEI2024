@@ -58,7 +58,9 @@ namespace CEIHaryana
                 txtFatherName.Text = ds.Tables[0].Rows[0]["FatherName"].ToString();
                 txtGender.Text = ds.Tables[0].Rows[0]["Gender"].ToString();
                 txtNationality.Text = "Indian";
-                txtAdhaar.Text = ds.Tables[0].Rows[0]["Aadhar"].ToString();
+                string aadhar = ds.Tables[0].Rows[0]["Aadhar"].ToString();
+                txtAdhaar.Text = "XXXXXXXX" + aadhar.Substring(aadhar.Length - 4);
+                //txtAdhaar.Text = ds.Tables[0].Rows[0]["Aadhar"].ToString(); commented by navneet on instruction of vinod sir
                 string Dob = ds.Tables[0].Rows[0]["DOB"].ToString();
                 txtDOB.Text = DateTime.Parse(Dob).ToString("yyyy-MM-dd");
                 txtCalculatedAge.Text = ds.Tables[0].Rows[0]["CalculatedAge"].ToString();

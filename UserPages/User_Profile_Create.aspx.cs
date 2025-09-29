@@ -54,7 +54,8 @@ namespace CEIHaryana.UserPages
                 txtgender.Text = dt.Rows[0]["Gender"].ToString();
 
 
-                txtAadhaar.Text = dt.Rows[0]["Aadhar"].ToString();
+                string aadhar = dt.Rows[0]["Aadhar"].ToString();
+                //txtAadhaar.Text = dt.Rows[0]["Aadhar"].ToString(); commented by navneet on instruction of vinod sir
 
                 if (string.IsNullOrEmpty(txtAadhaar.Text))
                 {
@@ -64,6 +65,7 @@ namespace CEIHaryana.UserPages
                 }
                 else
                 {
+                    txtAadhaar.Text = "XXXXXXXX" + aadhar.Substring(aadhar.Length - 4);
                     Aadhaar.Visible=true;
                 }
 
