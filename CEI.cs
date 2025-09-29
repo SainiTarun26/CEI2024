@@ -5647,7 +5647,7 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
 
             return returnStatus;
         }
-        public int InsertSubstationData_Existing_HavingPreviousReport(string IdUpdate, string Count, string IntimationId, string TransformerSerialNumber, string TransformerCapacityType, string TransformerCapacity, string TranformerType,
+        public int InsertSubstationData_Existing_HavingPreviousReport(string IdUpdate, string Count, string IntimationId, string TransformerSerialNumber, string TransformerCapacityType, string TransformerCapacity, string TranformerType,string YearOfManufacturing,
  string PrimaryVoltage, string SecondoryVoltage, string MakeType,
  string LastInspectionDate, string ApplicantType, string VoltageLevel, string District, string Division, string Inspectiontype,
  string CreatedBy)
@@ -5670,6 +5670,7 @@ int TotalAmount, string transcationId, string TranscationDate, string ChallanAtt
             cmd.Parameters.AddWithValue("@TransformerCapacityType", String.IsNullOrEmpty(TransformerCapacityType) ? null : TransformerCapacityType);
             cmd.Parameters.AddWithValue("@TransformerCapacity", String.IsNullOrEmpty(TransformerCapacity) ? null : TransformerCapacity);
             cmd.Parameters.AddWithValue("@TranformerType", TranformerType == "Select" ? null : TranformerType);
+            cmd.Parameters.AddWithValue("@YearOfManufacturing", String.IsNullOrEmpty(YearOfManufacturing) ? null : YearOfManufacturing);
             cmd.Parameters.AddWithValue("@PrimaryVoltage", PrimaryVoltage == "Select" ? null : PrimaryVoltage);
             cmd.Parameters.AddWithValue("@SecondoryVoltage", SecondoryVoltage == "Select" ? null : SecondoryVoltage);
             cmd.Parameters.AddWithValue("@MakeType", MakeType);
