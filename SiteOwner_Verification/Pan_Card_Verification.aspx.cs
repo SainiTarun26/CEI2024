@@ -93,6 +93,10 @@ namespace CEIHaryana.SiteOwner_Verification
             path = path + fileName;
             return path;
         }
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/AdminLogout.aspx",false);
+        }
         protected void btnsubmit_Click(object sender, EventArgs e)
         {
             try
@@ -108,7 +112,7 @@ namespace CEIHaryana.SiteOwner_Verification
                         Response.Cookies["SiteOwnerId"].Value = txtpan.Text;
                         Response.Cookies["logintype"].Value = "SiteOwner";
                         Reset();
-                        string script = "alert('Pan Number Updated Successfully'); window.location='/SiteOwnerPages/InspectionHistory.aspx';";                        
+                        string script = "alert('Pan Number Updated Successfully'); window.location='/SiteOwnerPages/InspectionHistory.aspx';";
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", script, true);
                     }
                 }
@@ -118,7 +122,7 @@ namespace CEIHaryana.SiteOwner_Verification
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Please Upload file');", true);
                 }
 
-            } 
+            }
             catch (Exception ex)
             {
 
