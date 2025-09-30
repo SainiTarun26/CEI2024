@@ -33,8 +33,9 @@
 
     <style>
         nav#navbar {
-    box-shadow: none !important;
-}
+            box-shadow: none !important;
+        }
+
         img#ProfilePhoto {
             height: 100px;
             width: 100px;
@@ -84,19 +85,19 @@
             ul li {
                 white-space: normal; /* allow li text to wrap */
             }
-            /* Apply only when nav is in mobile mode */
-nav#navbar.navbar-mobile {
-    position: absolute;
-    
-    left: 0;
-    width: 100%;
-    height: 459px !important;
-    background: #d1e6ff; /* keep same bg as header */
-    overflow-y: auto;    /* scroll if menu items overflow */
-    z-index: 999;        /* stay above content */
-    padding: 15px 0;
-    border-top: 1px solid #ccc;
-}
+        /* Apply only when nav is in mobile mode */
+        nav#navbar.navbar-mobile {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 459px !important;
+            background: #d1e6ff; /* keep same bg as header */
+            overflow-y: auto; /* scroll if menu items overflow */
+            z-index: 999; /* stay above content */
+            padding: 15px 0;
+            border-top: 1px solid  #ccc;
+        }
+
         input#Button9 {
             padding: 10px;
             border-radius: 10px;
@@ -156,14 +157,15 @@ nav#navbar.navbar-mobile {
             margin-top: 19px !important;
         }
 
-                              li#logout {
-    background: #4B49AC !important;
-    border-radius: 51px !important;
-    padding: 7px 5px 7px 5px !important;
-}
-                          nav#navbar {
-    box-shadow: none !important;
-}
+        li#logout {
+            padding-left: 0px !important;
+            background: #4B49AC !important;
+            border-radius: 51px !important;
+            padding-right: 0px !important;
+            padding-top: 3px !important;
+            padding-bottom: 3px !important;
+        }
+
 
 
         ul#profile_drop {
@@ -218,7 +220,7 @@ nav#navbar.navbar-mobile {
         }
 
         input.form-control.file-upload-info {
-            height: 1px;
+            height: 30px !important;
         }
 
         input#exampleInputUsername1 {
@@ -279,7 +281,7 @@ nav#navbar.navbar-mobile {
             }
 
         input.form-control {
-            height: 1px;
+            height: 25px !important;
             width: 90%;
             box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
             margin-bottom: 15px;
@@ -287,14 +289,14 @@ nav#navbar.navbar-mobile {
         }
 
             input.form-control:hover {
-                height: 1px;
+                height: 25px !important;
                 width: 90%;
                 box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
                 padding: 5px !important;
             }
 
             input.form-control:focus {
-                height: 1px;
+                height: 25px !important;
                 width: 90%;
                 box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
                 background: #f3f3f3;
@@ -302,7 +304,7 @@ nav#navbar.navbar-mobile {
             }
 
         input.form-control {
-            height: 1px;
+            height: 25px !important;
             width: 90%;
             box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
             padding: 5px !important;
@@ -535,170 +537,233 @@ nav#navbar.navbar-mobile {
         input {
             margin-top: 10px;
         }
+
+        .text-muted {
+            color: #6c757d;
+            font-size: 12px;
+        }
+
+        td.headercolor.width {
+            width: 60%;
+        }
+
+        td.headercolor.width1 {
+            width: 78% !important;
+        }
+
+
+        .custom-btn {
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.5;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+/* Specific colors for the check (success) and cross (danger) buttons */
+.custom-btn.text-success {
+    background-color: #28a745;
+color: white !important;
+text-decoration: none;
+}
+
+.custom-btn.text-danger {
+    color: #dc3545;
+    border-color: #dc3545;
+}
+
+/* Hover effects */
+.custom-btn.text-success:hover {
+    background-color: #28a745;
+    color: white !important;
+    text-decoration: none;
+    cursor: auto;
+}
+
+.custom-btn.text-danger:hover {
+    background-color: #dc3545;
+    color: white !important;
+    text-decoration: none;
+}
+tr {
+    height: 65px !important;
+}
+th {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+}
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
-                              <section id="topbar" class="d-flex align-items-center">
-     <div class="container d-flex justify-content-center justify-content-md-between" style="max-width: 1680px;">
-         <div class="contact-info d-flex align-items-center">
-             <i class="bi bi-envelope d-flex align-items-center">
-                 <a href="mailto:cei_goh@yahoo.com">cei_goh@yahoo.com</a>
-             </i>
-             <i class="bi bi-phone d-flex align-items-center ms-4">
-                 <span>0172 2704090</span>
-             </i>
-         </div>
-         <div class="social-links d-none d-md-flex align-items-center">
-             <a href="#" class="twitter">
-                 <i class="bi bi-twitter"></i>
-             </a>
-             <a href="#" class="facebook">
-                 <i class="bi bi-facebook"></i>
-             </a>
-             <a href="#" class="instagram">
-                 <i class="bi bi-instagram"></i>
-             </a>
-             <a href="#" class="linkedin">
-                 <i class="bi bi-linkedin"></i>
-             </a>
-         </div>
-     </div>
- </section>
-        <!-- ======= Header ======= -->
+            <section id="topbar" class="d-flex align-items-justify">
+                <div class="container d-flex justify-content-justify justify-content-md-between">
+                    <div class="contact-info d-flex align-items-justify">
+                        <i class="bi bi-envelope d-flex align-items-justify">
+                            <a href="mailto:cei_goh@yahoo.com">cei_goh@yahoo.com</a>
+                        </i>
+                        <i class="bi bi-phone d-flex align-items-justify ms-4">
+                            <span>0172 2704090</span>
+                        </i>
+                    </div>
+                    <div class="social-links d-none d-md-flex align-items-justify">
+                        <a href="#" class="twitter">
+                            <i class="bi bi-twitter"></i>
+                        </a>
+                        <a href="#" class="facebook">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+                        <a href="#" class="instagram">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                        <a href="#" class="linkedin">
+                            <i class="bi bi-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </section>
+            <!-- ======= Header ======= -->
+            <header id="header" class="d-flex align-items-center"
+                style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; background: #d1e6ff;">
+                <div class="container d-flex align-items-center justify-content-between">
+                    <a href="/Login.aspx" class="logo">
+                        <img src="/Assets/Add a heading (1).png" alt="Logo" />
+                    </a>
 
-        <header id="header" class="d-flex align-items-center"
-            style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; background: #d1e6ff;">
-            <div class="container d-flex align-items-center justify-content-between">
-                <a href="/Login.aspx" class="logo">
-                    <img src="/Assets/Add a heading (1).png" alt="Logo" />
-                </a>
+                    <nav id="navbar" class="navbar">
+                        <ul>
+                            <li class="dropdown">
+                                <a href="#"><span>Home</span> <i class="bi bi-chevron-down"></i></a>
+                                <ul>
+                                    <li><a href="/AboutCEI.aspx">About CEI</a></li>
+                                    <li><a href="/StateLicensingBoard.aspx">State Licensing Board, Haryana</a></li>
+                                    <li><a href="/Functions.aspx">Functions</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
 
-                <nav id="navbar" class="navbar">
-                    <ul>
-                        <%--<li class="dropdown">
-                            <a href="#"><span>Home</span> <i class="bi bi-chevron-down"></i></a>
-                            <ul>
-                                <li><a href="/AboutCEI.aspx">About CEI</a></li>
-                                <li><a href="/StateLicensingBoard.aspx">State Licensing Board, Haryana</a></li>
-                                <li><a href="/Functions.aspx">Functions</a></li>
-                            </ul>
-                        </li>
-                        <li>|</li>
+                            <li class="dropdown">
+                                <a href="#"><span>Lift & Escalator</span> <i class="bi bi-chevron-down"></i></a>
+                                <ul>
+                                    <li><a href="/Procedure_For_Registration_Lift_Exclator.aspx">Procedure For Registration /<br />
+                                        Inspection Lifts and Escalators</a></li>
+                                    <li><a href="/Login.aspx" target="_blank">Apply for New</a></li>
+                                    <li><a href="/Login.aspx" target="_blank">Apply for Renewal Lift</a></li>
+                                    <li><a href="/StaticPage2.aspx" target="_blank">List of Lift Inspectors</a></li>
+                                    <li><a href="/UserManual/Procedure_and_Check_List_for_Lift.pdf" target="_blank">Checklist for Registration/<br />
+                                        Inspection of Lifts and Elevators</a></li>
+                                    <li><a href="/UserManual/forms.pdf" target="_blank">Forms</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
 
-                        <li class="dropdown">
-                            <a href="#"><span>Lift & Escalator</span> <i class="bi bi-chevron-down"></i></a>
-                            <ul>
-                                <li><a href="/Procedure_For_Registration_Lift_Exclator.aspx">Procedure For Registration /<br />
-                                    Inspection Lifts and Escalators</a></li>
-                                <li><a href="/Login.aspx" target="_blank">Apply for New</a></li>
-                                <li><a href="/Login.aspx" target="_blank">Apply for Renewal Lift</a></li>
-                                <li><a href="/StaticPage2.aspx" target="_blank">List of Lift Inspectors</a></li>
-                                <li><a href="/UserManual/Procedure_and_Check_List_for_Lift.pdf" target="_blank">Checklist for Registration/<br />
-                                    Inspection of Lifts and Elevators</a></li>
-                                <li><a href="/UserManual/forms.pdf" target="_blank">Forms</a></li>
-                            </ul>
-                        </li>
-                        <li>|</li>
+                            <li class="dropdown">
+                                <a href="#"><span>Licensing</span> <i class="bi bi-chevron-down"></i></a>
+                                <ul>
+                                    <li><a href="/UserManual/Haryana-Electrical-Contractor-Licence-Certificate-of.pdf" target="_blank">Electrical Licensing Rules-2021</a></li>
+                                    <li><a href="/UserManual/form_split.pdf" target="_blank">Forms & Fees</a></li>
+                                    <li><a href="/UserPages/Instructions.aspx" target="_blank">For New Licence</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
 
-                        <li class="dropdown">
-                            <a href="#"><span>Licensing</span> <i class="bi bi-chevron-down"></i></a>
-                            <ul>
-                                <li><a href="/UserManual/Haryana-Electrical-Contractor-Licence-Certificate-of.pdf" target="_blank">Electrical Licensing Rules-2021</a></li>
-                                <li><a href="/UserManual/form_split.pdf" target="_blank">Forms & Fees</a></li>
-                                <li><a href="/UserPages/Instructions.aspx" target="_blank">For New Licence</a></li>
-                            </ul>
-                        </li>
-                        <li>|</li>
+                            <li class="dropdown">
+                                <a href="#"><span>Inspection</span> <i class="bi bi-chevron-down"></i></a>
+                                <ul>
+                                    <li><a href="/Procedure_for_Electrical_Installation.aspx">Procedure for Electrical Installation</a></li>
+                                    <li><a href="/Procedure_for_grant_of_approval.aspx">Procedure for Grant of<br />
+                                        Approval for Energisation of<br />
+                                        New Electrical Installation</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
 
-                        <li class="dropdown">
-                            <a href="#"><span>Inspection</span> <i class="bi bi-chevron-down"></i></a>
-                            <ul>
-                                <li><a href="/Procedure_for_Electrical_Installation.aspx">Procedure for Electrical Installation</a></li>
-                                <li><a href="/Procedure_for_grant_of_approval.aspx">Procedure for Grant of<br />
-                                    Approval for Energisation of<br />
-                                    New Electrical Installation</a></li>
-                            </ul>
-                        </li>
-                        <li>|</li>
+                            <li><a href="/OurOnlineServices.aspx"><span>Services</span></a></li>
+                            <li>|</li>
 
-                        <li><a href="/OurOnlineServices.aspx"><span>Services</span></a></li>
-                        <li>|</li>
+                            <li class="dropdown">
+                                <a href="#"><span>Orders</span> <i class="bi bi-chevron-down"></i></a>
+                                <ul>
+                                    <li><a href="/UserManual/BRAP_Griviance.pdf" target="_blank">BRAP-2024 Grievance Mechanism</a></li>
+                                    <li><a href="/UserManual/office order 223.pdf" target="_blank">Mandate Regarding Risk Profile</a></li>
+                                    <li><a href="/UserManual/CamScanner 01-09-2025 13.37_1.pdf" target="_blank">Mandate Regarding Registration and Renewal of Lift/Escalator</a></li>
+                                    <li><a href="/UserManual/Mendate%20Regarding%20Electrical%20Installations.pdf" target="_blank">Mandate Regarding Electrical Installations</a></li>
+                                    <li><a href="/UserManual/Authorization-of-Chartered-Electrical-Safety-EngineerCESE.pdf" target="_blank">Authorization of Chartered Electrical Safety Engineer (CESE)</a></li>
+                                    <li><a href="/UserManual/cancellation-order.pdf" target="_blank">Cancellation Order</a></li>
+                                    <li class="dropdown">
+                                        <a href="#"><span>Fees Details</span> <i class="bi bi-chevron-right"></i></a>
+                                        <ul>
+                                            <li><a href="/UserManual/Adobe Scan 13-Jan-2025.pdf" target="_blank">Fees for New Installation Inspection</a></li>
+                                            <li><a href="/UserManual/Adobe Scan 13-Jan-2025.pdf" target="_blank">Fees for Periodical Inspection</a></li>
+                                            <li><a href="/UserManual/Adobe Scan 13-Jan-2025.pdf" target="_blank">Fees for Certificates & Licences</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="/UserManual/Orderof22authorisedCharteredElectricalSafetyEngineersdated28.11.2016.pdf" target="_blank">Order of 22 Chartered Electrical Safety Engineers (2016)</a></li>
+                                    <li><a href="/UserManual/OrderofauthorisedCharteredElectricalSafetyEngineers.pdf" target="_blank">Order of 209 Chartered Electrical Safety Engineers (2016)</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
 
-                        <li class="dropdown">
-                            <a href="#"><span>Orders</span> <i class="bi bi-chevron-down"></i></a>
-                            <ul>
-                                <li><a href="/UserManual/BRAP_Griviance.pdf" target="_blank">BRAP-2024 Grievance Mechanism</a></li>
-                                <li><a href="/UserManual/office order 223.pdf" target="_blank">Mandate Regarding Risk Profile</a></li>
-                                <li><a href="/UserManual/CamScanner 01-09-2025 13.37_1.pdf" target="_blank">Mandate Regarding Registration and Renewal of Lift/Escalator</a></li>
-                                <li><a href="/UserManual/Mendate%20Regarding%20Electrical%20Installations.pdf" target="_blank">Mandate Regarding Electrical Installations</a></li>
-                                <li><a href="/UserManual/Authorization-of-Chartered-Electrical-Safety-EngineerCESE.pdf" target="_blank">Authorization of Chartered Electrical Safety Engineer (CESE)</a></li>
-                                <li><a href="/UserManual/cancellation-order.pdf" target="_blank">Cancellation Order</a></li>
-                                <li class="dropdown">
-                                    <a href="#"><span>Fees Details</span> <i class="bi bi-chevron-right"></i></a>
-                                    <ul>
-                                        <li><a href="/UserManual/Adobe Scan 13-Jan-2025.pdf" target="_blank">Fees for New Installation Inspection</a></li>
-                                        <li><a href="/UserManual/Adobe Scan 13-Jan-2025.pdf" target="_blank">Fees for Periodical Inspection</a></li>
-                                        <li><a href="/UserManual/Adobe Scan 13-Jan-2025.pdf" target="_blank">Fees for Certificates & Licences</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="/UserManual/Orderof22authorisedCharteredElectricalSafetyEngineersdated28.11.2016.pdf" target="_blank">Order of 22 Chartered Electrical Safety Engineers (2016)</a></li>
-                                <li><a href="/UserManual/OrderofauthorisedCharteredElectricalSafetyEngineers.pdf" target="_blank">Order of 209 Chartered Electrical Safety Engineers (2016)</a></li>
-                            </ul>
-                        </li>
-                        <li>|</li>
+                            <li class="dropdown">
+                                <a href="#"><span>EODB Compliance's</span> <i class="bi bi-chevron-down"></i></a>
+                                <ul>
+                                    <li><a href="/StaticPage1.aspx" target="_blank">Checklist/Procedure/<br />
+                                        Fees Structure for Lift</a></li>
+                                    <li><a href="/StaticPage2.aspx" target="_blank">List of Lift Inspectors</a></li>
+                                    <li><a href="/StaticPage3.aspx" target="_blank">EODB Dashboard</a></li>
+                                </ul>
+                            </li>
+                            <li>|</li>
 
-                        <li class="dropdown">
-                            <a href="#"><span>EODB Compliance's</span> <i class="bi bi-chevron-down"></i></a>
-                            <ul>
-                                <li><a href="/StaticPage1.aspx" target="_blank">Checklist/Procedure/<br />
-                                    Fees Structure for Lift</a></li>
-                                <li><a href="/StaticPage2.aspx" target="_blank">List of Lift Inspectors</a></li>
-                                <li><a href="/StaticPage3.aspx" target="_blank">EODB Dashboard</a></li>
-                            </ul>
-                        </li>
-                        <li>|</li>
+                            <li><a href="https://grs.hartron.io/#/" target="_blank">Grievance Redressal</a></li>
+                            <li>|</li>
 
-                        <li><a href="https://grs.hartron.io/#/" target="_blank">Grievance Redressal</a></li>
-                        <li>|</li>
+                            <li><a href="/VerifyCertificate.aspx">Verify Certificate</a></li>
+                            <li>|</li>
 
-                        <li><a href="/VerifyCertificate.aspx">Verify Certificate</a></li>
-                        <li>|</li>
-
-                        <li><a href="/UserPages/OurServices.aspx">User Manual</a></li>
-                        <li>|</li>--%>
-                                                     <li class="dropdown" id="logout">
-                            <a href="#">
-                                <span id="user">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
-                                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
-                                    </svg></span>
-                            </a>
-                            <ul id="profile_drop">
-                                <li id="ProfileUser"><a href="/UserPages/User_Profile_Create.aspx">
-                                    <span>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-badge" viewBox="0 0 16 16">
+                            <li><a href="/UserPages/OurServices.aspx">User Manual</a><%--<img src="/Assets/new1.gif" />--%></li>
+                            <li>|</li>
+                            <li class="dropdown" id="logout">
+                                <a href="#">
+                                    <span id="user">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                                            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+                                        </svg></span>
+                                </a>
+                                <ul id="profile_drop">
+                                    <li id="ProfileUser">
+                                        <a href="#">
+                                            <span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-badge" viewBox="0 0 16 16">
                           User      
 <path d="M6.5 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1zM11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
                                         <path d="M4.5 0A2.5 2.5 0 0 0 2 2.5V14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2.5A2.5 2.5 0 0 0 11.5 0zM3 2.5A1.5 1.5 0 0 1 4.5 1h7A1.5 1.5 0 0 1 13 2.5v10.795a4.2 4.2 0 0 0-.776-.492C11.392 12.387 10.063 12 8 12s-3.392.387-4.224.803a4.2 4.2 0 0 0-.776.492z" />
-                                    </svg>&nbsp;&nbsp;Profile</span>
-                                </a></li>
-                                <li id="ProfileLogout">
-                                    <a href="#">
-                                        <asp:Button ID="btnLogout" Text="Logout" OnClick="btnLogout_Click" runat="server" Style="background: #4b49ac; border-color: #4b49ac; color: white; border-radius: 5px;" />
-                                        <%--OnClick="btnLogout_Click"--%>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-
-                    </ul>
-                    <i class="bi bi-list mobile-nav-toggle"></i>
-                </nav>
-            </div>
-        </header>
+                                    </svg>&nbsp;&nbsp;</span>
+                                        </a>
+                                    </li>
+                                    <li id="ProfileLogout">
+                                        <a href="#">
+                                            <span>
+                                                <asp:Button ID="Button17" OnClick="btnLogout_Click" Text="Logout" runat="server" Style="background: #4b49ac; border-color: #4b49ac; color: white; border-radius: 5px;" />
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <i class="bi bi-list mobile-nav-toggle"></i>
+                    </nav>
+                </div>
+            </header>
             <!-- End Header -->
             <main id="main">
                 <section id="about" class="about section-bg">
@@ -728,396 +793,166 @@ nav#navbar.navbar-mobile {
 
                                                         </div>
                                                         <div class="col-md-3" style="text-align: center;">
-                                                                                                            <asp:Button type="button" ID="btnBack" Text="Back" OnClick="btnBack_Click" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" />
+                                                            <asp:Button type="button" ID="btnBack" Text="Back" OnClick="btnBack_Click" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" />
 
                                                             <asp:Button type="button" ID="btn_Preview" Text="Preview" runat="server" OnClick="btn_Preview_Click" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" />
                                                         </div>
                                                     </div>
 
-
                                                 </div>
+
                                                 <h6>The candidates are requested to ensure that the documents are genuine and
                                             should be self attested.</h6>
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="table-responsive">
-                                                <table class="table table-bordered table-striped">
-                                                    <tbody>
-                                                           <tr>
-                                                            <td style="text-align: justify;">Authorized Signatory Approval Letter.(<span style="color: red;">★</span>)
-                                                            </td>
-                                                            <td style="text-align: center !important;">
-                                                                <text style="color: red; font-size: 12px;" id="text1" runat="server" visible="true">Upload Only PDF File not more than 1mb..</text>
-                                                                <asp:FileUpload ID="FileUpload1" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="FileUpload1" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-                                                                <asp:LinkButton ID="lnkbtn_Save1" Enabled="false" runat="server" Visible="false" CssClass="btn btn-success"><i class="fa fa-check"></i>  
-                                                                </asp:LinkButton>
-                                                            </td>
-                                                            <td style="text-align: center !important;">
-                                                                <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Upload" class="btn btn-primary" />
-                                                                <asp:LinkButton ID="lnkbtn_Delete1" OnClick="lnkbtn_Delete1_Click" Visible="false" runat="server" CssClass="btn btn-danger"> <i class="fa fa-times"></i> </asp:LinkButton>
-                                                            </td>
-                                                            <asp:HiddenField ID="hdnId" runat="server" />
-                                                        </tr>
-                                                        <tr>
-                                                            <td style="text-align: justify;">Which Id proof you want to Upload(<span style="color: red;">★</span>)<br />
-                                                                <asp:DropDownList class="select-form" Style="border: 1px solid #ced4da; border-radius: 5px; width: 30%; height: 32px; margin-top: 15px;"
-                                                                    ID="ddlIdproof" runat="server" TabIndex="4">
-                                                                    <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                                                                    <asp:ListItem Text="Aadhaar Card" Value="1"></asp:ListItem>
-                                                                    <asp:ListItem Text="PAN Card" Value="2"></asp:ListItem>
-                                                                    <asp:ListItem Text="Age Certificate" Value="3"></asp:ListItem>
-                                                                </asp:DropDownList>
-                                                                <asp:RequiredFieldValidator runat="server" ControlToValidate="ddlIdproof" InitialValue="0" ValidationGroup="Submit" ForeColor="Red">Please select Id proof</asp:RequiredFieldValidator>
-                                                            </td>
-                                                            <td style="text-align: center !important;">
-                                                                <text style="color: red; font-size: 12px;" id="text2" runat="server" visible="true">Upload Only PDF File not more than 1mb..</text>
-                                                                <asp:FileUpload ID="FileUpload2" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="FileUpload2" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-                                                                <asp:LinkButton ID="lnkbtn_Save2" Enabled="false" runat="server" Visible="false" CssClass="btn btn-success"><i class="fa fa-check"></i>  
-                                                                </asp:LinkButton>
-                                                            </td>
-                                                            <td style="text-align: center !important;">
-                                                                <asp:Button ID="Button2" runat="server" Text="Upload" OnClick="Button2_Click" class="btn btn-primary" />
-                                                                <asp:LinkButton ID="lnkbtn_Delete2" OnClick="lnkbtn_Delete2_Click" runat="server" Visible="false" CssClass="btn btn-danger"><i class="fa fa-times"></i> </asp:LinkButton>
-                                                            </td>
-                                                        </tr>
+                                            <asp:ScriptManager ID="ScriptManager1" runat="server" />
 
-                                                        <tr>
-                                                            <td style="text-align: justify;">
-                                                                <p>Calibration Certificate from NABL or Government testing laboratory </p>
-                                                                <p>respect of electrical equipment’s invoices(<span style="color: red;">★</span>)</p>
-                                                            </td>
-                                                            <td style="text-align: center !important;">
-                                                                <text style="color: red; font-size: 12px;" id="text3" runat="server" visible="true">Upload Only PDF File not more than 1mb..</text>
-                                                                <asp:FileUpload ID="FileUpload3" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="FileUpload3" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-                                                                <asp:LinkButton ID="lnkbtn_Save3" Enabled="false" runat="server" Visible="false" CssClass="btn btn-success"><i class="fa fa-check"></i>  
-                                                                </asp:LinkButton>
-                                                            </td>
-                                                            <td style="text-align: center !important;">
-                                                                <asp:Button ID="Button3" runat="server" OnClick="Button3_Click" Text="Upload" class="btn btn-primary" />
-                                                                <asp:LinkButton ID="lnkbtn_Delete3" OnClick="lnkbtn_Delete3_Click" Visible="false" runat="server" CssClass="btn btn-danger"><i class="fa fa-times"></i> </asp:LinkButton>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td style="text-align: justify;">Copy of Annexure 3 & 5(<span style="color: red;">★</span>)
-                                                            </td>
-                                                            <td style="text-align: center !important;">
-                                                                <text style="color: red; font-size: 12px;" id="text4" runat="server" visible="true">Upload Only PDF File not more than 1mb..</text>
-                                                                <asp:FileUpload ID="FileUpload4" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="FileUpload4" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-                                                                <asp:LinkButton ID="lnkbtn_Save4" Enabled="false" runat="server" Visible="false" CssClass="btn btn-success"><i class="fa fa-check"></i>  
-                                                                </asp:LinkButton>
-                                                            </td>
-                                                            <td style="text-align: center !important;">
-                                                                <asp:Button ID="Button4" runat="server" OnClick="Button4_Click" Text="Upload" class="btn btn-primary" />
-                                                                <asp:LinkButton ID="lnkbtn_Delete4" OnClick="lnkbtn_Delete4_Click" Visible="false" runat="server" CssClass="btn btn-danger"><i class="fa fa-times"></i> </asp:LinkButton>
-                                                            </td>
-                                                        </tr>
-                                                        <tr id="Medicalfitness" runat="server" visible="false">
-                                                            <td style="">
-                                                                <p>
-                                                                    Medical fitness certificate from Government/Government approved Hospital,<br />
-                                                                    in case he is above 55 years of age on the date of submission of application.(<span style="color: red;">★</span>)
-                                                                </p>
-                                                                <%-- of age on the date of submission of application.(<span style="color: red;">★</span>)--%>
-                                                            </td>
-                                                            <td style="text-align: center !important;">
-                                                                <text style="color: red; font-size: 12px;" id="text5" runat="server" visible="true">Upload Only PDF File not more than 1mb..</text>
-                                                                <asp:FileUpload ID="FileUpload5" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="FileUpload5" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-                                                                <asp:LinkButton ID="lnkbtn_Save5" Enabled="false" runat="server" Visible="false" CssClass="btn btn-success"><i class="fa fa-check"></i>  
-                                                                </asp:LinkButton>
-                                                            </td>
-                                                            <td style="text-align: center !important;">
-                                                                <asp:Button ID="Button5" runat="server" OnClick="Button5_Click" Text="Upload" class="btn btn-primary" />
-                                                                <asp:LinkButton ID="lnkbtn_Delete5" OnClick="lnkbtn_Delete5_Click" Visible="false" runat="server" CssClass="btn btn-danger"><i class="fa fa-times"></i> </asp:LinkButton>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <%--Previously amount is ₹3350/-)--%>
-                                                            <td style="text-align: justify; padding-top: 20px !important;">Copy of treasury challan of fees (₹4020/-) deposited in any treasury of Haryana.(<span style="color: red;">★</span>)
-                                                                <div class="row" style="margin-top: 15px; margin-bottom: 10px;">
-                                                                    <div class="col-md-6">
-                                                                        <div class="form-group">
-                                                                            <label for="State1">
-                                                                                GRN No.<samp style="color: red">* </samp>
-                                                                            </label>
+                                            <div class="col-12">
+                                                <%--OnRowDataBound="Grd_Document_RowDataBound" OnRowCommand="Grd_Document_RowCommand" --%>
+                                                <asp:GridView CssClass="table-responsive table table-striped table-bordered"
+                                                    ID="Grd_Document" runat="server" OnRowDataBound="Grd_Document_RowDataBound" OnRowCommand="Grd_Document_RowCommand"
+                                                    DataKeyNames="DocumentID,DocumentName,DocumentShortName" AutoGenerateColumns="false">
+                                                    <PagerStyle CssClass="pagination-ys" />
+                                                    <Columns>
+                                                        <asp:TemplateField HeaderText="SNo">
+                                                            <HeaderStyle Width="5%" CssClass="headercolor" />
+                                                            <ItemStyle Width="5%" />
+                                                            <ItemTemplate>
+                                                                <%# Container.DataItemIndex + 1 %>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateField>
 
-                                                                            <asp:TextBox class="form-control" ID="txtUtrNo" MaxLength="50" autocomplete="off" runat="server" onkeypress="return isAlphaNumeric(event);" Style="margin-bottom: 15px;"> </asp:TextBox>
-                                                                            <asp:RequiredFieldValidator runat="server" ControlToValidate="txtUtrNo" ValidationGroup="Submit" ForeColor="Red">Enter UTR No.</asp:RequiredFieldValidator>
-                                                                                                                                          <asp:RegularExpressionValidator runat="server"  ControlToValidate="txtUtrNo" ValidationGroup="Submit" 
-ForeColor="Red"  ErrorMessage="GRN No. must be exactly 10 alphanumeric characters." ValidationExpression="^[a-zA-Z0-9]{10}$"> </asp:RegularExpressionValidator>
-                                                                      
-                                                                            
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <div class="form-group">
-                                                                            <label for="State1">
-                                                                                Date<samp style="color: red">* </samp>
-                                                                            </label>
-
-                                                                            <asp:TextBox class="form-control" Type="date" ID="txtdate" MaxLength="50" autocomplete="off" runat="server" Onchange="validateDate()" Style="margin-bottom: 15px;"> </asp:TextBox>
-                                                                            <asp:RequiredFieldValidator runat="server" ControlToValidate="txtdate" ValidationGroup="Submit" ForeColor="Red">Enter Date</asp:RequiredFieldValidator>
-                                                                        </div>
-                                                                    </div>
+                                                        <asp:TemplateField HeaderText="Document Name">
+                                                            <HeaderStyle HorizontalAlign="Left" CssClass="headercolor leftalign" Width="200px" />
+                                                            <ItemStyle HorizontalAlign="Left" CssClass="leftalign" Width="800px" />
+                                                            <ItemTemplate>
+                                                                <div style="white-space: normal; word-wrap: break-word; word-break: break-word; line-height: 1.5;">
+                                                                    <%# Eval("RequiredFieldStatus").ToString() == "1" ? Eval("DocumentName") + " <span style='color:red'>*</span>" : Eval("DocumentName") %>
                                                                 </div>
-                                                            </td>
-                                                            <td style="text-align: center !important;">
-                                                                <text style="color: red; font-size: 12px;" id="text6" runat="server" visible="true">Upload Only PDF File not more than 1mb..</text>
-                                                                <asp:FileUpload ID="FileUpload6" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="FileUpload6" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-                                                                <asp:LinkButton ID="lnkbtn_Save6" Enabled="false" runat="server" Visible="false" CssClass="btn btn-success"><i class="fa fa-check"></i>  
-                                                                </asp:LinkButton>
-                                                            </td>
-                                                            <td style="text-align: center !important;">
-                                                                <asp:Button ID="Button6" runat="server" OnClick="Button6_Click" Text="Upload" class="btn btn-primary" />
-                                                                <asp:LinkButton ID="lnkbtn_Delete6" OnClick="lnkbtn_Delete6_Click" Visible="false" runat="server" CssClass="btn btn-danger"><i class="fa fa-times"></i> </asp:LinkButton>
-                                                            </td>
-                                                        </tr>
-
-                                                        <tr id="Tr1" runat="server" visible="true">
-                                                            <td>
-                                                                <label for="State1" style="margin-bottom: 10px; margin-left: 0px;">
-                                                                    Upload Candidate Image(<span style="color: red;">★</span>)
-                                                                </label>
-                                                                <asp:FileUpload ID="FileUpload7" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important; margin-left: 0px;" onchange="previewImage(this, 'imagePreview')" accept="image/*" />
-
-                                                                <text style="color: red; font-size: 12px;" id="text7" runat="server" visible="true">Please upload a valid image file (.jpg, .jpeg, .png) (Max: 1MB)</text>
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="FileUpload7" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-                                                            </td>
-                                                            <td style="text-align: center !important;">
-                                                                <div id="imagePreview" style="margin-top: 10px;"></div>
-                                                                <asp:LinkButton ID="lnkbtn_Save7" Enabled="false" runat="server" Visible="false" CssClass="btn btn-success"><i class="fa fa-check"></i></asp:LinkButton>
-                                                            </td>
-                                                            <td style="text-align: center !important;">
-                                                                <asp:Button ID="Button7" runat="server" OnClick="Button7_Click" Text="Upload" class="btn btn-primary" />
-                                                                <asp:LinkButton ID="lnkbtn_Delete7" OnClick="lnkbtn_Delete7_Click" Visible="false" runat="server" CssClass="btn btn-danger"><i class="fa fa-times"></i> </asp:LinkButton>
-                                                            </td>
-                                                        </tr>
-
-                                                        <tr id="TrSignature" runat="server" visible="true">
-                                                            <td>
-                                                                <label for="State1" style="margin-bottom: 10px; margin-left: 0px;">
-                                                                    Upload Candidate Signature(<span style="color: red;">★</span>)
-                                                                </label>
-                                                                <asp:FileUpload ID="FileUpload8" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important; margin-left: 0px;" onchange="previewImage(this, 'signaturePreview')" accept="image/*" />
-
-                                                                <text style="color: red; font-size: 12px;" id="text8" runat="server" visible="true">Please upload a valid image file (.jpg, .jpeg, .png) (Max: 1MB)</text>
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidatorSignature" runat="server" ControlToValidate="FileUpload8" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-                                                            </td>
-                                                            <td style="text-align: center !important;">
-                                                                <div id="signaturePreview" style="margin-top: 10px;"></div>
-                                                                <asp:LinkButton ID="lnkbtn_Save8" Enabled="false" runat="server" Visible="false" CssClass="btn btn-success"><i class="fa fa-check"></i></asp:LinkButton>
-                                                            </td>
-                                                            <td style="text-align: center !important;">
-                                                                <asp:Button ID="Button8" OnClick="Button8_Click" runat="server" Text="Upload" class="btn btn-primary" />
-                                                                <asp:LinkButton ID="lnkbtn_Delete8" OnClick="lnkbtn_Delete8_Click" Visible="false" runat="server" CssClass="btn btn-danger"><i class="fa fa-times"></i> </asp:LinkButton>
-                                                            </td>
-                                                        </tr>
-
-                                                        <tr>
-                                                            <td style="">
-                                                                <p>
-                                                                    Major works carried out in Haryana(<span style="color: red;">★</span>)<br />
-                                                                    (List be attached with details of installation,scheme approval obtained from electrical Inspectorate, etc.)
-                                                                </p>
-                                                            </td>
-                                                            <td style="text-align: center !important;">
-                                                                <text style="color: red; font-size: 12px;" id="text9" runat="server" visible="true">Upload Only PDF File not more than 1mb..</text>
-                                                                <asp:FileUpload ID="FileUpload9" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="FileUpload9" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-                                                                <asp:LinkButton ID="lnkbtn_Save9" Enabled="false" runat="server" Visible="false" CssClass="btn btn-success"><i class="fa fa-check"></i>  
-                                                                </asp:LinkButton>
-                                                            </td>
-                                                            <td style="text-align: center !important;">
-                                                                <asp:Button ID="Button9" runat="server" OnClick="Button9_Click" Text="Upload" class="btn btn-primary" />
-                                                                <asp:LinkButton ID="lnkbtn_Delete9" OnClick="lnkbtn_Delete9_Click" Visible="false" runat="server" CssClass="btn btn-danger"><i class="fa fa-times"></i> </asp:LinkButton>
-                                                            </td>
-                                                        </tr>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateField>
 
 
+                                                        <asp:TemplateField Visible="false">
+                                                            <HeaderStyle HorizontalAlign="Left" CssClass="headercolor leftalign" />
+                                                            <ItemTemplate>
+                                                                <asp:HiddenField ID="Req" runat="server" Value='<%# Eval("RequiredFieldStatus") %>' />
+                                                                <asp:HiddenField ID="DocumentShortName" runat="server" Value='<%# Eval("DocumentShortName") %>' />
+                                                                <asp:HiddenField ID="DocumentName" runat="server" Value='<%# Eval("DocumentName") %>' />
+                                                                <asp:HiddenField ID="DocumentID" runat="server" Value='<%# Eval("DocumentID") %>' />
+                                                                <asp:HiddenField ID="SaveDocumentID" runat="server" Value='<%# Eval("SaveDocumentID") %>' />
+                                                                <asp:HiddenField ID="DocumentExist" runat="server" Value='<%# Eval("DocumentExist") %>' />
+                                                                <%--   <asp:HiddenField ID="RowIdForExistingDoc" runat="server" Value='<%# Eval("ExistingDocId") %>' />--%>
+                                                                <asp:HiddenField ID="RowIdForExistingDoc" runat="server" Value='<%# Eval("ExistingDocId") %>' />
 
-                                                        <tr>
-                                                            <td style="">
-                                                                <p>
-                                                                    Income tax return for last 3 year(<span style="color: red;">★</span>)<br />
-                                                                    (1st Year)
-                                                                </p>
-                                                            </td>
-                                                            <td style="text-align: center !important;">
-                                                                <text style="color: red; font-size: 12px;" id="text10" runat="server" visible="true">Upload Only PDF File not more than 1mb..</text>
-                                                                <asp:FileUpload ID="FileUpload10" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="FileUpload10" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-                                                                <asp:LinkButton ID="lnkbtn_Save10" Enabled="false" runat="server" Visible="false" CssClass="btn btn-success"><i class="fa fa-check"></i>  
-                                                                </asp:LinkButton>
-                                                            </td>
-                                                            <td style="text-align: center !important;">
-                                                                <asp:Button ID="Button10" runat="server" OnClick="Button10_Click" Text="Upload" class="btn btn-primary" />
-                                                                <asp:LinkButton ID="lnkbtn_Delete10" OnClick="lnkbtn_Delete10_Click" Visible="false" runat="server" CssClass="btn btn-danger"><i class="fa fa-times"></i> </asp:LinkButton>
-                                                            </td>
-                                                        </tr>
+                                                            </ItemTemplate>
+                                                        </asp:TemplateField>
+                                                        <asp:TemplateField HeaderText="File Upload">
+                                                            <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                                                            <ItemStyle HorizontalAlign="Left" CssClass="headercolor" Width="450px" />
+                                                            <ItemTemplate>
+    <div style="display: flex; 
+                align-items: center; 
+                justify-content: center; 
+                gap: 8px; 
+                flex-wrap: nowrap; 
+                overflow-x: auto; 
+                width: 100%;">
+        
+        <asp:FileUpload ID="FileUpload1" runat="server" CssClass="form-control" Style="width: 300px;" />
+        
+        <asp:Label ID="lblInstruction" runat="server" CssClass="small" Text="" />
+        
+        <asp:Button ID="btnUpload" runat="server" Text="Upload"
+            CssClass="btn btn-primary btn-sm"
+            CommandArgument='<%# Eval("SaveDocumentID") %>'
+            OnClick="btnUpload_Click" style="margin-top:0px;"/>
+        
+        <asp:LinkButton 
+            ID="btnTick" 
+            runat="server" 
+            CssClass="fa fa-check text-success ml-2 custom-btn" 
+            Visible="false" Enable="false"/>
 
-                                                        <tr>
-                                                            <td style="">
-                                                                <p>
-                                                                    Income tax return for last 3 year(<span style="color: red;">★</span>)<br />
-                                                                    (2nd Year)
-                                                                </p>
-                                                            </td>
-                                                            <td style="text-align: center !important;">
-                                                                <text style="color: red; font-size: 12px;" id="text11" runat="server" visible="true">Upload Only PDF File not more than 1mb..</text>
-                                                                <asp:FileUpload ID="FileUpload11" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator9" runat="server" ControlToValidate="FileUpload11" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-                                                                <asp:LinkButton ID="lnkbtn_Save11" Enabled="false" runat="server" Visible="false" CssClass="btn btn-success"><i class="fa fa-check"></i>  
-                                                                </asp:LinkButton>
-                                                            </td>
-                                                            <td style="text-align: center !important;">
-                                                                <asp:Button ID="Button11" runat="server" OnClick="Button11_Click" Text="Upload" class="btn btn-primary" />
-                                                                <asp:LinkButton ID="lnkbtn_Delete11" OnClick="lnkbtn_Delete11_Click" Visible="false" runat="server" CssClass="btn btn-danger"><i class="fa fa-times"></i> </asp:LinkButton>
-                                                            </td>
-                                                        </tr>
+        <asp:LinkButton 
+            ID="btnCross" 
+            runat="server" 
+            CssClass="fa fa-times text-danger ml-2 custom-btn" 
+            CommandArgument='<%# Eval("ExistingDocId") %>' 
+            CommandName="CustomDelete" 
+            Visible="false" />
 
+    </div>
+</ItemTemplate>
+    
+                                                        </asp:TemplateField>
 
-                                                        <tr>
-                                                            <td style="">
-                                                                <p>
-                                                                    Income tax return for last 3 year(<span style="color: red;">★</span>)<br />
-                                                                    (3rd Year)
-                                                                </p>
-                                                            </td>
-                                                            <td style="text-align: center !important;">
-                                                                <text style="color: red; font-size: 12px;" id="text12" runat="server" visible="true">Upload Only PDF File not more than 1mb..</text>
-                                                                <asp:FileUpload ID="FileUpload12" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator10" runat="server" ControlToValidate="FileUpload12" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-                                                                <asp:LinkButton ID="lnkbtn_Save12" Enabled="false" runat="server" Visible="false" CssClass="btn btn-success"><i class="fa fa-check"></i>  
-                                                                </asp:LinkButton>
-                                                            </td>
-                                                            <td style="text-align: center !important;">
-                                                                <asp:Button ID="Button12" runat="server" OnClick="Button12_Click" Text="Upload" class="btn btn-primary" />
-                                                                <asp:LinkButton ID="lnkbtn_Delete12" OnClick="lnkbtn_Delete12_Click" Visible="false" runat="server" CssClass="btn btn-danger"><i class="fa fa-times"></i> </asp:LinkButton>
-                                                            </td>
-                                                        </tr>
+                                                    </Columns>
 
-
-                                                        <tr>
-                                                            <td style="">
-                                                                <p>
-                                                                    Balance sheet of last 1st year(<span style="color: red;">★</span>)<br />
-                                                                </p>
-                                                            </td>
-                                                            <td style="text-align: center !important;">
-                                                                <text style="color: red; font-size: 12px;" id="text13" runat="server" visible="true">Upload Only PDF File not more than 1mb..</text>
-                                                                <asp:FileUpload ID="FileUpload13" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator11" runat="server" ControlToValidate="FileUpload13" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-                                                                <asp:LinkButton ID="lnkbtn_Save13" Enabled="false" runat="server" Visible="false" CssClass="btn btn-success"><i class="fa fa-check"></i>  
-                                                                </asp:LinkButton>
-                                                            </td>
-                                                            <td style="text-align: center !important;">
-                                                                <asp:Button ID="Button13" runat="server" OnClick="Button13_Click" Text="Upload" class="btn btn-primary" />
-                                                                <asp:LinkButton ID="lnkbtn_Delete13" OnClick="lnkbtn_Delete13_Click" Visible="false" runat="server" CssClass="btn btn-danger"><i class="fa fa-times"></i> </asp:LinkButton>
-                                                            </td>
-                                                        </tr>
-
-                                                        <tr>
-                                                            <td style="">
-                                                                <p>
-                                                                    Balance sheet of last 2nd year(<span style="color: red;">★</span>)<br />
-                                                                </p>
-                                                            </td>
-                                                            <td style="text-align: center !important;">
-                                                                <text style="color: red; font-size: 12px;" id="text14" runat="server" visible="true">Upload Only PDF File not more than 1mb..</text>
-                                                                <asp:FileUpload ID="FileUpload14" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" ControlToValidate="FileUpload14" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-                                                                <asp:LinkButton ID="lnkbtn_Save14" Enabled="false" runat="server" Visible="false" CssClass="btn btn-success"><i class="fa fa-check"></i>  
-                                                                </asp:LinkButton>
-                                                            </td>
-                                                            <td style="text-align: center !important;">
-                                                                <asp:Button ID="Button14" runat="server" OnClick="Button14_Click" Text="Upload" class="btn btn-primary" />
-                                                                <asp:LinkButton ID="lnkbtn_Delete14" OnClick="lnkbtn_Delete14_Click" Visible="false" runat="server" CssClass="btn btn-danger"><i class="fa fa-times"></i> </asp:LinkButton>
-                                                            </td>
-                                                        </tr>
-
-                                                        <tr>
-                                                            <td style="">
-                                                                <p>
-                                                                    Balance sheet of last 3rd year(<span style="color: red;">★</span>)<br />
-                                                                </p>
-                                                            </td>
-                                                            <td style="text-align: center !important;">
-                                                                <text style="color: red; font-size: 12px;" id="text15" runat="server" visible="true">Upload Only PDF File not more than 1mb..</text>
-                                                                <asp:FileUpload ID="FileUpload15" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator14" runat="server" ControlToValidate="FileUpload15" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-                                                                <asp:LinkButton ID="lnkbtn_Save15" Enabled="false" runat="server" Visible="false" CssClass="btn btn-success"><i class="fa fa-check"></i>  
-                                                                </asp:LinkButton>
-                                                            </td>
-                                                            <td style="text-align: center !important;">
-                                                                <asp:Button ID="Button15" runat="server" OnClick="Button15_Click" Text="Upload" class="btn btn-primary" />
-                                                                <asp:LinkButton ID="lnkbtn_Delete15" OnClick="lnkbtn_Delete15_Click" Visible="false" runat="server" CssClass="btn btn-danger"><i class="fa fa-times"></i> </asp:LinkButton>
-                                                            </td>
-                                                        </tr>
-
-                                                        <tr>
-                                                            <td style="">
-                                                                <p>
-                                                                    Invoice of instrument(<span style="color: red;">★</span>)<br />
-                                                                </p>
-                                                            </td>
-                                                            <td style="text-align: center !important;">
-                                                                <text style="color: red; font-size: 12px;" id="text16" runat="server" visible="true">Upload Only PDF File not more than 1mb..</text>
-                                                                <asp:FileUpload ID="FileUpload16" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator15" runat="server" ControlToValidate="FileUpload16" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-                                                                <asp:LinkButton ID="lnkbtn_Save16" Enabled="false" runat="server" Visible="false" CssClass="btn btn-success"><i class="fa fa-check"></i>  
-                                                                </asp:LinkButton>
-                                                            </td>
-                                                            <td style="text-align: center !important;">
-                                                                <asp:Button ID="Button16" runat="server" OnClick="Button16_Click" Text="Upload" class="btn btn-primary" />
-                                                                <asp:LinkButton ID="lnkbtn_Delete16" OnClick="lnkbtn_Delete16_Click" Visible="false" runat="server" CssClass="btn btn-danger"><i class="fa fa-times"></i> </asp:LinkButton>
-                                                            </td>
-                                                        </tr>
-
-
-
-
-                                                        <%-- <tr>
-                                                            <td style="text-align: justify;">
-                                                                <p>Whether adequate drawing office facilities for prepration of drawings, blue prints etc.</p>
-
-                                                                <p>is available (in case of above 650Volt.)(<span style="color: red;">★</span>)</p>
-                                                            </td>
-                                                            <td style="text-align: center !important;">
-                                                                <asp:FileUpload ID="FileUpload9" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
-                                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator6" runat="server" ControlToValidate="FileUpload9" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
-                                                                <asp:LinkButton ID="lnkbtn_Save9" Enabled="false" runat="server" Visible="false" CssClass="btn btn-success"><i class="fa fa-check"></i>  
-                                                                </asp:LinkButton>
-                                                            </td>
-                                                            <td style="text-align: center !important;">
-                                                                <asp:Button ID="Button9" runat="server" OnClick="Button9_Click" Text="Upload" class="btn btn-primary" />
-                                                                <asp:LinkButton ID="lnkbtn_Delete9" OnClick="lnkbtn_Delete9_Click" Visible="false" runat="server" CssClass="btn btn-danger"><i class="fa fa-times"></i> </asp:LinkButton>
-                                                            </td>
-                                                        </tr>--%>
-                                                    </tbody>
-                                                </table>
+                                                    <FooterStyle BackColor="White" ForeColor="#000066" />
+                                                    <HeaderStyle BackColor="#9292cc" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                                                    <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                                                    <RowStyle ForeColor="#000066" />
+                                                    <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                                                    <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                                    <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                                                    <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                                    <SortedDescendingHeaderStyle BackColor="#00547E" />
+                                                </asp:GridView>
                                             </div>
                                         </div>
-                                        <%--<div class="row" style="margin-left: 5px;">
-                                            <div class="col-md-12">
-                                                <div class="form-check">
-                                                    <asp:CheckBox ID="chkDeclaration" runat="server" CssClass="form-check-input" Style="padding: 0px 4px 15px 1px !important; border: 0px solid black !important; margin-top: 0px !important;" />
-                                                    <label class="form-check-label" for="<%= chkDeclaration.ClientID %>" style="margin-left: 0px;padding-top: 6px;">
-                                                        I hereby declare that the information furnished in this application is correct.
+                                        <h4 class="card-title" style="margin-top: 25px;">Transaction Details</h4>
+                                        <div class="card" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; border-radius: 10px !important; padding: 10px 10px 10px 10px; margin-bottom: 25px; margin-top: 0px;">
+
+                                            <div class="row">
+                                                <div class="col-md-4" style="margin-top: 15px; margin-bottom: -30px;">
+                                                    <label>
+                                                        Total Amount<samp style="color: red"> * </samp>
                                                     </label>
+                                                    <asp:TextBox ID="txtAmount" ReadOnly="true" Text="4020/-" runat="server" class="form-control" Font-Size="12px" Style="height: 30px;"></asp:TextBox><br />
+
                                                 </div>
+                                                <div class="col-md-4" style="margin-top: 15px; margin-bottom: -30px;">
+                                                    <label>
+                                                        GRN No.<samp style="color: red"> * </samp>
+                                                    </label>
+                                                    <asp:TextBox ID="txtGRNNO" runat="server" MaxLength="10" onkeypress="return isAlphaNumeric(event);" class="form-control" ValidationGroup="Submit" Font-Size="12px" Style="height: 30px;"></asp:TextBox>
+                                                  <span style="display:inline-block;">
+    <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server"
+        ControlToValidate="txtGRNNO"
+        ErrorMessage="Required"
+        ValidationGroup="Submit"
+        Display="Static"
+        ForeColor="Red" />
+    
+    <asp:RegularExpressionValidator runat="server"
+        ControlToValidate="txtGRNNO"
+        ValidationGroup="Submit"
+        Display="Static"
+        ForeColor="Red"
+        ErrorMessage="GRN No. must be exactly 10 alphanumeric characters."
+        ValidationExpression="^[a-zA-Z0-9]{10}$" />
+</span>
+
+
+                                                </div>
+                                                <div class="col-md-4" style="margin-top: 15px; margin-bottom: -30px;">
+                                                    <label>
+                                                        Transaction date<samp style="color: red"> * </samp>
+                                                    </label>
+                                                    <asp:TextBox ID="txttransactionDate" onfocus="disableFutureDates()" onkeydown="return false;" TextMode="Date" runat="server" ValidationGroup="Submit" class="form-control" Font-Size="12px" Style="height: 30px;margin-bottom:-5px;"></asp:TextBox><br />
+                                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txttransactionDate" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+
+
+                                                </div>
+
                                             </div>
-                                        </div>--%>
+                                        </div>
                                         <div class="row" style="margin-top: 15px;">
                                             <div class="col-md-4" style="text-align: start;">
                                             </div>
                                             <div class="col-md-4" style="text-align: center;">
-                                                <%--                                                <asp:Button type="button" ID="btn_Preview" Text="Preview" runat="server" OnClick="btn_Preview_Click" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" />--%>
                                             </div>
 
                                             <div class="col-md-4" style="text-align: end;">
@@ -1128,6 +963,7 @@ ForeColor="Red"  ErrorMessage="GRN No. must be exactly 10 alphanumeric character
                                 </div>
                                 <asp:HiddenField ID="HdnAge" runat="server" />
                                 <asp:HiddenField ID="HdnUserId" runat="server" />
+                                <asp:HiddenField ID="HdnTypeOfCompany" runat="server" />
                                 <asp:HiddenField ID="Hdn_medicalcertificatevisible" runat="server" />
                                 <asp:HiddenField ID="HdnField_Document1" runat="server" />
                                 <asp:HiddenField ID="HdnField_Document2" runat="server" />
@@ -1249,7 +1085,7 @@ ForeColor="Red"  ErrorMessage="GRN No. must be exactly 10 alphanumeric character
         }
     </script>
 
-    <script type="text/javascript">
+    <%-- <script type="text/javascript">
         function validateDate() {
             var ClnDate = document.getElementById('<%=txtdate.ClientID %>');
             debugger;
@@ -1275,20 +1111,29 @@ ForeColor="Red"  ErrorMessage="GRN No. must be exactly 10 alphanumeric character
                 }
             }
         }
+    </script>--%>
+
+    <script type="text/javascript">
+        function isAlphaNumeric(evt) {
+            var charCode = evt.which ? evt.which : evt.keyCode;
+            var charStr = String.fromCharCode(charCode);
+            // Allow only letters (a-z, A-Z) and digits (0-9)
+            if (!/^[a-zA-Z0-9]$/.test(charStr)) {
+                evt.preventDefault();
+                return false;
+            }
+            return true;
+        }
+    </script>
+    <script type="text/javascript">
+        function disableFutureDates() {
+            // Get today's date in yyyy-mm-dd format
+            var today = new Date().toISOString().split('T')[0];
+            // Set the max attribute of the txtDateofIntialissue TextBox to today's date
+            document.getElementById('<%=txttransactionDate.ClientID %>').setAttribute('max', today);
+        }
     </script>
 
-      <script type="text/javascript">
-          function isAlphaNumeric(evt) {
-              var charCode = evt.which ? evt.which : evt.keyCode;
-              var charStr = String.fromCharCode(charCode);
-              // Allow only letters (a-z, A-Z) and digits (0-9)
-              if (!/^[a-zA-Z0-9]$/.test(charStr)) {
-                  evt.preventDefault();
-                  return false;
-              }
-              return true;
-          }
-      </script>
 </body>
 </html>
 

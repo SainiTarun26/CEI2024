@@ -21,16 +21,16 @@ namespace CEIHaryana.UserPages
                 {
                     if (Convert.ToString(Session["ContractorID"]) != null && Convert.ToString(Session["ContractorID"]) != "")
                     {
-                        if (Convert.ToString(Session["TempUniqueId"]) != null && Convert.ToString(Session["TempUniqueId"]) != "")
-                        {
+                        //if (Convert.ToString(Session["TempUniqueId"]) != null && Convert.ToString(Session["TempUniqueId"]) != "")
+                        //{
                             string UserID = Session["ContractorID"].ToString();
                             HdnUserId.Value = UserID;
                             string ID = Convert.ToString(Session["TempUniqueId"]);
-                        }
-                        else
-                        {
-                            Response.Redirect("/LogOut.aspx", false);
-                        }
+                        //}
+                        //else
+                        //{
+                        //    Response.Redirect("/LogOut.aspx", false);
+                        //}
                     }
                     else
                     {
@@ -53,19 +53,11 @@ namespace CEIHaryana.UserPages
                 if (chkDeclaration.Checked == true)
                 {
                     string UserID = Session["ContractorID"]?.ToString();
-                    string tempUniqueId = Session["TempUniqueId"]?.ToString();
+                    //string tempUniqueId = Session["TempUniqueId"]?.ToString();
 
-                    if (!string.IsNullOrEmpty(UserID) && !string.IsNullOrEmpty(tempUniqueId))
-                    {
-                        long id;
-                        if (long.TryParse(tempUniqueId, out id))
-                        {
-                            DataSet ds = CEI.ToSaveDocumentsdataofNewregistration(id.ToString(), UserID, "Contractor");
-                        }
-                        else
-                        {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('An Error Occurred in submission of your request Application.')", true);
-                        }
+                    if (!string.IsNullOrEmpty(UserID))
+                    {                      
+                           CEI.ToSaveDocdataofContNewregistration( UserID, "Contractor");                       
                     }
 
                     Session["TempUniqueId"] = "";

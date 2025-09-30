@@ -14855,6 +14855,66 @@ string dbPathCompetency, string dbPathMedicalCertificate, string userId)
             return result;
         }
         #endregion
+        #region neha contractor new registration document master 30-sept-2025
+        public DataSet ToGetNewRegisteredContractorDetails(string UserId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_ToGetNewRegisteredContractorDetails", UserId);
+        }
+        public DataTable GetGridtoUploadDocuments(string userID, int CompanyId, int age)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_ContractorNewRegistrationDocumentCheckList", userID, CompanyId, age);
+        }
+
+        public string InsertDocumentOfNewUserApplicationContractor(string DocumentName, string DocumentId, string FileName,
+string DocumentPath, string Utrn, string challandate, string CreatedBy, SqlTransaction transaction)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("Sp_InsertDocumentOfNewUserApplicationContractor", transaction.Connection, transaction);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@DocumentName", DocumentName);
+                cmd.Parameters.AddWithValue("@DocumentId", DocumentId);
+
+                cmd.Parameters.AddWithValue("@FileName", GetValue(FileName));
+                cmd.Parameters.AddWithValue("@DocumentPath", GetValue(DocumentPath));
+
+                cmd.Parameters.AddWithValue("@UtrnNo", String.IsNullOrEmpty(Utrn) ? DBNull.Value : (object)Utrn);
+                DateTime ChallanDate;
+                if (DateTime.TryParse(challandate, out ChallanDate) && ChallanDate != DateTime.MinValue)
+                {
+                    cmd.Parameters.AddWithValue("@challandate", ChallanDate.Date); // .Date ensures time = 00:00:00
+                }
+                else
+                {
+                    cmd.Parameters.AddWithValue("@challandate", DBNull.Value);
+                }
+                cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+                outputParam = new SqlParameter("@Ret_DocumentID", SqlDbType.Int);
+                outputParam.Direction = ParameterDirection.Output;
+                cmd.Parameters.Add(outputParam);
+                cmd.ExecuteNonQuery();
+                string RetVal = cmd.Parameters["@Ret_DocumentID"].Value.ToString();
+                cmd.Parameters.Clear();
+                return RetVal;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+        public DataTable DeleteNewConDocumentById(int Id)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_DeleteNewConDocumentById", Id);
+        }
+        public DataSet ToSaveDocdataofContNewregistration(string UserId, string UserType)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_ToSaveDocdataofContNewregistration", UserId, UserType);
+        }
+        public DataTable InsertContChallanDetails(int Amount, string GRNNO, string transactionDate, string UserId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_InsertContChallanDetails", Amount, GRNNO, transactionDate, UserId);
+        }
+        #endregion
     }
 }
 

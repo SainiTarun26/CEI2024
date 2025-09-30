@@ -1,7 +1,9 @@
 ﻿using CEI_PRoject;
 using CEIHaryana.Contractor;
 using iText.Forms.Form.Element;
+using iTextSharp.text;
 using Newtonsoft.Json;
+using StackExchange.Redis;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -11,9 +13,13 @@ using System.IO;
 using System.Linq;
 using System.Reflection.Emit;
 using System.Web;
+using System.Web.Services.Description;
 using System.Web.UI;
+using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
+using System.Windows.Documents;
 using Button = System.Web.UI.WebControls.Button;
+using Label = System.Web.UI.WebControls.Label;
 
 namespace CEIHaryana.UserPages
 {
@@ -30,7 +36,7 @@ namespace CEIHaryana.UserPages
                 {
                     if (Convert.ToString(Session["ContractorID"]) != null && Convert.ToString(Session["ContractorID"]) != "")
                     {
-                        Session["TempUniqueId"] = "";
+                        //Session["TempUniqueId"] = "";
                         string UserID = Session["ContractorID"].ToString();
                         HdnUserId.Value = UserID;
 
@@ -38,668 +44,71 @@ namespace CEIHaryana.UserPages
                     }
                     else
                     {
-                        Response.Redirect("/LogOut.aspx", false);
+                        Response.Redirect("/AdminLogout.aspx", false);
                     }
                 }
-              
+
             }
             catch (Exception ex)
             {
-                Response.Redirect("/LogOut.aspx", false);
+                Response.Redirect("/AdminLogout.aspx", false);
             }
         }
 
         private void DetailsforDocuments(string userID)
         {
-            DataSet ds = CEI.ToGetNewUserDetails(userID);
+            DataSet ds = CEI.ToGetNewRegisteredContractorDetails(userID);
 
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
-                string Age = ds.Tables[0].Rows[0]["AgeInYears"].ToString();
-                HdnAge.Value = Age;
+                //string Age = ds.Tables[0].Rows[0]["AgeInYears"].ToString();
+                object valueAge = ds.Tables[0].Rows[0]["AgeInYears"];
+                int Age = valueAge != DBNull.Value ? Convert.ToInt32(valueAge) : 0;
+                object value = ds.Tables[0].Rows[0]["StyleOfCompanyID"];
+                int CompanyType = value != DBNull.Value ? Convert.ToInt32(value) : 0;
+                // HdnAge.Value = Age;
+                HdnAge.Value = Age.ToString();
+                HdnTypeOfCompany.Value = CompanyType.ToString();
+                GetGridtoUploadDocuments(userID, CompanyType, Age);
+            }
+
+            else
+            {
+                Response.Redirect("/AdminLogout.aspx", false);
+            }
+            //int ageValue;
+            //if (int.TryParse(HdnAge.Value, out ageValue))
+            //{
+            //    if (ageValue > 55)
+            //    {
+            //        Medicalfitness.Visible = true;
+            //        Hdn_medicalcertificatevisible.Value = "yes";
+            //    }
+            //    else
+            //    {
+            //        Medicalfitness.Visible = false;
+            //        Hdn_medicalcertificatevisible.Value = "";
+            //    }
+            //}
+        }
+
+        private void GetGridtoUploadDocuments(string userID, int companyType, int age)
+        {
+            DataTable dt = CEI.GetGridtoUploadDocuments(userID, companyType, age);
+            if (dt.Rows.Count > 0)
+            {
+                Grd_Document.DataSource = dt;
+                Grd_Document.DataBind();
             }
             else
             {
+                Grd_Document.DataSource = null;
+                Grd_Document.DataBind();
+                string script = "alert(\"No Record Found for document \");";
+                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
             }
-            int ageValue;
-            if (int.TryParse(HdnAge.Value, out ageValue))
-            {
-                if (ageValue > 55)
-                {
-                    Medicalfitness.Visible = true;
-                    Hdn_medicalcertificatevisible.Value = "yes";
-                }
-                else
-                {
-                    Medicalfitness.Visible = false;
-                    Hdn_medicalcertificatevisible.Value = "";
-                }
-            }
+            dt.Dispose();
         }
-
-        private string SaveDocumentWithTransaction(FileUpload fileUpload, Button uploadbutton, int DocumentId, LinkButton deleteButton, LinkButton tickButton, string documentName, string Utrn, string challandate)
-        {
-            string fileName = ""; string dbPath = ""; string fullPath = "";
-
-            string CreatedBy = Convert.ToString(HdnUserId.Value);
-            long TempUniqueId = (long)Session["TempUniqueId"];
-            string DocumentNametoSave = documentName.Replace(" ", "_").Replace("/", "_");
-
-            if (!fileUpload.HasFile || !IsValidPdf(fileUpload))
-            {
-                ScriptManager.RegisterStartupScript(this, GetType(), "UploadError", "alert('Please upload a valid PDF file (Max: 1MB)');", true);
-                fileUpload.Focus();
-                return null;
-            }
-            // Ensure directory exists
-            string directoryPath = Server.MapPath($"~/Attachment/License_Documents/{TempUniqueId}/{CreatedBy}/");
-            if (!Directory.Exists(directoryPath))
-            {
-                Directory.CreateDirectory(directoryPath);
-            }
-            // Generate file path and name
-            fileName = $"{DocumentNametoSave}_{DateTime.Now:yyyyMMddHHmmssFFF}.pdf";
-            dbPath = $"/Attachment/License_Documents/{TempUniqueId}/{CreatedBy}/{fileName}";
-            fullPath = Path.Combine(directoryPath, fileName);
-
-            // Save the uploaded file to the server folder
-            fileUpload.SaveAs(fullPath);
-            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
-            {
-                SqlTransaction transaction = null;
-                try
-                {
-                    connection.Open();
-                    transaction = connection.BeginTransaction();
-
-                    string documentId = CEI.InsertDocumentOfNewUserApplication(TempUniqueId, documentName, DocumentId, fileName, dbPath, Utrn, challandate, CreatedBy, transaction);
-                    if (!string.IsNullOrEmpty(documentId))
-                    {
-                        deleteButton.CommandArgument = documentId;
-                        fileUpload.Visible = false;
-                        uploadbutton.Visible = false;
-                        deleteButton.Visible = true;
-                        tickButton.Visible = true;
-                        transaction.Commit();
-                        return documentId;
-                    }
-                    else
-                    {
-                        transaction.Rollback();
-                        return null;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    transaction?.Rollback();
-                    string errorMessage = ex.Message.Replace("'", "\\'");
-                    ScriptManager.RegisterStartupScript(this, GetType(), "erroralert", $"alert('{errorMessage}')", true);
-                    return null;
-                }
-                finally
-                {
-                    transaction?.Dispose();
-                    connection.Close();
-                }
-            }
-        }
-
-        private bool IsValidPdf(FileUpload fileUpload)
-        {
-            if (!fileUpload.HasFile)
-            {
-                return false;
-            }
-            if (Path.GetExtension(fileUpload.FileName).ToLower() != ".pdf")
-            {
-                return false;
-            }
-            if (fileUpload.PostedFile.ContentLength > 1048576)   // Check file size (1 MB = 1048576 bytes)
-            {
-                return false;
-            }
-            return true;
-        }
-
-        private bool IsSessionValid()
-        {
-            if (!string.IsNullOrEmpty(Convert.ToString(HdnUserId.Value)))
-            {
-                if (string.IsNullOrEmpty(Convert.ToString(Session["TempUniqueId"])))
-                {
-                    GenerateUniqueTempId();
-                }
-                return true;
-            }
-            return false;
-        }
-
-        private void GenerateUniqueTempId()
-        {
-            Session["TempUniqueId"] = "";
-            Random rnd = new Random();
-            int randomNumber = rnd.Next(1000000000, int.MaxValue);
-            string currentDate = DateTime.Now.ToString("ddMMyyyy");
-
-            string combined = randomNumber.ToString() + currentDate; // "127878893816042025"
-            long finalNumber = long.Parse(combined); // Convert to long
-            Session["TempUniqueId"] = finalNumber;
-        }
-
-        private bool DeleteDocumentWithTransaction(int documentId, LinkButton deleteButton, LinkButton tickButton, FileUpload fileUpload, Button uploadButton)
-        {
-            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
-            {
-                SqlTransaction transaction = null;
-                try
-                {
-                    connection.Open();
-                    transaction = connection.BeginTransaction();
-                    string documentPath = null;
-                    using (SqlCommand cmd = new SqlCommand("sp_GetDocumentPathOfNewUser", connection, transaction))
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@DocumentId", documentId);
-                        object result = cmd.ExecuteScalar();
-                        if (result != null)
-                        {
-                            documentPath = result.ToString();
-                        }
-                    }
-                    // Delete from the database
-                    using (SqlCommand cmd = new SqlCommand("sp_DeleteDocumentOfNewUser", connection, transaction))
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@DocumentId", documentId);
-                        int rowsAffected = cmd.ExecuteNonQuery();
-                        if (rowsAffected == 0)
-                        {
-                            transaction.Rollback();
-                            return false;
-                        }
-                    }
-                    // Delete from the server
-                    if (!string.IsNullOrEmpty(documentPath))
-                    {
-                        string fullPath = Server.MapPath(documentPath);
-                        if (File.Exists(fullPath))
-                        {
-                            File.Delete(fullPath);
-                        }
-                    }
-                    transaction.Commit();
-                    // Reset UI Elements
-                    fileUpload.Visible = true;
-                    uploadButton.Visible = true;
-                    deleteButton.Visible = false;
-                    tickButton.Visible = false;
-                    return true;
-                }
-                catch (Exception ex)
-                {
-                    transaction?.Rollback();
-                    string errorMessage = ex.Message.Replace("'", "\\'");
-                    ScriptManager.RegisterStartupScript(this, GetType(), "erroralert", $"alert('{errorMessage}')", true);
-                    return false;
-                }
-                finally
-                {
-                    transaction?.Dispose();
-                    connection.Close();
-                }
-            }
-        }
-
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            if (IsSessionValid())
-            {
-                string Result = SaveDocumentWithTransaction(FileUpload1, Button1, 57, lnkbtn_Delete1, lnkbtn_Save1, "Authorized Signatory Approval Letter", null, null);
-                if (Result != null && Result != "")
-                {
-                    HdnField_Document1.Value = "1";
-                    lnkbtn_Delete1.Visible = true;
-                    lnkbtn_Save1.Visible = true;
-                    text1.Visible = false;
-                }
-            }
-            else
-            {
-                Response.Redirect("/LogOut.aspx", false);
-            }
-        }
-
-        protected void lnkbtn_Delete1_Click(object sender, EventArgs e)
-        {
-            LinkButton btn = (LinkButton)sender;
-            int fileId = Convert.ToInt32(btn.CommandArgument);
-            if (fileId != 0)
-            {
-                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkbtn_Delete1, lnkbtn_Save1, FileUpload1, Button1);
-                if (IsDelete)
-                {
-                    HdnField_Document1.Value = "0";
-                    text1.Visible = true;
-                }
-            }
-        }
-        protected void Button2_Click(object sender, EventArgs e)
-        {
-            if (IsSessionValid())
-            {
-                if (ddlIdproof.SelectedValue == "0")
-                {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "Validation", "alert('First Select the Id proof you want to Upload');", true);
-                    return;
-                }
-
-                string selectedIdProof = ddlIdproof.SelectedItem.Text;
-                string Result = SaveDocumentWithTransaction(FileUpload2, Button2, 33, lnkbtn_Delete2, lnkbtn_Save2, selectedIdProof , null, null);
-                if (Result != null && Result != "")
-                {
-                    HdnField_Document2.Value = "1";
-                    lnkbtn_Delete2.Visible = true;
-                    lnkbtn_Save2.Visible = true;
-                    text2.Visible = false;
-                    ddlIdproof.Enabled = false;
-                }
-            }
-            else
-            {
-                Response.Redirect("/LogOut.aspx", false);
-            }
-        }
-
-        protected void lnkbtn_Delete2_Click(object sender, EventArgs e)
-        {
-            LinkButton btn = (LinkButton)sender;
-            int fileId = Convert.ToInt32(btn.CommandArgument);
-            if (fileId != 0)
-            {
-                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkbtn_Delete2, lnkbtn_Save2, FileUpload2, Button2);
-                if (IsDelete)
-                {
-                    HdnField_Document2.Value = "0";
-                    ddlIdproof.Enabled = true;
-                    text2.Visible = true;
-                    ddlIdproof.SelectedIndex = 0;
-                }
-            }
-        }
-
-        protected void Button3_Click(object sender, EventArgs e)
-        {
-            if (IsSessionValid())
-            {
-                string Result = SaveDocumentWithTransaction(FileUpload3, Button3, 43, lnkbtn_Delete3, lnkbtn_Save3, "Calibration Certificate from NABL or Government testing laboratory respect of electrical equipment’s invoices", null, null);
-                if (Result != null && Result != "")
-                {
-                    HdnField_Document3.Value = "1";
-                    lnkbtn_Delete3.Visible = true;
-                    lnkbtn_Save3.Visible = true;
-                    text3.Visible = false;
-                }
-            }
-            else
-            {
-                Response.Redirect("/LogOut.aspx", false);
-            }
-        }
-
-        protected void lnkbtn_Delete3_Click(object sender, EventArgs e)
-        {
-            LinkButton btn = (LinkButton)sender;
-            int fileId = Convert.ToInt32(btn.CommandArgument);
-            if (fileId != 0)
-            {
-                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkbtn_Delete3, lnkbtn_Save3, FileUpload3, Button3);
-                if (IsDelete)
-                {
-                    HdnField_Document3.Value = "0";
-                    text3.Visible = true;
-                }
-            }
-        }
-
-        protected void Button4_Click(object sender, EventArgs e)
-        {
-            if (IsSessionValid())
-            {
-                string Result = SaveDocumentWithTransaction(FileUpload4, Button4, 42, lnkbtn_Delete4, lnkbtn_Save4, "Copy of Annexure 3 & 5", null, null);
-                if (Result != null && Result != "")
-                {
-                    HdnField_Document4.Value = "1";
-                    lnkbtn_Delete4.Visible = true;
-                    lnkbtn_Save4.Visible = true;
-                    text4.Visible = false;
-                }
-            }
-            else
-            {
-                Response.Redirect("/LogOut.aspx", false);
-            }
-        }
-
-        protected void lnkbtn_Delete4_Click(object sender, EventArgs e)
-        {
-            LinkButton btn = (LinkButton)sender;
-            int fileId = Convert.ToInt32(btn.CommandArgument);
-            if (fileId != 0)
-            {
-                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkbtn_Delete4, lnkbtn_Save4, FileUpload4, Button4);
-                if (IsDelete)
-                {
-                    HdnField_Document4.Value = "0";
-                    text4.Visible = true;
-                }
-            }
-        }
-
-        protected void Button5_Click(object sender, EventArgs e)
-        {
-            if (IsSessionValid())
-            {
-                string Result = SaveDocumentWithTransaction(FileUpload5, Button5, 38, lnkbtn_Delete5, lnkbtn_Save5, "Medical fitness certificate", null, null);
-                if (Result != null && Result != "")
-                {
-                    HdnField_Document5.Value = "1";
-                    lnkbtn_Delete5.Visible = true;
-                    lnkbtn_Save5.Visible = true;
-                    text5.Visible = false;
-                }
-            }
-            else
-            {
-                Response.Redirect("/LogOut.aspx", false);
-            }
-        }
-
-        protected void lnkbtn_Delete5_Click(object sender, EventArgs e)
-        {
-            LinkButton btn = (LinkButton)sender;
-            int fileId = Convert.ToInt32(btn.CommandArgument);
-            if (fileId != 0)
-            {
-                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkbtn_Delete5, lnkbtn_Save5, FileUpload5, Button5);
-                if (IsDelete)
-                {
-                    HdnField_Document5.Value = "0";
-                    text5.Visible = true;
-                }
-            }
-        }
-
-        protected void Button6_Click(object sender, EventArgs e)
-        {
-            if (IsSessionValid())
-            {
-                if (string.IsNullOrWhiteSpace(txtUtrNo.Text) || string.IsNullOrWhiteSpace(txtdate.Text))
-                {
-                    ScriptManager.RegisterStartupScript(this, GetType(), "Validation", "alert('UTR No. and Date are required.');", true);
-                    return;
-                }
-                string Result = SaveDocumentWithTransaction(FileUpload6, Button6, 40, lnkbtn_Delete6, lnkbtn_Save6, "Copy of treasury challan of fees deposited in any treasury of Haryana", txtUtrNo.Text, txtdate.Text);
-                if (Result != null && Result != "")
-                {
-                    HdnField_Document6.Value = "1";
-                    lnkbtn_Delete6.Visible = true;
-                    lnkbtn_Save6.Visible = true;
-                    txtdate.ReadOnly = true;
-                    txtUtrNo.ReadOnly = true;
-                    text6.Visible = false;
-                }
-            }
-            else
-            {
-                Response.Redirect("/LogOut.aspx", false);
-            }
-        }
-
-        protected void lnkbtn_Delete6_Click(object sender, EventArgs e)
-        {
-            LinkButton btn = (LinkButton)sender;
-            int fileId = Convert.ToInt32(btn.CommandArgument);
-            if (fileId != 0)
-            {
-                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkbtn_Delete6, lnkbtn_Save6, FileUpload6, Button6);
-                if (IsDelete)
-                {
-                    HdnField_Document6.Value = "0";
-                    txtdate.ReadOnly = false;
-                    txtUtrNo.ReadOnly = false;
-                    text6.Visible = true;
-                    txtdate.Text = "";
-                    txtUtrNo.Text = "";
-                }
-            }
-        }
-        protected void btnNext_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (Convert.ToString(HdnUserId.Value) != null && Convert.ToString(HdnUserId.Value) != "")
-                {
-                    if (Convert.ToString(Session["TempUniqueId"]) != null && Convert.ToString(Session["TempUniqueId"]) != "")
-                    {
-                        //if (chkDeclaration.Checked == true)
-                        //{
-                            bool allMandatoryUploaded = true;
-                            string errorMessage = "";
-                            if (HdnField_Document1.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Authorized Signatory Approval Letter.<br>"; }
-                            if (HdnField_Document2.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Id proof.<br>"; }
-                            if (HdnField_Document3.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Calibration Certificate from NABL or Government testing laboratory respect of electrical equipment’s invoices.<br>"; }
-                            if (HdnField_Document4.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Copy of Annexure 3 & 5.<br>"; }
-                            if (Convert.ToString(Hdn_medicalcertificatevisible.Value) == "yes" && Convert.ToString(Hdn_medicalcertificatevisible.Value) != "")
-                            {
-                                if (HdnField_Document5.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Medical fitness certificate (for age > 55).<br>"; }
-                            }
-                            if (HdnField_Document6.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Copy of treasury challan of fees deposited in any treasury of Haryana.<br>"; }
-                            if (HdnField_Document7.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Candidate Image.<br>"; }
-                            if (HdnField_Document8.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Candidate Signature.<br>"; }
-                            if (HdnField_Document9.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Document of Major works carried out in Haryana.<br>"; }
-
-                            if (!allMandatoryUploaded)
-                            {
-                                string[] lines = errorMessage.Split(new string[] { "<br>" }, StringSplitOptions.RemoveEmptyEntries);
-                                string formattedMessage = "";
-                                for (int i = 0; i < lines.Length; i++)
-                                {
-                                    formattedMessage += $"{i + 1}. {lines[i].Trim()}\\n";
-                                }
-
-                                string script = $"alert('{formattedMessage}');";
-                                ClientScript.RegisterStartupScript(this.GetType(), "alertMessage", script, true);
-
-                                return;
-                            }
-
-                            Response.Redirect("/UserPages/Contractor_Declaration.aspx", false);
-
-                        //string UniqueNumber = Session["TempUniqueId"].ToString().Trim();
-                        //if (Convert.ToString(UniqueNumber) != null && Convert.ToString(UniqueNumber) != "")
-                        //{
-                        //    CEI.ToSaveDocumentsdataofNewregistration(UniqueNumber, HdnUserId.Value, "Contractor");
-                        //    Session["TempUniqueId"] = "";
-                        //    Session["TempUniqueId"] = null;
-                        //    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "if (confirm('New User Registration Process completed successfully.')) { window.location.href = '/AdminLogout.aspx'; }", true);
-                        //}
-                        //}
-                        //else
-                        //{
-                        //    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('Please accept declaration first to proceed.')", true);
-                        //}
-                    }
-                    else
-                    {
-                        Response.Redirect("/LogOut.aspx", false);
-                    }
-                }
-                else
-                {
-                    Response.Redirect("/LogOut.aspx", false);
-                }
-            }
-            catch (Exception)
-            {
-                Response.Redirect("/LogOut.aspx", false);
-            }
-        }
-        protected void btnLogout_Click(object sender, EventArgs e)
-        {
-            Session.Abandon();
-            Response.Redirect("/AdminLogout.aspx");
-        }
-
-        private string SaveDocumentWithTransactionIfPhoto(FileUpload fileUpload, Button uploadbutton, int DocumentId, LinkButton deleteButton, string documentName, string Utrn, string challandate)
-        {
-            string fileName = ""; string dbPath = ""; string fullPath = "";
-
-            string CreatedBy = Convert.ToString(HdnUserId.Value);
-            long TempUniqueId = (long)Session["TempUniqueId"];
-            string DocumentNametoSave = documentName.Replace(" ", "_").Replace("/", "_");
-
-            if (!fileUpload.HasFile || !IsValidPhoto(fileUpload))
-            {
-                ScriptManager.RegisterStartupScript(this, GetType(), "UploadError", "alert('Please upload a valid image file (.jpg, .jpeg, .png) (Max: 1MB)');", true);
-                fileUpload.Focus();
-                return null;
-            }
-
-            // Ensure directory exists
-            string directoryPath = Server.MapPath($"~/Attachment/License_Documents/{TempUniqueId}/{CreatedBy}/");
-            if (!Directory.Exists(directoryPath))
-            {
-                Directory.CreateDirectory(directoryPath);
-            }
-
-            // Get extension and generate file name accordingly
-            string extension = Path.GetExtension(fileUpload.FileName).ToLower();
-            fileName = $"{DocumentNametoSave}_{DateTime.Now:yyyyMMddHHmmssFFF}{extension}";
-            dbPath = $"/Attachment/License_Documents/{TempUniqueId}/{CreatedBy}/{fileName}";
-            fullPath = Path.Combine(directoryPath, fileName);
-
-            // Save image file
-            fileUpload.SaveAs(fullPath);
-
-            using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
-            {
-                SqlTransaction transaction = null;
-                try
-                {
-                    connection.Open();
-                    transaction = connection.BeginTransaction();
-
-                    string documentId = CEI.InsertDocumentOfNewUserApplication(TempUniqueId, documentName, DocumentId, fileName, dbPath, Utrn, challandate, CreatedBy, transaction);
-                    if (!string.IsNullOrEmpty(documentId))
-                    {
-                        deleteButton.CommandArgument = documentId;
-                        fileUpload.Visible = false;
-                        uploadbutton.Visible = false;
-                        deleteButton.Visible = true;
-                        //tickButton.Visible = true;
-                        transaction.Commit();
-                        return documentId;
-                    }
-                    else
-                    {
-                        transaction.Rollback();
-                        return null;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    transaction?.Rollback();
-                    string errorMessage = ex.Message.Replace("'", "\\'");
-                    ScriptManager.RegisterStartupScript(this, GetType(), "erroralert", $"alert('{errorMessage}')", true);
-                    return null;
-                }
-                finally
-                {
-                    transaction?.Dispose();
-                    connection.Close();
-                }
-            }
-        }
-
-        private bool IsValidPhoto(FileUpload fileUpload)
-        {
-            if (!fileUpload.HasFile) return false;
-
-            string ext = Path.GetExtension(fileUpload.FileName).ToLower();
-            if (ext != ".jpg" && ext != ".jpeg" && ext != ".png") return false;
-
-            if (fileUpload.PostedFile.ContentLength > 1048576) return false; // 1MB
-
-            return true;
-        }
-        protected void Button7_Click(object sender, EventArgs e)
-        {
-            if (IsSessionValid())
-            {
-                string Result = SaveDocumentWithTransactionIfPhoto(FileUpload7, Button7, 31, lnkbtn_Delete7, "Candidate Image", null, null);
-                if (Result != null && Result != "")
-                {
-                    HdnField_Document7.Value = "1";
-                    lnkbtn_Delete7.Visible = true;
-                    lnkbtn_Save7.Visible = true;
-                    text7.Visible = false;
-                }
-            }
-            else
-            {
-                Response.Redirect("/LogOut.aspx", false);
-            }
-        }
-
-        protected void lnkbtn_Delete7_Click(object sender, EventArgs e)
-        {
-            LinkButton btn = (LinkButton)sender;
-            int fileId = Convert.ToInt32(btn.CommandArgument);
-            if (fileId != 0)
-            {
-                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkbtn_Delete7, lnkbtn_Save7, FileUpload7, Button7);
-                if (IsDelete)
-                {
-                    HdnField_Document7.Value = "0";
-                    text7.Visible = true;
-                }
-            }
-        }
-
-        protected void Button8_Click(object sender, EventArgs e)
-        {
-            if (IsSessionValid())
-            {
-                string Result = SaveDocumentWithTransactionIfPhoto(FileUpload8, Button8, 32, lnkbtn_Delete8, "Candidate Signature", null, null);
-                if (Result != null && Result != "")
-                {
-                    HdnField_Document8.Value = "1";
-                    lnkbtn_Delete8.Visible = true;
-                    lnkbtn_Save8.Visible = true;
-                    text8.Visible = false;
-                }
-            }
-            else
-            {
-                Response.Redirect("/LogOut.aspx", false);
-            }
-        }
-
-        protected void lnkbtn_Delete8_Click(object sender, EventArgs e)
-        {
-            LinkButton btn = (LinkButton)sender;
-            int fileId = Convert.ToInt32(btn.CommandArgument);
-            if (fileId != 0)
-            {
-                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkbtn_Delete8, lnkbtn_Save8, FileUpload8, Button8);
-                if (IsDelete)
-                {
-                    HdnField_Document8.Value = "0";
-                    text8.Visible = true;
-                }
-            }
-        }
-
         protected void btnBack_Click(object sender, EventArgs e)
         {
             try
@@ -716,7 +125,7 @@ namespace CEIHaryana.UserPages
             }
             catch
             {
-                Response.Redirect("/LogOut.aspx");
+                Response.Redirect("/AdminLogout.aspx");
             }
         }
 
@@ -724,278 +133,269 @@ namespace CEIHaryana.UserPages
         {
             Response.Redirect("/UserPages/Contractor_Registration_Details.aspx", false);
         }
-
-        protected void Button9_Click(object sender, EventArgs e)
+        protected void btnNext_Click(object sender, EventArgs e)
         {
-            if (IsSessionValid())
+            if (Convert.ToString(Session["ContractorID"]) != null && Convert.ToString(Session["ContractorID"]) != "")
             {
-                string Result = SaveDocumentWithTransaction(FileUpload9, Button9, 49, lnkbtn_Delete9, lnkbtn_Save9, "Major works carried out in Haryana", null, null);
-                if (Result != null && Result != "")
+                if (HdnUserId.Value == Convert.ToString(Session["ContractorID"]))
                 {
-                    HdnField_Document9.Value = "1";
-                    lnkbtn_Delete9.Visible = true;
-                    lnkbtn_Save9.Visible = true;
-                    text9.Visible = false;
+
+                    int CmpnyTypeNAme = Convert.ToInt32(HdnTypeOfCompany.Value);
+                    int AgeContractor = Convert.ToInt32(HdnAge.Value);
+                    GetGridtoUploadDocuments(HdnUserId.Value, CmpnyTypeNAme, AgeContractor);
+
+                    bool allRequiredDocsUploaded = true;
+
+                    foreach (GridViewRow row in Grd_Document.Rows)
+                    {
+                        if (row.RowType == DataControlRowType.DataRow)
+                        {
+                            HiddenField hdnReq = row.FindControl("Req") as HiddenField;
+                            HiddenField hdnDocExist = row.FindControl("DocumentExist") as HiddenField;
+                            HiddenField hdnRowIdForExistingDoc = row.FindControl("RowIdForExistingDoc") as HiddenField;
+
+                            if (hdnReq == null || hdnDocExist == null || hdnRowIdForExistingDoc == null)
+                            {
+                                allRequiredDocsUploaded = false;
+                                break;
+                            }
+
+                            if (hdnReq.Value == "1")
+                            {
+                                if (hdnDocExist.Value != "1" || string.IsNullOrWhiteSpace(hdnRowIdForExistingDoc.Value))
+                                {
+                                    allRequiredDocsUploaded = false;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+
+                    if (!allRequiredDocsUploaded)
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Please upload all mandatory documents before proceeding.');", true);
+                        return;
+                    }
+
+                    int TotalAmount = 2520;
+                    CEI.InsertContChallanDetails(TotalAmount, txtGRNNO.Text, txttransactionDate.Text, HdnUserId.Value);
+
+                    Response.Redirect("/UserPages/Contractor_Declaration.aspx", false);
+
+                }
+                else
+                {
+                    Response.Redirect("/AdminLogout.aspx", false);
                 }
             }
             else
             {
-                Response.Redirect("/LogOut.aspx", false);
+                Response.Redirect("/AdminLogout.aspx", false);
             }
         }
 
-        protected void lnkbtn_Delete9_Click(object sender, EventArgs e)
+
+        protected void btnLogout_Click(object sender, EventArgs e)
         {
-            LinkButton btn = (LinkButton)sender;
-            int fileId = Convert.ToInt32(btn.CommandArgument);
-            if (fileId != 0)
+            Session.Abandon();
+            Response.Redirect("/AdminLogout.aspx", false);
+        }
+
+        protected void Grd_Document_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkbtn_Delete9, lnkbtn_Save9, FileUpload9, Button9);
-                if (IsDelete)
+                HiddenField hdnDocumentExist = (HiddenField)e.Row.FindControl("DocumentExist");
+                HiddenField hdnSaveDocumentID = (HiddenField)e.Row.FindControl("SaveDocumentID");
+
+                LinkButton btnTick = (LinkButton)e.Row.FindControl("btnTick");
+                LinkButton btnCross = (LinkButton)e.Row.FindControl("btnCross");
+                FileUpload fileUpload = (FileUpload)e.Row.FindControl("FileUpload1");
+                Button btnUpload = (Button)e.Row.FindControl("btnUpload");
+
+                if (hdnDocumentExist != null)
                 {
-                    HdnField_Document9.Value = "0";
-                    text9.Visible = true;
+                    bool documentExists = hdnDocumentExist.Value == "1";
+
+                    // Show/Hide tick and cross buttons
+                    if (btnTick != null) btnTick.Visible = documentExists;
+                    if (btnCross != null) btnCross.Visible = documentExists;
+
+                    // Hide FileUpload and Upload button if document exists
+                    if (fileUpload != null) fileUpload.Visible = !documentExists;
+                    if (btnUpload != null) btnUpload.Visible = !documentExists;
+                    if (documentExists && hdnSaveDocumentID != null)
+                    {
+                        hdnSaveDocumentID.Value = "0";
+                    }
+                }
+                else
+                {
+                    if (btnTick != null) btnTick.Visible = false;
+                    if (btnCross != null) btnCross.Visible = false;
+
+                    if (fileUpload != null) fileUpload.Visible = true;
+                    if (btnUpload != null) btnUpload.Visible = true;
+                    if (hdnSaveDocumentID != null)
+                    {
+                        hdnSaveDocumentID.Value = "1";
+                    }
                 }
             }
         }
 
-        protected void Button10_Click(object sender, EventArgs e)
+
+        protected void btnUpload_Click(object sender, EventArgs e)
         {
-            if (IsSessionValid())
+            Button btnUpload = (Button)sender;
+            GridViewRow row = (GridViewRow)btnUpload.NamingContainer;
+
+            FileUpload fileUpload = row.FindControl("FileUpload1") as FileUpload;
+            LinkButton btnTick = row.FindControl("btnTick") as LinkButton;
+            LinkButton btnCross = row.FindControl("btnCross") as LinkButton;
+            Label lblInstruction = row.FindControl("lblInstruction") as Label;
+
+            if (fileUpload == null || !fileUpload.HasFile)
             {
-                string Result = SaveDocumentWithTransaction(FileUpload10, Button10, 50, lnkbtn_Delete10, lnkbtn_Save10, "Income tax return for last 3 year of 1st Year", null, null);
-                if (Result != null && Result != "")
-                {
-                    HdnField_Document10.Value = "1";
-                    lnkbtn_Delete10.Visible = true;
-                    lnkbtn_Save10.Visible = true;
-                    text10.Visible = false;
-                }
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Please select a file.');", true);
+                return;
             }
-            else
+
+            int rowIndex = row.RowIndex;
+
+            // ✅ Fetch values from DataKeys
+            int documentId = Convert.ToInt32(Grd_Document.DataKeys[rowIndex]["DocumentID"]);
+            string documentName = Grd_Document.DataKeys[rowIndex]["DocumentName"].ToString();
+            string documentShortName = Grd_Document.DataKeys[rowIndex]["DocumentShortName"].ToString();
+
+            try
             {
-                Response.Redirect("/LogOut.aspx", false);
+                string fileExtension = Path.GetExtension(fileUpload.FileName).ToLower();
+                int fileSize = fileUpload.PostedFile.ContentLength;
+
+                // ✅ Validation
+                if (fileSize > 1048576)
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('File must be under 1MB.');", true);
+                    return;
+                }
+
+                if (documentId == 31 || documentId == 32)
+                {
+                    if (!(fileExtension == ".jpg" || fileExtension == ".jpeg" || fileExtension == ".png"))
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Only image files allowed.');", true);
+                        return;
+                    }
+                }
+                else
+                {
+                    if (fileExtension != ".pdf")
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Only PDF files allowed.');", true);
+                        return;
+                    }
+                }
+
+                string CreatedBy = Convert.ToString(Session["ContractorID"] ?? "TestUser");
+                string safeDocumentName = MakeSafeFileName(documentShortName);
+                string safeCreatedBy = MakeSafeFileName(CreatedBy);
+
+                string directoryPath = Server.MapPath($"~/Attachment/License_Documents/{safeCreatedBy}/{safeDocumentName}/");
+                if (!Directory.Exists(directoryPath))
+                    Directory.CreateDirectory(directoryPath);
+
+                string fileName = $"{safeDocumentName}_{DateTime.Now:yyyyMMddHHmmssFFF}{fileExtension}";
+                string fullPath = Path.Combine(directoryPath, fileName);
+
+                fileUpload.SaveAs(fullPath);
+                string dbPath = $"/Attachment/License_Documents/{safeCreatedBy}/{safeDocumentName}/{fileName}";
+
+                // Save to database
+                string Utrn = txtGRNNO.Text;  // if available
+                string challandate = txttransactionDate.Text;
+
+                string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+                using (SqlConnection conn = new SqlConnection(connectionString))
+                {
+                    conn.Open();
+                    SqlTransaction transaction = conn.BeginTransaction();
+
+                    try
+                    {
+                        CEI.InsertDocumentOfNewUserApplicationContractor(
+                            documentName, documentId.ToString(), fileName, dbPath,
+                            Utrn, challandate, CreatedBy, transaction
+                        );
+                        transaction.Commit();
+                    }
+                    catch (Exception dbEx)
+                    {
+                        transaction.Rollback();
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", $"alert('DB error: {dbEx.Message}');", true);
+                        return;
+                    }
+                }
+
+                // ✅ Update UI
+                if (btnTick != null) btnTick.Visible = true;
+                if (btnCross != null) btnCross.Visible = true;
+                if (fileUpload != null) fileUpload.Visible = false;
+                if (lblInstruction != null) lblInstruction.Visible = false;
+                if (btnUpload != null) btnUpload.Visible = false;
+
+                //if (hdnSaveDocumentID != null)
+                //    hdnSaveDocumentID.Value = "1";
+
+                DataTable dt = ViewState["DocumentData"] as DataTable;
+                if (dt != null)
+                {
+                    foreach (DataRow dr in dt.Rows)
+                    {
+                        if (dr["DocumentID"].ToString() == documentId.ToString())
+                        {
+                            dr["SaveDocumentID"] = "1";
+                            break;
+                        }
+                    }
+                    ViewState["DocumentData"] = dt;
+                }
+
+                ////btnNext.Visible = AllDocumentsUploaded();
+                int CompanyTypeNAme = Convert.ToInt32(HdnTypeOfCompany.Value);
+                int AgeOfCon = Convert.ToInt32(HdnAge.Value);
+                GetGridtoUploadDocuments(HdnUserId.Value, CompanyTypeNAme, AgeOfCon);
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", $"alert('Upload error: {ex.Message}');", true);
             }
         }
 
-        protected void lnkbtn_Delete10_Click(object sender, EventArgs e)
+
+        private string MakeSafeFileName(string input)
         {
-            LinkButton btn = (LinkButton)sender;
-            int fileId = Convert.ToInt32(btn.CommandArgument);
-            if (fileId != 0)
+            foreach (char c in Path.GetInvalidFileNameChars())
             {
-                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkbtn_Delete10, lnkbtn_Save10, FileUpload10, Button10);
-                if (IsDelete)
-                {
-                    HdnField_Document10.Value = "0";
-                    text10.Visible = true;
-                }
+                input = input.Replace(c, '_');
             }
+            return input;
         }
-
-        protected void Button11_Click(object sender, EventArgs e)
+        protected void Grd_Document_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if (IsSessionValid())
+            int Company = Convert.ToInt32(HdnTypeOfCompany.Value);
+            int ContAge = Convert.ToInt32(HdnAge.Value);
+
+            if (e.CommandName == "CustomDelete")
             {
-                string Result = SaveDocumentWithTransaction(FileUpload11, Button11, 51, lnkbtn_Delete11, lnkbtn_Save11, "Income tax return for last 3 year of 2nd Year", null, null);
-                if (Result != null && Result != "")
+                string docId = e.CommandArgument.ToString();
+
+                if (!string.IsNullOrEmpty(docId))
                 {
-                    HdnField_Document11.Value = "1";
-                    lnkbtn_Delete11.Visible = true;
-                    lnkbtn_Save11.Visible = true;
-                    text11.Visible = false;
+                    CEI.DeleteNewConDocumentById(Convert.ToInt32(docId));
                 }
             }
-            else
-            {
-                Response.Redirect("/LogOut.aspx", false);
-            }
-        }
-
-        protected void lnkbtn_Delete11_Click(object sender, EventArgs e)
-        {
-            LinkButton btn = (LinkButton)sender;
-            int fileId = Convert.ToInt32(btn.CommandArgument);
-            if (fileId != 0)
-            {
-                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkbtn_Delete11, lnkbtn_Save11, FileUpload11, Button11);
-                if (IsDelete)
-                {
-                    HdnField_Document11.Value = "0";
-                    text11.Visible = true;
-                }
-            }
-        }
-
-        protected void Button12_Click(object sender, EventArgs e)
-        {
-            if (IsSessionValid())
-            {
-                string Result = SaveDocumentWithTransaction(FileUpload12, Button12, 52, lnkbtn_Delete12, lnkbtn_Save12, "Income tax return for last 3 year of 3rd Year", null, null);
-                if (Result != null && Result != "")
-                {
-                    HdnField_Document12.Value = "1";
-                    lnkbtn_Delete12.Visible = true;
-                    lnkbtn_Save12.Visible = true;
-                    text12.Visible = false;
-                }
-            }
-            else
-            {
-                Response.Redirect("/LogOut.aspx", false);
-            }
-        }
-
-        protected void lnkbtn_Delete12_Click(object sender, EventArgs e)
-        {
-            LinkButton btn = (LinkButton)sender;
-            int fileId = Convert.ToInt32(btn.CommandArgument);
-            if (fileId != 0)
-            {
-                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkbtn_Delete12, lnkbtn_Save12, FileUpload12, Button12);
-                if (IsDelete)
-                {
-                    HdnField_Document12.Value = "0";
-                    text12.Visible = true;
-                }
-            }
-        }
-
-        protected void Button13_Click(object sender, EventArgs e)
-        {
-            if (IsSessionValid())
-            {
-                string Result = SaveDocumentWithTransaction(FileUpload13, Button13, 53, lnkbtn_Delete13, lnkbtn_Save13, "Balance sheet of last 1st year", null, null);
-                if (Result != null && Result != "")
-                {
-                    HdnField_Document13.Value = "1";
-                    lnkbtn_Delete13.Visible = true;
-                    lnkbtn_Save13.Visible = true;
-                    text13.Visible = false;
-                }
-            }
-            else
-            {
-                Response.Redirect("/LogOut.aspx", false);
-            }
-        }
-
-        protected void Button14_Click(object sender, EventArgs e)
-        {
-            if (IsSessionValid())
-            {
-                string Result = SaveDocumentWithTransaction(FileUpload14, Button14, 54, lnkbtn_Delete14, lnkbtn_Save14, "Balance sheet of last 2nd year", null, null);
-                if (Result != null && Result != "")
-                {
-                    HdnField_Document14.Value = "1";
-                    lnkbtn_Delete14.Visible = true;
-                    lnkbtn_Save14.Visible = true;
-                    text14.Visible = false;
-                }
-            }
-            else
-            {
-                Response.Redirect("/LogOut.aspx", false);
-            }
-        }
-
-        protected void Button15_Click(object sender, EventArgs e)
-        {
-            if (IsSessionValid())
-            {
-                string Result = SaveDocumentWithTransaction(FileUpload15, Button15, 55, lnkbtn_Delete15, lnkbtn_Save15, "Balance sheet of last 3rd year", null, null);
-                if (Result != null && Result != "")
-                {
-                    HdnField_Document15.Value = "1";
-                    lnkbtn_Delete15.Visible = true;
-                    lnkbtn_Save15.Visible = true;
-                    text15.Visible = false;
-                }
-            }
-            else
-            {
-                Response.Redirect("/LogOut.aspx", false);
-            }
-
-        }
-
-        protected void Button16_Click(object sender, EventArgs e)
-        {
-            if (IsSessionValid())
-            {
-                string Result = SaveDocumentWithTransaction(FileUpload16, Button16, 56, lnkbtn_Delete16, lnkbtn_Save16, "Invoice of instrument", null, null);
-                if (Result != null && Result != "")
-                {
-                    HdnField_Document16.Value = "1";
-                    lnkbtn_Delete16.Visible = true;
-                    lnkbtn_Save16.Visible = true;
-                    text16.Visible = false;
-                }
-            }
-            else
-            {
-                Response.Redirect("/LogOut.aspx", false);
-            }
-        }
-
-        protected void lnkbtn_Delete13_Click(object sender, EventArgs e)
-        {
-            LinkButton btn = (LinkButton)sender;
-            int fileId = Convert.ToInt32(btn.CommandArgument);
-            if (fileId != 0)
-            {
-                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkbtn_Delete13, lnkbtn_Save13, FileUpload13, Button13);
-                if (IsDelete)
-                {
-                    HdnField_Document13.Value = "0";
-                    text13.Visible = true;
-                }
-            }
-        }
-
-        protected void lnkbtn_Delete14_Click(object sender, EventArgs e)
-        {
-            LinkButton btn = (LinkButton)sender;
-            int fileId = Convert.ToInt32(btn.CommandArgument);
-            if (fileId != 0)
-            {
-                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkbtn_Delete14, lnkbtn_Save14, FileUpload14, Button14);
-                if (IsDelete)
-                {
-                    HdnField_Document14.Value = "0";
-                    text14.Visible = true;
-                }
-            }
-        }
-
-        protected void lnkbtn_Delete15_Click(object sender, EventArgs e)
-        {
-            LinkButton btn = (LinkButton)sender;
-            int fileId = Convert.ToInt32(btn.CommandArgument);
-            if (fileId != 0)
-            {
-                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkbtn_Delete15, lnkbtn_Save15, FileUpload15, Button15);
-                if (IsDelete)
-                {
-                    HdnField_Document15.Value = "0";
-                    text15.Visible = true;
-                }
-            }
-        }
-
-        protected void lnkbtn_Delete16_Click(object sender, EventArgs e)
-        {
-            LinkButton btn = (LinkButton)sender;
-            int fileId = Convert.ToInt32(btn.CommandArgument);
-            if (fileId != 0)
-            {
-                bool IsDelete = DeleteDocumentWithTransaction(fileId, lnkbtn_Delete16, lnkbtn_Save16, FileUpload16, Button16);
-                if (IsDelete)
-                {
-                    HdnField_Document16.Value = "0";
-                    text16.Visible = true;
-                }
-            }
+            GetGridtoUploadDocuments(HdnUserId.Value, Company, ContAge);
         }
     }
 }
