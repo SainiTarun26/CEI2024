@@ -442,6 +442,40 @@ namespace CEIHaryana
 
                             }
                         }
+                        else if (check == 10)
+                        {
+                            if (txtPassword.Text != "123456")
+                            {
+                                string UserType = "Wireman";
+                                int exist = CEI.ToCheckthesignatureAndImageexist(txtUserID.Text, UserType);
+                                if (exist > 0)
+                                {
+                                    Session["UserID"] = txtUserID.Text;
+                                    Session["UserType"] = "Wireman";
+                                    Response.Redirect("/Upload_Image_Sign.aspx", false);
+                                }
+                                else
+                                {
+                                    if (chkSignedin.Checked == true)
+                                    {
+                                        Session["logintype"] = "Wireman";
+                                        Session["WiremanId"] = txtUserID.Text;
+                                        Response.Redirect("/Wiremen/Renewal_Certificate_Wiremen.aspx", false);
+                                    }
+                                    else
+                                    {
+                                        Session["logintype"] = "Wireman";
+                                        Session["WiremanId"] = txtUserID.Text;
+                                        Response.Redirect("/Wiremen/Renewal_Certificate_Wiremen.aspx", false);
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                Session["WiremanId"] = txtUserID.Text;
+                                Response.Redirect("/ChangePassword.aspx", false);
+                            }
+                        }
                         else if (check == 11)
                         {
                             if (txtPassword.Text != "123456")
