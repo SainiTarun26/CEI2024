@@ -21,10 +21,14 @@ namespace CEIHaryana.UserPages
             {
                 if (!IsPostBack)
                 {
+                    if (Request.UrlReferrer != null)
+                    {
+                        Session["BackPreviousPage"] = Request.UrlReferrer.ToString();
+                    }
                     if (Convert.ToString(Session["NewApplicationRegistrationNo"]) != null || Convert.ToString(Session["NewApplicationRegistrationNo"]) != string.Empty)
                     {
                         GetRenewalData(Session["NewApplicationRegistrationNo"].ToString().Trim());
-                        GetGridBindData(Session["NewApplicationRegistrationNo"].ToString().Trim());
+                        GetGridBindData(Session["NewApplicationRegistrationNo"].ToString().Trim());                  
                     }
                 }
             }

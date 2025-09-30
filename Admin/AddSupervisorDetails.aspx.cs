@@ -260,7 +260,8 @@ namespace CEI_PRoject.Admin
 
                 if (CertificateNew.Text.Trim() != "" && CertificateNew.Text.Trim() != null)
                 {
-                    UserId = "S-" + CertificateNew.Text.Trim();
+                    //UserId = "S-" + CertificateNew.Text.Trim();
+                    UserId =  CertificateNew.Text.Trim();
                 }
                 else
                 {
@@ -304,7 +305,8 @@ namespace CEI_PRoject.Admin
                             {
                                 //NewUserID = CertificateNew.Text;
                                 if (CertificateNew.Text != null && CertificateNew.Text != "")
-                                    NewUserID = "S-" + CertificateNew.Text;
+                                    //NewUserID = "S-" + CertificateNew.Text;
+                                    NewUserID = CertificateNew.Text;
                                 else
                                     NewUserID = CertificateOld.Text;
                             }
@@ -313,7 +315,8 @@ namespace CEI_PRoject.Admin
                         {
                             if (CertificateNew.Text.Length > 0)
                             {
-                                NewUserID = "S-" + CertificateNew.Text;
+                                //NewUserID = "S-" + CertificateNew.Text;
+                                NewUserID =  CertificateNew.Text;
                             }
                             else
                             {

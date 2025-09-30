@@ -37,6 +37,12 @@
     <link rel="shortcut icon" href="/images/favicon.png" />
 
     <style>
+        label {
+            display: inline-block;
+            margin-bottom: 0.5rem;
+            font-size: 12px !important;
+        }
+
         img#ProfilePhoto {
             height: 100px;
             width: 100px;
@@ -48,6 +54,7 @@
             height: 1px;
             width: 90%;
             box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            font-size: 12px !important;
         }
 
             input.form-control:hover {
@@ -141,7 +148,6 @@
 
         .col-md-4 {
             margin-top: 15px;
-            margin-bottom: 10px;
         }
 
         .col-md-8 {
@@ -215,6 +221,10 @@
                                     <div class="row">
                                         <div class="col-md-12 grid-margin stretch-card">
                                             <div class="card">
+                                                <div class="card-title" style="text-align: center; font-size: 22px;">
+                                                    Renewal Application for
+                                                    <asp:Label ID="Label8" runat="server" Text="Label"></asp:Label>
+                                                </div>
                                                 <div class="card-body">
                                                     <div class="row">
                                                         <div class="col-md-12">
@@ -223,94 +233,107 @@
                                                     </div>
                                                     <hr />
                                                     <div class="row">
-                                                        <div class="col-md-4" style="margin-top: 30px !important;">
-                                                            <label id="Label3" runat="server" visible="true">
-                                                                Name of Applicant  
-                                                            </label>
-                                                            <asp:TextBox ReadOnly="true" class="form-control" ID="txtname" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
-                                                        </div>
-                                                        <div class="col-md-4" style="margin-top: 30px !important;">
-                                                            <label visible="true">
-                                                                Father's Name
-                                                            </label>
-                                                            <asp:TextBox ReadOnly="true" class="form-control" ID="txtFatherName" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
-                                                        </div>
+                                                        <div class="col-md-10">
+                                                            <div class="row">
+                                                                <div class="col-md-4" style="margin-top: 30px !important;">
+                                                                    <label id="Label3" runat="server" visible="true">
+                                                                        Name of Applicant  
+                                                                    </label>
+                                                                    <asp:TextBox ReadOnly="true" class="form-control" ID="txtname" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                                </div>
+                                                                <div class="col-md-4" style="margin-top: 30px !important;">
+                                                                    <label visible="true">
+                                                                        Father's Name
+                                                                    </label>
+                                                                    <asp:TextBox ReadOnly="true" class="form-control" ID="txtFatherName" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                                </div>
 
-                                                        <div class="col-md-4" style="margin-top: 30px !important;">
-                                                            <label visible="true">
-                                                                Date of birth
-                                                            </label>
-                                                            <asp:TextBox ReadOnly="true" class="form-control" ID="txtDOB" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <label id="Label1" runat="server" visible="true">
-                                                                Age  
-                                                            </label>
-                                                            <asp:TextBox ReadOnly="true" class="form-control" ID="txtAge" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <label id="Label2" runat="server" visible="true">
-                                                                Date when applicant Completed 55 years
-                                                            </label>
-                                                            <asp:TextBox ReadOnly="true" class="form-control" ID="txt55Years" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <label id="Label4" runat="server" visible="true">
-                                                                Present Address with Pincode
-                                                            </label>
-                                                            <asp:TextBox ReadOnly="true" class="form-control" ID="txtAddress" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <label id="Label16" runat="server" visible="true">
-                                                                District
-                                                            </label>
-                                                            <asp:TextBox ReadOnly="true" class="form-control" ID="txtDistrict" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <label id="Label17" runat="server" visible="true">
-                                                                Email Id.
-                                                            </label>
-                                                            <asp:TextBox ReadOnly="true" class="form-control" ID="txtEmailId" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <label id="Label19" runat="server" visible="true">
-                                                                Phone No.
-                                                            </label>
-                                                            <asp:TextBox ReadOnly="true" class="form-control" ID="txtPhone" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <label id="Label20" runat="server" visible="true">
-                                                                Adhaar No.
-                                                            </label>
-                                                            <asp:TextBox ReadOnly="true" class="form-control" ID="txtAdhaar" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <label id="Label5" runat="server" visible="true">
-                                                                 Competency Certificate No.
-                                                            </label>
-                                                            <asp:TextBox ReadOnly="true" class="form-control" ID="txtCompeencyCertificate" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <label id="Label6" runat="server" visible="true">
-                                                                Date of Expiry
-                                                            </label>
-                                                            <asp:TextBox ReadOnly="true" class="form-control" ID="txtExpiryDate" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <label id="Label7" runat="server" visible="true">
-                                                                is Date of renewal belated?
-                                                            </label>
-                                                            <asp:TextBox ReadOnly="true" class="form-control" ID="txtBelatedDate" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
-                                                        </div>
+                                                                <div class="col-md-4" style="margin-top: 30px !important;">
+                                                                    <label visible="true">
+                                                                        Date of birth
+                                                                    </label>
+                                                                    <asp:TextBox ReadOnly="true" class="form-control" ID="txtDOB" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <label id="Label1" runat="server" visible="true">
+                                                                        Age  
+                                                                    </label>
+                                                                    <asp:TextBox ReadOnly="true" class="form-control" ID="txtAge" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <label id="Label2" runat="server" visible="true">
+                                                                        Date when applicant Completed 55 years
+                                                                    </label>
+                                                                    <asp:TextBox ReadOnly="true" class="form-control" ID="txt55Years" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <label id="Label4" runat="server" visible="true">
+                                                                        Present Address with Pincode
+                                                                    </label>
+                                                                    <asp:TextBox ReadOnly="true" class="form-control" ID="txtAddress" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <label id="Label16" runat="server" visible="true">
+                                                                        District
+                                                                    </label>
+                                                                    <asp:TextBox ReadOnly="true" class="form-control" ID="txtDistrict" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <label id="Label17" runat="server" visible="true">
+                                                                        Email Id.
+                                                                    </label>
+                                                                    <asp:TextBox ReadOnly="true" class="form-control" ID="txtEmailId" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <label id="Label19" runat="server" visible="true">
+                                                                        Phone No.
+                                                                    </label>
+                                                                    <asp:TextBox ReadOnly="true" class="form-control" ID="txtPhone" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <label id="Label20" runat="server" visible="true">
+                                                                        Adhaar No.
+                                                                    </label>
+                                                                    <asp:TextBox ReadOnly="true" class="form-control" ID="txtAdhaar" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <label id="Competency" runat="server" visible="true">
+                                                                        Competency Certificate No.
+                                                                    </label>
+                                                                    <label id="Permit" runat="server" visible="false">
+                                                                        Permit Certificate No.
+                                                                    </label>
+                                                                    <asp:TextBox ReadOnly="true" class="form-control" ID="txtCompeencyCertificate" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <label id="Label6" runat="server" visible="true">
+                                                                        Date of Expiry
+                                                                    </label>
+                                                                    <asp:TextBox ReadOnly="true" class="form-control" ID="txtExpiryDate" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <label id="Label7" runat="server" visible="true">
+                                                                        is Date of renewal belated?
+                                                                    </label>
+                                                                    <asp:TextBox ReadOnly="true" class="form-control" ID="txtBelatedDate" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                                </div>
 
-                                                        <div class="col-md-4">
-                                                            <label id="Label9" runat="server" visible="true">
-                                                                Mention Days
-                                                            </label>
-                                                            <asp:TextBox ReadOnly="true" class="form-control" ID="txtMentiondays" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                                <div class="col-md-4">
+                                                                    <label id="Label9" runat="server" visible="true">
+                                                                        Delay Days
+                                                                    </label>
+                                                                    <asp:TextBox ReadOnly="true" class="form-control" ID="txtMentiondays" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
+                                                                </div>
+
+                                                            </div>
                                                         </div>
-
-
+                                                        <div class="col-md-2">
+                                                            <div class="forms-sample">
+                                                                <%--<img src="path_to_your_image.jpg" alt="Sample Image"
+             style="width: 100px; height: 100px; object-fit: cover;">--%>
+                                                                <asp:Image ID="imgPhoto" runat="server" Width="100px" Height="100px" Style="height: 200px; width: 180px; object-fit: contain; margin-top: 50%;" />
+                                                            </div>
+                                                        </div>
                                                     </div>
 
 
@@ -459,6 +482,27 @@
 
 
                                                 </div>
+                                                <div class="row">
+                                                    <div class="col-md-5">&nbsp;</div>
+                                                    <div class="col-6" style="text-align: end">
+
+                                                        <asp:Image ID="mySignature" runat="server" Width="300" Height="90" Style="bottom: 140px; margin-left: -300px;" />
+                                                        <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18PX; font-weight: 700; margin-right: 55px;">Signature of Applicant</h6>
+
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="row" style="margin-left: 0px;">
+                                                    <div class="col-md-6" style="padding-left: 0px;">
+                                                        <asp:Button type="button" ID="btnBack" Text="Back" OnClick="btnBack_Click" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" />
+                                                    </div>
+                                                    <div class="col-md-6" style="text-align: end;">
+                                                        <%--<asp:Button type="button" ValidationGroup="Submit" AutoPostback="true" ID="btnNext" Text="Submit" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" />--%>
+                                                    </div>
+                                                    <asp:HiddenField ID="hdnId" runat="server" />
+                                                </div>
+
                                             </div>
 
                                         </div>
@@ -526,4 +570,3 @@
 
 </body>
 </html>
-sss

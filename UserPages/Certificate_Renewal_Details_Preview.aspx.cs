@@ -22,6 +22,10 @@ namespace CEIHaryana.UserPages
             {
                 if (!IsPostBack)
                 {
+                    if (Request.UrlReferrer != null)
+                    {
+                        Session["BackPreviousPage"] = Request.UrlReferrer.ToString();
+                    }
                     if (Convert.ToString(Session["NewApplicationRegistrationNo"]) != null || Convert.ToString(Session["NewApplicationRegistrationNo"]) != string.Empty)
                     {
                         GetRenewalData(Session["NewApplicationRegistrationNo"].ToString().Trim());
@@ -75,6 +79,16 @@ namespace CEIHaryana.UserPages
             dt = CEI.GetRenwaUserRegistrationData(RenewalId);
             if (dt.Rows.Count > 0 && dt != null)
             {
+                if (dt.Rows[0]["Category"].ToString() =="Supervisor")
+                {
+                    Competency.Visible=true;
+                    Permit.Visible =false;
+                }
+                else
+                {
+                    Permit.Visible=true;
+                    Competency.Visible=false;
+                }
                 txtname.Text = dt.Rows[0]["ApplicantName"].ToString();
                 txtFatherName.Text = dt.Rows[0]["FatherName"].ToString();
                 txtDOB.Text = dt.Rows[0]["DOB"].ToString();
@@ -113,6 +127,16 @@ namespace CEIHaryana.UserPages
                 txtLicenseNo.Text = dta.Rows[0]["Licence"].ToString();
                 txtEmployerAddress.Text = dta.Rows[0]["ContractorAddress"].ToString();
 
+            }
+        }
+
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+            string previousPageUrl = Session["BackPreviousPage"] as string;
+            if (!string.IsNullOrEmpty(previousPageUrl))
+            {
+                Response.Redirect(previousPageUrl, false);
+                Session["BackPreviousPage"] = null;
             }
         }
     }

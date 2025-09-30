@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Contractor_Renewal_Details_Preview.aspx.cs" Inherits="CEIHaryana.UserPages.Contractor_Renewal_Details_Preview" %>
+﻿    <%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Contractor_Renewal_Details_Preview.aspx.cs" Inherits="CEIHaryana.UserPages.Contractor_Renewal_Details_Preview" %>
 
 
 <!DOCTYPE html>
@@ -155,6 +155,9 @@
             margin-top: 15px;
             margin-bottom: 10px;
         }
+        th.headercolor.leftalign {
+    text-align: justify;
+}
     </style>
     <script type="text/javascript">
         function alertWithRedirectdata() {
@@ -298,7 +301,7 @@
                                                                 </div>
                                                                 <div class="col-md-4">
                                                                     <label id="Label5" runat="server" visible="true">
-                                                                        Competency Certificate No.
+                                                                        Certificate No.
                                                                     </label>
                                                                     <asp:TextBox ReadOnly="true" class="form-control" ID="txtCompeencyCertificate" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
                                                                 </div>
@@ -396,8 +399,8 @@
                                                     <div class="row">
 
                                                         <div class="col-md-12">
-                                                            <asp:GridView class="table-responsive table table-hover table-striped" ID="Grd_Document" OnRowCommand="Grd_Document_RowCommand" runat="server" AutoGenerateColumns="false">
-                                                                <%-- <asp:GridView class="table-responsive table table-hover table-striped" ID="Grd_Document"  OnRowCommand="Grd_Document_RowCommand"  runat="server" AutoGenerateColumns="false">--%>
+                                                            <asp:GridView class="table-responsive table table-hover table-striped table-bordered" ID="Grd_Document" OnRowCommand="Grd_Document_RowCommand" runat="server" AutoGenerateColumns="false">
+                                                                <%-- <asp:GridView class="table-responsive table table-hover table-striped table-bordered" ID="Grd_Document"  OnRowCommand="Grd_Document_RowCommand"  runat="server" AutoGenerateColumns="false">--%>
                                                                 <PagerStyle CssClass="pagination-ys" />
                                                                 <Columns>
 

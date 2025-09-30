@@ -263,8 +263,8 @@ namespace CEI_PRoject.Admin
                 {
 
                     UserId = txtCertificateNew.Text.Trim();
-                    if (UserId.Substring(0, 3) == "EW-")
-                    {
+                   // if (UserId.Substring(0, 3) == "EW-")
+                   // {
 
                         string name = txtName.Text.Trim();
                         string fathername = txtFatherName.Text.Trim();
@@ -305,20 +305,20 @@ namespace CEI_PRoject.Admin
                                 UserId = str[0];
                                 if (str[1] == "New")
                                 {
-                                    if (UserId == "W-" + txtCertificateNew.Text)
+                                    if (UserId ==   txtCertificateNew.Text)
                                     {
                                         NewUserID = "";
                                     }
                                     else
                                     {
-                                        NewUserID = "W-" + txtCertificateNew.Text;
+                                        NewUserID =  txtCertificateNew.Text;
                                     }
                                 }
                                 else
                                 {
                                     if (txtCertificateNew.Text.Length > 0)
                                     {
-                                        NewUserID = "W-" + txtCertificateNew.Text;
+                                        NewUserID =  txtCertificateNew.Text;
                                     }
                                     else
                                     {
@@ -365,13 +365,13 @@ namespace CEI_PRoject.Admin
                         }
                         Reset();
 
-                    }
-                    else
-                    {                   
-                        ScriptManager.RegisterStartupScript(this, GetType(), "UploadError",
-                       "alert('Fisrt 3 Letter of Certificate Should be \"EW-\".');", true);
-                        return;
-                    }
+                   // }
+                   // else
+                    //{                   
+                    //    ScriptManager.RegisterStartupScript(this, GetType(), "UploadError",
+                    //   "alert('Fisrt 3 Letter of Certificate Should be \"EW-\".');", true);
+                    //    return;
+                    //}
 
                 }
             }
