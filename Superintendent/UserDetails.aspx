@@ -297,8 +297,8 @@
                                 </HeaderTemplate>
                                 <HeaderStyle Width="5%" CssClass="headercolor" />
                                 <ItemTemplate>
-                                    <asp:HiddenField ID="hdnLicenceType" runat="server" Value='<%# Eval("LicenceType") %>' />
-                                    <%# Eval("LicenceType") %>
+                                    <asp:HiddenField ID="hdnLicenceType" runat="server" Value='<%# Eval("LicenceType") %>' />                                   
+                                            <asp:Label ID="lblApplicationType" runat="server" Text='<%# Eval("LicenceType") %>' CssClass="text-wrap"></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
 
@@ -325,7 +325,14 @@
                                     </asp:LinkButton>
                                 </ItemTemplate>
                             </asp:TemplateField>--%>
-
+                            
+                                    <asp:TemplateField HeaderText="Download">
+                                        <HeaderStyle Width="10%" CssClass="headercolor" />
+                                        <ItemStyle Width="10%" CssClass="text-wrap" />
+                                        <ItemTemplate>
+                                            <asp:LinkButton ID="LinkDownload" runat="server" CommandArgument=' <%#Eval("ApplicationId") %> ' CommandName="Download">Download</asp:LinkButton>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
 
                         </Columns>
                         <FooterStyle BackColor="White" ForeColor="#000066" />

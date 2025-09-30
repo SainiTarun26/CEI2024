@@ -2,7 +2,10 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO.Compression;
+using System.IO;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -114,6 +117,122 @@ namespace CEIHaryana.Superintendent
 
 
             }
+            else if (e.CommandName == "Download")
+            {
+
+                string RegNo = e.CommandArgument.ToString();
+                string RegistrationId=string.Empty;
+                Label lblApplicationType = (Label)row.FindControl("lblApplicationType");
+                Label Categary = (Label)row.FindControl("lblCategory");
+                DataSet ds = CEI.Licence_Cei_Approval_GetHeaderDetails(RegNo);
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                {
+                     RegistrationId = ds.Tables[0].Rows[0]["RedirectionRegistrationId"].ToString();
+                }
+                    DataTable dt;
+                if (lblApplicationType.Text.Trim() == "New")
+                {
+                    dt = CEI.getNewUserDocumentsForZip(RegistrationId);
+                }
+                else
+                {
+                    dt = CEI.GetRenewalDocuments(RegistrationId);
+                }
+                using (MemoryStream memoryStream = new MemoryStream())
+                {
+                    using (ZipArchive zip = new ZipArchive(memoryStream, ZipArchiveMode.Create, true))
+                    {
+                        foreach (DataRow rows in dt.Rows)
+                        {
+                            string fileUrl = "https://uat.ceiharyana.com" + rows["DocumentPath"].ToString();
+
+                            using (var client = new System.Net.WebClient())
+                            {
+                                try
+                                {
+                                    byte[] fileBytes = client.DownloadData(fileUrl);
+                                    string fileName = Path.GetFileName(fileUrl);
+
+                                    ZipArchiveEntry entry = zip.CreateEntry(fileName, CompressionLevel.Fastest);
+                                    using (var entryStream = entry.Open())
+                                    {
+                                        entryStream.Write(fileBytes, 0, fileBytes.Length);
+                                    }
+                                }
+                                catch (Exception ex)
+                                {
+                                    // Log error if file missing
+                                }
+                            }
+                        }
+
+
+                        try
+                        {
+                            using (MemoryStream zipStream = new MemoryStream())
+                            {
+                                if (lblApplicationType.Text.Trim() == "New")
+                                {
+                                    if (Categary.Text == "Wireman" || Categary.Text == "Supervisor")
+                                    {
+                                        Session["NewApplicationRegistrationNo"] = RegistrationId;
+                                        ExportUtility.ExportCleanHtmlToZip(
+                                           pagePath: "/Print_Forms/Print_New_Registration_Information.aspx",
+                                           queryString: "RegNo=" + RegNo,
+                                           zip: zip,
+                                           outputFileName: "RegistrationInfo.html"
+                                       );
+                                        Session["NewApplicationRegistrationNo"] = "";
+                                    }
+                                    else
+                                    {
+                                        Session["NewApplication_Contractor_RegNo"] = RegistrationId;
+                                        ExportUtility.ExportCleanHtmlToZip(
+                                          pagePath: "/Print_Forms/Print_New_Registration_Information_Contractor.aspx",
+                                          queryString: "RegNo=" + RegNo,
+                                          zip: zip,
+                                          outputFileName: "RegistrationInfo.html"
+                                      );
+                                        Session["NewApplication_Contractor_RegNo"] = "";
+                                    }
+                                }
+                                else
+                                {
+                                    Session["NewApplicationRegistrationNo"] = RegistrationId;
+                                    ExportUtility.ExportCleanHtmlToZip(
+                                          pagePath: "/Print_Forms/Licence_Renewal_Print.aspx",
+                                          queryString: "RegNo=" + RegNo,
+                                          zip: zip,
+                                          outputFileName: "RegistrationInfo.html"
+                                      );
+                                    Session["NewApplicationRegistrationNo"] = "";
+                                }
+                            }
+
+
+
+                        }
+                        catch (Exception ex)
+                        {
+                            // log if page not reachable
+                        }
+
+                    }
+
+                    string zipFileName = RegNo + "_Documents.zip";
+                    Response.Clear();
+                    Response.ContentType = "application/zip";
+                    Response.AddHeader("content-disposition", "attachment; filename=" + RegNo + "_Documents" + ".zip");
+                    memoryStream.Position = 0; // reset before writing
+                    memoryStream.CopyTo(Response.OutputStream);
+                    Response.Flush();
+                    Response.End();
+
+
+                }
+
+
+            }
             //Commented By Aslam on 16 sep 2025 because its not required here. . 
             //else if (e.CommandName == "Print")
             //{
@@ -150,6 +269,7 @@ namespace CEIHaryana.Superintendent
 
             //    }
             //}
+
         }
 
         protected void ddlSearchBy_SelectedIndexChanged(object sender, EventArgs e)
