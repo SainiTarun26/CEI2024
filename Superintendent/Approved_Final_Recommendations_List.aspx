@@ -173,7 +173,7 @@
                                 <ItemStyle HorizontalAlign="center" Width="32%" />
                             </asp:BoundField>
 
-                            <asp:BoundField DataField="Categary" HeaderText="Categary">
+                            <asp:BoundField DataField="Categary" HeaderText="Category">
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>
