@@ -86,7 +86,7 @@ namespace CEIHaryana.Contractor
                 string RegNo = e.CommandArgument.ToString();
 
                 Session["NewApplicationRegistrationNo"] = RegNo;
-                Response.Write("<script>window.open('/UserPages/Certificate_Renewal_Details_Preview.aspx','_blank');</script>");
+                Response.Write("<script>window.open('/UserPages/Contractor_Renewal_Details_Preview.aspx','_blank');</script>");
             }
             else if (e.CommandName == "Reapply")
             {
