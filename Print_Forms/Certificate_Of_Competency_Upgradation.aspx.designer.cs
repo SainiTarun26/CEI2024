@@ -114,6 +114,15 @@ namespace CEIHaryana.Print_Forms
         protected global::System.Web.UI.WebControls.Label lblCertificateNo;
 
         /// <summary>
+        /// lblinitialDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblinitialDate;
+
+        /// <summary>
         /// lblDob control.
         /// </summary>
         /// <remarks>
@@ -177,13 +186,13 @@ namespace CEIHaryana.Print_Forms
         protected global::System.Web.UI.WebControls.Label lblAddress;
 
         /// <summary>
-        /// lblInitialDate control.
+        /// lblApprovalDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblInitialDate;
+        protected global::System.Web.UI.WebControls.Label lblApprovalDate;
 
         /// <summary>
         /// CEISignatureImage control.

@@ -308,38 +308,31 @@
                             <asp:HiddenField ID="hdnApplicationId" runat="server" />
                             <div class="row">
                                 <div class="col-6">
-                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 15PX;">No. 
-                                                                                    <asp:Label ID="lblCertificateNo" runat="server" Text="" Style="font-size: 16px !important;"></asp:Label>
-
+                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 15PX;">No. : 
+                                        <asp:Label ID="lblCertificateNo" runat="server" Text="" Style="font-size: 16px !important;"></asp:Label>
                                     </h6>
-                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 15PX;">OLD No.
-                                     <asp:Label ID="lblOldLicenceNo" runat="server" Text="" Style="font-size: 16px !important;"></asp:Label>
+                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 15PX;">OLD No. : 
+                                        <asp:Label ID="lblOldLicenceNo" runat="server" Text="" Style="font-size: 16px !important;"></asp:Label>
                                     </h6>
-
-                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 15PX; text-align: end;">Date of Birth:
-                                        <asp:Label ID="lblDob" runat="server" Text="" Style="font-size: 16px !important;"></asp:Label>
+                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 15PX;">Initial Issue Date : 
+                                        <asp:Label ID="lblInitialIssueDate" runat="server" Text="" Style="font-size: 16px !important;"></asp:Label>
                                     </h6>
 
                                 </div>
-                                <div class="col-6">
-
-                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 15PX; text-align: end;">Initial Issue Date:
-                                 <asp:Label ID="lblInitialIssueDate" runat="server" Text="" Style="font-size: 16px !important; text-decoration: underline;"></asp:Label>
+                                <div class="col-6">                                    
+                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 15PX; text-align: end;">Date of Birth : 
+                                        <asp:Label ID="lblDob" runat="server" Text="" Style="font-size: 16px !important;"></asp:Label>
                                     </h6>
-
-
-                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 15PX; text-align: end;">Authorised UPTO:
-   <%-- <asp:Label ID="Label1" runat="server" Text="" Style="font-size: 16px !important;text-decoration:underline;"></asp:Label>--%>
+                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 15PX; text-align: end;">Authorised UPTO : 
                                         <asp:Label ID="lblAuthorizedUpto" runat="server" Text="" Style="font-size: 16px !important;"></asp:Label>
-
                                     </h6>
                                     <asp:Panel ID="pnlWEF" runat="server">
-                                        <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 15PX; text-align: end;">w.e.f.
+                                        <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 15PX; text-align: end;">w.e.f. : 
                                     <asp:Label ID="lblWEF" runat="server"></asp:Label>
 
                                         </h6>
                                     </asp:Panel>
-                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 15PX; text-align: end;">Valid Upto:
+                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 15PX; text-align: end;">Valid Upto : 
                                     <asp:Label ID="lblValidUpto" runat="server" Text="" Style="font-size: 16px !important; text-decoration: underline;"></asp:Label>
                                     </h6>
                                 </div>

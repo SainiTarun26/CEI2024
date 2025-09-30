@@ -193,9 +193,10 @@
                 position: relative;
                 padding: 8px 0 8px 20px; /* Add space for numbers */
                 border-bottom: 1px dotted black;
-                font-size:16px;
+                font-size: 16px;
             }
-            img#imgQRCode {
+
+        img#imgQRCode {
             max-width: 142px;
         }
 
@@ -290,7 +291,8 @@
                                 <!-- Left QR/Barcode Placeholder -->
                                 <div class="col-sm-3 d-flex justify-content-start">
                                     <div style="width: 150px; height: 150px; border: 2px solid black; display: flex; align-items: center; justify-content: center;">
-                                        <span style="font-size: 12px;"><asp:Image ID="imgQRCode" runat="server" /></span>
+                                        <span style="font-size: 12px;">
+                                            <asp:Image ID="imgQRCode" runat="server" /></span>
                                     </div>
                                 </div>
 
@@ -313,22 +315,22 @@
                                 <div class="col-6">
                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 15PX;">For the State of Haryana only
                                     </h6>
-                                </div>
+                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 15PX;">Initial Issue Date :   
+                                         <asp:Label ID="lblinitialDate" runat="server" Text="" Style="font-size: 16px !important;"></asp:Label>
+                                    </h6>
+                                </div>                               
+                                
                                 <div class="col-6">
-                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 15PX; text-align: end;">Authorised upto
-                                        <asp:Label ID="lblAuthorizedUpto" runat="server" ></asp:Label>
+                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 15PX; text-align: end;">Authorised upto : 
+                                        <asp:Label ID="lblAuthorizedUpto" runat="server"></asp:Label>
+                                    </h6>
+                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 15PX; text-align: end;">w.e.f. : 
+                                        <asp:Label ID="lblWEF" runat="server"></asp:Label>
+                                    </h6>
+                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 15PX; text-align: end;">Valid Upto : 
+                                        <asp:Label ID="lblValidUpto" runat="server" Text="" Style="font-size: 16px !important; text-decoration: underline;"></asp:Label>
                                     </h6>
                                 </div>
-                               <div class="col-6">
-                                   </div>
-                                <div class="col-6">
-    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 15PX; text-align: end;">w.e.f.
-        <asp:Label ID="lblWEF" runat="server"></asp:Label>
-    </h6>
-                                                                        <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 15PX; text-align: end;">Valid Upto:
-    <asp:Label ID="lblValidUpto" runat="server" Text="" Style="font-size: 16px !important; text-decoration: underline;"></asp:Label>
-</h6>
-</div>
                             </div>
                             <br />
                             <div class="row">
@@ -402,16 +404,16 @@
                                     <asp:Image ID="mySignature" runat="server" Width="200" Height="90" Style="bottom: 140px; margin-right: 30px;" />
 
                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 16PX; font-weight: 700;">Signatures of Contractor</h6>
-                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 16PX; font-weight: 700;">Initial Issue Date:
+                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 16PX; font-weight: 700;">Dated :
                                        <%-- <asp:Label ID="lblApprovedDate" runat="server" Style="font-weight: 500; font-size: 16px !important;"></asp:Label></h6>--%>
-                                         <asp:Label ID="lblInitialdate" runat="server" Style="font-weight: 500; font-size: 16px !important;"></asp:Label></h6>
+                                        <asp:Label ID="lblApprovalDate" runat="server" Style="font-weight: 500; font-size: 16px !important;"></asp:Label></h6>
 
                                 </div>
                                 <div class="col-9" style="text-align: end">
                                     <asp:Image ID="CEISignatureImage" runat="server" Width="200" Height="90" Style="bottom: 140px; margin-right: 30px;" />
 
-                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 16PX; font-weight: 700; margin-right: 55px;">Chief Electrical Inspector</h6>
-                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 16PX; font-weight: 700;">to Govt., Haryana, Chandigarh.</h6>
+                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 16PX; font-weight: 700; margin-right: 40px;">Chief Electrical Inspector</h6>
+                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 16PX; font-weight: 700; margin-right: 20px;">to Govt., Haryana, Chandigarh.</h6>
 
                                 </div>
                                 <div id="RegistationId" runat="server" visible="false">

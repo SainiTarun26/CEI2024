@@ -371,8 +371,8 @@ qualifications and experience as certained by the Screening Committee, found eli
                                 <div class="col-9" style="text-align: end">
                                     <asp:Image ID="Image" runat="server" Width="130" Height="50" Style="bottom: 140px; margin-right: 80px;" />
 
-                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18px; font-weight: 700; margin-right: 55px;">Chief Electrical Inspector</h6>
-                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18px; font-weight: 700;">to Govt., Haryana, Chandigarh.</h6>
+                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18px; font-weight: 700; margin-right: 40px;">Chief Electrical Inspector</h6>
+                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18px; font-weight: 700; margin-right: 20px;">to Govt., Haryana, Chandigarh.</h6>
 
                                 </div>
                             </div>

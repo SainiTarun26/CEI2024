@@ -123,15 +123,6 @@ namespace CEIHaryana.Print_Forms
         protected global::System.Web.UI.WebControls.Label lblOldLicenceNo;
 
         /// <summary>
-        /// lblDob control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblDob;
-
-        /// <summary>
         /// lblInitialIssueDate control.
         /// </summary>
         /// <remarks>
@@ -139,6 +130,15 @@ namespace CEIHaryana.Print_Forms
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblInitialIssueDate;
+
+        /// <summary>
+        /// lblDob control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblDob;
 
         /// <summary>
         /// lblValidUpto control.

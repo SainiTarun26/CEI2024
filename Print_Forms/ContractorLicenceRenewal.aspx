@@ -314,22 +314,24 @@
                                 <div class="col-6">
                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 15PX;">For the State of Haryana only
                                     </h6>
+
+                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 15PX;">Initial Issue Date : 
+                                          <asp:Label ID="lblInitialIssueDate" runat="server" Text="" Style="font-size: 16px !important;"></asp:Label>
+                                    </h6>
                                 </div>
                                 <div class="col-6">
 
-                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 15PX; text-align: end;">Initial Issue Date:
-                                        <asp:Label ID="lblInitialIssueDate" runat="server" Text="" Style="font-size: 16px !important; text-decoration: underline;"></asp:Label>
-                                    </h6>
 
-                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 15PX; text-align: end;">Authorised upto
+
+                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 15PX; text-align: end;">Authorised upto : 
                                         <asp:Label ID="lblAuthorizedUpto" runat="server" Text=""></asp:Label>
                                     </h6>
-                                     <asp:Panel ID="pnlWEF" runat="server">
-                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 15PX; text-align: end;">w.e.f.
+                                    <asp:Panel ID="pnlWEF" runat="server">
+                                        <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 15PX; text-align: end;">w.e.f. : 
                                         <asp:Label ID="lblWEF" runat="server"></asp:Label>
-                                    </h6>
+                                        </h6>
                                     </asp:Panel>
-                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 15PX; text-align: end;">Valid Upto:
+                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 15PX; text-align: end;">Valid Upto : 
                                         <asp:Label ID="lblValidUpto" runat="server" Text="" Style="font-size: 16px !important; text-decoration: underline;"></asp:Label>
                                     </h6>
 
@@ -414,8 +416,8 @@
                                 <div class="col-9" style="text-align: end">
                                     <asp:Image ID="Image" runat="server" Width="130" Height="50" Style="bottom: 140px; margin-right: 70px;" />
 
-                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 16px; font-weight: 700; margin-right: 55px;">Chief Electrical Inspector</h6>
-                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 16px; font-weight: 700;">to Govt., Haryana, Chandigarh.</h6>
+                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 16px; font-weight: 700; margin-right: 40px;">Chief Electrical Inspector</h6>
+                                    <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 16px; font-weight: 700; margin-right: 20px;">to Govt., Haryana, Chandigarh.</h6>
 
                                 </div>
                                 <div id="RegistationId" runat="server" visible="false">

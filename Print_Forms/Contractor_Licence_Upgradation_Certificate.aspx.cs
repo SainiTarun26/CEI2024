@@ -80,7 +80,8 @@ namespace CEIHaryana.Print_Forms
                     lblAuthorizedUpto.Text = dt.Rows[0]["Votagelevel"].ToString();
                     lblName.Text = dt.Rows[0]["Name"].ToString();
                     //lblApprovedDate.Text = dt.Rows[0]["CreatedDate"].ToString();
-                    lblInitialdate.Text = dt.Rows[0]["IntialIssueDate"].ToString();
+                    lblinitialDate.Text = dt.Rows[0]["IntialIssueDate"].ToString();
+                    lblApprovalDate.Text = dt.Rows[0]["ApprovedDate"].ToString();
                     imgQRCode.ImageUrl = "data:image/jpeg;base64," + Convert.ToBase64String((byte[])dt.Rows[0]["QRCode"]);
                     String UserID = dt.Rows[0]["RegistationId"].ToString();
                     GetPartnerDetails(UserID);
