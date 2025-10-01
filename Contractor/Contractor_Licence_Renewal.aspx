@@ -275,6 +275,31 @@
         th.headercolor {
             width: 1%;
         }
+        input#ContentPlaceHolder1_rdlchangedonlicence_0 {
+    margin-left: 5px;
+}
+        input#ContentPlaceHolder1_rdlchangedonlicence_1 {
+    margin-left: 5px;
+}
+input#ContentPlaceHolder1_rblbelated_0 {
+    margin-left: 5px;
+}
+input#ContentPlaceHolder1_rblbelated_1 {
+    margin-left: 5px;
+}
+input#ContentPlaceHolder1_rdlEquipmentsTested_0 {
+    margin-left: 5px;
+}
+input#ContentPlaceHolder1_rdlEquipmentsTested_1 {
+    margin-left: 5px;
+}
+input#ContentPlaceHolder1_rblChangeAddress_0 {
+    margin-left: 5px;
+}
+input#ContentPlaceHolder1_rblChangeAddress_1 {
+    margin-left: 5px;
+}
+
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">

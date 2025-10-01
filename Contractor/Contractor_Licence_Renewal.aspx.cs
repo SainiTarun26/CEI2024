@@ -476,25 +476,25 @@ namespace CEIHaryana.Contractor
                                     CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Contractor License", ContractorLicense, 1, CreatedBy);
 
                                 if (!string.IsNullOrEmpty(certificate))
-                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Competency Certificate", certificate, 1, CreatedBy);
+                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Competency CertificateCertificate of Competency and Wireman Permit, who are working with the Firm", certificate, 1, CreatedBy);
 
                                 if (!string.IsNullOrEmpty(Incometax))
-                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Income Tax Return", Incometax, 1, CreatedBy);
+                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Income Tax Returns and Balance Sheet as specified in the conditions.", Incometax, 1, CreatedBy);
 
                                 if (!string.IsNullOrEmpty(Calibrationtertificate))
-                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Calibration Certificate", Calibrationtertificate, 1, CreatedBy);
+                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Calibration Certificate from NABL or Government Testing Laboratory in respect of Electrical", Calibrationtertificate, 1, CreatedBy);
 
                                 if (!string.IsNullOrEmpty(WorksExecuted))
-                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Works Executed", WorksExecuted, 1, CreatedBy);
+                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Details of works executed annually on the basis of Electrical Contractor License", WorksExecuted, 1, CreatedBy);
 
                                 if (!string.IsNullOrEmpty(annexureIII))
-                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Annexure III", annexureIII, 1, CreatedBy);
+                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Copy of Annexure III", annexureIII, 1, CreatedBy);
 
                                 if (!string.IsNullOrEmpty(FormE1))
-                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Form E", FormE1, 1, CreatedBy);
+                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Copy of Form \"E\"", FormE1, 1, CreatedBy);
 
                                 if (!string.IsNullOrEmpty(Challanfp))
-                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Challan", Challanfp, 1, CreatedBy);
+                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Deposited Treasury Challan of fees, for the purpose.\r\nHead of A/c: 0043-51-800-99-51—Other Receipt.", Challanfp, 1, CreatedBy);
 
                                 if (!string.IsNullOrEmpty(Candidateimage))
                                     CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Candidate Image", Candidateimage, 1, CreatedBy);
