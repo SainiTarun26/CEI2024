@@ -46,6 +46,11 @@
     <link rel="shortcut icon" href="/images/favicon.png" />
 
     <style>
+                                        select:focus {
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px !important;
+    background: #f3f3f3 !important;
+    border: 1px solid #80bdff !important;
+}
         textarea#txtPenalities {
             height: 100px;
             margin-top: 19px;

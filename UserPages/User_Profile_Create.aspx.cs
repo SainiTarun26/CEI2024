@@ -57,7 +57,7 @@ namespace CEIHaryana.UserPages
                 string aadhar = dt.Rows[0]["Aadhar"].ToString();
                 //txtAadhaar.Text = dt.Rows[0]["Aadhar"].ToString(); commented by navneet on instruction of vinod sir
 
-                if (string.IsNullOrEmpty(txtAadhaar.Text))
+                if (string.IsNullOrEmpty(aadhar))
                 {
                     txtAadhaar.Text=dt.Rows[0]["PanCardNo"].ToString();
                     Aadhaar.Visible=false;

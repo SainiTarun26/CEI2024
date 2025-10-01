@@ -68,21 +68,31 @@
         }
     </script>
     <style>
-                                        .container.d-flex.align-items-center.justify-content-between{
-            max-width:1650px;
+        select:focus {
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px !important;
+            background: #f3f3f3 !important;
+            border: 1px solid #80bdff !important;
         }
-                    #header .logo img {
-    max-height: 44px !important;
-    margin-left: 0px !important;
-}
-                       li#logout {
-    background: #4B49AC !important;
-    border-radius: 51px !important;
-    padding: 7px 5px 7px 5px !important;
-}
-                                  nav#navbar {
-    box-shadow: none !important;
-}
+
+        .container.d-flex.align-items-center.justify-content-between {
+            max-width: 1650px;
+        }
+
+        #header .logo img {
+            max-height: 44px !important;
+            margin-left: 0px !important;
+        }
+
+        li#logout {
+            background: #4B49AC !important;
+            border-radius: 51px !important;
+            padding: 7px 5px 7px 5px !important;
+        }
+
+        nav#navbar {
+            box-shadow: none !important;
+        }
+
         input#RadioButtonList2_0 {
             margin-right: 5px;
         }
@@ -119,6 +129,7 @@
             margin-left: -175px;
             margin-top: 18px;
         }
+
         span#RequiredFieldValidator2 {
             color: red !important;
             font-size: 20px !important;
@@ -827,44 +838,44 @@
         <asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>
         <div>
             <!-- ======= Top Bar ======= -->
-                                                                                         <section id="topbar" class="d-flex align-items-center">
-     <div class="container d-flex justify-content-center justify-content-md-between" style="max-width: 1680px;">
-         <div class="contact-info d-flex align-items-center">
-             <i class="bi bi-envelope d-flex align-items-center">
-                 <a href="mailto:cei_goh@yahoo.com">cei_goh@yahoo.com</a>
-             </i>
-             <i class="bi bi-phone d-flex align-items-center ms-4">
-                 <span>0172 2704090</span>
-             </i>
-         </div>
-         <div class="social-links d-none d-md-flex align-items-center">
-             <a href="#" class="twitter">
-                 <i class="bi bi-twitter"></i>
-             </a>
-             <a href="#" class="facebook">
-                 <i class="bi bi-facebook"></i>
-             </a>
-             <a href="#" class="instagram">
-                 <i class="bi bi-instagram"></i>
-             </a>
-             <a href="#" class="linkedin">
-                 <i class="bi bi-linkedin"></i>
-             </a>
-         </div>
-     </div>
- </section>
-        <!-- ======= Header ======= -->
+            <section id="topbar" class="d-flex align-items-center">
+                <div class="container d-flex justify-content-center justify-content-md-between" style="max-width: 1680px;">
+                    <div class="contact-info d-flex align-items-center">
+                        <i class="bi bi-envelope d-flex align-items-center">
+                            <a href="mailto:cei_goh@yahoo.com">cei_goh@yahoo.com</a>
+                        </i>
+                        <i class="bi bi-phone d-flex align-items-center ms-4">
+                            <span>0172 2704090</span>
+                        </i>
+                    </div>
+                    <div class="social-links d-none d-md-flex align-items-center">
+                        <a href="#" class="twitter">
+                            <i class="bi bi-twitter"></i>
+                        </a>
+                        <a href="#" class="facebook">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+                        <a href="#" class="instagram">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                        <a href="#" class="linkedin">
+                            <i class="bi bi-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </section>
+            <!-- ======= Header ======= -->
 
-        <header id="header" class="d-flex align-items-center"
-            style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; background: #d1e6ff;">
-            <div class="container d-flex align-items-center justify-content-between">
-                <a href="/Login.aspx" class="logo">
-                    <img src="/Assets/Add a heading (1).png" alt="Logo" />
-                </a>
+            <header id="header" class="d-flex align-items-center"
+                style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; background: #d1e6ff;">
+                <div class="container d-flex align-items-center justify-content-between">
+                    <a href="/Login.aspx" class="logo">
+                        <img src="/Assets/Add a heading (1).png" alt="Logo" />
+                    </a>
 
-                <nav id="navbar" class="navbar">
-                    <ul>
-                        <%--<li class="dropdown">
+                    <nav id="navbar" class="navbar">
+                        <ul>
+                            <%--<li class="dropdown">
                             <a href="#"><span>Home</span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
                                 <li><a href="/AboutCEI.aspx">About CEI</a></li>
@@ -955,37 +966,37 @@
 
                         <li><a href="/UserPages/OurServices.aspx">User Manual</a></li>
                         <li>|</li>--%>
-                                                     <li class="dropdown" id="logout">
-                            <a href="#">
-                                <span id="user">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
-                                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
-                                    </svg></span>
-                            </a>
-                            <ul id="profile_drop">
-                                <li id="ProfileUser"><a href="/UserPages/User_Profile_Create.aspx">
-                                    <span>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-badge" viewBox="0 0 16 16">
+                            <li class="dropdown" id="logout">
+                                <a href="#">
+                                    <span id="user">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                                            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+                                        </svg></span>
+                                </a>
+                                <ul id="profile_drop">
+                                    <li id="ProfileUser"><a href="/UserPages/User_Profile_Create.aspx">
+                                        <span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-badge" viewBox="0 0 16 16">
                           User      
 <path d="M6.5 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1zM11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
                                         <path d="M4.5 0A2.5 2.5 0 0 0 2 2.5V14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2.5A2.5 2.5 0 0 0 11.5 0zM3 2.5A1.5 1.5 0 0 1 4.5 1h7A1.5 1.5 0 0 1 13 2.5v10.795a4.2 4.2 0 0 0-.776-.492C11.392 12.387 10.063 12 8 12s-3.392.387-4.224.803a4.2 4.2 0 0 0-.776.492z" />
                                     </svg>&nbsp;&nbsp;Profile</span>
-                                </a></li>
-                                <li id="ProfileLogout">
-                                    <a href="#">
-                                        <asp:Button ID="btnLogout" Text="Logout" OnClick="btnLogout_Click" runat="server" Style="background: #4b49ac; border-color: #4b49ac; color: white; border-radius: 5px;" />
-                                        <%--OnClick="btnLogout_Click"--%>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+                                    </a></li>
+                                    <li id="ProfileLogout">
+                                        <a href="#">
+                                            <asp:Button ID="btnLogout" Text="Logout" OnClick="btnLogout_Click" runat="server" Style="background: #4b49ac; border-color: #4b49ac; color: white; border-radius: 5px;" />
+                                            <%--OnClick="btnLogout_Click"--%>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
 
-                    </ul>
-                    <i class="bi bi-list mobile-nav-toggle"></i>
-                </nav>
-            </div>
-        </header>
+                        </ul>
+                        <i class="bi bi-list mobile-nav-toggle"></i>
+                    </nav>
+                </div>
+            </header>
             <!-- End Header -->
             <main id="main">
                 <section id="about" class="about section-bg">
@@ -2037,8 +2048,8 @@
                     if (event.key === "Enter") {
                         event.preventDefault(); // prevent default form submit
                         document.getElementById("<%= btnNext.ClientID %>").click();
-                        }
-                    });
+                    }
+                });
             </script>
             <script type="text/javascript">
                 function convertToUpperCase(id) {
@@ -2169,7 +2180,7 @@
             <script type="text/javascript">
                 function validateExperienceDate2() {
                     var from = document.getElementById('<%=txtExperienceFrom.ClientID %>');
-           var to = document.getElementById('<%=txtExperienceTo.ClientID %>');
+                    var to = document.getElementById('<%=txtExperienceTo.ClientID %>');
 
         <%--   var apprenticeTo = document.getElementById('<%=Apprenticesdateto.ClientID %>');--%>
 
@@ -2219,9 +2230,9 @@
             <script type="text/javascript">
                 function validateExperienceDate3() {
                     var from = document.getElementById('<%=txtExperienceFrom1.ClientID %>');
-           var to = document.getElementById('<%=txtExperienceTo1.ClientID %>');
+                    var to = document.getElementById('<%=txtExperienceTo1.ClientID %>');
 
-           var ForNextFromDate = document.getElementById('<%=txtExperienceTo.ClientID %>');
+                    var ForNextFromDate = document.getElementById('<%=txtExperienceTo.ClientID %>');
 
                     var today = new Date();
                     today.setHours(0, 0, 0, 0);
@@ -2278,9 +2289,9 @@
             <script type="text/javascript">
                 function validateExperienceDate4() {
                     var from = document.getElementById('<%=txtExperienceFrom2.ClientID %>');
-           var to = document.getElementById('<%=txtExperienceTo2.ClientID %>');
+                    var to = document.getElementById('<%=txtExperienceTo2.ClientID %>');
 
-           var ForNextFromDate = document.getElementById('<%=txtExperienceTo1.ClientID %>');
+                    var ForNextFromDate = document.getElementById('<%=txtExperienceTo1.ClientID %>');
 
                     var today = new Date();
                     today.setHours(0, 0, 0, 0);
@@ -2336,9 +2347,9 @@
             <script type="text/javascript">
                 function validateExperienceDate5() {
                     var from = document.getElementById('<%=txtExperienceFrom3.ClientID %>');
-           var to = document.getElementById('<%=txtExperienceTo3.ClientID %>');
+                    var to = document.getElementById('<%=txtExperienceTo3.ClientID %>');
 
-           var ForNextFromDate = document.getElementById('<%=txtExperienceTo2.ClientID %>');
+                    var ForNextFromDate = document.getElementById('<%=txtExperienceTo2.ClientID %>');
 
                     var today = new Date();
                     today.setHours(0, 0, 0, 0);
@@ -2394,9 +2405,9 @@
             <script type="text/javascript">
                 function validateExperienceDate6() {
                     var from = document.getElementById('<%=txtExperienceFrom4.ClientID %>');
-           var to = document.getElementById('<%=txtExperienceTo4.ClientID %>');
+                    var to = document.getElementById('<%=txtExperienceTo4.ClientID %>');
 
-           var ForNextFromDate = document.getElementById('<%=txtExperienceTo3.ClientID %>');
+                    var ForNextFromDate = document.getElementById('<%=txtExperienceTo3.ClientID %>');
 
                     var today = new Date();
                     today.setHours(0, 0, 0, 0);
@@ -2452,9 +2463,9 @@
             <script type="text/javascript">
                 function validateExperienceDate7() {
                     var from = document.getElementById('<%=txtExperienceFrom5.ClientID %>');
-           var to = document.getElementById('<%=txtExperienceTo5.ClientID %>');
+                    var to = document.getElementById('<%=txtExperienceTo5.ClientID %>');
 
-           var ForNextFromDate = document.getElementById('<%=txtExperienceTo4.ClientID %>');
+                    var ForNextFromDate = document.getElementById('<%=txtExperienceTo4.ClientID %>');
 
                     var today = new Date();
                     today.setHours(0, 0, 0, 0);
@@ -2510,9 +2521,9 @@
             <script type="text/javascript">
                 function validateExperienceDate8() {
                     var from = document.getElementById('<%=txtExperienceFrom6.ClientID %>');
-           var to = document.getElementById('<%=txtExperienceTo6.ClientID %>');
+                    var to = document.getElementById('<%=txtExperienceTo6.ClientID %>');
 
-           var ForNextFromDate = document.getElementById('<%=txtExperienceTo5.ClientID %>');
+                    var ForNextFromDate = document.getElementById('<%=txtExperienceTo5.ClientID %>');
 
                     var today = new Date();
                     today.setHours(0, 0, 0, 0);
@@ -2569,9 +2580,9 @@
             <script type="text/javascript">
                 function validateExperienceDate9() {
                     var from = document.getElementById('<%=txtExperienceFrom7.ClientID %>');
-           var to = document.getElementById('<%=txtExperienceTo7.ClientID %>');
+                    var to = document.getElementById('<%=txtExperienceTo7.ClientID %>');
 
-           var ForNextFromDate = document.getElementById('<%=txtExperienceTo6.ClientID %>');
+                    var ForNextFromDate = document.getElementById('<%=txtExperienceTo6.ClientID %>');
 
                     var today = new Date();
                     today.setHours(0, 0, 0, 0);
@@ -2628,9 +2639,9 @@
             <script type="text/javascript">
                 function validateExperienceDate10() {
                     var from = document.getElementById('<%=txtExperienceFrom8.ClientID %>');
-           var to = document.getElementById('<%=txtExperienceTo8.ClientID %>');
+                    var to = document.getElementById('<%=txtExperienceTo8.ClientID %>');
 
-           var ForNextFromDate = document.getElementById('<%=txtExperienceTo7.ClientID %>');
+                    var ForNextFromDate = document.getElementById('<%=txtExperienceTo7.ClientID %>');
 
                     var today = new Date();
                     today.setHours(0, 0, 0, 0);
@@ -2687,9 +2698,9 @@
             <script type="text/javascript">
                 function validateExperienceDate11() {
                     var from = document.getElementById('<%=txtExperienceFrom9.ClientID %>');
-           var to = document.getElementById('<%=txtExperienceTo9.ClientID %>');
+                    var to = document.getElementById('<%=txtExperienceTo9.ClientID %>');
 
-           var ForNextFromDate = document.getElementById('<%=txtExperienceTo8.ClientID %>');
+                    var ForNextFromDate = document.getElementById('<%=txtExperienceTo8.ClientID %>');
 
                     var today = new Date();
                     today.setHours(0, 0, 0, 0);

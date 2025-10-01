@@ -45,6 +45,11 @@
     <!-- endinject -->
     <link rel="shortcut icon" href="/images/favicon.png" />
     <style>
+                                                select:focus {
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px !important;
+    background: #f3f3f3 !important;
+    border: 1px solid #80bdff !important;
+}
                                 .container.d-flex.align-items-center.justify-content-between{
             max-width:1650px;
         }
