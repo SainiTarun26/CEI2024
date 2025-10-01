@@ -59,6 +59,8 @@ namespace CEIHaryana.Contractor
                 ds = CEI.GetRenewalData(userID);
                 if (ds.Rows.Count > 0)
                 {
+                    string filePath = ds.Rows[0]["LetterPath"].ToString();
+                    HdnPanFilePath.Value = filePath;
                     GridView1.DataSource = ds;
                     GridView1.DataBind();
                 }
@@ -93,6 +95,14 @@ namespace CEIHaryana.Contractor
                 Session["Renwal"] = "No";
                 Response.Redirect("~/Contractor/Contractor_Licence_Renewal.aspx");
             }
+            else if (e.CommandName == "ViewVerificationLetter")
+            {
+
+                string fileUrl = "https://uat.ceiharyana.com" + HdnPanFilePath.Value;
+                string script = $@"<script>window.open('{fileUrl}', '_blank');</script>";
+                ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+
+            }
 
         }
         protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -100,17 +110,22 @@ namespace CEIHaryana.Contractor
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 string status = DataBinder.Eval(e.Row.DataItem, "ApplicationStatus")?.ToString();
+                string VerificationLetter = DataBinder.Eval(e.Row.DataItem, "LetterPath")?.ToString();
+                if (VerificationLetter!=""&& VerificationLetter!= null)
+                {
+                    GridView1.Columns[8].Visible = true;
 
+                }
 
                 if (status == "Returned" || status == "Rejected")
                 {
                     GridView1.Columns[7].Visible = true;
-                    GridView1.Columns[8].Visible = true;
+                    GridView1.Columns[9].Visible = true;
                 }
                 else
                 {
                     GridView1.Columns[7].Visible = false;
-                    GridView1.Columns[8].Visible = false;
+                    GridView1.Columns[9].Visible = false;
                 }
             }
         }

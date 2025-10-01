@@ -28,7 +28,7 @@ namespace CEIHaryana.UserPages
                     if (Convert.ToString(Session["NewApplicationRegistrationNo"]) != null || Convert.ToString(Session["NewApplicationRegistrationNo"]) != string.Empty)
                     {
                         GetRenewalData(Session["NewApplicationRegistrationNo"].ToString().Trim());
-                        GetGridBindData(Session["NewApplicationRegistrationNo"].ToString().Trim());                  
+                        GetGridBindData(Session["NewApplicationRegistrationNo"].ToString().Trim());
                     }
                 }
             }
@@ -42,7 +42,7 @@ namespace CEIHaryana.UserPages
         protected void GetGridBindData(string RenewalId)
         {
             DataTable dt = new DataTable();
-            dt = CEI.GetRenewalDocuments(RenewalId); 
+            dt = CEI.GetRenewalDocuments(RenewalId);
             if (dt.Rows.Count > 0)
             {
                 string photoUrl = "";
@@ -78,7 +78,7 @@ namespace CEIHaryana.UserPages
             dt = CEI.GetRenwaUserRegistrationData(RenewalId);
             if (dt.Rows.Count > 0 && dt != null)
             {
-                txtname.Text = dt.Rows[0]["ApplicantName"].ToString();
+                txtname.Text = dt.Rows[0]["firmName"].ToString();
                 txtFatherName.Text = dt.Rows[0]["FatherName"].ToString();
                 txtDOB.Text = dt.Rows[0]["DOB"].ToString();
                 txtAge.Text = dt.Rows[0]["Age"].ToString();
@@ -99,6 +99,8 @@ namespace CEIHaryana.UserPages
                 txtExpiryDate.Text = dt.Rows[0]["ExpiryDate"].ToString();
                 txtAddressChange.Text = dt.Rows[0]["ChangeInAddress"].ToString();
                 txtEquipments.Text = dt.Rows[0]["EquipmentsTested"].ToString();
+                StaffData(dt.Rows[0]["CreatedBy"].ToString());
+                ContractorTeamBind(dt.Rows[0]["CreatedBy"].ToString());
             }
 
         }
@@ -116,8 +118,45 @@ namespace CEIHaryana.UserPages
 
             }
         }
+        private void ContractorTeamBind(string LoginID)
+        {
+            DataTable dt = new DataTable();
+            dt = CEI.GetContractorTeam(LoginID);
 
+            if (dt.Rows.Count > 0)
+            {
+                GridView3.DataSource = dt;
+                GridView3.DataBind();
+                NoPartner.Visible=false;
+                }
+            else
+            {
+                GridView3.DataSource = null;
+                GridView3.DataBind();
+                NoPartner.Visible=true;
+            }
+            dt.Dispose();
 
+        }
+        private void StaffData(string userid)
+        {
+            DataTable dt = new DataTable();
+            dt = CEI.GetStaffDate(userid);
+            if (dt != null && dt.Rows.Count > 0)
+            {
+                GridView1.DataSource = dt;
+                GridView1.DataBind();
+                NoStaffLable.Visible=false;
+            }
+            else
+            {
+                GridView1.DataSource = null;
+                GridView1.DataBind();
+                NoStaffLable.Visible=true;
+
+            }
+            dt.Dispose();
+        }
         protected void btnBack_Click(object sender, EventArgs e)
         {
             string previousPageUrl = Session["BackPreviousPage"] as string;

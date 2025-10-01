@@ -88,17 +88,22 @@ namespace CEIHaryana.Wiremen
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 string status = DataBinder.Eval(e.Row.DataItem, "ApplicationStatus")?.ToString();
+                string VerificationLetter = DataBinder.Eval(e.Row.DataItem, "LetterPath")?.ToString();
+                if (VerificationLetter != "" && VerificationLetter != null)
+                {
+                    GridView1.Columns[8].Visible = true;
 
+                }
 
                 if (status == "Returned" || status == "Rejected")
                 {
                     GridView1.Columns[7].Visible = true;
-                    GridView1.Columns[8].Visible = true;
+                    GridView1.Columns[9].Visible = true;
                 }
                 else
                 {
                     GridView1.Columns[7].Visible = false;
-                    GridView1.Columns[8].Visible = false;
+                    GridView1.Columns[9].Visible = false;
                 }
             }
         }

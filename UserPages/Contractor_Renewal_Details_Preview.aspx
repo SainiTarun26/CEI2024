@@ -1,4 +1,4 @@
-﻿    <%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Contractor_Renewal_Details_Preview.aspx.cs" Inherits="CEIHaryana.UserPages.Contractor_Renewal_Details_Preview" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Contractor_Renewal_Details_Preview.aspx.cs" Inherits="CEIHaryana.UserPages.Contractor_Renewal_Details_Preview" %>
 
 
 <!DOCTYPE html>
@@ -155,8 +155,12 @@
             margin-top: 15px;
             margin-bottom: 10px;
         }
+
         th.headercolor.leftalign {
-    text-align: justify;
+            text-align: justify;
+        }
+        th.headercolor {
+    width: 1%;
 }
     </style>
     <script type="text/javascript">
@@ -240,7 +244,7 @@
                                                             <div class="row">
                                                                 <div class="col-md-4" style="margin-top: 30px !important;">
                                                                     <label id="Label3" runat="server" visible="true">
-                                                                        Name of Applicant  
+                                                                        Name of firm    
                                                                     </label>
                                                                     <asp:TextBox ReadOnly="true" class="form-control" ID="txtname" MaxLength="50" autocomplete="off" TabIndex="2" onKeyPress="return alphabetKey(event);" runat="server"> </asp:TextBox>
                                                                 </div>
@@ -346,9 +350,6 @@
 
 
 
-
-
-
                                                 <div class="card-body">
                                                     <div class="row">
                                                         <div class="col-md-12">
@@ -387,9 +388,119 @@
 
                                                 </div>
 
+                                                
+                                                <div class="card-body" runat="server" id="PartnerDetails" Visible="false" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+
+                                                    <div class="row">
+                                                           <h7 class="card-title fw-semibold mb-4">Partner Details (as on the date of Application)</h7>
+
+                                                        <asp:GridView class="table-responsive table table-hover  table-bordered" ID="GridView3" runat="server" Width="100%"
+                                                            AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff" DataKeyNames="Id">
+                                                            <PagerStyle CssClass="pagination-ys" />
+                                                            <Columns>
+                                                                <asp:BoundField DataField="Name" HeaderText="Name">
+                                                                    <HeaderStyle HorizontalAlign="Left" Width="20%" CssClass="headercolor" />
+                                                                    <ItemStyle HorizontalAlign="Left" Width="20%" CssClass="tdpadding" />
+                                                                </asp:BoundField>
+                                                                <asp:BoundField DataField="TypeOfEmployee" HeaderText="Type Of Employee">
+                                                                    <HeaderStyle HorizontalAlign="Center" Width="15%" CssClass="headercolor" />
+                                                                    <ItemStyle HorizontalAlign="Center" Width="15%" CssClass="tdpadding" />
+                                                                </asp:BoundField>
+                                                                <asp:BoundField DataField="LicenseNo" HeaderText="License No">
+                                                                    <HeaderStyle HorizontalAlign="Center" Width="15%" CssClass="headercolor" />
+                                                                    <ItemStyle HorizontalAlign="Center" Width="15%" CssClass="tdpadding" />
+                                                                </asp:BoundField>
+                                                                <asp:TemplateField HeaderText="Issue Date">
+                                                                    <HeaderStyle HorizontalAlign="Center" Width="15%" CssClass="headercolor" />
+                                                                    <ItemStyle HorizontalAlign="Center" Width="15%" CssClass="tdpadding" />
+                                                                    <ItemTemplate>
+                                                                        <asp:Label ID="lblIssueDate" runat="server" Text='<%# Eval("IssueDate", "{0:dd-MM-yyyy}") %>' />
+                                                                    </ItemTemplate>
+                                                                </asp:TemplateField>
+                                                                <asp:TemplateField HeaderText="Validity Date">
+                                                                    <HeaderStyle HorizontalAlign="Center" Width="15%" CssClass="headercolor" />
+                                                                    <ItemStyle HorizontalAlign="Center" Width="15%" CssClass="tdpadding" />
+                                                                    <ItemTemplate>
+                                                                        <asp:Label ID="lblValidityDate" runat="server" Text='<%# Eval("ValidityDate", "{0:dd-MM-yyyy}") %>' />
+                                                                    </ItemTemplate>
+                                                                </asp:TemplateField>
+                                                                <asp:TemplateField HeaderText="Delete">
+                                                                    <ItemTemplate>
+                                                                        <asp:LinkButton ID="lnkDelete" runat="server" CommandName="DeleteTeam" CommandArgument='<%# Eval("Id") %>'
+                                                                            Text="Delete" ForeColor="Red">
+                                                                        </asp:LinkButton>
+                                                                    </ItemTemplate>
+                                                                    <HeaderStyle HorizontalAlign="Center" CssClass="headercolor" />
+                                                                    <ItemStyle HorizontalAlign="Center" CssClass="tdpadding" />
+                                                                </asp:TemplateField>
+                                                            </Columns>
+                                                        </asp:GridView>
+                                                    </div>
+                                                    <div class="col-md-8">
+                                                        <asp:Label runat="server" Visible="false" ID="NoPartner"> No Partner is attached</asp:Label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+                                                    <div class="row">
+                                                        <h7 class="card-title fw-semibold mb-4">Staff Details (as on the date of Application)</h7>
+
+                                                        <div class="col-md-12">
+                                                            <%-- Add GridView Here --%>
+                                                            <asp:GridView class="table-responsive table table-hover  table-bordered" ID="GridView1" runat="server" Width="100%"
+                                                                AutoGenerateColumns="false" BorderWidth="1px" BorderColor="#dbddff" DataKeyNames="Id">
+                                                                <PagerStyle CssClass="pagination-ys" />
+                                                                <Columns>
+                                                                    <asp:BoundField DataField="Name" HeaderText="Name">
+                                                                        <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
+                                                                        <ItemStyle HorizontalAlign="center" CssClass="tdpadding" />
+                                                                    </asp:BoundField>
+                                                                    <asp:TemplateField HeaderText="Id">
+                                                                         <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
+ <ItemStyle HorizontalAlign="center" CssClass="tdpadding" />
+                                                                        <ItemTemplate>
+                                                                            <asp:Label ID="lblCategory" runat="server" Text='<%#Eval("Category") %>'></asp:Label>
+                                                                        </ItemTemplate>
+                                                                    </asp:TemplateField>
+                                                                    <asp:BoundField DataField="CertificateOld" HeaderText="Certificate Old">
+                                                                        <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
+                                                                        <ItemStyle HorizontalAlign="center" CssClass="tdpadding" />
+                                                                    </asp:BoundField>
+                                                                    <asp:BoundField DataField="CertificateNew" HeaderText="Certificate New">
+                                                                        <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
+                                                                        <ItemStyle HorizontalAlign="center" CssClass="tdpadding" />
+                                                                    </asp:BoundField>
+                                                                    <asp:BoundField DataField="DateofExpiry" HeaderText="DateofExpiry">
+                                                                        <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
+                                                                        <ItemStyle HorizontalAlign="center" CssClass="tdpadding" />
+                                                                    </asp:BoundField>
+
+                                                                </Columns>
+                                                                <FooterStyle BackColor="White" ForeColor="#000066" />
+                                                                <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                                                                <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                                                                <RowStyle ForeColor="#000066" CssClass="gridViewRow" />
+                                                                <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                                                                <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                                                <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                                                                <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                                                <SortedDescendingHeaderStyle BackColor="#00547E" />
+                                                            </asp:GridView>
+                                                        </div>
+                                                        <div class="col-md-8">
+                                                            <asp:Label runat="server" Visible="false" ID="NoStaffLable"> No Staff is attached</asp:Label>
+                                                        </div>
+
+                                                    </div>
 
 
-                                                <div class="card-body">
+
+
+                                                    <asp:HiddenField ID="HdnUserId" runat="server" />
+                                                    <asp:HiddenField ID="HdnUserType" runat="server" />
+                                                </div>
+
+                                                <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <h4 class="card-title" style="margin-bottom: 0px;">DOCUMENT CHECKLIST</h4>
@@ -399,8 +510,8 @@
                                                     <div class="row">
 
                                                         <div class="col-md-12">
-                                                            <asp:GridView class="table-responsive table table-hover table-striped table-bordered" ID="Grd_Document" OnRowCommand="Grd_Document_RowCommand" runat="server" AutoGenerateColumns="false">
-                                                                <%-- <asp:GridView class="table-responsive table table-hover table-striped table-bordered" ID="Grd_Document"  OnRowCommand="Grd_Document_RowCommand"  runat="server" AutoGenerateColumns="false">--%>
+                                                            <asp:GridView class="table-responsive table table-hover  table-bordered" ID="Grd_Document" OnRowCommand="Grd_Document_RowCommand" runat="server" AutoGenerateColumns="false">
+                                                                <%-- <asp:GridView class="table-responsive table table-hover  table-bordered" ID="Grd_Document"  OnRowCommand="Grd_Document_RowCommand"  runat="server" AutoGenerateColumns="false">--%>
                                                                 <PagerStyle CssClass="pagination-ys" />
                                                                 <Columns>
 
@@ -455,20 +566,20 @@
                                                     </div>
                                                 </div>
                                                 <br />
-                                                  <div class="row" style="margin-left: 0px;">
-      <div class="col-md-6" style="padding-left: 0px;">
-          <asp:Button type="button" ID="btnBack" Text="Back" runat="server" OnClick="btnBack_Click" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" />
-      </div>
-      <div class="col-md-6" style="text-align: end;">
-          <%--<asp:Button type="button" ValidationGroup="Submit" AutoPostback="true" ID="btnNext" Text="Submit" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" />--%>
-      </div>
-      <asp:HiddenField ID="hdnId" runat="server" />
-  </div>
+                                                <div class="row" style="margin-left: 0px;">
+                                                    <div class="col-md-6" style="padding-left: 0px;">
+                                                        <asp:Button type="button" ID="btnBack" Text="Back" runat="server" OnClick="btnBack_Click" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" />
+                                                    </div>
+                                                    <div class="col-md-6" style="text-align: end;">
+                                                        <%--<asp:Button type="button" ValidationGroup="Submit" AutoPostback="true" ID="btnNext" Text="Submit" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" />--%>
+                                                    </div>
+                                                    <asp:HiddenField ID="hdnId" runat="server" />
+                                                </div>
                                             </div>
 
 
 
-                                          
+
 
                                         </div>
                                     </div>

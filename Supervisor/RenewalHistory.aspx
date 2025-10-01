@@ -273,7 +273,21 @@
                                 </ItemTemplate>
                             </asp:TemplateField>
                             
+                            <asp:TemplateField HeaderText="Verification Letter" Visible="false" HeaderStyle-CssClass="headercolor" ItemStyle-HorizontalAlign="Center">
+                                <ItemTemplate>
+
+                                    <asp:LinkButton ID="lnkVerification" runat="server" CommandName="ViewVerificationLetter" CssClass="btn btn-link" ToolTip="View Details">
+                 <i class="fas fa-print"></i>
+                                    </asp:LinkButton>
+                                </ItemTemplate>
+
+                            </asp:TemplateField>
                             <asp:BoundField DataField="ReasonOfReturnOrReject" HeaderText="Reason">
+                                <HeaderStyle CssClass="headercolor text-center" />
+                                <ItemStyle CssClass="text-center" />
+                            </asp:BoundField>
+                            
+                            <asp:BoundField DataField="LetterPath" visible="false">
                                 <HeaderStyle CssClass="headercolor text-center" />
                                 <ItemStyle CssClass="text-center" />
                             </asp:BoundField>
