@@ -8,9 +8,9 @@
     <title></title>
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!------ Include the above in your HEAD tag ---------->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
@@ -160,6 +160,9 @@
         input {
             background: white !important;
         }
+        th.headercolor {
+    width: 1%;
+}
     </style>
     <script>
 
@@ -210,7 +213,7 @@
                                             <label for="Name">
                                                 Applicant Name
                                             </label>
-                                            <asp:TextBox class="form-control" ID="txtApplicant" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:TextBox class="form-control" ID="txtname" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>
                                         <div class="col-4">
                                             <div id="agency" runat="server" visible="false">
@@ -221,7 +224,7 @@
                                                 <label for="Name">
                                                     Father's Name
                                                 </label>
-                                                <asp:TextBox class="form-control" ID="txtFather" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                <asp:TextBox class="form-control" ID="txtFatherName" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             </div>
                                         </div>
                                         <div class="col-4" id="individual5">
@@ -235,7 +238,7 @@
                                         <div class="col-4">
                                             <div id="individual2" runat="server">
                                                 <label for="Name">Age</label>
-                                                <asp:TextBox class="form-control" ID="TxtAge" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                <asp:TextBox class="form-control" ID="txtAge" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             </div>
                                         </div>
                                         <div class="col-4">
@@ -243,15 +246,7 @@
                                                 <label for="Name">
                                                     Date when applicant completed 55 years
                                                 </label>
-                                                <asp:TextBox class="form-control" ID="txt55years" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            </div>
-                                        </div>
-                                        <div class="col-4">
-                                            <div id="individual6" runat="server">
-                                                <label for="Name">
-                                                    Work Start Date
-                                                </label>
-                                                <asp:TextBox class="form-control" ID="txtStartDate" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                <asp:TextBox class="form-control" ID="txt55Years" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             </div>
                                         </div>
                                     </div>
@@ -261,20 +256,20 @@
                                                 <label for="Name">
                                                     PAN No.
                                                 </label>
-                                                <asp:TextBox class="form-control" ID="txtCompletitionDate" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                <asp:TextBox class="form-control" ID="txtAdhaar" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             </div>
                                         </div>
                                         <div class="col-4" id="individual10" style="padding-left: 0px;">
                                             <label for="Name">
                                                 Contractor Old Licence
                                             </label>
-                                            <asp:TextBox class="form-control" ID="txtAddress" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:TextBox class="form-control" ID="txtOldlicense" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>
                                         <div class="col-4" id="individual30" style="padding-left: 0px;">
                                             <label for="Name">
                                                 Contractor New Licence
                                             </label>
-                                            <asp:TextBox class="form-control" ID="TextBox1" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:TextBox class="form-control" ID="txtCompeencyCertificate" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -283,21 +278,21 @@
                                                 <label for="Name">
                                                     Date of Expiry
                                                 </label>
-                                                <asp:TextBox class="form-control" ID="TextBox2" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                <asp:TextBox class="form-control" ID="txtExpiryDate" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             </div>
                                         </div>
                                         <div class="col-8" id="individual31" style="padding-left: 0px;">
                                             <label for="Name">
                                                 Present Address with Pincode
                                             </label>
-                                            <asp:TextBox class="form-control" ID="TextBox3" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:TextBox class="form-control" ID="txtAddress" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>
                                         <div class="col-4">
                                             <div id="Div3" runat="server">
                                                 <label for="Name">
                                                     District
                                                 </label>
-                                                <asp:TextBox class="form-control" ID="TextBox4" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                <asp:TextBox class="form-control" ID="txtDistrict" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             </div>
                                         </div>
                                         <div class="col-4">
@@ -305,7 +300,7 @@
                                                 <label for="Name">
                                                     Email Id.
                                                 </label>
-                                                <asp:TextBox class="form-control" ID="TextBox5" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                <asp:TextBox class="form-control" ID="txtEmailId" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             </div>
                                         </div>
                                         <div class="col-4">
@@ -313,55 +308,16 @@
                                                 <label for="Name">
                                                     Phone No.
                                                 </label>
-                                                <asp:TextBox class="form-control" ID="TextBox6" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                <asp:TextBox class="form-control" ID="txtPhone" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             </div>
                                         </div>
-                                        <div class="col-4">
-                                            <div id="Div6" runat="server">
-                                                <label for="Name">
-                                                    Whether there is any change of Address
-                                                </label>
-                                                <asp:TextBox class="form-control" ID="TextBox7" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            </div>
-                                        </div>
-                                        <div class="col-4">
-                                            <div id="Div7" runat="server">
-                                                <label for="Name">
-                                                    Address
-                                                </label>
-                                                <asp:TextBox class="form-control" ID="TextBox8" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            </div>
-                                        </div>
-                                        <div class="col-4">
-                                            <div id="Div8" runat="server">
-                                                <label for="Name">
-                                                    State
-                                                </label>
-                                                <asp:TextBox class="form-control" ID="TextBox9" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            </div>
-                                        </div>
-                                        <div class="col-4">
-                                            <div id="Div11" runat="server">
-                                                <label for="Name">
-                                                    District
-                                                </label>
-                                                <asp:TextBox class="form-control" ID="TextBox10" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            </div>
-                                        </div>
-                                        <div class="col-4">
-                                            <div id="Div14" runat="server">
-                                                <label for="Name">
-                                                    Pincode
-                                                </label>
-                                                <asp:TextBox class="form-control" ID="TextBox11" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                                            </div>
-                                        </div>
+
                                         <div class="col-4">
                                             <div id="Div15" runat="server">
                                                 <label for="Name">
                                                     is this address need to be changed on licence also
                                                 </label>
-                                                <asp:TextBox class="form-control" ID="TextBox12" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                <asp:TextBox class="form-control" ID="txtlicensechangeaddress" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             </div>
                                         </div>
                                         <div class="col-4">
@@ -369,7 +325,7 @@
                                                 <label for="Name">
                                                     is renewal belated?
                                                 </label>
-                                                <asp:TextBox class="form-control" ID="TextBox13" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                <asp:TextBox class="form-control" ID="txtBelatedDate" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             </div>
                                         </div>
                                         <div class="col-8">
@@ -377,7 +333,7 @@
                                                 <label for="Name">
                                                     Whether the equipment have been tested as required in the conditions for licencing of Haryana
                                                 </label>
-                                                <asp:TextBox class="form-control" ID="TextBox14" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                <asp:TextBox class="form-control" ID="txteqipmenttested" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             </div>
                                         </div>
 
@@ -392,7 +348,7 @@
                                             <label for="Name">
                                                 Renewal Period
                                             </label>
-                                            <asp:TextBox class="form-control" ID="TextBox15" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:TextBox class="form-control" ID="txtRenewalDte" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>
                                         <div class="col-3">
                                             <div id="Div19" runat="server" visible="false">
@@ -403,20 +359,20 @@
                                                 <label for="Name">
                                                     GRN No.
                                                 </label>
-                                                <asp:TextBox class="form-control" ID="TextBox17" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                                <asp:TextBox class="form-control" ID="txtGRNNo" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                             </div>
                                         </div>
                                         <div class="col-3" id="individual8">
                                             <label for="Name">
                                                 Date of Challan
                                             </label>
-                                            <asp:TextBox class="form-control" ID="TextBox18" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:TextBox class="form-control" ID="txtChallanDate" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>
                                         <div class="col-3" id="individual9">
                                             <label for="Name">
                                                 Total Amount
                                             </label>
-                                            <asp:TextBox class="form-control" ID="TextBox19" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:TextBox class="form-control" ID="txtAmount" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>
                                     </div>
                                 </div>
@@ -425,12 +381,55 @@
                             <div class="page2">
                                 <div class="card" id="earthing-card" style="margin-top: 1%;">
                                     <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;"><u>Staff Details (as on the date of Application)</u></h6>
-
+                                    <br />
                                 </div>
                                 <div class="card">
                                     <div class="row">
 
-                                        <%-- Add Gridview Here --%>
+                                        <div class="col-md-12">
+                                            <%-- Add GridView Here --%>
+                                            <asp:GridView class="table-responsive table table-hover table-striped" ID="GridView1" OnRowCommand="Grd_Document_RowCommand" runat="server" AutoGenerateColumns="false">
+                                                <PagerStyle CssClass="pagination-ys" />
+                                                <Columns>
+                                                    <asp:BoundField DataField="Name" HeaderText="Name">
+                                                        <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
+                                                        <ItemStyle HorizontalAlign="center" CssClass="tdpadding" />
+                                                    </asp:BoundField>
+                                                    <asp:TemplateField HeaderText="Id">
+                                                        <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
+                                                        <ItemStyle HorizontalAlign="center" CssClass="tdpadding" />
+                                                        <ItemTemplate>
+                                                            <asp:Label ID="lblCategory" runat="server" Text='<%#Eval("Category") %>'></asp:Label>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+                                                    <asp:BoundField DataField="CertificateOld" HeaderText="Certificate Old">
+                                                        <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
+                                                        <ItemStyle HorizontalAlign="center" CssClass="tdpadding" />
+                                                    </asp:BoundField>
+                                                    <asp:BoundField DataField="CertificateNew" HeaderText="Certificate New">
+                                                        <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
+                                                        <ItemStyle HorizontalAlign="center" CssClass="tdpadding" />
+                                                    </asp:BoundField>
+                                                    <asp:BoundField DataField="DateofExpiry" HeaderText="DateofExpiry">
+                                                        <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
+                                                        <ItemStyle HorizontalAlign="center" CssClass="tdpadding" />
+                                                    </asp:BoundField>
+
+                                                </Columns>
+                                                <FooterStyle BackColor="White" ForeColor="#000066" />
+                                                <HeaderStyle BackColor="#9292cc" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                                                <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                                                <RowStyle ForeColor="#000066" />
+                                                <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                                                <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                                <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                                                <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                                <SortedDescendingHeaderStyle BackColor="#00547E" />
+                                            </asp:GridView>
+                                        </div>
+                                        <div class="col-md-8">
+                                            <asp:Label runat="server" Visible="false" ID="NoStaffLable"> No Staff is attached</asp:Label>
+                                        </div>
                                     </div>
                                     <div class="row">
 
@@ -438,7 +437,7 @@
                                             <label for="Name">
                                                 Whether there was any change in staff? if so, date of intimation to Chief Electrical Inspector, Haryana be specified.
                                             </label>
-                                            <asp:TextBox class="form-control" ID="TextBox20" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                                            <asp:TextBox class="form-control" ID="txtstaffchanged" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                                         </div>
                                     </div>
                                 </div>
@@ -448,12 +447,44 @@
 
                                 <div class="card" style="margin-top: 1%;">
                                     <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; margin-top: 30px;"><u>Uploaded Documents</u></h6>
-
+                                    <br />
                                 </div>
                                 <div class="card">
                                     <div class="row">
 
-                                        <%-- Add Gridview Here --%>
+                                        <div class="col-md-12">
+                                            <asp:GridView class="table-responsive table table-hover table-striped" ID="Grd_Document" OnRowCommand="Grd_Document_RowCommand" runat="server" AutoGenerateColumns="false">
+                                                <PagerStyle CssClass="pagination-ys" />
+                                                <Columns>
+
+
+                                                    <asp:TemplateField HeaderText="SNo">
+                                                        <HeaderStyle Width="5%" CssClass="headercolor" />
+                                                        <ItemStyle Width="5%" />
+                                                        <ItemTemplate>
+                                                            <%#Container.DataItemIndex+1 %>
+                                                        </ItemTemplate>
+                                                    </asp:TemplateField>
+                                                    <%-- <asp:BoundField DataField="SNo" HeaderText="SNo" />--%>
+                                                    <%--  <asp:BoundField DataField="DocumentID" HeaderText="DocumentID" />--%>
+                                                    <asp:BoundField DataField="DocumentName" HeaderText="Document Name">
+                                                        <HeaderStyle HorizontalAlign="Left" Width="85%" CssClass="headercolor leftalign" />
+                                                        <ItemStyle HorizontalAlign="Left" Width="85%" />
+                                                    </asp:BoundField>
+
+
+                                                </Columns>
+                                                <FooterStyle BackColor="White" ForeColor="#000066" />
+                                                <HeaderStyle BackColor="#9292cc" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                                                <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                                                <RowStyle ForeColor="#000066" />
+                                                <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                                                <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                                <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                                                <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                                <SortedDescendingHeaderStyle BackColor="#00547E" />
+                                            </asp:GridView>
+                                        </div>
                                     </div>
 
                                 </div>

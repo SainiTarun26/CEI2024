@@ -51,13 +51,13 @@ namespace CEIHaryana.Print_Forms
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl IntimationData;
 
         /// <summary>
-        /// txtApplicant control.
+        /// txtname control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtApplicant;
+        protected global::System.Web.UI.WebControls.TextBox txtname;
 
         /// <summary>
         /// agency control.
@@ -87,13 +87,13 @@ namespace CEIHaryana.Print_Forms
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl individual;
 
         /// <summary>
-        /// txtFather control.
+        /// txtFatherName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFather;
+        protected global::System.Web.UI.WebControls.TextBox txtFatherName;
 
         /// <summary>
         /// txtDOB control.
@@ -114,13 +114,13 @@ namespace CEIHaryana.Print_Forms
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl individual2;
 
         /// <summary>
-        /// TxtAge control.
+        /// txtAge control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtAge;
+        protected global::System.Web.UI.WebControls.TextBox txtAge;
 
         /// <summary>
         /// individual3 control.
@@ -132,31 +132,13 @@ namespace CEIHaryana.Print_Forms
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl individual3;
 
         /// <summary>
-        /// txt55years control.
+        /// txt55Years control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txt55years;
-
-        /// <summary>
-        /// individual6 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl individual6;
-
-        /// <summary>
-        /// txtStartDate control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtStartDate;
+        protected global::System.Web.UI.WebControls.TextBox txt55Years;
 
         /// <summary>
         /// individual11 control.
@@ -168,31 +150,31 @@ namespace CEIHaryana.Print_Forms
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl individual11;
 
         /// <summary>
-        /// txtCompletitionDate control.
+        /// txtAdhaar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCompletitionDate;
+        protected global::System.Web.UI.WebControls.TextBox txtAdhaar;
 
         /// <summary>
-        /// txtAddress control.
+        /// txtOldlicense control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAddress;
+        protected global::System.Web.UI.WebControls.TextBox txtOldlicense;
 
         /// <summary>
-        /// TextBox1 control.
+        /// txtCompeencyCertificate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox txtCompeencyCertificate;
 
         /// <summary>
         /// Div2 control.
@@ -204,22 +186,22 @@ namespace CEIHaryana.Print_Forms
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div2;
 
         /// <summary>
-        /// TextBox2 control.
+        /// txtExpiryDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.TextBox txtExpiryDate;
 
         /// <summary>
-        /// TextBox3 control.
+        /// txtAddress control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox3;
+        protected global::System.Web.UI.WebControls.TextBox txtAddress;
 
         /// <summary>
         /// Div3 control.
@@ -231,13 +213,13 @@ namespace CEIHaryana.Print_Forms
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div3;
 
         /// <summary>
-        /// TextBox4 control.
+        /// txtDistrict control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox4;
+        protected global::System.Web.UI.WebControls.TextBox txtDistrict;
 
         /// <summary>
         /// Div4 control.
@@ -249,13 +231,13 @@ namespace CEIHaryana.Print_Forms
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div4;
 
         /// <summary>
-        /// TextBox5 control.
+        /// txtEmailId control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox5;
+        protected global::System.Web.UI.WebControls.TextBox txtEmailId;
 
         /// <summary>
         /// Div5 control.
@@ -267,103 +249,13 @@ namespace CEIHaryana.Print_Forms
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div5;
 
         /// <summary>
-        /// TextBox6 control.
+        /// txtPhone control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox6;
-
-        /// <summary>
-        /// Div6 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div6;
-
-        /// <summary>
-        /// TextBox7 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox7;
-
-        /// <summary>
-        /// Div7 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div7;
-
-        /// <summary>
-        /// TextBox8 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox8;
-
-        /// <summary>
-        /// Div8 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div8;
-
-        /// <summary>
-        /// TextBox9 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox9;
-
-        /// <summary>
-        /// Div11 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div11;
-
-        /// <summary>
-        /// TextBox10 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox10;
-
-        /// <summary>
-        /// Div14 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div14;
-
-        /// <summary>
-        /// TextBox11 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox11;
+        protected global::System.Web.UI.WebControls.TextBox txtPhone;
 
         /// <summary>
         /// Div15 control.
@@ -375,13 +267,13 @@ namespace CEIHaryana.Print_Forms
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div15;
 
         /// <summary>
-        /// TextBox12 control.
+        /// txtlicensechangeaddress control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox12;
+        protected global::System.Web.UI.WebControls.TextBox txtlicensechangeaddress;
 
         /// <summary>
         /// Div16 control.
@@ -393,13 +285,13 @@ namespace CEIHaryana.Print_Forms
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div16;
 
         /// <summary>
-        /// TextBox13 control.
+        /// txtBelatedDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox13;
+        protected global::System.Web.UI.WebControls.TextBox txtBelatedDate;
 
         /// <summary>
         /// Div17 control.
@@ -411,13 +303,13 @@ namespace CEIHaryana.Print_Forms
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div17;
 
         /// <summary>
-        /// TextBox14 control.
+        /// txteqipmenttested control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox14;
+        protected global::System.Web.UI.WebControls.TextBox txteqipmenttested;
 
         /// <summary>
         /// Div18 control.
@@ -429,13 +321,13 @@ namespace CEIHaryana.Print_Forms
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div18;
 
         /// <summary>
-        /// TextBox15 control.
+        /// txtRenewalDte control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox15;
+        protected global::System.Web.UI.WebControls.TextBox txtRenewalDte;
 
         /// <summary>
         /// Div19 control.
@@ -465,40 +357,67 @@ namespace CEIHaryana.Print_Forms
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div20;
 
         /// <summary>
-        /// TextBox17 control.
+        /// txtGRNNo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox17;
+        protected global::System.Web.UI.WebControls.TextBox txtGRNNo;
 
         /// <summary>
-        /// TextBox18 control.
+        /// txtChallanDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox18;
+        protected global::System.Web.UI.WebControls.TextBox txtChallanDate;
 
         /// <summary>
-        /// TextBox19 control.
+        /// txtAmount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox19;
+        protected global::System.Web.UI.WebControls.TextBox txtAmount;
 
         /// <summary>
-        /// TextBox20 control.
+        /// GridView1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox20;
+        protected global::System.Web.UI.WebControls.GridView GridView1;
+
+        /// <summary>
+        /// NoStaffLable control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label NoStaffLable;
+
+        /// <summary>
+        /// txtstaffchanged control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtstaffchanged;
+
+        /// <summary>
+        /// Grd_Document control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView Grd_Document;
 
         /// <summary>
         /// hdnId control.

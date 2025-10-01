@@ -414,8 +414,7 @@
                             Venue
                         </label>
                         <asp:DropDownList ID="ddlvenue" runat="server" CssClass="form-select"></asp:DropDownList>
-                        <asp:RequiredFieldValidator ID="RequiredFieldValidator" Text="Please Select Venue" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlvenue" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-                        
+                            
                     </div>
                     <div class="col-md-4" style="margin-top: 15px;" id="NeedCorrection" runat="server">
                         <label>

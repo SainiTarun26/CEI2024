@@ -2027,6 +2027,7 @@
     <Content Include="Officers\TotalRequest.aspx" />
     <Content Include="Officers\TotalRequestInspectionForOfficer_SearchWithCafId.aspx" />
     <Content Include="Officers\Transfer_Sld_ToLowerStaff_ByOfficer.aspx" />
+    <Content Include="Officers\Xen_LicenceFinal_DetailView.aspx" />
     <Content Include="OfficerVerification\OTP.aspx" />
     <Content Include="OTPVerification.aspx" />
     <Content Include="OurOnlineServices.aspx" />
@@ -3758,6 +3759,13 @@
     </Compile>
     <Compile Include="Officers\Transfer_Sld_ToLowerStaff_ByOfficer.aspx.designer.cs">
       <DependentUpon>Transfer_Sld_ToLowerStaff_ByOfficer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Officers\Xen_LicenceFinal_DetailView.aspx.cs">
+      <DependentUpon>Xen_LicenceFinal_DetailView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Officers\Xen_LicenceFinal_DetailView.aspx.designer.cs">
+      <DependentUpon>Xen_LicenceFinal_DetailView.aspx</DependentUpon>
     </Compile>
     <Compile Include="OfficerVerification\OTP.aspx.cs">
       <DependentUpon>OTP.aspx</DependentUpon>

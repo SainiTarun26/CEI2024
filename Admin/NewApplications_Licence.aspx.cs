@@ -405,14 +405,28 @@ namespace CEIHaryana.Admin
                                 }
                                 else
                                 {
-                                    Session["NewApplicationRegistrationNo"] = lblId.Text;
-                                    ExportUtility.ExportCleanHtmlToZip(
-                                          pagePath: "/Print_Forms/Licence_Renewal_Print.aspx",
-                                          queryString: "RegNo=" + RegNo,
-                                          zip: zip,
-                                          outputFileName: "RegistrationInfo.html"
-                                      );
-                                    Session["NewApplicationRegistrationNo"] = "";
+                                    if (Categary.Text == "Contractor")
+                                    {
+                                        Session["NewApplicationRegistrationNo"] = lblId.Text;
+                                        ExportUtility.ExportCleanHtmlToZip(
+                                              pagePath: "/Print_Forms/Contractor_Licence_Renewal_Print.aspx",
+                                              queryString: "RegNo=" + RegNo,
+                                              zip: zip,
+                                              outputFileName: "RegistrationInfo.html"
+                                          );
+                                        Session["NewApplicationRegistrationNo"] = "";
+                                    }
+                                    else
+                                    {
+                                        Session["NewApplicationRegistrationNo"] = lblId.Text;
+                                        ExportUtility.ExportCleanHtmlToZip(
+                                              pagePath: "/Print_Forms/Licence_Renewal_Print.aspx",
+                                              queryString: "RegNo=" + RegNo,
+                                              zip: zip,
+                                              outputFileName: "RegistrationInfo.html"
+                                          );
+                                        Session["NewApplicationRegistrationNo"] = "";
+                                    }
                                 }
                             }
 

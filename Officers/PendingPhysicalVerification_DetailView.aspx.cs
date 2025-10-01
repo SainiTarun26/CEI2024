@@ -49,7 +49,6 @@ namespace CEIHaryana.Officers
             ddlvenue.DataTextField = "Venue";
             ddlvenue.DataValueField = "Venue";
             ddlvenue.DataBind();
-            ddlvenue.Items.Insert(0, new ListItem("Select", "0"));
             dt.Clear();
         }
         private void GetHeaderDetailsWithId(string licApplicationId)
