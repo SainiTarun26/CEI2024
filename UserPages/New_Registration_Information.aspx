@@ -519,6 +519,7 @@ nav#navbar.navbar-mobile {
     padding: 15px 0;
     border-top: 1px solid #ccc;
 }
+
 td.leftalign {
     text-align: justify !important;
 }

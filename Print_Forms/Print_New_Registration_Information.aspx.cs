@@ -64,7 +64,8 @@ namespace CEIHaryana.Print_Forms
                     Nationailty.Text = dt.Rows[0]["Nationality"].ToString();
                     string aadhar = dt.Rows[0]["Aadhar"].ToString();
                     Aadhar.Text = "XXXXXXXX" + aadhar.Substring(aadhar.Length - 4);
-                    //Aadhar.Text = dt.Rows[0]["Aadhar"].ToString();
+                    //Aadhar.Text = dt.Rows[0]["Aadhar"].ToString();commented by navneet on instruction of vinod sir
+
                     dob.Text = dt.Rows[0]["DOB"].ToString();
                     Age.Text = dt.Rows[0]["CalculatedAge"].ToString();
                     phone.Text = dt.Rows[0]["PhoneNo"].ToString();
@@ -82,7 +83,7 @@ namespace CEIHaryana.Print_Forms
                     prcntg.Text = dt.Rows[0]["Percentage10th"].ToString();
 
                     Exam1.Text = dt.Rows[0]["Name12ITIDiploma"].ToString();
-                    if (!string.IsNullOrEmpty(Exam1.Text))
+                    if (!string.IsNullOrEmpty(Exam1.Text) && Exam1.Text != "Select")
                     {
                         Tr_Qualification2.Visible = true;
                         University1.Text = dt.Rows[0]["UniversityName12thorITI"].ToString();
@@ -92,7 +93,7 @@ namespace CEIHaryana.Print_Forms
                         prcntg1.Text = dt.Rows[0]["Percentage12thorITI"].ToString();
                     }
                     Exam2.Text = dt.Rows[0]["NameofDiplomaDegree"].ToString();
-                    if (!string.IsNullOrEmpty(Exam2.Text))
+                    if (!string.IsNullOrEmpty(Exam2.Text) && Exam2.Text != "Select")
                     {
                         Tr_Qualification3.Visible = true;
                         University2.Text = dt.Rows[0]["UniversityNameDiplomaorDegree"].ToString();
@@ -102,7 +103,7 @@ namespace CEIHaryana.Print_Forms
                         prcntg2.Text = dt.Rows[0]["PercentageDiplomaorDegree"].ToString();
                     }
                     Exam3.Text = dt.Rows[0]["NameofDegree"].ToString();
-                    if (!string.IsNullOrEmpty(Exam3.Text))
+                    if (!string.IsNullOrEmpty(Exam3.Text) && Exam3.Text != "Select")
                     {
                         DdlDegree.Visible = true;
                         University3.Text = dt.Rows[0]["UniversityNamePG"].ToString();
@@ -112,7 +113,7 @@ namespace CEIHaryana.Print_Forms
                         prcntg3.Text = dt.Rows[0]["PercentagePG"].ToString();
                     }
                     Exam4.Text = dt.Rows[0]["NameofMasters"].ToString();
-                    if (!string.IsNullOrEmpty(Exam4.Text))
+                    if (!string.IsNullOrEmpty(Exam4.Text) && Exam4.Text != "Select")
                     {
                         DdlMasters.Visible = true;
                         University4.Text = dt.Rows[0]["MastersUniversityName"].ToString();
@@ -506,8 +507,8 @@ namespace CEIHaryana.Print_Forms
                     string fileNames = e.CommandArgument.ToString();
                     string folderPath = Server.MapPath(fileNames);
 
-                    //string fileNames = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
-                    // fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                    //string fileNames = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                    // fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
                     string script = $@"<script>window.open('{fileNames}','_blank');</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
                 }

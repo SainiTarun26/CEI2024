@@ -53,6 +53,7 @@ namespace CEIHaryana.UserPages
                     txtNationailty.Text = dt.Rows[0]["Nationality"].ToString();
                     string aadhar = dt.Rows[0]["Aadhar"].ToString();
                     txtAadhar.Text = "XXXXXXXX" + aadhar.Substring(aadhar.Length - 4);
+
                     txtdob.Text = dt.Rows[0]["DOB"].ToString();
                     txtAge.Text = dt.Rows[0]["CalculatedAge"].ToString();                    
                     txtphone.Text = dt.Rows[0]["PhoneNo"].ToString();
@@ -71,7 +72,7 @@ namespace CEIHaryana.UserPages
                     txtprcntg.Text = dt.Rows[0]["Percentage10th"].ToString();
 
                     txtExam1.Text = dt.Rows[0]["Name12ITIDiploma"].ToString();
-                    if (!string.IsNullOrEmpty(txtExam1.Text))
+                    if (!string.IsNullOrEmpty(txtExam1.Text) && txtExam1.Text != "Select")
                     {
                         Tr_Qualification2.Visible = true;
                         txtUniversity1.Text = dt.Rows[0]["UniversityName12thorITI"].ToString();
@@ -81,7 +82,7 @@ namespace CEIHaryana.UserPages
                         txtprcntg1.Text = dt.Rows[0]["Percentage12thorITI"].ToString();
                     }
                     txtExam2.Text = dt.Rows[0]["NameofDiplomaDegree"].ToString();
-                    if (!string.IsNullOrEmpty(txtExam2.Text))
+                    if (!string.IsNullOrEmpty(txtExam2.Text) && txtExam2.Text != "Select")
                     {
                         Tr_Qualification3.Visible = true;
                         txtUniversity2.Text = dt.Rows[0]["UniversityNameDiplomaorDegree"].ToString();
@@ -91,7 +92,7 @@ namespace CEIHaryana.UserPages
                         txtprcntg2.Text = dt.Rows[0]["PercentageDiplomaorDegree"].ToString();
                     }
                     txtExam3.Text = dt.Rows[0]["NameofDegree"].ToString();
-                    if (!string.IsNullOrEmpty(txtExam3.Text))
+                    if (!string.IsNullOrEmpty(txtExam3.Text) && txtExam3.Text != "Select")
                     {
                         DdlDegree.Visible = true;
                         txtUniversity3.Text = dt.Rows[0]["UniversityNamePG"].ToString();
@@ -101,7 +102,7 @@ namespace CEIHaryana.UserPages
                         txtprcntg3.Text = dt.Rows[0]["PercentagePG"].ToString();
                     }
                     txtExam4.Text = dt.Rows[0]["NameofMasters"].ToString();
-                    if (!string.IsNullOrEmpty(txtExam4.Text))
+                    if (!string.IsNullOrEmpty(txtExam4.Text) && txtExam4.Text != "Select")
                     {
                         DdlMasters.Visible = true;
                         txtUniversity4.Text = dt.Rows[0]["MastersUniversityName"].ToString();
@@ -297,8 +298,8 @@ namespace CEIHaryana.UserPages
                     string fileNames = e.CommandArgument.ToString();
                     string folderPath = Server.MapPath(fileNames);
 
-                    //string fileNames = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
-                    // fileName = "https://uat.ceiharyana.com" + e.CommandArgument.ToString();
+                    //string fileNames = "https://ceiharyana.com" + e.CommandArgument.ToString();
+                    // fileName = "https://ceiharyana.com" + e.CommandArgument.ToString();
                     string script = $@"<script>window.open('{fileNames}','_blank');</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
                 }

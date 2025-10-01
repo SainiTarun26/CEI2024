@@ -344,7 +344,7 @@
     margin-top: 0px;
     margin-left: 13px;
 }
-        th.headercolor.tdwidth {
+                th.headercolor.tdwidth {
     width: 1% !important;
 }
     </style>
@@ -1216,7 +1216,7 @@ Basis.</h4>
                                     <asp:GridView ID="grd_Documemnts" CssClass="table table-bordered table-striped table-responsive" runat="server" autopostback="true" AutoGenerateColumns="false">
                                         <HeaderStyle BackColor="#B7E2F0" />
                                         <Columns>
-                                           <%-- <asp:TemplateField HeaderText="SNo">
+                                          <%--  <asp:TemplateField HeaderText="SNo">
                                                 <HeaderStyle CssClass="headercolor" />
                                                 <ItemStyle />
                                                 <ItemTemplate>
