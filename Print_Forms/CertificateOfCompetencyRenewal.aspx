@@ -340,7 +340,7 @@
                             <br />
                             <div class="row">
                                 <div class="col-12">
-                                    <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 20px; text-align: center;">PERFORMA FOR RENEWAL OF CERTIFICATE OF COMPETENCY</h6>
+                                    <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 20px; text-align: center;"> RENEWAL OF CERTIFICATE OF COMPETENCY</h6>
                                 </div>
                             </div>
                             <br />
