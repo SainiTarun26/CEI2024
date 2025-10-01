@@ -553,52 +553,54 @@
 
 
         .custom-btn {
-    display: inline-block;
-    padding: 6px 12px;
-    font-size: 14px;
-    line-height: 1.5;
-    text-align: center;
-    text-decoration: none;
-    white-space: nowrap;
-    border: 1px solid transparent;
-    border-radius: 4px;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    background-color: transparent;
-}
+            display: inline-block;
+            padding: 6px 12px;
+            font-size: 14px;
+            line-height: 1.5;
+            text-align: center;
+            text-decoration: none;
+            white-space: nowrap;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            background-color: transparent;
+        }
 
-/* Specific colors for the check (success) and cross (danger) buttons */
-.custom-btn.text-success {
-    background-color: #28a745;
-color: white !important;
-text-decoration: none;
-}
+            /* Specific colors for the check (success) and cross (danger) buttons */
+            .custom-btn.text-success {
+                background-color: #28a745;
+                color: white !important;
+                text-decoration: none;
+            }
 
-.custom-btn.text-danger {
-    color: #dc3545;
-    border-color: #dc3545;
-}
+            .custom-btn.text-danger {
+                color: #dc3545;
+                border-color: #dc3545;
+            }
 
-/* Hover effects */
-.custom-btn.text-success:hover {
-    background-color: #28a745;
-    color: white !important;
-    text-decoration: none;
-    cursor: auto;
-}
+            /* Hover effects */
+            .custom-btn.text-success:hover {
+                background-color: #28a745;
+                color: white !important;
+                text-decoration: none;
+                cursor: auto;
+            }
 
-.custom-btn.text-danger:hover {
-    background-color: #dc3545;
-    color: white !important;
-    text-decoration: none;
-}
-tr {
-    height: 65px !important;
-}
-th {
-    padding-top: 0px !important;
-    padding-bottom: 0px !important;
-}
+            .custom-btn.text-danger:hover {
+                background-color: #dc3545;
+                color: white !important;
+                text-decoration: none;
+            }
+
+        tr {
+            height: 85px !important;
+        }
+
+        th {
+            padding-top: 0px !important;
+            padding-bottom: 0px !important;
+        }
     </style>
 </head>
 <body>
@@ -852,44 +854,30 @@ th {
                                                             <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
                                                             <ItemStyle HorizontalAlign="Left" CssClass="headercolor" Width="450px" />
                                                             <ItemTemplate>
-    <div style="display: flex; 
-                align-items: center; 
-                justify-content: center; 
-                gap: 8px; 
-                flex-wrap: nowrap; 
-                overflow-x: auto; 
-                width: 100%;">
-        
-        <asp:FileUpload ID="FileUpload1" runat="server" CssClass="form-control" Style="width: 300px;" />
-        
-        <asp:Label ID="lblInstruction" runat="server" CssClass="small" Text="" />
-        
-        <asp:Button ID="btnUpload" runat="server" Text="Upload"
-            CssClass="btn btn-primary btn-sm"
-            CommandArgument='<%# Eval("SaveDocumentID") %>'
-            OnClick="btnUpload_Click" style="margin-top:0px;"/>
-        
-        <asp:LinkButton 
-            ID="btnTick" 
-            runat="server" 
-            CssClass="fa fa-check text-success ml-2 custom-btn" 
-            Visible="false" Enable="false"/>
+                                                                <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; overflow-x: auto; width: 100%;">
 
-        <asp:LinkButton 
-            ID="btnCross" 
-            runat="server" 
-            CssClass="fa fa-times text-danger ml-2 custom-btn" 
-            CommandArgument='<%# Eval("ExistingDocId") %>' 
-            CommandName="CustomDelete" 
-            Visible="false" />
+                                                                    <!-- Label ABOVE file upload + button, with justified text -->
+                                                                    <asp:Label ID="lblInstruction" runat="server" CssClass="small" Style="text-align: justify; width: 100%; max-width: 400px; padding: 4px 0; line-height: 0.1; color: red;" />
 
-    </div>
-</ItemTemplate>
-    
+
+                                                                    <!-- FileUpload and Upload Button side by side -->
+                                                                    <div style="display: flex; align-items: center; gap: 10px;">
+                                                                        <asp:FileUpload ID="FileUpload1" runat="server" CssClass="form-control" Style="width: 300px; margin-top: 15px;" />
+                                                                        <asp:Button ID="btnUpload" runat="server" Text="Upload"
+                                                                            CssClass="btn btn-primary btn-sm"
+                                                                            CommandArgument='<%# Eval("SaveDocumentID") %>'
+                                                                            OnClick="btnUpload_Click" Style="margin-top: 0px !important;" />
+                                                                    </div>
+                                                                    <!-- Icons (tick and cross) -->
+                                                                    <div>
+                                                                        <asp:LinkButton ID="btnTick" runat="server" CssClass="fa fa-check text-success ml-2 custom-btn" Visible="false" Enabled="false" />
+                                                                        <asp:LinkButton ID="btnCross" runat="server" CssClass="fa fa-times text-danger ml-2 custom-btn"
+                                                                            CommandArgument='<%# Eval("ExistingDocId") %>' CommandName="CustomDelete" Visible="false" />
+                                                                    </div>
+                                                                </div>
+                                                            </ItemTemplate>
                                                         </asp:TemplateField>
-
                                                     </Columns>
-
                                                     <FooterStyle BackColor="White" ForeColor="#000066" />
                                                     <HeaderStyle BackColor="#9292cc" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
                                                     <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
@@ -918,22 +906,22 @@ th {
                                                         GRN No.<samp style="color: red"> * </samp>
                                                     </label>
                                                     <asp:TextBox ID="txtGRNNO" runat="server" MaxLength="10" onkeypress="return isAlphaNumeric(event);" class="form-control" ValidationGroup="Submit" Font-Size="12px" Style="height: 30px;"></asp:TextBox>
-                                                  <span style="display:inline-block;">
-    <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server"
-        ControlToValidate="txtGRNNO"
-        ErrorMessage="Required"
-        ValidationGroup="Submit"
-        Display="Static"
-        ForeColor="Red" />
-    
-    <asp:RegularExpressionValidator runat="server"
-        ControlToValidate="txtGRNNO"
-        ValidationGroup="Submit"
-        Display="Static"
-        ForeColor="Red"
-        ErrorMessage="GRN No. must be exactly 10 alphanumeric characters."
-        ValidationExpression="^[a-zA-Z0-9]{10}$" />
-</span>
+                                                    <span style="display: inline-block;">
+                                                        <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server"
+                                                            ControlToValidate="txtGRNNO"
+                                                            ErrorMessage="Required"
+                                                            ValidationGroup="Submit"
+                                                            Display="Static"
+                                                            ForeColor="Red" />
+
+                                                        <asp:RegularExpressionValidator runat="server"
+                                                            ControlToValidate="txtGRNNO"
+                                                            ValidationGroup="Submit"
+                                                            Display="Static"
+                                                            ForeColor="Red"
+                                                            ErrorMessage="GRN No. must be exactly 10 alphanumeric characters."
+                                                            ValidationExpression="^[a-zA-Z0-9]{10}$" />
+                                                    </span>
 
 
                                                 </div>
@@ -941,7 +929,7 @@ th {
                                                     <label>
                                                         Transaction date<samp style="color: red"> * </samp>
                                                     </label>
-                                                    <asp:TextBox ID="txttransactionDate" onfocus="disableFutureDates()" onkeydown="return false;" TextMode="Date" runat="server" ValidationGroup="Submit" class="form-control" Font-Size="12px" Style="height: 30px;margin-bottom:-5px;"></asp:TextBox><br />
+                                                    <asp:TextBox ID="txttransactionDate" onfocus="disableFutureDates()" onkeydown="return false;" TextMode="Date" runat="server" ValidationGroup="Submit" class="form-control" Font-Size="12px" Style="height: 30px; margin-bottom: -5px;"></asp:TextBox><br />
                                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="txttransactionDate" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
 
 
@@ -1084,34 +1072,6 @@ th {
             }
         }
     </script>
-
-    <%-- <script type="text/javascript">
-        function validateDate() {
-            var ClnDate = document.getElementById('<%=txtdate.ClientID %>');
-            debugger;
-            if (ClnDate.value) {
-                // Parse the yyyy-MM-dd value from the date input
-                var inputParts = ClnDate.value.split("-");
-                var year = parseInt(inputParts[0], 10);
-                var month = parseInt(inputParts[1], 10) - 1; // JS months are 0-based
-                var day = parseInt(inputParts[2], 10);
-
-                var ChallanDate = new Date(year, month, day);
-                ChallanDate.setHours(0, 0, 0, 0); // Remove time component
-
-                var today = new Date();
-                today.setHours(0, 0, 0, 0); // Remove time component
-
-                // Now allow today's date and past dates only
-                if (ChallanDate > today) {
-                    alert('Challan Date cannot be a future date.');
-                    ClnDate.value = '';
-                    ClnDate.focus();
-                    return false;
-                }
-            }
-        }
-    </script>--%>
 
     <script type="text/javascript">
         function isAlphaNumeric(evt) {

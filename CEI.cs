@@ -14866,7 +14866,7 @@ string dbPathCompetency, string dbPathMedicalCertificate, string userId)
         }
 
         public string InsertDocumentOfNewUserApplicationContractor(string DocumentName, string DocumentId, string FileName,
-string DocumentPath, string Utrn, string challandate, string CreatedBy, SqlTransaction transaction)
+  string DocumentPath, string CreatedBy, SqlTransaction transaction)
         {
             try
             {
@@ -14874,20 +14874,8 @@ string DocumentPath, string Utrn, string challandate, string CreatedBy, SqlTrans
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@DocumentName", DocumentName);
                 cmd.Parameters.AddWithValue("@DocumentId", DocumentId);
-
                 cmd.Parameters.AddWithValue("@FileName", GetValue(FileName));
                 cmd.Parameters.AddWithValue("@DocumentPath", GetValue(DocumentPath));
-
-                cmd.Parameters.AddWithValue("@UtrnNo", String.IsNullOrEmpty(Utrn) ? DBNull.Value : (object)Utrn);
-                DateTime ChallanDate;
-                if (DateTime.TryParse(challandate, out ChallanDate) && ChallanDate != DateTime.MinValue)
-                {
-                    cmd.Parameters.AddWithValue("@challandate", ChallanDate.Date); // .Date ensures time = 00:00:00
-                }
-                else
-                {
-                    cmd.Parameters.AddWithValue("@challandate", DBNull.Value);
-                }
                 cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
                 outputParam = new SqlParameter("@Ret_DocumentID", SqlDbType.Int);
                 outputParam.Direction = ParameterDirection.Output;

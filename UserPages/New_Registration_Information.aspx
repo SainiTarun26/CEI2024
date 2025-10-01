@@ -519,6 +519,9 @@ nav#navbar.navbar-mobile {
     padding: 15px 0;
     border-top: 1px solid #ccc;
 }
+td.leftalign {
+    text-align: justify !important;
+}
     </style>
     <script type="text/javascript">
         function alertWithRedirectdata() {
@@ -1328,16 +1331,16 @@ nav#navbar.navbar-mobile {
                                                                 <asp:GridView ID="grd_Documemnts" CssClass="table table-bordered table-striped table-responsive" runat="server" autopostback="true" OnRowCommand="grd_Documemnts_RowCommand" OnRowDataBound="grd_Documemnts_RowDataBound" AutoGenerateColumns="false">
                                                                     <HeaderStyle BackColor="#B7E2F0" />
                                                                     <Columns>
-                                                                        <asp:TemplateField HeaderText="SNo">
+                                                                       <%-- <asp:TemplateField HeaderText="SNo">
                                                                             <HeaderStyle Width="5%" CssClass="headercolor tdwidth" />
                                                                             <ItemStyle Width="5%" />
                                                                             <ItemTemplate>
                                                                                 <%#Container.DataItemIndex+1 %>
                                                                             </ItemTemplate>
-                                                                        </asp:TemplateField>
+                                                                        </asp:TemplateField>--%>
                                                                         <asp:BoundField DataField="DocumentName" HeaderText="Documents Name">
                                                                             <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                                                            <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                                                            <ItemStyle HorizontalAlign="Left" Width="15%" CssClass="leftalign"/>
                                                                         </asp:BoundField>
                                                                         <asp:TemplateField HeaderText="Documents" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
                                                                             <ItemTemplate>

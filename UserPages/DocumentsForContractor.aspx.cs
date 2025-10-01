@@ -305,15 +305,26 @@ namespace CEIHaryana.UserPages
                 if (!Directory.Exists(directoryPath))
                     Directory.CreateDirectory(directoryPath);
 
-                string fileName = $"{safeDocumentName}_{DateTime.Now:yyyyMMddHHmmssFFF}{fileExtension}";
+                ////string fileName = $"{safeDocumentName}_{DateTime.Now:yyyyMMddHHmmssFFF}{fileExtension}";
+                string fileName;
+                if (documentId == 31 || documentId == 32)
+                {
+                    fileName = $"{safeDocumentName}_{DateTime.Now:yyyyMMddHHmmssFFF}.jpg";
+                }
+                else
+                {
+                    fileName = $"{safeDocumentName}_{DateTime.Now:yyyyMMddHHmmssFFF}.pdf";
+                }
+
+
                 string fullPath = Path.Combine(directoryPath, fileName);
 
                 fileUpload.SaveAs(fullPath);
                 string dbPath = $"/Attachment/License_Documents/{safeCreatedBy}/{safeDocumentName}/{fileName}";
 
                 // Save to database
-                string Utrn = txtGRNNO.Text;  // if available
-                string challandate = txttransactionDate.Text;
+                //////string Utrn = txtGRNNO.Text;  // if available
+                //////string challandate = txttransactionDate.Text;
 
                 string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
                 using (SqlConnection conn = new SqlConnection(connectionString))
@@ -323,10 +334,7 @@ namespace CEIHaryana.UserPages
 
                     try
                     {
-                        CEI.InsertDocumentOfNewUserApplicationContractor(
-                            documentName, documentId.ToString(), fileName, dbPath,
-                            Utrn, challandate, CreatedBy, transaction
-                        );
+                        CEI.InsertDocumentOfNewUserApplicationContractor( documentName, documentId.ToString(), fileName, dbPath, CreatedBy, transaction);
                         transaction.Commit();
                     }
                     catch (Exception dbEx)

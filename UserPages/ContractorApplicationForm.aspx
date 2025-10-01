@@ -2190,7 +2190,7 @@
                                                                                                     <asp:Label ID="lblName" runat="server" Text='<%# Eval("Name") %>' />
                                                                                                 </ItemTemplate>
                                                                                             </asp:TemplateField>
-                                                                                            <asp:TemplateField HeaderText="Phone No">
+                                                                                            <asp:TemplateField HeaderText="Phone No" Visible="false">
                                                                                                 <HeaderStyle HorizontalAlign="Center" CssClass="headercolor" />
                                                                                                 <ItemTemplate>
                                                                                                     <asp:Label ID="lblPhoneNo" runat="server" Text='<%# Eval("PhoneNo") %>' />
