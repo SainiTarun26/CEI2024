@@ -505,6 +505,8 @@ namespace CEIHaryana.Admin
                             return;
                         }
 
+                        Response.Redirect("/Admin/NewApplications_Licence.aspx", false);
+
                     }
                     else
                     {
@@ -566,6 +568,7 @@ namespace CEIHaryana.Admin
                         ScriptManager.RegisterStartupScript(this, GetType(), "UploadError",
                               "alert('Record Rejected successfully');", true);
                         GridViewBind(null, null, null);
+                        Response.Redirect("/Admin/NewApplications_Licence.aspx",false);
 
                     }
                 }
