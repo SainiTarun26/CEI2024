@@ -223,7 +223,7 @@
                                             <div class="card">
                                                 <div class="card-title" style="text-align: center; font-size: 22px;">
                                                     Renewal Application for
-                                                    <asp:Label ID="Label8" runat="server" Text="Label"></asp:Label>
+                                                    <asp:Label ID="lblCategory" runat="server" ></asp:Label>
                                                 </div>
                                                 <div class="card-body">
                                                     <div class="row">

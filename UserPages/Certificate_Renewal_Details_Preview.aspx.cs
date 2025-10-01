@@ -47,6 +47,21 @@ namespace CEIHaryana.UserPages
             dt = CEI.GetRenewalDocuments(RenewalId);
             if (dt.Rows.Count > 0)
             {
+                string photoUrl = "";
+                foreach (DataRow row in dt.Rows)
+                {
+                    string a = row["DocumentName"].ToString();
+                    if (row["DocumentName"].ToString() =="Candidate Image")
+                    {
+                        photoUrl = row["DocumentPath"].ToString();
+                        imgPhoto.ImageUrl = photoUrl;
+                    }
+                    if (row["DocumentName"].ToString() == "Candidate Signature")
+                    {
+                        photoUrl = row["DocumentPath"].ToString();
+                        mySignature.ImageUrl = photoUrl;
+                    }
+                }
                 Grd_Document.DataSource = dt;
                 Grd_Document.DataBind();
             }
@@ -89,6 +104,7 @@ namespace CEIHaryana.UserPages
                     Permit.Visible=true;
                     Competency.Visible=false;
                 }
+                lblCategory.Text=dt.Rows[0]["Category"].ToString();
                 txtname.Text = dt.Rows[0]["ApplicantName"].ToString();
                 txtFatherName.Text = dt.Rows[0]["FatherName"].ToString();
                 txtDOB.Text = dt.Rows[0]["DOB"].ToString();
