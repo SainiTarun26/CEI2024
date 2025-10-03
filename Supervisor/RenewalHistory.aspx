@@ -296,7 +296,8 @@
                         <PagerStyle CssClass="pagination-outer" HorizontalAlign="Center" />
                     </asp:GridView>
 
-
+                    
+                     <asp:HiddenField ID="HdnPanFilePath" runat="server" />
                 </div>
             </div>
         </div>

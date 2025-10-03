@@ -391,12 +391,12 @@
 
                         <div class="col-md-4">
                             <label>
-                                Old Certificate No.<samp style="color: red">* </samp>
+                                Old Certificate No.<%--<samp style="color: red">* </samp>--%>
                             </label>
                             <asp:TextBox class="form-control" ID="txtOldCertificateNo" runat="server" autocomplete="off" TabIndex="1"
                                 MaxLength="10" Style="margin-left: 18px;">
                             </asp:TextBox>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator41" ErrorMessage="Required" ControlToValidate="txtOldCertificateNo" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                           <%-- <asp:RequiredFieldValidator ID="RequiredFieldValidator41" ErrorMessage="Required" ControlToValidate="txtOldCertificateNo" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />--%>
                         </div>
                         <div class="col-md-4">
                             <label>

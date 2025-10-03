@@ -48,6 +48,9 @@ namespace CEIHaryana.Supervisor
                 ds = CEI.GetRenewalData(userID);
                 if (ds.Rows.Count > 0)
                 {
+
+                    string filePath = ds.Rows[0]["LetterPath"].ToString();
+                    HdnPanFilePath.Value = filePath;
                     GridView1.DataSource = ds;
                     GridView1.DataBind();
                 }
@@ -81,6 +84,16 @@ namespace CEIHaryana.Supervisor
             {
                 Session["Renwal"] = "No";
                 Response.Redirect("~/Supervisor/Renewal_Certificate_Competency.aspx");
+            }
+            else if (e.CommandName == "ViewVerificationLetter")
+            {
+
+                string fileUrl = "https://uat.ceiharyana.com" + HdnPanFilePath.Value;
+                string script = $@"<script>window.open('{fileUrl}', '_blank');</script>";
+                //ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "OpenFileInNewTab", script, false);
+
+
             }
 
         }

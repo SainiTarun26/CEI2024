@@ -148,11 +148,10 @@ namespace CEIHaryana.UserPages
 
         protected void btnBack_Click(object sender, EventArgs e)
         {
-            string previousPageUrl = Session["BackPreviousPage"] as string;
-            if (!string.IsNullOrEmpty(previousPageUrl))
+
+            if (Session["BackPreviousPage"] != null)
             {
-                Response.Redirect(previousPageUrl, false);
-                Session["BackPreviousPage"] = null;
+                Response.Redirect(Session["BackPreviousPage"].ToString(), false);
             }
         }
     }

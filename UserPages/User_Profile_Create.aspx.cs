@@ -104,7 +104,7 @@ namespace CEIHaryana.UserPages
         }
         protected void btnLogout_Click(object sender, EventArgs e)
         {
-            Response.Redirect("AdminLogout.aspx",false);
+            Response.Redirect("/AdminLogout.aspx",false);
         }
 
         protected void btnBack_Click(object sender, EventArgs e)

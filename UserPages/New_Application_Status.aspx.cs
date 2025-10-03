@@ -123,7 +123,9 @@ namespace CEIHaryana.UserPages
 
                         string fileUrl = "https://uat.ceiharyana.com" + HdnPanFilePath.Value;
                         string script = $@"<script>window.open('{fileUrl}', '_blank');</script>";
-                        ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+                        //ClientScript.RegisterStartupScript(this.GetType(), "OpenFileInNewTab", script);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "OpenFileInNewTab", script, false);
+
 
                     }
                     else if (e.CommandName == "Reapply")

@@ -14226,17 +14226,17 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
 
 
         public static int InsertUpgradationContractorData(
-    SqlConnection conn, SqlTransaction tran,
-    string name, string FirmName, string DateOfBirth, string CurrentAge, string OldCertificate, string NewCertificate,
-    string CurrentVLevel, string LicenceLevelAppliedFor, string GstNo, string StyleOfCompany,
-    string NameOfAgentOrManager, string NameOfCompany, string RegisteredOfficeInHaryana, string Address,
-    string State, string District, string PinCode, string Email, string PhoneNo, string AuthorisedPersonSigningName,
-    string ManufacturingOrProduction, string LicensePreviouslyGrantedWithSameName, string LicenseNo,
-    string DateOfIssue, string LicensePreviouslyGrantedWithSameNameOfOtherState, string IssueAuthorityName,
-    string AuthorityDateofIssue, string AuthorityLicenceExpiry, string DetailOfworkPermit,
-    string CompanyHavePartnerOrDirector, string BluePrint, string WorkUnderLicenceConditionsandregulation29,
-    string ELibraryAvailable, string HavePeneltyOrPunishment, string PeneltyOrPunishment,
-    string grnNo, string ChallanDate, string userId)
+ SqlConnection conn, SqlTransaction tran,
+ string name, string FirmName, string DateOfBirth, string CurrentAge, string OldCertificate, string NewCertificate,
+ string CurrentVLevel, string LicenceLevelAppliedFor, string GstNo, string StyleOfCompany,
+ string NameOfAgentOrManager, string NameOfCompany, string RegisteredOfficeInHaryana, string Address,
+ string State, string District, string PinCode, string Email, string PhoneNo, string AuthorisedPersonSigningName,
+ string ManufacturingOrProduction, string LicensePreviouslyGrantedWithSameName, string LicenseNo,
+ string DateOfIssue, string LicensePreviouslyGrantedWithSameNameOfOtherState, string IssueAuthorityName,
+ string AuthorityDateofIssue, string AuthorityLicenceExpiry, string DetailOfworkPermit,
+ string CompanyHavePartnerOrDirector, string BluePrint, string WorkUnderLicenceConditionsandregulation29,
+ string ELibraryAvailable, string HavePeneltyOrPunishment, string PeneltyOrPunishment,
+ string grnNo, string ChallanDate, string userId)
         {
             DateTime dob = Convert.ToDateTime(DateOfBirth);
             DateTime? licenseDateOfIssue = string.IsNullOrWhiteSpace(DateOfIssue) ? (DateTime?)null : Convert.ToDateTime(DateOfIssue);
@@ -14253,7 +14253,7 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
                 cmd.Parameters.AddWithValue("@FirmName", FirmName);
                 cmd.Parameters.AddWithValue("@DateOfBirth", dob);
                 cmd.Parameters.AddWithValue("@CurrentAge", CurrentAge);
-                cmd.Parameters.AddWithValue("@OldCertificate", OldCertificate);
+                cmd.Parameters.AddWithValue("@OldCertificate", String.IsNullOrEmpty(OldCertificate) ? DBNull.Value : (object)OldCertificate);
                 cmd.Parameters.AddWithValue("@NewCertificate", NewCertificate);
                 cmd.Parameters.AddWithValue("@CurrentLicenceVoltageLevel", CurrentVLevel);
                 cmd.Parameters.AddWithValue("@LicenceLevelAppliedFor", LicenceLevelAppliedFor);
@@ -14291,7 +14291,6 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
                 return cmd.ExecuteNonQuery();
             }
         }
-
 
 
         public int InsertContractorUpgradationDocument(SqlConnection conn, SqlTransaction tran, string category, int documentID, string documentName, string documentPath, string createdBy)

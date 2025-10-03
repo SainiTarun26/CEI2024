@@ -994,7 +994,7 @@ Head of A/c: 0043-51-800-99-51—Other Receipt. (<span style="color: red; displa
                                         <td>
                                             <div class="form-group">
                                                 <label style="font-size: 9px;">
-                                                    (PLEASE UPLOAD PDF ONLY NO MORE THAN 1MB)
+                                                    (PLEASE UPLOAD IMAGE ONLY NO MORE THAN 1MB)
                                                 </label>
                                                 <%--<div class="input-group col-xs-12">
           <asp:TextBox ID="txtChallan" runat="server" CssClass="form-control file-upload-info"
@@ -1025,7 +1025,7 @@ Head of A/c: 0043-51-800-99-51—Other Receipt. (<span style="color: red; displa
 
                                             <div class="form-group">
                                                 <label style="font-size: 9px;">
-                                                    (PLEASE UPLOAD PDF ONLY NO MORE THAN 1MB)
+                                                    (PLEASE UPLOAD IMAGE ONLY NO MORE THAN 1MB)
                                                 </label>
                                                 <%--<div class="input-group col-xs-12">
     <asp:TextBox ID="txtChallan" runat="server" CssClass="form-control file-upload-info"

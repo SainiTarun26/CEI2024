@@ -586,235 +586,241 @@ namespace CEIHaryana.Contractor
 
                         try
                         {
-
-                            #region for LT,HT,EHT conditions
-                            string voltageAppliedForLicence = ddlVoltageLevel.Text.Trim();
-
-                            // Count the total
-                            int totalRows = GridView4.Rows.Count;
-
-                            // If no rows exist
-                            if (totalRows == 0)
+                            if (txtOldCertificateNo.Text == txtNewCertificateNo.Text)
                             {
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('You are not eligible for this. At least one Supervisor or Wireman is required.');", true);
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('Old Certificate Number and New Certificate Number cannot be the same');", true);
                                 return;
-                            }
-
-                            int supervisorCount = 0;
-                            int wiremanCount = 0;
-
-                            // count Supervisor/Wireman
-                            foreach (GridViewRow row in GridView4.Rows)
-                            {
-                                Label lblCategory = row.FindControl("lblCategory") as Label;
-                                string role = lblCategory?.Text.Trim();
-
-                                if (role == "Supervisor")
-                                {
-                                    supervisorCount++;
-                                }
-                                else if (role == "Wireman")
-                                {
-                                    wiremanCount++;
-                                }
-                            }
-
-                            // Validate based on voltage level
-                            if (voltageAppliedForLicence == "650V")
-                            {
-                                if ((supervisorCount + wiremanCount) < 2)
-                                {
-                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert",
-                                        "alert('For 650V, minimum 2 employees required.');", true);
-                                    return;
-                                }
-
-                                if (supervisorCount < 1)
-                                {
-                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert",
-                                        "alert('At least 1 Supervisor is required.');", true);
-                                    return;
-                                }
-                            }
-                            else if (voltageAppliedForLicence == "11KV" || voltageAppliedForLicence == "33KV")
-                            {
-                                if ((supervisorCount + wiremanCount) < 3)
-                                {
-                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert",
-                                        "alert('For 11KV/33KV, minimum 3 employees required.');", true);
-                                    return;
-                                }
-
-                                if (supervisorCount < 1)
-                                {
-                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert",
-                                        "alert('At least 1 Supervisor is required.');", true);
-                                    return;
-                                }
-                            }
-                            else if (voltageAppliedForLicence == "66KV" || voltageAppliedForLicence == "132KV" ||
-                                     voltageAppliedForLicence == "220KV" || voltageAppliedForLicence == "EHT Level")
-                            {
-                                if ((supervisorCount + wiremanCount) < 5)
-                                {
-                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert",
-                                        "alert('For 66KV and above, minimum 5 employees required.');", true);
-                                    return;
-                                }
-
-                                if (supervisorCount < 2)
-                                {
-                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert",
-                                        "alert('At least 2 Supervisor is required.');", true);
-                                    return;
-                                }
                             }
                             else
                             {
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('You are are not eligible for this.');", true);
-                                return;
-                            }
-                            #endregion
+                                #region for LT,HT,EHT conditions
+                                string voltageAppliedForLicence = ddlVoltageLevel.Text.Trim();
 
-                            // Collect form data
-                            string name = txtContractName.Text.Trim();
-                            string FirmName = txtFirmName.Text.Trim();
-                            string dob = txtDob.Text.Trim();
-                            string currentAge = txtCurrentAge.Text.Trim();
-                            string oldCertificateNo = txtOldCertificateNo.Text.Trim();
-                            string newCertificateNo = txtNewCertificateNo.Text.Trim();
-                            string CurrentVLevel = txtCurrentVoltage.Text.Trim();
-                            string voltageLevel = ddlVoltageLevel.Text.Trim();
-                            string gstNumber = txtGstNumber.Text.Trim();
-                            string companyStyle = ddlCompanyStyle.SelectedItem.Text.Trim();
-                            string agentName = txtAgentName.Text.Trim();
-                            string companyName = txtNameOfCompany.Text.Trim();
-                            string officeInHaryana = ddlOffice.SelectedItem.Text.Trim();
-                            string address = txtBusinessAddress.Text.Trim();
-                            string businessState = ddlBusinessState.SelectedItem.Text.Trim();
-                            string businessDistrict = ddlBusinessDistrict.SelectedItem.Text.Trim();
-                            string pinCode = txtBusinessPin.Text.Trim();
-                            string businessEmail = txtBusinessEmail.Text.Trim();
-                            string businessPhoneNo = txtBusinessPhoneNo.Text.Trim();
-                            string authorizedPerson = txtauthorizedperson.Text.Trim();
-                            string hasProductionUnit = ddlUnitOrNot.SelectedItem.Text.Trim();
-                            string sameNameLicense = ddlSameNameLicense.SelectedItem.Text.Trim();
-                            string licenseNo = txtLicenseNo.Text.Trim();
-                            string licenseIssueDate = txtLicenseIssue.Text.Trim();
-                            string licenseGrantedInOtherState = ddlLicenseGranted.SelectedItem.Text.Trim();
-                            string issuingAuthority = txtIssusuingName.Text.Trim();
-                            string authorityIssueDate = txtIssuedateOtherState.Text.Trim();
-                            string authorityLicenseExpiry = txtLicenseExpiry.Text.Trim();
-                            string workPermitDetails = txtWorkPermitUndertaken.Text.Trim();
-                            string hasPartnersOrDirectors = DdlPartnerOrDirector.SelectedItem.Text.Trim();
-                            string BluePrint = ddlBluePrint.SelectedItem.Text.Trim();
-                            string workUnderRegulation29 = DdlWorkUnderLicenceConditionsandregulation29.SelectedItem.Text.Trim();
-                            string annexureAvailable = ddlAnnexureOrNot.SelectedItem.Text.Trim();
-                            string hasPenalties = DropDownList2.SelectedItem.Text.Trim();
-                            string penaltiesDescription = txtPenalities.Text.Trim();
-                            string grnNo = txtGrNNo.Text.Trim();
-                            string challanDate = txtChallanDate.Text.Trim();
-                            string challanAmount = txtTotalAmount.Text.Trim();
+                                // Count the total
+                                int totalRows = GridView4.Rows.Count;
 
-                            // upgradation data
-                            ////int result = CEI.InsertUpgradationContractorData(name, FirmName,
-                            ////    dob, currentAge, oldCertificateNo, newCertificateNo, CurrentVLevel, voltageLevel, gstNumber,
-                            ////    companyStyle, agentName, companyName, officeInHaryana, address, businessState,
-                            ////    businessDistrict, pinCode, businessEmail, businessPhoneNo, authorizedPerson,
-                            ////    hasProductionUnit, sameNameLicense, licenseNo, licenseIssueDate, licenseGrantedInOtherState,
-                            ////    issuingAuthority, authorityIssueDate, authorityLicenseExpiry, workPermitDetails,
-                            ////    hasPartnersOrDirectors, BluePrint, workUnderRegulation29, annexureAvailable, hasPenalties,
-                            ////    penaltiesDescription, grnNo, challanDate, userId
-                            ////);
-                            int result = CEI.InsertUpgradationContractorData(
-                            conn, transaction, name, FirmName,
-                                dob, currentAge, oldCertificateNo, newCertificateNo, CurrentVLevel, voltageLevel, gstNumber,
-                                companyStyle, agentName, companyName, officeInHaryana, address, businessState,
-                                businessDistrict, pinCode, businessEmail, businessPhoneNo, authorizedPerson,
-                                hasProductionUnit, sameNameLicense, licenseNo, licenseIssueDate, licenseGrantedInOtherState,
-                                issuingAuthority, authorityIssueDate, authorityLicenseExpiry, workPermitDetails,
-                                hasPartnersOrDirectors, BluePrint, workUnderRegulation29, annexureAvailable, hasPenalties,
-                                penaltiesDescription, grnNo, challanDate, userId
-                            );
-
-                            string baseFolder = Server.MapPath("~/Attachment/LicenceUpgadation/Contractor/" + userId + "/");
-
-                            if (!Directory.Exists(baseFolder))
-                            {
-                                Directory.CreateDirectory(baseFolder);
-                            }
-
-                            var uploadedDocuments = new List<(int DocumentID, string DocumentName, string FilePath)>();
-
-                            // Add only if file exists
-                            if (FileUpload2.HasFile)
-                                uploadedDocuments.Add((58, "Certificate of Competency and Wireman Permit", SavePdfFile(FileUpload2, "Certificate_of_Competency_and_Wireman_Permit", userId, baseFolder)));
-
-                            if (FileUpload3.HasFile)
-                                uploadedDocuments.Add((43, "Calibration Certificate", SavePdfFile(FileUpload3, "CalibrationCertificateOfElectricalEquipment", userId, baseFolder)));
-
-                            if (FileUpload4.HasFile)
-                                uploadedDocuments.Add((59, "Details of works executed annually on the basis of Electrical Contractor License", SavePdfFile(FileUpload4, "Details_of_works_executed_annually", userId, baseFolder)));
-
-                            if (FileUpload5.HasFile)
-                                uploadedDocuments.Add((42, "Copy Of Annexure 3 & 5", SavePdfFile(FileUpload5, "CopyofAnnexure3&5", userId, baseFolder)));
-
-                            if (FileUpload6.HasFile)
-                                uploadedDocuments.Add((17, "Copy of treasury challan of fees deposited in any treasury of Haryana", SavePdfFile(FileUpload6, "TreasuryChallan", userId, baseFolder)));
-
-                            //if (FileUpload7.HasFile)
-                            //    uploadedDocuments.Add((60, "Head of accounts: ‗0043-Taxes and Duties on Electricity", SavePdfFile(FileUpload7, "TaxesandDutiesOnElectricity_OtherReceipts", userId, baseFolder)));
-
-                            if (FileUpload8.HasFile)
-                                uploadedDocuments.Add((57, "Authorized person signing documents", SavePdfFile(FileUpload8, "Authorized_Signatory_Approval_Letter", userId, baseFolder)));
-
-                            if (FileUpload9.HasFile)
-                                uploadedDocuments.Add((38, "Medical Certificate", SavePdfFile(FileUpload9, "MedicalFitnessCertificate", userId, baseFolder)));
-
-                            if (FileUpload10.HasFile)
-                                uploadedDocuments.Add((50, "Income tax return for last 1 year", SavePdfFile(FileUpload10, "Income_tax_return_for_last_1st_year", userId, baseFolder)));
-
-                            if (FileUpload11.HasFile)
-                                uploadedDocuments.Add((51, "Income tax return for last 2 year", SavePdfFile(FileUpload11, "Income_tax_return_for_last_2nd_year", userId, baseFolder)));
-
-                            if (FileUpload12.HasFile)
-                                uploadedDocuments.Add((52, "Income tax return for last 3 year", SavePdfFile(FileUpload12, "Income_tax_return_for_last_3rd_year", userId, baseFolder)));
-
-                            if (FileUpload1.HasFile)
-                                uploadedDocuments.Add((53, "Balance sheet of last 1st year", SavePdfFile(FileUpload1, "Balance_sheet_of_last_1st_year", userId, baseFolder)));
-
-                            if (FileUpload13.HasFile)
-                                uploadedDocuments.Add((54, "Balance sheet of last 2nd year", SavePdfFile(FileUpload13, "Balance_sheet_of_last_2nd_year", userId, baseFolder)));
-
-                            if (FileUpload14.HasFile)
-                                uploadedDocuments.Add((55, "Balance sheet of last 3rd year", SavePdfFile(FileUpload14, "Balance_sheet_of_last_3rd_year", userId, baseFolder)));
-
-
-                            //foreach (var doc in uploadedDocuments)
-                            //{
-                            //    if (!string.IsNullOrEmpty(doc.FilePath))
-                            //    {
-                            //        int docResult = CEI.InsertContractorUpgradationDocument("Contractor", doc.DocumentID, doc.DocumentName, doc.FilePath, userId);
-
-                            //    }
-                            //}
-                            foreach (var doc in uploadedDocuments)
-                            {
-                                if (!string.IsNullOrEmpty(doc.FilePath))
+                                // If no rows exist
+                                if (totalRows == 0)
                                 {
-                                    int docResult = CEI.InsertContractorUpgradationDocument(
-                                        conn, transaction, "Contractor", doc.DocumentID, doc.DocumentName, doc.FilePath, userId
-                                    );
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('You are not eligible for this. At least one Supervisor or Wireman is required.');", true);
+                                    return;
                                 }
+
+                                int supervisorCount = 0;
+                                int wiremanCount = 0;
+
+                                // count Supervisor/Wireman
+                                foreach (GridViewRow row in GridView4.Rows)
+                                {
+                                    Label lblCategory = row.FindControl("lblCategory") as Label;
+                                    string role = lblCategory?.Text.Trim();
+
+                                    if (role == "Supervisor")
+                                    {
+                                        supervisorCount++;
+                                    }
+                                    else if (role == "Wireman")
+                                    {
+                                        wiremanCount++;
+                                    }
+                                }
+
+                                // Validate based on voltage level
+                                if (voltageAppliedForLicence == "650V")
+                                {
+                                    if ((supervisorCount + wiremanCount) < 2)
+                                    {
+                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert",
+                                            "alert('For 650V, minimum 2 employees required.');", true);
+                                        return;
+                                    }
+
+                                    if (supervisorCount < 1)
+                                    {
+                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert",
+                                            "alert('At least 1 Supervisor is required.');", true);
+                                        return;
+                                    }
+                                }
+                                else if (voltageAppliedForLicence == "11KV" || voltageAppliedForLicence == "33KV")
+                                {
+                                    if ((supervisorCount + wiremanCount) < 3)
+                                    {
+                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert",
+                                            "alert('For 11KV/33KV, minimum 3 employees required.');", true);
+                                        return;
+                                    }
+
+                                    if (supervisorCount < 1)
+                                    {
+                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert",
+                                            "alert('At least 1 Supervisor is required.');", true);
+                                        return;
+                                    }
+                                }
+                                else if (voltageAppliedForLicence == "66KV" || voltageAppliedForLicence == "132KV" ||
+                                         voltageAppliedForLicence == "220KV" || voltageAppliedForLicence == "EHT Level")
+                                {
+                                    if ((supervisorCount + wiremanCount) < 5)
+                                    {
+                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert",
+                                            "alert('For 66KV and above, minimum 5 employees required.');", true);
+                                        return;
+                                    }
+
+                                    if (supervisorCount < 2)
+                                    {
+                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert",
+                                            "alert('At least 2 Supervisor is required.');", true);
+                                        return;
+                                    }
+                                }
+                                else
+                                {
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('You are are not eligible for this.');", true);
+                                    return;
+                                }
+                                #endregion
+
+                                // Collect form data
+                                string name = txtContractName.Text.Trim();
+                                string FirmName = txtFirmName.Text.Trim();
+                                string dob = txtDob.Text.Trim();
+                                string currentAge = txtCurrentAge.Text.Trim();
+                                string oldCertificateNo = txtOldCertificateNo.Text.Trim();
+                                string newCertificateNo = txtNewCertificateNo.Text.Trim();
+                                string CurrentVLevel = txtCurrentVoltage.Text.Trim();
+                                string voltageLevel = ddlVoltageLevel.Text.Trim();
+                                string gstNumber = txtGstNumber.Text.Trim();
+                                string companyStyle = ddlCompanyStyle.SelectedItem.Text.Trim();
+                                string agentName = txtAgentName.Text.Trim();
+                                string companyName = txtNameOfCompany.Text.Trim();
+                                string officeInHaryana = ddlOffice.SelectedItem.Text.Trim();
+                                string address = txtBusinessAddress.Text.Trim();
+                                string businessState = ddlBusinessState.SelectedItem.Text.Trim();
+                                string businessDistrict = ddlBusinessDistrict.SelectedItem.Text.Trim();
+                                string pinCode = txtBusinessPin.Text.Trim();
+                                string businessEmail = txtBusinessEmail.Text.Trim();
+                                string businessPhoneNo = txtBusinessPhoneNo.Text.Trim();
+                                string authorizedPerson = txtauthorizedperson.Text.Trim();
+                                string hasProductionUnit = ddlUnitOrNot.SelectedItem.Text.Trim();
+                                string sameNameLicense = ddlSameNameLicense.SelectedItem.Text.Trim();
+                                string licenseNo = txtLicenseNo.Text.Trim();
+                                string licenseIssueDate = txtLicenseIssue.Text.Trim();
+                                string licenseGrantedInOtherState = ddlLicenseGranted.SelectedItem.Text.Trim();
+                                string issuingAuthority = txtIssusuingName.Text.Trim();
+                                string authorityIssueDate = txtIssuedateOtherState.Text.Trim();
+                                string authorityLicenseExpiry = txtLicenseExpiry.Text.Trim();
+                                string workPermitDetails = txtWorkPermitUndertaken.Text.Trim();
+                                string hasPartnersOrDirectors = DdlPartnerOrDirector.SelectedItem.Text.Trim();
+                                string BluePrint = ddlBluePrint.SelectedItem.Text.Trim();
+                                string workUnderRegulation29 = DdlWorkUnderLicenceConditionsandregulation29.SelectedItem.Text.Trim();
+                                string annexureAvailable = ddlAnnexureOrNot.SelectedItem.Text.Trim();
+                                string hasPenalties = DropDownList2.SelectedItem.Text.Trim();
+                                string penaltiesDescription = txtPenalities.Text.Trim();
+                                string grnNo = txtGrNNo.Text.Trim();
+                                string challanDate = txtChallanDate.Text.Trim();
+                                string challanAmount = txtTotalAmount.Text.Trim();
+
+                                // upgradation data
+                                ////int result = CEI.InsertUpgradationContractorData(name, FirmName,
+                                ////    dob, currentAge, oldCertificateNo, newCertificateNo, CurrentVLevel, voltageLevel, gstNumber,
+                                ////    companyStyle, agentName, companyName, officeInHaryana, address, businessState,
+                                ////    businessDistrict, pinCode, businessEmail, businessPhoneNo, authorizedPerson,
+                                ////    hasProductionUnit, sameNameLicense, licenseNo, licenseIssueDate, licenseGrantedInOtherState,
+                                ////    issuingAuthority, authorityIssueDate, authorityLicenseExpiry, workPermitDetails,
+                                ////    hasPartnersOrDirectors, BluePrint, workUnderRegulation29, annexureAvailable, hasPenalties,
+                                ////    penaltiesDescription, grnNo, challanDate, userId
+                                ////);
+                                int result = CEI.InsertUpgradationContractorData(
+                                conn, transaction, name, FirmName,
+                                    dob, currentAge, oldCertificateNo, newCertificateNo, CurrentVLevel, voltageLevel, gstNumber,
+                                    companyStyle, agentName, companyName, officeInHaryana, address, businessState,
+                                    businessDistrict, pinCode, businessEmail, businessPhoneNo, authorizedPerson,
+                                    hasProductionUnit, sameNameLicense, licenseNo, licenseIssueDate, licenseGrantedInOtherState,
+                                    issuingAuthority, authorityIssueDate, authorityLicenseExpiry, workPermitDetails,
+                                    hasPartnersOrDirectors, BluePrint, workUnderRegulation29, annexureAvailable, hasPenalties,
+                                    penaltiesDescription, grnNo, challanDate, userId
+                                );
+
+                                string baseFolder = Server.MapPath("~/Attachment/LicenceUpgadation/Contractor/" + userId + "/");
+
+                                if (!Directory.Exists(baseFolder))
+                                {
+                                    Directory.CreateDirectory(baseFolder);
+                                }
+
+                                var uploadedDocuments = new List<(int DocumentID, string DocumentName, string FilePath)>();
+
+                                // Add only if file exists
+                                if (FileUpload2.HasFile)
+                                    uploadedDocuments.Add((58, "Certificate of Competency and Wireman Permit", SavePdfFile(FileUpload2, "Certificate_of_Competency_and_Wireman_Permit", userId, baseFolder)));
+
+                                if (FileUpload3.HasFile)
+                                    uploadedDocuments.Add((43, "Calibration Certificate", SavePdfFile(FileUpload3, "CalibrationCertificateOfElectricalEquipment", userId, baseFolder)));
+
+                                if (FileUpload4.HasFile)
+                                    uploadedDocuments.Add((59, "Details of works executed annually on the basis of Electrical Contractor License", SavePdfFile(FileUpload4, "Details_of_works_executed_annually", userId, baseFolder)));
+
+                                if (FileUpload5.HasFile)
+                                    uploadedDocuments.Add((42, "Copy Of Annexure 3 & 5", SavePdfFile(FileUpload5, "CopyofAnnexure3&5", userId, baseFolder)));
+
+                                if (FileUpload6.HasFile)
+                                    uploadedDocuments.Add((17, "Copy of treasury challan of fees deposited in any treasury of Haryana", SavePdfFile(FileUpload6, "TreasuryChallan", userId, baseFolder)));
+
+                                //if (FileUpload7.HasFile)
+                                //    uploadedDocuments.Add((60, "Head of accounts: ‗0043-Taxes and Duties on Electricity", SavePdfFile(FileUpload7, "TaxesandDutiesOnElectricity_OtherReceipts", userId, baseFolder)));
+
+                                if (FileUpload8.HasFile)
+                                    uploadedDocuments.Add((57, "Authorized person signing documents", SavePdfFile(FileUpload8, "Authorized_Signatory_Approval_Letter", userId, baseFolder)));
+
+                                if (FileUpload9.HasFile)
+                                    uploadedDocuments.Add((38, "Medical Certificate", SavePdfFile(FileUpload9, "MedicalFitnessCertificate", userId, baseFolder)));
+
+                                if (FileUpload10.HasFile)
+                                    uploadedDocuments.Add((50, "Income tax return for last 1 year", SavePdfFile(FileUpload10, "Income_tax_return_for_last_1st_year", userId, baseFolder)));
+
+                                if (FileUpload11.HasFile)
+                                    uploadedDocuments.Add((51, "Income tax return for last 2 year", SavePdfFile(FileUpload11, "Income_tax_return_for_last_2nd_year", userId, baseFolder)));
+
+                                if (FileUpload12.HasFile)
+                                    uploadedDocuments.Add((52, "Income tax return for last 3 year", SavePdfFile(FileUpload12, "Income_tax_return_for_last_3rd_year", userId, baseFolder)));
+
+                                if (FileUpload1.HasFile)
+                                    uploadedDocuments.Add((53, "Balance sheet of last 1st year", SavePdfFile(FileUpload1, "Balance_sheet_of_last_1st_year", userId, baseFolder)));
+
+                                if (FileUpload13.HasFile)
+                                    uploadedDocuments.Add((54, "Balance sheet of last 2nd year", SavePdfFile(FileUpload13, "Balance_sheet_of_last_2nd_year", userId, baseFolder)));
+
+                                if (FileUpload14.HasFile)
+                                    uploadedDocuments.Add((55, "Balance sheet of last 3rd year", SavePdfFile(FileUpload14, "Balance_sheet_of_last_3rd_year", userId, baseFolder)));
+
+
+                                //foreach (var doc in uploadedDocuments)
+                                //{
+                                //    if (!string.IsNullOrEmpty(doc.FilePath))
+                                //    {
+                                //        int docResult = CEI.InsertContractorUpgradationDocument("Contractor", doc.DocumentID, doc.DocumentName, doc.FilePath, userId);
+
+                                //    }
+                                //}
+                                foreach (var doc in uploadedDocuments)
+                                {
+                                    if (!string.IsNullOrEmpty(doc.FilePath))
+                                    {
+                                        int docResult = CEI.InsertContractorUpgradationDocument(
+                                            conn, transaction, "Contractor", doc.DocumentID, doc.DocumentName, doc.FilePath, userId
+                                        );
+                                    }
+                                }
+
+                                // Commit transaction if everything went fine
+                                transaction.Commit();
+                                //ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Upgradation applied successfully!');", true);
+                                string script = "alert('Upgradation applied successfully!'); window.location='/Contractor/ConractorUpgradationHistory.aspx';";
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertAndRedirect", script, true);
                             }
-
-                            // Commit transaction if everything went fine
-                            transaction.Commit();
-                            //ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Upgradation applied successfully!');", true);
-                            string script = "alert('Upgradation applied successfully!'); window.location='/Contractor/ConractorUpgradationHistory.aspx';";
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "alertAndRedirect", script, true);
                         }
-
 
                         catch (Exception innerEx)
                         {

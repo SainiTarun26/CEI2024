@@ -382,7 +382,7 @@ namespace CEIHaryana
                                     {
                                         Response.Redirect("/UserPages/DocumentsForContractor.aspx", false);
                                     }
-                                    else if (ApplicationStatus.Trim() == "Old")
+                                    else 
                                     {
                                         Response.Redirect("/UserPages/New_Application_Status.aspx", false);
                                     }
