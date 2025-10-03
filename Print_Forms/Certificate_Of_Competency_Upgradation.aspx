@@ -358,7 +358,7 @@
                                             Style="font-weight: 700; height: 30px; padding-left: 10px;">
                                         </asp:Label>
                                         having satisfied the Chief Electrical Inspector, Haryana that his/her
-qualifications and experience as certained by the Screening Committee, found eligible for grant of  Certificate of Competency., is herby granted this Certificate of Competency.</h6>
+qualifications and experience as certained by the Screening Committee, found eligible for grant of  Certificate of Competency., is hereby granted this Certificate of Competency.</h6>
                                 </div>
                             </div>
                             <br />

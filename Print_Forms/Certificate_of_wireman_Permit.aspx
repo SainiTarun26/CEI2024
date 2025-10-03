@@ -355,7 +355,7 @@
                                             Style="font-weight: 700; display: inline-block; height: 30px; padding-left: 10px;">
                                         </asp:Label>
                                         having satisfied the Chief Electrical Inspector, Haryana that his/her
-qualifications and experience as certained by the Screening Committee, found eligible for grant of Wireman Permit, is herby granted this Wireman Permit.</h6>
+qualifications and experience as certained by the Screening Committee, found eligible for grant of Wireman Permit, is hereby granted this Wireman Permit.</h6>
                                 </div>
                             </div>
 
