@@ -449,6 +449,15 @@
                                         Licence</span>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a id="UserCurrent_Licence_Link" runat="server" visible="false" class="nav-link" href="/UserPages/Get_UserCurrent_Licence.aspx">
+                                    <i class="icon-grid menu-icon"></i>
+                                    <span class="menu-title">Get Licence 
+           
+                                     <br />
+                                    </span>
+                                </a>
+                            </li>
                         </ul>
                     </nav>
                     <div class="main-panel">

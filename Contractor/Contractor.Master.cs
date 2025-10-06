@@ -25,6 +25,9 @@ namespace CEIHaryana.Contractor
                     bool showRenewal = CEI.IsContractorExpiryNear(UserId);
                     //txtContractorLogoutType.Text = "Contractor";
                     RenewalMenuItem.Visible = showRenewal;
+
+                    bool showGetLicence = CEI.Get_RegistrationIdExistForShowingLink(UserId);
+                    UserCurrent_Licence_Link.Visible = showGetLicence;
                 }
                 else if (Session["ContractorID"] == null)
                 {

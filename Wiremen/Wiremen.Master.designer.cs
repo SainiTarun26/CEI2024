@@ -51,6 +51,15 @@ namespace CEIHaryana.Wiremen
         protected global::System.Web.UI.WebControls.Button btnLogout;
 
         /// <summary>
+        /// UserCurrent_Licence_Link control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor UserCurrent_Licence_Link;
+
+        /// <summary>
         /// ContentPlaceHolder1 control.
         /// </summary>
         /// <remarks>

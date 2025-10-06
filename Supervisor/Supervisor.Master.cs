@@ -30,6 +30,10 @@ namespace CEIHaryana.Supervisor
                     bool showRenewal = CEI.IsExpiryNear(UserId);
                   
                     RenewalMenuItem.Visible = showRenewal;
+
+
+                    bool showGetLicence = CEI.Get_RegistrationIdExistForShowingLink(UserId);
+                    UserCurrent_Licence_Link.Visible = showGetLicence;
                 }
                 else if (Session["SupervisorID"] == null)
                 {

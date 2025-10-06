@@ -14902,6 +14902,36 @@ string dbPathCompetency, string dbPathMedicalCertificate, string userId)
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_InsertContChallanDetails", Amount, GRNNO, transactionDate, UserId);
         }
         #endregion
+
+        #region aslam download license
+        public DataSet Get_Latest_Licence_UserWise(string RegId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetLicence_GetLatestRecordsByRegistrationId", RegId);
+        }
+
+        public bool Get_RegistrationIdExistForShowingLink(string registrationId)
+        {
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+            using (SqlCommand cmd = new SqlCommand("sp_GetLicence_CheckRegistrationIdExists", con))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@RegistrationId", registrationId);
+
+                SqlParameter output = new SqlParameter("@Exists", SqlDbType.Bit)
+                {
+                    Direction = ParameterDirection.Output
+                };
+                cmd.Parameters.Add(output);
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+
+                return Convert.ToBoolean(output.Value);
+            }
+        }
+        #endregion
     }
 }
 

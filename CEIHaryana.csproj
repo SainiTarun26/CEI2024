@@ -2233,6 +2233,7 @@
     <Content Include="UserPages\FormPrintContractor.aspx" />
     <Content Include="UserPages\FormPrintSupervisor.aspx" />
     <Content Include="UserPages\FormPrintWiremen.aspx" />
+    <Content Include="UserPages\Get_UserCurrent_Licence.aspx" />
     <Content Include="UserPages\index.aspx" />
     <Content Include="UserPages\Instructions.aspx" />
     <Content Include="UserPages\New_Application_Status.aspx" />
@@ -5209,6 +5210,13 @@
     </Compile>
     <Compile Include="UserPages\FormPrintWiremen.aspx.designer.cs">
       <DependentUpon>FormPrintWiremen.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserPages\Get_UserCurrent_Licence.aspx.cs">
+      <DependentUpon>Get_UserCurrent_Licence.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserPages\Get_UserCurrent_Licence.aspx.designer.cs">
+      <DependentUpon>Get_UserCurrent_Licence.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserPages\index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>

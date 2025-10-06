@@ -27,27 +27,29 @@
 
         img {
             height: 55px !important;
-            width:186px;
-            margin-left:40px !important;
+            width: 186px;
+            margin-left: 40px !important;
         }
 
         .avatar {
             width: 60px !important;
         }
+
         nav.navbar.col-lg-12.col-12.p-0.fixed-top.d-flex.flex-row {
-    box-shadow: 0px 5px 21px -5px #CDD1E1;
-}
+            box-shadow: 0px 5px 21px -5px #CDD1E1;
+        }
+
         body {
-    -moz-transform: scale(0.5, 0.5); /* Moz-browsers */
-    zoom: 0.5; /* Other non-webkit browsers */
-    zoom: 90%; /* Webkit browsers */
-    zoom: 90%; /* Webkit browsers */
-}
+            -moz-transform: scale(0.5, 0.5); /* Moz-browsers */
+            zoom: 0.5; /* Other non-webkit browsers */
+            zoom: 90%; /* Webkit browsers */
+            zoom: 90%; /* Webkit browsers */
+        }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
-                <div>
+        <div>
             <div class="container-scroller">
                 <!-- partial:partials/_navbar.html -->
                 <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
@@ -332,6 +334,15 @@
                                 <a class="nav-link" href="/Wiremen/WiremenDashboard.aspx">
                                     <i class="icon-grid menu-icon"></i>
                                     <span class="menu-title">Dashboard</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a id="UserCurrent_Licence_Link" runat="server" visible="false" class="nav-link" href="/UserPages/Get_UserCurrent_Licence.aspx">
+                                    <i class="icon-grid menu-icon"></i>
+                                    <span class="menu-title">Get Licence 
+           
+                                    <br />
+                                    </span>
                                 </a>
                             </li>
                             <%--<li class="nav-item">

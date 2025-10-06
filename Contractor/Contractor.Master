@@ -471,6 +471,18 @@
                                         History</span>
                                 </a>
                             </li>
+
+                            <li class="nav-item">
+                                <a id="UserCurrent_Licence_Link" runat="server" visible="false" class="nav-link" href="/UserPages/Get_UserCurrent_Licence.aspx">
+                                    <i class="icon-grid menu-icon"></i>
+                                    <span class="menu-title">Get Licence 
+           
+                                     <br />
+                                    </span>
+                                </a>
+                            </li>
+
+
                             <%-- <li class="nav-item">
                                 <a class="nav-link" href="/Contractor/Attach_DeAttach_Staff.aspx">
                                     <i class="icon-grid menu-icon"></i>
