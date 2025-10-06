@@ -45,6 +45,15 @@ namespace CEIHaryana.Admin
                     txtDateOfBirth.Text = dt.Rows[0]["DateOfBirth"].ToString();
                     txtCurrentAge.Text = dt.Rows[0]["CurrentAge"].ToString();
                     txtOldCertificateNo.Text = dt.Rows[0]["OldCertificate"].ToString();
+
+                    if (string.IsNullOrWhiteSpace(txtOldCertificateNo.Text))
+                    {
+                        OldCertificate.Visible = false;
+                    }
+                    else
+                    {
+                        OldCertificate.Visible = true;
+                    }
                     txtNewCertificateNo.Text = dt.Rows[0]["NewCertificate"].ToString();
                     txtCurrentVoltageLevel.Text = dt.Rows[0]["CurrentLicenceVoltageLevel"].ToString().Trim();
 

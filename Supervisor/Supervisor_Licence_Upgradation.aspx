@@ -383,7 +383,7 @@
                              --%>
 
                                     <asp:DropDownList ID="ddlState" class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;" runat="server" AutoPostBack="true" OnSelectedIndexChanged="ddlState_SelectedIndexChanged"></asp:DropDownList>
-<asp:RequiredFieldValidator ID="RequiredFieldValidator31" ErrorMessage="Required" ControlToValidate="ddlState" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+<asp:RequiredFieldValidator ID="RequiredFieldValidator31" ErrorMessage="Required" ControlToValidate="ddlState" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                  
                               </div>
                                                              <div class="col-md-4" style="margin-top:15px;">

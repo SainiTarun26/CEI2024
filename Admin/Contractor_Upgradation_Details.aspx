@@ -359,7 +359,7 @@
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator40" ErrorMessage="Required" ControlToValidate="txtCurrentAge" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                 </div>
 
-                                <div class="col-md-4" style="margin-top: 15px;">
+                                <div class="col-md-4" style="margin-top: 15px;" id="OldCertificate" runat="server" Visible="true">
                                     <label>
                                         Old Certificate No.<samp style="color: red">* </samp>
                                     </label>
