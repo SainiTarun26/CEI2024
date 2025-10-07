@@ -71,25 +71,27 @@
     </script>
     <style>
         .container.d-flex.align-items-center.justify-content-between {
-    max-width: 1650px;
-}
+            max-width: 1650px;
+        }
+
         .container.aos-init.aos-animate {
             max-width: 1440px;
         }
 
         #header .logo img {
-    max-height: 44px !important;
-    margin-left: 0px !important;
-}
+            max-height: 44px !important;
+            margin-left: 0px !important;
+        }
 
         li#logout {
-    background: #4B49AC !important;
-    border-radius: 51px !important;
-    padding: 7px 5px 7px 5px !important;
-}
-                                  nav#navbar {
-    box-shadow: none !important;
-}
+            background: #4B49AC !important;
+            border-radius: 51px !important;
+            padding: 7px 5px 7px 5px !important;
+        }
+
+        nav#navbar {
+            box-shadow: none !important;
+        }
 
         span#RequiredFieldValidator2 {
             color: red !important;
@@ -794,15 +796,18 @@
             padding: 5px 10px 5px 10px !important;
             border-radius: 5px;
         }
+
         th.headercolor.leftalign {
-    text-align: left;
-}
+            text-align: left;
+        }
+
         td.leftalign {
-    text-align: left;
-}
+            text-align: left;
+        }
+
         td.center {
-    text-align: center;
-}
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -810,165 +815,75 @@
         <asp:ScriptManager ID="ScriptManager2" runat="server"></asp:ScriptManager>
         <div>
             <!-- ======= Top Bar ======= -->
-                                               <section id="topbar" class="d-flex align-items-center">
-     <div class="container d-flex justify-content-center justify-content-md-between" style="max-width: 1680px;">
-         <div class="contact-info d-flex align-items-center">
-             <i class="bi bi-envelope d-flex align-items-center">
-                 <a href="mailto:cei_goh@yahoo.com">cei_goh@yahoo.com</a>
-             </i>
-             <i class="bi bi-phone d-flex align-items-center ms-4">
-                 <span>0172 2704090</span>
-             </i>
-         </div>
-         <div class="social-links d-none d-md-flex align-items-center">
-             <a href="#" class="twitter">
-                 <i class="bi bi-twitter"></i>
-             </a>
-             <a href="#" class="facebook">
-                 <i class="bi bi-facebook"></i>
-             </a>
-             <a href="#" class="instagram">
-                 <i class="bi bi-instagram"></i>
-             </a>
-             <a href="#" class="linkedin">
-                 <i class="bi bi-linkedin"></i>
-             </a>
-         </div>
-     </div>
- </section>
-        <!-- ======= Header ======= -->
+            <section id="topbar" class="d-flex align-items-center">
+                <div class="container d-flex justify-content-center justify-content-md-between" style="max-width: 1680px;">
+                    <div class="contact-info d-flex align-items-center">
+                        <i class="bi bi-envelope d-flex align-items-center">
+                            <a href="mailto:cei_goh@yahoo.com">cei_goh@yahoo.com</a>
+                        </i>
+                        <i class="bi bi-phone d-flex align-items-center ms-4">
+                            <span>0172 2704090</span>
+                        </i>
+                    </div>
+                    <div class="social-links d-none d-md-flex align-items-center">
+                        <a href="#" class="twitter">
+                            <i class="bi bi-twitter"></i>
+                        </a>
+                        <a href="#" class="facebook">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+                        <a href="#" class="instagram">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                        <a href="#" class="linkedin">
+                            <i class="bi bi-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </section>
+            <!-- ======= Header ======= -->
 
-        <header id="header" class="d-flex align-items-center"
-            style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; background: #d1e6ff;">
-            <div class="container d-flex align-items-center justify-content-between">
-                <a href="/Login.aspx" class="logo">
-                    <img src="/Assets/Add a heading (1).png" alt="Logo" />
-                </a>
+            <header id="header" class="d-flex align-items-center"
+                style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; background: #d1e6ff;">
+                <div class="container d-flex align-items-center justify-content-between">
+                    <a href="/Login.aspx" class="logo">
+                        <img src="/Assets/Add a heading (1).png" alt="Logo" />
+                    </a>
 
-                <nav id="navbar" class="navbar">
-                    <ul>
-                        <%--<li class="dropdown">
-                            <a href="#"><span>Home</span> <i class="bi bi-chevron-down"></i></a>
-                            <ul>
-                                <li><a href="/AboutCEI.aspx">About CEI</a></li>
-                                <li><a href="/StateLicensingBoard.aspx">State Licensing Board, Haryana</a></li>
-                                <li><a href="/Functions.aspx">Functions</a></li>
-                            </ul>
-                        </li>
-                        <li>|</li>
+                    <nav id="navbar" class="navbar">
+                        <ul>
 
-                        <li class="dropdown">
-                            <a href="#"><span>Lift & Escalator</span> <i class="bi bi-chevron-down"></i></a>
-                            <ul>
-                                <li><a href="/Procedure_For_Registration_Lift_Exclator.aspx">Procedure For Registration /<br />
-                                    Inspection Lifts and Escalators</a></li>
-                                <li><a href="/Login.aspx" target="_blank">Apply for New</a></li>
-                                <li><a href="/Login.aspx" target="_blank">Apply for Renewal Lift</a></li>
-                                <li><a href="/StaticPage2.aspx" target="_blank">List of Lift Inspectors</a></li>
-                                <li><a href="/UserManual/Procedure_and_Check_List_for_Lift.pdf" target="_blank">Checklist for Registration/<br />
-                                    Inspection of Lifts and Elevators</a></li>
-                                <li><a href="/UserManual/forms.pdf" target="_blank">Forms</a></li>
-                            </ul>
-                        </li>
-                        <li>|</li>
-
-                        <li class="dropdown">
-                            <a href="#"><span>Licensing</span> <i class="bi bi-chevron-down"></i></a>
-                            <ul>
-                                <li><a href="/UserManual/Haryana-Electrical-Contractor-Licence-Certificate-of.pdf" target="_blank">Electrical Licensing Rules-2021</a></li>
-                                <li><a href="/UserManual/form_split.pdf" target="_blank">Forms & Fees</a></li>
-                                <li><a href="/UserPages/Instructions.aspx" target="_blank">For New Licence</a></li>
-                            </ul>
-                        </li>
-                        <li>|</li>
-
-                        <li class="dropdown">
-                            <a href="#"><span>Inspection</span> <i class="bi bi-chevron-down"></i></a>
-                            <ul>
-                                <li><a href="/Procedure_for_Electrical_Installation.aspx">Procedure for Electrical Installation</a></li>
-                                <li><a href="/Procedure_for_grant_of_approval.aspx">Procedure for Grant of<br />
-                                    Approval for Energisation of<br />
-                                    New Electrical Installation</a></li>
-                            </ul>
-                        </li>
-                        <li>|</li>
-
-                        <li><a href="/OurOnlineServices.aspx"><span>Services</span></a></li>
-                        <li>|</li>
-
-                        <li class="dropdown">
-                            <a href="#"><span>Orders</span> <i class="bi bi-chevron-down"></i></a>
-                            <ul>
-                                <li><a href="/UserManual/BRAP_Griviance.pdf" target="_blank">BRAP-2024 Grievance Mechanism</a></li>
-                                <li><a href="/UserManual/office order 223.pdf" target="_blank">Mandate Regarding Risk Profile</a></li>
-                                <li><a href="/UserManual/CamScanner 01-09-2025 13.37_1.pdf" target="_blank">Mandate Regarding Registration and Renewal of Lift/Escalator</a></li>
-                                <li><a href="/UserManual/Mendate%20Regarding%20Electrical%20Installations.pdf" target="_blank">Mandate Regarding Electrical Installations</a></li>
-                                <li><a href="/UserManual/Authorization-of-Chartered-Electrical-Safety-EngineerCESE.pdf" target="_blank">Authorization of Chartered Electrical Safety Engineer (CESE)</a></li>
-                                <li><a href="/UserManual/cancellation-order.pdf" target="_blank">Cancellation Order</a></li>
-                                <li class="dropdown">
-                                    <a href="#"><span>Fees Details</span> <i class="bi bi-chevron-right"></i></a>
-                                    <ul>
-                                        <li><a href="/UserManual/Adobe Scan 13-Jan-2025.pdf" target="_blank">Fees for New Installation Inspection</a></li>
-                                        <li><a href="/UserManual/Adobe Scan 13-Jan-2025.pdf" target="_blank">Fees for Periodical Inspection</a></li>
-                                        <li><a href="/UserManual/Adobe Scan 13-Jan-2025.pdf" target="_blank">Fees for Certificates & Licences</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="/UserManual/Orderof22authorisedCharteredElectricalSafetyEngineersdated28.11.2016.pdf" target="_blank">Order of 22 Chartered Electrical Safety Engineers (2016)</a></li>
-                                <li><a href="/UserManual/OrderofauthorisedCharteredElectricalSafetyEngineers.pdf" target="_blank">Order of 209 Chartered Electrical Safety Engineers (2016)</a></li>
-                            </ul>
-                        </li>
-                        <li>|</li>
-
-                        <li class="dropdown">
-                            <a href="#"><span>EODB Compliance's</span> <i class="bi bi-chevron-down"></i></a>
-                            <ul>
-                                <li><a href="/StaticPage1.aspx" target="_blank">Checklist/Procedure/<br />
-                                    Fees Structure for Lift</a></li>
-                                <li><a href="/StaticPage2.aspx" target="_blank">List of Lift Inspectors</a></li>
-                                <li><a href="/StaticPage3.aspx" target="_blank">EODB Dashboard</a></li>
-                            </ul>
-                        </li>
-                        <li>|</li>
-
-                        <li><a href="https://grs.hartron.io/#/" target="_blank">Grievance Redressal</a></li>
-                        <li>|</li>
-
-                        <li><a href="/VerifyCertificate.aspx">Verify Certificate</a></li>
-                        <li>|</li>
-
-                        <li><a href="/UserPages/OurServices.aspx">User Manual</a></li>
-                        <li>|</li>--%>
-                                                     <li class="dropdown" id="logout">
-                            <a href="#">
-                                <span id="user">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
-                                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
-                                    </svg></span>
-                            </a>
-                            <ul id="profile_drop">
-                                <li id="ProfileUser"><a href="/UserPages/User_Profile_Create.aspx">
-                                    <span>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-badge" viewBox="0 0 16 16">
+                            <li class="dropdown" id="logout">
+                                <a href="#">
+                                    <span id="user">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                                            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+                                        </svg></span>
+                                </a>
+                                <ul id="profile_drop">
+                                    <li id="ProfileUser"><a href="/UserPages/User_Profile_Create.aspx">
+                                        <span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-badge" viewBox="0 0 16 16">
                           User      
 <path d="M6.5 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1zM11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
                                         <path d="M4.5 0A2.5 2.5 0 0 0 2 2.5V14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2.5A2.5 2.5 0 0 0 11.5 0zM3 2.5A1.5 1.5 0 0 1 4.5 1h7A1.5 1.5 0 0 1 13 2.5v10.795a4.2 4.2 0 0 0-.776-.492C11.392 12.387 10.063 12 8 12s-3.392.387-4.224.803a4.2 4.2 0 0 0-.776.492z" />
                                     </svg>&nbsp;&nbsp;Profile</span>
-                                </a></li>
-                                <li id="ProfileLogout">
-                                    <a href="#">
-                                        <asp:Button ID="btnLogout" Text="Logout" OnClick="btnLogout_Click" runat="server" Style="background: #4b49ac; border-color: #4b49ac; color: white; border-radius: 5px;" />
-                                        <%--OnClick="btnLogout_Click"--%>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+                                    </a></li>
+                                    <li id="ProfileLogout">
+                                        <a href="#">
+                                            <asp:Button ID="btnLogout" Text="Logout" OnClick="btnLogout_Click" runat="server" Style="background: #4b49ac; border-color: #4b49ac; color: white; border-radius: 5px;" />
+                                            <%--OnClick="btnLogout_Click"--%>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
 
-                    </ul>
-                    <i class="bi bi-list mobile-nav-toggle"></i>
-                </nav>
-            </div>
-        </header>
+                        </ul>
+                        <i class="bi bi-list mobile-nav-toggle"></i>
+                    </nav>
+                </div>
+            </header>
             <!-- End Header -->
             <main id="main">
                 <section id="about" class="about section-bg">
@@ -983,126 +898,121 @@
                                             <div class="card-body">
                                                 <div class="row">
                                                     <div class="col-md-12" style="text-align: center; font-size: 22px; font-weight: 800;">
-                                                        <asp:Label ID="Label1" runat="server" Text="Cirtificate Details"></asp:Label>
+                                                        <asp:Label ID="Label1" runat="server" Text="Certificate Details"></asp:Label>
                                                     </div>
                                                 </div>
-                                             
+
 
                                                 <br />
-                                               <%-- <div class="row">
+                                                <%-- <div class="row">
                                                     <div class="col-md-12">
                                                         <h4 class="card-title">Application Details</h4>
                                                     </div>
                                                 </div>--%>
-                                           
+
 
                                                 <div class="row" style="margin-top: 15px">
                                                     <div class="col-md-12">
                                                         <%-- Add GridView Here --%>
-                   <asp:GridView class="table-responsive table table-striped table-hover table-bordered" ID="GridView1" runat="server" Width="100%"
-                       AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" BorderWidth="1px" BorderColor="#dbddff">
-                       <Columns>
-                           <asp:TemplateField HeaderText="ApplicationId" Visible="False">
-                               <ItemTemplate>
-                                   <asp:Label ID="lblApplicationId" runat="server" Text='<%#Eval("ApplicationId") %>'></asp:Label>
-                                   <asp:Label ID="lblgetCategory" runat="server" Text='<%#Eval("Categary") %>'></asp:Label>
-                                     <asp:Label ID="lblLicenceType" runat="server" Text='<%#Eval("LicenceType") %>'></asp:Label>
-                             
-                               </ItemTemplate>
-                           </asp:TemplateField>
+                                                        <asp:GridView class="table-responsive table table-striped table-hover table-bordered" ID="GridView1" runat="server" Width="100%"
+                                                            AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" BorderWidth="1px" BorderColor="#dbddff">
+                                                            <Columns>
+                                                                <asp:TemplateField HeaderText="ApplicationId" Visible="False">
+                                                                    <ItemTemplate>
+                                                                        <asp:Label ID="lblApplicationId" runat="server" Text='<%#Eval("ApplicationId") %>'></asp:Label>
+                                                                        <asp:Label ID="lblgetCategory" runat="server" Text='<%#Eval("Categary") %>'></asp:Label>
+                                                                        <asp:Label ID="lblLicenceType" runat="server" Text='<%#Eval("LicenceType") %>'></asp:Label>
 
-                           <asp:TemplateField HeaderText="SNo">
-                               <HeaderStyle Width="5%" CssClass="headercolor" />
-                               <ItemStyle Width="5%" CssClass="center"/>
-                               <ItemTemplate>
-                                   <%#Container.DataItemIndex+1 %>
-                               </ItemTemplate>
-                           </asp:TemplateField>
-                           <asp:TemplateField>
-                               <HeaderStyle Width="35%" CssClass="headercolor leftalign" />
-                               <ItemStyle Width="35%" />
-                               <HeaderTemplate>
-                                   Application Id     
-                               </HeaderTemplate>
-                               <ItemTemplate>
-                                   <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("ApplicationId") %> ' CommandName="Select"><%#Eval("ApplicationId") %></asp:LinkButton>
-                               </ItemTemplate>
-                           </asp:TemplateField>
+                                                                    </ItemTemplate>
+                                                                </asp:TemplateField>
 
-                           <asp:BoundField DataField="RegistrationId" HeaderText="Registration Id">
-                               <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                               <ItemStyle HorizontalAlign="center" Width="15%"/>
-                           </asp:BoundField>
-                           <asp:BoundField DataField="Name" HeaderText="Name">
-                               <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor leftalign" />
-                               <ItemStyle HorizontalAlign="center" Width="28%"  CssClass="leftalign"/>
-                           </asp:BoundField>
+                                                                <asp:TemplateField HeaderText="SNo">
+                                                                    <HeaderStyle Width="5%" CssClass="headercolor" />
+                                                                    <ItemStyle Width="5%" CssClass="center" />
+                                                                    <ItemTemplate>
+                                                                        <%#Container.DataItemIndex+1 %>
+                                                                    </ItemTemplate>
+                                                                </asp:TemplateField>
+                                                                <asp:TemplateField>
+                                                                    <HeaderStyle Width="35%" CssClass="headercolor leftalign" />
+                                                                    <ItemStyle Width="35%" />
+                                                                    <HeaderTemplate>
+                                                                        Application Id     
+                                                                    </HeaderTemplate>
+                                                                    <ItemTemplate>
+                                                                     <%# Eval("ApplicationId") %>
+                                                                        <%--<asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("ApplicationId") %> ' CommandName="Select"><%#Eval("ApplicationId") %></asp:LinkButton>--%>
+                                                                    </ItemTemplate>
+                                                                </asp:TemplateField>
 
-
-
-                            <asp:BoundField DataField="Categary" HeaderText="Category">
-                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="center" Width="15%" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="LicenceType" HeaderText="Approval Date">
-                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="center" Width="15%" />
-                            </asp:BoundField>
-                             <asp:BoundField DataField="LicenceType" HeaderText="LicenceType">
-      <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-      <ItemStyle HorizontalAlign="center" Width="15%" />
-  </asp:BoundField>
-
-                          <%-- <asp:TemplateField HeaderText="ApplicationStatus">
-                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-                               <ItemTemplate>
-                                   <asp:Label ID="lblApplicationStatus" runat="server" Text='<%#Eval("ApplicationStatus") %>'></asp:Label>
-                               </ItemTemplate>
-                           </asp:TemplateField>--%>
+                                                                <asp:BoundField DataField="RegistrationId" HeaderText="Registration Id">
+                                                                    <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                                                    <ItemStyle HorizontalAlign="center" Width="15%" />
+                                                                </asp:BoundField>
+                                                                <asp:BoundField DataField="Name" HeaderText="Name">
+                                                                    <HeaderStyle HorizontalAlign="center" Width="28%" CssClass="headercolor leftalign" />
+                                                                    <ItemStyle HorizontalAlign="center" Width="28%" CssClass="leftalign" />
+                                                                </asp:BoundField>
 
 
-                           <asp:TemplateField HeaderText="Licence Certificate">
-                               <HeaderStyle Width="5%" CssClass="headercolor" />
-                               <ItemStyle Width="5%"   CssClass="center"/>
-                               <ItemTemplate>
-                                   <asp:LinkButton
-                                       runat="server"
-                                       ID="LinkButton1"
-                                       Style="padding: 5px 5px 5px 5px; font-size: 18px; border-radius: 3px;"
-                                       Text="<i class='fa fa-print' style='color:white !important;'></i>"
-                                       CssClass='greenButton btn-primary'
-                                       CommandName="Print"
-                                       CommandArgument='<%# Container.DataItemIndex %>'
-                                        />
-                                  <%--     Visible='<%# Eval("ApplicationStatus").ToString() == "Approved" %>' />--%>
 
-                               </ItemTemplate>
-                           </asp:TemplateField>
+                                                                <asp:BoundField DataField="Categary" HeaderText="Category">
+                                                                    <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                                                    <ItemStyle HorizontalAlign="center" Width="15%" />
+                                                                </asp:BoundField>
 
-                       </Columns>
-                       <FooterStyle BackColor="White" ForeColor="#000066" />
-                       <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
-                       <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
-                       <RowStyle ForeColor="#000066" />
-                       <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                       <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                       <SortedAscendingHeaderStyle BackColor="#007DBB" />
-                       <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                       <SortedDescendingHeaderStyle BackColor="#00547E" />
-                   </asp:GridView>
+                                                                <asp:BoundField DataField="LicenceType" HeaderText="LicenceType">
+                                                                    <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                                                    <ItemStyle HorizontalAlign="center" Width="15%" />
+                                                                </asp:BoundField>
+
+                                                                <asp:BoundField DataField="ApprovedDate" HeaderText="Approval Date">
+                                                                    <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                                                    <ItemStyle HorizontalAlign="center" Width="15%" />
+                                                                </asp:BoundField>
+
+
+                                                                <asp:TemplateField HeaderText="Licence Certificate">
+                                                                    <HeaderStyle Width="5%" CssClass="headercolor" />
+                                                                    <ItemStyle Width="5%" CssClass="center" />
+                                                                    <ItemTemplate>
+                                                                        <asp:LinkButton
+                                                                            runat="server"
+                                                                            ID="LinkButton1"
+                                                                            Style="padding: 5px 5px 5px 5px; font-size: 18px; border-radius: 3px;"
+                                                                            Text="<i class='fa fa-print' style='color:white !important;'></i>"
+                                                                            CssClass='greenButton btn-primary'
+                                                                            CommandName="Print"
+                                                                            CommandArgument='<%# Container.DataItemIndex %>' />
+                                                                        <%--     Visible='<%# Eval("ApplicationStatus").ToString() == "Approved" %>' />--%>
+                                                                    </ItemTemplate>
+                                                                </asp:TemplateField>
+
+                                                            </Columns>
+                                                            <FooterStyle BackColor="White" ForeColor="#000066" />
+                                                            <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+                                                            <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+                                                            <RowStyle ForeColor="#000066" />
+                                                            <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+                                                            <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                                                            <SortedAscendingHeaderStyle BackColor="#007DBB" />
+                                                            <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                                                            <SortedDescendingHeaderStyle BackColor="#00547E" />
+                                                        </asp:GridView>
                                                     </div>
 
                                                 </div>
                                                 <div class="row" style="margin-top: 15px">
                                                     <div class="col-md-12" style="text-align: center;">
-                                                        <asp:Button type="button" ID="btnEdit" Text="Back" Visible="true" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" />
+                                                        <asp:Button type="button" ID="btnBack" Text="Back" Visible="true" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" OnClick="btnBack_Click" />
 
                                                     </div>
                                                 </div>
-                                                
+
                                                 <div class="col-4">
                                                     <asp:HiddenField ID="HdnID" runat="server" />
-                                                    <asp:HiddenField ID="HdnPanFilePath" runat="server" />
+                                                    <asp:HiddenField ID="HdnUserType" runat="server" />
+
                                                 </div>
                                             </div>
                                         </div>

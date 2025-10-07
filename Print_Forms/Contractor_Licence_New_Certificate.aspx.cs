@@ -30,6 +30,10 @@ namespace CEIHaryana.Print_Forms
                     GetPatnersDetails();
                     GetSupervisiorWiremanDetails();
                 }
+                else
+                {
+                    Response.Redirect("/LogOut.aspx", false);
+                }
 
             }
         }

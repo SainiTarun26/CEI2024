@@ -27,7 +27,10 @@ namespace CEIHaryana.Print_Forms
                     GetData(hdnApplicationId.Value);
                     GridData(hdnApplicationId.Value);
                 }
-
+                else
+                {
+                    Response.Redirect("/LogOut.aspx", false);
+                }
             }
         }
         public void GetData(string ApplicationId)

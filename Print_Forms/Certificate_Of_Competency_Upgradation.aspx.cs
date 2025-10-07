@@ -22,8 +22,8 @@ namespace CEIHaryana.Print_Forms
             {
                 if (!IsPostBack)
                 {
-                    if (Convert.ToString(Session["AdminId"]) != null && Convert.ToString(Session["AdminId"]) != string.Empty)
-                    {
+                    //if (Convert.ToString(Session["AdminId"]) != null && Convert.ToString(Session["AdminId"]) != string.Empty)
+                    //{
                         if (Convert.ToString(Session["ApplicationId"]) != null && Convert.ToString(Session["ApplicationId"]) != string.Empty)
                         {
                             String ApplicationId = Convert.ToString(Session["ApplicationId"]);
@@ -32,15 +32,19 @@ namespace CEIHaryana.Print_Forms
                         }
                         else
                         {
-                            Session["ApplicationId"] = "";
-                            Response.Redirect("/Admin/UpgradationRequestHistory.aspx", false);
+                            Response.Redirect("/LogOut.aspx", false);
                         }
-                    }
-                    else
-                    {
-                        Session["AdminId"] = "";
-                        Response.Redirect("/AdminLogout.aspx", false);
-                    }
+                    //else
+                    //{
+                    //    Session["ApplicationId"] = "";
+                    //    Response.Redirect("/Admin/UpgradationRequestHistory.aspx", false);
+                    //}
+                    //}
+                    //else
+                    //{
+                    //    Session["AdminId"] = "";
+                    //    Response.Redirect("/AdminLogout.aspx", false);
+                    //}
                 }
             }
             catch

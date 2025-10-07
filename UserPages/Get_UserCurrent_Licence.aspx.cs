@@ -24,18 +24,21 @@ namespace CEIHaryana.UserPages
                     {
                         string UserID = Session["ContractorID"].ToString();
                         HdnID.Value = UserID;
+                        HdnUserType.Value = "Contractor";
                         GridBind(UserID);
                     }
                     else if (Convert.ToString(Session["SupervisorID"]) != null && Convert.ToString(Session["SupervisorID"]) != "")
                     {
                         string UserID = Session["SupervisorID"].ToString();
                         HdnID.Value = UserID;
+                        HdnUserType.Value = "Supervisor";
                         GridBind(UserID);
                     }
                     else if (Convert.ToString(Session["WiremanId"]) != null && Convert.ToString(Session["WiremanId"]) != "")
                     {
                         string UserID = Session["WiremanId"].ToString();
                         HdnID.Value = UserID;
+                        HdnUserType.Value = "Wireman";
                         GridBind(UserID);
                     }
                     else
@@ -155,6 +158,7 @@ namespace CEIHaryana.UserPages
                     }
                     else if (!string.IsNullOrEmpty(lblLicenceType.Text) && lblLicenceType.Text == "Upgrade")
                     {
+                        Session["ApplicationId"] = applicationId;
                         switch (category)
                         {
                             case "Contractor":
@@ -171,5 +175,37 @@ namespace CEIHaryana.UserPages
                 }
             }
         }
+
+        protected void btnBack_Click(object sender, EventArgs e)
+        {
+            string userType = HdnUserType.Value;
+
+            switch (userType)
+            {
+                case "Contractor":
+
+                    Response.Redirect("/Contractor/Work_Intimation.aspx", false);
+                    break;
+
+                case "Supervisor":
+
+                    Response.Redirect("/Supervisor/IntimationData.aspx", false);
+                    break;
+
+                case "Wireman":
+
+                    Response.Redirect("/Wiremen/Renewal_Certificate_Wiremen.aspx", false);
+                    break;
+
+                default:
+                    Session.Clear();
+                    Session.Abandon();
+                    Response.Redirect("/LogOut.aspx", false);
+                    break;
+            }
+
+            Context.ApplicationInstance.CompleteRequest();
+        }
+
     }
 }
