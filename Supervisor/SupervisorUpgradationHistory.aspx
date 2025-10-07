@@ -188,10 +188,17 @@
           <asp:Label ID="lblID" runat="server" Text='<%#Eval("Id") %>'></asp:Label>
       </ItemTemplate>
   </asp:TemplateField>
-                                <asp:BoundField DataField="ApplicationID" HeaderText="Application ID">
+                                <%--<asp:BoundField DataField="ApplicationID" HeaderText="Application ID">
                                     <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
                                     <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems itemstylecss" />
-                                </asp:BoundField>
+                                </asp:BoundField>--%>
+                                  <asp:TemplateField HeaderText="Application ID">
+      <HeaderStyle HorizontalAlign="Left" Width="25%" CssClass="headercolor" />
+      <ItemStyle HorizontalAlign="Left" Width="25%" />
+      <ItemTemplate>
+          <asp:LinkButton ID="LnkBtnViewDetails" runat="server" AutoPostBack="true" CommandArgument=' <%#Eval("ApplicationID") %> ' CommandName="Select"><%#Eval("ApplicationID") %></asp:LinkButton>
+      </ItemTemplate>
+  </asp:TemplateField>
                                 <asp:BoundField DataField="Name" HeaderText="Supervisor Name">
                                     <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
                                     <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems itemstylecss" />

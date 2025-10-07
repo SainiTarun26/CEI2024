@@ -2227,6 +2227,7 @@
     <Content Include="UserPages\Contractor_Declaration.aspx" />
     <Content Include="UserPages\Contractor_Registration_Details.aspx" />
     <Content Include="UserPages\Contractor_Renewal_Details_Preview.aspx" />
+    <Content Include="UserPages\Contractor_Upgradation.aspx" />
     <Content Include="UserPages\Documents.aspx" />
     <Content Include="UserPages\DocumentsForContractor.aspx" />
     <Content Include="UserPages\DocumentsForLift.aspx" />
@@ -2250,6 +2251,7 @@
     <Content Include="UserPages\SiteOwnerRegistration.aspx" />
     <Content Include="UserPages\SupervisorQualification.aspx" />
     <Content Include="UserPages\Supervisor_Registration_Details.aspx" />
+    <Content Include="UserPages\Supervisor_Upgradation.aspx" />
     <Content Include="UserPages\Update_Contractor_Application_Form.aspx" />
     <Content Include="UserPages\Update_Supervisor_Qualification.aspx" />
     <Content Include="UserPages\Update_Wireman_Qualification.aspx" />
@@ -5169,6 +5171,13 @@
     <Compile Include="UserPages\Contractor_Renewal_Details_Preview.aspx.designer.cs">
       <DependentUpon>Contractor_Renewal_Details_Preview.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UserPages\Contractor_Upgradation.aspx.cs">
+      <DependentUpon>Contractor_Upgradation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserPages\Contractor_Upgradation.aspx.designer.cs">
+      <DependentUpon>Contractor_Upgradation.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UserPages\Documents.aspx.cs">
       <DependentUpon>Documents.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -5329,6 +5338,13 @@
     </Compile>
     <Compile Include="UserPages\Supervisor_Registration_Details.aspx.designer.cs">
       <DependentUpon>Supervisor_Registration_Details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserPages\Supervisor_Upgradation.aspx.cs">
+      <DependentUpon>Supervisor_Upgradation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserPages\Supervisor_Upgradation.aspx.designer.cs">
+      <DependentUpon>Supervisor_Upgradation.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserPages\Update_Contractor_Application_Form.aspx.cs">
       <DependentUpon>Update_Contractor_Application_Form.aspx</DependentUpon>

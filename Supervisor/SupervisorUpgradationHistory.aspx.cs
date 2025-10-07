@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Runtime.ConstrainedExecution;
+using System.Runtime.Remoting.Lifetime;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -64,13 +65,19 @@ namespace CEIHaryana.Supervisor
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            Control ctrl = e.CommandSource as Control;
+            GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
             if (e.CommandName == "Print")
-            {
-                Control ctrl = e.CommandSource as Control;
-                GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
+            {  
                 Label lblID = (Label)row.FindControl("lblID");
                Session["id"] = lblID.Text;
                Response.Redirect("/Print_Forms/Print_Supervisor_Upgradation_Details.aspx", false);     
+            }
+            else if(e.CommandName == "Select")
+            {
+                Label lblID = (Label)row.FindControl("lblID");
+                Session["id"] = lblID.Text;
+                Response.Redirect("/UserPages/Supervisor_Upgradation.aspx", false);
             }
             else
             {

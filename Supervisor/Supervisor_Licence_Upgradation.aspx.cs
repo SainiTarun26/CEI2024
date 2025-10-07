@@ -29,6 +29,7 @@ namespace CEIHaryana.Supervisor
 
                 if (Convert.ToString(Session["SupervisorID"]) != null && Convert.ToString(Session["SupervisorID"]) != "")
                 {
+                    HdnUserId.Value = Convert.ToString(Session["SupervisorID"]);
                     string ID = Convert.ToString(Session["SupervisorID"]);
                     int exist = CEI.CheckPendingSupervisorUpgradationRequest(ID);
                     if (exist > 0)
@@ -44,6 +45,10 @@ namespace CEIHaryana.Supervisor
                     
                     //ddlLoadBindVoltage();
                     //ddlQualificationBind();
+                }
+                else
+                {
+                    Response.Redirect("/AdminLogout.aspx");
                 }
             }
         }
@@ -286,148 +291,161 @@ namespace CEIHaryana.Supervisor
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            if (Page.IsValid)
+            if (Convert.ToString(Session["SupervisorID"]) != null && Convert.ToString(Session["SupervisorID"]) != "")
             {
-                string userId = Session["SupervisorID"].ToString();
-                string baseFolder = Server.MapPath("~/Attachment/LicenceUpgadation/Supervisor/" + userId + "/");
-
-                // Create directory if not exists
-                if (!Directory.Exists(baseFolder))
+                if (HdnUserId.Value == Convert.ToString(Session["SupervisorID"]))
                 {
-                    Directory.CreateDirectory(baseFolder);
-                }
-
-                string dbPathCompetency = "";
-                string dbPathExperience = "";
-                string dbPathMedicalCertificate = "";
-
-                // ==== Certificate of Competency ====
-                if (FileUpload2.HasFile)
-                {
-                    if (Path.GetExtension(FileUpload2.FileName).ToLower() == ".pdf")
+                    if (txtOldCertificateNo.Text == txtNewCertificateNo.Text)
                     {
-                        if (FileUpload2.PostedFile.ContentLength <= 1048576) // 1 MB
-                        {
-                            string fileName = "Competency_" + DateTime.Now.ToString("yyyyMMddHHmmssfff") + ".pdf";
-                            string savePath = Path.Combine(baseFolder, fileName);
-                            FileUpload2.PostedFile.SaveAs(savePath);
-
-                            dbPathCompetency = "/Attachment/LicenceUpgadation/Supervisor/" + userId + "/" + fileName;
-                        }
-                        else
-                        {
-                            throw new Exception("Competency Certificate must be less than 1 MB.");
-                        }
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('Old Certificate Number and New Certificate Number cannot be the same');", true);
+                        return;
                     }
                     else
                     {
-                        throw new Exception("Only PDF files are allowed for Competency Certificate.");
-                    }
-                }
 
-                // ==== Certificate of Experience ====
-                if (FileUpload1.HasFile)
-                {
-                    if (Path.GetExtension(FileUpload1.FileName).ToLower() == ".pdf")
-                    {
-                        if (FileUpload1.PostedFile.ContentLength <= 1048576) // 1 MB
+                        string userId = Session["SupervisorID"].ToString();
+                        string baseFolder = Server.MapPath("~/Attachment/LicenceUpgadation/Supervisor/" + userId + "/");
+
+                        // Create directory if not exists
+                        if (!Directory.Exists(baseFolder))
                         {
-                            string fileName = "Experience_" + DateTime.Now.ToString("yyyyMMddHHmmssfff") + ".pdf";
-                            string savePath = Path.Combine(baseFolder, fileName);
-                            FileUpload1.PostedFile.SaveAs(savePath);
+                            Directory.CreateDirectory(baseFolder);
+                        }
+                        string dbPathCompetency = "";
+                        string dbPathExperience = "";
+                        string dbPathMedicalCertificate = "";
+                        // ==== Certificate of Competency ====
+                        if (FileUpload2.HasFile)
+                        {
+                            if (Path.GetExtension(FileUpload2.FileName).ToLower() == ".pdf")
+                            {
+                                if (FileUpload2.PostedFile.ContentLength <= 1048576) // 1 MB
+                                {
+                                    string fileName = "Competency_" + DateTime.Now.ToString("yyyyMMddHHmmssfff") + ".pdf";
+                                    string savePath = Path.Combine(baseFolder, fileName);
+                                    FileUpload2.PostedFile.SaveAs(savePath);
 
-                            dbPathExperience = "/Attachment/LicenceUpgadation/Supervisor/" + userId + "/" + fileName;
+                                    dbPathCompetency = "/Attachment/LicenceUpgadation/Supervisor/" + userId + "/" + fileName;
+                                }
+                                else
+                                {
+                                    throw new Exception("Competency Certificate must be less than 1 MB.");
+                                }
+                            }
+                            else
+                            {
+                                throw new Exception("Only PDF files are allowed for Competency Certificate.");
+                            }
+                        }
+                        // ==== Certificate of Experience ====
+                        if (FileUpload1.HasFile)
+                        {
+                            if (Path.GetExtension(FileUpload1.FileName).ToLower() == ".pdf")
+                            {
+                                if (FileUpload1.PostedFile.ContentLength <= 1048576) // 1 MB
+                                {
+                                    string fileName = "Experience_" + DateTime.Now.ToString("yyyyMMddHHmmssfff") + ".pdf";
+                                    string savePath = Path.Combine(baseFolder, fileName);
+                                    FileUpload1.PostedFile.SaveAs(savePath);
+
+                                    dbPathExperience = "/Attachment/LicenceUpgadation/Supervisor/" + userId + "/" + fileName;
+                                }
+                                else
+                                {
+                                    throw new Exception("Experience Certificate must be less than 1 MB.");
+                                }
+                            }
+                            else
+                            {
+                                throw new Exception("Only PDF files are allowed for Experience Certificate.");
+                            }
+                        }
+                        // ==== Medical Certificate ====
+                        if (FileUpload3.HasFile)
+                        {
+                            if (Path.GetExtension(FileUpload3.FileName).ToLower() == ".pdf")
+                            {
+                                if (FileUpload3.PostedFile.ContentLength <= 1048576) // 1 MB
+                                {
+                                    string fileName = "MedicalCertificate_" + DateTime.Now.ToString("yyyyMMddHHmmssfff") + ".pdf";
+                                    string savePath = Path.Combine(baseFolder, fileName);
+                                    FileUpload3.PostedFile.SaveAs(savePath);
+
+                                    dbPathMedicalCertificate = "/Attachment/LicenceUpgadation/Supervisor/" + userId + "/" + fileName;
+                                }
+                                else
+                                {
+                                    throw new Exception("Medical Certificate must be less than 1 MB.");
+                                }
+                            }
+                            else
+                            {
+                                throw new Exception("Only PDF files are allowed for Medical Certificate.");
+                            }
+                        }
+
+                        string Qualification = "";
+                        if (txtQualification.Visible == true)
+                        {
+                            Qualification = txtQualification.Text;
                         }
                         else
                         {
-                            throw new Exception("Experience Certificate must be less than 1 MB.");
+                            Qualification = ddlQualification.SelectedValue;
+
                         }
-                    }
-                    else
-                    {
-                        throw new Exception("Only PDF files are allowed for Experience Certificate.");
-                    }
-                }
 
-                // ==== Medical Certificate ====
-                if (FileUpload3.HasFile)
-                {
-                    if (Path.GetExtension(FileUpload3.FileName).ToLower() == ".pdf")
-                    {
-                        if (FileUpload3.PostedFile.ContentLength <= 1048576) // 1 MB
+                        string SupervisorName = txtSupervisorName.Text.Trim();
+                        string Age = txtCurrentAge.Text.Trim();
+                        string NewCertificateNo = txtNewCertificateNo.Text.Trim();
+                        string OldCertificateNo = txtOldCertificateNo.Text.Trim();
+                        string IssueDate = txtIssueDate.Text.Trim();
+                        //string PresentScope = txtPresentScope.Text.Trim();
+                        //string Academic = txtAcademic.Text.Trim();
+                        //string professional = txtProfessional.Text.Trim();
+                        string experience = txtExperience.Text.Trim();
+                        string address = txtAddress.Text.Trim();
+                        string State = ddlState.SelectedItem.Text.Trim();
+                        string District = ddlDistrict.SelectedItem.Text.Trim();
+                        string Pin = txtPin.Text.Trim();
+                        string UpgradationAppliedErlier = rblbelated.SelectedItem.Text;
+                        string InterviewDate = txtInterviewDate.Text.Trim();
+                        string CurrentVoltage = txtCurrentVoltage.Text.Trim();
+                        string Voltage = ddlVoltageLevel.SelectedValue.Trim();
+                        //int result = CEI.UpgradationOfSupervisorData(SupervisorName,NewCertificateNo, OldCertificateNo, IssueDate,PresentScope,
+                        //                                             Qualification, Academic, professional, 
+                        //                                             experience, address,
+                        //                                             State, District, Pin, UpgradationAppliedErlier, txtInterviewDate.Text.Trim(), Voltage, dbPathExperience,
+                        //                                             dbPathCompetency, dbPathMedicalCertificate, userId);
+                        int result = CEI.UpgradationOfSupervisorData(SupervisorName, txtDob.Text.Trim(), Age, NewCertificateNo, OldCertificateNo, IssueDate,
+                                                                     Qualification, experience, address,
+                                                                     State, District, Pin, UpgradationAppliedErlier, txtInterviewDate.Text.Trim(), CurrentVoltage, Voltage, dbPathExperience,
+                                                                     dbPathCompetency, dbPathMedicalCertificate, userId);
+
+                        if (result > 0)
                         {
-                            string fileName = "MedicalCertificate_" + DateTime.Now.ToString("yyyyMMddHHmmssfff") + ".pdf";
-                            string savePath = Path.Combine(baseFolder, fileName);
-                            FileUpload3.PostedFile.SaveAs(savePath);
-
-                            dbPathMedicalCertificate = "/Attachment/LicenceUpgadation/Supervisor/" + userId + "/" + fileName;
+                            //ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Upgradation applied successfully!');", true);
+                            //ReSet();
+                            string script = "alert('Upgradation applied successfully!'); window.location='/Supervisor/SupervisorUpgradationHistory.aspx';";
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "alertAndRedirect", script, true);
                         }
                         else
                         {
-                            throw new Exception("Medical Certificate must be less than 1 MB.");
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Error while saving documents.');", true);
                         }
                     }
-                    else
-                    {
-                        throw new Exception("Only PDF files are allowed for Medical Certificate.");
-                    }
-                }
-
-
-                string Qualification = "";
-                if (txtQualification.Visible == true)
-                {
-                    Qualification = txtQualification.Text;
                 }
                 else
                 {
-                    Qualification = ddlQualification.SelectedValue;
-
-                }
-
-                string SupervisorName = txtSupervisorName.Text.Trim();
-
-
-                string Age = txtCurrentAge.Text.Trim();
-                
-                string NewCertificateNo = txtNewCertificateNo.Text.Trim();
-                string OldCertificateNo = txtOldCertificateNo.Text.Trim();
-                string IssueDate = txtIssueDate.Text.Trim();
-                //string PresentScope = txtPresentScope.Text.Trim();
-                //string Academic = txtAcademic.Text.Trim();
-                //string professional = txtProfessional.Text.Trim();
-                string experience = txtExperience.Text.Trim();
-                string address = txtAddress.Text.Trim();
-                string State = ddlState.SelectedItem.Text.Trim();
-                string District = ddlDistrict.SelectedItem.Text.Trim();
-                string Pin = txtPin.Text.Trim();
-                string UpgradationAppliedErlier = rblbelated.SelectedItem.Text;
-                string InterviewDate = txtInterviewDate.Text.Trim();
-                string CurrentVoltage = txtCurrentVoltage.Text.Trim();
-                string Voltage = ddlVoltageLevel.SelectedValue.Trim();
-                //int result = CEI.UpgradationOfSupervisorData(SupervisorName,NewCertificateNo, OldCertificateNo, IssueDate,PresentScope,
-                //                                             Qualification, Academic, professional, 
-                //                                             experience, address,
-                //                                             State, District, Pin, UpgradationAppliedErlier, txtInterviewDate.Text.Trim(), Voltage, dbPathExperience,
-                //                                             dbPathCompetency, dbPathMedicalCertificate, userId);
-                int result = CEI.UpgradationOfSupervisorData(SupervisorName, txtDob.Text.Trim(), Age, NewCertificateNo, OldCertificateNo, IssueDate,
-                                                             Qualification, experience, address,
-                                                             State, District, Pin, UpgradationAppliedErlier, txtInterviewDate.Text.Trim(), CurrentVoltage, Voltage, dbPathExperience,
-                                                             dbPathCompetency, dbPathMedicalCertificate, userId);
-
-                if (result > 0)
-                {
-                    //ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Upgradation applied successfully!');", true);
-                    //ReSet();
-                   string script = "alert('Upgradation applied successfully!'); window.location='/Supervisor/SupervisorUpgradationHistory.aspx';";
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alertAndRedirect", script, true);
-                }
-                else
-                {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Error while saving documents.');", true);
+                    Response.Redirect("/AdminLogout.aspx");
                 }
             }
+            else
+            {
+                Response.Redirect("/AdminLogout.aspx");
+            }
         }
+        
 
         private void ReSet()
         {

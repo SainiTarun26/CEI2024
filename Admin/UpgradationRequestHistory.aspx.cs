@@ -83,7 +83,22 @@ namespace CEIHaryana.Admin
                     {
                         Response.Redirect("/Print_Forms/Contractor_Licence_Upgradation_Certificate.aspx",false);
                     }
-                }        
+                }
+                else if (e.CommandName == "Select")
+                {
+                    Label lblID = (Label)row.FindControl("lblID");
+                    Label lblType = (Label)row.FindControl("lblType");
+                    Label lblApplicationID = (Label)row.FindControl("lblApplicationID");
+                    Session["id"] = lblID.Text;
+                    if (lblType.Text == "Supervisor")
+                    {
+                        Response.Redirect("/UserPages/Supervisor_Upgradation.aspx", false);
+                    }
+                    else if (lblType.Text == "Contractor")
+                    {
+                        Response.Redirect("/UserPages/Contractor_Upgradation.aspx", false);
+                    }
+                }
             }
             catch (Exception ex)
             {

@@ -184,16 +184,22 @@
                                         <%#Container.DataItemIndex+1 %>
                                     </ItemTemplate>
                                 </asp:TemplateField>
-                                 <asp:TemplateField HeaderText="Id" Visible="False">
-     <ItemTemplate>
-            <asp:Label ID="lblID" runat="server" Text='<%#Eval("ID") %>'></asp:Label>
-     </ItemTemplate>
- </asp:TemplateField>
-    
-                                <asp:BoundField DataField="ApplicationID" HeaderText="Application ID">
+                                <asp:TemplateField HeaderText="Id" Visible="False">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblID" runat="server" Text='<%#Eval("ID") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <%--<asp:BoundField DataField="ApplicationID" HeaderText="Application ID">
                                     <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
                                     <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems " />
-                                </asp:BoundField>
+                                </asp:BoundField>--%>
+                                <asp:TemplateField HeaderText="Application ID">
+                                    <HeaderStyle HorizontalAlign="Left" Width="25%" CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="Left" Width="25%" />
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="LnkBtnViewDetails" runat="server" AutoPostBack="true" CommandArgument=' <%#Eval("ApplicationID") %> ' CommandName="Select"><%#Eval("ApplicationID") %></asp:LinkButton>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
                                 <asp:BoundField DataField="LicenceLevelAppliedFor" HeaderText="Voltage Level for which applied">
                                     <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
                                     <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems " />
@@ -218,15 +224,19 @@
                                     <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
                                     <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems" />
                                 </asp:BoundField>
-                                 <asp:TemplateField HeaderText="ApplicationForm">
-     <HeaderStyle Width="10%" CssClass="headercolor" />
-     <ItemStyle Width="10%" />
-     <ItemTemplate>
-         <asp:LinkButton ID="LinkButton1" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;" runat="server"
-             Text="<i class='fa fa-print' style='color:white !important;'></i>" CssClass='greenButton btn-primary' CommandName="Print" CommandArgument="<%# Container.DataItemIndex %>">
-         </asp:LinkButton>
-     </ItemTemplate>
- </asp:TemplateField>
+                                <asp:TemplateField HeaderText="ApplicationForm">
+                                    <HeaderStyle Width="10%" CssClass="headercolor" />
+                                    <ItemStyle Width="10%" />
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="LinkButton1" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;" runat="server"
+                                            Text="<i class='fa fa-print' style='color:white !important;'></i>" CssClass='greenButton btn-primary' CommandName="Print" CommandArgument="<%# Container.DataItemIndex %>">
+                                        </asp:LinkButton>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                                                <asp:BoundField DataField="RejectReason" HeaderText="Reject Reason">
+    <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
+    <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems" />
+</asp:BoundField>
                             </Columns>
                             <FooterStyle BackColor="White" ForeColor="#000066" />
                             <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />

@@ -1,38 +1,39 @@
 ﻿using CEI_PRoject;
-using CEIHaryana.Model.Industry;
-using CEIHaryana.UserPages;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace CEIHaryana.Admin
+namespace CEIHaryana.UserPages
 {
-    public partial class Supervisor_Upgradation_Details : System.Web.UI.Page
+    public partial class Supervisor_Upgradation : System.Web.UI.Page
     {
-        //page created by Neha
         CEI CEI = new CEI();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
+                if (Request.UrlReferrer != null)
+                {
+                    Session["PreviousPage"] = Request.UrlReferrer.ToString();
+                }
                 if (!string.IsNullOrEmpty(Convert.ToString(Session["AdminId"])))
                 {
                     if (!string.IsNullOrEmpty(Convert.ToString(Session["id"])))
                     {
                         int RowID = Convert.ToInt32(Session["id"]);
                         GetDataItem(RowID);
-
-                    }
-                    else
+                    }  
+                }
+                if (!string.IsNullOrEmpty(Convert.ToString(Session["SupervisorID"])))
+                {
+                    if (!string.IsNullOrEmpty(Convert.ToString(Session["id"])))
                     {
-                        Response.Redirect("/Admin/Contractor_Supervisor_Upgradation_Details.aspx");
+                        int RowID = Convert.ToInt32(Session["id"]);
+                        GetDataItem(RowID);
                     }
                 }
             }
@@ -66,7 +67,7 @@ namespace CEIHaryana.Admin
 
                     }
 
-                    txtName.Text = dt.Rows[0]["Name"].ToString();
+                    txtSupervisorName.Text = dt.Rows[0]["Name"].ToString();
                     txtDob.Text = dt.Rows[0]["DOB"].ToString();
                     txtCurrentAge.Text = dt.Rows[0]["CalculatedAge"].ToString();
                     string ageText = dt.Rows[0]["CalculatedAge"].ToString();
@@ -110,7 +111,6 @@ namespace CEIHaryana.Admin
                     {
                         OldCertificate.Visible = true;
                     }
-
                     txtIssueDate.Text = dt.Rows[0]["DateOfIssue"].ToString();
                     txtExperience.Text = dt.Rows[0]["Experience"].ToString();
                     txtAddress.Text = dt.Rows[0]["Address"].ToString();
@@ -134,13 +134,11 @@ namespace CEIHaryana.Admin
 
                     txtCurrentVoltage.Text = dt.Rows[0]["CurrentLicenceVoltageLevel"].ToString();
                     txtScopeVoltage.Text = dt.Rows[0]["ScopeVoltageLevel"].ToString();
-                 
+
                     lnkcompetencyCertificate.Text = "View Document";
                     lnkcompetencyCertificate.CommandArgument = dt.Rows[0]["CerificateOfCompetency"].ToString();
                     lnkexperienceCertificate.Text = "View Document";
                     lnkexperienceCertificate.CommandArgument = dt.Rows[0]["CertificateOfExperience"].ToString();
-
-
                 }
                 else { }
             }
@@ -151,15 +149,13 @@ namespace CEIHaryana.Admin
 
         private void getQualification(int qualificationInt)
         {
-                DataTable dQ = new DataTable();
-                dQ = CEI.GetSupervisorqualification(qualificationInt);
-                if (dQ != null && dQ.Rows.Count > 0)
-                {
-                    txtQualification.Text = dQ.Rows[0]["Qualificaton"].ToString();
-                }
+            DataTable dQ = new DataTable();
+            dQ = CEI.GetSupervisorqualification(qualificationInt);
+            if (dQ != null && dQ.Rows.Count > 0)
+            {
+                txtQualification.Text = dQ.Rows[0]["Qualificaton"].ToString();
             }
-        
-
+        }
         protected void grd_Documemnts_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             try
@@ -174,18 +170,6 @@ namespace CEIHaryana.Admin
             }
             catch (Exception ex)
             {
-            }
-        }
-
-        protected void RdbtnAccptReturn_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (RdbtnAccptReturn.SelectedValue == "1") //No(Return)
-            {
-                DivReason.Visible = true;
-            }
-            else
-            {
-                DivReason.Visible = false;
             }
         }
 
@@ -228,50 +212,18 @@ namespace CEIHaryana.Admin
             }
         }
 
-        protected void btnSubmit_Click(object sender, EventArgs e)
+        protected void btn_Back_Click(object sender, EventArgs e)
         {
-            string ActionBy = Convert.ToString(Session["AdminId"]);
-     
-            string SupervisorID = HFUserID.Value.Trim();
-            string ApplicationID = HFApplicationId.Value.Trim();
-
-            if (!string.IsNullOrEmpty(ActionBy) && !string.IsNullOrEmpty(ApplicationID))
+            try
             {
-                if (!string.IsNullOrEmpty(RdbtnAccptReturn.SelectedValue))
-                {            
-                    string rejectReason = string.Empty;
-
-                    if (RdbtnAccptReturn.SelectedValue == "0") // Approved
-                    {   
-                       CEI.ApproveRequestForSupervisorUpgradation(ApplicationID, ActionBy, SupervisorID);
-                       string script = "alert('Application Approved Successfully!'); window.location='/Admin/UpgradationRequestHistory.aspx';";
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alertAndRedirect", script, true);
-                    }
-                    else if (RdbtnAccptReturn.SelectedValue == "1") // Rejected
-                    {
-                        
-                        rejectReason = txtRejectReason.Text.Trim();
-
-                        if (string.IsNullOrWhiteSpace(rejectReason))
-                        {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "ErrorMessage", "alert('Please enter a reason for rejection.');", true);
-                            return;
-                        }
-                        CEI.RejectedRequestForSupervisorUpgradation(ApplicationID, rejectReason, ActionBy, SupervisorID);
-                        string script = "alert('Application Rejected Successfully!'); window.location='/Admin/UpgradationRequestHistory.aspx';";
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alertAndRedirect", script, true);
-
-                    }
-                }
-                else
+                string previousPageUrl = Session["PreviousPage"] as string;
+                if (!string.IsNullOrEmpty(previousPageUrl))
                 {
-
+                    Response.Redirect(previousPageUrl, false);
+                    Session["PreviousPage"] = null;
                 }
             }
-            else
-            {
-
-            }
+            catch { }
         }
     }
 }

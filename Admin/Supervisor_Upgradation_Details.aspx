@@ -269,12 +269,12 @@
 </div>
                                 <div class="col-md-4" style="margin-top: 15px;">
                                     <label>
-                                        Supervisor Name<samp style="color: red">* </samp>
+                                       Name<samp style="color: red">* </samp>
                                     </label>
-                                    <asp:TextBox class="form-control" ID="txtSupervisorName"  ReadOnly="true" runat="server" autocomplete="off"  onKeyPress="return alphabetKey(event);" TabIndex="1"
+                                    <asp:TextBox class="form-control" ID="txtName"  ReadOnly="true" runat="server" autocomplete="off"  onKeyPress="return alphabetKey(event);" TabIndex="1"
                                         Style="margin-left: 18px;">
                                     </asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ErrorMessage="Required" ControlToValidate="txtSupervisorName" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator3" ErrorMessage="Required" ControlToValidate="txtName" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
 
                                 </div>
 
@@ -297,7 +297,7 @@
                                     <asp:RequiredFieldValidator ID="RequiredFieldValidator21" ErrorMessage="Required" ControlToValidate="txtCurrentAge" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
                                 </div>
 
-                                <div class="col-md-4" style="margin-top: 15px;">
+                                <div class="col-md-4" style="margin-top: 15px;" runat="server" id="OldCertificate">
                                     <label>
                                         Old Certificate No.<samp style="color: red">* </samp>
                                     </label>

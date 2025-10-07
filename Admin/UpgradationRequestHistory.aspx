@@ -199,16 +199,23 @@
           </ItemTemplate>
       </asp:TemplateField>
     
- <asp:BoundField DataField="ApplicationID" HeaderText="Application ID">
+<%-- <asp:BoundField DataField="ApplicationID" HeaderText="Application ID">
      <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
      <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems itemstylecss" />
- </asp:BoundField>
+ </asp:BoundField>--%>
+                                  <asp:TemplateField HeaderText="Application ID">
+      <HeaderStyle HorizontalAlign="Left" Width="25%" CssClass="headercolor" />
+      <ItemStyle HorizontalAlign="Left" Width="25%" />
+      <ItemTemplate>
+          <asp:LinkButton ID="LnkBtnViewDetails" runat="server" AutoPostBack="true" CommandArgument=' <%#Eval("ApplicationID") %> ' CommandName="Select"><%#Eval("ApplicationID") %></asp:LinkButton>
+      </ItemTemplate>
+  </asp:TemplateField>
 
       <asp:BoundField DataField="ApplicationType" HeaderText="Application Type">
           <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
           <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems itemstylecss" />
       </asp:BoundField>
-      <asp:BoundField DataField="Name" HeaderText="Supervisor Name">
+      <asp:BoundField DataField="Name" HeaderText="Name">
           <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
           <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems itemstylecss" />
       </asp:BoundField>
@@ -245,6 +252,10 @@
         </asp:LinkButton>
     </ItemTemplate>
 </asp:TemplateField>
+                                 <asp:BoundField DataField="RejectReason" HeaderText="Reject Reason">
+     <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
+     <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems" />
+ </asp:BoundField>
   </Columns>
                             <FooterStyle BackColor="White" ForeColor="#000066" />
                             <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />

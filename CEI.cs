@@ -14490,7 +14490,8 @@ string dbPathCompetency, string dbPathMedicalCertificate, string userId)
                     cmd.Parameters.AddWithValue("@DOB", sqlDateOfBirth);
                     cmd.Parameters.AddWithValue("@CalculatedAge", CurrentAge);
                     cmd.Parameters.AddWithValue("@NewCertificateNo", NewCertificateNo);
-                    cmd.Parameters.AddWithValue("@OldCertificateNo", OldCertificateNo);
+                    //cmd.Parameters.AddWithValue("@OldCertificateNo", OldCertificateNo);
+                    cmd.Parameters.AddWithValue("@OldCertificateNo", String.IsNullOrEmpty(OldCertificateNo) ? DBNull.Value : (object)OldCertificateNo);
                     cmd.Parameters.AddWithValue("@DateOfIssue", sqlIssueDate);
                     cmd.Parameters.AddWithValue("@Qualification", Qualification);
                     cmd.Parameters.AddWithValue("@Experience", experience);
