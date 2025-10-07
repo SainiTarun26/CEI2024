@@ -300,13 +300,13 @@
 
                                 <div class="col-md-4" style="margin-top:15px;">
                                     <label>
-                                        Old Certificate No.<samp style="color: red">* </samp>
+                                        Old Certificate No.
                                     </label>
                                     <asp:TextBox class="form-control" ID="txtOldCertificateNo" runat="server" autocomplete="off" TabIndex="1"
                                         MaxLength="20" Style="margin-left: 18px;">
                                     </asp:TextBox>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" ErrorMessage="Required" ControlToValidate="txtOldCertificateNo" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-                                </div>
+                               <%--     <asp:RequiredFieldValidator ID="RequiredFieldValidator4" ErrorMessage="Required" ControlToValidate="txtOldCertificateNo" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                              --%> </div>
                                 <div class="col-md-4" style="margin-top:15px;">
                                     <label>
                                         New Certificate No.<samp style="color: red">* </samp>
@@ -488,7 +488,7 @@
                                     </tbody>
                                 </table>
                             </div>
-
+                            <asp:HiddenField ID="HdnUserId" runat="server" />
                         </div>
                     </ContentTemplate>
                 </asp:UpdatePanel>
