@@ -236,6 +236,9 @@
         .input-group {
             width: 95% !important;
         }
+        th.headercolor.leftalign {
+    width: 1%;
+}
     </style>
 </asp:Content>
 
@@ -419,7 +422,7 @@
                 Attachments
             </div>
             <div class="card" id="divLiftAttachments" runat="server" visible="false" style="margin: -11px; padding: 11px; margin-bottom: 20px;">
-                <asp:GridView class="table-responsive table table-hover table-striped" ID="Grd_Document" runat="server" AutoGenerateColumns="false">
+                <asp:GridView class="table-responsive table table-hover table-striped" ID="Grd_Document" Width="100%" runat="server" AutoGenerateColumns="false">
                     <PagerStyle CssClass="pagination-ys" />
                     <Columns>
                         <asp:BoundField DataField="SNo" HeaderText="SNo" />

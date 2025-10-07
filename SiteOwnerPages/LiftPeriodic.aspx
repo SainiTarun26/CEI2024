@@ -171,6 +171,19 @@
         th {
             background-color: #9292cc;
         }
+        th.headercolor {
+    width: 1%;
+}
+        th.width {
+    width: 1%;
+}
+        input#ContentPlaceHolder1_RadioButtonList2_1 {
+    margin-left: 15px;
+    margin-right: 5px;
+}
+        input#ContentPlaceHolder1_RadioButtonList2_0 {
+    margin-right: 5px;
+}
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -202,35 +215,36 @@
                         <PagerStyle CssClass="pagination-ys" />
                         <Columns>
                             <asp:TemplateField ItemStyle-HorizontalAlign="left" ItemStyle-VerticalAlign="Middle">
+                                <HeaderStyle HorizontalAlign="Left" CssClass="width" />
                                 <ItemTemplate>
                                     <asp:CheckBox ID="CheckBox1" runat="server" HorizontalAlign="center" AutoPostBack="true" OnCheckedChanged="CheckBox1_CheckedChanged" />
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="SNo">
-                                <HeaderStyle Width="5%" CssClass="headercolor" />
-                                <ItemStyle Width="5%" />
+                                <HeaderStyle CssClass="headercolor" />
+                                <ItemStyle />
                                 <ItemTemplate>
                                     <%#Container.DataItemIndex+1 %>
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:BoundField DataField="InstallationType" HeaderText="Installation Type">
-                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                <HeaderStyle HorizontalAlign="Left"  CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left"  />
                             </asp:BoundField>
                             <asp:BoundField DataField="RegistrationNo" HeaderText="Registration No">
-                                <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="Left" Width="15%" />
+                                <HeaderStyle HorizontalAlign="Left"  CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left"  />
                             </asp:BoundField>
 
                             <asp:BoundField DataField="SerialNo" HeaderText="Serial No">
-                                <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="center" Width="12%" />
+                                <HeaderStyle HorizontalAlign="center" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" />
                             </asp:BoundField>
                             <asp:TemplateField HeaderText="View Report" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
                                 <ItemTemplate>
                                     <asp:LinkButton ID="lnkRedirect1" runat="server" Text="View Report" CommandName="Select" CommandArgument='<%# Eval("RegistrationNo") %>' />
                                 </ItemTemplate>
-                                <ItemStyle HorizontalAlign="Center" Width="2%"></ItemStyle>
+                                <ItemStyle HorizontalAlign="Center"></ItemStyle>
                                 <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
                             </asp:TemplateField>
                             <asp:TemplateField HeaderText="Id" Visible="False">
@@ -251,16 +265,16 @@
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:BoundField DataField="LastApprovalDate" HeaderText="Approval date">
-                                <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="center" Width="12%" />
+                                <HeaderStyle HorizontalAlign="center"   CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center"   />
                             </asp:BoundField>
                             <%-- <asp:BoundField DataField="YearsDifference" HeaderText="Years Difference">
-                                <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="center" Width="12%" />
+                                <HeaderStyle HorizontalAlign="center"   CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center"   />
                             </asp:BoundField>--%>
                             <asp:BoundField DataField="Amount" HeaderText="Amount">
-                                <HeaderStyle HorizontalAlign="center" Width="12%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="center" Width="12%" />
+                                <HeaderStyle HorizontalAlign="center"   CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center"   />
                             </asp:BoundField>
                         </Columns>
                         <FooterStyle BackColor="White" ForeColor="#000066" />
@@ -289,14 +303,14 @@
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="SNo">
-                                    <HeaderStyle Width="5%" CssClass="headercolor" />
-                                    <ItemStyle Width="5%" />
+                                    <HeaderStyle   CssClass="headercolor" />
+                                    <ItemStyle   />
                                     <ItemTemplate>
                                         <%#Container.DataItemIndex+1 %>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Installation Type">
-                                    <HeaderStyle HorizontalAlign="Left" Width="30%" CssClass="headercolor" />
+                                    <HeaderStyle HorizontalAlign="Left"   CssClass="headercolor" />
                                     <ItemTemplate>
                                         <asp:Label ID="lblInstallationType" runat="server" Text='<%#Eval("InstallationType") %>'></asp:Label>
                                     </ItemTemplate>
@@ -305,8 +319,8 @@
                                     </FooterTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="No. of Lift/Escalator for Inspection">
-                                    <HeaderStyle HorizontalAlign="Left" Width="30%" CssClass="headercolor" />
-                                    <ItemStyle HorizontalAlign="Left" Width="30%" />
+                                    <HeaderStyle HorizontalAlign="Left"   CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="Left"   />
                                     <ItemTemplate>
                                         <asp:Label ID="lblQuantity" runat="server" Text='<%#Eval("Quantity") %>'></asp:Label>
                                     </ItemTemplate>
@@ -315,8 +329,8 @@
                                     </FooterTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Total Amount">
-                                    <HeaderStyle HorizontalAlign="Left" Width="25%" CssClass="headercolor" />
-                                    <ItemStyle HorizontalAlign="Left" Width="25%" />
+                                    <HeaderStyle HorizontalAlign="Left"   CssClass="headercolor" />
+                                    <ItemStyle HorizontalAlign="Left"   />
                                     <ItemTemplate>
                                         <asp:Label ID="lblInstallationAmount" runat="server" Text='<%#Eval("TotalAmount") %>'></asp:Label>
                                     </ItemTemplate>
@@ -351,8 +365,8 @@
                                     <PagerStyle CssClass="pagination-ys" />
                                     <Columns>
                                         <asp:TemplateField HeaderText="SNo">
-                                            <HeaderStyle Width="5%" CssClass="headercolor" />
-                                            <ItemStyle Width="5%" />
+                                            <HeaderStyle   CssClass="headercolor" />
+                                            <ItemStyle   />
                                             <ItemTemplate>
                                                 <%#Container.DataItemIndex+1 %>
                                             </ItemTemplate>
@@ -416,7 +430,7 @@ ForeColor="Red"  ErrorMessage="GRN No. must be exactly 10 alphanumeric character
                                 <asp:TextBox ID="txttransactionDate" onfocus="disableFutureDates()" min='0000-01-01' onkeydown="return false;" max='9999-01-01' TextMode="Date" runat="server" class="form-control" Font-Size="12px" Style="height: 30px;"></asp:TextBox><br />
                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator16" runat="server" ControlToValidate="txttransactionDate" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
                             </div>
-                            <div class="col-4" style="margin-top: auto; margin-bottom: auto;">
+                            <div class="col-4" style="margin-bottom: auto;">
                                 <label>
                                     Payment Mode
                                 </label>
@@ -442,7 +456,7 @@ ForeColor="Red"  ErrorMessage="GRN No. must be exactly 10 alphanumeric character
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" style="margin-bottom:25px;">
                 <div class="col-4"></div>
                 <div class="col-4" style="text-align: center;">
                     <asp:Button ID="btnSubmit" Text="Submit" OnClick="btnSubmit_Click" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" Visible="false" />
