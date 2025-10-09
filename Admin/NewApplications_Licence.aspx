@@ -452,6 +452,7 @@
 
                             <asp:DropDownList class="form-control  select-form select2" runat="server" ID="ddlAction" AutoPostBack="true" Style="width: 94% !important; height: 25px; padding: 0px; font-size: 13px;" OnSelectedIndexChanged="ddlAction_SelectedIndexChanged">
                                 <asp:ListItem Value="1" Selected="True">Forward</asp:ListItem>
+                                <asp:ListItem Value="2">Return</asp:ListItem>
                                 <asp:ListItem Value="3">Reject</asp:ListItem>
                             </asp:DropDownList>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator" ControlToValidate="ddlAction" runat="server" InitialValue="0" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>

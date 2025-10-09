@@ -502,8 +502,8 @@ namespace CEIHaryana.Admin
 
                         Label lblApplicationType = (Label)row.FindControl("lblApplicationType");
                         Label lblRegistrationNo;
-                        if (lblApplicationType.Text.Trim() == "New")
-                        {
+                        //if (lblApplicationType.Text.Trim() == "New")
+                        //{
 
                             lblRegistrationNo = (Label)row.FindControl("lblRegistrationNo");
                             cei.UpdatestatusOfReturnLicenseapplication("Return", "New", txtReason.Text, lblRegistrationNo.Text);
@@ -511,23 +511,18 @@ namespace CEIHaryana.Admin
 
                             ScriptManager.RegisterStartupScript(this, GetType(), "UploadError",
                                   "alert('Record Returned successfully);", true);
-                        }
-                        else
-                        {
-                            ScriptManager.RegisterStartupScript(this, GetType(), "UploadError",
-                          "alert('Only New License applications can be Returned. Renew will be rejected');", true);
-                            return;
-                        }
+                        //}
+                        //else
+                        //{
+                        //    ScriptManager.RegisterStartupScript(this, GetType(), "UploadError",
+                        //  "alert('Only New License applications can be Returned. Renew will be rejected');", true);
+                        //    return;
+                        //}
 
                         Response.Redirect("/Admin/NewApplications_Licence.aspx", false);
 
                     }
-                    else
-                    {
-                        ScriptManager.RegisterStartupScript(this, GetType(), "UploadError",
-                              "alert('You will only able to Reject 1 at a time');", true);
-                        return;
-                    }
+                    
                 }
             }
             else

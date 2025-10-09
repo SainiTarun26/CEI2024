@@ -443,12 +443,12 @@
                                         Reports</span>
                                 </a>
                             </li>
-                            <%--<li class="nav-item">
+                            <li class="nav-item">
                                 <a class="nav-link" href="/Contractor/Supervisor_Requests.aspx">
                                     <i class="icon-grid menu-icon"></i>
                                     <span class="menu-title">Supervisor Request</span>
                                 </a>
-                            </li>--%>
+                            </li>
                             <li class="nav-item">
                                 <a id="RenewalMenuItem" runat="server" visible="false" class="nav-link" href="/Contractor/Contractor_Licence_Renewal.aspx">
                                     <i class="icon-grid menu-icon"></i>

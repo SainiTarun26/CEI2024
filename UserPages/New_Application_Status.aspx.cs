@@ -168,7 +168,7 @@ namespace CEIHaryana.UserPages
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                string status = DataBinder.Eval(e.Row.DataItem, "Status")?.ToString();
+                string status = DataBinder.Eval(e.Row.DataItem, "ApplicationStatus")?.ToString();
 
 
                 Label lblID = e.Row.FindControl("lblID") as Label;
@@ -179,7 +179,7 @@ namespace CEIHaryana.UserPages
                 }
 
 
-                if (status == "Returned"|| status == "Rejected")
+                if (status == "Return"|| status == "Rejected")
                 {
                     GridView1.Columns[12].Visible = true;
                     GridView1.Columns[13].Visible = true;
