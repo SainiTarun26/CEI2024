@@ -261,17 +261,17 @@ namespace CEIHaryana.Industry
                         }
                         #region aslam code changed by aslam 19M-May-2025
                         //sld 
-                        //else if (Session["Serviceid_Temp"].ToString() == "930e4959-d5a0-4624-9995-8c5e3e9cadce")
-                        //{
-                        //    Session["SiteOwnerId_Sld_Industry"] = inputObject.pannumber;
-                        //    Session["Serviceid_Sld_Indus"] = inputObject.serviceid;
-                        //    Session["projectid_Sld_Indus"] = inputObject.projectid;
-                        //    Session["district_Temp"] = inputObject.project_site_district;
-                        //    Response.Redirect("/Industry_Master/SLD_request.aspx", false);
-                        //}
+                        else if (Session["Serviceid_Temp"].ToString() == "930e4959-d5a0-4624-9995-8c5e3e9cadce")
+                        {
+                            Session["SiteOwnerId_Sld_Industry"] = inputObject.pannumber;
+                            Session["Serviceid_Sld_Indus"] = inputObject.serviceid;
+                            Session["projectid_Sld_Indus"] = inputObject.projectid;
+                            Session["district_Temp"] = inputObject.project_site_district;
+                            Response.Redirect("/Industry_Master/SLD_request.aspx", false);
+                        }
                         //LiftNew 
                         #endregion
-                        else if (Session["Serviceid_Temp"].ToString() == "930e4959-d5a0-4624-9995-8c5e3e9cadce")
+                        else if (Session["Serviceid_Temp"].ToString() == "e3730c68-6803-45c5-83fe-6b0f9dc96145")
 
                         #region aslam code changed by aslam 19M-May-2025
                         {

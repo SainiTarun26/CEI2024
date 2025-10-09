@@ -67,14 +67,33 @@ namespace CEIHaryana.Industry_Master.SiteOwnerPages
                     Label lblRegistrationNo = (Label)row.FindControl("lblRegistrationNo");
                     Session["RegistrationNo_IndustryLift"] = lblRegistrationNo.Text;
                     string InspectionId = Session["InspectionId_IndustryLift"].ToString();
+                    Label lblInspectionType = (Label)row.FindControl("lblInspectionType");
                     Session["LiftTestReportID_IndustryLift"] = id;
                     if (lblInstallationType.Text == "Lift")
                     {
-                        Response.Redirect("/Industry_Master/Print_Forms/LiftApprovalCertificate_IndustryLift.aspx", false);
+                        if (lblInspectionType.Text == "Periodic")
+                        {
+                            Response.Redirect("/Print_Forms/Print_Renewal_Of_Lift.aspx", false);
+                            return;
+                        }
+                        else
+                        {
+                            Response.Redirect("/Industry_Master/Print_Forms/LiftApprovalCertificate_IndustryLift.aspx", false);
+                            return;
+                        }
                     }
                     else
                     {
-                        Response.Redirect("/Industry_Master/Print_Forms/EscalatorApprovalCertificate_IndustryLift.aspx", false);
+                        if (lblInspectionType.Text == "Periodic")
+                        {
+                            Response.Redirect("/Print_Forms/Print_Renewal_Of_Lift.aspx", false);
+                            return;
+                        }
+                        else
+                        {
+                            Response.Redirect("/Industry_Master/Print_Forms/EscalatorApprovalCertificate_IndustryLift.aspx", false);
+                            return;
+                        }
                     }
 
                 }

@@ -104,9 +104,8 @@ namespace CEIHaryana.Industry_Master.SiteOwnerPages
                 ds = CEI.InspectionData_Lift_Escalator_IndustryLift(ID);
 
                 IType = ds.Tables[0].Rows[0]["IType"].ToString();
-                //Added By aslam 2-June-2025
-                lblInspectionType.Text = ds.Tables[0].Rows[0]["IType"].ToString();
-                //txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
+                txtInspectionType.Text = ds.Tables[0].Rows[0]["IType"].ToString();
+                txtApplicantType.Text = ds.Tables[0].Rows[0]["ApplicantType"].ToString();
                 txtWorkType.Text = ds.Tables[0].Rows[0]["InstallationType"].ToString();
                 string createdDate = ds.Tables[0].Rows[0]["CreatedDate"].ToString();
                 DateTime.TryParse(createdDate, out inspectionCreatedDate);
@@ -342,7 +341,6 @@ namespace CEIHaryana.Industry_Master.SiteOwnerPages
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                //Added By aslam 2-June-2025
                 //Change status to action taken by gurmeet 15-may-2025
                 string status = DataBinder.Eval(e.Row.DataItem, "ActionTaken").ToString();
                 if (status == "RETURN")
@@ -544,6 +542,12 @@ namespace CEIHaryana.Industry_Master.SiteOwnerPages
             catch (Exception ex)
             {
             }
+        }
+        protected void lnkReturn_Command(object sender, CommandEventArgs e)
+        {
+            string inspectionId = e.CommandArgument.ToString();
+            InspectionReturnDetails.GetReturnDetails(inspectionId);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "ShowReturnModal", "$('#ownerModal').modal('show');", true);
         }
     }
 }

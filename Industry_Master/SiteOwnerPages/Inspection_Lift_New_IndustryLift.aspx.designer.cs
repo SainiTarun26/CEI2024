@@ -15,22 +15,31 @@ namespace CEIHaryana.Industry_Master.SiteOwnerPages
     {
 
         /// <summary>
-        /// lblInspectionType control.
+        /// Inspections control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblInspectionType;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Inspections;
 
         /// <summary>
-        /// txtApplicationNo control.
+        /// txtPremises control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtApplicationNo;
+        protected global::System.Web.UI.WebControls.TextBox txtPremises;
+
+        /// <summary>
+        /// txtApplicantType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtApplicantType;
 
         /// <summary>
         /// txtWorkType control.
@@ -40,6 +49,33 @@ namespace CEIHaryana.Industry_Master.SiteOwnerPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtWorkType;
+
+        /// <summary>
+        /// Type control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Type;
+
+        /// <summary>
+        /// txtInspectionType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtInspectionType;
+
+        /// <summary>
+        /// txtApplicationNo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtApplicationNo;
 
         /// <summary>
         /// txtAmount control.
@@ -130,6 +166,15 @@ namespace CEIHaryana.Industry_Master.SiteOwnerPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView Grid_MultipleInspectionTR;
+
+        /// <summary>
+        /// InspectionReturnDetails control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::CEIHaryana.UserCPages.InspectionReturnDetails InspectionReturnDetails;
 
         /// <summary>
         /// ApprovalRequired control.

@@ -31,7 +31,18 @@ namespace CEIHaryana.Officers
             try
             {
                 string LoginID = string.Empty;
-                LoginID = Session["InProcessInspectionId"].ToString();
+                //Added On 8 oct 2025 to Show Industry cirtificate pages.
+                if (Convert.ToString(Session["InProcessInspectionId"]) != null && Convert.ToString(Session["InProcessInspectionId"]) != string.Empty)
+                {
+                    Session["InProcessInspectionId_IndustryLift"] = null;
+                    LoginID = Session["InProcessInspectionId"].ToString();
+                    
+                }
+                else if (Convert.ToString(Session["InProcessInspectionId_IndustryLift"]) != null && Convert.ToString(Session["InProcessInspectionId_IndustryLift"]) != string.Empty)
+                {
+                    Session["InProcessInspectionId"] = null;
+                    LoginID = Session["InProcessInspectionId_IndustryLift"].ToString();
+                }
                 DataSet ds = new DataSet();
                 ds = CEI.ApprovalData_Lift(LoginID);
                 if (ds != null && ds.Tables.Count > 0)
@@ -69,24 +80,89 @@ namespace CEIHaryana.Officers
                     Label lblInstallationType = (Label)row.FindControl("lblInstallationType");
                     Label lblInspectionType = (Label)row.FindControl("lblInspectionType");
                     string id = lblID.Text;
-                     string  LoginID = Session["InProcessInspectionId"].ToString();
-                    Session["LiftTestReportID"] = id;
-                    if (lblInstallationType.Text == "Lift")
+
+                    //Commented On 8 oct 2025 by aslam.
+                    // string  LoginID = Session["InProcessInspectionId"].ToString();
+                    //Session["LiftTestReportID"] = id;
+                    //if (lblInstallationType.Text == "Lift")
+                    //{
+                    //    //
+                    //    if (lblInspectionType.Text == "Periodic")
+                    //    {
+                    //        Response.Redirect("/Print_Forms/Print_Renewal_Of_Lift.aspx", false);
+                    //    }
+                    //    else
+                    //    {
+                    //        Response.Redirect("/Print_Forms/LiftApprovalCertificate.aspx", false);
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    Response.Redirect("/Print_Forms/EscalatorApprovalCertificate.aspx", false);
+                    //}
+
+                    //Added On 8 oct 2025 to Show Industry cirtificate pages by aslam.
+                    if (Convert.ToString(Session["InProcessInspectionId"]) != null && Convert.ToString(Session["InProcessInspectionId"]) != string.Empty)
                     {
-                        //
-                        if (lblInspectionType.Text == "Periodic")
+                        string LoginID = Session["InProcessInspectionId"].ToString();
+                        Session["LiftTestReportID"] = id;
+                        Session["LiftTestReportID_IndustryLift"] = null;
+
+                        if (lblInstallationType.Text == "Lift")
                         {
-                            Response.Redirect("/Print_Forms/Print_Renewal_Of_Lift.aspx", false);
+                            if (lblInspectionType.Text == "Periodic")
+                            {
+                                Response.Redirect("/Print_Forms/Print_Renewal_Of_Lift.aspx", false);
+                            }
+                            else
+                            {
+                                Response.Redirect("/Print_Forms/LiftApprovalCertificate.aspx", false);
+                            }
                         }
                         else
                         {
-                            Response.Redirect("/Print_Forms/LiftApprovalCertificate.aspx", false);
+                            if (lblInspectionType.Text == "Periodic")
+                            {
+                                Response.Redirect("/Print_Forms/Print_Renewal_Of_Lift.aspx", false);
+                            }
+                            else
+                            {
+                                Response.Redirect("/Print_Forms/EscalatorApprovalCertificate.aspx", false);
+                            }
                         }
                     }
-                    else
+                    else if (Convert.ToString(Session["InProcessInspectionId_IndustryLift"]) != null && Convert.ToString(Session["InProcessInspectionId_IndustryLift"]) != string.Empty)
                     {
-                        Response.Redirect("/Print_Forms/EscalatorApprovalCertificate.aspx", false);
+                        string LoginID = Session["InProcessInspectionId_IndustryLift"].ToString();
+                        Session["LiftTestReportID_IndustryLift"] = id;
+                        Session["LiftTestReportID"] = null;
+
+                        if (lblInstallationType.Text == "Lift")
+                        {
+                            
+                            if (lblInspectionType.Text == "Periodic")
+                            {
+                               // Response.Redirect("/Print_Forms/Print_Renewal_Of_Lift.aspx", false);
+                            }
+                            else
+                            {
+                                Response.Redirect("/Industry_Master/Print_Forms/LiftApprovalCertificate_IndustryLift.aspx", false);
+                            }
+                        }
+                        else
+                        {
+                            if (lblInspectionType.Text == "Periodic")
+                            {
+                                //Response.Redirect("/Print_Forms/Print_Renewal_Of_Lift.aspx", false);
+                            }
+                            else
+                            {
+                                Response.Redirect("/Industry_Master/Print_Forms/EscalatorApprovalCertificate_IndustryLift.aspx", false);
+                            }
+                        }
+
                     }
+
                 }
             }
             catch { }

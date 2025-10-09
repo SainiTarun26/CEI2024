@@ -206,6 +206,18 @@ namespace CEIHaryana.Officers
                             }
                             else if (InstallationType == "Lift" || InstallationType == "Escalator" || InstallationType == "Lift/Escalator" || InstallationType == "MultiLift" || InstallationType == "MultiEscalator")
                             {
+                                if (lblblUserType.Text != "Industry")
+                                {
+                                    Session["InProcessInspectionId"] = id;
+                                    Session["InProcessInspectionId_IndustryLift"] = null;
+
+                                }
+                                else if (lblblUserType.Text == "Industry")
+                                {
+                                    Session["InProcessInspectionId_IndustryLift"] = id;
+                                    Session["InProcessInspectionId"] = null;
+
+                                }
                                 Response.Redirect("/Officers/Lift_EscelatorApprovaldata.aspx", false);
                             }
 

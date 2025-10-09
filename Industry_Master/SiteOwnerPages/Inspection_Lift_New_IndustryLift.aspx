@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Industry_Master/NewLift_Industry.Master" AutoEventWireup="true" CodeBehind="Inspection_Lift_New_IndustryLift.aspx.cs" Inherits="CEIHaryana.Industry_Master.SiteOwnerPages.Inspection_Lift_New_IndustryLift" %>
-
+<%@ Register Src="~/UserCPages/InspectionReturnDetails.ascx" TagPrefix="uc1" TagName="InspectionReturnDetails" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
@@ -13,6 +13,7 @@
     <script src="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.jquery.min.js"></script>
     <link href="https://cdn.rawgit.com/harvesthq/chosen/gh-pages/chosen.min.css" rel="stylesheet" />
     <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript">
         function isNumberKey(evt) {
             var charCode = (evt.which) ? evt.which : event.keyCode
@@ -176,11 +177,11 @@
     <div class="content-wrapper">
         <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
             <div class="card-title" style="margin-bottom: 20px; margin-top: 15px; font-size: 17px; font-weight: 600; margin-left: 5px;">
-                Inspection Details(<asp:Label ID="lblInspectionType" runat="server"  Text="Label" style="font-size: 17px;"></asp:Label>)
+                Inspection Details
             </div>
             <div class="card" style="padding-top: 10px; padding-left: 15px; padding-right: 15px;">
                 <div class="row">
-                   <%-- <div class="col-4" id="Inspections" runat="server" visible="false">
+                   <div class="col-4" id="Inspections" runat="server" visible="false">
                         <label>
                             Type of Inspection
                     <samp style="color: red">* </samp>
@@ -194,10 +195,7 @@
                             Type of Applicant
                         </label>
                         <asp:TextBox class="form-control" ID="txtApplicantType" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
-                    </div>--%>
-                    <div class="col-4" runat="server">
-                        <label for="Pin">Application No.</label>
-                        <asp:TextBox class="form-control" ID="txtApplicationNo" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+
                     </div>
                     <div class="col-4">
                         <label>
@@ -206,12 +204,15 @@
                         <asp:TextBox class="form-control" ID="txtWorkType" ReadOnly="true" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
                     </div>
-                  <%--  <div class="col-4" id="Type" runat="server">
+                    <div class="col-4" id="Type" runat="server">
                         <label for="Pin">InspectionType</label>
                         <asp:TextBox class="form-control" ID="txtInspectionType" ReadOnly="true" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
 
-                    </div>--%>
-
+                    </div>
+                    <div class="col-4" runat="server">
+                        <label for="Pin">Application No.</label>
+                        <asp:TextBox class="form-control" ID="txtApplicationNo" ReadOnly="true" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeyup="ValidatePincode();" onKeyPress="return isNumberKey(event);" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    </div>
                     <div class="col-4" runat="server">
                         <label for="Pin">Total Amount</label>
                         <asp:TextBox class="form-control" ID="txtAmount" ReadOnly="true" autocomplete="off" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
@@ -267,7 +268,7 @@
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="Previous Documents" ItemStyle-HorizontalAlign="Center" ItemStyle-Width="4%">
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="LnkPreviousDocumemtPath" runat="server"  CommandArgument='<%# Bind("PreviousDocumentPath") %>' CommandName="Select">                                           
+                                        <asp:LinkButton ID="LnkPreviousDocumemtPath" runat="server" CommandArgument='<%# Bind("PreviousDocumentPath") %>' CommandName="Select">                                           
                                         Click here to view document  </asp:LinkButton>
                                     </ItemTemplate>
                                     <ItemStyle HorizontalAlign="Center" Width="2%" CssClass="headercolor"></ItemStyle>
@@ -293,7 +294,7 @@
             <div class="card" style="padding-top: 10px;">
                 <div class="col-12">
 
-                    <asp:GridView ID="GridView2" CssClass="table table-bordered table-striped table-responsive" runat="server"  OnRowDataBound="GridView2_RowDataBound" AutoGenerateColumns="false" >
+                    <asp:GridView ID="GridView2" CssClass="table table-bordered table-striped table-responsive" runat="server" OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView2_RowDataBound" AutoGenerateColumns="false" >
                         <HeaderStyle BackColor="#B7E2F0" />
                         <Columns>
                             <asp:TemplateField HeaderText="SNo">
@@ -307,10 +308,36 @@
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
                             </asp:BoundField>
-                            <asp:BoundField DataField="ActionTaken" HeaderText="ActionTaken">
+                            <%--                            <asp:BoundField DataField="ActionTaken" HeaderText="ActionTaken">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
-                            </asp:BoundField>
+                            </asp:BoundField>--%>
+                            <asp:TemplateField HeaderText="ActionTaken">
+                                <HeaderStyle HorizontalAlign="Left" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="Left" />
+                                <ItemTemplate>
+                                    <asp:Label ID="lblActionTaken" runat="server" Text='<%# Eval("ActionTaken") %>' Visible="false" />
+                                    <asp:Label ID="lblInspectionId" runat="server" Text='<%# Eval("Id") %>' Visible="false" />
+
+                                    <!-- If ActionTaken is RETURN, show LinkButton -->
+                                    <asp:LinkButton
+                                        ID="lnkReturn"
+                                        runat="server"
+                                        Text="Return"
+                                        CommandName="ShowReturnPopup"
+                                        CommandArgument='<%# Eval("Id") %>'
+                                        OnCommand="lnkReturn_Command"
+                                        CssClass="text-danger"
+                                        Visible='<%# Eval("ActionTaken").ToString() == "Return" %>' />
+
+                                    <!-- Otherwise, show normal text -->
+                                    <asp:Label
+                                        ID="lblNormalStatus"
+                                        runat="server"
+                                        Text='<%# Eval("ActionTaken") %>'
+                                        Visible='<%# Eval("ActionTaken").ToString() != "Return" %>' />
+                                </ItemTemplate>
+                            </asp:TemplateField>
                             <%-- <asp:BoundField DataField="TestRportId" HeaderText="TestReportId" Visible="false">
                                 <HeaderStyle HorizontalAlign="Left" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="Left" Width="15%" />
@@ -446,6 +473,7 @@
                 </div>
             </div>
 
+             <uc1:InspectionReturnDetails runat="server" id="InspectionReturnDetails" /> 
 
 
             <div class="row">
@@ -496,6 +524,6 @@
 
         </div> 
     </div>
-
+     <script src="/Assets/js/js/vendor.bundle.base.js"></script> 
 
 </asp:Content>

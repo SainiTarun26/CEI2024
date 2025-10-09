@@ -67,6 +67,10 @@ namespace CEIHaryana.Industry_Master.Print_Forms
                     InspectionId = Session["InspectionId_IndustryLift"].ToString();
 
                 }
+                else if (Session["InspectionId"] != null)
+                {
+                    InspectionId = Session["InspectionId"].ToString();
+                }
                 ID = Session["LiftTestReportID_IndustryLift"].ToString();
                 DataTable dt = new DataTable();
                 dt = CEI.GetLiftCertificateData_IndustryLift(InspectionId, ID);
