@@ -112,6 +112,7 @@ namespace CEIHaryana.Wiremen
             txtaddress.Text = dt.Rows[0]["FullAddress"].ToString();
             txtAddressNew.Text=dt.Rows[0]["Address"].ToString();
             ddlState1.SelectedItem.Text=dt.Rows[0]["State"].ToString();
+            ddlLoadBindDistrict1(ddlState1.SelectedItem.Text.ToString());
             ddlDistrict1.SelectedItem.Text=dt.Rows[0]["District"].ToString();
             txtPincodeNew.Text=dt.Rows[0]["PinCode"].ToString();
             txtFatherName.Text = dt.Rows[0]["FatherName"].ToString();
@@ -167,19 +168,29 @@ namespace CEIHaryana.Wiremen
                     string CreatedBy = HdnUserId.Value;
                     string MedicalFitnessfp = "";
                     int maxFileSize = 1024 * 1024; // 1MB
+                    bool isAllFilesValid = true;
 
-                    string CertificateofCompetency = SaveFile(Certificate.PostedFile, "Certificate", "Certificate", CreatedBy, maxFileSize);
-                    string PresentworkingStatusfp = SaveFile(PresentworkingStatus.PostedFile, "WorkStatus", "WorkStatus", CreatedBy, maxFileSize);
-                    string Undertakingfp = SaveFile(Undertaking.PostedFile, "Undertaking", "Undertaking", CreatedBy, maxFileSize);
+                    // Save files with proper validation
+                    string CertificateofCompetency = SaveFile(Certificate.PostedFile, "Certificate", "Certificate", CreatedBy, maxFileSize, ref isAllFilesValid);
+                    string PresentworkingStatusfp = SaveFile(PresentworkingStatus.PostedFile, "WorkStatus", "WorkStatus", CreatedBy, maxFileSize, ref isAllFilesValid);
+                    string Undertakingfp = SaveFile(Undertaking.PostedFile, "Undertaking", "Undertaking", CreatedBy, maxFileSize, ref isAllFilesValid);
 
-                    if (MedicalCertificate.Visible == true)
+                    if (MedicalCertificate.Visible)
                     {
-                        MedicalFitnessfp = SaveFile(MedicalFitness.PostedFile, "Medical", "Medical", CreatedBy, maxFileSize);
+                        MedicalFitnessfp = SaveFile(MedicalFitness.PostedFile, "Medical", "Medical", CreatedBy, maxFileSize, ref isAllFilesValid);
                     }
 
-                    string Challanfp = SaveFile(Challan.PostedFile, "Challan", "Challan", CreatedBy, maxFileSize);
-                    string Candidateimage = SaveFile(CandidateImage.PostedFile, "Candidate Image", "Candidate Image", CreatedBy, maxFileSize);
-                    string Candidatesignature = SaveFile(CandidateSignature.PostedFile, "Candidate Signature", "Candidate Signature", CreatedBy, maxFileSize);
+                    string Challanfp = SaveFile(Challan.PostedFile, "Challan", "Challan", CreatedBy, maxFileSize, ref isAllFilesValid);
+                    string Candidateimage = SaveFile(CandidateImage.PostedFile, "Candidate Image", "Candidate Image", CreatedBy, maxFileSize, ref isAllFilesValid);
+                    string Candidatesignature = SaveFile(CandidateSignature.PostedFile, "Candidate Signature", "Candidate Signature", CreatedBy, maxFileSize, ref isAllFilesValid);
+
+                    // Check if any file is invalid
+                    if (!isAllFilesValid)
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert",
+                            "alert('Only PDF or Image files (.jpg, .jpeg, .png) less than 1MB are allowed.');", true);
+                        return;
+                    }
 
 
                     //DateTime Dateturn55 = DateTime.ParseExact("21-05-2003", "dd-MM-yyyy", System.Globalization.CultureInfo.InvariantCulture);
@@ -253,27 +264,31 @@ namespace CEIHaryana.Wiremen
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('Unexpected error occurred.')", true);
             }
         }
-
-        private string SaveFile(HttpPostedFile file, string folderName, string prefix, string createdBy, int maxFileSize)
+        private string SaveFile(HttpPostedFile file, string folderName, string prefix, string createdBy, int maxFileSize, ref bool isValid)
         {
             if (file == null || file.ContentLength == 0)
                 return null;
 
-            // Validate file size
-            if (file.ContentLength > maxFileSize)
+            string ext = Path.GetExtension(file.FileName).ToLower();
+            bool isFileValid = false;
+
+            // Check if folder is for images
+            if (folderName.Equals("Candidate Image", StringComparison.OrdinalIgnoreCase) ||
+                folderName.Equals("Candidate Signature", StringComparison.OrdinalIgnoreCase) )
             {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert",
-                    $"alert('{prefix} must be less than {maxFileSize / 1024 / 1024}MB.')", true);
-                return null;
+                isFileValid = IsValidPhoto(file);
+            }
+            else
+            {
+                // PDF validation
+                isFileValid = ValidatePdfFile(file);
             }
 
-            string ext = Path.GetExtension(file.FileName).ToLower();
-
-            // Allow only pdf, jpg, jpeg, png
-            if (ext != ".pdf" && ext != ".jpg" && ext != ".jpeg" && ext != ".png")
+            if (!isFileValid)
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert",
-                    $"alert('{prefix} must be a PDF or an Image file (.jpg, .jpeg, .png).')", true);
+                    $"alert('{prefix} has invalid format or exceeds 1MB.');", true);
+                isValid = false;
                 return null;
             }
 
@@ -281,9 +296,7 @@ namespace CEIHaryana.Wiremen
             string path = $"/Attachment/Renewal/{createdBy}/{folderName}/";
             string directoryPath = HttpContext.Current.Server.MapPath("~" + path);
             if (!Directory.Exists(directoryPath))
-            {
                 Directory.CreateDirectory(directoryPath);
-            }
 
             // Generate unique file name
             string fileName = $"{prefix}_{DateTime.Now:yyyyMMddHHmmssfff}{ext}";
@@ -296,27 +309,49 @@ namespace CEIHaryana.Wiremen
         }
 
 
-        //private string SavePdf(HttpPostedFile file, string folderName, string prefix, string createdBy, int maxFileSize)
+        private bool IsValidPhoto(HttpPostedFile file)
+        {
+            string ext = Path.GetExtension(file.FileName).ToLower();
+            if (ext != ".jpg" && ext != ".jpeg" && ext != ".png") return false;
+
+            if (file.ContentLength > 1048576) return false; // 1MB
+            return true;
+        }
+
+
+        private bool ValidatePdfFile(HttpPostedFile file)
+        {
+            string ext = Path.GetExtension(file.FileName).ToLower();
+            if (ext != ".pdf") return false;
+
+            if (file.ContentLength > 1048576) return false; // 1MB
+            return true;
+        }
+
+        //private string SaveFile(HttpPostedFile file, string folderName, string prefix, string createdBy, int maxFileSize)
         //{
         //    if (file == null || file.ContentLength == 0)
         //        return null;
 
+        //    // Validate file size
         //    if (file.ContentLength > maxFileSize)
         //    {
         //        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert",
-        //            $"alert('{prefix} must be a PDF file with a maximum size of 1MB.')", true);
+        //            $"alert('{prefix} must be less than {maxFileSize / 1024 / 1024}MB.')", true);
         //        return null;
         //    }
 
         //    string ext = Path.GetExtension(file.FileName).ToLower();
-        //    if (ext != ".pdf")
+
+        //    // Allow only pdf, jpg, jpeg, png
+        //    if (ext != ".pdf" && ext != ".jpg" && ext != ".jpeg" && ext != ".png")
         //    {
         //        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert",
-        //            $"alert('{prefix} must be a PDF file.')", true);
+        //            $"alert('{prefix} must be a PDF or an Image file (.jpg, .jpeg, .png).')", true);
         //        return null;
         //    }
 
-        //    // Build folder path
+        //    // Set folder path
         //    string path = $"/Attachment/Renewal/{createdBy}/{folderName}/";
         //    string directoryPath = HttpContext.Current.Server.MapPath("~" + path);
         //    if (!Directory.Exists(directoryPath))
@@ -324,16 +359,16 @@ namespace CEIHaryana.Wiremen
         //        Directory.CreateDirectory(directoryPath);
         //    }
 
-        //    // Unique file name
-        //    string fileName = $"{prefix}_{DateTime.Now:yyyyMMddHHmmssfff}.pdf";
+        //    // Generate unique file name
+        //    string fileName = $"{prefix}_{DateTime.Now:yyyyMMddHHmmssfff}{ext}";
         //    string filePath = Path.Combine(directoryPath, fileName);
 
         //    // Save file
         //    file.SaveAs(filePath);
 
-        //    // Return relative path to save in DB
         //    return path + fileName;
         //}
+
 
 
         protected void ddlRenewalTime_SelectedIndexChanged(object sender, EventArgs e)

@@ -90,11 +90,20 @@ namespace CEIHaryana.Contractor
             DataTable dt = new DataTable();
             dt = CEI.GetContractorDetailsforRenewal(userID);
             txtname.Text = dt.Rows[0]["Name"].ToString();
-            txtDOB.Text = dt.Rows[0]["DateOfBirth"].ToString();
+            //  txtDOB.Text = dt.Rows[0]["DateOfBirth"].ToString();
+            if (dt.Rows[0]["DateOfBirth"] != DBNull.Value)
+            {
+                DateTime dob = Convert.ToDateTime(dt.Rows[0]["DateOfBirth"]);
+                txtDOB.Text = dob.ToString("yyyy-MM-dd");
+            }
             if (!string.IsNullOrEmpty(txtDOB.Text))
             {
                 txtage.Text = dt.Rows[0]["Age"].ToString();
-                txtage55.Text = dt.Rows[0]["Birthday55"].ToString();
+                if (dt.Rows[0]["Birthday55"] != DBNull.Value)
+                {
+                    DateTime dob55 = Convert.ToDateTime(dt.Rows[0]["Birthday55"]);
+                    txtage55.Text = dob55.ToString("yyyy-MM-dd");
+                }
                 txtDOB.ReadOnly = true;
             }
             else
@@ -114,10 +123,10 @@ namespace CEIHaryana.Contractor
             txtLicenceOld.Text = dt.Rows[0]["LicenceOld"].ToString();
             txtaddress.Text = dt.Rows[0]["ContractorAddress"].ToString();
             txtAddressNew.Text = dt.Rows[0]["RegisteredOffice"].ToString();
-            ddlState1.SelectedItem.Text =dt.Rows[0]["State"].ToString();
+            ddlState1.SelectedItem.Text = dt.Rows[0]["State"].ToString();
             ddlLoadBindDistrict1(ddlState1.SelectedItem.Text);
-            ddlDistrict1.SelectedItem.Text=dt.Rows[0]["Districtoffirm"].ToString();
-            txtPincodeNew.Text=dt.Rows[0]["PinCode"].ToString();
+            ddlDistrict1.SelectedItem.Text = dt.Rows[0]["Districtoffirm"].ToString();
+            txtPincodeNew.Text = dt.Rows[0]["PinCode"].ToString();
             txtDistrict.Text = dt.Rows[0]["Districtoffirm"].ToString();
             txtVoltageLevel.Text = dt.Rows[0]["Votagelevel"].ToString();
             txtPhone.Text = dt.Rows[0]["ContactNo"].ToString();
@@ -407,20 +416,27 @@ namespace CEIHaryana.Contractor
 
                     string CreatedBy = HdnUserId.Value;
                     int maxFileSize = 1024 * 1024; // 1 MB
+                    bool isAllFilesValid = true;
 
                     // Save files
-                    string ContractorLicense = SaveFile(Licence.PostedFile, "ContractorLicense", "Contractor License", CreatedBy, maxFileSize);
-                    string certificate = SaveFile(Certificate.PostedFile, "Certificate", "Competency Certificate", CreatedBy, maxFileSize);
-                    string Incometax = SaveFile(IncomeTax.PostedFile, "IncomeTax", "Income Tax Return", CreatedBy, maxFileSize);
-                    string Calibrationtertificate = SaveFile(CalibrationCertificate.PostedFile, "CalibrationCertificate", "Calibration Certificate", CreatedBy, maxFileSize);
-                    string WorksExecuted = SaveFile(worksexecuted.PostedFile, "WorksExecuted", "Works Executed", CreatedBy, maxFileSize);
-                    string annexureIII = SaveFile(AnnexureIII.PostedFile, "AnnexureIII", "Annexure III", CreatedBy, maxFileSize);
-                    string FormE1 = SaveFile(FormE.PostedFile, "FormE", "Form E", CreatedBy, maxFileSize);
-                    string Challanfp = SaveFile(Challan.PostedFile, "Challan", "Challan", CreatedBy, maxFileSize);
-                    string Candidateimage = SaveFile(CandidateImage.PostedFile, "Candidate Image", "Candidate Image", CreatedBy, maxFileSize);
-                    string Candidatesignature = SaveFile(CandidateSignature.PostedFile, "Candidate Signature", "Candidate Signature", CreatedBy, maxFileSize);
-                    string AuthorizationLetter = SaveFile(Authorizationletter.PostedFile, "Authorization letter", "Authorization letter", CreatedBy, maxFileSize);
-                    string Otherdocument = SaveFile(OtherDocument.PostedFile, "Other Document", "Other Document", CreatedBy, maxFileSize);
+                    string ContractorLicense = SaveFile(Licence.PostedFile, "ContractorLicense", "Contractor License", CreatedBy, maxFileSize, ref isAllFilesValid);
+                    string certificate = SaveFile(Certificate.PostedFile, "Certificate", "Competency Certificate", CreatedBy, maxFileSize, ref isAllFilesValid);
+                    string Incometax = SaveFile(IncomeTax.PostedFile, "IncomeTax", "Income Tax Return", CreatedBy, maxFileSize, ref isAllFilesValid);
+                    string Calibrationtertificate = SaveFile(CalibrationCertificate.PostedFile, "CalibrationCertificate", "Calibration Certificate", CreatedBy, maxFileSize, ref isAllFilesValid);
+                    string WorksExecuted = SaveFile(worksexecuted.PostedFile, "WorksExecuted", "Works Executed", CreatedBy, maxFileSize, ref isAllFilesValid);
+                    string annexureIII = SaveFile(AnnexureIII.PostedFile, "AnnexureIII", "Annexure III", CreatedBy, maxFileSize, ref isAllFilesValid);
+                    string FormE1 = SaveFile(FormE.PostedFile, "FormE", "Form E", CreatedBy, maxFileSize, ref isAllFilesValid);
+                    string Challanfp = SaveFile(Challan.PostedFile, "Challan", "Challan", CreatedBy, maxFileSize, ref isAllFilesValid);
+                    string Candidateimage = SaveFile(CandidateImage.PostedFile, "Candidate Image", "Candidate Image", CreatedBy, maxFileSize, ref isAllFilesValid);
+                    string Candidatesignature = SaveFile(CandidateSignature.PostedFile, "Candidate Signature", "Candidate Signature", CreatedBy, maxFileSize, ref isAllFilesValid);
+                    string AuthorizationLetter = SaveFile(Authorizationletter.PostedFile, "Authorization letter", "Authorization letter", CreatedBy, maxFileSize, ref isAllFilesValid);
+                    string Otherdocument = SaveFile(OtherDocument.PostedFile, "Other Document", "Other Document", CreatedBy, maxFileSize, ref isAllFilesValid);
+
+                    if (!isAllFilesValid)
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Only PDF or Image files less than 1MB are allowed.');", true);
+                        return;
+                    }
 
                     bool check = CEI.CheckIfRenewalApplicationExist(CreatedBy);
                     if (check)
@@ -536,61 +552,32 @@ namespace CEIHaryana.Contractor
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Unexpected Error: " + ex.Message + "')", true);
             }
         }
-        //private string SavePdf(HttpPostedFile file, string folderName, string prefix, string createdBy, int maxFileSize)
-        //{
-        //    if (file == null || file.ContentLength == 0)
-        //        return null;
-
-        //    if (file.ContentLength > maxFileSize)
-        //    {
-        //        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert",
-        //            $"alert('{prefix} must be a PDF file with a maximum size of 1MB.')", true);
-        //        return null;
-        //    }
-
-        //    string ext = Path.GetExtension(file.FileName).ToLower();
-        //    if (ext != ".pdf")
-        //    {
-        //        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert",
-        //            $"alert('{prefix} must be a PDF file.')", true);
-        //        return null;
-        //    }
-
-        //    string path = $"/Attachment/Renewal/{createdBy}/{folderName}/";
-        //    string directoryPath = HttpContext.Current.Server.MapPath("~" + path);
-        //    if (!Directory.Exists(directoryPath))
-        //    {
-        //        Directory.CreateDirectory(directoryPath);
-        //    }
-
-        //    string fileName = $"{prefix}_{DateTime.Now:yyyyMMddHHmmssfff}.pdf";
-        //    string filePath = Path.Combine(directoryPath, fileName);
-
-        //    file.SaveAs(filePath);
-
-
-        //    return path + fileName;
-        //}
-        private string SaveFile(HttpPostedFile file, string folderName, string prefix, string createdBy, int maxFileSize)
+        private string SaveFile(HttpPostedFile file, string folderName, string prefix, string createdBy, int maxFileSize, ref bool isValid)
         {
             if (file == null || file.ContentLength == 0)
                 return null;
 
-            // Validate file size
-            if (file.ContentLength > maxFileSize)
-            {
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert",
-                    $"alert('{prefix} must be less than {maxFileSize / 1024 / 1024}MB.')", true);
-                return null;
-            }
-
             string ext = Path.GetExtension(file.FileName).ToLower();
 
-            // Allow only pdf, jpg, jpeg, png
-            if (ext != ".pdf" && ext != ".jpg" && ext != ".jpeg" && ext != ".png")
+            bool isFileValid = false;
+
+            if (folderName.Equals("Candidate Image", StringComparison.OrdinalIgnoreCase) ||
+                folderName.Equals("Candidate Signature", StringComparison.OrdinalIgnoreCase))
+            {
+                // Image validation
+                isFileValid = IsValidPhoto(file);
+            }
+            else
+            {
+                // PDF validation
+                isFileValid = ValidatePdfFile(file);
+            }
+
+            if (!isFileValid)
             {
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert",
-                    $"alert('{prefix} must be a PDF or an Image file (.jpg, .jpeg, .png).')", true);
+                    $"alert('{prefix} has invalid format or exceeds 1MB.');", true);
+                isValid = false;
                 return null;
             }
 
@@ -598,9 +585,7 @@ namespace CEIHaryana.Contractor
             string path = $"/Attachment/Renewal/{createdBy}/{folderName}/";
             string directoryPath = HttpContext.Current.Server.MapPath("~" + path);
             if (!Directory.Exists(directoryPath))
-            {
                 Directory.CreateDirectory(directoryPath);
-            }
 
             // Generate unique file name
             string fileName = $"{prefix}_{DateTime.Now:yyyyMMddHHmmssfff}{ext}";
@@ -612,6 +597,24 @@ namespace CEIHaryana.Contractor
             return path + fileName;
         }
 
+
+        private bool IsValidPhoto(HttpPostedFile file)
+        {
+            string ext = Path.GetExtension(file.FileName).ToLower();
+            if (ext != ".jpg" && ext != ".jpeg" && ext != ".png") return false;
+
+            if (file.ContentLength > 1048576) return false; // 1MB
+            return true;
+        }
+
+        private bool ValidatePdfFile(HttpPostedFile file)
+        {
+            string ext = Path.GetExtension(file.FileName).ToLower();
+            if (ext != ".pdf") return false;
+
+            if (file.ContentLength > 1048576) return false; // 1MB
+            return true;
+        }
 
 
         private void resetfeild()

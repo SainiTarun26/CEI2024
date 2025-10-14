@@ -549,9 +549,9 @@ Please Select
 
                             <asp:DropDownList class="select-form select2" AutoPostBack="true"
                                 ID="ddlState1" runat="server" OnSelectedIndexChanged="ddlState1_SelectedIndexChanged">
-                                <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                           <%--     <asp:ListItem Text="Select" Value="0"></asp:ListItem>--%>
                             </asp:DropDownList>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator31" CssClass="validation_required" Text="Required" ErrorMessage="Required" ControlToValidate="ddlState1" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator31" CssClass="validation_required" Text="Required" ErrorMessage="Required" ControlToValidate="ddlState1" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
 
                         </div>
                         <div class="col-md-4" id="NewDistrict" runat="server" visible="false" style="margin-top: 15px;">
@@ -562,9 +562,9 @@ Please Select
 
                             <asp:DropDownList class="select-form select2"
                                 ID="ddlDistrict1" AutoPostBack="true" runat="server" TabIndex="9">
-                                <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                              <%--  <asp:ListItem Text="Select" Value="0"></asp:ListItem>--%>
                             </asp:DropDownList>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator32" CssClass="validation_required" ErrorMessage="Required" ControlToValidate="ddlDistrict1" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator32" CssClass="validation_required" ErrorMessage="Required" ControlToValidate="ddlDistrict1" runat="server" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
 
                         </div>
                         <div class="col-md-4" id="NewPincode" runat="server" visible="false" style="margin-top: 15px;">

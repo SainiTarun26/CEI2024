@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Contractor/ContractorRenewalMaster.Master" AutoEventWireup="true" CodeBehind="Contractor_Licence_Renewal.aspx.cs" Inherits="CEIHaryana.Contractor.Contractor_Licence_Renewal" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
+    <%--<link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -14,11 +14,32 @@
 
     <!---------------------   Dropdown With Search Option   ---------------------->
     <%-- <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>--%>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     <link href="ScriptCalendar/jquery-ui.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="ScriptCalender/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="ScriptCalender/jquery-ui.min.js"></script>
+   <script type="text/javascript" src="ScriptCalender/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="ScriptCalender/jquery-ui.min.js"></script>--%>
+
+    <!-- Favicon -->
+<link rel="shortcut icon" type="image/png" href="/images/favicon.png" />
+<!-- Bootstrap CSS -->
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
+<!-- Bootstrap Icons -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet" />
+<!-- jQuery (Load before Bootstrap JS) -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<!-- jQuery UI CSS + JS -->
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<!-- Local CSS -->
+<link rel="stylesheet" href="/css2/style.css" />
+<link rel="stylesheet" href="/css2/style.min.css" />
+<!-- Local jQuery UI / Calendar (if you need custom scripts) -->
+<%--<link href="ScriptCalendar/jquery-ui.css" rel="stylesheet" type="text/css" />
+<script src="ScriptCalender/jquery-1.11.0.min.js"></script>
+<script src="ScriptCalender/jquery-ui.min.js"></script>--%>
+
     <style>
         .glyphicon {
             position: relative;
