@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Supervisor.master.cs" Inherits="CEIHaryana.Supervisor.Supervisor" %>
+﻿ <%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Supervisor.master.cs" Inherits="CEIHaryana.Supervisor.Supervisor" %>
 
 <!DOCTYPE html>
 <html>
@@ -445,8 +445,8 @@
                             <li class="nav-item">
                                 <a id="RenewalMenuItem" runat="server" visible="false" class="nav-link" href="/Supervisor/Renewal_Certificate_Competency.aspx">
                                     <i class="icon-grid menu-icon"></i>
-                                    <span class="menu-title">Renewal Contractor<br />
-                                        Licence</span>
+                                    <span class="menu-title">Renewal Certificate
+                                      </span>
                                 </a>
                             </li>
                             <li class="nav-item">

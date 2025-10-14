@@ -176,95 +176,103 @@ namespace CEIHaryana.Supervisor
                 {
                     if (chkDeclaration.Checked == true && chkdeclaration2.Checked == true)
                     {
-                        string CreatedBy = HdnUserId.Value;
-                        string MedicalFitnessfp = "";
-                        int maxFileSize = 1024 * 1024; // 1MB
-                        bool isAllFilesValid = true;
-
-                        // Save files with proper validation
-                        string CertificateofCompetency = SaveFile(Certificate.PostedFile, "Certificate", "Certificate", CreatedBy, maxFileSize, ref isAllFilesValid);
-                        string PresentworkingStatusfp = SaveFile(PresentworkingStatus.PostedFile, "WorkStatus", "WorkStatus", CreatedBy, maxFileSize, ref isAllFilesValid);
-                        string Undertakingfp = SaveFile(Undertaking.PostedFile, "Undertaking", "Undertaking", CreatedBy, maxFileSize, ref isAllFilesValid);
-               
-                        if (MedicalCertificate.Visible)
+                        if (txtcertificatenoOLD.Text == txtcertificatenoNEW.Text)
                         {
-                            MedicalFitnessfp = SaveFile(MedicalFitness.PostedFile, "Medical", "Medical", CreatedBy, maxFileSize, ref isAllFilesValid);
-                        }
-
-                        string Challanfp = SaveFile(Challan.PostedFile, "Challan", "Challan", CreatedBy, maxFileSize, ref isAllFilesValid);
-                        string Candidateimage = SaveFile(CandidateImage.PostedFile, "Candidate Image", "Candidate Image", CreatedBy, maxFileSize, ref isAllFilesValid);
-                        string Candidatesignature = SaveFile(CandidateSignature.PostedFile, "Candidate Signature", "Candidate Signature", CreatedBy, maxFileSize, ref isAllFilesValid);
-
-                        // Check if any file is invalid
-                        if (!isAllFilesValid)
-                        {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert",
-                                "alert('Only PDF or Image files (.jpg, .jpeg, .png) less than 1MB are allowed.');", true);
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('Old Certificate Number and New Certificate Number cannot be the same');", true);
                             return;
-                        }
-
-
-                        // DateTime Dateturn55 = DateTime.ParseExact("21-05-2003", "dd-MM-yyyy", System.Globalization.CultureInfo.InvariantCulture);
-
-                        bool check = CEI.CheckIfRenewalApplicationExist(CreatedBy);
-                        if (check)
-                        {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('You have already submitted a renewal application.')", true);
-                            Response.Redirect("/Supervisor/RenewalHistory.aspx", false);
-                            return;
-
                         }
                         else
                         {
-                            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+                            string CreatedBy = HdnUserId.Value;
+                            string MedicalFitnessfp = "";
+                            int maxFileSize = 1024 * 1024; // 1MB
+                            bool isAllFilesValid = true;
+
+                            // Save files with proper validation
+                            string CertificateofCompetency = SaveFile(Certificate.PostedFile, "Certificate", "Certificate", CreatedBy, maxFileSize, ref isAllFilesValid);
+                            string PresentworkingStatusfp = SaveFile(PresentworkingStatus.PostedFile, "WorkStatus", "WorkStatus", CreatedBy, maxFileSize, ref isAllFilesValid);
+                            string Undertakingfp = SaveFile(Undertaking.PostedFile, "Undertaking", "Undertaking", CreatedBy, maxFileSize, ref isAllFilesValid);
+
+                            if (MedicalCertificate.Visible)
                             {
-                                con.Open();
-                                SqlTransaction tran = con.BeginTransaction();
+                                MedicalFitnessfp = SaveFile(MedicalFitness.PostedFile, "Medical", "Medical", CreatedBy, maxFileSize, ref isAllFilesValid);
+                            }
 
-                                try
+                            string Challanfp = SaveFile(Challan.PostedFile, "Challan", "Challan", CreatedBy, maxFileSize, ref isAllFilesValid);
+                            string Candidateimage = SaveFile(CandidateImage.PostedFile, "Candidate Image", "Candidate Image", CreatedBy, maxFileSize, ref isAllFilesValid);
+                            string Candidatesignature = SaveFile(CandidateSignature.PostedFile, "Candidate Signature", "Candidate Signature", CreatedBy, maxFileSize, ref isAllFilesValid);
+
+                            // Check if any file is invalid
+                            if (!isAllFilesValid)
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert",
+                                    "alert('Only PDF or Image files (.jpg, .jpeg, .png) less than 1MB are allowed.');", true);
+                                return;
+                            }
+
+
+                            // DateTime Dateturn55 = DateTime.ParseExact("21-05-2003", "dd-MM-yyyy", System.Globalization.CultureInfo.InvariantCulture);
+
+                            bool check = CEI.CheckIfRenewalApplicationExist(CreatedBy);
+                            if (check)
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('You have already submitted a renewal application.')", true);
+                                Response.Redirect("/Supervisor/RenewalHistory.aspx", false);
+                                return;
+
+                            }
+                            else
+                            {
+                                using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
                                 {
+                                    con.Open();
+                                    SqlTransaction tran = con.BeginTransaction();
 
-                                    CEI.InsertRenewalData(con, tran, HdnUserType.Value, txtDOB.Text.Trim(),
-                                        txtage.Text.Trim(), DateTime.TryParse(txtage55?.Text, out var dt55) ? dt55 : (DateTime)SqlDateTime.Null, txtFatherName.Text.Trim(), txtaadharno.Text.Trim(),
-                                         txtPhone.Text.Trim(), txtEmail.Text.Trim(),
-                                        txtcertificatenoNEW.Text.Trim(), txtcertificatenoOLD.Text.Trim(),
-                                        rblbelated.Text.ToString(), txtdays.Text.Trim(),
-                                       rblChangeAddress.SelectedItem?.ToString() ?? string.Empty, txtAddressNew?.Text ?? string.Empty,ddlState1.SelectedItem?.ToString() ?? string.Empty,
-                                        ddlDistrict1.SelectedItem?.ToString() ?? string.Empty,  txtPincodeNew?.Text ?? string.Empty, ddlRenewalTime.SelectedItem.ToString(),
-                                        txtamount.Text.Trim(), txtgrnno.Text.Trim(), txtdate.Text.Trim(), RadioButtonList1.SelectedItem.ToString(),
-                                        CreatedBy);
-
-                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Certificate of Competency/Wireman Permit. ", CertificateofCompetency, 1, CreatedBy);
-                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Present Working Status", PresentworkingStatusfp, 1, CreatedBy);
-                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Undertaking for delay or non-working during cancel period, in case of expiry of the Certificate/Permit.", Undertakingfp, 1, CreatedBy);
-
-                                    if (MedicalCertificate.Visible == true && !string.IsNullOrEmpty(MedicalFitnessfp))
+                                    try
                                     {
-                                        CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Medical Fitness Certificate issued from Government/Government Approved Hospital", MedicalFitnessfp, 1, CreatedBy);
+
+                                        CEI.InsertRenewalData(con, tran, HdnUserType.Value, txtDOB.Text.Trim(),
+                                            txtage.Text.Trim(), DateTime.TryParse(txtage55?.Text, out var dt55) ? dt55 : (DateTime)SqlDateTime.Null, txtFatherName.Text.Trim(), txtaadharno.Text.Trim(),
+                                             txtPhone.Text.Trim(), txtEmail.Text.Trim(),
+                                            txtcertificatenoNEW.Text.Trim(), txtcertificatenoOLD.Text.Trim(),
+                                            rblbelated.Text.ToString(), txtdays.Text.Trim(),
+                                           rblChangeAddress.SelectedItem?.ToString() ?? string.Empty, txtAddressNew?.Text ?? string.Empty, ddlState1.SelectedItem?.ToString() ?? string.Empty,
+                                            ddlDistrict1.SelectedItem?.ToString() ?? string.Empty, txtPincodeNew?.Text ?? string.Empty, ddlRenewalTime.SelectedItem.ToString(),
+                                            txtamount.Text.Trim(), txtgrnno.Text.Trim(), txtdate.Text.Trim(), RadioButtonList1.SelectedItem.ToString(),
+                                            CreatedBy);
+
+                                        CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Certificate of Competency/Wireman Permit. ", CertificateofCompetency, 1, CreatedBy);
+                                        CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Present Working Status", PresentworkingStatusfp, 1, CreatedBy);
+                                        CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Undertaking for delay or non-working during cancel period, in case of expiry of the Certificate/Permit.", Undertakingfp, 1, CreatedBy);
+
+                                        if (MedicalCertificate.Visible == true && !string.IsNullOrEmpty(MedicalFitnessfp))
+                                        {
+                                            CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Medical Fitness Certificate issued from Government/Government Approved Hospital", MedicalFitnessfp, 1, CreatedBy);
+                                        }
+
+                                        CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Deposited Treasury Challan of fees, for the purpose in the Head of A/c: 0043-51-800-99-51-Other Receipt.", Challanfp, 1, CreatedBy);
+
+
+                                        CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Candidate Image", Candidateimage, 1, CreatedBy);
+
+
+                                        CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Candidate Signature", Candidatesignature, 1, CreatedBy);
+
+
+                                        tran.Commit();
+                                        Session["double_Clickbutton"] = "";
+                                        Session["double_Clickbutton"] = null;
+
+                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Added Successfully !!!')", true);
+                                        Response.Redirect("/Supervisor/RenewalHistory.aspx", false);
+                                        resetfeilds();
                                     }
+                                    catch (Exception ex2)
+                                    {
 
-                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Deposited Treasury Challan of fees, for the purpose in the Head of A/c: 0043-51-800-99-51-Other Receipt.", Challanfp, 1, CreatedBy);
-
-
-                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Candidate Image", Candidateimage, 1, CreatedBy);
-
-
-                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Candidate Signature", Candidatesignature, 1, CreatedBy);
-
-
-                                    tran.Commit();
-                                    Session["double_Clickbutton"] = "";
-                                    Session["double_Clickbutton"] = null;
-
-                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Added Successfully !!!')", true);
-                                    Response.Redirect("/Supervisor/RenewalHistory.aspx", false);
-                                    resetfeilds();
-                                }
-                                catch (Exception ex2)
-                                {
-
-                                    tran.Rollback();
-                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Transaction Failed. Please try again.')", true);
+                                        tran.Rollback();
+                                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Transaction Failed. Please try again.')", true);
+                                    }
                                 }
                             }
                         }

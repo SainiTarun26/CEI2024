@@ -325,219 +325,227 @@ namespace CEIHaryana.Contractor
             {
                 if (chkDeclaration.Checked && chkdeclaration2.Checked && chkdeclaration3.Checked)
                 {
-                    #region for LT,HT,EHT conditions
-                    string voltageAppliedForLicence = txtVoltageLevel.Text.Trim();
-
-                    // Count the total
-                    int totalRows = GridView1.Rows.Count;
-
-                    // If no rows exist
-                    if (totalRows == 0)
+                    if (txtLicenceOld.Text == txtLicenceNew.Text)
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('You are not eligible for this. At least one Supervisor or Wireman is required.');", true);
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('Old Certificate Number and New Certificate Number cannot be the same');", true);
                         return;
-                    }
-
-                    int supervisorCount = 0;
-                    int wiremanCount = 0;
-
-                    // count Supervisor/Wireman
-                    foreach (GridViewRow row in GridView1.Rows)
-                    {
-                        Label lblCategory = row.FindControl("lblCategory") as Label;
-                        string role = lblCategory?.Text.Trim();
-
-                        if (role == "Supervisor")
-                        {
-                            supervisorCount++;
-                        }
-                        else if (role == "Wireman")
-                        {
-                            wiremanCount++;
-                        }
-                    }
-
-                    // Validate based on voltage level
-                    if (voltageAppliedForLicence == "650V")
-                    {
-                        if ((supervisorCount + wiremanCount) < 2)
-                        {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert",
-                                "alert('For 650V, minimum 2 employees required.');", true);
-                            return;
-                        }
-
-                        if (supervisorCount < 1)
-                        {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert",
-                                "alert('At least 1 Supervisor is required.');", true);
-                            return;
-                        }
-                    }
-                    else if (voltageAppliedForLicence == "11KV" || voltageAppliedForLicence == "33KV")
-                    {
-                        if ((supervisorCount + wiremanCount) < 3)
-                        {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert",
-                                "alert('For 11KV/33KV, minimum 3 employees required.');", true);
-                            return;
-                        }
-
-                        if (supervisorCount < 1)
-                        {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert",
-                                "alert('At least 1 Supervisor is required.');", true);
-                            return;
-                        }
-                    }
-                    else if (voltageAppliedForLicence == "66KV" || voltageAppliedForLicence == "132KV" ||
-                             voltageAppliedForLicence == "220KV" || voltageAppliedForLicence == "EHT Level")
-                    {
-                        if ((supervisorCount + wiremanCount) < 5)
-                        {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert",
-                                "alert('For 66KV and above, minimum 5 employees required.');", true);
-                            return;
-                        }
-
-                        if (supervisorCount < 2)
-                        {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert",
-                                "alert('At least 2 Supervisor is required.');", true);
-                            return;
-                        }
                     }
                     else
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('You are are not eligible for this.');", true);
-                        return;
-                    }
-                    #endregion
+                        #region for LT,HT,EHT conditions
+                        string voltageAppliedForLicence = txtVoltageLevel.Text.Trim();
 
-                    string CreatedBy = HdnUserId.Value;
-                    int maxFileSize = 1024 * 1024; // 1 MB
-                    bool isAllFilesValid = true;
+                        // Count the total
+                        int totalRows = GridView1.Rows.Count;
 
-                    // Save files
-                    string ContractorLicense = SaveFile(Licence.PostedFile, "ContractorLicense", "Contractor License", CreatedBy, maxFileSize, ref isAllFilesValid);
-                    string certificate = SaveFile(Certificate.PostedFile, "Certificate", "Competency Certificate", CreatedBy, maxFileSize, ref isAllFilesValid);
-                    string Incometax = SaveFile(IncomeTax.PostedFile, "IncomeTax", "Income Tax Return", CreatedBy, maxFileSize, ref isAllFilesValid);
-                    string Calibrationtertificate = SaveFile(CalibrationCertificate.PostedFile, "CalibrationCertificate", "Calibration Certificate", CreatedBy, maxFileSize, ref isAllFilesValid);
-                    string WorksExecuted = SaveFile(worksexecuted.PostedFile, "WorksExecuted", "Works Executed", CreatedBy, maxFileSize, ref isAllFilesValid);
-                    string annexureIII = SaveFile(AnnexureIII.PostedFile, "AnnexureIII", "Annexure III", CreatedBy, maxFileSize, ref isAllFilesValid);
-                    string FormE1 = SaveFile(FormE.PostedFile, "FormE", "Form E", CreatedBy, maxFileSize, ref isAllFilesValid);
-                    string Challanfp = SaveFile(Challan.PostedFile, "Challan", "Challan", CreatedBy, maxFileSize, ref isAllFilesValid);
-                    string Candidateimage = SaveFile(CandidateImage.PostedFile, "Candidate Image", "Candidate Image", CreatedBy, maxFileSize, ref isAllFilesValid);
-                    string Candidatesignature = SaveFile(CandidateSignature.PostedFile, "Candidate Signature", "Candidate Signature", CreatedBy, maxFileSize, ref isAllFilesValid);
-                    string AuthorizationLetter = SaveFile(Authorizationletter.PostedFile, "Authorization letter", "Authorization letter", CreatedBy, maxFileSize, ref isAllFilesValid);
-                    string Otherdocument = SaveFile(OtherDocument.PostedFile, "Other Document", "Other Document", CreatedBy, maxFileSize, ref isAllFilesValid);
-
-                    if (!isAllFilesValid)
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Only PDF or Image files less than 1MB are allowed.');", true);
-                        return;
-                    }
-
-                    bool check = CEI.CheckIfRenewalApplicationExist(CreatedBy);
-                    if (check)
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('You have already submitted a renewal application.')", true);
-                        return;
-
-                    }
-                    else
-                    {
-
-                        using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+                        // If no rows exist
+                        if (totalRows == 0)
                         {
-                            con.Open();
-                            SqlTransaction tran = con.BeginTransaction();
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('You are not eligible for this. At least one Supervisor or Wireman is required.');", true);
+                            return;
+                        }
 
-                            try
+                        int supervisorCount = 0;
+                        int wiremanCount = 0;
+
+                        // count Supervisor/Wireman
+                        foreach (GridViewRow row in GridView1.Rows)
+                        {
+                            Label lblCategory = row.FindControl("lblCategory") as Label;
+                            string role = lblCategory?.Text.Trim();
+
+                            if (role == "Supervisor")
                             {
-                                CEI.InsertRenewalDataforContractor(con, tran,
-        HdnUserType?.Value ?? string.Empty,
-        txtname?.Text.Trim() ?? string.Empty,
-        txtFatherName?.Text.Trim() ?? string.Empty,
-        txtDOB?.Text.Trim() ?? string.Empty,
-        txtage?.Text.Trim() ?? string.Empty,
-        DateTime.TryParse(txtage55?.Text, out var dt55) ? dt55 : (DateTime)SqlDateTime.Null,
-        txtPANNo?.Text.Trim() ?? string.Empty,
-        txtLicenceNew?.Text.Trim() ?? string.Empty,
-        txtLicenceOld?.Text.Trim() ?? string.Empty,
-        txtexpirydate?.Text ?? string.Empty,
-        txtPhone?.Text.Trim() ?? string.Empty,
-        txtEmail?.Text.Trim() ?? string.Empty,
-        rblChangeAddress.SelectedItem?.ToString() ?? string.Empty,
-        txtAddressNew?.Text ?? string.Empty,
-        ddlState1.SelectedItem?.ToString() ?? string.Empty,
-        ddlDistrict1.SelectedItem?.ToString() ?? string.Empty,
-        txtPincodeNew?.Text ?? string.Empty,
-        rdlchangedonlicence.SelectedItem?.ToString() ?? string.Empty,
-        rblbelated.SelectedItem?.ToString() ?? string.Empty,
-        txtdays?.Text.Trim() ?? string.Empty,
-        rdlEquipmentsTested.SelectedItem?.ToString() ?? string.Empty,
-        ddlRenewalTime.SelectedItem?.ToString() ?? string.Empty,
-        txtgrnno?.Text.Trim() ?? string.Empty,
-        txtdate?.Text ?? string.Empty,
-        txtamount?.Text.Trim() ?? string.Empty,
-        rblChangeInStaff.SelectedItem?.ToString() ?? string.Empty,
-        txtintimationDate?.Text ?? string.Empty,
-        txtVoltageLevel.Text ?? string.Empty,
-        CreatedBy
-    );
-
-
-                                if (!string.IsNullOrEmpty(ContractorLicense))
-                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Contractor License", ContractorLicense, 1, CreatedBy);
-
-                                if (!string.IsNullOrEmpty(certificate))
-                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Competency CertificateCertificate of Competency and Wireman Permit, who are working with the Firm", certificate, 1, CreatedBy);
-
-                                if (!string.IsNullOrEmpty(Incometax))
-                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Income Tax Returns and Balance Sheet as specified in the conditions.", Incometax, 1, CreatedBy);
-
-                                if (!string.IsNullOrEmpty(Calibrationtertificate))
-                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Calibration Certificate from NABL or Government Testing Laboratory in respect of Electrical", Calibrationtertificate, 1, CreatedBy);
-
-                                if (!string.IsNullOrEmpty(WorksExecuted))
-                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Details of works executed annually on the basis of Electrical Contractor License", WorksExecuted, 1, CreatedBy);
-
-                                if (!string.IsNullOrEmpty(annexureIII))
-                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Copy of Annexure III", annexureIII, 1, CreatedBy);
-
-                                if (!string.IsNullOrEmpty(FormE1))
-                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Copy of Form \"E\"", FormE1, 1, CreatedBy);
-
-                                if (!string.IsNullOrEmpty(Challanfp))
-                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Deposited Treasury Challan of fees, for the purpose.\r\nHead of A/c: 0043-51-800-99-51—Other Receipt.", Challanfp, 1, CreatedBy);
-
-                                if (!string.IsNullOrEmpty(Candidateimage))
-                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Candidate Image", Candidateimage, 1, CreatedBy);
-
-                                if (!string.IsNullOrEmpty(Candidatesignature))
-                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Candidate Signature", Candidatesignature, 1, CreatedBy);
-
-                                if (!string.IsNullOrEmpty(AuthorizationLetter))
-                                {
-                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Authorization Letter", AuthorizationLetter, 1, CreatedBy);
-                                }
-                                if (!string.IsNullOrEmpty(Otherdocument))
-                                {
-                                    CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Other Document", Otherdocument, 1, CreatedBy);
-                                }
-
-                                tran.Commit();
-
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Application submitted successfully!')", true);
-                                Response.Redirect("/Contractor/RenewalHistoryContractor.aspx", false);
-                                resetfeild();
-
+                                supervisorCount++;
                             }
-                            catch (Exception ex2)
+                            else if (role == "Wireman")
                             {
-                                tran.Rollback();
-                                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Transaction Failed: " + ex2.Message + "')", true);
+                                wiremanCount++;
+                            }
+                        }
+
+                        // Validate based on voltage level
+                        if (voltageAppliedForLicence == "650V")
+                        {
+                            if ((supervisorCount + wiremanCount) < 2)
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert",
+                                    "alert('For 650V, minimum 2 employees required.');", true);
+                                return;
+                            }
+
+                            if (supervisorCount < 1)
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert",
+                                    "alert('At least 1 Supervisor is required.');", true);
+                                return;
+                            }
+                        }
+                        else if (voltageAppliedForLicence == "11KV" || voltageAppliedForLicence == "33KV")
+                        {
+                            if ((supervisorCount + wiremanCount) < 3)
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert",
+                                    "alert('For 11KV/33KV, minimum 3 employees required.');", true);
+                                return;
+                            }
+
+                            if (supervisorCount < 1)
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert",
+                                    "alert('At least 1 Supervisor is required.');", true);
+                                return;
+                            }
+                        }
+                        else if (voltageAppliedForLicence == "66KV" || voltageAppliedForLicence == "132KV" ||
+                                 voltageAppliedForLicence == "220KV" || voltageAppliedForLicence == "EHT Level")
+                        {
+                            if ((supervisorCount + wiremanCount) < 5)
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert",
+                                    "alert('For 66KV and above, minimum 5 employees required.');", true);
+                                return;
+                            }
+
+                            if (supervisorCount < 2)
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "alert",
+                                    "alert('At least 2 Supervisor is required.');", true);
+                                return;
+                            }
+                        }
+                        else
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('You are are not eligible for this.');", true);
+                            return;
+                        }
+                        #endregion
+
+                        string CreatedBy = HdnUserId.Value;
+                        int maxFileSize = 1024 * 1024; // 1 MB
+                        bool isAllFilesValid = true;
+
+                        // Save files
+                        string ContractorLicense = SaveFile(Licence.PostedFile, "ContractorLicense", "Contractor License", CreatedBy, maxFileSize, ref isAllFilesValid);
+                        string certificate = SaveFile(Certificate.PostedFile, "Certificate", "Competency Certificate", CreatedBy, maxFileSize, ref isAllFilesValid);
+                        string Incometax = SaveFile(IncomeTax.PostedFile, "IncomeTax", "Income Tax Return", CreatedBy, maxFileSize, ref isAllFilesValid);
+                        string Calibrationtertificate = SaveFile(CalibrationCertificate.PostedFile, "CalibrationCertificate", "Calibration Certificate", CreatedBy, maxFileSize, ref isAllFilesValid);
+                        string WorksExecuted = SaveFile(worksexecuted.PostedFile, "WorksExecuted", "Works Executed", CreatedBy, maxFileSize, ref isAllFilesValid);
+                        string annexureIII = SaveFile(AnnexureIII.PostedFile, "AnnexureIII", "Annexure III", CreatedBy, maxFileSize, ref isAllFilesValid);
+                        string FormE1 = SaveFile(FormE.PostedFile, "FormE", "Form E", CreatedBy, maxFileSize, ref isAllFilesValid);
+                        string Challanfp = SaveFile(Challan.PostedFile, "Challan", "Challan", CreatedBy, maxFileSize, ref isAllFilesValid);
+                        string Candidateimage = SaveFile(CandidateImage.PostedFile, "Candidate Image", "Candidate Image", CreatedBy, maxFileSize, ref isAllFilesValid);
+                        string Candidatesignature = SaveFile(CandidateSignature.PostedFile, "Candidate Signature", "Candidate Signature", CreatedBy, maxFileSize, ref isAllFilesValid);
+                        string AuthorizationLetter = SaveFile(Authorizationletter.PostedFile, "Authorization letter", "Authorization letter", CreatedBy, maxFileSize, ref isAllFilesValid);
+                        string Otherdocument = SaveFile(OtherDocument.PostedFile, "Other Document", "Other Document", CreatedBy, maxFileSize, ref isAllFilesValid);
+
+                        if (!isAllFilesValid)
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Only PDF or Image files less than 1MB are allowed.');", true);
+                            return;
+                        }
+
+                        bool check = CEI.CheckIfRenewalApplicationExist(CreatedBy);
+                        if (check)
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('You have already submitted a renewal application.')", true);
+                            return;
+
+                        }
+                        else
+                        {
+
+                            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+                            {
+                                con.Open();
+                                SqlTransaction tran = con.BeginTransaction();
+
+                                try
+                                {
+                                    CEI.InsertRenewalDataforContractor(con, tran,
+            HdnUserType?.Value ?? string.Empty,
+            txtname?.Text.Trim() ?? string.Empty,
+            txtFatherName?.Text.Trim() ?? string.Empty,
+            txtDOB?.Text.Trim() ?? string.Empty,
+            txtage?.Text.Trim() ?? string.Empty,
+            DateTime.TryParse(txtage55?.Text, out var dt55) ? dt55 : (DateTime)SqlDateTime.Null,
+            txtPANNo?.Text.Trim() ?? string.Empty,
+            txtLicenceNew?.Text.Trim() ?? string.Empty,
+            txtLicenceOld?.Text.Trim() ?? string.Empty,
+            txtexpirydate?.Text ?? string.Empty,
+            txtPhone?.Text.Trim() ?? string.Empty,
+            txtEmail?.Text.Trim() ?? string.Empty,
+            rblChangeAddress.SelectedItem?.ToString() ?? string.Empty,
+            txtAddressNew?.Text ?? string.Empty,
+            ddlState1.SelectedItem?.ToString() ?? string.Empty,
+            ddlDistrict1.SelectedItem?.ToString() ?? string.Empty,
+            txtPincodeNew?.Text ?? string.Empty,
+            rdlchangedonlicence.SelectedItem?.ToString() ?? string.Empty,
+            rblbelated.SelectedItem?.ToString() ?? string.Empty,
+            txtdays?.Text.Trim() ?? string.Empty,
+            rdlEquipmentsTested.SelectedItem?.ToString() ?? string.Empty,
+            ddlRenewalTime.SelectedItem?.ToString() ?? string.Empty,
+            txtgrnno?.Text.Trim() ?? string.Empty,
+            txtdate?.Text ?? string.Empty,
+            txtamount?.Text.Trim() ?? string.Empty,
+            rblChangeInStaff.SelectedItem?.ToString() ?? string.Empty,
+            txtintimationDate?.Text ?? string.Empty,
+            txtVoltageLevel.Text ?? string.Empty,
+            CreatedBy
+        );
+
+
+                                    if (!string.IsNullOrEmpty(ContractorLicense))
+                                        CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Contractor License", ContractorLicense, 1, CreatedBy);
+
+                                    if (!string.IsNullOrEmpty(certificate))
+                                        CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Competency CertificateCertificate of Competency and Wireman Permit, who are working with the Firm", certificate, 1, CreatedBy);
+
+                                    if (!string.IsNullOrEmpty(Incometax))
+                                        CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Income Tax Returns and Balance Sheet as specified in the conditions.", Incometax, 1, CreatedBy);
+
+                                    if (!string.IsNullOrEmpty(Calibrationtertificate))
+                                        CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Calibration Certificate from NABL or Government Testing Laboratory in respect of Electrical", Calibrationtertificate, 1, CreatedBy);
+
+                                    if (!string.IsNullOrEmpty(WorksExecuted))
+                                        CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Details of works executed annually on the basis of Electrical Contractor License", WorksExecuted, 1, CreatedBy);
+
+                                    if (!string.IsNullOrEmpty(annexureIII))
+                                        CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Copy of Annexure III", annexureIII, 1, CreatedBy);
+
+                                    if (!string.IsNullOrEmpty(FormE1))
+                                        CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Copy of Form \"E\"", FormE1, 1, CreatedBy);
+
+                                    if (!string.IsNullOrEmpty(Challanfp))
+                                        CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Deposited Treasury Challan of fees, for the purpose.\r\nHead of A/c: 0043-51-800-99-51—Other Receipt.", Challanfp, 1, CreatedBy);
+
+                                    if (!string.IsNullOrEmpty(Candidateimage))
+                                        CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Candidate Image", Candidateimage, 1, CreatedBy);
+
+                                    if (!string.IsNullOrEmpty(Candidatesignature))
+                                        CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Candidate Signature", Candidatesignature, 1, CreatedBy);
+
+                                    if (!string.IsNullOrEmpty(AuthorizationLetter))
+                                    {
+                                        CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Authorization Letter", AuthorizationLetter, 1, CreatedBy);
+                                    }
+                                    if (!string.IsNullOrEmpty(Otherdocument))
+                                    {
+                                        CEI.InsertRenewalDocuments(con, tran, HdnUserType.Value, "Other Document", Otherdocument, 1, CreatedBy);
+                                    }
+
+                                    tran.Commit();
+
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Application submitted successfully!')", true);
+                                    Response.Redirect("/Contractor/RenewalHistoryContractor.aspx", false);
+                                    resetfeild();
+
+                                }
+                                catch (Exception ex2)
+                                {
+                                    tran.Rollback();
+                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Transaction Failed: " + ex2.Message + "')", true);
+                                }
                             }
                         }
                     }
