@@ -35,32 +35,41 @@ namespace CEIHaryana
                 else
                 {
                     #region Kalpana Restrict user login
-                    bool expired = cei.IsUserExpired(txtUserID.Text, txtPassword.Text);
 
-                    if (expired)
+                       var (isExpired, yearsSinceExpiry) = cei.CheckUserExpiry(txtUserID.Text, txtPassword.Text);
+
+                    if (isExpired)
                     {
                         //string script = "alert('Your license has expired.');";
                         //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
-
-                        DataSet ds = new DataSet();
-                        ds = cei.checkApplicationStatus(txtUserID.Text);
-                        string Category = ds.Tables[0].Rows[0]["Category"].ToString();
-                        Session["Renwal"] = "Yes";
-                        if (Category.Trim() == "Contractor")
+                        if (yearsSinceExpiry >=3)
                         {
-                            Session["ContractorID"] = txtUserID.Text;
-                            Response.Redirect("/Contractor/Contractor_Licence_Renewal.aspx", false);
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Your licence has expired for more than 3 years. Please apply for a new licence.');", true);
+                            Response.Write("<script> window.close(); localStorage.removeItem('activeSession'); sessionStorage.clear(); window.close();</script>");
 
                         }
-                        if (Category.Trim() == "Supervisor")
+                        else
                         {
-                            Session["SupervisorID"] = txtUserID.Text;
-                            Response.Redirect("/Supervisor/Renewal_Certificate_Competency.aspx", false);
-                        }
-                        else if (Category.Trim() == "Wireman")
-                        {
-                            Session["WiremanId"] = txtUserID.Text;
-                            Response.Redirect("/Wiremen/Renewal_Certificate_Wiremen.aspx", false);
+                            DataSet ds = new DataSet();
+                            ds = cei.checkApplicationStatus(txtUserID.Text);
+                            string Category = ds.Tables[0].Rows[0]["Category"].ToString();
+                            Session["Renwal"] = "Yes";
+                            if (Category.Trim() == "Contractor")
+                            {
+                                Session["ContractorID"] = txtUserID.Text;
+                                Response.Redirect("/Contractor/Contractor_Licence_Renewal.aspx", false);
+
+                            }
+                            if (Category.Trim() == "Supervisor")
+                            {
+                                Session["SupervisorID"] = txtUserID.Text;
+                                Response.Redirect("/Supervisor/Renewal_Certificate_Competency.aspx", false);
+                            }
+                            else if (Category.Trim() == "Wireman")
+                            {
+                                Session["WiremanId"] = txtUserID.Text;
+                                Response.Redirect("/Wiremen/Renewal_Certificate_Wiremen.aspx", false);
+                            }
                         }
                     }
                     else
@@ -382,7 +391,7 @@ namespace CEIHaryana
                                     {
                                         Response.Redirect("/UserPages/DocumentsForContractor.aspx", false);
                                     }
-                                    else 
+                                    else
                                     {
                                         Response.Redirect("/UserPages/New_Application_Status.aspx", false);
                                     }
@@ -411,7 +420,7 @@ namespace CEIHaryana
                                     {
                                         Response.Redirect("/UserPages/Documents.aspx", false);
                                     }
-                                    else 
+                                    else
                                     {
                                         Response.Redirect("/UserPages/New_Application_Status.aspx", false);
                                     }
@@ -437,7 +446,7 @@ namespace CEIHaryana
                                     {
                                         Response.Redirect("/UserPages/Documents.aspx", false);
                                     }
-                                    else 
+                                    else
                                     {
                                         Response.Redirect("/UserPages/New_Application_Status.aspx", false);
                                     }

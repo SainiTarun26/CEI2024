@@ -15499,6 +15499,42 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
         }
 
         #endregion
+        #region kalpana 3years prevent
+        public (bool IsExpired, int YearsSinceExpiry) CheckUserExpiry(string userName, string password)
+        {
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+            using (SqlCommand cmd = new SqlCommand("sp_CheckUserExpiry", con))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@userid", userName);
+                cmd.Parameters.AddWithValue("@pwd", password);
+
+                SqlParameter isExpiredParam = new SqlParameter("@isExpired", SqlDbType.Bit)
+                {
+                    Direction = ParameterDirection.Output
+                };
+                cmd.Parameters.Add(isExpiredParam);
+
+                SqlParameter yearsParam = new SqlParameter("@YearsSinceExpiry", SqlDbType.Int)
+                {
+                    Direction = ParameterDirection.Output
+                };
+                cmd.Parameters.Add(yearsParam);
+
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+
+                // Read output values
+                bool isExpired = Convert.ToBoolean(isExpiredParam.Value);
+                int yearsSinceExpiry = yearsParam.Value != DBNull.Value ? Convert.ToInt32(yearsParam.Value) : 0;
+
+                return (isExpired, yearsSinceExpiry);
+            }
+        }
+        #endregion
     }
 }
 
