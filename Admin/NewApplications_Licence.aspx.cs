@@ -506,7 +506,7 @@ namespace CEIHaryana.Admin
                         //{
 
                             lblRegistrationNo = (Label)row.FindControl("lblRegistrationNo");
-                            cei.UpdatestatusOfReturnLicenseapplication("Return", "New", txtReason.Text, lblRegistrationNo.Text);
+                            cei.UpdatestatusOfReturnLicenseapplication("Returned", "New", txtReason.Text, lblRegistrationNo.Text);
                             GridViewBind(null, null, null);
 
                             ScriptManager.RegisterStartupScript(this, GetType(), "UploadError",
@@ -565,13 +565,13 @@ namespace CEIHaryana.Admin
                         {
 
                             lblRegistrationNo = (Label)row.FindControl("lblRegistrationNo");
-                            cei.UpdatestatusOfReturnLicenseapplication("Reject", "New", txtReason.Text, lblRegistrationNo.Text);
+                            cei.UpdatestatusOfReturnLicenseapplication("Rejected", "New", txtReason.Text, lblRegistrationNo.Text);
                         }
                         else
                         {
 
                             lblRegistrationNo = (Label)row.FindControl("lblId");
-                            cei.UpdatestatusOfReturnLicenseapplication("Reject", "ReNew", txtReason.Text, lblRegistrationNo.Text);
+                            cei.UpdatestatusOfReturnLicenseapplication("Rejected", "ReNew", txtReason.Text, lblRegistrationNo.Text);
                         }
 
                         ScriptManager.RegisterStartupScript(this, GetType(), "UploadError",
