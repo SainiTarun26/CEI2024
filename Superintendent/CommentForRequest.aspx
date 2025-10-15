@@ -255,7 +255,7 @@
                     <div class="row">
                         <div class="col-md-12" runat="server">
 
-                            <asp:TextBox class="form-control" ID="txtComment" ReadOnly="false" TextMode="MultiLine" autocomplete="off" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:TextBox class="form-control" ID="txtComment" ReadOnly="false" TextMode="MultiLine" autocomplete="off" runat="server" Style="margin-left: 18px" MaxLength="500"></asp:TextBox>
                         </div>
                     </div>
                 </div>

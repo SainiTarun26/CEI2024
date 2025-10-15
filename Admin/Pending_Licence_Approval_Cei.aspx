@@ -362,7 +362,6 @@
                     <asp:DropDownList class="form-control  select-form select2" runat="server" ID="ddlReview" selectionmode="Multiple" Style="width: 100% !important;">
                         <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                         <asp:ListItem Text="Approved" Value="Approved"></asp:ListItem>
-                        <asp:ListItem Text="Return" Value="Return"></asp:ListItem>
                         <asp:ListItem Text="Rejected" Value="Rejected"></asp:ListItem>
                     </asp:DropDownList>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator57" ControlToValidate="ddlReview" runat="server" ForeColor="Red" InitialValue="0" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
@@ -373,7 +372,7 @@
                     <label>
                         Comments<samp style="color: red"> * </samp>
                     </label>
-                    <asp:TextBox class="form-control" ID="TextBox1" autocomplete="off" TextMode="MultiLine" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    <asp:TextBox class="form-control" ID="TextBox1" autocomplete="off" TextMode="MultiLine" TabIndex="7" runat="server" Style="margin-left: 18px" MaxLength="500"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="TextBox1" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                 </div>
 

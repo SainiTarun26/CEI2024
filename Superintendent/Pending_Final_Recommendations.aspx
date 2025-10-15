@@ -375,7 +375,7 @@
                     <label>
                         Comments<samp style="color: red"> * </samp>
                     </label>
-                    <asp:TextBox class="form-control" ID="TextBox1" autocomplete="off" TextMode="MultiLine" TabIndex="7" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                    <asp:TextBox class="form-control" ID="TextBox1" autocomplete="off" TextMode="MultiLine" TabIndex="7" runat="server" Style="margin-left: 18px" MaxLength="500"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" ControlToValidate="TextBox1" runat="server" ForeColor="Red" ValidationGroup="Submit" ErrorMessage="Required"></asp:RequiredFieldValidator>
                 </div>
 
