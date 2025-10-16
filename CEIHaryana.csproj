@@ -1892,6 +1892,7 @@
     <Content Include="Industry_Master\Periodic_Status.aspx" />
     <Content Include="Industry_Master\Print_Forms\EscalatorApprovalCertificate_IndustryLift.aspx" />
     <Content Include="Industry_Master\Print_Forms\LiftApprovalCertificate_IndustryLift.aspx" />
+    <Content Include="Industry_Master\Print_Forms\Print_Renewal_Of_Lift_PeriodicIndustryLift.aspx" />
     <Content Include="Industry_Master\ProcessInspectionRenewalCart_Industries.aspx" />
     <Content Include="Industry_Master\RatingOfInstallations_Industry.aspx" />
     <Content Include="Industry_Master\ReapplyReturnInspectionForNew.aspx" />
@@ -1899,22 +1900,34 @@
     <Content Include="Industry_Master\SiteOwnerPages\EscalatorDetails_IndustryLift.aspx" />
     <Content Include="Industry_Master\SiteOwnerPages\GenerateInspection_Lift_IndustryLift.aspx" />
     <Content Include="Industry_Master\SiteOwnerPages\InspectionHistory_New_IndustryLift.aspx" />
+    <Content Include="Industry_Master\SiteOwnerPages\InspectionHistory_Periodic_IndustryLift.aspx" />
     <Content Include="Industry_Master\SiteOwnerPages\InspectionRequestPrint_IndustryLift.aspx" />
     <Content Include="Industry_Master\SiteOwnerPages\Inspection_Lift_New_IndustryLift.aspx" />
+    <Content Include="Industry_Master\SiteOwnerPages\Inspection_Lift_Periodic_IndustryLift.aspx" />
     <Content Include="Industry_Master\SiteOwnerPages\LiftApprovalData_IndustryLift.aspx" />
+    <Content Include="Industry_Master\SiteOwnerPages\LiftApprovalData_PeriodicIndustryLift.aspx" />
     <Content Include="Industry_Master\SiteOwnerPages\LiftDetails_IndustryLift.aspx" />
     <Content Include="Industry_Master\SiteOwnerPages\LiftInstallationDetails_IndustryLift.aspx" />
     <Content Include="Industry_Master\SiteOwnerPages\LiftIntimations_IndustryLift.aspx" />
+    <Content Include="Industry_Master\SiteOwnerPages\LiftPeriodicRenewal_PeriodicIndustryLift.aspx" />
+    <Content Include="Industry_Master\SiteOwnerPages\LiftPeriodic_PeriodicIndustryLift.aspx" />
     <Content Include="Industry_Master\SiteOwnerPages\LiftSiteDetails_IndustryLift.aspx" />
+    <Content Include="Industry_Master\SiteOwnerPages\Periodic_Lift_EscalatorInspectionRequestPrint_PeriodicIndustryLift.aspx" />
+    <Content Include="Industry_Master\SiteOwnerPages\PrintEscalatorPeriodicTestReport_PeriodicIndustryLift.aspx" />
     <Content Include="Industry_Master\SiteOwnerPages\PrintEscalatorTestReportModal_IndustryLift.aspx" />
+    <Content Include="Industry_Master\SiteOwnerPages\PrintLiftPeriodicTestReport_PeriodicIndustryLift.aspx" />
     <Content Include="Industry_Master\SiteOwnerPages\PrintLiftTestReport_IndustryLift.aspx" />
     <Content Include="Industry_Master\SiteOwnerPages\ReturnInspections_IndustryLift.aspx" />
+    <Content Include="Industry_Master\SiteOwnerPages\ReturnInspections_PeriodicIndustryLift.aspx" />
     <Content Include="Industry_Master\SiteOwnerPages\ReturnLiftInspections_IndustryLift.aspx" />
+    <Content Include="Industry_Master\SiteOwnerPages\ReturnLiftInspections_PeriodicIndustryLift.aspx" />
     <Content Include="Industry_Master\SLDReturn.aspx" />
     <Content Include="Industry_Master\SLD_request.aspx" />
     <Content Include="Industry_Master\SLD_Status.aspx" />
     <Content Include="Industry_Master\SubstationTransformerPeriodic_Industry.aspx" />
+    <Content Include="Industry_Master\TestReportModal\EscalatorPeriodicTestReportModal_PeriodicIndustryLift.aspx" />
     <Content Include="Industry_Master\TestReportModal\EscalatorTestReportModal_IndustryLift.aspx" />
+    <Content Include="Industry_Master\TestReportModal\LiftPeriodicTestReportModal_PeriodicIndustryLift.aspx" />
     <Content Include="Industry_Master\TestReportModal\LiftTestReportModal_IndustryLift.aspx" />
     <Content Include="Industry_Master\TestReport_Industries.aspx" />
     <Content Include="Industry_Sessions_Clear.aspx" />
@@ -3309,6 +3322,13 @@
     <Compile Include="Industry_Master\PeriodicInspection.Master.designer.cs">
       <DependentUpon>PeriodicInspection.Master</DependentUpon>
     </Compile>
+    <Compile Include="Industry_Master\PeriodicLiftInstallation.Master.cs">
+      <DependentUpon>PeriodicLiftInstallation.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Industry_Master\PeriodicLiftInstallation.Master.designer.cs">
+      <DependentUpon>PeriodicLiftInstallation.Master</DependentUpon>
+    </Compile>
     <Compile Include="Industry_Master\PeriodicRenewal_Industry.aspx.cs">
       <DependentUpon>PeriodicRenewal_Industry.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3350,6 +3370,13 @@
     </Compile>
     <Compile Include="Industry_Master\Print_Forms\LiftApprovalCertificate_IndustryLift.aspx.designer.cs">
       <DependentUpon>LiftApprovalCertificate_IndustryLift.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Industry_Master\Print_Forms\Print_Renewal_Of_Lift_PeriodicIndustryLift.aspx.cs">
+      <DependentUpon>Print_Renewal_Of_Lift_PeriodicIndustryLift.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Industry_Master\Print_Forms\Print_Renewal_Of_Lift_PeriodicIndustryLift.aspx.designer.cs">
+      <DependentUpon>Print_Renewal_Of_Lift_PeriodicIndustryLift.aspx</DependentUpon>
     </Compile>
     <Compile Include="Industry_Master\ProcessInspectionRenewalCart_Industries.aspx.cs">
       <DependentUpon>ProcessInspectionRenewalCart_Industries.aspx</DependentUpon>
@@ -3400,6 +3427,13 @@
     <Compile Include="Industry_Master\SiteOwnerPages\InspectionHistory_New_IndustryLift.aspx.designer.cs">
       <DependentUpon>InspectionHistory_New_IndustryLift.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Industry_Master\SiteOwnerPages\InspectionHistory_Periodic_IndustryLift.aspx.cs">
+      <DependentUpon>InspectionHistory_Periodic_IndustryLift.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Industry_Master\SiteOwnerPages\InspectionHistory_Periodic_IndustryLift.aspx.designer.cs">
+      <DependentUpon>InspectionHistory_Periodic_IndustryLift.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Industry_Master\SiteOwnerPages\InspectionRequestPrint_IndustryLift.aspx.cs">
       <DependentUpon>InspectionRequestPrint_IndustryLift.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3414,12 +3448,26 @@
     <Compile Include="Industry_Master\SiteOwnerPages\Inspection_Lift_New_IndustryLift.aspx.designer.cs">
       <DependentUpon>Inspection_Lift_New_IndustryLift.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Industry_Master\SiteOwnerPages\Inspection_Lift_Periodic_IndustryLift.aspx.cs">
+      <DependentUpon>Inspection_Lift_Periodic_IndustryLift.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Industry_Master\SiteOwnerPages\Inspection_Lift_Periodic_IndustryLift.aspx.designer.cs">
+      <DependentUpon>Inspection_Lift_Periodic_IndustryLift.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Industry_Master\SiteOwnerPages\LiftApprovalData_IndustryLift.aspx.cs">
       <DependentUpon>LiftApprovalData_IndustryLift.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Industry_Master\SiteOwnerPages\LiftApprovalData_IndustryLift.aspx.designer.cs">
       <DependentUpon>LiftApprovalData_IndustryLift.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Industry_Master\SiteOwnerPages\LiftApprovalData_PeriodicIndustryLift.aspx.cs">
+      <DependentUpon>LiftApprovalData_PeriodicIndustryLift.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Industry_Master\SiteOwnerPages\LiftApprovalData_PeriodicIndustryLift.aspx.designer.cs">
+      <DependentUpon>LiftApprovalData_PeriodicIndustryLift.aspx</DependentUpon>
     </Compile>
     <Compile Include="Industry_Master\SiteOwnerPages\LiftDetails_IndustryLift.aspx.cs">
       <DependentUpon>LiftDetails_IndustryLift.aspx</DependentUpon>
@@ -3442,6 +3490,20 @@
     <Compile Include="Industry_Master\SiteOwnerPages\LiftIntimations_IndustryLift.aspx.designer.cs">
       <DependentUpon>LiftIntimations_IndustryLift.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Industry_Master\SiteOwnerPages\LiftPeriodicRenewal_PeriodicIndustryLift.aspx.cs">
+      <DependentUpon>LiftPeriodicRenewal_PeriodicIndustryLift.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Industry_Master\SiteOwnerPages\LiftPeriodicRenewal_PeriodicIndustryLift.aspx.designer.cs">
+      <DependentUpon>LiftPeriodicRenewal_PeriodicIndustryLift.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Industry_Master\SiteOwnerPages\LiftPeriodic_PeriodicIndustryLift.aspx.cs">
+      <DependentUpon>LiftPeriodic_PeriodicIndustryLift.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Industry_Master\SiteOwnerPages\LiftPeriodic_PeriodicIndustryLift.aspx.designer.cs">
+      <DependentUpon>LiftPeriodic_PeriodicIndustryLift.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Industry_Master\SiteOwnerPages\LiftSiteDetails_IndustryLift.aspx.cs">
       <DependentUpon>LiftSiteDetails_IndustryLift.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -3449,12 +3511,33 @@
     <Compile Include="Industry_Master\SiteOwnerPages\LiftSiteDetails_IndustryLift.aspx.designer.cs">
       <DependentUpon>LiftSiteDetails_IndustryLift.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Industry_Master\SiteOwnerPages\Periodic_Lift_EscalatorInspectionRequestPrint_PeriodicIndustryLift.aspx.cs">
+      <DependentUpon>Periodic_Lift_EscalatorInspectionRequestPrint_PeriodicIndustryLift.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Industry_Master\SiteOwnerPages\Periodic_Lift_EscalatorInspectionRequestPrint_PeriodicIndustryLift.aspx.designer.cs">
+      <DependentUpon>Periodic_Lift_EscalatorInspectionRequestPrint_PeriodicIndustryLift.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Industry_Master\SiteOwnerPages\PrintEscalatorPeriodicTestReport_PeriodicIndustryLift.aspx.cs">
+      <DependentUpon>PrintEscalatorPeriodicTestReport_PeriodicIndustryLift.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Industry_Master\SiteOwnerPages\PrintEscalatorPeriodicTestReport_PeriodicIndustryLift.aspx.designer.cs">
+      <DependentUpon>PrintEscalatorPeriodicTestReport_PeriodicIndustryLift.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Industry_Master\SiteOwnerPages\PrintEscalatorTestReportModal_IndustryLift.aspx.cs">
       <DependentUpon>PrintEscalatorTestReportModal_IndustryLift.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Industry_Master\SiteOwnerPages\PrintEscalatorTestReportModal_IndustryLift.aspx.designer.cs">
       <DependentUpon>PrintEscalatorTestReportModal_IndustryLift.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Industry_Master\SiteOwnerPages\PrintLiftPeriodicTestReport_PeriodicIndustryLift.aspx.cs">
+      <DependentUpon>PrintLiftPeriodicTestReport_PeriodicIndustryLift.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Industry_Master\SiteOwnerPages\PrintLiftPeriodicTestReport_PeriodicIndustryLift.aspx.designer.cs">
+      <DependentUpon>PrintLiftPeriodicTestReport_PeriodicIndustryLift.aspx</DependentUpon>
     </Compile>
     <Compile Include="Industry_Master\SiteOwnerPages\PrintLiftTestReport_IndustryLift.aspx.cs">
       <DependentUpon>PrintLiftTestReport_IndustryLift.aspx</DependentUpon>
@@ -3470,12 +3553,26 @@
     <Compile Include="Industry_Master\SiteOwnerPages\ReturnInspections_IndustryLift.aspx.designer.cs">
       <DependentUpon>ReturnInspections_IndustryLift.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Industry_Master\SiteOwnerPages\ReturnInspections_PeriodicIndustryLift.aspx.cs">
+      <DependentUpon>ReturnInspections_PeriodicIndustryLift.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Industry_Master\SiteOwnerPages\ReturnInspections_PeriodicIndustryLift.aspx.designer.cs">
+      <DependentUpon>ReturnInspections_PeriodicIndustryLift.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Industry_Master\SiteOwnerPages\ReturnLiftInspections_IndustryLift.aspx.cs">
       <DependentUpon>ReturnLiftInspections_IndustryLift.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Industry_Master\SiteOwnerPages\ReturnLiftInspections_IndustryLift.aspx.designer.cs">
       <DependentUpon>ReturnLiftInspections_IndustryLift.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Industry_Master\SiteOwnerPages\ReturnLiftInspections_PeriodicIndustryLift.aspx.cs">
+      <DependentUpon>ReturnLiftInspections_PeriodicIndustryLift.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Industry_Master\SiteOwnerPages\ReturnLiftInspections_PeriodicIndustryLift.aspx.designer.cs">
+      <DependentUpon>ReturnLiftInspections_PeriodicIndustryLift.aspx</DependentUpon>
     </Compile>
     <Compile Include="Industry_Master\SLD.Master.cs">
       <DependentUpon>SLD.Master</DependentUpon>
@@ -3512,12 +3609,26 @@
     <Compile Include="Industry_Master\SubstationTransformerPeriodic_Industry.aspx.designer.cs">
       <DependentUpon>SubstationTransformerPeriodic_Industry.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Industry_Master\TestReportModal\EscalatorPeriodicTestReportModal_PeriodicIndustryLift.aspx.cs">
+      <DependentUpon>EscalatorPeriodicTestReportModal_PeriodicIndustryLift.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Industry_Master\TestReportModal\EscalatorPeriodicTestReportModal_PeriodicIndustryLift.aspx.designer.cs">
+      <DependentUpon>EscalatorPeriodicTestReportModal_PeriodicIndustryLift.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Industry_Master\TestReportModal\EscalatorTestReportModal_IndustryLift.aspx.cs">
       <DependentUpon>EscalatorTestReportModal_IndustryLift.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Industry_Master\TestReportModal\EscalatorTestReportModal_IndustryLift.aspx.designer.cs">
       <DependentUpon>EscalatorTestReportModal_IndustryLift.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Industry_Master\TestReportModal\LiftPeriodicTestReportModal_PeriodicIndustryLift.aspx.cs">
+      <DependentUpon>LiftPeriodicTestReportModal_PeriodicIndustryLift.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Industry_Master\TestReportModal\LiftPeriodicTestReportModal_PeriodicIndustryLift.aspx.designer.cs">
+      <DependentUpon>LiftPeriodicTestReportModal_PeriodicIndustryLift.aspx</DependentUpon>
     </Compile>
     <Compile Include="Industry_Master\TestReportModal\LiftTestReportModal_IndustryLift.aspx.cs">
       <DependentUpon>LiftTestReportModal_IndustryLift.aspx</DependentUpon>
@@ -5784,6 +5895,7 @@
     <Content Include="DealingHand\DealingHand.Master" />
     <Content Include="Contractor\ContractorRenewalMaster.Master" />
     <Content Include="GuestAdmin\GuestAdmin.Master" />
+    <Content Include="Industry_Master\PeriodicLiftInstallation.Master" />
     <None Include="packages.config" />
     <Content Include="Supervisor\Supervisor.Master" />
     <Content Include="TestReport\TestReport.Master" />

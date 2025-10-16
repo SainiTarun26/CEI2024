@@ -215,6 +215,15 @@ namespace CEIHaryana.Industry
                         Session["district_IndustryLift"] = null;
                         #endregion
 
+
+                        #region aslam code changed by aslam 10-Oct-2025
+                        Session["SiteOwnerId_PeriodicIndustryLift"] = null;
+                        Session["Serviceid_PeriodicIndustryLift"] = null;
+                        Session["projectid_PeriodicIndustryLift"] = null;
+                        Session["district_PeriodicIndustryLift"] = null;
+                        #endregion
+
+
                         Session["projectid_Temp"] = inputObject.projectid;
 
                         var userSession = new Cei_IndustryServices_Redirection_IncomingJson_Model
@@ -280,6 +289,18 @@ namespace CEIHaryana.Industry
                             Session["projectid_IndustryLift"] = inputObject.projectid;
                             Session["district_IndustryLift"] = inputObject.project_site_district;
                             Response.Redirect("/Industry_Master/SiteOwnerPages/LiftSiteDetails_IndustryLift.aspx", false);
+                            return;
+                        }
+                        #endregion
+                        //LiftPeriodic 
+                        #region aslam code changed by aslam 10-Oct-2025
+                        else if (Session["Serviceid_Temp"].ToString() == "4067b274-947c-4031-8549-568847ff48c6")
+                        {
+                            Session["SiteOwnerId_PeriodicIndustryLift"] = inputObject.pannumber;
+                            Session["Serviceid_PeriodicIndustryLift"] = inputObject.serviceid;
+                            Session["projectid_PeriodicIndustryLift"] = inputObject.projectid;
+                            Session["district_PeriodicIndustryLift"] = inputObject.project_site_district;
+                            Response.Redirect("/Industry_Master/SiteOwnerPages/LiftPeriodic_PeriodicIndustryLift.aspx", false);
                             return;
                         }
                         #endregion

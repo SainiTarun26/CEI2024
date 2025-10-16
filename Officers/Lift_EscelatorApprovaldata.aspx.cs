@@ -35,13 +35,20 @@ namespace CEIHaryana.Officers
                 if (Convert.ToString(Session["InProcessInspectionId"]) != null && Convert.ToString(Session["InProcessInspectionId"]) != string.Empty)
                 {
                     Session["InProcessInspectionId_IndustryLift"] = null;
-                    LoginID = Session["InProcessInspectionId"].ToString();
-                    
+                    Session["InProcessInspectionId_PeriodicIndustryLift"] = null;
+                    LoginID = Session["InProcessInspectionId"].ToString(); 
                 }
                 else if (Convert.ToString(Session["InProcessInspectionId_IndustryLift"]) != null && Convert.ToString(Session["InProcessInspectionId_IndustryLift"]) != string.Empty)
                 {
                     Session["InProcessInspectionId"] = null;
+                    Session["InProcessInspectionId_PeriodicIndustryLift"] = null;
                     LoginID = Session["InProcessInspectionId_IndustryLift"].ToString();
+                }
+                else if (Convert.ToString(Session["InProcessInspectionId_PeriodicIndustryLift"]) != null && Convert.ToString(Session["InProcessInspectionId_PeriodicIndustryLift"]) != string.Empty)
+                {
+                    Session["InProcessInspectionId"] = null;
+                    Session["InProcessInspectionId_IndustryLift"] = null;
+                    LoginID = Session["InProcessInspectionId_PeriodicIndustryLift"].ToString();
                 }
                 DataSet ds = new DataSet();
                 ds = CEI.ApprovalData_Lift(LoginID);
@@ -107,7 +114,7 @@ namespace CEIHaryana.Officers
                         string LoginID = Session["InProcessInspectionId"].ToString();
                         Session["LiftTestReportID"] = id;
                         Session["LiftTestReportID_IndustryLift"] = null;
-
+                        Session["LiftTestReportID_PeriodicIndustryLift"] = null;
                         if (lblInstallationType.Text == "Lift")
                         {
                             if (lblInspectionType.Text == "Periodic")
@@ -136,33 +143,40 @@ namespace CEIHaryana.Officers
                         string LoginID = Session["InProcessInspectionId_IndustryLift"].ToString();
                         Session["LiftTestReportID_IndustryLift"] = id;
                         Session["LiftTestReportID"] = null;
+                        Session["LiftTestReportID_PeriodicIndustryLift"] = null;
+                        if (lblInstallationType.Text == "Lift")
+                        {
+                            Response.Redirect("/Industry_Master/Print_Forms/LiftApprovalCertificate_IndustryLift.aspx", false);
+                        }
+                        else
+                        {
+                            Response.Redirect("/Industry_Master/Print_Forms/EscalatorApprovalCertificate_IndustryLift.aspx", false);
+                        }
+
+                    }
+                    else if (Convert.ToString(Session["InProcessInspectionId_PeriodicIndustryLift"]) != null && Convert.ToString(Session["InProcessInspectionId_PeriodicIndustryLift"]) != string.Empty)
+                    {
+                        string LoginID = Session["InProcessInspectionId_PeriodicIndustryLift"].ToString();
+                        Session["LiftTestReportID_IndustryLift"] = null;
+                        Session["LiftTestReportID"] = null;
+                        Session["LiftTestReportID_PeriodicIndustryLift"] = id;
 
                         if (lblInstallationType.Text == "Lift")
                         {
-                            
                             if (lblInspectionType.Text == "Periodic")
                             {
-                               // Response.Redirect("/Print_Forms/Print_Renewal_Of_Lift.aspx", false);
-                            }
-                            else
-                            {
-                                Response.Redirect("/Industry_Master/Print_Forms/LiftApprovalCertificate_IndustryLift.aspx", false);
+                                Response.Redirect("/Industry_Master/Print_Forms/Print_Renewal_Of_Lift_PeriodicIndustryLift.aspx", false);
                             }
                         }
                         else
                         {
                             if (lblInspectionType.Text == "Periodic")
                             {
-                                //Response.Redirect("/Print_Forms/Print_Renewal_Of_Lift.aspx", false);
-                            }
-                            else
-                            {
-                                Response.Redirect("/Industry_Master/Print_Forms/EscalatorApprovalCertificate_IndustryLift.aspx", false);
+                                Response.Redirect("/Industry_Master/Print_Forms/Print_Renewal_Of_Lift_PeriodicIndustryLift.aspx", false);
                             }
                         }
 
                     }
-
                 }
             }
             catch { }

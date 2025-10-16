@@ -422,14 +422,11 @@ namespace CEIHaryana.Admin
             try
             {
                 LinkButton btn = (LinkButton)(sender);
-
                 GridViewRow row = (GridViewRow)btn.NamingContainer;
                 Label lblInstallationName = (Label)row.FindControl("LblInstallationName");
                 string installationName = lblInstallationName.Text.Trim();
                 Label LblRegistrationNo = (Label)row.FindControl("LblRegistrationNo");
                 Label LblTestReportId = (Label)row.FindControl("lblTestReport");
-
-
                 if (lblInstallationName != null)
                 {
                     #region aslam code lift industry_19M-May-2025
@@ -437,7 +434,7 @@ namespace CEIHaryana.Admin
                     {
                         Session["RegistrationNo"] = LblRegistrationNo.Text;
                         Session["TestReportID"] = LblTestReportId.Text;
-                        #endregion
+                       
                         if (lblInstallationName.Text == "Lift")
                         {
                             Response.Redirect("/TestReportModal/LiftPeriodicTestReportModal.aspx", false);
@@ -447,20 +444,18 @@ namespace CEIHaryana.Admin
                             Response.Redirect("/TestReportModal/EscalatorPeriodicTestReportModal.aspx", false);
                         }
                     }
-
-                    #region aslam code lift industry_19M-May-2025
                     else if (hdnUserType.Value == "Industry")
                     {
-                        Session["RegistrationNo_IndustryLift"] = LblRegistrationNo.Text;
-                        Session["TestReportID_IndustryLift"] = LblTestReportId.Text;
+                        Session["RegistrationNo_PeriodicIndustryLift"] = LblRegistrationNo.Text;
+                        Session["TestReportID_PeriodicIndustryLift"] = LblTestReportId.Text;
 
                         if (lblInstallationName.Text == "Lift")
                         {
-                            Response.Redirect("/Industry_Master/TestReportModal/LiftPeriodicTestReportModal_IndustryLift.aspx", false);
+                            Response.Redirect("/Industry_Master/TestReportModal/LiftPeriodicTestReportModal_PeriodicIndustryLift.aspx", false);
                         }
                         else if (lblInstallationName.Text == "Escalator")
                         {
-                            Response.Redirect("/Industry_Master/TestReportModal/EscalatorPeriodicTestReportModal_IndustryLift.aspx", false);
+                            Response.Redirect("/Industry_Master/TestReportModal/EscalatorPeriodicTestReportModal_PeriodicIndustryLift.aspx", false);
                         }
                     }
                     #endregion

@@ -17,6 +17,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
+using System.Security.Policy;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -1117,21 +1118,49 @@ namespace CEIHaryana.Officers
                 string installationName = lblInstallationName.Text.Trim();
                 Label LblRegistrationNo = (Label)row.FindControl("LblRegistrationNo");
                 Label LblTestReportId = (Label)row.FindControl("lblTestReport");
-                Session["RegistrationNo"] = LblRegistrationNo.Text;
-                Session["TestReportID"] = LblTestReportId.Text;
 
-                if (lblInstallationName != null)
+                #region aslam code changed by aslam 15-oct-2025
+
+                if (txtUserType.Text == "Industry")
                 {
-                    if (lblInstallationName.Text == "Lift")
+                    Session["RegistrationNo_PeriodicIndustryLift"] =  LblRegistrationNo.Text;
+                    Session["TestReportID_PeriodicIndustryLift"] =  LblTestReportId.Text;
+                    Session["RegistrationNo"] = null;
+                    Session["TestReportID"] = null;
+
+                    if (lblInstallationName != null)
                     {
-                        Response.Redirect("/TestReportModal/LiftPeriodicTestReportModal.aspx", false);
-                    }
-                    else if (lblInstallationName.Text == "Escalator")
-                    {
-                        Response.Redirect("/TestReportModal/EscalatorPeriodicTestReportModal.aspx", false);
+                        if (lblInstallationName.Text == "Lift")
+                        {
+                            Response.Redirect("/Industry_Master/TestReportModal/LiftPeriodicTestReportModal_PeriodicIndustryLift.aspx", false);
+                        }
+                        else if (lblInstallationName.Text == "Escalator")
+                        {
+                            Response.Redirect("/Industry_Master/TestReportModal/EscalatorPeriodicTestReportModal_PeriodicIndustryLift.aspx", false);
+                        }
                     }
                 }
+                else if (txtUserType.Text != "Industry")
+                {
+                    Session["RegistrationNo_PeriodicIndustryLift"] = null;
+                    Session["TestReportID_PeriodicIndustryLift"] = null;
+                    Session["RegistrationNo"] = LblRegistrationNo.Text;
+                    Session["TestReportID"] = LblTestReportId.Text;
 
+                    if (lblInstallationName != null)
+                    {
+                        if (lblInstallationName.Text == "Lift")
+                        {
+                            Response.Redirect("/TestReportModal/LiftPeriodicTestReportModal.aspx", false);
+                        }
+                        else if (lblInstallationName.Text == "Escalator")
+                        {
+                            Response.Redirect("/TestReportModal/EscalatorPeriodicTestReportModal.aspx", false);
+                        }
+                    }
+
+                }
+                #endregion
             }
             catch (Exception ex) { }
         }

@@ -1019,18 +1019,19 @@ namespace CEIHaryana.Officers
                 #region aslam code changed by aslam 19-May-2025
                 if (txtUserType.Text == "Industry")
                 {
-
                     if (lblInstallationName != null)
                     {
-                        Session["RegistrationNo_IndustryLift"] = LblRegistrationNo.Text;
-                        Session["TestReportID_IndustryLift"] = LblTestReportId.Text;
+                        Session["RegistrationNo"] = null;
+                        Session["TestReportID"] = null;
+                        Session["RegistrationNo_PeriodicIndustryLift"] = LblRegistrationNo.Text;
+                        Session["TestReportID_PeriodicIndustryLift"] = LblTestReportId.Text;
                         if (lblInstallationName.Text == "Lift")
                         {
-                            Response.Redirect("/Industry_Master/TestReportModal/LiftPeriodicTestReportModal_IndustryLift.aspx", false);
+                            Response.Redirect("/Industry_Master/TestReportModal/LiftPeriodicTestReportModal_PeriodicIndustryLift.aspx", false);
                         }
                         else if (lblInstallationName.Text == "Escalator")
                         {
-                            Response.Redirect("/Industry_Master/TestReportModal/EscalatorPeriodicTestReportModal_IndustryLift.aspx", false);
+                            Response.Redirect("/Industry_Master/TestReportModal/EscalatorPeriodicTestReportModal_PeriodicIndustryLift.aspx", false);
                         }
                     }
                 }
@@ -1038,6 +1039,8 @@ namespace CEIHaryana.Officers
                 {
                     if (lblInstallationName != null)
                     {
+                        Session["RegistrationNo_PeriodicIndustryLift"] = null;
+                        Session["TestReportID_PeriodicIndustryLift"] = null;
                         Session["RegistrationNo"] = LblRegistrationNo.Text;
                         Session["TestReportID"] = LblTestReportId.Text;
                         #endregion
@@ -1271,22 +1274,22 @@ namespace CEIHaryana.Officers
                     {
                         Session["RegistrationNo"] = null;
                         Session["TestReportID"] = null;
-                        Session["RegistrationNo_IndustryLift"] = LblRegistrationNo.Text;
-                        Session["TestReportID_IndustryLift"] = LblOldTestReportId.Text;
+                        Session["RegistrationNo_PeriodicIndustryLift"] = LblRegistrationNo.Text;
+                        Session["TestReportID_PeriodicIndustryLift"] = LblOldTestReportId.Text;
                         if (lblInstallationName.Text == "Lift")
                         {
-                            Response.Redirect("/Industry_Master/TestReportModal/LiftPeriodicTestReportModal_IndustryLift.aspx", false);
+                            Response.Redirect("/Industry_Master/TestReportModal/LiftPeriodicTestReportModal_PeriodicIndustryLift.aspx", false);
                         }
                         else if (lblInstallationName.Text == "Escalator")
                         {
-                            Response.Redirect("/Industry_Master/TestReportModal/EscalatorPeriodicTestReportModal_IndustryLift.aspx", false);
+                            Response.Redirect("/Industry_Master/TestReportModal/EscalatorPeriodicTestReportModal_PeriodicIndustryLift.aspx", false);
                         }
                     }
                     else if (txtUserType.Text != "Industry")
                     {
-                        #endregion
-                        Session["RegistrationNo_IndustryLift"] = null;
-                        Session["TestReportID_IndustryLift"] = null;
+                       
+                        Session["RegistrationNo_PeriodicIndustryLift"] = null;
+                        Session["TestReportID_PeriodicIndustryLift"] = null;
                         Session["RegistrationNo"] = LblRegistrationNo.Text;
                         Session["TestReportID"] = LblOldTestReportId.Text;
                         if (lblInstallationName.Text == "Lift")
@@ -1298,6 +1301,7 @@ namespace CEIHaryana.Officers
                             Response.Redirect("/TestReportModal/EscalatorPeriodicTestReportModal.aspx", false);
                         }
                     }
+                    #endregion
                 }
 
             }

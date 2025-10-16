@@ -5,15 +5,16 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace CEIHaryana.Industry_Master.SiteOwner_Industry
+namespace CEIHaryana.Industry_Master
 {
-    public partial class NewLift_Industry : System.Web.UI.MasterPage
+    public partial class PeriodicLiftInstallation : System.Web.UI.MasterPage
     {
+        //page created by aslam 16-oct-2025
         protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
-                lblName.Text = Session["SiteOwnerId_IndustryLift"].ToString();
+                lblName.Text = Session["SiteOwnerId_PeriodicIndustryLift"].ToString();
             }
             catch
             {
@@ -25,7 +26,7 @@ namespace CEIHaryana.Industry_Master.SiteOwner_Industry
 
         protected void Page_Init(object sender, EventArgs e)
         {
-            if (Convert.ToString(Session["SiteOwnerId_IndustryLift"]) != null && Convert.ToString(Session["SiteOwnerId_IndustryLift"]) != string.Empty)
+            if (Convert.ToString(Session["SiteOwnerId_PeriodicIndustryLift"]) != null && Convert.ToString(Session["SiteOwnerId_PeriodicIndustryLift"]) != string.Empty)
             {
                 //New Session Making Null 
                 Session["SiteOwnerId_Sld_Indus"] = null;
@@ -42,10 +43,10 @@ namespace CEIHaryana.Industry_Master.SiteOwner_Industry
                 Session["Serviceid_pd_Indus"] = null;
                 Session["projectid_pd_Indus"] = null;
 
-                //Periodic Lift Session Making Null 
-                Session["SiteOwnerId_PeriodicIndustryLift"] = null;
-                Session["Serviceid_PeriodicIndustryLift"] = null;
-                Session["projectid_PeriodicIndustryLift"] = null;
+                //New Lift Session Making Null 
+                Session["SiteOwnerId_IndustryLift"] = null;
+                Session["Serviceid_IndustryLift"] = null;
+                Session["projectid_IndustryLift"] = null;
             }
 
         }

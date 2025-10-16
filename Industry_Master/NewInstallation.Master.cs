@@ -32,6 +32,11 @@ namespace CEIHaryana.Industry_Master
                 Session["SiteOwnerId_IndustryLift"] = null;
                 Session["Serviceid_IndustryLift"] = null;
                 Session["projectid_IndustryLift"] = null;
+
+                //Periodic Lift Session Making Null 
+                Session["SiteOwnerId_PeriodicIndustryLift"] = null;
+                Session["Serviceid_PeriodicIndustryLift"] = null;
+                Session["projectid_PeriodicIndustryLift"] = null;
             }
 
         }

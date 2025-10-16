@@ -83,11 +83,11 @@ namespace CEIHaryana.Admin
                     #region aslam code lift industry_19M-May-2025
                     Session["LiftTestReportID_IndustryLift"] = null;
                     Session["LiftTestReportID"] = null;
+                    Session["TestReportID_PeriodicIndustryLift"] = null;
                     if (lblblUserType.Text != "Industry")
                     {
-                        #endregion
                         Session["LiftTestReportID"] = id;
-                        #region aslam code liftperiodic 26-July-2025
+
                         if (lblInstallationType.Text == "Lift")
                         {
                             if (lblInspectionType.Text == "Periodic")
@@ -114,22 +114,24 @@ namespace CEIHaryana.Admin
                                 return;
                             }
                         }
-                        #endregion
+                       
                     }
-
+                    #endregion
                     #region aslam code lift industry_19M-May-2025
                     else if (lblblUserType.Text == "Industry")
                     {
-                        Session["LiftTestReportID_IndustryLift"] = id;
+                        
                         if (lblInstallationType.Text == "Lift")
                         {
                             if (lblInspectionType.Text == "Periodic")
                             {
-                               // Response.Redirect("/Print_Forms/Print_Renewal_Of_Lift.aspx", false);
+                                Session["LiftTestReportID_PeriodicIndustryLift"] = id;
+                                Response.Redirect("/Industry_Master/Print_Forms/Print_Renewal_Of_Lift_PeriodicIndustryLift.aspx", false);
                                 return;
                             }
                             else
                             {
+                                Session["LiftTestReportID_IndustryLift"] = id;
                                 Response.Redirect("/Industry_Master/Print_Forms/LiftApprovalCertificate_IndustryLift.aspx", false);
                                 return;
                             }
@@ -138,11 +140,13 @@ namespace CEIHaryana.Admin
                         {
                             if (lblInspectionType.Text == "Periodic")
                             {
-                                //Response.Redirect("/Print_Forms/Print_Renewal_Of_Lift.aspx", false);
+                                Session["LiftTestReportID_PeriodicIndustryLift"] = id;
+                                Response.Redirect("/Industry_Master/Print_Forms/Print_Renewal_Of_Lift_PeriodicIndustryLift.aspx", false);
                                 return;
                             }
                             else
                             {
+                                Session["LiftTestReportID_IndustryLift"] = id;
                                 Response.Redirect("/Industry_Master/Print_Forms/EscalatorApprovalCertificate_IndustryLift.aspx", false);
                                 return;
                             }

@@ -1,6 +1,7 @@
 ﻿using CEI_PRoject;
 using CEIHaryana.Model.Industry;
 using CEIHaryana.Officers;
+using iText.Forms.Form.Element;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -17,7 +18,7 @@ using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
 
 namespace CEIHaryana.Industry_Master.SiteOwnerPages
 {
-    public partial class ReturnLiftInspections_IndustryLift : System.Web.UI.Page
+    public partial class ReturnLiftInspections_PeriodicIndustryLift : System.Web.UI.Page
     {
         //page created by aslam 16-oct-2025
         CEI CEI = new CEI();
@@ -57,7 +58,7 @@ namespace CEIHaryana.Industry_Master.SiteOwnerPages
         {
             try
             {
-                ID = Session["InspectionId_IndustryLift"].ToString();
+                ID = Session["InspectionId_PeriodicIndustryLift"].ToString();
                 DataTable ds = new DataTable();
                 ds = CEI.GetReturnedInspectionData_IndustryLift(int.Parse(ID));
                 string TestRportId = string.Empty;
@@ -80,50 +81,11 @@ namespace CEIHaryana.Industry_Master.SiteOwnerPages
         }
         public void FetchDetails()
         {
-            Session["Verified_IndustryLift"] = "NotVerified";
-            //Session["SiteOwnerId"] = "AAAAB3132F";
-            InspectionId = int.Parse(Session["InspectionId_IndustryLift"].ToString());
-            //Session["ReturnedValue"] = "2";
-            if (Session["TypeOfInspection_IndustryLift"].ToString() == "New")
+            Session["Verified_PeriodicIndustryLift"] = "NotVerified";
+            InspectionId = int.Parse(Session["InspectionId_PeriodicIndustryLift"].ToString());
+            if (Session["TypeOfInspection_PeriodicIndustryLift"].ToString() == "New")
             {
 
-                PaymentGridViewBind(InspectionId);
-                getWorkIntimationData(InspectionId);
-                HashSet<string> uniqueCategories = new HashSet<string>();
-                foreach (GridViewRow currentRow in GridView1.Rows)
-                {
-                    Label lblCategory = (Label)currentRow.FindControl("lblCategory");
-                    Label lblIntimationId = (Label)currentRow.FindControl("lblIntimationId");
-                    Session["IntimationId_IndustryLift"] = lblIntimationId.Text.Trim();
-                    intimationids = lblIntimationId.Text.Trim();
-                    if (lblCategory != null)
-                    {
-                        string category = lblCategory.Text.Trim();
-                        if (!string.IsNullOrEmpty(category)) // Ensure the category is not null or empty
-                        {
-                            uniqueCategories.Add(category); // Add to HashSet to avoid duplicates
-                        }
-                    }
-                }
-
-                // Join unique categories with '/' delimiter
-                string concatenatedCategories = string.Join("_", uniqueCategories);
-                //Session["InstalltionType"] = concatenatedCategories.Trim();
-                // To ensure uniqueness
-                if (Session["ReturnedValue_IndustryLift"].ToString() == "1")
-                {
-
-                    GridView1.Columns[6].Visible = true;
-                    Grd_Document.Columns[3].Visible = false;
-                }
-                else
-                {
-                    Inspection.Visible = true;
-                    btnSubmit.Visible = true;
-                    Button1.Visible = false;
-                    GridView1.Columns[6].Visible = false;
-                    Grd_Document.Columns[3].Visible = true;
-                }
             }
             else
             {
@@ -135,7 +97,7 @@ namespace CEIHaryana.Industry_Master.SiteOwnerPages
                 {
                     Label lblCategory = (Label)currentRow.FindControl("lblCategory");
                     Label lblIntimationId = (Label)currentRow.FindControl("lblIntimationId");
-                    Session["IntimationId_IndustryLift"] = lblIntimationId.Text.Trim(); ;
+                    Session["IntimationId_PeriodicIndustryLift"] = lblIntimationId.Text.Trim(); ;
                     intimationids = lblIntimationId.Text.Trim();
                     if (lblCategory != null)
                     {
@@ -150,7 +112,7 @@ namespace CEIHaryana.Industry_Master.SiteOwnerPages
                 // Join unique categories with '/' delimiter
                 string concatenatedCategories = string.Join("_", uniqueCategories);
                 // Session["InstalltionType"] = concatenatedCategories.Trim();
-                if (Session["ReturnedValue_IndustryLift"].ToString() == "1")
+                if (Session["ReturnedValue_PeriodicIndustryLift"].ToString() == "1")
                 {
                     GridView2.Columns[5].Visible = true;
                     Grd_Document.Columns[3].Visible = false;
@@ -170,14 +132,14 @@ namespace CEIHaryana.Industry_Master.SiteOwnerPages
 
         public void GetData()
         {
-            InspectionId = int.Parse(Session["InspectionId_IndustryLift"].ToString());
+            InspectionId = int.Parse(Session["InspectionId_PeriodicIndustryLift"].ToString());
             DataTable dataTable = new DataTable();
             dataTable = CEI.GetReturnedInspectionData_IndustryLift(InspectionId);
             txttransactionId.Text = dataTable.Rows[0]["TransactionId"].ToString();
             txtReturntransactionDate.Text = dataTable.Rows[0]["TransctionDate"].ToString();
             txtInspectionRemarks.Text = dataTable.Rows[0]["InspectionRemarks"].ToString();
-            Session["InstalltionType_IndustryLift"] = dataTable.Rows[0]["InstallationType"].ToString();
-            if (Session["ReturnedValue_IndustryLift"].ToString() == "1")
+            Session["InstalltionType_PeriodicIndustryLift"] = dataTable.Rows[0]["InstallationType"].ToString();
+            if (Session["ReturnedValue_PeriodicIndustryLift"].ToString() == "1")
             {
                 // txtInspectionRemarks.ReadOnly = true;
                 txtReturntransactionDate.ReadOnly = true;
@@ -189,7 +151,7 @@ namespace CEIHaryana.Industry_Master.SiteOwnerPages
             {
 
             }
-            if (Session["Amount_IndustryLift"].ToString() == "0" || Session["Amount_IndustryLift"].ToString() == "0.00")
+            if (Session["Amount_PeriodicIndustryLift"].ToString() == "0" || Session["Amount_PeriodicIndustryLift"].ToString() == "0.00")
             {
                 PaymentDetails.Visible = false;
                 ChallanDetail.Visible = false;
@@ -200,8 +162,6 @@ namespace CEIHaryana.Industry_Master.SiteOwnerPages
                 txttransactionDate.Text = dataTable.Rows[0]["TransctionDate"].ToString();
 
             }
-
-
         }
         protected void Grd_Document_RowCommand(object sender, GridViewCommandEventArgs e)
         {
@@ -247,24 +207,10 @@ namespace CEIHaryana.Industry_Master.SiteOwnerPages
         {
             try
             {
-                Session["OTP_IndustryLift"] = "0";
-                string TypeOfInspection = Session["TypeOfInspection_IndustryLift"].ToString();
+                Session["OTP_PeriodicIndustryLift"] = "0";
+                string TypeOfInspection = Session["TypeOfInspection_PeriodicIndustryLift"].ToString();
                 if (e.CommandName == "ViewTestReport")
                 {
-                    Control ctrl = e.CommandSource as Control;
-                    GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
-                    Label lblCategory = (Label)row.FindControl("lblCategory");
-                    Label lblTestReportId = (Label)row.FindControl("lblTestReportId");
-                    if (lblCategory.Text.Trim() == "Lift")
-                    {
-                        Session["LiftTestReportID_IndustryLift"] = lblTestReportId.Text;
-                        Response.Redirect("/Industry_Master/TestReportModal/LiftTestReportModal_IndustryLift.aspx", false);
-                    }
-                    else if (lblCategory.Text.Trim() == "Escalator")
-                    {
-                        Session["EscalatorTestReportID_IndustryLift"] = lblTestReportId.Text;
-                        Response.Redirect("/Industry_Master/TestReportModal/EscalatorTestReportModal_IndustryLift.aspx", false);
-                    }
                 }
                 else if (e.CommandName == "CreateNew")
                 {
@@ -273,7 +219,7 @@ namespace CEIHaryana.Industry_Master.SiteOwnerPages
 
                     Label lblCategory = (Label)row.FindControl("lblCategory");
 
-                    if (Session["Verified_IndustryLift"].ToString() != "Verified")
+                    if (Session["Verified_PeriodicIndustryLift"].ToString() != "Verified")
                     {
                         Label lblTestReportId = (Label)row.FindControl("lblTestReportId");
                         Label lblIntimationId = (Label)row.FindControl("lblIntimationId");
@@ -281,67 +227,37 @@ namespace CEIHaryana.Industry_Master.SiteOwnerPages
                         Label lblNoOfInstallations = (Label)row.FindControl("lblNoOfInstallations");
                         Label lblTotalNo = (Label)row.FindControl("lblTotalNo");
                         if (lblCategory.Text.Trim() == "Lift" && TypeOfInspection.Trim() == "New")
-
                         {
-                            Session["Application_IndustryLift"] = lblIntimationId.Text.Trim();
-                            Session["id_IndustryLift"] = lblIntimationId.Text.Trim();
-                            Session["Typs_IndustryLift"] = lblCategory.Text.Trim();
-                            Session["NoOfInstallations_IndustryLift"] = lblNoOfInstallations.Text.Trim();
-                            Session["IHID_IndustryLift"] = lblNoOfInstallations.Text.Trim();
-                            Session["TotalInstallation_IndustryLift"] = lblTotalNo.Text.Trim();
-                            Session["LiftTestReportID_IndustryLift"] = lblTestReportId.Text;
-                            Response.Redirect("/Industry_Master/SiteOwnerPages/LiftDetails_IndustryLift.aspx", false);
                         }
                         else if (lblCategory.Text.Trim() == "Escalator" && TypeOfInspection.Trim() == "New")
                         {
-
-                            Session["Application_IndustryLift"] = lblIntimationId.Text.Trim();
-                            Session["id_IndustryLift"] = lblIntimationId.Text.Trim();
-                            Session["Typs_IndustryLift"] = lblCategory.Text.Trim();
-                            Session["NoOfInstallations_IndustryLift"] = lblNoOfInstallations.Text.Trim();
-                            Session["IHID_IndustryLift"] = lblNoOfInstallations.Text.Trim();
-                            Session["TotalInstallation_IndustryLift"] = lblNoOfInstallations.Text.Trim();
-                            Session["EscalatorTestReportID_IndustryLift"] = lblTestReportId.Text;
-                            Response.Redirect("/Industry_Master/SiteOwnerPages/EscalatorDetails_IndustryLift.aspx", false);
                         }
                         else if (TypeOfInspection.Trim() != "New")
                         {
-                            Session["RegistrationNosessionPass_IndustryLift"] = lblIntimationId.Text;
-                            Session["InstallTypePass_IndustryLift"] = lblCategory.Text;
-                            Session["EscalatorTestReportID_IndustryLift"] = lblTestReportId.Text;
-                            Response.Redirect("/Industry_Master/SiteOwnerPages/LiftPeriodicRenewal_IndustryLift.aspx", false);
+                            Session["RegistrationNosessionPass_PeriodicIndustryLift"] = lblIntimationId.Text;
+                            Session["InstallTypePass_PeriodicIndustryLift"] = lblCategory.Text;
+                            Session["EscalatorTestReportID_PeriodicIndustryLift"] = lblTestReportId.Text;
+                            Response.Redirect("/Industry_Master/SiteOwnerPages/LiftPeriodicRenewal_PeriodicIndustryLift.aspx", false);
                         }
                     }
                     else
                     {
-                        if (Session["TypeOfInspection_IndustryLift"].ToString() == "New")
+                        if (Session["TypeOfInspection_PeriodicIndustryLift"].ToString() == "New")
                         {
-                            Label lblTestReportId = (Label)row.FindControl("lblOldTestReportId");
-                            if (lblCategory.Text.Trim() == "Lift")
-                            {
-                                Session["LiftTestReportID_IndustryLift"] = lblTestReportId.Text;
-                                Response.Redirect("/Industry_Master/TestReportModal/LiftTestReportModal_IndustryLift.aspx", false);
-                            }
-                            else if (lblCategory.Text.Trim() == "Escalator")
-                            {
-
-                                Session["EscalatorTestReportID_IndustryLift"] = lblTestReportId.Text;
-                                Response.Redirect("/Industry_Master/TestReportModal/EscalatorTestReportModal_IndustryLift.aspx", false);
-                            }
                         }
                         else
                         {
                             Label lblTestReportId = (Label)row.FindControl("lblTestReportId");
                             Label lblIntimationId = (Label)row.FindControl("lblIntimationId");
-                            Session["TestReportID_IndustryLift"] = lblTestReportId.Text;
-                            Session["RegistrationNo_IndustryLift"] = lblIntimationId.Text.Trim();
+                            Session["TestReportID_PeriodicIndustryLift"] = lblTestReportId.Text;
+                            Session["RegistrationNo_PeriodicIndustryLift"] = lblIntimationId.Text.Trim();
                             if (lblCategory.Text.Trim() == "Lift")
                             {
-                                Response.Redirect("/Industry_Master/TestReportModal/LiftPeriodicTestReportModal_IndustryLift.aspx", false);
+                                Response.Redirect("/Industry_Master/TestReportModal/LiftPeriodicTestReportModal_PeriodicIndustryLift.aspx", false);
                             }
                             else if (lblCategory.Text.Trim() == "Escalator")
                             {
-                                Response.Redirect("/Industry_Master/TestReportModal/EscalatorPeriodicTestReportModal_IndustryLift.aspx", false);
+                                Response.Redirect("/Industry_Master/TestReportModal/EscalatorPeriodicTestReportModal_PeriodicIndustryLift.aspx", false);
                             }
                         }
                     }
@@ -353,15 +269,15 @@ namespace CEIHaryana.Industry_Master.SiteOwnerPages
                     Label lblCategory = (Label)row.FindControl("lblCategory");
                     Label lblTestReportId = (Label)row.FindControl("lblTestReportId");
                     Label lblIntimationId = (Label)row.FindControl("lblIntimationId");
-                    Session["TestReportID_IndustryLift"] = lblTestReportId.Text;
-                    Session["RegistrationNo_IndustryLift"] = lblIntimationId.Text.Trim();
+                    Session["TestReportID_PeriodicIndustryLift"] = lblTestReportId.Text;
+                    Session["RegistrationNo_PeriodicIndustryLift"] = lblIntimationId.Text.Trim();
                     if (lblCategory.Text.Trim() == "Lift")
                     {
-                        Response.Redirect("/Industry_Master/TestReportModal/LiftPeriodicTestReportModal_IndustryLift.aspx", false);
+                        Response.Redirect("/Industry_Master/TestReportModal/LiftPeriodicTestReportModal_PeriodicIndustryLift.aspx", false);
                     }
                     else if (lblCategory.Text.Trim() == "Escalator")
                     {
-                        Response.Redirect("/Industry_Master/TestReportModal/EscalatorPeriodicTestReportModal_IndustryLift.aspx", false);
+                        Response.Redirect("/Industry_Master/TestReportModal/EscalatorPeriodicTestReportModal_PeriodicIndustryLift.aspx", false);
                     }
                 }
             }
@@ -383,25 +299,6 @@ namespace CEIHaryana.Industry_Master.SiteOwnerPages
             }
         }
 
-        private void getWorkIntimationData(int InspectionId)
-        {
-
-            DataTable ds = new DataTable();
-            ds = CEI.ReturnInstallations_Lift_IndustryLift(InspectionId);
-            if (ds.Rows.Count > 0 && ds != null)
-            {
-                GridView1.DataSource = ds;
-                GridView1.DataBind();
-            }
-            else
-            {
-                GridView1.DataSource = null;
-                GridView1.DataBind();
-                string script = "alert(\"No Record Found\");";
-                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
-            }
-            ds.Dispose();
-        }
         private void getWorkIntimationDataPeriodi(int InspectionId)
         {
 
@@ -426,37 +323,10 @@ namespace CEIHaryana.Industry_Master.SiteOwnerPages
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 Label lblOldTestReportId = (Label)e.Row.FindControl("lblOldTestReportId");
-                string InspectionIds = Session["InspectionId_IndustryLift"].ToString();
+                string InspectionIds = Session["InspectionId_PeriodicIndustryLift"].ToString();
 
-                if (Session["TypeOfInspection_IndustryLift"].ToString() == "New")
+                if (Session["TypeOfInspection_PeriodicIndustryLift"].ToString() == "New")
                 {
-                    Label lblTypeofinstallation = (Label)e.Row.FindControl("lblTypeofinstallation");
-                    Label lblIntimationId = (Label)e.Row.FindControl("lblIntimationId");
-                    Label lblCount = (Label)e.Row.FindControl("lblCount");
-                    DataTable dta = new DataTable();
-
-                    dta = CEI.CalculateRows_IndustryLift(lblTypeofinstallation.Text.Trim(), lblIntimationId.Text.Trim(), InspectionIds, lblCount.Text.Trim());
-                    string Result = dta.Rows[0]["Result"].ToString();
-                    LinkButton linkButton5 = (LinkButton)e.Row.FindControl("LinkButton5");
-
-                    if (Result == "Greater")
-                    {
-                        if (Session["Verified_IndustryLift"].ToString() != "Verified")
-                        {
-                            linkButton5.Text = "Created";
-
-                            linkButton5.Enabled = false;
-                        }
-                        else
-                        {
-                            linkButton5.Text = "Old Test Report";
-                        }
-                    }
-                    else
-                    {
-                        // Show LinkButton5 if OldTestReportId is not null or empty
-                        linkButton5.Visible = true;
-                    }
                 }
                 else
                 {
@@ -468,7 +338,7 @@ namespace CEIHaryana.Industry_Master.SiteOwnerPages
                     string Result = dta.Rows[0]["Result"].ToString();
                     if (Result == "Greater")
                     {
-                        if (Session["Verified_IndustryLift"].ToString() != "Verified")
+                        if (Session["Verified_PeriodicIndustryLift"].ToString() != "Verified")
                         {
                             // Hide LinkButton5 if OldTestReportId is null or empty
                             linkButton7.Text = "Created";
@@ -507,35 +377,9 @@ namespace CEIHaryana.Industry_Master.SiteOwnerPages
 
                 lblFooterQuantity.Text = totalQuantity.ToString();
                 lblFooterAmount.Text = totalAmountSum.ToString();
-                Session["Amount_IndustryLift"] = totalAmountSum.ToString();
+                Session["Amount_PeriodicIndustryLift"] = totalAmountSum.ToString();
             }
         }
-        protected void PaymentGridViewBind(int InspectionId)
-        {
-            try
-            {
-
-                DataTable dsa = new DataTable();
-                dsa = CEI.ReturnPayment_Lift_IndustryLift(InspectionId);
-                if (dsa.Rows.Count > 0 && dsa != null)
-                {
-                    GridViewPayment.DataSource = dsa;
-                    GridViewPayment.DataBind();
-                }
-                else
-                {
-                    GridViewPayment.DataSource = null;
-                    GridViewPayment.DataBind();
-                    string script = "alert(\"Please Fill the Form first for knowing Payment \");";
-                    ScriptManager.RegisterStartupScript(this, GetType(), "serverscript", script, true);
-                }
-                dsa.Dispose();
-            }
-            catch (Exception ex)
-            {
-            }
-        }
-
         protected void PaymentGridViewBindPeriodic(int InspectionId)
         {
             try
@@ -562,13 +406,12 @@ namespace CEIHaryana.Industry_Master.SiteOwnerPages
             }
         }
 
-
         public void UploadCheckListDocInCollection()
         {
-            string InspectionId = Session["InspectionId_IndustryLift"].ToString();
-            string InstallTypes = Session["InstalltionType_IndustryLift"].ToString();
-            intimationids = Session["IntimationId_IndustryLift"].ToString();
-            string CreatedByy = Session["SiteOwnerId_IndustryLift"].ToString();
+            string InspectionId = Session["InspectionId_PeriodicIndustryLift"].ToString();
+            string InstallTypes = Session["InstalltionType_PeriodicIndustryLift"].ToString();
+            intimationids = Session["IntimationId_PeriodicIndustryLift"].ToString();
+            string CreatedByy = Session["SiteOwnerId_PeriodicIndustryLift"].ToString();
             //SqlTransaction transaction = null;
             try
             {
@@ -667,12 +510,12 @@ namespace CEIHaryana.Industry_Master.SiteOwnerPages
             }
 
             int checksuccessmessage = 0;
-            if (Convert.ToString(Session["SiteOwnerId_IndustryLift"]) != null && Convert.ToString(Session["IntimationId_LiftEscalator_IndustryLift"]) != null)
+            if (Convert.ToString(Session["SiteOwnerId_PeriodicIndustryLift"]) != null && Convert.ToString(Session["IntimationId_LiftEscalator_PeriodicIndustryLift"]) != null)
             {
-                string CreatedBy = Session["SiteOwnerId_IndustryLift"].ToString();
+                string CreatedBy = Session["SiteOwnerId_PeriodicIndustryLift"].ToString();
                 try
                 {
-                    InspectionId = int.Parse(Session["InspectionId_IndustryLift"].ToString());
+                    InspectionId = int.Parse(Session["InspectionId_PeriodicIndustryLift"].ToString());
                     string date = string.Empty;
                     string Data = string.Empty;
                     if (txtReturntransactionDate.Visible == true || PaymentDetails.Visible == false)
@@ -688,45 +531,45 @@ namespace CEIHaryana.Industry_Master.SiteOwnerPages
                         date = "1899-09-09";
                     }
                     DataTable ds = new DataTable();
-                    if (Session["TypeOfInspection_IndustryLift"].ToString() == "New" && Session["ReturnedValue_IndustryLift"].ToString() == "1")
+                    if (Session["TypeOfInspection_PeriodicIndustryLift"].ToString() == "New" && Session["ReturnedValue_PeriodicIndustryLift"].ToString() == "1")
                     {
 
                         ds = CEI.CheckReturnValue_IndustryLift(InspectionId);
                         Data = ds.Rows[0]["Typs"].ToString();
                     }
-                    else if (Session["TypeOfInspection_IndustryLift"].ToString() != "New" && Session["ReturnedValue_IndustryLift"].ToString() == "1")
+                    else if (Session["TypeOfInspection_PeriodicIndustryLift"].ToString() != "New" && Session["ReturnedValue_PeriodicIndustryLift"].ToString() == "1")
                     {
 
                         ds = CEI.CheckPeridocReturnValue_IndustryLift(InspectionId);
                         Data = ds.Rows[0]["Typs"].ToString();
                     }
 
-                    if (Data == "Yes" && Session["ReturnedValue_IndustryLift"].ToString() == "1")
+                    if (Data == "Yes" && Session["ReturnedValue_PeriodicIndustryLift"].ToString() == "1")
                     {
-                        InspectionId = int.Parse(Session["InspectionId_IndustryLift"].ToString());
+                        InspectionId = int.Parse(Session["InspectionId_PeriodicIndustryLift"].ToString());
                         if (Grd_Document.Columns[3].Visible == true && Grd_Document.Visible == true)
                         {
                             UploadCheckListDocInCollection();
                         }
                         CEI.UpdateReturnLiftInspection_IndustryLift(InspectionId, txttransactionId.Text, DateTime.Parse(date), txtInspectionRemarks.Text, CreatedBy);
 
-                        if (Session["TypeOfInspection_IndustryLift"].ToString() == "Periodic")
+                        if (Session["TypeOfInspection_PeriodicIndustryLift"].ToString() == "Periodic")
                         {
                             CEI.UpdateReturnLiftInspectionPeriodicStatus_IndustryLift(InspectionId);
                         }
                         //ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
                     }
 
-                    else if (Session["ReturnedValue_IndustryLift"].ToString() != "1")
+                    else if (Session["ReturnedValue_PeriodicIndustryLift"].ToString() != "1")
                     {
-                        InspectionId = int.Parse(Session["InspectionId_IndustryLift"].ToString());
+                        InspectionId = int.Parse(Session["InspectionId_PeriodicIndustryLift"].ToString());
                         if (Grd_Document.Columns[3].Visible == true)
                         {
                             UploadCheckListDocInCollection();
                         }
                         CEI.UpdateReturnLiftInspection_IndustryLift(InspectionId, txttransactionId.Text, DateTime.Parse(date), txtInspectionRemarks.Text, CreatedBy);
 
-                        if (Session["TypeOfInspection_IndustryLift"].ToString() == "Periodic")
+                        if (Session["TypeOfInspection_PeriodicIndustryLift"].ToString() == "Periodic")
                         {
                             CEI.UpdateReturnLiftInspectionPeriodicStatus_IndustryLift(InspectionId);
                         }
@@ -753,7 +596,7 @@ namespace CEIHaryana.Industry_Master.SiteOwnerPages
                     //string actiontype = para_InspectID == 0 ? "Submit" : "ReSubmit";
                     string actiontype = "Submit";
 
-                    List<Industry_Api_Post_DataformatModel> ApiPostformatResults = CEI.GetIndustry_OutgoingRequestFormat(Convert.ToInt32(Session["InspectionId_IndustryLift"].ToString()), actiontype, Session["projectid_IndustryLift"].ToString(), Session["Serviceid_IndustryLift"].ToString(), Session["SiteOwnerId_IndustryLift"].ToString());
+                    List<Industry_Api_Post_DataformatModel> ApiPostformatResults = CEI.GetIndustry_OutgoingRequestFormat(Convert.ToInt32(Session["InspectionId_PeriodicIndustryLift"].ToString()), actiontype, Session["projectid_PeriodicIndustryLift"].ToString(), Session["Serviceid_PeriodicIndustryLift"].ToString(), Session["SiteOwnerId_PeriodicIndustryLift"].ToString());
                     foreach (var ApiPostformatresult in ApiPostformatResults)
                     {
                         if (ApiPostformatresult.PremisesType == "Industry")
@@ -901,17 +744,14 @@ namespace CEIHaryana.Industry_Master.SiteOwnerPages
         {
             try
             {
-                InspectionId = int.Parse(Session["InspectionId_IndustryLift"].ToString());
+                InspectionId = int.Parse(Session["InspectionId_PeriodicIndustryLift"].ToString());
                 string Data = string.Empty;
                 DataTable ds = new DataTable();
-                if (Session["TypeOfInspection_IndustryLift"].ToString() == "New" && Session["ReturnedValue_IndustryLift"].ToString() == "1")
+                if (Session["TypeOfInspection_PeriodicIndustryLift"].ToString() == "New" && Session["ReturnedValue_PeriodicIndustryLift"].ToString() == "1")
                 {
-                    ds = CEI.CheckReturnValue_IndustryLift(InspectionId);
-                    Data = ds.Rows[0]["Typs"].ToString();
                 }
-                else if (Session["TypeOfInspection_IndustryLift"].ToString() != "New" && Session["ReturnedValue_IndustryLift"].ToString() == "1")
+                else if (Session["TypeOfInspection_PeriodicIndustryLift"].ToString() != "New" && Session["ReturnedValue_PeriodicIndustryLift"].ToString() == "1")
                 {
-
                     ds = CEI.CheckPeridocReturnValue_IndustryLift(InspectionId);
                     Data = ds.Rows[0]["Typs"].ToString();
                 }
@@ -920,10 +760,10 @@ namespace CEIHaryana.Industry_Master.SiteOwnerPages
                     Button1.Visible = false;
                     Inspection.Visible = true;
                     btnSubmit.Visible = true;
-                    Session["Verified_IndustryLift"] = "Verified";
-                    if (Session["TypeOfInspection_IndustryLift"].ToString() == "New" && Session["ReturnedValue_IndustryLift"].ToString() == "1")
+                    Session["Verified_PeriodicIndustryLift"] = "Verified";
+                    if (Session["TypeOfInspection_PeriodicIndustryLift"].ToString() == "New" && Session["ReturnedValue_PeriodicIndustryLift"].ToString() == "1")
                     {
-                        getWorkIntimationData(InspectionId);
+
                     }
                     else
                     {

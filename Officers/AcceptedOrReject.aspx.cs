@@ -209,12 +209,12 @@ namespace CEIHaryana.Officers
                                 if (lblblUserType.Text != "Industry")
                                 {
                                     Session["InProcessInspectionId"] = id;
-                                    Session["InProcessInspectionId_IndustryLift"] = null;
+                                    Session["InProcessInspectionId_PeriodicIndustryLift"] = null;
 
                                 }
                                 else if (lblblUserType.Text == "Industry")
                                 {
-                                    Session["InProcessInspectionId_IndustryLift"] = id;
+                                    Session["InProcessInspectionId_PeriodicIndustryLift"] = id;
                                     Session["InProcessInspectionId"] = null;
 
                                 }
