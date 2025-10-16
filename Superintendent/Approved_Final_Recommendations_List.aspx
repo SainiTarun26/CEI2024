@@ -138,6 +138,8 @@
                             <asp:TemplateField HeaderText="ApplicationId" Visible="False">
                                 <ItemTemplate>
                                     <asp:Label ID="lblApplicationId" runat="server" Text='<%#Eval("ApplicationId") %>'></asp:Label>
+                                    <asp:Label ID="lblgetCategory" runat="server" Text='<%#Eval("Categary") %>'></asp:Label>
+                                    <asp:Label ID="lblLicenceType" runat="server" Text='<%#Eval("LicenceType") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
 
@@ -187,6 +189,23 @@
                                     <asp:Label ID="lblApplicationStatus" runat="server" Text='<%#Eval("ApplicationStatus") %>'></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>
+                              <asp:TemplateField HeaderText="Licence Certificate">
+      <HeaderStyle Width="5%" CssClass="headercolor" />
+      <ItemStyle Width="5%" />
+      <ItemTemplate>
+          <asp:LinkButton
+              runat="server"
+              ID="LinkButton1"
+              Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;"
+              Text="<i class='fa fa-print' style='color:white !important;'></i>"
+              CssClass='greenButton btn-primary'
+              CommandName="Print"
+              CommandArgument='<%# Container.DataItemIndex %>'
+              Visible='<%# Eval("ApplicationStatus").ToString() == "Approved" %>' />
+         <%--Changed by navneet on 26-June-2025 <asp:LinkButton runat="server" ID="lnkBtn" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;"
+              Text="<i class='fa fa-print' style='color:white !important;'></i>" CssClass='greenButton btn-primary' CommandName="Print" CommandArgument="<%# Container.DataItemIndex %>" />--%>
+      </ItemTemplate>
+  </asp:TemplateField>
                             <%--<asp:BoundField DataField="ApplicationStatus" HeaderText="Status">
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="15%" />

@@ -70,17 +70,54 @@ namespace CEIHaryana.Superintendent
 
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
+            Control ctrl = e.CommandSource as Control;
+            GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
             if (e.CommandName == "Select")
             {
-                Control ctrl = e.CommandSource as Control;
-                GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
                 Label lblApplicationId = (Label)row.FindControl("lblApplicationId");
                 Session["Application_Id"] = lblApplicationId.Text.ToString();
                 Response.Redirect("Sup_LicenceFinal_DetailView.aspx", false);
                 return;
             }
-            else
+            else if (e.CommandName == "Print")
             {
+
+                Label lblApplicationId = (Label)row.FindControl("lblApplicationId");
+                Session["Application_Id"] = lblApplicationId.Text.ToString();
+                Label lblgetCategory = (Label)row.FindControl("lblgetCategory");
+                Label lblLicenceType = (Label)row.FindControl("lblLicenceType");
+                string category = lblgetCategory?.Text;
+                if (!string.IsNullOrEmpty(lblLicenceType.Text) && lblLicenceType.Text == "New")
+                {
+                    switch (category)
+                    {
+                        case "Contractor":
+                            Response.Redirect("/Print_Forms/Contractor_Licence_New_Certificate.aspx", false);
+                            break;
+                        case "Supervisor":
+                            Response.Redirect("/Print_Forms/Certificate_of_Competency.aspx", false);
+                            break;
+                        case "Wireman":
+                            Response.Redirect("/Print_Forms/Certificate_of_wireman_Permit.aspx", false);
+                            break;
+                    }
+                }
+                else if (!string.IsNullOrEmpty(lblLicenceType.Text) && lblLicenceType.Text == "Renewal")
+                {
+                    switch (category)
+                    {
+                        case "Contractor":
+                            Response.Redirect("/Print_Forms/ContractorLicenceRenewal.aspx", false);
+                            break;
+                        case "Supervisor":
+
+                            Response.Redirect("/Print_Forms/CertificateOfCompetencyRenewal.aspx", false);
+                            break;
+                        case "Wireman":
+                            Response.Redirect("/Print_Forms/CertificateOfWiremanPermitRenewal.aspx", false);
+                            break;
+                    }
+                }
 
             }
         }
