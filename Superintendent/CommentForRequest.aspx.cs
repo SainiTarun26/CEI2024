@@ -50,14 +50,18 @@ namespace CEIHaryana.Superintendent
                 txtStatus.Text = dt.Rows[0]["ApplicationStatus"].ToString();
                 if (txtStatus.Text != "Submit")
                 {
+                    SupComment.Visible = false;
+                      btnSubmit.Visible = false;
                     Status.Visible = true;
                 }
-                string SuperidentComment = dt.Rows[0]["SuperintendentReviewComment"].ToString();              
-               if(SuperidentComment != null && SuperidentComment != string.Empty)
-                {
-                    SupComment.Visible = false;
-                    btnSubmit.Visible = false;
-                }
+                //Commented by navneet for return process
+               // strSupComment.Visible = false;
+               //     btnSubmit.Visible = false;ing SuperidentComment = dt.Rows[0]["SuperintendentReviewComment"].ToString();              
+               //if(SuperidentComment != null && SuperidentComment != string.Empty)
+               // {
+               //     SupComment.Visible = false;
+               //     btnSubmit.Visible = false;
+               // }
             }
         }
         private void GetHeaderDetailsWithId(string licApplicationId)
