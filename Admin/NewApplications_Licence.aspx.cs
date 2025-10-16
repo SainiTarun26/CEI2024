@@ -504,9 +504,15 @@ namespace CEIHaryana.Admin
                         Label lblRegistrationNo;
                         //if (lblApplicationType.Text.Trim() == "New")
                         //{
-
+                        if (lblApplicationType.Text.Trim() == "New")
+                        {
                             lblRegistrationNo = (Label)row.FindControl("lblRegistrationNo");
-                            cei.UpdatestatusOfReturnLicenseapplication("Returned", "New", txtReason.Text, lblRegistrationNo.Text);
+                        }
+                        else
+                        {
+                            lblRegistrationNo = (Label)row.FindControl("lblId");
+                        }
+                            cei.UpdatestatusOfReturnLicenseapplication("Return", lblApplicationType.Text, txtReason.Text, lblRegistrationNo.Text);
                             GridViewBind(null, null, null);
 
                             ScriptManager.RegisterStartupScript(this, GetType(), "UploadError",
