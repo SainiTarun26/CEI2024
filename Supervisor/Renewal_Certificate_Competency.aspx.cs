@@ -52,7 +52,7 @@ namespace CEIHaryana.Supervisor
                         userID = Session["SupervisorID"].ToString();
                         HdnUserId.Value = userID;
                         HdnUserType.Value = "Supervisor";
-                        if (Convert.ToString(Session["Renwal"]).Trim()== "Yes")
+                        if (Convert.ToString(Session["Renwal"]).Trim() == "Yes")
                         {
                             GetRenewalData(userID);
                         }
@@ -119,11 +119,11 @@ namespace CEIHaryana.Supervisor
 
             txtage55.Text = dt.Rows[0]["DateTurned55"].ToString();
             txtaddress.Text = dt.Rows[0]["FullAddress"].ToString();
-            txtAddressNew.Text=dt.Rows[0]["Address"].ToString();
-            ddlState1.SelectedItem.Text=dt.Rows[0]["State"].ToString();
+            txtAddressNew.Text = dt.Rows[0]["Address"].ToString();
+            ddlState1.SelectedItem.Text = dt.Rows[0]["State"].ToString();
             ddlLoadBindDistrict1(ddlState1.SelectedItem.Text.ToString());
-            ddlDistrict1.SelectedItem.Text=dt.Rows[0]["District"].ToString();
-            txtPincodeNew.Text=dt.Rows[0]["PinCode"].ToString();
+            ddlDistrict1.SelectedItem.Text = dt.Rows[0]["District"].ToString();
+            txtPincodeNew.Text = dt.Rows[0]["PinCode"].ToString();
             txtFatherName.Text = dt.Rows[0]["FatherName"].ToString();
             txtDOB.Text = dt.Rows[0]["DOB"].ToString();
             txtPhone.Text = dt.Rows[0]["PhoneNo"].ToString();
@@ -131,6 +131,13 @@ namespace CEIHaryana.Supervisor
             txtcertificatenoNEW.Text = dt.Rows[0]["CertificateNew"].ToString();
             txtcertificatenoOLD.Text = dt.Rows[0]["CertificateOld"].ToString();
             txtexpirydate.Text = dt.Rows[0]["DateofExpiry"].ToString();
+            int yearDiff = Convert.ToInt32(dt.Rows[0]["YearDifference"]);
+            if (yearDiff >= 5)
+            {                
+                ScriptManager.RegisterStartupScript( this, this.GetType(), "alertAndRedirect", "alert('Your licence has expired for more than 5 years. Please apply for a new licence.'); window.location='/AdminLogout.aspx';", true );
+                return;
+            }
+            ddlRenewalTimeibind(yearDiff);
             txtDistrict.Text = dt.Rows[0]["District"].ToString();
             int belated = Convert.ToInt32(dt.Rows[0]["BelatedRenewal"]);
             if (belated == 1)
@@ -164,6 +171,17 @@ namespace CEIHaryana.Supervisor
                 txtaddressofEmployer.Text = dt.Rows[0]["ContractorAddress"].ToString();
                 txtaddressofEmployer.ReadOnly = true;
             }
+        }
+
+        private void ddlRenewalTimeibind(int year)
+        {
+            DataTable dtyear = new DataTable();
+            dtyear = CEI.GetddlrenewalYear(year);
+            ddlRenewalTime.DataSource = dtyear;
+            ddlRenewalTime.DataTextField = "Year";
+            ddlRenewalTime.DataValueField = "Year";
+            ddlRenewalTime.DataBind();
+            dtyear.Clear();
         }
 
         protected void btnNext_Click(object sender, EventArgs e)
@@ -300,7 +318,7 @@ namespace CEIHaryana.Supervisor
 
             // Check if folder is for images
             if (folderName.Equals("Candidate Image", StringComparison.OrdinalIgnoreCase) ||
-                folderName.Equals("Candidate Signature", StringComparison.OrdinalIgnoreCase) )
+                folderName.Equals("Candidate Signature", StringComparison.OrdinalIgnoreCase))
             {
                 isFileValid = IsValidPhoto(file);
             }
@@ -334,7 +352,7 @@ namespace CEIHaryana.Supervisor
             return path + fileName;
         }
 
-        
+
         private bool IsValidPhoto(HttpPostedFile file)
         {
             string ext = Path.GetExtension(file.FileName).ToLower();
@@ -344,7 +362,7 @@ namespace CEIHaryana.Supervisor
             return true;
         }
 
-       
+
         private bool ValidatePdfFile(HttpPostedFile file)
         {
             string ext = Path.GetExtension(file.FileName).ToLower();

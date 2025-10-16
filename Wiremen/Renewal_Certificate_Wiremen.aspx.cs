@@ -122,6 +122,13 @@ namespace CEIHaryana.Wiremen
             txtcertificatenoNEW.Text = dt.Rows[0]["CertificateNew"].ToString();
             txtcertificatenoOLD.Text = dt.Rows[0]["CertificateOld"].ToString();
             txtexpirydate.Text = dt.Rows[0]["DateofExpiry"].ToString();
+            int yearDiff = Convert.ToInt32(dt.Rows[0]["YearDifference"]);
+            if (yearDiff >= 5)
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertAndRedirect", "alert('Your licence has expired for more than 5 years. Please apply for a new licence.'); window.location='/AdminLogout.aspx';", true);
+                return;
+            }
+            ddlRenewalTimeibind(yearDiff);
             txtDistrict.Text = dt.Rows[0]["District"].ToString();
             int belated = Convert.ToInt32(dt.Rows[0]["BelatedRenewal"]);
             if (belated == 1)
@@ -158,7 +165,16 @@ namespace CEIHaryana.Wiremen
         }
 
 
-
+        private void ddlRenewalTimeibind(int year)
+        {
+            DataTable dtyear = new DataTable();
+            dtyear = CEI.GetddlrenewalYear(year);
+            ddlRenewalTime.DataSource = dtyear;
+            ddlRenewalTime.DataTextField = "Year";
+            ddlRenewalTime.DataValueField = "Year";
+            ddlRenewalTime.DataBind();
+            dtyear.Clear();
+        }
         protected void btnNext_Click(object sender, EventArgs e)
         {
             try

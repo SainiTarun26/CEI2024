@@ -15908,6 +15908,12 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
         }
 
         #endregion
+        #region kalapan renewal 16-oct-2025
+        public DataTable GetddlrenewalYear(int year)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_Renewalyear", year);
+        }
+        #endregion
     }
 }
 

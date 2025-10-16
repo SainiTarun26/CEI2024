@@ -284,7 +284,7 @@ ease-in-out;
     <div class="content-wrapper">
         <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
             <div class="card-body">
-                <asp:HiddenField ID="HiddenField2" runat="server" />
+                <asp:HiddenField ID="hdnExpiryyear" runat="server" />
                 <div class="row">
                     <div class="col-md-2"></div>
                     <div class="col-md-8" style="text-align: center; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding-top: 8px; padding-bottom: 8px; border-radius: 10px; top: 0px; left: 0px;">
@@ -603,12 +603,7 @@ Please Select
                                 Renewal Time 
                             </label>
                             <asp:DropDownList ID="ddlRenewalTime" CssClass="form-control" runat="server" OnSelectedIndexChanged="ddlRenewalTime_SelectedIndexChanged" AutoPostBack="true">
-                                <asp:ListItem Value="0" Text="Select"></asp:ListItem>
-                                <asp:ListItem Value="1" Text="1 Year"></asp:ListItem>
-                                <asp:ListItem Value="2" Text="2 Year"></asp:ListItem>
-                                <asp:ListItem Value="3" Text="3 Year"></asp:ListItem>
-                                <asp:ListItem Value="4" Text="4 Year"></asp:ListItem>
-                                <asp:ListItem Value="5" Text="5 Year"></asp:ListItem>
+                               
                             </asp:DropDownList>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" InitialValue="0" ControlToValidate="ddlRenewalTime" ValidationGroup="Submit" ForeColor="Red">Please select</asp:RequiredFieldValidator>
 
