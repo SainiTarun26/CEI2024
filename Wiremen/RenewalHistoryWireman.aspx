@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Wiremen/Wiremen.Master" AutoEventWireup="true" CodeBehind="RenewalHistoryWireman.aspx.cs" Inherits="CEIHaryana.Wiremen.RenewalHistoryWireman" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Wiremen/Wireman_Renewal.Master" AutoEventWireup="true" CodeBehind="RenewalHistoryWireman.aspx.cs" Inherits="CEIHaryana.Wiremen.RenewalHistoryWireman" %>
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">

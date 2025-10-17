@@ -11,7 +11,7 @@ namespace CEIHaryana.Wiremen
 {
 
 
-    public partial class Wiremen
+    public partial class Wireman_Renewal
     {
 
         /// <summary>
@@ -60,13 +60,13 @@ namespace CEIHaryana.Wiremen
         protected global::System.Web.UI.HtmlControls.HtmlAnchor UserCurrent_Licence_Link;
 
         /// <summary>
-        /// RenewalMenuItem control.
+        /// A1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor RenewalMenuItem;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor A1;
 
         /// <summary>
         /// ContentPlaceHolder1 control.

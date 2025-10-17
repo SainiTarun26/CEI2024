@@ -2291,8 +2291,13 @@
     <Content Include="UserPages\Wireman_Registration_Details.aspx" />
     <Content Include="VerifyCertificate.aspx" />
     <Content Include="Web.config" />
+    <Content Include="Wiremen\AttachedRequestViewDetailsWiremen.aspx" />
+    <Content Include="Wiremen\AttachedRequestWiremen.aspx" />
     <Content Include="Wiremen\CertificateRenewal.aspx" />
     <Content Include="Wiremen\CompetencyRenewalCertificate.aspx" />
+    <Content Include="Wiremen\DeAttachedRequestViewWiremen.aspx" />
+    <Content Include="Wiremen\DeattachmentRequestWiremen.aspx" />
+    <Content Include="Wiremen\DeAttacted_StaffWiremen.aspx" />
     <Content Include="Wiremen\RenewalHistoryWireman.aspx" />
     <Content Include="Wiremen\Renewal_Certificate_Wiremen.aspx" />
     <Content Include="Wiremen\WiremenCompetencyCertificate.aspx" />
@@ -5651,6 +5656,20 @@
     <Compile Include="VerifyCertificate.aspx.designer.cs">
       <DependentUpon>VerifyCertificate.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Wiremen\AttachedRequestViewDetailsWiremen.aspx.cs">
+      <DependentUpon>AttachedRequestViewDetailsWiremen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Wiremen\AttachedRequestViewDetailsWiremen.aspx.designer.cs">
+      <DependentUpon>AttachedRequestViewDetailsWiremen.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Wiremen\AttachedRequestWiremen.aspx.cs">
+      <DependentUpon>AttachedRequestWiremen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Wiremen\AttachedRequestWiremen.aspx.designer.cs">
+      <DependentUpon>AttachedRequestWiremen.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Wiremen\CertificateRenewal.aspx.cs">
       <DependentUpon>CertificateRenewal.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -5665,6 +5684,27 @@
     <Compile Include="Wiremen\CompetencyRenewalCertificate.aspx.designer.cs">
       <DependentUpon>CompetencyRenewalCertificate.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Wiremen\DeAttachedRequestViewWiremen.aspx.cs">
+      <DependentUpon>DeAttachedRequestViewWiremen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Wiremen\DeAttachedRequestViewWiremen.aspx.designer.cs">
+      <DependentUpon>DeAttachedRequestViewWiremen.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Wiremen\DeattachmentRequestWiremen.aspx.cs">
+      <DependentUpon>DeattachmentRequestWiremen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Wiremen\DeattachmentRequestWiremen.aspx.designer.cs">
+      <DependentUpon>DeattachmentRequestWiremen.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Wiremen\DeAttacted_StaffWiremen.aspx.cs">
+      <DependentUpon>DeAttacted_StaffWiremen.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Wiremen\DeAttacted_StaffWiremen.aspx.designer.cs">
+      <DependentUpon>DeAttacted_StaffWiremen.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Wiremen\RenewalHistoryWireman.aspx.cs">
       <DependentUpon>RenewalHistoryWireman.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -5678,6 +5718,13 @@
     </Compile>
     <Compile Include="Wiremen\Renewal_Certificate_Wiremen.aspx.designer.cs">
       <DependentUpon>Renewal_Certificate_Wiremen.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Wiremen\Wireman_Renewal.Master.cs">
+      <DependentUpon>Wireman_Renewal.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Wiremen\Wireman_Renewal.Master.designer.cs">
+      <DependentUpon>Wireman_Renewal.Master</DependentUpon>
     </Compile>
     <Compile Include="Wiremen\Wiremen.Master.cs">
       <DependentUpon>Wiremen.Master</DependentUpon>
@@ -5931,6 +5978,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <Content Include="Wiremen\Wiremen.Master" />
+    <Content Include="Wiremen\Wireman_Renewal.Master" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

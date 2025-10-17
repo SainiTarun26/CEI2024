@@ -1,9 +1,14 @@
 ﻿using CEI_PRoject;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace CEIHaryana.Wiremen
 {
-    public partial class Wiremen : System.Web.UI.MasterPage
+    public partial class Wireman_Renewal : System.Web.UI.MasterPage
     {
         CEI CEI = new CEI();
         protected void Page_Load(object sender, EventArgs e)
@@ -11,11 +16,6 @@ namespace CEIHaryana.Wiremen
             if (Convert.ToString(Session["WiremanId"]) != null || Convert.ToString(Session["WiremanId"]) != string.Empty || Request.Cookies["WiremanId"] != null)
             {
                 string UserId = Convert.ToString(Session["WiremanId"]);
-               
-                bool showRenewal = CEI.IsExpiryNear(UserId);
-
-                RenewalMenuItem.Visible = showRenewal;
-
                 bool showGetLicence = CEI.Get_RegistrationIdExistForShowingLink(UserId);
                 UserCurrent_Licence_Link.Visible = showGetLicence;
             }
