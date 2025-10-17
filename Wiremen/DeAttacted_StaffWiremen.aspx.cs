@@ -168,7 +168,7 @@ namespace CEIHaryana.Wiremen
                     {
 
                         CEI.emailForDeattachmentRequest(TxtEmailId.Text);
-                        string script = $"alert('De-attachment request submitted successfully!!.'); window.location='DeattachmentRequest.aspx';";
+                        string script = $"alert('De-attachment request submitted successfully!!.'); window.location='DeattachmentRequestWiremen.aspx';";
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
                     }
                 }

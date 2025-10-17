@@ -181,7 +181,7 @@
                 <div class="row ">
                     <div class="col-md-12 col-md-12" style="margin-bottom: 10px;">
                         <h6 class="card-title fw-semibold mb-4">
-                            <asp:Label ID="lblData" runat="server">Supervisor Requests For DeAttachment</asp:Label></h6>
+                            <asp:Label ID="lblData" runat="server"> Requests For DeAttachment</asp:Label></h6>
                     </div>
                  
                    <%-- <div class="col-md-2 col-md-2">
@@ -222,7 +222,7 @@
                                     <asp:Label ID="lblDistrict" runat="server" Text='<%# Eval("ContactNo") %>' CssClass="text-wrap"></asp:Label>
                                 </ItemTemplate>
                             </asp:TemplateField>   --%>                        
-                            <asp:BoundField DataField="SupervisorLicence" HeaderText="SupervisorLicence">
+                            <asp:BoundField DataField="SupervisorLicence" HeaderText="Licence">
                                 <HeaderStyle HorizontalAlign="right" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="right" Width="15%" />
                             </asp:BoundField>
@@ -287,7 +287,7 @@
                                    <%--<asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("Id") %> ' CommandName="Select"><%#Eval("Id") %></asp:LinkButton>--%>
                                 </ItemTemplate>
                             </asp:TemplateField>                                                                     
-                            <asp:BoundField DataField="SupervisorLicence" HeaderText="SupervisorLicence">
+                            <asp:BoundField DataField="SupervisorLicence" HeaderText="Licence">
                                 <HeaderStyle HorizontalAlign="right" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="right" Width="15%" />
                             </asp:BoundField>
