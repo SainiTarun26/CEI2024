@@ -23,6 +23,19 @@ namespace CEIHaryana.Wiremen
         string userID = "";
         string Category = "";
         //page created by kalpana 18-Aug-2025
+
+        protected void Page_PreInit(object sender, EventArgs e)
+        {
+            if (Convert.ToString(Session["Renwal"]) != "" && Convert.ToString(Session["Renwal"]) != null)
+            {
+                this.Page.MasterPageFile = "~/Wiremen/Wireman_Renewal.Master";
+
+            }
+            else
+            {
+                this.Page.MasterPageFile = "~/Wiremen/Wiremen.Master";
+            }
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             //Session["SupervisorID"] = "EPH-5030";
@@ -110,11 +123,11 @@ namespace CEIHaryana.Wiremen
 
             txtage55.Text = dt.Rows[0]["DateTurned55"].ToString();
             txtaddress.Text = dt.Rows[0]["FullAddress"].ToString();
-            txtAddressNew.Text=dt.Rows[0]["Address"].ToString();
-            ddlState1.SelectedItem.Text=dt.Rows[0]["State"].ToString();
+            txtAddressNew.Text = dt.Rows[0]["Address"].ToString();
+            ddlState1.SelectedItem.Text = dt.Rows[0]["State"].ToString();
             ddlLoadBindDistrict1(ddlState1.SelectedItem.Text.ToString());
-            ddlDistrict1.SelectedItem.Text=dt.Rows[0]["District"].ToString();
-            txtPincodeNew.Text=dt.Rows[0]["PinCode"].ToString();
+            ddlDistrict1.SelectedItem.Text = dt.Rows[0]["District"].ToString();
+            txtPincodeNew.Text = dt.Rows[0]["PinCode"].ToString();
             txtFatherName.Text = dt.Rows[0]["FatherName"].ToString();
             txtDOB.Text = dt.Rows[0]["DOB"].ToString();
             txtPhone.Text = dt.Rows[0]["PhoneNo"].ToString();
@@ -122,6 +135,13 @@ namespace CEIHaryana.Wiremen
             txtcertificatenoNEW.Text = dt.Rows[0]["CertificateNew"].ToString();
             txtcertificatenoOLD.Text = dt.Rows[0]["CertificateOld"].ToString();
             txtexpirydate.Text = dt.Rows[0]["DateofExpiry"].ToString();
+            int yearDiff = Convert.ToInt32(dt.Rows[0]["YearDifference"]);
+            if (yearDiff >= 5)
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertAndRedirect", "alert('Your licence has expired for more than 5 years. Please apply for a new licence.'); window.location='/AdminLogout.aspx';", true);
+                return;
+            }
+            ddlRenewalTimeibind(yearDiff);
             txtDistrict.Text = dt.Rows[0]["District"].ToString();
             int belated = Convert.ToInt32(dt.Rows[0]["BelatedRenewal"]);
             if (belated == 1)
@@ -158,7 +178,16 @@ namespace CEIHaryana.Wiremen
         }
 
 
-
+        private void ddlRenewalTimeibind(int year)
+        {
+            DataTable dtyear = new DataTable();
+            dtyear = CEI.GetddlrenewalYear(year);
+            ddlRenewalTime.DataSource = dtyear;
+            ddlRenewalTime.DataTextField = "Year";
+            ddlRenewalTime.DataValueField = "Year";
+            ddlRenewalTime.DataBind();
+            dtyear.Clear();
+        }
         protected void btnNext_Click(object sender, EventArgs e)
         {
             try
@@ -282,7 +311,7 @@ namespace CEIHaryana.Wiremen
 
             // Check if folder is for images
             if (folderName.Equals("Candidate Image", StringComparison.OrdinalIgnoreCase) ||
-                folderName.Equals("Candidate Signature", StringComparison.OrdinalIgnoreCase) )
+                folderName.Equals("Candidate Signature", StringComparison.OrdinalIgnoreCase))
             {
                 isFileValid = IsValidPhoto(file);
             }
@@ -382,7 +411,7 @@ namespace CEIHaryana.Wiremen
         protected void ddlRenewalTime_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            string Category = HdnUserType.Value;       
+            string Category = HdnUserType.Value;
             int DaysDelay = int.TryParse(txtdays.Text, out var value) ? value : 0;
 
             string fees = CEI.RenewalFees(Category, DaysDelay, Convert.ToInt32(ddlRenewalTime.SelectedValue));

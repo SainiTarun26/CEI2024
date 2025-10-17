@@ -60,7 +60,7 @@ namespace CEIHaryana
                         else if (Category.Trim() == "Wireman")
                         {
                             Session["WiremanId"] = txtUserID.Text;
-                            Response.Redirect("/Wiremen/Renewal_Certificate_Wiremen.aspx", false);
+                            Response.Redirect("/Wiremen/WiremenDashboard.aspx", false);
                         }
                     }
                     else
