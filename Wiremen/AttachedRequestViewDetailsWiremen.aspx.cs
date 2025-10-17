@@ -88,7 +88,7 @@ namespace CEIHaryana.Wiremen
 
         protected void btnBack_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Wiremen/DeattachmentRequestWiremen .aspx", false);
+            Response.Redirect("/Wiremen/DeattachmentRequestWiremen.aspx", false);
         }
     }
 }
