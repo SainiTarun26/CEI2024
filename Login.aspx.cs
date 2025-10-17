@@ -35,41 +35,32 @@ namespace CEIHaryana
                 else
                 {
                     #region Kalpana Restrict user login
+                    bool expired = cei.IsUserExpired(txtUserID.Text, txtPassword.Text);
 
-                       var (isExpired, yearsSinceExpiry) = cei.CheckUserExpiry(txtUserID.Text, txtPassword.Text);
-
-                    if (isExpired)
+                    if (expired)
                     {
                         //string script = "alert('Your license has expired.');";
                         //ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
-                        if (yearsSinceExpiry >=3)
+
+                        DataSet ds = new DataSet();
+                        ds = cei.checkApplicationStatus(txtUserID.Text);
+                        string Category = ds.Tables[0].Rows[0]["Category"].ToString();
+                        Session["Renwal"] = "Yes";
+                        if (Category.Trim() == "Contractor")
                         {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Your licence has expired for more than 3 years. Please apply for a new licence.');", true);
-                            Response.Write("<script> window.close(); localStorage.removeItem('activeSession'); sessionStorage.clear(); window.close();</script>");
+                            Session["ContractorID"] = txtUserID.Text;
+                            Response.Redirect("/Contractor/Contractor_Licence_Renewal.aspx", false);
 
                         }
-                        else
+                        if (Category.Trim() == "Supervisor")
                         {
-                            DataSet ds = new DataSet();
-                            ds = cei.checkApplicationStatus(txtUserID.Text);
-                            string Category = ds.Tables[0].Rows[0]["Category"].ToString();
-                            Session["Renwal"] = "Yes";
-                            if (Category.Trim() == "Contractor")
-                            {
-                                Session["ContractorID"] = txtUserID.Text;
-                                Response.Redirect("/Contractor/Contractor_Licence_Renewal.aspx", false);
-
-                            }
-                            if (Category.Trim() == "Supervisor")
-                            {
-                                Session["SupervisorID"] = txtUserID.Text;
-                                Response.Redirect("/Supervisor/Renewal_Certificate_Competency.aspx", false);
-                            }
-                            else if (Category.Trim() == "Wireman")
-                            {
-                                Session["WiremanId"] = txtUserID.Text;
-                                Response.Redirect("/Wiremen/Renewal_Certificate_Wiremen.aspx", false);
-                            }
+                            Session["SupervisorID"] = txtUserID.Text;
+                            Response.Redirect("/Supervisor/Renewal_Certificate_Competency.aspx", false);
+                        }
+                        else if (Category.Trim() == "Wireman")
+                        {
+                            Session["WiremanId"] = txtUserID.Text;
+                            Response.Redirect("/Wiremen/Renewal_Certificate_Wiremen.aspx", false);
                         }
                     }
                     else
