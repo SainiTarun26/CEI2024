@@ -189,17 +189,21 @@
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>
- <asp:BoundField DataField="LicenceType" HeaderText="LicenceType">
-     <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
-     <ItemStyle HorizontalAlign="center" Width="15%" />
- </asp:BoundField>
+                            <asp:BoundField DataField="LicenceType" HeaderText="LicenceType">
+                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                            </asp:BoundField>
+                            <asp:BoundField DataField="VoltageLevel" HeaderText="VoltageLevel">
+                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                <ItemStyle HorizontalAlign="center" Width="15%" />
+                            </asp:BoundField>
 
                             <asp:BoundField DataField="CreatedDate" HeaderText="Request Date">
                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                 <ItemStyle HorizontalAlign="center" Width="15%" />
                             </asp:BoundField>
                             <asp:TemplateField HeaderText="ApplicationStatus">
-                                 <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
+                                <HeaderStyle HorizontalAlign="center" Width="15%" CssClass="headercolor" />
                                 <ItemTemplate>
                                     <asp:Label ID="lblApplicationStatus" runat="server" Text='<%#Eval("ApplicationStatus") %>'></asp:Label>
                                 </ItemTemplate>

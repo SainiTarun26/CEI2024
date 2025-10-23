@@ -412,6 +412,13 @@
                                         <ItemStyle HorizontalAlign="right" Width="15%" />
                                     </asp:BoundField>
                                     
+                                    <asp:TemplateField HeaderText="Voltagelevel">
+                                        <HeaderStyle HorizontalAlign="Left" Width="10%" CssClass="headercolor" />
+                                        <ItemStyle HorizontalAlign="Left" Width="10%" CssClass="text-wrap" />
+                                        <ItemTemplate>
+                                            <asp:Label ID="Voltagelevel" runat="server" Text='<%# Eval("Voltagelevel") %>' CssClass="text-wrap"></asp:Label>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Type">
                                         <HeaderStyle HorizontalAlign="Left" Width="10%" CssClass="headercolor" />
                                         <ItemStyle HorizontalAlign="Left" Width="10%" CssClass="text-wrap" />
