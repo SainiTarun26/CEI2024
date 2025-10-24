@@ -157,7 +157,9 @@ namespace CEIHaryana.Wiremen
         }
         protected void btnToDeattach_Click(object sender, EventArgs e)
         {
-            if (Convert.ToString(Session["WiremanId"]) == hdnId.Value)
+            try
+            {
+                if (Convert.ToString(Session["WiremanId"]) == hdnId.Value)
             {
                 if (!CheckValidation())
                 {
@@ -222,6 +224,12 @@ namespace CEIHaryana.Wiremen
             {
                 Session["WiremanId"] = "";
                 Response.Redirect("/LogOut.aspx");
+            }
+            }
+            catch (Exception ex)
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "Alert", "alert('" + ex.Message + "');", true);
+                //throw;
             }
         }
     }

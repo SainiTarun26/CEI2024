@@ -158,71 +158,79 @@ namespace CEIHaryana.Supervisor
         }
         protected void btnToDeattach_Click(object sender, EventArgs e)
         {
-            if (Convert.ToString(Session["SupervisorID"]) == hdnId.Value)
+            try
             {
-                if (!CheckValidation())
+                if (Convert.ToString(Session["SupervisorID"]) == hdnId.Value)
                 {
-                    return;
-                }
-
-                string[] allowedExtensions = { ".pdf" };
-                int maxFileSize = 1 * 1024 * 1024;
-                if (fileAttachment.HasFile && fileAttachment.PostedFile != null && fileAttachment.PostedFile.ContentLength <= maxFileSize)
-                {
-                    string ext = Path.GetExtension(fileAttachment.FileName).ToLower();
-                    if (!allowedExtensions.Contains(ext))
+                    if (!CheckValidation())
                     {
-                        string alertScript = "alert('Only PDF files are allowed.');";
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
                         return;
                     }
 
-                    DataTable dt = new DataTable();
-                    dt = CEI.GetSupervisiorReID(hdnId.Value);
-                    if (dt.Rows.Count > 0)
+                    string[] allowedExtensions = { ".pdf" };
+                    int maxFileSize = 1 * 1024 * 1024;
+                    if (fileAttachment.HasFile && fileAttachment.PostedFile != null && fileAttachment.PostedFile.ContentLength <= maxFileSize)
                     {
-                        txtReId.Text = dt.Rows[0]["REID"].ToString();
+                        string ext = Path.GetExtension(fileAttachment.FileName).ToLower();
+                        if (!allowedExtensions.Contains(ext))
+                        {
+                            string alertScript = "alert('Only PDF files are allowed.');";
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
+                            return;
+                        }
+
+                        DataTable dt = new DataTable();
+                        dt = CEI.GetSupervisiorReID(hdnId.Value);
+                        if (dt.Rows.Count > 0)
+                        {
+                            txtReId.Text = dt.Rows[0]["REID"].ToString();
+                        }
+                        else
+                        {
+                            string alertScript = "alert('Supervisior Id not find.');";
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
+                            return;
+
+                        }
+                        string directoryPath = Server.MapPath("~/Attachment/Supervisior/Attached/" + txtReId.Text);
+                        if (!Directory.Exists(directoryPath))
+                        {
+                            Directory.CreateDirectory(directoryPath);
+                        }
+
+                        string fileName = "Attached" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ext;
+                        string fullPath = Path.Combine(directoryPath, fileName);
+                        string filePathInfo = "/Attachment/Supervisior/Attached/" + txtReId.Text + "/" + fileName;
+
+                        fileAttachment.SaveAs(fullPath);
+
+                        int x = CEI.InsertDataForAttachment(txtControctorId.Text, filePathInfo, txtRemarks.Text, hdnId.Value, txtReId.Text);
+
+                        if (x > 0)
+                        {
+
+                            // CEI.emailForDeattachmentRequest(TxtEmailId.Text);
+                            string script = $"alert('Attachment request submitted successfully!!.'); window.location='DeattachmentRequest.aspx';";
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
+                        }
                     }
                     else
                     {
-                        string alertScript = "alert('Supervisior Id not find.');";
+                        string alertScript = "alert('Please upload PDF file under 1MB.');";
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
                         return;
-
-                    }
-                    string directoryPath = Server.MapPath("~/Attachment/Supervisior/Attached/" + txtReId.Text);
-                    if (!Directory.Exists(directoryPath))
-                    {
-                        Directory.CreateDirectory(directoryPath);
-                    }
-
-                    string fileName = "Attached" + DateTime.Now.ToString("yyyyMMddHHmmssFFF") + ext;
-                    string fullPath = Path.Combine(directoryPath, fileName);
-                    string filePathInfo = "/Attachment/Supervisior/Attached/" + txtReId.Text + "/" + fileName;
-
-                    fileAttachment.SaveAs(fullPath);
-
-                    int x = CEI.InsertDataForAttachment(txtControctorId.Text, filePathInfo, txtRemarks.Text, hdnId.Value, txtReId.Text);
-
-                    if (x > 0)
-                    {
-
-                        // CEI.emailForDeattachmentRequest(TxtEmailId.Text);
-                        string script = $"alert('Attachment request submitted successfully!!.'); window.location='DeattachmentRequest.aspx';";
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
                     }
                 }
                 else
                 {
-                    string alertScript = "alert('Please upload PDF file under 1MB.');";
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
-                    return;
+                    Session["SupervisorID"] = "";
+                    Response.Redirect("/SupervisorLogout.aspx");
                 }
             }
-            else
+            catch (Exception ex)
             {
-                Session["SupervisorID"] = "";
-                Response.Redirect("/SupervisorLogout.aspx");
+                ScriptManager.RegisterStartupScript(this, GetType(), "Alert", "alert('" + ex.Message + "');", true);
+                //throw;
             }
         }
     }
