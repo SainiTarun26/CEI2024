@@ -272,7 +272,7 @@
                             </asp:TextBox>
                         </div>
                           <div class="col-md-4" >
-                            <asp:Label ID="Label4" runat="server" Text="Name"></asp:Label>
+                            <asp:Label ID="Label4" runat="server" Text="Father Name"></asp:Label>
                             <asp:TextBox class="form-control" ID="txtFatherName" ReadOnly="true" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
                                 MaxLength="200" Style="margin-left: 18px;">
                             </asp:TextBox>

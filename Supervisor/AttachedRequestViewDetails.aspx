@@ -226,7 +226,7 @@
                         <div class="row">
                             <div class="col-md-4"></div>
                             <div class="col-md-4" style="text-align: center; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding-top: 8px; padding-bottom: 8px; border-radius: 10px; top: 0px; left: 0px;">
-                                <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;">DE-ATTACH REQUEST</h6>
+                                <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;">ATTACHMENT REQUEST</h6>
                             </div>
                             <br />
                             <div class="col-md-4"></div>
