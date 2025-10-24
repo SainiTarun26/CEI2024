@@ -166,166 +166,167 @@
             word-wrap: break-word;
             max-width: 100%;
         }
-        th.headercolor {
-    width: 1% !important;
-}
-        th.headercolor.thwidth {
+     
+    /*    th.headercolor.thwidth {
     width: 15% !important;
-}
+}*/
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="content-wrapper">
         <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
-            <div class="card-body">
-                <div class="row ">
+            <div class="card-body" id="Requests_Card" runat="server" visible="false">
+                <div class="row">
                     <div class="col-md-12 col-md-12" style="margin-bottom: 10px;">
                         <h6 class="card-title fw-semibold mb-4">
-                            <asp:Label ID="lblData" runat="server"> Requests For DeAttachment</asp:Label></h6>
+                            <asp:Label ID="lblData" runat="server"> Requests For Attachment/De-Attachment</asp:Label></h6>
                     </div>
                  
                    <%-- <div class="col-md-2 col-md-2">
                         <asp:Button ID="btnAddnew" runat="server" class="btn btn-primary" Style="margin-left: 10px;" OnClick="btnAddnew_Click" Text="+ Add New" />
                     </div>--%>
                 </div>
-                <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; padding-top: 50px;">
-                    <div class="row" style="margin-bottom: -30px;">                      
-                    </div>
-                    <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%" AutoGenerateColumns="false" 
-                       OnRowCommand="GridView1_RowCommand"   BorderWidth="1px" BorderColor="#dbddff">
-                        <PagerStyle CssClass="pagination-ys" />
-                        <Columns>
-                            <asp:TemplateField HeaderText="Id" Visible="False">
-                                <ItemTemplate>
-                                   <asp:Label ID="lblRequestID" runat="server" Text='<%#Eval("Id") %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="SNo">
-                                <HeaderStyle Width="5%" CssClass="headercolor" />
-                                <ItemStyle Width="5%" />
-                                <ItemTemplate>
-                                    <%#Container.DataItemIndex+1 %>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Request Id">
-                                <HeaderStyle HorizontalAlign="Left"   CssClass="headercolor thwidth" />
-                                <ItemStyle HorizontalAlign="Left"   CssClass="text-wrap" />
-                                <ItemTemplate>
-                                   <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("Id") %> ' CommandName="Select"><%#Eval("Id") %></asp:LinkButton>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                           
-                           <%-- <asp:TemplateField HeaderText="ContactNo" Visible="true">
-                                <HeaderStyle Width="10%" CssClass="headercolor" />
-                                <ItemStyle Width="10%" CssClass="text-wrap" />
-                                <ItemTemplate>
-                                    <asp:Label ID="lblDistrict" runat="server" Text='<%# Eval("ContactNo") %>' CssClass="text-wrap"></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>   --%>                        
-                            <asp:BoundField DataField="SupervisorLicence" HeaderText="Licence">
-                                <HeaderStyle HorizontalAlign="right" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="right" Width="15%" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="RequestSubmitedDate" HeaderText="Submitted Date" >
-                                <HeaderStyle HorizontalAlign="Center" Width="12%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="Center" Width="12%" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="ApplicationStatus" HeaderText="Status">
-                                <HeaderStyle HorizontalAlign="Center" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="Center" Width="15%" />
-                            </asp:BoundField>
-                              <asp:BoundField DataField="Remarks" HeaderText="Remarks">
-                                <HeaderStyle HorizontalAlign="right" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="right" Width="15%" />
-                            </asp:BoundField>
-                           <asp:TemplateField HeaderText="RequestFor">
-                                <HeaderStyle HorizontalAlign="Left"   CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="Left"   CssClass="text-wrap" />
-                                <ItemTemplate>
-                                    <asp:Label ID="lblRequestFor" runat="server" Text='<%# Eval("RequestFor") %>' CssClass="text-wrap"></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>                                                  
-                        </Columns>
-                        <FooterStyle BackColor="White" ForeColor="#000066" />
-                        <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
-                        <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
-                        <RowStyle ForeColor="#000066" />
-                        <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                        <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                        <SortedAscendingHeaderStyle BackColor="#007DBB" />
-                        <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                        <SortedDescendingHeaderStyle BackColor="#00547E" />
-                    </asp:GridView>
-                                      
-                </div>
+               <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px;padding-top:15px;padding-bottom:1px;">
+                 
+                         <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" AutoGenerateColumns="false" 
+    OnRowCommand="GridView1_RowCommand"   BorderWidth="1px" BorderColor="#dbddff">
+     <PagerStyle CssClass="pagination-ys" />
+     <Columns>
+         <asp:TemplateField HeaderText="Id" Visible="False">
+             <ItemTemplate>
+                <asp:Label ID="lblRequestID" runat="server" Text='<%#Eval("Id") %>'></asp:Label>
+             </ItemTemplate>
+         </asp:TemplateField>
+         <asp:TemplateField HeaderText="SNo">
+             <HeaderStyle  CssClass="headercolor" />
+             <ItemStyle  />
+             <ItemTemplate>
+                 <%#Container.DataItemIndex+1 %>
+             </ItemTemplate>
+         </asp:TemplateField>
+         <asp:TemplateField HeaderText="Request Id">
+             <HeaderStyle HorizontalAlign="Left"   CssClass="headercolor thwidth" />
+             <ItemStyle HorizontalAlign="Left"   CssClass="text-wrap" />
+             <ItemTemplate>
+                <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("Id") %> ' CommandName="Select"><%#Eval("Id") %></asp:LinkButton>
+             </ItemTemplate>
+         </asp:TemplateField>
+        
+        <%-- <asp:TemplateField HeaderText="ContactNo" Visible="true">
+             <HeaderStyle Width="10%" CssClass="headercolor" />
+             <ItemStyle Width="10%" CssClass="text-wrap" />
+             <ItemTemplate>
+                 <asp:Label ID="lblDistrict" runat="server" Text='<%# Eval("ContactNo") %>' CssClass="text-wrap"></asp:Label>
+             </ItemTemplate>
+         </asp:TemplateField>   --%>                        
+         <asp:BoundField DataField="SupervisorLicence" HeaderText="Licence">
+             <HeaderStyle HorizontalAlign="right"   CssClass="headercolor" />
+             <ItemStyle HorizontalAlign="right"   />
+         </asp:BoundField>
+         <asp:BoundField DataField="RequestSubmitedDate" HeaderText="Submitted Date" >
+             <HeaderStyle HorizontalAlign="Center" Width="12%" CssClass="headercolor" />
+             <ItemStyle HorizontalAlign="Center" Width="12%" />
+         </asp:BoundField>
+         <asp:BoundField DataField="ApplicationStatus" HeaderText="Status">
+             <HeaderStyle HorizontalAlign="Center"   CssClass="headercolor" />
+             <ItemStyle HorizontalAlign="Center"   />
+         </asp:BoundField>
+           <asp:BoundField DataField="Remarks" HeaderText="Remarks">
+             <HeaderStyle HorizontalAlign="right"   CssClass="headercolor" />
+             <ItemStyle HorizontalAlign="right"   />
+         </asp:BoundField>
+        <asp:TemplateField HeaderText="RequestFor">
+             <HeaderStyle HorizontalAlign="Left"   CssClass="headercolor" />
+             <ItemStyle HorizontalAlign="Left"   CssClass="text-wrap" />
+             <ItemTemplate>
+                 <asp:Label ID="lblRequestFor" runat="server" Text='<%# Eval("RequestFor") %>' CssClass="text-wrap"></asp:Label>
+             </ItemTemplate>
+         </asp:TemplateField>                                                  
+     </Columns>
+     <FooterStyle BackColor="White" ForeColor="#000066" />
+     <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+     <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+     <RowStyle ForeColor="#000066" />
+     <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+     <SortedAscendingCellStyle BackColor="#F1F1F1" />
+     <SortedAscendingHeaderStyle BackColor="#007DBB" />
+     <SortedDescendingCellStyle BackColor="#CAC9C9" />
+     <SortedDescendingHeaderStyle BackColor="#00547E" />
+ </asp:GridView>
+                 
+                   </div>
+                                                   
             </div>
                <div class="card-body" id="Histry_Card" runat="server" visible="false">
-                     <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; padding-top: 50px;">
-                    <div class="row" style="margin-bottom: -30px;">                      
-                    </div>
-                    <asp:GridView class="table-responsive table table-striped table-hover" ID="grdview_Actioned" runat="server" Width="100%" AutoGenerateColumns="false" 
-                        BorderWidth="1px" BorderColor="#dbddff">
-                        <PagerStyle CssClass="pagination-ys" />
-                        <Columns>
-                            <asp:TemplateField HeaderText="Id" Visible="False">
-                                <ItemTemplate>
-                                   <asp:Label ID="lblRequestID" runat="server" Text='<%#Eval("Id") %>'></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="SNo">
-                                <HeaderStyle Width="5%" CssClass="headercolor" />
-                                <ItemStyle Width="5%" />
-                                <ItemTemplate>
-                                    <%#Container.DataItemIndex+1 %>
-                                </ItemTemplate>
-                            </asp:TemplateField>
-                            <asp:TemplateField HeaderText="Request Id">
-                                <HeaderStyle HorizontalAlign="Left"   CssClass="headercolor thwidth" />
-                                <ItemStyle HorizontalAlign="Left"   CssClass="text-wrap" />
-                                <ItemTemplate>
-                                     <asp:Label ID="lblId" runat="server" Text='<%# Eval("Id") %>' CssClass="text-wrap"></asp:Label>
-                                   <%--<asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("Id") %> ' CommandName="Select"><%#Eval("Id") %></asp:LinkButton>--%>
-                                </ItemTemplate>
-                            </asp:TemplateField>                                                                     
-                            <asp:BoundField DataField="SupervisorLicence" HeaderText="Licence">
-                                <HeaderStyle HorizontalAlign="right" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="right" Width="15%" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="RequestSubmitedDate" HeaderText="Submitted Date" >
-                                <HeaderStyle HorizontalAlign="Center" Width="12%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="Center" Width="12%" />
-                            </asp:BoundField>
-                            <asp:BoundField DataField="ApplicationStatus" HeaderText="Status">
-                                <HeaderStyle HorizontalAlign="Center" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="Center" Width="15%" />
-                            </asp:BoundField>
-                              <asp:BoundField DataField="Remarks" HeaderText="Remarks">
-                                <HeaderStyle HorizontalAlign="right" Width="15%" CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="right" Width="15%" />
-                            </asp:BoundField>
-                           <asp:TemplateField HeaderText="RequestFor">
-                                <HeaderStyle HorizontalAlign="Left"   CssClass="headercolor" />
-                                <ItemStyle HorizontalAlign="Left"   CssClass="text-wrap" />
-                                <ItemTemplate>
-                                    <asp:Label ID="lblRequestFor" runat="server" Text='<%# Eval("RequestFor") %>' CssClass="text-wrap"></asp:Label>
-                                </ItemTemplate>
-                            </asp:TemplateField>                                                  
-                        </Columns>
-                        <FooterStyle BackColor="White" ForeColor="#000066" />
-                        <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
-                        <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
-                        <RowStyle ForeColor="#000066" />
-                        <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
-                        <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                        <SortedAscendingHeaderStyle BackColor="#007DBB" />
-                        <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                        <SortedDescendingHeaderStyle BackColor="#00547E" />
-                    </asp:GridView>
+                                        <h6 class="card-title fw-semibold mb-4">
+<asp:Label ID="Label1" runat="server"> History For Attachment/De-Attachment</asp:Label></h6>
+                     <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; padding-top:  15px;padding-bottom:1px;">
+                      <asp:GridView class="table-responsive table table-striped table-hover" ID="grdview_Actioned" runat="server" Width="100%" AutoGenerateColumns="false" 
+    BorderWidth="1px" BorderColor="#dbddff">
+    <PagerStyle CssClass="pagination-ys" />
+    <Columns>
+        <asp:TemplateField HeaderText="Id" Visible="False">
+            <ItemTemplate>
+               <asp:Label ID="lblRequestID" runat="server" Text='<%#Eval("Id") %>'></asp:Label>
+            </ItemTemplate>
+        </asp:TemplateField>
+        <asp:TemplateField HeaderText="SNo">
+            <HeaderStyle  CssClass="headercolor" />
+            <ItemStyle  />
+            <ItemTemplate>
+                <%#Container.DataItemIndex+1 %>
+            </ItemTemplate>
+        </asp:TemplateField>
+        <asp:TemplateField HeaderText="Request Id">
+            <HeaderStyle HorizontalAlign="Left"   CssClass="headercolor thwidth" />
+            <ItemStyle HorizontalAlign="Left"   CssClass="text-wrap" />
+            <ItemTemplate>
+                 <asp:Label ID="lblId" runat="server" Text='<%# Eval("Id") %>' CssClass="text-wrap"></asp:Label>
+               <%--<asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("Id") %> ' CommandName="Select"><%#Eval("Id") %></asp:LinkButton>--%>
+            </ItemTemplate>
+        </asp:TemplateField>                                                                     
+        <asp:BoundField DataField="SupervisorLicence" HeaderText="Licence">
+            <HeaderStyle HorizontalAlign="right"   CssClass="headercolor" />
+            <ItemStyle HorizontalAlign="right"   />
+        </asp:BoundField>
+        <asp:BoundField DataField="RequestSubmitedDate" HeaderText="Submitted Date" >
+            <HeaderStyle HorizontalAlign="Center" Width="12%" CssClass="headercolor" />
+            <ItemStyle HorizontalAlign="Center" Width="12%" />
+        </asp:BoundField>
+        <asp:BoundField DataField="ApplicationStatus" HeaderText="Status">
+            <HeaderStyle HorizontalAlign="Center"   CssClass="headercolor" />
+            <ItemStyle HorizontalAlign="Center"   />
+        </asp:BoundField>
+          <asp:BoundField DataField="Remarks" HeaderText="Remarks">
+            <HeaderStyle HorizontalAlign="right"   CssClass="headercolor" />
+            <ItemStyle HorizontalAlign="right"   />
+        </asp:BoundField>
+       <asp:TemplateField HeaderText="RequestFor">
+            <HeaderStyle HorizontalAlign="Left"   CssClass="headercolor" />
+            <ItemStyle HorizontalAlign="Left"   CssClass="text-wrap" />
+            <ItemTemplate>
+                <asp:Label ID="lblRequestFor" runat="server" Text='<%# Eval("RequestFor") %>' CssClass="text-wrap"></asp:Label>
+            </ItemTemplate>
+        </asp:TemplateField>                                                  
+    </Columns>
+    <FooterStyle BackColor="White" ForeColor="#000066" />
+    <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
+    <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
+    <RowStyle ForeColor="#000066" />
+    <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
+    <SortedAscendingCellStyle BackColor="#F1F1F1" />
+    <SortedAscendingHeaderStyle BackColor="#007DBB" />
+    <SortedDescendingCellStyle BackColor="#CAC9C9" />
+    <SortedDescendingHeaderStyle BackColor="#00547E" />
+</asp:GridView>      
+</div>
+                  
+                    
                                       
                 </div>
                </div>
         </div>
-    </div>
+    
     <footer class="footer">
     </footer>
     <script>

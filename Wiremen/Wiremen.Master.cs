@@ -13,6 +13,7 @@ namespace CEIHaryana.Wiremen
                 string UserId = Convert.ToString(Session["WiremanId"]);
                
                 bool showRenewal = CEI.IsExpiryNear(UserId);
+                lblName.Text = Convert.ToString(Session["WiremanId"]);
 
                 RenewalMenuItem.Visible = showRenewal;
 

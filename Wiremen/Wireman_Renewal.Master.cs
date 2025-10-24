@@ -16,6 +16,7 @@ namespace CEIHaryana.Wiremen
             if (Convert.ToString(Session["WiremanId"]) != null || Convert.ToString(Session["WiremanId"]) != string.Empty || Request.Cookies["WiremanId"] != null)
             {
                 string UserId = Convert.ToString(Session["WiremanId"]);
+                lblName.Text = Convert.ToString(Session["WiremanId"]);
                 bool showGetLicence = CEI.Get_RegistrationIdExistForShowingLink(UserId);
                 UserCurrent_Licence_Link.Visible = showGetLicence;
             }

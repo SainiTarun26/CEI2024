@@ -50,7 +50,8 @@ namespace CEIHaryana.Contractor
                 if (dt.Rows.Count > 0)
                 {
                     txtSupervisorName.Text = dt.Rows[0]["Name"].ToString();
-                    txtSupervisorLicence.Text = dt.Rows[0]["SupervisorLicence"].ToString();
+                    txtSupervisorLicence.Text = dt.Rows[0]["SupervisorLicence"].ToString();              
+                    lblCategory.Text  = dt.Rows[0]["Category"].ToString();
                     txtLicenceExpiry.Text = dt.Rows[0]["DateofExpiry"].ToString();
                     txtLicenceIssue.Text = dt.Rows[0]["DateofIntialissue"].ToString();
                     txtFatherName.Text = dt.Rows[0]["FatherName"].ToString();
@@ -65,10 +66,12 @@ namespace CEIHaryana.Contractor
                     if (RequestFor== "Attached")
                     {
                         btnToDeattach.Text = "Attached";
+                        lblrequest.Text = "Attachment Request";
                     }
                     else
                     {
                         btnToDeattach.Text = "DeAttached";
+                        lblrequest.Text = "DeAttachment Request";
                     }                 
                     hdnFeildDocumnet.Value= dt.Rows[0]["Attachment"].ToString();
                     //hdnfeildRequestFor.Value = RequestFor;
@@ -133,7 +136,7 @@ namespace CEIHaryana.Contractor
                         }
                         else
                         {
-                            ScriptManager.RegisterStartupScript(this, GetType(), "Alert", "alert('Missing Email of supervisor/Contractor');", true);
+                            ScriptManager.RegisterStartupScript(this, GetType(), "Alert", "alert('Missing Email of supervisor/Contractor. Please contact admin to Update email');", true);
                         }
                     }
                     Session["DoubleClick_Btn"] = "0";

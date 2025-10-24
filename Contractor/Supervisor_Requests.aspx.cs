@@ -21,7 +21,7 @@ namespace CEIHaryana.Contractor
                 {
                     if (Convert.ToString(Session["ContractorID"]) != null && Convert.ToString(Session["ContractorID"]) != null)
                     {
-                        getWorkIntimationData(Convert.ToString(Session["ContractorID"]));
+                        RequestForDeattachment_Attachments(Convert.ToString(Session["ContractorID"]));
                         getAlreadyActionData(Convert.ToString(Session["ContractorID"]));
                     }
                 }
@@ -31,17 +31,19 @@ namespace CEIHaryana.Contractor
 
             }
         }
-        private void getWorkIntimationData(string ContractorId)
+        private void RequestForDeattachment_Attachments(string ContractorId)
         {           
             DataSet ds = new DataSet();
             ds = cei.GetSupervisorRequestForDeattachment_Attachments(ContractorId);
-            if (ds != null)
+            if (ds.Tables[0].Rows.Count > 0 && ds != null)
             {
+                Requests_Card.Visible = true;
                 GridView1.DataSource = ds;
                 GridView1.DataBind();
             }
             else
             {
+                Requests_Card.Visible = false;
                 GridView1.DataSource = null;
                 GridView1.DataBind();
                 string script = "alert(\"No Record Found\");";
@@ -56,7 +58,7 @@ namespace CEIHaryana.Contractor
         {
             DataSet ds = new DataSet();
             ds = cei.GetSupervisorRequestForDeattachment_AttachmentHistroy(ContractorId);
-            if (ds != null )
+            if (ds.Tables[0].Rows.Count > 0 && ds != null)
             {
                 Histry_Card.Visible = true;
                 grdview_Actioned.DataSource = ds;

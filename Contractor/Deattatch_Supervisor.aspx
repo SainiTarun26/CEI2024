@@ -225,6 +225,11 @@
             margin: -145px;
             padding: 5px;
         }
+        h7.card-title.fw-semibold.mb-4 {
+    font-size: 15px !important;
+    display: flex
+;
+}
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -237,7 +242,9 @@
                 <div class="row">
                     <div class="col-md-4"></div>
                     <div class="col-md-4" style="text-align: center; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding-top: 8px; padding-bottom: 8px; border-radius: 10px; top: 0px; left: 0px;">
-                        <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;">DE-ATTACH SUPERVISOR</h6>
+                        <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;">
+                            <asp:Label ID="lblrequest" runat="server" style="font-size:18px;"></asp:Label>
+                        </h6>
                     </div>
                     <br />
                     <div class="col-md-4"></div>
@@ -254,41 +261,41 @@
                     </div>
                 </div>
                 <br />
-                <h7 class="card-title fw-semibold mb-4">Supervisor Details</h7>
+                <h7 class="card-title fw-semibold mb-4"><asp:Label ID="lblCategory" runat="server" style="font-size:15px;"></asp:Label>Details</h7>
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
                     <div class="row" style="margin-bottom: 15px;">
 
                         <div class="col-md-4">
-                            <asp:Label ID="Label1" runat="server" Text="Supervisor Name"></asp:Label>
+                            <asp:Label ID="Label1" runat="server" Text="Name"></asp:Label>
                             <asp:TextBox class="form-control" ID="txtSupervisorName" ReadOnly="true" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
                                 MaxLength="200" Style="margin-left: 18px;">
                             </asp:TextBox>
                         </div>
-                          <div class="col-md-4" style="margin-top: 15px;">
-                            <asp:Label ID="Label4" runat="server" Text="FatherName"></asp:Label>
+                          <div class="col-md-4" >
+                            <asp:Label ID="Label4" runat="server" Text="Name"></asp:Label>
                             <asp:TextBox class="form-control" ID="txtFatherName" ReadOnly="true" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
                                 MaxLength="200" Style="margin-left: 18px;">
                             </asp:TextBox>
                         </div>
                         <div class="col-md-4">
-                            <asp:Label ID="Label2" runat="server" Text="Supervisor Licence No."></asp:Label>
+                            <asp:Label ID="Label2" runat="server" Text="Licence No."></asp:Label>
                             <asp:TextBox class="form-control" ID="txtSupervisorLicence" ReadOnly="true" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
                                 MaxLength="200" Style="margin-left: 18px;">
                             </asp:TextBox>
                         </div>
-                        <div class="col-md-4">
-                            <asp:Label ID="Label3" runat="server" Text="Licence Issue Date"></asp:Label>
+                        <div class="col-md-4" style="margin-top:15px;">
+                            <asp:Label ID="Label3" runat="server" Text="Licence Issue Date" ></asp:Label>
                             <asp:TextBox class="form-control" ID="txtLicenceIssue" ReadOnly="true" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
                                 MaxLength="200" Style="margin-left: 18px;">
                             </asp:TextBox>
                         </div>
-                        <div class="col-md-4" style="margin-top: 15px;">
+                        <div class="col-md-4" style="margin-top:15px;">
                             <asp:Label ID="Label5" runat="server" Text="Licence Expiry Date"></asp:Label>
                             <asp:TextBox class="form-control" ID="txtLicenceExpiry" ReadOnly="true" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
                                 MaxLength="200" Style="margin-left: 18px;">
                             </asp:TextBox>
                         </div>
-                        <div class="col-md-4" id="hiddenfield" runat="server" style="margin-top: 15px;">
+                        <div class="col-md-4" id="hiddenfield" runat="server"  style="margin-top:15px;">
                            <asp:HiddenField runat="server" ID="hdnFeildDocumnet" />
                            <asp:HiddenField runat="server" ID="hdnfeildRequestFor" />
                              <asp:HiddenField runat="server" ID="HdnContractorEmail" />
@@ -297,25 +304,25 @@
                             <asp:LinkButton ID="lnkFile" runat="server" AutoPostBack="true" OnClick="lnkFile_Click" Text="Open Document" style="margin-left:-145px;"/>
                         </div>
                        
-                         <div class="col-md-4" style="margin-top: 15px;">
+                         <div class="col-md-4"  style="margin-top:15px;">
                             <asp:Label ID="Label6" runat="server" Text="Address"></asp:Label>
                             <asp:TextBox class="form-control" ID="txtAddress" ReadOnly="true" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
                                 MaxLength="200" Style="margin-left: 18px;">
                             </asp:TextBox>
                         </div>
-                         <div class="col-md-4" style="margin-top: 15px;">
+                         <div class="col-md-4" style="margin-top:15px;" >
                             <asp:Label ID="Label7" runat="server" Text="votagelevel"></asp:Label>
                             <asp:TextBox class="form-control" ID="txtvotagelevel" ReadOnly="true" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
                                 MaxLength="200" Style="margin-left: 18px;">
                             </asp:TextBox>
                         </div>
-                        <div class="col-md-4" style="margin-top: 15px;">
+                        <div class="col-md-4" style="margin-top:15px;" >
                             <asp:Label ID="Label8" runat="server" Text="voltageWithEffect"></asp:Label>
                             <asp:TextBox class="form-control" ID="txtvoltageWithEffect" ReadOnly="true" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
                                 MaxLength="200" Style="margin-left: 18px;">
                             </asp:TextBox>
                         </div>
-                        <div class="col-md-4" style="margin-top: 15px;">
+                        <div class="col-md-4" style="margin-top:15px;" >
                             <asp:Label ID="Label9" runat="server" Text="Remarks"></asp:Label>
                             <asp:TextBox class="form-control" ID="txtRemarks" ReadOnly="true" runat="server" autocomplete="off" onKeyPress="return alphabetKey(event);" TabIndex="1"
                                 MaxLength="200" Style="margin-left: 18px;">
