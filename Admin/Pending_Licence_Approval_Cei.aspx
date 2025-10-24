@@ -307,6 +307,8 @@
             </div>
             <uc:LicenceDetails ID="ucLicenceDetails" runat="server" />
             <asp:HiddenField ID="hdn_Lic_ApplicationId" runat="server" />
+            <asp:HiddenField ID="hdnLicenceType" runat="server" />
+            <asp:HiddenField ID="hdnCategory" runat="server" />
             <div class="card-title" style="margin-top: 15px; margin-bottom: 20px; font-size: 17px; font-weight: 600; margin-left: -10px;">
                 Applications Status
             </div>
@@ -385,6 +387,7 @@
 
                     <asp:Button ID="btnSubmit" Text="Submit" ValidationGroup="Submit" runat="server" class="btn btn-primary mr-2" OnClientClick="return validateFileUpload();" OnClick="btnSubmit_Click" />
                     <asp:Button type="Back" ID="btnBack" Text="Back" runat="server" Visible="true" class="btn btn-primary mr-2" OnClick="btnBack_Click" />
+                    <asp:Button type="Back" ID="btnPreview" Text="Preview" runat="server" Visible="true" class="btn btn-primary mr-2" OnClick="btnPreview_Click" />
                 </div>
             </div>
         </div>
@@ -426,7 +429,7 @@
 
             if (comments === '') {
                 alert('Please enter comments.');
-                document.getElementById('<%= TextBox1.ClientID %>').focus();
+                document.getEleme  ntById('<%= TextBox1.ClientID %>').focus();
                 return false;
             }
 

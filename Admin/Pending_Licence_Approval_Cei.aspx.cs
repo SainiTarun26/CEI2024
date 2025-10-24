@@ -41,6 +41,7 @@ namespace CEIHaryana.Admin
 
                         string var_Lic_ApplicationId = hdn_Lic_ApplicationId.Value;
 
+
                         if (!string.IsNullOrEmpty(var_Lic_ApplicationId))
                         {
                             GetHeaderDetailsWithId(var_Lic_ApplicationId);
@@ -82,6 +83,8 @@ namespace CEIHaryana.Admin
                 {
                     GridView1.DataSource = ds;
                     GridView1.DataBind();
+                    hdnLicenceType.Value = ds.Tables[0].Rows[0]["LicenceType"].ToString();
+                    hdnCategory.Value = ds.Tables[0].Rows[0]["Categary"].ToString();                   
                 }
                 else
                 {
@@ -270,7 +273,50 @@ namespace CEIHaryana.Admin
                 Message = "Unable to Validate Application."
             };
         }
+        #region kalpana preview pages 24-oct-2025
+        protected void btnPreview_Click(object sender, EventArgs e)
+        {
+            string applicationId = ucLicenceDetails.ApplicationId;
+            string LicenceType = hdnLicenceType.Value;
+            string Category = hdnCategory.Value;
+          
 
+            Session["Application_Id"] = applicationId;
 
+            if (!string.IsNullOrEmpty(LicenceType) && hdnLicenceType.Value == "New")
+            {
+                switch (Category)
+                {
+                    case "Contractor":
+                        Response.Redirect("/Previewpages/Contractor_Licence_New_CertificatePreview.aspx", false);
+                        break;
+                    case "Supervisor":
+                        Response.Redirect("/Previewpages/Certificate_of_CompetencyPreview.aspx", false);
+                        break;
+                    case "Wireman":
+                        Response.Redirect("/Previewpages/Certificate_of_wireman_PermitPreview.aspx", false);
+                        break;
+                }
+            }
+            else if (!string.IsNullOrEmpty(LicenceType) && hdnLicenceType.Value == "Renewal")
+            {
+                switch (Category)
+                {
+                    case "Contractor":
+                        Response.Redirect("/Previewpages/ContractorLicenceRenewalPreview.aspx", false);
+                        break;
+                    case "Supervisor":
+
+                        Response.Redirect("/Previewpages/CertificateOfCompetencyRenewalPreview.aspx", false);
+                        break;
+                    case "Wireman":
+                        Response.Redirect("/Previewpages/CertificateOfWiremanPermitRenewalPreview.aspx", false);
+                        break;
+                }
+            }
+
+        }
+        #endregion
     }
+
 }
