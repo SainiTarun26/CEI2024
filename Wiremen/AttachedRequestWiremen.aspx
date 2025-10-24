@@ -216,6 +216,46 @@
         td {
             padding: 10px 10px 10px 10px !important;
         }
+            .custom-select-wrapper {
+        position: relative;
+        width: 100%;
+    }
+    .custom-select-display {
+    border: 1px solid #ccc;
+    padding: 4px 0px 0px 10px;
+    background: #fff;
+    cursor: pointer;
+    border-radius: 4px;
+    height: 30px;
+    margin-top: 30px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    margin-left: 0px !important;
+    font-size: 13px !important;
+}
+    .custom-select-options {
+        position: absolute;
+        width: 100%;
+        max-height: 200px;
+        overflow-y: auto;
+        border: 1px solid #ddd;
+        background: #fff;
+        display: none;
+        z-index: 999;
+        border-radius: 4px;
+    }
+    .custom-select-options input {
+        width: 95%;
+        margin: 5px;
+        padding: 5px;
+        border: 1px solid #aaa;
+    }
+    .custom-option {
+        padding: 5px 10px;
+        cursor: pointer;
+    }
+    .custom-option:hover {
+        background: #eee;
+    }
     </style>
     <script type="text/javascript">
         function isNumberKey(evt) {
@@ -303,14 +343,32 @@
                                         MaxLength="200" Style="margin-left: 18px;">
                                     </asp:TextBox>
                                 </div>
-                                <div class="col-md-4">
-                                    <label for="Division">
-                                        Contractor List<samp style="color: red"> * </samp>
-                                    </label>
-                                    <asp:DropDownList Style="width: 100% !important;" class="form-control  select-form select2" ID="ddlContractor" runat="server" TabIndex="16" AutoPostBack="true" OnSelectedIndexChanged="ddlContractor_SelectedIndexChanged">
-                                    </asp:DropDownList>
-                                    <asp:RequiredFieldValidator ID="RequiredFieldValidator4" Text="Please Select any Contractor" ErrorMessage="RequiredFieldValidator" ControlToValidate="ddlContractor" runat="server" InitialValue="0" Display="Dynamic" ValidationGroup="Submit" ForeColor="Red" />
-                                </div>
+                                                              <div class="col-md-4">
+    <label for="Division">
+        Contractor List <samp style="color:red">*</samp>
+    </label>
+
+ 
+    <!-- your dropdown -->
+    <asp:DropDownList Style="width:100% !important;"
+        CssClass="form-control select-form"
+        ID="ddlContractor"
+        runat="server"
+        TabIndex="16"
+        AutoPostBack="true"
+        OnSelectedIndexChanged="ddlContractor_SelectedIndexChanged">
+    </asp:DropDownList>
+
+    <asp:RequiredFieldValidator ID="RequiredFieldValidator4"
+        Text="Please Select any Contractor"
+        ErrorMessage="RequiredFieldValidator"
+        ControlToValidate="ddlContractor"
+        InitialValue="0"
+        Display="Dynamic"
+        ValidationGroup="Submit"
+        ForeColor="Red"
+        runat="server" />
+</div>
                                 <div class="col-md-4" id="UserId" runat="server" visible="false">
                                     <label>
                                         Contractor Name <samp style="color: red">* </samp>
@@ -434,5 +492,70 @@
         }
     </script>
     <!-- partial -->
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const select = document.getElementById("<%= ddlContractor.ClientID %>");
+            const wrapper = document.createElement("div");
+            wrapper.className = "custom-select-wrapper";
 
+            // Create visible dropdown
+            const display = document.createElement("div");
+            display.className = "custom-select-display";
+            display.textContent = select.options[select.selectedIndex].text || "Select Contractor";
+
+            // Create dropdown list
+            const list = document.createElement("div");
+            list.className = "custom-select-options";
+
+            // Create search box inside dropdown
+            const search = document.createElement("input");
+            search.type = "text";
+            search.placeholder = "Search...";
+            list.appendChild(search);
+
+            function buildOptions(filter = "") {
+                list.querySelectorAll(".custom-option").forEach(e => e.remove());
+                Array.from(select.options).forEach(opt => {
+                    if (opt.value === "0") return; // ignore default
+                    if (opt.text.toLowerCase().includes(filter.toLowerCase())) {
+                        const item = document.createElement("div");
+                        item.className = "custom-option";
+                        item.textContent = opt.text;
+                        item.dataset.value = opt.value;
+                        item.onclick = function () {
+                            select.value = this.dataset.value;
+                            display.textContent = this.textContent;
+                            list.style.display = "none";
+                            select.dispatchEvent(new Event("change")); // for AutoPostBack
+                        }
+                        list.appendChild(item);
+                    }
+                });
+            }
+            buildOptions();
+
+            search.addEventListener("input", function () {
+                buildOptions(search.value);
+            });
+
+            // Toggle dropdown
+            display.addEventListener("click", function () {
+                list.style.display = list.style.display === "none" ? "block" : "none";
+                search.value = "";
+                buildOptions();
+                search.focus();
+            });
+
+            // Close on outside click
+            document.addEventListener("click", function (e) {
+                if (!wrapper.contains(e.target)) list.style.display = "none";
+            });
+
+            // Hide original select & place UI
+            select.style.display = "none";
+            wrapper.appendChild(display);
+            wrapper.appendChild(list);
+            select.parentNode.insertBefore(wrapper, select);
+        });
+        </script>
 </asp:Content>
