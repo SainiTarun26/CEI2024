@@ -2070,6 +2070,8 @@
     <Content Include="Periodic_Industry\RenewalPerodicIndustry.aspx" />
     <Content Include="Periodic_Industry\ViewCart_Industry.aspx" />
     <Content Include="Periodic_Industry\ViewPerodicRequest.aspx" />
+    <Content Include="Previewpages\CertificateOfCompetencyRenewalPreview.aspx" />
+    <Content Include="Previewpages\Certificate_of_wireman_PermitPreview.aspx" />
     <Content Include="Print_Forms\CertificateOfCompetencyRenewal.aspx" />
     <Content Include="Print_Forms\CertificateOfWiremanPermitRenewal.aspx" />
     <Content Include="Print_Forms\Certificate_of_Competency.aspx" />
@@ -4107,6 +4109,20 @@
     </Compile>
     <Compile Include="Periodic_Industry\ViewPerodicRequest.aspx.designer.cs">
       <DependentUpon>ViewPerodicRequest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Previewpages\CertificateOfCompetencyRenewalPreview.aspx.cs">
+      <DependentUpon>CertificateOfCompetencyRenewalPreview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Previewpages\CertificateOfCompetencyRenewalPreview.aspx.designer.cs">
+      <DependentUpon>CertificateOfCompetencyRenewalPreview.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Previewpages\Certificate_of_wireman_PermitPreview.aspx.cs">
+      <DependentUpon>Certificate_of_wireman_PermitPreview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Previewpages\Certificate_of_wireman_PermitPreview.aspx.designer.cs">
+      <DependentUpon>Certificate_of_wireman_PermitPreview.aspx</DependentUpon>
     </Compile>
     <Compile Include="Print_Forms\CertificateOfCompetencyRenewal.aspx.cs">
       <DependentUpon>CertificateOfCompetencyRenewal.aspx</DependentUpon>
