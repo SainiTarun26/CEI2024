@@ -2071,7 +2071,11 @@
     <Content Include="Periodic_Industry\ViewCart_Industry.aspx" />
     <Content Include="Periodic_Industry\ViewPerodicRequest.aspx" />
     <Content Include="Previewpages\CertificateOfCompetencyRenewalPreview.aspx" />
+    <Content Include="Previewpages\CertificateOfWiremanPermitRenewalPreview.aspx" />
+    <Content Include="Previewpages\Certificate_of_CompetencyPreview.aspx" />
     <Content Include="Previewpages\Certificate_of_wireman_PermitPreview.aspx" />
+    <Content Include="Previewpages\ContractorLicenceRenewalPreview.aspx" />
+    <Content Include="Previewpages\Contractor_Licence_New_CertificatePreview.aspx" />
     <Content Include="Print_Forms\CertificateOfCompetencyRenewal.aspx" />
     <Content Include="Print_Forms\CertificateOfWiremanPermitRenewal.aspx" />
     <Content Include="Print_Forms\Certificate_of_Competency.aspx" />
@@ -4117,12 +4121,40 @@
     <Compile Include="Previewpages\CertificateOfCompetencyRenewalPreview.aspx.designer.cs">
       <DependentUpon>CertificateOfCompetencyRenewalPreview.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Previewpages\CertificateOfWiremanPermitRenewalPreview.aspx.cs">
+      <DependentUpon>CertificateOfWiremanPermitRenewalPreview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Previewpages\CertificateOfWiremanPermitRenewalPreview.aspx.designer.cs">
+      <DependentUpon>CertificateOfWiremanPermitRenewalPreview.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Previewpages\Certificate_of_CompetencyPreview.aspx.cs">
+      <DependentUpon>Certificate_of_CompetencyPreview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Previewpages\Certificate_of_CompetencyPreview.aspx.designer.cs">
+      <DependentUpon>Certificate_of_CompetencyPreview.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Previewpages\Certificate_of_wireman_PermitPreview.aspx.cs">
       <DependentUpon>Certificate_of_wireman_PermitPreview.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Previewpages\Certificate_of_wireman_PermitPreview.aspx.designer.cs">
       <DependentUpon>Certificate_of_wireman_PermitPreview.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Previewpages\ContractorLicenceRenewalPreview.aspx.cs">
+      <DependentUpon>ContractorLicenceRenewalPreview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Previewpages\ContractorLicenceRenewalPreview.aspx.designer.cs">
+      <DependentUpon>ContractorLicenceRenewalPreview.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Previewpages\Contractor_Licence_New_CertificatePreview.aspx.cs">
+      <DependentUpon>Contractor_Licence_New_CertificatePreview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Previewpages\Contractor_Licence_New_CertificatePreview.aspx.designer.cs">
+      <DependentUpon>Contractor_Licence_New_CertificatePreview.aspx</DependentUpon>
     </Compile>
     <Compile Include="Print_Forms\CertificateOfCompetencyRenewal.aspx.cs">
       <DependentUpon>CertificateOfCompetencyRenewal.aspx</DependentUpon>
