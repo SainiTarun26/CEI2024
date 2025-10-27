@@ -202,7 +202,7 @@ namespace CEIHaryana.Admin
         protected void ddlToAssign_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ddlDivisions.SelectedItem.Value.ToString() != "0" && ddlToAssign.SelectedItem.Value.ToString() != "0"
-                && ddlDivisions.SelectedItem.Value == "CDG" && ddlToAssign.SelectedItem.Value == "AE")
+                && ddlDivisions.SelectedItem.Value == "CDG" && (ddlToAssign.SelectedItem.Value == "AE" || ddlToAssign.SelectedItem.Value == "JE"))
             {
                 BindDistricts(ddlDivisions.SelectedItem.Value);
                 Div1.Visible = true;

@@ -866,6 +866,6 @@ th.headercolor.thwidth {
            });
        });
    </script>
-   <script src="/Assets/js/js/vendor.bundle.base.js"></script>     
+<%--   <script src="/Assets/js/js/vendor.bundle.base.js"></script>    --%> 
     
 </asp:Content>
