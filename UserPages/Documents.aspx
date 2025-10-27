@@ -75,14 +75,15 @@
             margin-top: 18px;
         }
 
-                              li#logout {
-    background: #4B49AC !important;
-    border-radius: 51px !important;
-    padding: 7px 5px 7px 5px !important;
-}
-                          nav#navbar {
-    box-shadow: none !important;
-}
+        li#logout {
+            background: #4B49AC !important;
+            border-radius: 51px !important;
+            padding: 7px 5px 7px 5px !important;
+        }
+
+        nav#navbar {
+            box-shadow: none !important;
+        }
 
         input#btnMedicalCertificate {
             border-top-right-radius: 10px;
@@ -368,7 +369,7 @@
         }
 
 
-            img#ProfilePhoto {
+        img#ProfilePhoto {
             height: 100px;
             width: 100px;
             box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0
@@ -417,62 +418,60 @@
             ul li {
                 white-space: normal; /* allow li text to wrap */
             }
-            /* Apply only when nav is in mobile mode */
-nav#navbar.navbar-mobile {
-    position: absolute;
-    
-    left: 0;
-    width: 100%;
-    height: 459px !important;
-    background: #d1e6ff; /* keep same bg as header */
-    overflow-y: auto;    /* scroll if menu items overflow */
-    z-index: 999;        /* stay above content */
-    padding: 15px 0;
-    border-top: 1px solid #ccc;
-}
+        /* Apply only when nav is in mobile mode */
+        nav#navbar.navbar-mobile {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 459px !important;
+            background: #d1e6ff; /* keep same bg as header */
+            overflow-y: auto; /* scroll if menu items overflow */
+            z-index: 999; /* stay above content */
+            padding: 15px 0;
+            border-top: 1px solid #ccc;
+        }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
-                                        <section id="topbar" class="d-flex align-items-center">
-     <div class="container d-flex justify-content-center justify-content-md-between" style="max-width: 1680px;">
-         <div class="contact-info d-flex align-items-center">
-             <i class="bi bi-envelope d-flex align-items-center">
-                 <a href="mailto:cei_goh@yahoo.com">cei_goh@yahoo.com</a>
-             </i>
-             <i class="bi bi-phone d-flex align-items-center ms-4">
-                 <span>0172 2704090</span>
-             </i>
-         </div>
-         <div class="social-links d-none d-md-flex align-items-center">
-             <a href="#" class="twitter">
-                 <i class="bi bi-twitter"></i>
-             </a>
-             <a href="#" class="facebook">
-                 <i class="bi bi-facebook"></i>
-             </a>
-             <a href="#" class="instagram">
-                 <i class="bi bi-instagram"></i>
-             </a>
-             <a href="#" class="linkedin">
-                 <i class="bi bi-linkedin"></i>
-             </a>
-         </div>
-     </div>
- </section>
-        <!-- ======= Header ======= -->
+            <section id="topbar" class="d-flex align-items-center">
+                <div class="container d-flex justify-content-center justify-content-md-between" style="max-width: 1680px;">
+                    <div class="contact-info d-flex align-items-center">
+                        <i class="bi bi-envelope d-flex align-items-center">
+                            <a href="mailto:cei_goh@yahoo.com">cei_goh@yahoo.com</a>
+                        </i>
+                        <i class="bi bi-phone d-flex align-items-center ms-4">
+                            <span>0172 2704090</span>
+                        </i>
+                    </div>
+                    <div class="social-links d-none d-md-flex align-items-center">
+                        <a href="#" class="twitter">
+                            <i class="bi bi-twitter"></i>
+                        </a>
+                        <a href="#" class="facebook">
+                            <i class="bi bi-facebook"></i>
+                        </a>
+                        <a href="#" class="instagram">
+                            <i class="bi bi-instagram"></i>
+                        </a>
+                        <a href="#" class="linkedin">
+                            <i class="bi bi-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </section>
+            <!-- ======= Header ======= -->
+            <header id="header" class="d-flex align-items-center"
+                style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; background: #d1e6ff;">
+                <div class="container d-flex align-items-center justify-content-between">
+                    <a href="/Login.aspx" class="logo">
+                        <img src="/Assets/Add a heading (1).png" alt="Logo" />
+                    </a>
 
-        <header id="header" class="d-flex align-items-center"
-            style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; background: #d1e6ff;">
-            <div class="container d-flex align-items-center justify-content-between">
-                <a href="/Login.aspx" class="logo">
-                    <img src="/Assets/Add a heading (1).png" alt="Logo" />
-                </a>
-
-                <nav id="navbar" class="navbar">
-                    <ul>
-                        <%--<li class="dropdown">
+                    <nav id="navbar" class="navbar">
+                        <ul>
+                            <%--<li class="dropdown">
                             <a href="#"><span>Home</span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
                                 <li><a href="/AboutCEI.aspx">About CEI</a></li>
@@ -563,37 +562,37 @@ nav#navbar.navbar-mobile {
 
                         <li><a href="/UserPages/OurServices.aspx">User Manual</a></li>
                         <li>|</li>--%>
-                                                     <li class="dropdown" id="logout">
-                            <a href="#">
-                                <span id="user">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
-                                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
-                                    </svg></span>
-                            </a>
-                            <ul id="profile_drop">
-                                <li id="ProfileUser"><a href="/UserPages/User_Profile_Create.aspx">
-                                    <span>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-badge" viewBox="0 0 16 16">
+                            <li class="dropdown" id="logout">
+                                <a href="#">
+                                    <span id="user">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                                            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                                            <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+                                        </svg></span>
+                                </a>
+                                <ul id="profile_drop">
+                                    <li id="ProfileUser"><a href="/UserPages/User_Profile_Create.aspx">
+                                        <span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-badge" viewBox="0 0 16 16">
                           User      
 <path d="M6.5 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1zM11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
                                         <path d="M4.5 0A2.5 2.5 0 0 0 2 2.5V14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2.5A2.5 2.5 0 0 0 11.5 0zM3 2.5A1.5 1.5 0 0 1 4.5 1h7A1.5 1.5 0 0 1 13 2.5v10.795a4.2 4.2 0 0 0-.776-.492C11.392 12.387 10.063 12 8 12s-3.392.387-4.224.803a4.2 4.2 0 0 0-.776.492z" />
                                     </svg>&nbsp;&nbsp;Profile</span>
-                                </a></li>
-                                <li id="ProfileLogout">
-                                    <a href="#">
-                                        <asp:Button ID="btnLogout" Text="Logout" OnClick="btnLogout_Click" runat="server" Style="background: #4b49ac; border-color: #4b49ac; color: white; border-radius: 5px;" />
-                                        <%--OnClick="btnLogout_Click"--%>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+                                    </a></li>
+                                    <li id="ProfileLogout">
+                                        <a href="#">
+                                            <asp:Button ID="btnLogout" Text="Logout" OnClick="btnLogout_Click" runat="server" Style="background: #4b49ac; border-color: #4b49ac; color: white; border-radius: 5px;" />
+                                            <%--OnClick="btnLogout_Click"--%>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
 
-                    </ul>
-                    <i class="bi bi-list mobile-nav-toggle"></i>
-                </nav>
-            </div>
-        </header>
+                        </ul>
+                        <i class="bi bi-list mobile-nav-toggle"></i>
+                    </nav>
+                </div>
+            </header>
             <!-- End Header -->
             <main id="main">
                 <section id="about" class="about section-bg">
@@ -602,8 +601,7 @@ nav#navbar.navbar-mobile {
                             <div class="col-md-1"></div>
                             <div class="col-md-12">
                                 <p style="margin-top: -40px; font-weight: 700;">
-                                    (Please read the instructions carefully as given in Instruction
-                            Page before filling the form)
+                                    (Please read the instructions carefully as given in Instruction Page before filling the form)
                                 </p>
                                 <img src="/Assets/capsules/documents.png" alt="NO IMAGE FOUND" style="width: 90%; margin-left: 5%;" />
                                 <div class="card"
@@ -613,27 +611,17 @@ nav#navbar.navbar-mobile {
                                             <div class="col-md-12">
                                                 <h4 class="card-title">Documents Checklist that should be attached with
                                                     <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label></h4>
-
                                                 <div class="card" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; border-radius: 10px !important; padding: 10px 10px 10px 10px; margin-bottom: 25px;">
-
-
                                                     <div class="row">
                                                         <div class="col-md-10" style="margin-top: auto; margin-bottom: auto;">
-                                                            <h6>Click Preview to verify details; use Back if changes are needed.
-                                                            </h6>
-
+                                                            <h6>Click Preview to verify details; use Back if changes are needed.</h6>
                                                         </div>
                                                         <div class="col-md-2" style="text-align: center;">
                                                             <asp:Button type="button" ID="btnBack" Text="Back" OnClick="btnBack_Click" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" />
-
                                                             <asp:Button type="button" ID="btn_Preview" Text="Preview" runat="server" OnClick="btn_Preview_Click" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" />
-
                                                         </div>
                                                     </div>
-
-
                                                 </div>
-
                                                 <h6>The candidates are requested to ensure that the documents are genuine and
                                             should be self attested.</h6>
                                             </div>
@@ -642,8 +630,10 @@ nav#navbar.navbar-mobile {
                                             <div>
                                                 <table class="table table-bordered table-striped">
                                                     <tbody>
-                                                        <tr>
+                                                        <tr id="TrMatriculationCertificate" runat="server">
                                                             <td style="">Matriculation certificate indicating date of birth.(<span style="color: red;">★</span>)
+                                                                 <asp:HiddenField ID="Hdn_DocumentId2" runat="server" Value="39" />
+                                                                <%--To store document ID--%>
                                                             </td>
                                                             <td style="text-align: center;">
                                                                 <text style="color: red; font-size: 12px;" id="text2" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
@@ -661,6 +651,9 @@ nav#navbar.navbar-mobile {
                                                         </tr>
                                                         <tr id="CertificateOrDiploma" runat="server" visible="false">
                                                             <td style="">Upload Certificate or Diploma in Wireman,Linemen & Electrician.(<span style="color: red;">★</span>)
+                                                          <asp:HiddenField ID="Hdn_DocumentId1" runat="server" Value="45" />
+                                                                <%--To store document ID--%>
+                                                           
                                                             </td>
                                                             <td style="text-align: center;">
                                                                 <text style="color: red; font-size: 12px;" id="text15" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
@@ -672,11 +665,13 @@ nav#navbar.navbar-mobile {
                                                             <td>
                                                                 <asp:Button ID="Button15" runat="server" Text="Upload" OnClick="Button15_Click" class="btn btn-primary" />
                                                                 <asp:LinkButton ID="lnkbtn_Delete15" OnClick="lnkbtn_Delete15_Click" runat="server" Visible="false" CssClass="btn btn-danger">
-     <i class="fa fa-times"></i> </asp:LinkButton>
+                                                                <i class="fa fa-times"></i> </asp:LinkButton>
                                                             </td>
                                                         </tr>
                                                         <tr id="Diploma" runat="server" visible="false">
                                                             <td style="">Upload your Diploma certificate.(<span style="color: red;">★</span>)
+                                                                <asp:HiddenField ID="Hdn_DocumentId3" runat="server" Value="46" />
+                                                                <%--To store document ID--%>
                                                             </td>
                                                             <td style="text-align: center;">
                                                                 <text style="color: red; font-size: 12px;" id="text16" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
@@ -688,11 +683,14 @@ nav#navbar.navbar-mobile {
                                                             <td>
                                                                 <asp:Button ID="Button16" runat="server" Text="Upload" OnClick="Button16_Click" class="btn btn-primary" />
                                                                 <asp:LinkButton ID="lnkbtn_Delete16" OnClick="lnkbtn_Delete16_Click" runat="server" Visible="false" CssClass="btn btn-danger">
-     <i class="fa fa-times"></i> </asp:LinkButton>
+                                                                <i class="fa fa-times"></i> </asp:LinkButton>
                                                             </td>
                                                         </tr>
                                                         <tr id="Degree" runat="server" visible="false">
                                                             <td style="">Upload your Degree certificate.(<span style="color: red;">★</span>)
+                                                           <asp:HiddenField ID="Hdn_DocumentId4" runat="server" Value="47" />
+                                                                <%--To store document ID--%>
+                                                        
                                                             </td>
                                                             <td style="text-align: center;">
                                                                 <text style="color: red; font-size: 12px;" id="text17" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
@@ -704,11 +702,14 @@ nav#navbar.navbar-mobile {
                                                             <td>
                                                                 <asp:Button ID="Button17" runat="server" Text="Upload" OnClick="Button17_Click" class="btn btn-primary" />
                                                                 <asp:LinkButton ID="lnkbtn_Delete17" OnClick="lnkbtn_Delete17_Click" runat="server" Visible="false" CssClass="btn btn-danger">
-     <i class="fa fa-times"></i> </asp:LinkButton>
+                                                                <i class="fa fa-times"></i> </asp:LinkButton>
                                                             </td>
                                                         </tr>
                                                         <tr id="MasterDegree" runat="server" visible="false">
                                                             <td style="">Upload your Master Degree certificate.(<span style="color: red;">★</span>)
+                                                          <asp:HiddenField ID="Hdn_DocumentId5" runat="server" Value="48" />
+                                                                <%--To store document ID--%>
+                                                           
                                                             </td>
                                                             <td style="text-align: center;">
                                                                 <text style="color: red; font-size: 12px;" id="text18" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
@@ -720,11 +721,14 @@ nav#navbar.navbar-mobile {
                                                             <td>
                                                                 <asp:Button ID="Button18" runat="server" Text="Upload" OnClick="Button18_Click" class="btn btn-primary" />
                                                                 <asp:LinkButton ID="lnkbtn_Delete18" OnClick="lnkbtn_Delete18_Click" runat="server" Visible="false" CssClass="btn btn-danger">
-     <i class="fa fa-times"></i> </asp:LinkButton>
+                                                                <i class="fa fa-times"></i> </asp:LinkButton>
                                                             </td>
                                                         </tr>
-                                                        <tr>
+                                                        <tr id="TrResidenceProof" runat="server">
                                                             <td style="">Residence Proof.(<span style="color: red;">★</span>)
+                                                        
+                                                                  <asp:HiddenField ID="Hdn_DocumentId6" runat="server" Value="34" />
+
                                                             </td>
                                                             <td style="text-align: center;">
                                                                 <text style="color: red; font-size: 12px;" id="text3" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
@@ -740,8 +744,7 @@ nav#navbar.navbar-mobile {
                                                                 <i class="fa fa-times"></i> </asp:LinkButton>
                                                             </td>
                                                         </tr>
-                                                        <tr>
-                                                            <%--<td style="">ID Proof.(<span style="color: red;">★</span>)</td>--%>
+                                                        <tr id="TrIDProof" runat="server">
                                                             <td style="text-align: justify;">Which Id proof you want to Upload(<span style="color: red;">★</span>)<br />
                                                                 <asp:DropDownList class="select-form" Style="border: 1px solid #ced4da; border-radius: 5px; width: 30%; height: 32px; margin-top: 15px;"
                                                                     ID="ddlIdproof" runat="server" TabIndex="4">
@@ -751,6 +754,7 @@ nav#navbar.navbar-mobile {
                                                                     <asp:ListItem Text="Age Certificate" Value="3"></asp:ListItem>
                                                                 </asp:DropDownList>
                                                                 <asp:RequiredFieldValidator runat="server" ControlToValidate="ddlIdproof" InitialValue="0" ValidationGroup="Submit" ForeColor="Red">Please select Id proof</asp:RequiredFieldValidator>
+                                                                <asp:HiddenField ID="Hdn_DocumentId7" runat="server" Value="33" />
                                                             </td>
                                                             <td style="text-align: center;">
                                                                 <text style="color: red; font-size: 12px;" id="text4" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
@@ -766,7 +770,6 @@ nav#navbar.navbar-mobile {
                                                                 <i class="fa fa-times"></i> </asp:LinkButton>
                                                             </td>
                                                         </tr>
-
                                                         <tr id="Medicalfitness" runat="server" visible="false">
                                                             <td style="">
                                                                 <p>
@@ -774,6 +777,7 @@ nav#navbar.navbar-mobile {
                                                                     in case he is above 55 years
                                                                 </p>
                                                                 of age on the date of submission of application.(<span style="color: red;">★</span>)
+                                                             <asp:HiddenField ID="Hdn_DocumentId8" runat="server" Value="38" />
                                                             </td>
                                                             <td style="text-align: center;">
                                                                 <text style="color: red; font-size: 12px;" id="text8" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
@@ -789,6 +793,9 @@ nav#navbar.navbar-mobile {
                                                         </tr>
                                                         <tr id="Retired" runat="server" visible="false">
                                                             <td style="">Copy of retirement orders.(<span style="color: red;">★</span>)
+                                                          <asp:HiddenField ID="Hdn_DocumentId9" runat="server" Value="36" />
+                                                                <%--To store document ID--%>
+                                                         
                                                             </td>
                                                             <td style="text-align: center;">
                                                                 <text style="color: red; font-size: 12px;" id="text9" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
@@ -807,6 +814,10 @@ nav#navbar.navbar-mobile {
                                                                 <p>
                                                                     Apprentice Certificate.(<span style="color: red;">★</span>)
                                                                 </p>
+                                                                <asp:HiddenField ID="Hdn_DocumentId10" runat="server" Value="37" />
+                                                                <%--To store document ID--%>
+ 
+                                                         
                                                             </td>
                                                             <td style="text-align: center;">
                                                                 <text style="color: red; font-size: 12px;" id="text10" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
@@ -820,12 +831,12 @@ nav#navbar.navbar-mobile {
                                                                 <asp:LinkButton ID="lnkbtn_Delete10" OnClick="lnkbtn_Delete10_Click" Visible="false" runat="server" CssClass="btn btn-danger"><i class="fa fa-times"></i> </asp:LinkButton>
                                                             </td>
                                                         </tr>
-
-
                                                         <tr id="Exp" runat="server" visible="false">
                                                             <td>Upload
                                                                 <asp:Label ID="LblExp" runat="server" Text="Label"></asp:Label>
                                                                 Experience Letter 1 (<span style="color: red;">★</span>)
+                                                         <asp:HiddenField ID="Hdn_DocumentId11" runat="server" Value="35" />
+                                                                <asp:HiddenField ID="Hdn_SUBDocumentId11" runat="server" Value="1" />
                                                             </td>
                                                             <td style="text-align: center;">
                                                                 <text style="color: red; font-size: 12px;" id="text19" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
@@ -842,7 +853,11 @@ nav#navbar.navbar-mobile {
                                                         <tr id="Exp1" runat="server" visible="false">
                                                             <td>Upload
                                                                 <asp:Label ID="LblExp1" runat="server" Text="Label"></asp:Label>
-                                                                Experience Letter 2 (<span style="color: red;">★</span>)</td>
+                                                                Experience Letter 2 (<span style="color: red;">★</span>)
+                                                                <asp:HiddenField ID="Hdn_DocumentId12" runat="server" Value="35" />
+                                                                <asp:HiddenField ID="Hdn_SUBDocumentId12" runat="server" Value="2" />
+
+                                                            </td>
                                                             <td style="text-align: center;">
                                                                 <text style="color: red; font-size: 12px;" id="text20" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
                                                                 <asp:FileUpload ID="FileUpload20" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
@@ -858,7 +873,12 @@ nav#navbar.navbar-mobile {
                                                         <tr id="Exp2" runat="server" visible="false">
                                                             <td style="">Upload
                                                                 <asp:Label ID="LblExp2" runat="server" Text="Label"></asp:Label>
-                                                                Experience Letter 3 (<span style="color: red;">★</span>)</td>
+                                                                Experience Letter 3 (<span style="color: red;">★</span>)
+
+                                                                
+                                                                <asp:HiddenField ID="Hdn_DocumentId13" runat="server" Value="35" />
+                                                                <asp:HiddenField ID="Hdn_SUBDocumentId13" runat="server" Value="3" />
+                                                            </td>
                                                             <td style="text-align: center;">
                                                                 <text style="color: red; font-size: 12px;" id="text21" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
                                                                 <asp:FileUpload ID="FileUpload21" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
@@ -874,7 +894,11 @@ nav#navbar.navbar-mobile {
                                                         <tr id="Exp3" runat="server" visible="false">
                                                             <td>Upload
                                                                 <asp:Label ID="LblExp3" runat="server" Text="Label"></asp:Label>
-                                                                Experience Letter 4 (<span style="color: red;">★</span>)</td>
+                                                                Experience Letter 4 (<span style="color: red;">★</span>)
+                                                                
+                                                                <asp:HiddenField ID="Hdn_DocumentId14" runat="server" Value="35" />
+                                                                <asp:HiddenField ID="Hdn_SUBDocumentId14" runat="server" Value="4" />
+                                                            </td>
                                                             <td style="text-align: center;">
                                                                 <text style="color: red; font-size: 12px;" id="text22" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
                                                                 <asp:FileUpload ID="FileUpload22" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
@@ -890,7 +914,10 @@ nav#navbar.navbar-mobile {
                                                         <tr id="Exp4" runat="server" visible="false">
                                                             <td>Upload
                                                                 <asp:Label ID="LblExp4" runat="server" Text="Label"></asp:Label>
-                                                                Experience Letter 5 (<span style="color: red;">★</span>)</td>
+                                                                Experience Letter 5 (<span style="color: red;">★</span>)
+                                                                <asp:HiddenField ID="Hdn_DocumentId15" runat="server" Value="35" />
+                                                                <asp:HiddenField ID="Hdn_SUBDocumentId15" runat="server" Value="5" />
+                                                            </td>
                                                             <td style="text-align: center;">
                                                                 <text style="color: red; font-size: 12px;" id="text23" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
                                                                 <asp:FileUpload ID="FileUpload23" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
@@ -906,7 +933,11 @@ nav#navbar.navbar-mobile {
                                                         <tr id="Exp5" runat="server" visible="false">
                                                             <td>Upload
                                                                 <asp:Label ID="LblExp5" runat="server" Text="Label"></asp:Label>
-                                                                Experience Letter 6 (<span style="color: red;">★</span>)</td>
+                                                                Experience Letter 6 (<span style="color: red;">★</span>)
+                                                                
+                                                                <asp:HiddenField ID="Hdn_DocumentId16" runat="server" Value="35" />
+                                                                <asp:HiddenField ID="Hdn_SUBDocumentId16" runat="server" Value="6" />
+                                                            </td>
                                                             <td style="text-align: center;">
                                                                 <text style="color: red; font-size: 12px;" id="text24" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
                                                                 <asp:FileUpload ID="FileUpload24" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
@@ -922,7 +953,11 @@ nav#navbar.navbar-mobile {
                                                         <tr id="Exp6" runat="server" visible="false">
                                                             <td>Upload
                                                                 <asp:Label ID="LblExp6" runat="server" Text="Label"></asp:Label>
-                                                                Experience Letter 7 (<span style="color: red;">★</span>)</td>
+                                                                Experience Letter 7 (<span style="color: red;">★</span>)
+                                                                
+                                                                <asp:HiddenField ID="Hdn_DocumentId17" runat="server" Value="35" />
+                                                                <asp:HiddenField ID="Hdn_SUBDocumentId17" runat="server" Value="7" />
+                                                            </td>
                                                             <td style="text-align: center;">
                                                                 <text style="color: red; font-size: 12px;" id="text25" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
                                                                 <asp:FileUpload ID="FileUpload25" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
@@ -938,7 +973,11 @@ nav#navbar.navbar-mobile {
                                                         <tr id="Exp7" runat="server" visible="false">
                                                             <td>Upload
                                                                 <asp:Label ID="LblExp7" runat="server" Text="Label"></asp:Label>
-                                                                Experience Letter 8 (<span style="color: red;">★</span>)</td>
+                                                                Experience Letter 8 (<span style="color: red;">★</span>)
+                                                                
+                                                                <asp:HiddenField ID="Hdn_DocumentId18" runat="server" Value="35" />
+                                                                <asp:HiddenField ID="Hdn_SUBDocumentId18" runat="server" Value="8" />
+                                                            </td>
                                                             <td style="text-align: center;">
                                                                 <text style="color: red; font-size: 12px;" id="text26" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
                                                                 <asp:FileUpload ID="FileUpload26" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
@@ -954,7 +993,11 @@ nav#navbar.navbar-mobile {
                                                         <tr id="Exp8" runat="server" visible="false">
                                                             <td>Upload
                                                                 <asp:Label ID="LblExp8" runat="server" Text="Label"></asp:Label>
-                                                                Experience Letter 9 (<span style="color: red;">★</span>)</td>
+                                                                Experience Letter 9 (<span style="color: red;">★</span>)
+                                                                
+                                                                <asp:HiddenField ID="Hdn_DocumentId19" runat="server" Value="35" />
+                                                                <asp:HiddenField ID="Hdn_SUBDocumentId19" runat="server" Value="9" />
+                                                            </td>
                                                             <td style="text-align: center;">
                                                                 <text style="color: red; font-size: 12px;" id="text27" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
                                                                 <asp:FileUpload ID="FileUpload27" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
@@ -970,7 +1013,10 @@ nav#navbar.navbar-mobile {
                                                         <tr id="Exp9" runat="server" visible="false">
                                                             <td>Upload
                                                                 <asp:Label ID="LblExp9" runat="server" Text="Label"></asp:Label>
-                                                                Experience Letter 10 (<span style="color: red;">★</span>)</td>
+                                                                Experience Letter 10 (<span style="color: red;">★</span>)
+                                                                <asp:HiddenField ID="Hdn_DocumentId20" runat="server" Value="35" />
+                                                                <asp:HiddenField ID="Hdn_SUBDocumentId20" runat="server" Value="10" />
+                                                            </td>
                                                             <td style="text-align: center;">
                                                                 <text style="color: red; font-size: 12px;" id="text28" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
                                                                 <asp:FileUpload ID="FileUpload28" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />
@@ -983,11 +1029,8 @@ nav#navbar.navbar-mobile {
                                                                 <asp:LinkButton ID="lnkbtn_Delete28" OnClick="lnkbtn_Delete28_Click" runat="server" Visible="false" CssClass="btn btn-danger"><i class="fa fa-times"></i> </asp:LinkButton>
                                                             </td>
                                                         </tr>
-
-
-
-                                                        <tr>
-                                                        <%--    Previously amount is 400 for both--%>
+                                                        <tr id="TrChallan" runat="server">
+                                                            <%--    Previously amount is 400 for both--%>
                                                             <td style="text-align: justify; padding-top: 20px !important;">Copy of treasury challan of fees (₹<asp:Label ID="LblChallanAmount" runat="server" Text="Label"></asp:Label>/-) deposited in any treasury of Haryana.(<span style="color: red;">★</span>)
                                                                 <div class="row" style="margin-top: 15px; margin-bottom: 10px;">
                                                                     <div class="col-md-6">
@@ -1011,6 +1054,7 @@ nav#navbar.navbar-mobile {
                                                                         </div>
                                                                     </div>
                                                                 </div>
+                                                                <asp:HiddenField ID="Hdn_DocumentId21" runat="server" Value="40" />
                                                             </td>
                                                             <td style="text-align: center;">
                                                                 <text style="color: red; font-size: 12px;" id="text11" runat="server" visible="true">Upload Only PDF File not more than 1mb.</text>
@@ -1026,7 +1070,7 @@ nav#navbar.navbar-mobile {
                                                                 <i class="fa fa-times"></i> </asp:LinkButton>
                                                             </td>
                                                         </tr>
-                                                        <tr id="Tr1" runat="server" visible="true">
+                                                        <tr id="TrImage" runat="server" visible="true">
                                                             <td>
                                                                 <label for="State1">
                                                                     Upload Candidate Image<samp style="color: red">* </samp>
@@ -1035,6 +1079,8 @@ nav#navbar.navbar-mobile {
 
                                                                 <text style="color: red; font-size: 12px;" id="text12" runat="server" visible="true">Please upload a valid image file (.jpg, .jpeg, .png) (Max: 1MB).</text>
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator13" runat="server" ControlToValidate="FileUpload12" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                                <asp:HiddenField ID="Hdn_DocumentId22" runat="server" Value="31" />
+
                                                             </td>
                                                             <td style="text-align: center;">
                                                                 <div id="imagePreview" style="margin-top: 10px;"></div>
@@ -1055,6 +1101,7 @@ nav#navbar.navbar-mobile {
 
                                                                 <text style="color: red; font-size: 12px;" id="text13" runat="server" visible="true">Please upload a valid image file (.jpg, .jpeg, .png) (Max: 1MB).</text>
                                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidatorSignature" runat="server" ControlToValidate="FileUpload13" ErrorMessage="Required" ValidationGroup="Submit" Display="Dynamic" ForeColor="Red"></asp:RequiredFieldValidator>
+                                                                <asp:HiddenField ID="Hdn_DocumentId23" runat="server" Value="32" />
                                                             </td>
                                                             <td style="text-align: center;">
                                                                 <div id="signaturePreview" style="margin-top: 10px;"></div>
@@ -1074,22 +1121,18 @@ nav#navbar.navbar-mobile {
                                                 <div class="form-check">
                                                     <asp:CheckBox ID="chkDeclaration" runat="server" CssClass="form-check-input" Style="padding: 0px 4px 15px 1px !important; border: 0px solid black !important; margin-top: .1em !important;" />
                                                     <label class="form-check-label" for="<%= chkDeclaration.ClientID %>" style="margin-left: 0px;">
-                                                        <%-- I hereby declare that the information furnished in this application is correct, that all registers and books as prescribed under the licensing conditions of Haryana are being duly maintained, and that I am authorized to sign this application as the contractor or on behalf of the contractor.
-                                                        --%> 
                                                         I hereby declare that the information furnished and the documents uploaded above are correct to the best of my knowledge. 
-                                                        I also agree to the cancellation of my <asp:Label ID="lblDeclarationType" runat="server" Text="Label"></asp:Label> to be issued pursuant
+                                                        I also agree to the cancellation of my
+                                                        <asp:Label ID="lblDeclarationType" runat="server" Text="Label"></asp:Label>
+                                                        to be issued pursuant
                                                         to this application, in case the particulars furnished in the application are found to be incorrect or false at any stage.
-
                                                     </label>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row" style="margin-top: 15px;">
-                                            <div class="col-md-4" style="text-align: start;">
-                                            </div>
-                                            <div class="col-md-4" style="text-align: center;">
-                                            </div>
-
+                                            <div class="col-md-4" style="text-align: start;"></div>
+                                            <div class="col-md-4" style="text-align: center;"></div>
                                             <div class="col-md-4" style="text-align: end;">
                                                 <asp:Button type="button" ValidationGroup="Submit" ID="btnNext" Text="Next" runat="server" class="btn btn-primary" Style="padding: 10px 20px 10px 20px; border-radius: 5px;" OnClick="btnNext_Click" />
                                             </div>
@@ -1101,12 +1144,10 @@ nav#navbar.navbar-mobile {
                             <asp:HiddenField ID="Hdnretirment" runat="server" />
                             <asp:HiddenField ID="HdnUserId" runat="server" />
                             <asp:HiddenField ID="HdnUserType" runat="server" />
-
                             <asp:HiddenField ID="HdnName12ITIDiploma" runat="server" />
                             <asp:HiddenField ID="HdnNameofDiplomaDegree" runat="server" />
                             <asp:HiddenField ID="HdnNameofDegree" runat="server" />
                             <asp:HiddenField ID="HdnNameofMasters" runat="server" />
-
                             <asp:HiddenField ID="HdnEXP" runat="server" />
                             <asp:HiddenField ID="HdnEXP1" runat="server" />
                             <asp:HiddenField ID="HdnEXP2" runat="server" />
@@ -1117,8 +1158,6 @@ nav#navbar.navbar-mobile {
                             <asp:HiddenField ID="HdnEXP7" runat="server" />
                             <asp:HiddenField ID="HdnEXP8" runat="server" />
                             <asp:HiddenField ID="HdnEXP9" runat="server" />
-
-
                             <asp:HiddenField ID="HdnField_Document1" runat="server" />
                             <asp:HiddenField ID="HdnField_Document2" runat="server" />
                             <asp:HiddenField ID="HdnField_Document3" runat="server" />
@@ -1140,7 +1179,6 @@ nav#navbar.navbar-mobile {
                             <asp:HiddenField ID="HdnField_Document16" runat="server" />
                             <asp:HiddenField ID="HdnField_Document17" runat="server" />
                             <asp:HiddenField ID="HdnField_Document18" runat="server" />
-
                             <asp:HiddenField ID="HdnField_Document19" runat="server" />
                             <asp:HiddenField ID="HdnField_Document20" runat="server" />
                             <asp:HiddenField ID="HdnField_Document21" runat="server" />
@@ -1151,7 +1189,6 @@ nav#navbar.navbar-mobile {
                             <asp:HiddenField ID="HdnField_Document26" runat="server" />
                             <asp:HiddenField ID="HdnField_Document27" runat="server" />
                             <asp:HiddenField ID="HdnField_Document28" runat="server" />
-
                             <asp:HiddenField ID="HdnApprenticeExperience" runat="server" />
                         </div>
                         <div class="col-md-1"></div>
@@ -1161,7 +1198,6 @@ nav#navbar.navbar-mobile {
         </div>
     </form>
     <!-- End About Section -->
-
     <!-- End #main -->
     <!-- ======= Footer ======= -->
     <footer id="footer" style="background: #d1e6ff;">
@@ -1252,7 +1288,6 @@ nav#navbar.navbar-mobile {
             }
         }
     </script>
-
     <script type="text/javascript">
         function validateDate() {
             var ClnDate = document.getElementById('<%=txtdate.ClientID %>');
@@ -1292,8 +1327,6 @@ nav#navbar.navbar-mobile {
             return true;
         }
     </script>
-
-
 </body>
 </html>
 

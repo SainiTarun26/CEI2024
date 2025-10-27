@@ -11652,14 +11652,14 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
         }
 
 
-        public string InsertDocumentOfNewUserApplication(long TempUniqueId, string DocumentName, int DocumentId, string FileName,
-      string DocumentPath, string Utrn, string challandate, string CreatedBy, SqlTransaction transaction)
+        public string InsertDocumentOfNewUserApplication(string DocumentName, int DocumentId, string FileName,
+string DocumentPath, string Utrn, string challandate, int? DocumentSubID, string CreatedBy, string CurrentStatus, SqlTransaction transaction)
         {
             try
             {
                 SqlCommand cmd = new SqlCommand("Sp_InsertDocumentOfNewUserApplication", transaction.Connection, transaction);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@TempId", TempUniqueId);
+                ////cmd.Parameters.AddWithValue("@TempId", TempUniqueId);
                 cmd.Parameters.AddWithValue("@DocumentName", DocumentName);
                 cmd.Parameters.AddWithValue("@DocumentId", DocumentId);
 
@@ -11676,7 +11676,9 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
                 {
                     cmd.Parameters.AddWithValue("@challandate", DBNull.Value);
                 }
+                cmd.Parameters.AddWithValue("@DocumentSubID", DocumentSubID.HasValue ? (object)DocumentSubID.Value : DBNull.Value);
                 cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+                cmd.Parameters.AddWithValue("@TypeOfRequest", CurrentStatus);
                 outputParam = new SqlParameter("@Ret_DocumentID", SqlDbType.Int);
                 outputParam.Direction = ParameterDirection.Output;
                 cmd.Parameters.Add(outputParam);
@@ -11693,9 +11695,9 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
 
         #region chaged by neha on 27-June-2025
 
-        public DataSet ToSaveDocumentsdataofNewregistration(string UniqueNumber, string UserId, string UserType)
+        public DataSet ToSaveDocumentsdataofNewregistration(string UserId)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_ToSaveDocumentsdataofNewregistration", Convert.ToInt64(UniqueNumber), UserId, UserType);
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_ToSaveDocumentsdataofNewregistration", UserId);
         }
         #endregion
         private string EncryptRandomNumber(string randomUniqueNumber)
@@ -14867,7 +14869,7 @@ string dbPathCompetency, string dbPathMedicalCertificate, string userId)
         }
 
         public string InsertDocumentOfNewUserApplicationContractor(string DocumentName, string DocumentId, string FileName,
-  string DocumentPath, string CreatedBy, SqlTransaction transaction)
+  string DocumentPath, string CreatedBy, string CurrentStatus, SqlTransaction transaction)
         {
             try
             {
@@ -14878,6 +14880,7 @@ string dbPathCompetency, string dbPathMedicalCertificate, string userId)
                 cmd.Parameters.AddWithValue("@FileName", GetValue(FileName));
                 cmd.Parameters.AddWithValue("@DocumentPath", GetValue(DocumentPath));
                 cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+                cmd.Parameters.AddWithValue("@TypeOfRequest", CurrentStatus);
                 outputParam = new SqlParameter("@Ret_DocumentID", SqlDbType.Int);
                 outputParam.Direction = ParameterDirection.Output;
                 cmd.Parameters.Add(outputParam);
@@ -15913,6 +15916,57 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
         public DataTable GetddlrenewalYear(int year)
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_Renewalyear", year);
+        }
+        #endregion
+        #region neha duplicate document issue
+        public DataTable GetDocumentByUserIdAndDocId(string userID, int DocumentId, int? documentSubID = null)
+        {
+            using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+            using (SqlCommand cmd = new SqlCommand("Sp_GetDocumentByUserIdAndDocId", con))
+            {
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@CreatedBy", userID);
+                cmd.Parameters.AddWithValue("@DocumentID", DocumentId);
+                cmd.Parameters.AddWithValue("@DocumentSubID", documentSubID);
+
+                var adapter = new SqlDataAdapter(cmd);
+                var dt = new DataTable();
+                adapter.Fill(dt);
+                return dt;
+            }
+        }
+
+        public static int DeleteDocumentOfNewUserWiremanAndSupervisor(string createdBy, int DocumentID, int? documentSubID = null)
+        {
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ToString()))
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_DeleteDocumentOfNewUserWiremanAndSupervisor", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@CreatedBy", createdBy);
+
+                    cmd.Parameters.AddWithValue("@DocumentID", DocumentID);
+                    cmd.Parameters.AddWithValue("@DocumentSubID", documentSubID);
+
+                    // Add return value parameter
+                    SqlParameter returnValue = new SqlParameter();
+                    returnValue.Direction = ParameterDirection.ReturnValue;
+                    cmd.Parameters.Add(returnValue);
+
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+
+                    int rowsAffected = (int)returnValue.Value;
+
+                    // If any rows were affected, return 1, otherwise 0
+                    return rowsAffected > 0 ? 1 : 0;
+                }
+            }
+        }
+
+        public DataTable ToGetStatusOfNewLicenceRequest(string UserId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetStatusOfNewLicenceRequest", UserId);
         }
         #endregion
     }

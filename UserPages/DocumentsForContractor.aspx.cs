@@ -297,7 +297,15 @@ namespace CEIHaryana.UserPages
                     }
                 }
 
-                string CreatedBy = Convert.ToString(Session["ContractorID"] ?? "TestUser");
+                string CurrentStatus = "";
+                string CreatedBy = Convert.ToString(Session["ContractorID"]);
+
+                DataTable dts = CEI.ToGetStatusOfNewLicenceRequest(CreatedBy);
+
+                if (dts != null && dts.Rows.Count > 0)
+                {
+                    CurrentStatus = dts.Rows[0]["TypeOfRequest"].ToString();
+                }
                 string safeDocumentName = MakeSafeFileName(documentShortName);
                 string safeCreatedBy = MakeSafeFileName(CreatedBy);
 
@@ -334,7 +342,7 @@ namespace CEIHaryana.UserPages
 
                     try
                     {
-                        CEI.InsertDocumentOfNewUserApplicationContractor( documentName, documentId.ToString(), fileName, dbPath, CreatedBy, transaction);
+                        CEI.InsertDocumentOfNewUserApplicationContractor( documentName, documentId.ToString(), fileName, dbPath, CreatedBy, CurrentStatus, transaction);
                         transaction.Commit();
                     }
                     catch (Exception dbEx)

@@ -60,6 +60,24 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.Button btn_Preview;
 
         /// <summary>
+        /// TrMatriculationCertificate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TrMatriculationCertificate;
+
+        /// <summary>
+        /// Hdn_DocumentId2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField Hdn_DocumentId2;
+
+        /// <summary>
         /// text2 control.
         /// </summary>
         /// <remarks>
@@ -121,6 +139,15 @@ namespace CEIHaryana.UserPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTableRow CertificateOrDiploma;
+
+        /// <summary>
+        /// Hdn_DocumentId1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField Hdn_DocumentId1;
 
         /// <summary>
         /// text15 control.
@@ -186,6 +213,15 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.HtmlControls.HtmlTableRow Diploma;
 
         /// <summary>
+        /// Hdn_DocumentId3 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField Hdn_DocumentId3;
+
+        /// <summary>
         /// text16 control.
         /// </summary>
         /// <remarks>
@@ -247,6 +283,15 @@ namespace CEIHaryana.UserPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTableRow Degree;
+
+        /// <summary>
+        /// Hdn_DocumentId4 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField Hdn_DocumentId4;
 
         /// <summary>
         /// text17 control.
@@ -312,6 +357,15 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.HtmlControls.HtmlTableRow MasterDegree;
 
         /// <summary>
+        /// Hdn_DocumentId5 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField Hdn_DocumentId5;
+
+        /// <summary>
         /// text18 control.
         /// </summary>
         /// <remarks>
@@ -364,6 +418,24 @@ namespace CEIHaryana.UserPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton lnkbtn_Delete18;
+
+        /// <summary>
+        /// TrResidenceProof control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TrResidenceProof;
+
+        /// <summary>
+        /// Hdn_DocumentId6 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField Hdn_DocumentId6;
 
         /// <summary>
         /// text3 control.
@@ -420,6 +492,15 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.LinkButton lnkbtn_Delete3;
 
         /// <summary>
+        /// TrIDProof control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TrIDProof;
+
+        /// <summary>
         /// ddlIdproof control.
         /// </summary>
         /// <remarks>
@@ -427,6 +508,15 @@ namespace CEIHaryana.UserPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlIdproof;
+
+        /// <summary>
+        /// Hdn_DocumentId7 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField Hdn_DocumentId7;
 
         /// <summary>
         /// text4 control.
@@ -492,6 +582,15 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.HtmlControls.HtmlTableRow Medicalfitness;
 
         /// <summary>
+        /// Hdn_DocumentId8 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField Hdn_DocumentId8;
+
+        /// <summary>
         /// text8 control.
         /// </summary>
         /// <remarks>
@@ -555,6 +654,15 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.HtmlControls.HtmlTableRow Retired;
 
         /// <summary>
+        /// Hdn_DocumentId9 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField Hdn_DocumentId9;
+
+        /// <summary>
         /// text9 control.
         /// </summary>
         /// <remarks>
@@ -616,6 +724,15 @@ namespace CEIHaryana.UserPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlTableRow Apprenticecertificate;
+
+        /// <summary>
+        /// Hdn_DocumentId10 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField Hdn_DocumentId10;
 
         /// <summary>
         /// text10 control.
@@ -690,6 +807,24 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.Label LblExp;
 
         /// <summary>
+        /// Hdn_DocumentId11 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField Hdn_DocumentId11;
+
+        /// <summary>
+        /// Hdn_SUBDocumentId11 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField Hdn_SUBDocumentId11;
+
+        /// <summary>
         /// text19 control.
         /// </summary>
         /// <remarks>
@@ -760,6 +895,24 @@ namespace CEIHaryana.UserPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LblExp1;
+
+        /// <summary>
+        /// Hdn_DocumentId12 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField Hdn_DocumentId12;
+
+        /// <summary>
+        /// Hdn_SUBDocumentId12 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField Hdn_SUBDocumentId12;
 
         /// <summary>
         /// text20 control.
@@ -834,6 +987,24 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.Label LblExp2;
 
         /// <summary>
+        /// Hdn_DocumentId13 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField Hdn_DocumentId13;
+
+        /// <summary>
+        /// Hdn_SUBDocumentId13 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField Hdn_SUBDocumentId13;
+
+        /// <summary>
         /// text21 control.
         /// </summary>
         /// <remarks>
@@ -904,6 +1075,24 @@ namespace CEIHaryana.UserPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LblExp3;
+
+        /// <summary>
+        /// Hdn_DocumentId14 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField Hdn_DocumentId14;
+
+        /// <summary>
+        /// Hdn_SUBDocumentId14 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField Hdn_SUBDocumentId14;
 
         /// <summary>
         /// text22 control.
@@ -978,6 +1167,24 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.Label LblExp4;
 
         /// <summary>
+        /// Hdn_DocumentId15 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField Hdn_DocumentId15;
+
+        /// <summary>
+        /// Hdn_SUBDocumentId15 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField Hdn_SUBDocumentId15;
+
+        /// <summary>
         /// text23 control.
         /// </summary>
         /// <remarks>
@@ -1048,6 +1255,24 @@ namespace CEIHaryana.UserPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LblExp5;
+
+        /// <summary>
+        /// Hdn_DocumentId16 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField Hdn_DocumentId16;
+
+        /// <summary>
+        /// Hdn_SUBDocumentId16 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField Hdn_SUBDocumentId16;
 
         /// <summary>
         /// text24 control.
@@ -1122,6 +1347,24 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.Label LblExp6;
 
         /// <summary>
+        /// Hdn_DocumentId17 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField Hdn_DocumentId17;
+
+        /// <summary>
+        /// Hdn_SUBDocumentId17 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField Hdn_SUBDocumentId17;
+
+        /// <summary>
         /// text25 control.
         /// </summary>
         /// <remarks>
@@ -1192,6 +1435,24 @@ namespace CEIHaryana.UserPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label LblExp7;
+
+        /// <summary>
+        /// Hdn_DocumentId18 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField Hdn_DocumentId18;
+
+        /// <summary>
+        /// Hdn_SUBDocumentId18 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField Hdn_SUBDocumentId18;
 
         /// <summary>
         /// text26 control.
@@ -1266,6 +1527,24 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.Label LblExp8;
 
         /// <summary>
+        /// Hdn_DocumentId19 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField Hdn_DocumentId19;
+
+        /// <summary>
+        /// Hdn_SUBDocumentId19 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField Hdn_SUBDocumentId19;
+
+        /// <summary>
         /// text27 control.
         /// </summary>
         /// <remarks>
@@ -1338,6 +1617,24 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.Label LblExp9;
 
         /// <summary>
+        /// Hdn_DocumentId20 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField Hdn_DocumentId20;
+
+        /// <summary>
+        /// Hdn_SUBDocumentId20 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField Hdn_SUBDocumentId20;
+
+        /// <summary>
         /// text28 control.
         /// </summary>
         /// <remarks>
@@ -1392,6 +1689,15 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.LinkButton lnkbtn_Delete28;
 
         /// <summary>
+        /// TrChallan control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TrChallan;
+
+        /// <summary>
         /// LblChallanAmount control.
         /// </summary>
         /// <remarks>
@@ -1417,6 +1723,15 @@ namespace CEIHaryana.UserPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtdate;
+
+        /// <summary>
+        /// Hdn_DocumentId21 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField Hdn_DocumentId21;
 
         /// <summary>
         /// text11 control.
@@ -1473,13 +1788,13 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.LinkButton lnkbtn_Delete11;
 
         /// <summary>
-        /// Tr1 control.
+        /// TrImage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableRow Tr1;
+        protected global::System.Web.UI.HtmlControls.HtmlTableRow TrImage;
 
         /// <summary>
         /// FileUpload12 control.
@@ -1507,6 +1822,15 @@ namespace CEIHaryana.UserPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator13;
+
+        /// <summary>
+        /// Hdn_DocumentId22 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField Hdn_DocumentId22;
 
         /// <summary>
         /// lnkbtn_Save12 control.
@@ -1570,6 +1894,15 @@ namespace CEIHaryana.UserPages
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidatorSignature;
+
+        /// <summary>
+        /// Hdn_DocumentId23 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField Hdn_DocumentId23;
 
         /// <summary>
         /// lnkbtn_Save13 control.
