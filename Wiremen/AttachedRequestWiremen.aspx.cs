@@ -205,14 +205,20 @@ namespace CEIHaryana.Wiremen
 
                     int x = CEI.InsertDataForAttachment(txtControctorId.Text, filePathInfo, txtRemarks.Text, hdnId.Value, txtReId.Text);
 
-                    if (x > 0)
-                    {
+                        if (x > 0)
+                        {
 
-                        // CEI.emailForDeattachmentRequest(TxtEmailId.Text);
-                        string script = $"alert('Attachment request submitted successfully!!.'); window.location='DeattachmentRequestWiremen.aspx';";
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
+                            // CEI.emailForDeattachmentRequest(TxtEmailId.Text);
+                            string script = $"alert('Attachment request submitted successfully!!.'); window.location='DeattachmentRequestWiremen.aspx';";
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
+                        }
+                        else
+                        {
+                            string alertScript = "alert('User already attached with another Contractor. Not able to attach with multiple Contractors');";
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
+                            return;
+                        }
                     }
-                }
                 else
                 {
                     string alertScript = "alert('Please upload PDF file under 1MB.');";

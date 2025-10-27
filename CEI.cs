@@ -14073,7 +14073,8 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
 
         public int InsertDataForAttachment(string ContractorId, string Attachment, string Remarks, string SupervisiorId, string SupervisiorReId)
         {
-            
+            try
+            {
                 using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
                 using (SqlCommand cmd = new SqlCommand("sp_AttachedContractorRequest", con))
                 {
@@ -14088,6 +14089,11 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
                     int x = cmd.ExecuteNonQuery();
                     return x;
                 }
+            }
+            catch
+            {
+                return 0;
+            }
             
         }
         public DataTable GetSupervisiorReID(string SupervisiorId)

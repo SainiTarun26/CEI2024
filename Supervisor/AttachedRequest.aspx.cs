@@ -213,6 +213,12 @@ namespace CEIHaryana.Supervisor
                             string script = $"alert('Attachment request submitted successfully!!.'); window.location='DeattachmentRequest.aspx';";
                             ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
                         }
+                        else
+                        {
+                            string alertScript = "alert('User already attached with another Contractor. Not able to attach with multiple Contractors');";
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", alertScript, true);
+                            return;
+                        }
                     }
                     else
                     {
@@ -229,7 +235,8 @@ namespace CEIHaryana.Supervisor
             }
             catch (Exception ex)
             {
-                ScriptManager.RegisterStartupScript(this, GetType(), "Alert", "alert('" + ex.Message + "');", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('" + ex.Message.ToString() + "')", true);
+                return;
                 //throw;
             }
         }
