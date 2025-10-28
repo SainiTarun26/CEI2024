@@ -11587,9 +11587,9 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetContractorTeam", CreatedBy);
         }
         //neha changed
-        public DataTable SearchLicenseDetails(string employerType)
+        public DataTable SearchLicenseDetails(string selectedSearchBy, string employerType, string searchValue)
         {
-            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetValidLicenseDetails", employerType);
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetValidLicenseDetails", selectedSearchBy, employerType, searchValue);
         }
 
         public int GetContractorTeamCount(string CreatedBy)

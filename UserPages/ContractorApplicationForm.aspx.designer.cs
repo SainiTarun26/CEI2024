@@ -969,6 +969,42 @@ namespace CEIHaryana.UserPages
         protected global::System.Web.UI.WebControls.DropDownList ddlEmployer1;
 
         /// <summary>
+        /// toserch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label toserch;
+
+        /// <summary>
+        /// ddlforsearch control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlforsearch;
+
+        /// <summary>
+        /// txtSearchValue control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSearchValue;
+
+        /// <summary>
+        /// searchbtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button searchbtn;
+
+        /// <summary>
         /// lblMessage control.
         /// </summary>
         /// <remarks>

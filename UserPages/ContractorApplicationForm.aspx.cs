@@ -482,34 +482,45 @@ namespace CEIHaryana.UserPages
             }
         }
 
-        //protected void searchbtn_Click(object sender, EventArgs e)
-        //{
-        //    //string selectedSearchBy = ddlforsearch.SelectedValue;
-        //    string employerType = ddlEmployer1.SelectedValue;
-        //    //string searchValue = txtSearchValue.Text.Trim();
-        //    try
-        //    {
-        //        DataTable dt = CEI.SearchLicenseDetails(employerType);
-        //        if (dt.Rows.Count > 0)
-        //        {
-        //            GridView4.DataSource = dt;
-        //            GridView4.DataBind();
-        //            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#myModal1').modal('show');", true);
-        //        }
-        //        else
-        //        {
-        //            GridView4.DataSource = null;
-        //            GridView4.DataBind();
-        //            //ScriptManager.RegisterStartupScript(this, this.GetType(), "Error", $"alert('Licence of this user is Expired');", true);
-        //            ScriptManager.RegisterStartupScript(this, this.GetType(), "Error", $"alert('Please Select Type of Employee And Search Type to search.');", true);
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        string errorMsg = ex.Message.Replace("'", "\\'");
-        //        ScriptManager.RegisterStartupScript(this, this.GetType(), "Error", $"alert('An Error occurred: {errorMsg}');", true);
-        //    }
-        //}
+        protected void searchbtn_Click(object sender, EventArgs e)
+        {
+
+            string selectedSearchBy = ddlforsearch.SelectedValue.Trim();
+            string employerType = ddlEmployer1.SelectedValue.Trim();
+            string searchValue = txtSearchValue.Text.Trim();
+            if ((string.IsNullOrWhiteSpace(selectedSearchBy) || selectedSearchBy == "Select" || selectedSearchBy == "0")
+    || (string.IsNullOrWhiteSpace(employerType) || employerType == "Select" || employerType == "0")
+    || string.IsNullOrWhiteSpace(searchValue))
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Error", "alert('Please enter the all Required values before Search.');", true);
+            }
+            else
+            {
+                try
+                {
+                    DataTable dt = CEI.SearchLicenseDetails(selectedSearchBy, employerType, searchValue);
+                    if (dt.Rows.Count > 0)
+                    {
+                        GridView4.DataSource = dt;
+                        GridView4.DataBind();
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#myModal1').modal('show');", true);
+                    }
+                    else
+                    {
+                        GridView4.DataSource = null;
+                        GridView4.DataBind();
+                        //ScriptManager.RegisterStartupScript(this, this.GetType(), "Error", $"alert('Licence of this user is Expired');", true);
+                        //ScriptManager.RegisterStartupScript(this, this.GetType(), "Error", $"alert('Please Select Type of Employee And Search Type to search.');", true);                       
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "Error", "alert('There is no active employee to attached with you.');", true);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    string errorMsg = ex.Message.Replace("'", "\\'");
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Error", $"alert('An Error occurred: {errorMsg}');", true);
+                }
+            }
+        }
 
         //protected void GridView4_SelectedIndexChanged(object sender, EventArgs e)
         //{
@@ -670,32 +681,32 @@ namespace CEIHaryana.UserPages
             dsDistrict.Clear();
         }
 
-        protected void ddlEmployer1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string employerType = ddlEmployer1.SelectedValue;
-            try
-            {
-                DataTable dt = CEI.SearchLicenseDetails(employerType);
-                if (dt.Rows.Count > 0)
-                {
-                    GridView4.DataSource = dt;
-                    GridView4.DataBind();
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#myModal1').modal('show');", true);
-                }
-                else
-                {
-                    GridView4.DataSource = null;
-                    GridView4.DataBind();
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Error", $"alert('There is no any employee active to attached with you.');", true);
-                    ddlEmployer1.ClearSelection();
-                }
-            }
-            catch (Exception ex)
-            {
-                string errorMsg = ex.Message.Replace("'", "\\'");
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "Error", $"alert('An Error occurred: {errorMsg}');", true);
-            }
-        }
+        ////protected void ddlEmployer1_SelectedIndexChanged(object sender, EventArgs e)
+        ////{
+        ////    string employerType = ddlEmployer1.SelectedValue;
+        ////    try
+        ////    {
+        ////        DataTable dt = CEI.SearchLicenseDetails(employerType);
+        ////        if (dt.Rows.Count > 0)
+        ////        {
+        ////            GridView4.DataSource = dt;
+        ////            GridView4.DataBind();
+        ////            ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "$('#myModal1').modal('show');", true);
+        ////        }
+        ////        else
+        ////        {
+        ////            GridView4.DataSource = null;
+        ////            GridView4.DataBind();
+        ////            ScriptManager.RegisterStartupScript(this, this.GetType(), "Error", $"alert('There is no any employee active to attached with you.');", true);
+        ////            ddlEmployer1.ClearSelection();
+        ////        }
+        ////    }
+        ////    catch (Exception ex)
+        ////    {
+        ////        string errorMsg = ex.Message.Replace("'", "\\'");
+        ////        ScriptManager.RegisterStartupScript(this, this.GetType(), "Error", $"alert('An Error occurred: {errorMsg}');", true);
+        ////    }
+        ////}
 
         protected void GridView4_RowCommand(object sender, GridViewCommandEventArgs e)
         {

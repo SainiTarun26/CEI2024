@@ -1814,7 +1814,7 @@
                                                                         <asp:ListItem Text="Wireman" Value="Wireman"></asp:ListItem>
                                                                     </asp:DropDownList>
                                                                 </div>
-                                                                <%-- <div class="col-md-3">
+                                                                 <div class="col-md-3">
               <asp:Label ID="toserch" Text="Search According To " runat="server" Style="font-size: 12px;"></asp:Label>
               <br />
               <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;" AutoPostBack="true" ID="ddlforsearch" runat="server">
@@ -1827,10 +1827,10 @@
           <div class="col-md-4">
               <asp:Label runat="server" Text="Enter text" Style="font-size: 12px;"></asp:Label>
               <asp:TextBox ID="txtSearchValue" runat="server" CssClass="form-control"></asp:TextBox>
-          </div>--%>
-                                                                <%-- <div class="col-md-2" style="margin-top: 15px;">
+          </div>
+                                                                    <div class="col-md-2" style="margin-top: 15px;">
               <asp:Button class="btn btn-primary" runat="server" ID="searchbtn" Text="Search" OnClick="searchbtn_Click" Style="padding: 10px 20px 10px 20px; border-radius: 5px; margin-bottom: 5%;" />
-          </div>--%>
+          </div>
                                                             </div>
                                                             <asp:Label ID="lblMessage" runat="server" ForeColor="Red"></asp:Label>
                                                             <!-- Bootstrap Modal -->
