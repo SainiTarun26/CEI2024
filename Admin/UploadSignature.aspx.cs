@@ -259,7 +259,7 @@ namespace CEIHaryana.Admin
 
             ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Otp has been sent to your registered email please add OTP');", true);
             OTPVERIFICATION.Visible = true;
-            string Email = CEI.getStaffEmal(ddlstaffname.SelectedItem.ToString());
+            string Email = CEI.getStaffEmal("CEI");
             Random random = new Random();
             int otpInt = random.Next(100000, 999999);
 
