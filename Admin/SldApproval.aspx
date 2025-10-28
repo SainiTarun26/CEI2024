@@ -465,6 +465,7 @@
 
                     <asp:Button type="submit" ID="btnReset" TabIndex="23" Text="Reset" runat="server" class="btn btn-primary mr-2" Style="padding-left: 18px; padding-right: 18px;" />
                     <asp:Button type="Back" ID="btnBack" TabIndex="24" Text="Back" runat="server" Visible="false" class="btn btn-primary mr-2" />
+                    <asp:Button type="submit" ID="btnRedirect" TabIndex="25"  Text="Transfer" runat="server"  class="btn btn-primary mr-2" OnClick="btnRedirect_Click" />
                 </div>
                 <div class="col-md-4"></div>
             </div>

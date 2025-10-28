@@ -334,6 +334,9 @@ namespace CEIHaryana.Admin
             ScriptManager.RegisterStartupScript(this, GetType(), "ShowOwnerModal", "$('#ownerModal').modal('show');", true);
         }
 
-
+        protected void btnRedirect_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Admin/SldApproval.aspx", false);
+        }
     }
 }

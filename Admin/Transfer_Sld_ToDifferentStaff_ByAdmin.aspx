@@ -443,7 +443,7 @@
                         <div class="row">
                             <div class="col-md-12" style="text-align: center;">
                                 <asp:Button type="submit" Visible="false" ID="btnSubmit" TabIndex="22" OnClientClick="return validateFileUpload();" ValidationGroup="Submit" Text="Submit" runat="server" class="btn btn-primary mr-2" OnClick="btnSubmit_Click" />
-
+                                <asp:Button type="submit" ID="btnRedirect"   Text="Back" runat="server"  class="btn btn-primary mr-2" OnClick="btnRedirect_Click" />
                             </div>
                         </div>
                     </div>

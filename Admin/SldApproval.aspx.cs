@@ -397,6 +397,10 @@ namespace CEIHaryana.Admin
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "Please Select Approval Type to Proceed.", true);
             }
         }
-    
+
+        protected void btnRedirect_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Admin/Transfer_Sld_ToDifferentStaff_ByAdmin.aspx", false);
+        }
     }
 }
