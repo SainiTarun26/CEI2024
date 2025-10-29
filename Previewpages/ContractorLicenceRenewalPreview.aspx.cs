@@ -41,7 +41,7 @@ namespace CEIHaryana.Previewpages
             try
             {
                 DataTable dt = new DataTable();
-                dt = CEI.GetCertificateDataCon_Sup_Wir(ApplicationId);
+                dt = CEI.GetCertificateDataCon_Sup_WirForPreview(ApplicationId);
                 if (dt.Rows.Count > 0)
                 {
                     dt.Rows[0]["QRCode"] = GenerateQrCode("Certificate_No = " + dt.Rows[0]["Certificate_No"].ToString());
@@ -49,11 +49,19 @@ namespace CEIHaryana.Previewpages
                     lblCertificateNo.Text = dt.Rows[0]["LicenceNo"].ToString();
                     lblName.Text = dt.Rows[0]["Name"].ToString();
                     lblApprovedDate.Text = dt.Rows[0]["ApprovedDate"].ToString();
-                    Image.ImageUrl = "data:image/jpeg;base64," + Convert.ToBase64String((byte[])dt.Rows[0]["Signature"]);
+                    //Image.ImageUrl = "data:image/jpeg;base64," + Convert.ToBase64String((byte[])dt.Rows[0]["Signature"]);
+                    if (dt.Rows[0]["Signature"] != DBNull.Value)
+                    {
+                        Image.ImageUrl = "data:image/jpeg;base64," + Convert.ToBase64String((byte[])dt.Rows[0]["Signature"]);
+                    }
                     myImage.ImageUrl = dt.Rows[0]["ContractorSignatureDocPath"].ToString();
                     imgPhoto.ImageUrl = dt.Rows[0]["ApplicantImageDocPath"].ToString();
                     lblAuthorizedUpto.Text = dt.Rows[0]["Votagelevel"].ToString();
-                    imgQRCode.ImageUrl = "data:image/jpeg;base64," + Convert.ToBase64String((byte[])dt.Rows[0]["QRCode"]);
+                    //imgQRCode.ImageUrl = "data:image/jpeg;base64," + Convert.ToBase64String((byte[])dt.Rows[0]["QRCode"]);
+                    if (dt.Rows[0]["QRCode"] != DBNull.Value)
+                    {
+                        imgQRCode.ImageUrl = "data:image/jpeg;base64," + Convert.ToBase64String((byte[])dt.Rows[0]["QRCode"]);
+                    }
                     //lblOldLicenceNo.Text = dt.Rows[0]["OldLicenceNo"].ToString();
                     lblWEF.Text = dt.Rows[0]["voltageWithEffectStarting"].ToString();
                     lblValidUpto.Text = dt.Rows[0]["ExpiryDate"].ToString();
@@ -144,7 +152,7 @@ namespace CEIHaryana.Previewpages
             try
             {
                 DataSet ds = new DataSet();
-                ds = CEI.getDataLicence(ApplicationId);
+                ds = CEI.getDataLicence_ForPreview(ApplicationId);
                 if (ds.Tables.Count > 0)
                 {
                     Gridview1.DataSource = ds;

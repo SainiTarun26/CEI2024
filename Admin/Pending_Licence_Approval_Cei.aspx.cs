@@ -23,6 +23,7 @@ namespace CEIHaryana.Admin
             {
                 if (!IsPostBack)
                 {
+                    CEI.truncate_PreviewTable();
                     if (!IsPostBack && Request.UrlReferrer != null)
                     {
                         string referrerUrl = Request.UrlReferrer.ToString();
@@ -279,7 +280,22 @@ namespace CEIHaryana.Admin
             string applicationId = ucLicenceDetails.ApplicationId;
             string LicenceType = hdnLicenceType.Value;
             string Category = hdnCategory.Value;
-          
+
+
+            int result = CEI.Insert_Licence_CeiApprovalRejection_ForPreview(applicationId, Session["AdminId"].ToString());
+
+            if (result == 1)
+            {
+                string actionText = ddlReview.SelectedItem.Text;
+                string message = $"Application {actionText} successfully.";
+                ScriptManager.RegisterStartupScript(this, GetType(), "successMessage", $"alert('{message}'); window.location='Pending_Licence_Approval_Cei_List.aspx';", true);
+                
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "errorMessage", "alert('Failed to save . Please try again later.');", true);
+                
+            }
 
             Session["Application_Id"] = applicationId;
 

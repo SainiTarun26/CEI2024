@@ -41,7 +41,7 @@ namespace CEIHaryana.Previewpages
             try
             {
                 DataTable dt = new DataTable();
-                dt = CEI.GetCertificateDataCon_Sup_Wir(ApplicationId);
+                dt = CEI.GetCertificateDataCon_Sup_WirForPreview(ApplicationId);
                 if (dt.Rows.Count > 0)
                 {
                     dt.Rows[0]["QRCode"] = GenerateQrCode("Certificate_No = " + dt.Rows[0]["Certificate_No"].ToString());
@@ -133,7 +133,7 @@ namespace CEIHaryana.Previewpages
             try
             {
                 DataSet ds = new DataSet();
-                ds = CEI.getDataLicence(ApplicationId);
+                ds = CEI.getDataLicence_ForPreview(ApplicationId);
                 if (ds.Tables.Count > 0)
                 {
                     Gridview1.DataSource = ds;

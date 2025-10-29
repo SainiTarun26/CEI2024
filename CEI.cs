@@ -15969,6 +15969,49 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetStatusOfNewLicenceRequest", UserId);
         }
         #endregion
+
+        #region Kalpana Preview Pages
+        public DataTable truncate_PreviewTable()
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_Delete_tbl_ApprovalCertficateWr_Con_Sup_Preview");
+        }
+        public DataTable GetCertificateDataCon_Sup_WirForPreview(string ApplicationId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_ApprovalCertificateData_ForPreview", ApplicationId);
+        }
+
+        public DataSet getDataLicence_ForPreview(string ApplicationId)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetContractorRenewalDetails_ForPreview", ApplicationId);
+        }
+
+        public int Insert_Licence_CeiApprovalRejection_ForPreview(string applicationId, string actionTakenBy)
+        {
+            int result = 0;
+            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
+            {
+                using (SqlCommand cmd = new SqlCommand("sp_Licence_CeiApprovalRejection_Save_ForPreview", conn))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@ApplicationId", applicationId);
+
+
+                    cmd.Parameters.AddWithValue("@ActionTakenBy", actionTakenBy);
+
+
+                    SqlParameter returnParam = new SqlParameter();
+                    returnParam.Direction = ParameterDirection.ReturnValue;
+                    cmd.Parameters.Add(returnParam);
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+
+                    result = (int)returnParam.Value;
+                }
+            }
+            return result;
+        }
+
+        #endregion
     }
 }
 
