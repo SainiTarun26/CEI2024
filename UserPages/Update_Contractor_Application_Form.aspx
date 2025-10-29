@@ -1806,16 +1806,16 @@
                                                         <div class="card" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; padding: 17px; padding-bottom: 17px; margin: -20px 0px 0px 0px;">
                                                             <div class="row">
                                                                 <div class="col-md-3" style="margin-bottom: 15px;">
-                                                                    <asp:Label ID="typeemp" runat="server" Style="font-size: 12px;">Type of Employee<samp style="color: red">* </samp></asp:Label>
+                                                                    <asp:Label ID="typeemp" runat="server" Style="font-size: 12px;">Type of Employee <samp style="color: red">* </samp></asp:Label>
                                                                     <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;" AutoPostBack="true"
-                                                                        ID="ddlEmployer1" runat="server" OnSelectedIndexChanged="ddlEmployer1_SelectedIndexChanged">
+                                                                        ID="ddlEmployer1" runat="server" >
                                                                         <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                                                         <asp:ListItem Text="Supervisor" Value="Supervisor"></asp:ListItem>
                                                                         <asp:ListItem Text="Wireman" Value="Wireman"></asp:ListItem>
                                                                     </asp:DropDownList>
                                                                 </div>
                                                                  <div class="col-md-3">
-              <asp:Label ID="toserch" Text="Search According To " runat="server" Style="font-size: 12px;"></asp:Label>
+              <asp:Label ID="toserch"  runat="server" Style="font-size: 12px;">Search According To <samp style="color: red">* </samp></asp:Label>
               <br />
               <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;" AutoPostBack="true" ID="ddlforsearch" runat="server">
                   <asp:ListItem Text="Select" Value="0"></asp:ListItem>
@@ -1825,7 +1825,7 @@
               </asp:DropDownList>
           </div>
           <div class="col-md-4">
-              <asp:Label runat="server" Text="Enter text" Style="font-size: 12px;"></asp:Label>
+              <asp:Label runat="server"  Style="font-size: 12px;">Enter text <samp style="color: red">* </samp></asp:Label>
               <asp:TextBox ID="txtSearchValue" runat="server" CssClass="form-control"></asp:TextBox>
           </div>
                                                                     <div class="col-md-2" style="margin-top: 15px;">
