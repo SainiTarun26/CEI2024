@@ -391,12 +391,18 @@
                                     <span class="menu-title">Dashboard</span>
                                 </a>
                             </li>
-                           
+
                             <li class="nav-item">
                                 <a id="RenewalMenuItem" runat="server" class="nav-link" href="/Contractor/Contractor_Licence_Renewal.aspx">
                                     <i class="icon-grid menu-icon"></i>
                                     <span class="menu-title">Renewal Contractor<br />
                                         Licence</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Contractor/Supervisor_Requests.aspx">
+                                    <i class="icon-grid menu-icon"></i>
+                                    <span class="menu-title">Attachment Request</span>
                                 </a>
                             </li>
                             <%-- <li class="nav-item">

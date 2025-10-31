@@ -13,6 +13,20 @@ namespace CEIHaryana.Contractor
     {
         //Page created by 30-June-2025
         CEI cei = new CEI();
+
+        protected void Page_PreInit(object sender, EventArgs e)
+        {
+            if (Convert.ToString(Session["Renwal"]) != "" && Convert.ToString(Session["Renwal"]) != null)
+            {
+                this.Page.MasterPageFile = "~/Contractor/ContractorRenewalMaster.Master";
+            }
+            else
+            {
+                this.Page.MasterPageFile = "~/Contractor/Contractor.Master";
+            }
+        }
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
             try

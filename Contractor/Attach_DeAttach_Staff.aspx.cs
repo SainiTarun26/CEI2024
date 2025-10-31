@@ -12,6 +12,18 @@ namespace CEIHaryana.Contractor
     public partial class Attach_DeAttach_Staff : System.Web.UI.Page
     {
         CEI CEI = new CEI();
+        protected void Page_PreInit(object sender, EventArgs e)
+        {
+            if (Convert.ToString(Session["Renwal"]) != "" && Convert.ToString(Session["Renwal"]) != null)
+            {
+                this.Page.MasterPageFile = "~/Contractor/ContractorRenewalMaster.Master";
+            }
+            else
+            {
+                this.Page.MasterPageFile = "~/Contractor/Contractor.Master";
+            }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)

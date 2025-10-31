@@ -40,13 +40,13 @@ namespace CEIHaryana.Officers
                 LoginId = Session["StaffID"].ToString();
                 DataSet ds = new DataSet();
                 ds = cei.Getdataforofficerdashboard(LoginId);
-                TotalRequestRecieved.Text = ds.Tables[0].Rows[0]["TotalRequest"].ToString();
-                txtApprovalAndReject.Text = ds.Tables[0].Rows[0]["ActionTaken"].ToString();
-                In_process.Text = ds.Tables[0].Rows[0]["InProcess"].ToString();
-                Initiated.Text = ds.Tables[0].Rows[0]["NewApplication"].ToString();
-                if (ds.Tables.Count > 0)
+                TotalRequestRecieved.Text = ds.Tables[1].Rows[0]["TotalRequest"].ToString();
+                txtApprovalAndReject.Text = ds.Tables[1].Rows[0]["ActionTaken"].ToString();
+                In_process.Text = ds.Tables[1].Rows[0]["InProcess"].ToString();
+                Initiated.Text = ds.Tables[1].Rows[0]["NewApplication"].ToString();
+                if (ds.Tables[0].Rows.Count > 0)
                 {
-                    GridView2.DataSource = ds;
+                    GridView2.DataSource = ds.Tables[0];
                     GridView2.DataBind();
                 }
                 else
@@ -131,13 +131,13 @@ namespace CEIHaryana.Officers
         //        ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", script, true);
         //    }
         //}
-        private void GridViewBind()
+        private void GridViewBind(string area)
         {
 
             LoginId = Session["StaffID"].ToString();
             DataTable ds = new DataTable();
             //ds = cei.RequestPendingDivision(LoginId);
-            ds = cei.RequestPendingDivisionForOfficers(LoginId);
+            ds = cei.RequestPendingDivisionForOfficers(LoginId, area);
             if (ds.Rows.Count > 0)
             {
                 GridView1.DataSource = ds;
@@ -155,7 +155,7 @@ namespace CEIHaryana.Officers
         protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             GridView1.PageIndex = e.NewPageIndex;
-            GridViewBind();
+            GridViewBind(Session["Area"].ToString());
         }
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
@@ -377,7 +377,7 @@ var myDoughnutChart = new Chart(ctx, {{
                     PrintDistrict.Visible = true;
                     PrintDivision.Visible = false;
                     BindDoughnutChart();
-                    GridViewBind();
+                    GridViewBind(Session["Area"].ToString());
                 }
             }
             catch (Exception ex) 

@@ -3648,9 +3648,9 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         //{
         //    return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetAttachmentsinInspectionForm", InspectionId);
         //}
-        public DataTable RequestPendingDivisionForOfficers(string UserID)
+        public DataTable RequestPendingDivisionForOfficers(string UserID, string area)
         {
-            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "SP_GetRecordsAccordingToDaysForOfficers", UserID);
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "SP_GetRecordsAccordingToDaysForOfficers", UserID, area);
         }
 
         #region upgradation Intimation

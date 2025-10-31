@@ -62,7 +62,7 @@
                         <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
                             <span class="icon-menu header-icon" style="color: black !important;"></span>
                         </button>
-                     <%--   <ul class="navbar-nav mr-lg-2">
+                        <%--   <ul class="navbar-nav mr-lg-2">
                             <li class="nav-item nav-search d-none d-lg-block">
                                 <div class="input-group">
                                     <div class="input-group-prepend hover-cursor" id="navbar-search-icon">
@@ -346,15 +346,32 @@
                                     </span>
                                 </a>
                             </li>
-                       <li class="nav-item">
-     <a id="A1" runat="server" visible="true" class="nav-link" href="/UserPages/Get_UserCurrent_Licence.aspx">
-         <i class="icon-grid menu-icon"></i>
-         <span class="menu-title">Renewal Certificate
-         </span>
-     </a>
- </li>
-                          
-                            <%--<li class="nav-item">
+                            <li class="nav-item">
+                                <a id="A1" runat="server" visible="true" class="nav-link" href="/UserPages/Get_UserCurrent_Licence.aspx">
+                                    <i class="icon-grid menu-icon"></i>
+                                    <span class="menu-title">Renewal Certificate
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="DeAttacted_StaffWiremen.aspx">
+                                    <i class="icon-grid menu-icon"></i>
+                                    <span class="menu-title">DeAttached-Request</span>
+                                </a></li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="DeattachmentRequestWiremen.aspx">
+                                    <i class="icon-grid menu-icon"></i>
+                                    <span class="menu-title">Attached-DeAttached 
+                                        <br />
+                                        Request Status</span>
+                                </a></li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="AttachedRequestWiremen.aspx">
+                                    <i class="icon-grid menu-icon"></i>
+                                    <span class="menu-title">Attached-Request</span>
+                                </a></li>               
+
+                        <%--<li class="nav-item">
                                 <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
                                     <i class="icon-layout menu-icon"></i>
                                     <span class="menu-title">Staff Details</span>
@@ -383,7 +400,7 @@
                                     </ul>
                                 </div>
                             </li>--%>
-                            <%-- <li class="nav-item">
+                        <%-- <li class="nav-item">
                                 <a class="nav-link" data-toggle="collapse" href="#form-elements" aria-expanded="false" aria-controls="form-elements">
                                     <i class="icon-columns menu-icon"></i>
                                     <span class="menu-title">Form elements</span>

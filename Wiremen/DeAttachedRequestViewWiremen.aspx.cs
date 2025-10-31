@@ -14,6 +14,18 @@ namespace CEIHaryana.Wiremen
     {
         //Page created y Neeraj on 23-June-2025
         CEI CEI = new CEI();
+        protected void Page_PreInit(object sender, EventArgs e)
+        {
+            if (Convert.ToString(Session["Renwal"]) != "" && Convert.ToString(Session["Renwal"]) != null)
+            {
+                this.Page.MasterPageFile = "~/Wiremen/Wireman_Renewal.Master";
+
+            }
+            else
+            {
+                this.Page.MasterPageFile = "~/Wiremen/Wiremen.Master";
+            }
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             try

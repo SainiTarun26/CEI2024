@@ -13,6 +13,19 @@ namespace CEIHaryana.Contractor
     public partial class Deattatch_Supervisor : System.Web.UI.Page
     {
         CEI cei = new CEI();
+        protected void Page_PreInit(object sender, EventArgs e)
+        {
+            if (Convert.ToString(Session["Renwal"]) != "" && Convert.ToString(Session["Renwal"]) != null)
+            {
+                this.Page.MasterPageFile = "~/Contractor/ContractorRenewalMaster.Master";
+            }
+            else
+            {
+                this.Page.MasterPageFile = "~/Contractor/Contractor.Master";
+            }
+
+
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             try

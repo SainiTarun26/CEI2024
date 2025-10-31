@@ -14,6 +14,21 @@ namespace CEIHaryana.Supervisor
     {
         //Page created y Neeraj on 23-June-2025
         CEI CEI = new CEI();
+
+
+        protected void Page_PreInit(object sender, EventArgs e)
+        {
+            if (Convert.ToString(Session["Renwal"]) != "" && Convert.ToString(Session["Renwal"]) != null)
+            {
+                this.Page.MasterPageFile = "~/Supervisor/Supervisor_Renewal.Master";
+
+                Session["double_Clickbutton"] = "1";
+            }
+            else
+            {
+                this.Page.MasterPageFile = "~/Supervisor/Supervisor.Master";
+            }
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             try
