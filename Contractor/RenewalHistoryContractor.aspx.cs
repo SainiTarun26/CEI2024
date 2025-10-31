@@ -93,7 +93,7 @@ namespace CEIHaryana.Contractor
             else if (e.CommandName == "Reapply")
             {
                 Session["Renwal"] = "No";
-                Response.Redirect("~/Contractor/Contractor_Licence_Renewal.aspx");
+                Response.Redirect("~/Contractor/Contractor_Licence_Renewal.aspx"); 
             }
             else if (e.CommandName == "ViewVerificationLetter")
             {
@@ -126,6 +126,32 @@ namespace CEIHaryana.Contractor
                 {
                     GridView1.Columns[7].Visible = false;
                     GridView1.Columns[9].Visible = false;
+                }
+            }
+        }
+
+        protected void GridView1_DataBound(object sender, EventArgs e)
+        {
+            if (GridView1.Rows.Count > 0)
+            {
+                // Disable all Reapply buttons first
+                foreach (GridViewRow row in GridView1.Rows)
+                {
+                    LinkButton btn = row.FindControl("lnkReapply") as LinkButton;
+                    if (btn != null)
+                    {
+                        btn.Visible = false;
+                      
+                    }
+                }
+
+               
+                GridViewRow lastRow = GridView1.Rows[GridView1.Rows.Count - 1];
+                LinkButton lastBtn = lastRow.FindControl("lnkReapply") as LinkButton;
+                if (lastBtn != null)
+                {
+                    lastBtn.Visible = true;
+                   
                 }
             }
         }

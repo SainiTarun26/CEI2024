@@ -216,7 +216,7 @@
                         runat="server"
                         AutoGenerateColumns="false"
                         AllowPaging="true"
-                        OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound"
+                        OnRowCommand="GridView1_RowCommand" OnRowDataBound="GridView1_RowDataBound" OnDataBound="GridView1_DataBound"
                         CssClass="table table-striped table-hover table-bordered table-responsive text-center"
                         BorderWidth="1px"
                         BorderColor="#dbddff">
