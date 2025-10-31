@@ -144,183 +144,191 @@ namespace CEIHaryana.UserPages
         {
             try
             {
-                if (hdnId.Value != null && hdnId.Value != "")
+                if (hdnId.Value == Convert.ToString(Session["SupervisorID"]))
                 {
-                    REID = hdnId.Value;
-                    double totalExperiences;
-                    if (!double.TryParse(hdnTotalExperience.Value.Trim(), out totalExperiences))
+                    if (hdnId.Value != null && hdnId.Value != "")
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alertInvalid", "alert('Total Experience value is invalid.');", true);
-                        return;
-                    }
-
-                    bool hasDiploma = ddlQualification1.SelectedIndex > 0;
-                    bool hasDegree = ddlQualification2.SelectedIndex > 0;
-
-                    //Only Diploma
-                    if (hasDiploma && !hasDegree)
-                    {
-                        if (totalExperiences < 5)
+                        REID = hdnId.Value;
+                        double totalExperiences;
+                        if (!double.TryParse(hdnTotalExperience.Value.Trim(), out totalExperiences))
                         {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "alertExpOnlyDiploma", "alert('As per your qualification, Total Experience should be at least 5 years.');", true);
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "alertInvalid", "alert('Total Experience value is invalid.');", true);
                             return;
                         }
-                    }
 
-                    //Only Degree
-                    if (hasDegree && !hasDiploma)
-                    {
-                        if (totalExperiences < 1)
+                        bool hasDiploma = ddlQualification1.SelectedIndex > 0;
+                        bool hasDegree = ddlQualification2.SelectedIndex > 0;
+
+                        //Only Diploma
+                        if (hasDiploma && !hasDegree)
                         {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "alertExpOnlyDegree", "alert('As per your qualification, Total Experience should be at least 1 year.');", true);
-                            return;
+                            if (totalExperiences < 5)
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertExpOnlyDiploma", "alert('As per your qualification, Total Experience should be at least 5 years.');", true);
+                                return;
+                            }
+                        }
+
+                        //Only Degree
+                        if (hasDegree && !hasDiploma)
+                        {
+                            if (totalExperiences < 1)
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertExpOnlyDegree", "alert('As per your qualification, Total Experience should be at least 1 year.');", true);
+                                return;
+                            }
+                        }
+
+                        // Both Degree and Diploma
+                        if (hasDegree && hasDiploma)
+                        {
+                            if (totalExperiences < 1)
+                            {
+                                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertExpBoth", "alert('As per your qualifications, Total Experience should be at least 1 year.');", true);
+                                return;
+                            }
+                        }
+
+
+
+                        ClientScript.RegisterStartupScript(this.GetType(), "CallValidateForm", "validateForm();", true);
+                        string validationResult = Page.ClientScript.GetWebResourceUrl(this.GetType(), "window.validationResult");
+                        bool isValidBoolean;
+
+                        // Check if the string is a valid boolean representation
+                        if (!bool.TryParse(validationResult, out isValidBoolean))
+                        {
+                            string university0 = txtUniversity.Text;
+                            int passingYear0 = Convert.ToInt32(YearDropdown.SelectedValue.ToString());
+                            string marksObtained0 = txtmarksObtained.Text;
+                            string marksMax0 = txtmarksmax.Text;
+                            string percentage0 = txtprcntg.Text;
+                            string qualification1 = ddlQualification1.SelectedItem.ToString();
+                            string university2 = txtUniversity2.Text;
+                            int passingYear2 = Convert.ToInt32(DropDownList2.SelectedValue.ToString());
+                            string marksObtained2 = txtmarksObtained2.Text;
+                            string marksMax2 = txtmarksmax2.Text;
+                            string percentage2 = txtprcntg2.Text;
+                            string qualification2 = ddlQualification2.SelectedItem.ToString();
+                            string university3 = txtUniversity3.Text;
+                            int passingYear3 = Convert.ToInt32(DropDownList3.SelectedValue.ToString());
+                            string marksObtained3 = txtmarksObtained3.Text;
+                            string marksMax3 = txtmarksmax3.Text;
+                            string percentage3 = txtprcntg3.Text;
+                            string qualification3 = ddlQualification3.SelectedItem.ToString();
+                            string university4 = txtUniversity4.Text;
+                            int passingYear4 = Convert.ToInt32(DropDownList4.SelectedValue.ToString());
+                            string marksObtained4 = txtmarksObtained4.Text;
+                            string marksMax4 = txtmarksmax4.Text;
+                            string percentage4 = txtprcntg4.Text;
+                            string hasPermit = RadioButtonList2.SelectedItem.ToString();
+                            string category = txtCategory.Text;
+                            string permitNo = txtPermitNo.Text;
+                            string issuingAuthority = txtIssuingAuthority.Text;
+                            string issuingDate = txtIssuingDate.Text;
+                            string expiryDate = txtExpiryDate.Text;
+                            string hasPermanentExp = RadioButtonList3.SelectedItem.ToString();
+                            string permEmployerName = txtPermanentEmployerName.Text;
+                            string permDescription = txtPermanentDescription.Text;
+                            string permFrom = txtPermanentFrom.Text;
+                            string permTo = txtPermanentTo.Text;
+                            string experience = ddlExperience.SelectedItem.ToString();
+                            string trainingUnder = ddlTrainingUnder.SelectedItem.ToString();
+                            string employer = txtExperienceEmployer.Text;
+                            string postDescription = txtPostDescription.Text;
+                            string expFrom = txtExperienceFrom.Text;
+                            string expTo = txtExperienceTo.Text;
+                            string experience1 = ddlExperience1.SelectedItem.ToString();
+                            string trainingUnder1 = ddlTrainingUnder1.SelectedItem.ToString();
+                            string employer1 = txtExperienceEmployer1.Text;
+                            string postDescription1 = txtPostDescription1.Text;
+                            string expFrom1 = txtExperienceFrom1.Text;
+                            string expTo1 = txtExperienceTo1.Text;
+                            string experience2 = ddlExperience2.SelectedItem.ToString();
+                            string trainingUnder2 = ddlTrainingUnder2.SelectedItem.ToString();
+                            string employer2 = txtExperienceEmployer2.Text;
+                            string postDescription2 = txtPostDescription2.Text;
+                            string expFrom2 = txtExperienceFrom2.Text;
+                            string expTo2 = txtExperienceTo2.Text;
+                            string experience3 = ddlExperience3.SelectedItem.ToString();
+                            string trainingUnder3 = ddlTrainingUnder3.SelectedItem.ToString();
+                            string employer3 = txtExperienceEmployer3.Text;
+                            string postDescription3 = txtPostDescription3.Text;
+                            string expFrom3 = txtExperienceFrom3.Text;
+                            string expTo3 = txtExperienceTo3.Text;
+                            string experience4 = ddlExperience4.SelectedItem.ToString();
+                            string trainingUnder4 = ddlTrainingUnder4.SelectedItem.ToString();
+                            string employer4 = txtExperienceEmployer4.Text;
+                            string postDescription4 = txtPostDescription4.Text;
+                            string expFrom4 = txtExperienceFrom4.Text;
+                            string expTo4 = txtExperienceTo4.Text;
+                            string experience5 = ddlExperience5.SelectedItem.ToString();
+                            string trainingUnder5 = ddlTrainingUnder5.SelectedItem.ToString();
+                            string employer5 = txtExperienceEmployer5.Text;
+                            string postDescription5 = txtPostDescription5.Text;
+                            string expFrom5 = txtExperienceFrom5.Text;
+                            string expTo5 = txtExperienceTo5.Text;
+                            string experience6 = ddlExperience6.SelectedItem.ToString();
+                            string trainingUnder6 = ddlTrainingUnder6.SelectedItem.ToString();
+                            string employer6 = txtExperienceEmployer6.Text;
+                            string postDescription6 = txtPostDescription6.Text;
+                            string expFrom6 = txtExperienceFrom6.Text;
+                            string expTo6 = txtExperienceTo6.Text;
+                            string experience7 = ddlExperience7.SelectedItem.ToString();
+                            string trainingUnder7 = ddlTrainingUnder7.SelectedItem.ToString();
+                            string employer7 = txtExperienceEmployer7.Text;
+                            string postDescription7 = txtPostDescription7.Text;
+                            string expFrom7 = txtExperienceFrom7.Text;
+                            string expTo7 = txtExperienceTo7.Text;
+                            string experience8 = ddlExperience8.SelectedItem.ToString();
+                            string trainingUnder8 = ddlTrainingUnder8.SelectedItem.ToString();
+                            string employer8 = txtExperienceEmployer8.Text;
+                            string postDescription8 = txtPostDescription8.Text;
+                            string expFrom8 = txtExperienceFrom8.Text;
+                            string expTo8 = txtExperienceTo8.Text;
+                            string experience9 = ddlExperience9.SelectedItem.ToString();
+                            string trainingUnder9 = ddlTrainingUnder9.SelectedItem.ToString();
+                            string employer9 = txtExperienceEmployer9.Text;
+                            string postDescription9 = txtPostDescription9.Text;
+                            string expFrom9 = txtExperienceFrom9.Text;
+                            string expTo9 = txtExperienceTo9.Text;
+                            string totalExperience = txtTotalExperience.Text;
+                            string hasExperience = RadioButtonList1.SelectedItem.ToString();
+                            string RetiredEmployerName = txtEmployerName2.Text;
+                            string RetiredPostDescription = txtDescription2.Text;
+                            string RetiredFromDate = txtFrom2.Text;
+                            string RetiredToDate = txtTo2.Text;
+
+                            CEI.InsertSupervisorQualification(REID,
+                                university0, passingYear0, marksObtained0, marksMax0, percentage0, qualification1,
+                                university2, passingYear2, marksObtained2, marksMax2, percentage2, qualification2,
+                                university3, passingYear3, marksObtained3, marksMax3, percentage3, qualification3,
+                                university4, passingYear4, marksObtained4, marksMax4, percentage4,
+                                hasPermit, category, permitNo, issuingAuthority, issuingDate, expiryDate,
+                                hasPermanentExp, permEmployerName, permDescription, permFrom, permTo,
+                                experience, trainingUnder, employer, postDescription, expFrom, expTo,
+                                experience1, trainingUnder1, employer1, postDescription1, expFrom1, expTo1,
+                                experience2, trainingUnder2, employer2, postDescription2, expFrom2, expTo2,
+                                experience3, trainingUnder3, employer3, postDescription3, expFrom3, expTo3,
+                                experience4, trainingUnder4, employer4, postDescription4, expFrom4, expTo4,
+                                experience5, trainingUnder5, employer5, postDescription5, expFrom5, expTo5,
+                                experience6, trainingUnder6, employer6, postDescription6, expFrom6, expTo6,
+                                experience7, trainingUnder7, employer7, postDescription7, expFrom7, expTo7,
+                                experience8, trainingUnder8, employer8, postDescription8, expFrom8, expTo8,
+                                experience9, trainingUnder9, employer9, postDescription9, expFrom9, expTo9,
+                                totalExperience, hasExperience, RetiredEmployerName, RetiredPostDescription, RetiredFromDate, RetiredToDate
+                            );
+
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Qualification Added Successfully !!!')", true);
+                            showAlert = true;
+                            Response.Redirect("/UserPages/Documents.aspx", false);
                         }
                     }
-
-                    // Both Degree and Diploma
-                    if (hasDegree && hasDiploma)
-                    {
-                        if (totalExperiences < 1)
-                        {
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "alertExpBoth", "alert('As per your qualifications, Total Experience should be at least 1 year.');", true);
-                            return;
-                        }
-                    }
-
-
-
-                    ClientScript.RegisterStartupScript(this.GetType(), "CallValidateForm", "validateForm();", true);
-                    string validationResult = Page.ClientScript.GetWebResourceUrl(this.GetType(), "window.validationResult");
-                    bool isValidBoolean;
-
-                    // Check if the string is a valid boolean representation
-                    if (!bool.TryParse(validationResult, out isValidBoolean))
-                    {
-                        string university0 = txtUniversity.Text;
-                        int passingYear0 = Convert.ToInt32(YearDropdown.SelectedValue.ToString());
-                        string marksObtained0 = txtmarksObtained.Text;
-                        string marksMax0 = txtmarksmax.Text;
-                        string percentage0 = txtprcntg.Text;
-                        string qualification1 = ddlQualification1.SelectedItem.ToString();
-                        string university2 = txtUniversity2.Text;
-                        int passingYear2 = Convert.ToInt32(DropDownList2.SelectedValue.ToString());
-                        string marksObtained2 = txtmarksObtained2.Text;
-                        string marksMax2 = txtmarksmax2.Text;
-                        string percentage2 = txtprcntg2.Text;
-                        string qualification2 = ddlQualification2.SelectedItem.ToString();
-                        string university3 = txtUniversity3.Text;
-                        int passingYear3 = Convert.ToInt32(DropDownList3.SelectedValue.ToString());
-                        string marksObtained3 = txtmarksObtained3.Text;
-                        string marksMax3 = txtmarksmax3.Text;
-                        string percentage3 = txtprcntg3.Text;
-                        string qualification3 = ddlQualification3.SelectedItem.ToString();
-                        string university4 = txtUniversity4.Text;
-                        int passingYear4 = Convert.ToInt32(DropDownList4.SelectedValue.ToString());
-                        string marksObtained4 = txtmarksObtained4.Text;
-                        string marksMax4 = txtmarksmax4.Text;
-                        string percentage4 = txtprcntg4.Text;
-                        string hasPermit = RadioButtonList2.SelectedItem.ToString();
-                        string category = txtCategory.Text;
-                        string permitNo = txtPermitNo.Text;
-                        string issuingAuthority = txtIssuingAuthority.Text;
-                        string issuingDate = txtIssuingDate.Text;
-                        string expiryDate = txtExpiryDate.Text;
-                        string hasPermanentExp = RadioButtonList3.SelectedItem.ToString();
-                        string permEmployerName = txtPermanentEmployerName.Text;
-                        string permDescription = txtPermanentDescription.Text;
-                        string permFrom = txtPermanentFrom.Text;
-                        string permTo = txtPermanentTo.Text;
-                        string experience = ddlExperience.SelectedItem.ToString();
-                        string trainingUnder = ddlTrainingUnder.SelectedItem.ToString();
-                        string employer = txtExperienceEmployer.Text;
-                        string postDescription = txtPostDescription.Text;
-                        string expFrom = txtExperienceFrom.Text;
-                        string expTo = txtExperienceTo.Text;
-                        string experience1 = ddlExperience1.SelectedItem.ToString();
-                        string trainingUnder1 = ddlTrainingUnder1.SelectedItem.ToString();
-                        string employer1 = txtExperienceEmployer1.Text;
-                        string postDescription1 = txtPostDescription1.Text;
-                        string expFrom1 = txtExperienceFrom1.Text;
-                        string expTo1 = txtExperienceTo1.Text;
-                        string experience2 = ddlExperience2.SelectedItem.ToString();
-                        string trainingUnder2 = ddlTrainingUnder2.SelectedItem.ToString();
-                        string employer2 = txtExperienceEmployer2.Text;
-                        string postDescription2 = txtPostDescription2.Text;
-                        string expFrom2 = txtExperienceFrom2.Text;
-                        string expTo2 = txtExperienceTo2.Text;
-                        string experience3 = ddlExperience3.SelectedItem.ToString();
-                        string trainingUnder3 = ddlTrainingUnder3.SelectedItem.ToString();
-                        string employer3 = txtExperienceEmployer3.Text;
-                        string postDescription3 = txtPostDescription3.Text;
-                        string expFrom3 = txtExperienceFrom3.Text;
-                        string expTo3 = txtExperienceTo3.Text;
-                        string experience4 = ddlExperience4.SelectedItem.ToString();
-                        string trainingUnder4 = ddlTrainingUnder4.SelectedItem.ToString();
-                        string employer4 = txtExperienceEmployer4.Text;
-                        string postDescription4 = txtPostDescription4.Text;
-                        string expFrom4 = txtExperienceFrom4.Text;
-                        string expTo4 = txtExperienceTo4.Text;
-                        string experience5 = ddlExperience5.SelectedItem.ToString();
-                        string trainingUnder5 = ddlTrainingUnder5.SelectedItem.ToString();
-                        string employer5 = txtExperienceEmployer5.Text;
-                        string postDescription5 = txtPostDescription5.Text;
-                        string expFrom5 = txtExperienceFrom5.Text;
-                        string expTo5 = txtExperienceTo5.Text;
-                        string experience6 = ddlExperience6.SelectedItem.ToString();
-                        string trainingUnder6 = ddlTrainingUnder6.SelectedItem.ToString();
-                        string employer6 = txtExperienceEmployer6.Text;
-                        string postDescription6 = txtPostDescription6.Text;
-                        string expFrom6 = txtExperienceFrom6.Text;
-                        string expTo6 = txtExperienceTo6.Text;
-                        string experience7 = ddlExperience7.SelectedItem.ToString();
-                        string trainingUnder7 = ddlTrainingUnder7.SelectedItem.ToString();
-                        string employer7 = txtExperienceEmployer7.Text;
-                        string postDescription7 = txtPostDescription7.Text;
-                        string expFrom7 = txtExperienceFrom7.Text;
-                        string expTo7 = txtExperienceTo7.Text;
-                        string experience8 = ddlExperience8.SelectedItem.ToString();
-                        string trainingUnder8 = ddlTrainingUnder8.SelectedItem.ToString();
-                        string employer8 = txtExperienceEmployer8.Text;
-                        string postDescription8 = txtPostDescription8.Text;
-                        string expFrom8 = txtExperienceFrom8.Text;
-                        string expTo8 = txtExperienceTo8.Text;
-                        string experience9 = ddlExperience9.SelectedItem.ToString();
-                        string trainingUnder9 = ddlTrainingUnder9.SelectedItem.ToString();
-                        string employer9 = txtExperienceEmployer9.Text;
-                        string postDescription9 = txtPostDescription9.Text;
-                        string expFrom9 = txtExperienceFrom9.Text;
-                        string expTo9 = txtExperienceTo9.Text;
-                        string totalExperience = txtTotalExperience.Text;
-                        string hasExperience = RadioButtonList1.SelectedItem.ToString();
-                        string RetiredEmployerName = txtEmployerName2.Text;
-                        string RetiredPostDescription = txtDescription2.Text;
-                        string RetiredFromDate = txtFrom2.Text;
-                        string RetiredToDate = txtTo2.Text;
-
-                        CEI.InsertSupervisorQualification(REID,
-                            university0, passingYear0, marksObtained0, marksMax0, percentage0, qualification1,
-                            university2, passingYear2, marksObtained2, marksMax2, percentage2, qualification2,
-                            university3, passingYear3, marksObtained3, marksMax3, percentage3, qualification3,
-                            university4, passingYear4, marksObtained4, marksMax4, percentage4,
-                            hasPermit, category, permitNo, issuingAuthority, issuingDate, expiryDate,
-                            hasPermanentExp, permEmployerName, permDescription, permFrom, permTo,
-                            experience, trainingUnder, employer, postDescription, expFrom, expTo,
-                            experience1, trainingUnder1, employer1, postDescription1, expFrom1, expTo1,
-                            experience2, trainingUnder2, employer2, postDescription2, expFrom2, expTo2,
-                            experience3, trainingUnder3, employer3, postDescription3, expFrom3, expTo3,
-                            experience4, trainingUnder4, employer4, postDescription4, expFrom4, expTo4,
-                            experience5, trainingUnder5, employer5, postDescription5, expFrom5, expTo5,
-                            experience6, trainingUnder6, employer6, postDescription6, expFrom6, expTo6,
-                            experience7, trainingUnder7, employer7, postDescription7, expFrom7, expTo7,
-                            experience8, trainingUnder8, employer8, postDescription8, expFrom8, expTo8,
-                            experience9, trainingUnder9, employer9, postDescription9, expFrom9, expTo9,
-                            totalExperience, hasExperience, RetiredEmployerName, RetiredPostDescription, RetiredFromDate, RetiredToDate
-                        );
-
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Qualification Added Successfully !!!')", true);
-                        showAlert = true;
-                        Response.Redirect("/UserPages/Documents.aspx", false);
-                    }
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alertExpOnlyDiploma", "alert('Multiple logins detected. Please log out from all other sessions before submitting your application.');", true);
+                    Response.Redirect("/AdminLogout.aspx",false);
                 }
             }
             catch (Exception ex)

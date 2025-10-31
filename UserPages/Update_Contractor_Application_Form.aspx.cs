@@ -391,7 +391,7 @@ namespace CEIHaryana.UserPages
         {
             try
             {
-                if (HFContractor.Value != null && HFContractor.Value != "")
+                if (HFContractor.Value == Convert.ToString(Session["ContractorID"]))
                 {
                     CEI.UpdateContractorOrganisationDetails(txtBusinessAddress.Text, ddlBusinessState.SelectedItem.ToString(), ddlBusinessDistrict.SelectedItem.ToString(), txtBusinessPin.Text, txtBusinessEmail.Text,
                                                   txtBusinessPhoneNo.Text, txtauthorizedperson.Text, txtGstNumber.Text, ddlCompanyStyle.SelectedItem.ToString(),
@@ -401,7 +401,8 @@ namespace CEIHaryana.UserPages
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('There is an issue in Updating!!!')", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alertExpOnlyDiploma", "alert('Multiple logins detected. Please log out from all other sessions before submitting your application.');", true);
+                    Response.Redirect("/AdminLogout.aspx", false);
                 }
             }
             catch
@@ -414,7 +415,7 @@ namespace CEIHaryana.UserPages
         {
             try
             {
-                if (HFContractor.Value != null && HFContractor.Value != "")
+                if (HFContractor.Value == Convert.ToString(Session["ContractorID"]))
                 {
                     CEI.UpdateOtherConOrganisationDetails( ddlUnitOrNot.SelectedItem.ToString(), ddlLicenseGranted.SelectedItem.ToString(),
                                                           txtIssusuingName.Text, txtIssuedateOtherState.Text, txtLicenseExpiry.Text, txtWorkPermitUndertaken.Text,
@@ -424,7 +425,8 @@ namespace CEIHaryana.UserPages
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('There is an issue in Updating !!!')", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alertExpOnlyDiploma", "alert('Multiple logins detected. Please log out from all other sessions before submitting your application.');", true);
+                    Response.Redirect("/AdminLogout.aspx",false);
                 }
             }
             catch
@@ -437,7 +439,7 @@ namespace CEIHaryana.UserPages
         {
             try
             {
-                if (HFContractor.Value != null && HFContractor.Value != "")
+                if (HFContractor.Value == Convert.ToString(Session["ContractorID"]))
                 {
                     CEI.UpdateConAnnextureAndPenality(ddlAnnexureOrNot.SelectedItem.ToString(), DropDownList2.SelectedItem.ToString(), txtPenalities.Text,
                                                           HFContractor.Value);
@@ -445,7 +447,8 @@ namespace CEIHaryana.UserPages
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('There is an issue in Updating!!!')", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alertExpOnlyDiploma", "alert('Multiple logins detected. Please log out from all other sessions before submitting your application.');", true);
+                    Response.Redirect("/AdminLogout.aspx", false);
                 }
             }
             catch 
@@ -459,7 +462,7 @@ namespace CEIHaryana.UserPages
             try
             {
                 //if (Convert.ToString(Session["ContractorID"]) != null && Convert.ToString(Session["ContractorID"]) != "")
-                if (HFContractor.Value != null && HFContractor.Value != "")
+                if (HFContractor.Value == Convert.ToString(Session["ContractorID"]))
                 {
                     string Createdby = HFContractor.Value;
                     int partnerCount = CEI.GetContractorPartnerCount(Createdby);
@@ -478,6 +481,11 @@ namespace CEIHaryana.UserPages
                     //Session["PartnerDirector"] = "Added";
                     ResetModal();
 
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alertExpOnlyDiploma", "alert('Multiple logins detected. Please log out from all other sessions before submitting your application.');", true);
+                    Response.Redirect("/AdminLogout.aspx",false);
                 }
             }
             catch
@@ -547,7 +555,7 @@ namespace CEIHaryana.UserPages
             {
                 try
                 {
-                    if (HFContractor.Value != null && HFContractor.Value != "")
+                    if (HFContractor.Value == Convert.ToString(Session["ContractorID"]))
                     {
                         //String ConId = Convert.ToString(Session["ContractorID"]);
                         if (e.CommandName == "DeleteRecord")
@@ -556,6 +564,11 @@ namespace CEIHaryana.UserPages
                             CEI.DeleteContractorPartner(id);
                             PartnersModalDirectorData(HFContractor.Value);
                         }
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alertExpOnlyDiploma", "alert('Multiple logins detected. Please log out from all other sessions before submitting your application.');", true);
+                        Response.Redirect("/AdminLogout.aspx", false);
                     }
                 }
                 catch (Exception Ex)
@@ -709,8 +722,8 @@ namespace CEIHaryana.UserPages
         {
             try
             {
-                if (HFContractor.Value != null && HFContractor.Value != "")
-                {
+                 if (HFContractor.Value == Convert.ToString(Session["ContractorID"]))
+                    {
                     String LoginID = HFContractor.Value;
                     //LoginID = Session["ContractorID"].ToString();
                     DataTable ds = new DataTable();
@@ -767,6 +780,11 @@ namespace CEIHaryana.UserPages
                         Response.Redirect("/UserPages/DocumentsForContractor.aspx", false);
 
                     }
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alertExpOnlyDiploma", "alert('Multiple logins detected. Please log out from all other sessions before submitting your application.');", true);
+                    Response.Redirect("/AdminLogout.aspx",false);
                 }
             }
             catch

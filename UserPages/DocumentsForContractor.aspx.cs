@@ -135,7 +135,7 @@ namespace CEIHaryana.UserPages
         }
         protected void btnNext_Click(object sender, EventArgs e)
         {
-            if (Convert.ToString(Session["ContractorID"]) != null && Convert.ToString(Session["ContractorID"]) != "")
+            if (HdnUserId.Value == Convert.ToString(Session["ContractorID"]) )
             {
                 if (HdnUserId.Value == Convert.ToString(Session["ContractorID"]))
                 {
@@ -190,7 +190,8 @@ namespace CEIHaryana.UserPages
             }
             else
             {
-                Response.Redirect("/AdminLogout.aspx", false);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertExpOnlyDiploma", "alert('Multiple logins detected. Please log out from all other sessions before submitting your application.');", true);
+                Response.Redirect("/AdminLogout.aspx");
             }
         }
 

@@ -171,7 +171,7 @@ namespace CEIHaryana.UserPages
         {
             try
             {
-                if (hdnId.Value != null && hdnId.Value != "")
+                if (hdnId.Value == Convert.ToString(Session["SupervisorID"]))
                 {
                     userid = hdnId.Value;
                     string UniversityName10th = txtUniversity.Text;
@@ -210,7 +210,8 @@ namespace CEIHaryana.UserPages
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('There is an issue in Updating!!!')", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alertExpOnlyDiploma", "alert('Multiple logins detected. Please log out from all other sessions before submitting your application.');", true);
+                    Response.Redirect("/AdminLogout.aspx", false);
                 }
             }
             catch (Exception ex)
@@ -267,7 +268,7 @@ namespace CEIHaryana.UserPages
         {
             try
             {
-                if (hdnId.Value != null && hdnId.Value != "")
+                if (hdnId.Value == Convert.ToString(Session["SupervisorID"]))
                 {
                     userid = hdnId.Value;
 
@@ -284,7 +285,8 @@ namespace CEIHaryana.UserPages
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('There is an issue in Updating!!!')", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alertExpOnlyDiploma", "alert('Multiple logins detected. Please log out from all other sessions before submitting your application.');", true);
+                    Response.Redirect("/AdminLogout.aspx", false);
                 }
             }
             catch (Exception ex)
@@ -333,7 +335,7 @@ namespace CEIHaryana.UserPages
         {
             try
             {
-                if (hdnId.Value != null && hdnId.Value != "")
+                if (hdnId.Value == Convert.ToString(Session["SupervisorID"]))
                 {
                     userid = hdnId.Value;
 
@@ -350,7 +352,8 @@ namespace CEIHaryana.UserPages
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('There is an issue in Updating!!!')", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alertExpOnlyDiploma", "alert('Multiple logins detected. Please log out from all other sessions before submitting your application.');", true);
+                    Response.Redirect("/AdminLogout.aspx",false);
                 }
             }
             catch (Exception ex)
@@ -638,7 +641,7 @@ namespace CEIHaryana.UserPages
         {
             try
             {
-                if (hdnId.Value != null && hdnId.Value != "")
+                if (hdnId.Value == Convert.ToString(Session["SupervisorID"]))
                 {
                     userid = hdnId.Value;
 
@@ -719,7 +722,8 @@ namespace CEIHaryana.UserPages
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('There is an issue in Updating!!!')", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alertExpOnlyDiploma", "alert('Multiple logins detected. Please log out from all other sessions before submitting your application.');", true);
+                    Response.Redirect("/AdminLogout.aspx", false);
                 }
             }
             catch (Exception ex)
@@ -774,7 +778,7 @@ namespace CEIHaryana.UserPages
         {
             try
             {
-                if (hdnId.Value != null && hdnId.Value != "")
+                if (hdnId.Value == Convert.ToString(Session["SupervisorID"]))
                 {
                     userid = hdnId.Value;
 
@@ -791,7 +795,8 @@ namespace CEIHaryana.UserPages
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('There is an issue in Updating!!!')", true);
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alertExpOnlyDiploma", "alert('Multiple logins detected. Please log out from all other sessions before submitting your application.');", true);
+                    Response.Redirect("/AdminLogout.aspx", false);
                 }
             }
             catch (Exception ex)
@@ -805,74 +810,82 @@ namespace CEIHaryana.UserPages
         {
             try
             {
-                //string totalExpText = txtTotalExperience.Text.Trim().ToLower();
-                string totalExpText = HdnExistedTotalexperience.Value.Trim().ToLower();
-                int totalExperiences = 0;
-
-                if (!(totalExpText.Contains("years") && totalExpText.Contains("months") && totalExpText.Contains("days")))
+                if (hdnId.Value == Convert.ToString(Session["SupervisorID"]))
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alertInvalid",
-                        "alert('Please enter experience in format: X years, Y months, Z days');", true);
-                    return;
-                }
+                    //string totalExpText = txtTotalExperience.Text.Trim().ToLower();
+                    string totalExpText = HdnExistedTotalexperience.Value.Trim().ToLower();
+                    int totalExperiences = 0;
 
-                string[] parts = totalExpText.Split(new[] { "years", "months", "days", ",", " " }, StringSplitOptions.RemoveEmptyEntries);
+                    if (!(totalExpText.Contains("years") && totalExpText.Contains("months") && totalExpText.Contains("days")))
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alertInvalid",
+                            "alert('Please enter experience in format: X years, Y months, Z days');", true);
+                        return;
+                    }
 
-                if (parts.Length >= 1 && int.TryParse(parts[0], out int years))
-                {
-                    totalExperiences = years;
+                    string[] parts = totalExpText.Split(new[] { "years", "months", "days", ",", " " }, StringSplitOptions.RemoveEmptyEntries);
+
+                    if (parts.Length >= 1 && int.TryParse(parts[0], out int years))
+                    {
+                        totalExperiences = years;
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alertInvalidYears",
+                            "alert('Unable to extract number of years from Total Experience.');", true);
+                        return;
+                    }
+
+                    // Qualification checks
+                    bool hasDiploma = ddlQualification1.SelectedIndex > 0;
+                    bool hasDegree = ddlQualification2.SelectedIndex > 0;
+
+                    // Only Diploma
+                    if (hasDiploma && !hasDegree)
+                    {
+                        if (totalExperiences < 5)
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "alertExpOnlyDiploma",
+                                "alert('As per your qualification, Total Experience should be at least 5 years.');", true);
+                            return;
+                        }
+                    }
+
+                    // Only Degree
+                    if (hasDegree && !hasDiploma)
+                    {
+                        if (totalExperiences < 1)
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "alertExpOnlyDegree",
+                                "alert('As per your qualification, Total Experience should be at least 1 year.');", true);
+                            return;
+                        }
+                    }
+
+                    // Both Degree and Diploma
+                    if (hasDegree && hasDiploma)
+                    {
+                        if (totalExperiences < 1)
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "alertExpBoth",
+                                "alert('As per your qualifications, Total Experience should be at least 1 year.');", true);
+                            return;
+                        }
+                    }
+
+                    ClientScript.RegisterStartupScript(this.GetType(), "CallValidateForm", "validateForm();", true);
+
+                    CEI.UpdateStatusAfterEdit(hdnId.Value);
+                    string validationResult = Page.ClientScript.GetWebResourceUrl(this.GetType(), "window.validationResult");
+
+
+                    Response.Redirect("/UserPages/Documents.aspx", false);
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alertInvalidYears",
-                        "alert('Unable to extract number of years from Total Experience.');", true);
-                    return;
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "alertExpOnlyDiploma", "alert('Multiple logins detected. Please log out from all other sessions before submitting your application.');", true);
+                    Response.Redirect("/AdminLogout.aspx", false);
                 }
-
-                // Qualification checks
-                bool hasDiploma = ddlQualification1.SelectedIndex > 0;
-                bool hasDegree = ddlQualification2.SelectedIndex > 0;
-
-                // Only Diploma
-                if (hasDiploma && !hasDegree)
-                {
-                    if (totalExperiences < 5)
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alertExpOnlyDiploma",
-                            "alert('As per your qualification, Total Experience should be at least 5 years.');", true);
-                        return;
-                    }
-                }
-
-                // Only Degree
-                if (hasDegree && !hasDiploma)
-                {
-                    if (totalExperiences < 1)
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alertExpOnlyDegree",
-                            "alert('As per your qualification, Total Experience should be at least 1 year.');", true);
-                        return;
-                    }
-                }
-
-                // Both Degree and Diploma
-                if (hasDegree && hasDiploma)
-                {
-                    if (totalExperiences < 1)
-                    {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "alertExpBoth",
-                            "alert('As per your qualifications, Total Experience should be at least 1 year.');", true);
-                        return;
-                    }
-                }
-
-                ClientScript.RegisterStartupScript(this.GetType(), "CallValidateForm", "validateForm();", true);
-
-                CEI.UpdateStatusAfterEdit(hdnId.Value);
-                string validationResult = Page.ClientScript.GetWebResourceUrl(this.GetType(), "window.validationResult");
-
-
-                Response.Redirect("/UserPages/Documents.aspx", false);
             }
             catch (Exception ex)
             {

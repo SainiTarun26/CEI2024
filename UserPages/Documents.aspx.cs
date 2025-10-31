@@ -2270,125 +2270,132 @@ namespace CEIHaryana.UserPages
         {
             try
             {
-                if (Convert.ToString(HdnUserId.Value) != null && Convert.ToString(HdnUserId.Value) != "")
+                if (HdnUserId.Value == Convert.ToString(Session["WiremanId"])||HdnUserId.Value == Convert.ToString(Session["SupervisorID"]))
                 {
-                    if (chkDeclaration.Checked == true)
+                    if (Convert.ToString(HdnUserId.Value) != null && Convert.ToString(HdnUserId.Value) != "")
                     {
-                        bool allMandatoryUploaded = true;
-                        string errorMessage = "";
+                        if (chkDeclaration.Checked == true)
+                        {
+                            bool allMandatoryUploaded = true;
+                            string errorMessage = "";
 
-                        if (HdnField_Document2.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Matriculation certificate indicating date of birth.<br>"; }
-                        if (HdnField_Document3.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Residence Proof.<br>"; }
-                        if (HdnField_Document4.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Identity Proof.<br>"; }
-                        ////if (HdnField_Document5.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Degree/Diploma in Electrical Engineering/Electrical and Electronics Engineering or its equivalent.<br>"; }
-                        ////if (HdnField_Document6.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Experience Certificate.<br>"; }
-                        if (Convert.ToString(Hdn_medicalcertificatevisible.Value) == "yes" && Convert.ToString(Hdn_medicalcertificatevisible.Value) != "")
-                        {
-                            if (HdnField_Document8.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Medical fitness certificate (for age > 55).<br>"; }
-                        }
-                        if (Convert.ToString(Hdn_retirementcertificatevisible.Value) == "yes" && Convert.ToString(Hdn_retirementcertificatevisible.Value) != "")
-                        {
-                            if (HdnField_Document9.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Copy of retirement orders.<br>"; }
-                        }
-                        if (Convert.ToString(Hdn_Apprenticecertificatevisible.Value) == "yes" && Convert.ToString(Hdn_Apprenticecertificatevisible.Value) != "")
-                        {
-                            if (HdnField_Document10.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Apprentice Certificate.<br>"; }
-                        }
-                        if (HdnField_Document11.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Copy of treasury challan.<br>"; }
-                        if (HdnField_Document12.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Candidate Image.<br>"; }
-                        if (HdnField_Document13.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Candidate Signature.<br>"; }
-
-                        if (CertificateOrDiploma.Visible)
-                        {
-                            if (HdnField_Document15.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Certificate or Diploma in Wireman,Linemen & Electrician.<br>"; }
-                        }
-
-                        if (Diploma.Visible)
-                        {
-
-                            if (HdnField_Document16.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Diploma Certificate.<br>"; }
-                        }
-                        if (Degree.Visible)
-                        {
-                            if (HdnField_Document17.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Degree Certificate.<br>"; }
-                        }
-                        if (MasterDegree.Visible)
-                        {
-                            if (HdnField_Document18.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Master Degree Certificate.<br>"; }
-                        }
-                        if (Exp.Visible)
-                        {
-                            if (HdnField_Document19.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Experience Certificate.<br>"; }
-                        }
-                        if (Exp1.Visible)
-                        {
-                            if (HdnField_Document20.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Experience Certificate.<br>"; }
-                        }
-                        if (Exp2.Visible)
-                        {
-                            if (HdnField_Document21.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Experience Certificate.<br>"; }
-                        }
-                        if (Exp3.Visible)
-                        {
-                            if (HdnField_Document22.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Experience Certificate.<br>"; }
-                        }
-                        if (Exp4.Visible)
-                        {
-                            if (HdnField_Document23.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Experience Certificate.<br>"; }
-                        }
-                        if (Exp5.Visible)
-                        {
-                            if (HdnField_Document24.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Experience Certificate.<br>"; }
-                        }
-                        if (Exp6.Visible)
-                        {
-                            if (HdnField_Document25.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Experience Certificate.<br>"; }
-                        }
-                        if (Exp7.Visible)
-                        {
-                            if (HdnField_Document26.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Experience Certificate.<br>"; }
-                        }
-                        if (Exp8.Visible)
-                        {
-                            if (HdnField_Document27.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Experience Certificate.<br>"; }
-                        }
-                        if (Exp9.Visible)
-                        {
-                            if (HdnField_Document28.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Experience Certificate.<br>"; }
-                        }
-                        if (!allMandatoryUploaded)
-                        {
-                            string[] lines = errorMessage.Split(new string[] { "<br>" }, StringSplitOptions.RemoveEmptyEntries);
-                            string formattedMessage = ""; for (int i = 0; i < lines.Length; i++)
+                            if (HdnField_Document2.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Matriculation certificate indicating date of birth.<br>"; }
+                            if (HdnField_Document3.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Residence Proof.<br>"; }
+                            if (HdnField_Document4.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Identity Proof.<br>"; }
+                            ////if (HdnField_Document5.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Degree/Diploma in Electrical Engineering/Electrical and Electronics Engineering or its equivalent.<br>"; }
+                            ////if (HdnField_Document6.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Experience Certificate.<br>"; }
+                            if (Convert.ToString(Hdn_medicalcertificatevisible.Value) == "yes" && Convert.ToString(Hdn_medicalcertificatevisible.Value) != "")
                             {
-                                formattedMessage += $"{i + 1}. {lines[i].Trim()}\\n";
+                                if (HdnField_Document8.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Medical fitness certificate (for age > 55).<br>"; }
+                            }
+                            if (Convert.ToString(Hdn_retirementcertificatevisible.Value) == "yes" && Convert.ToString(Hdn_retirementcertificatevisible.Value) != "")
+                            {
+                                if (HdnField_Document9.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Copy of retirement orders.<br>"; }
+                            }
+                            if (Convert.ToString(Hdn_Apprenticecertificatevisible.Value) == "yes" && Convert.ToString(Hdn_Apprenticecertificatevisible.Value) != "")
+                            {
+                                if (HdnField_Document10.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Apprentice Certificate.<br>"; }
+                            }
+                            if (HdnField_Document11.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Copy of treasury challan.<br>"; }
+                            if (HdnField_Document12.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Candidate Image.<br>"; }
+                            if (HdnField_Document13.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Candidate Signature.<br>"; }
+
+                            if (CertificateOrDiploma.Visible)
+                            {
+                                if (HdnField_Document15.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Certificate or Diploma in Wireman,Linemen & Electrician.<br>"; }
                             }
 
-                            string script = $"alert('{formattedMessage}');";
-                            ClientScript.RegisterStartupScript(this.GetType(), "alertMessage", script, true);
-                            return;
-                        }
-                        ////string UniqueNumber = Session["TempUniqueId"].ToString().Trim();
-                        ////if (Convert.ToString(UniqueNumber) != null && Convert.ToString(UniqueNumber) != "")
-                        ////{
-                        //// CEI.ToSaveDocumentsdataofNewregistration(UniqueNumber, HdnUserId.Value, HdnUserType.Value);
-                        CEI.ToSaveDocumentsdataofNewregistration(HdnUserId.Value);
-                        ////Session["TempUniqueId"] = "";
-                        ////Session["TempUniqueId"] = null;
-                        // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "if (confirm('New User Registration Process completed successfully.')) { window.location.href = '/AdminLogout.aspx'; }", true);
-                        Response.Redirect("/UserPages/New_Application_Status.aspx", false);
+                            if (Diploma.Visible)
+                            {
 
-                        //// }
+                                if (HdnField_Document16.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Diploma Certificate.<br>"; }
+                            }
+                            if (Degree.Visible)
+                            {
+                                if (HdnField_Document17.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Degree Certificate.<br>"; }
+                            }
+                            if (MasterDegree.Visible)
+                            {
+                                if (HdnField_Document18.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Master Degree Certificate.<br>"; }
+                            }
+                            if (Exp.Visible)
+                            {
+                                if (HdnField_Document19.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Experience Certificate.<br>"; }
+                            }
+                            if (Exp1.Visible)
+                            {
+                                if (HdnField_Document20.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Experience Certificate.<br>"; }
+                            }
+                            if (Exp2.Visible)
+                            {
+                                if (HdnField_Document21.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Experience Certificate.<br>"; }
+                            }
+                            if (Exp3.Visible)
+                            {
+                                if (HdnField_Document22.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Experience Certificate.<br>"; }
+                            }
+                            if (Exp4.Visible)
+                            {
+                                if (HdnField_Document23.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Experience Certificate.<br>"; }
+                            }
+                            if (Exp5.Visible)
+                            {
+                                if (HdnField_Document24.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Experience Certificate.<br>"; }
+                            }
+                            if (Exp6.Visible)
+                            {
+                                if (HdnField_Document25.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Experience Certificate.<br>"; }
+                            }
+                            if (Exp7.Visible)
+                            {
+                                if (HdnField_Document26.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Experience Certificate.<br>"; }
+                            }
+                            if (Exp8.Visible)
+                            {
+                                if (HdnField_Document27.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Experience Certificate.<br>"; }
+                            }
+                            if (Exp9.Visible)
+                            {
+                                if (HdnField_Document28.Value != "1") { allMandatoryUploaded = false; errorMessage += "Please Upload Experience Certificate.<br>"; }
+                            }
+                            if (!allMandatoryUploaded)
+                            {
+                                string[] lines = errorMessage.Split(new string[] { "<br>" }, StringSplitOptions.RemoveEmptyEntries);
+                                string formattedMessage = ""; for (int i = 0; i < lines.Length; i++)
+                                {
+                                    formattedMessage += $"{i + 1}. {lines[i].Trim()}\\n";
+                                }
+
+                                string script = $"alert('{formattedMessage}');";
+                                ClientScript.RegisterStartupScript(this.GetType(), "alertMessage", script, true);
+                                return;
+                            }
+                            ////string UniqueNumber = Session["TempUniqueId"].ToString().Trim();
+                            ////if (Convert.ToString(UniqueNumber) != null && Convert.ToString(UniqueNumber) != "")
+                            ////{
+                            //// CEI.ToSaveDocumentsdataofNewregistration(UniqueNumber, HdnUserId.Value, HdnUserType.Value);
+                            CEI.ToSaveDocumentsdataofNewregistration(HdnUserId.Value);
+                            ////Session["TempUniqueId"] = "";
+                            ////Session["TempUniqueId"] = null;
+                            // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "if (confirm('New User Registration Process completed successfully.')) { window.location.href = '/AdminLogout.aspx'; }", true);
+                            Response.Redirect("/UserPages/New_Application_Status.aspx", false);
+
+                            //// }
+                        }
+                        else
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('Please accept declaration first to proceed.')", true);
+                        }
                     }
                     else
                     {
-                        ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert()", "alert('Please accept declaration first to proceed.')", true);
+                        Response.Redirect("/LogOut.aspx", false);
                     }
                 }
                 else
                 {
-                    Response.Redirect("/LogOut.aspx", false);
+
                 }
             }
             catch (Exception)
