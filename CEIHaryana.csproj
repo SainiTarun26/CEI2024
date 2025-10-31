@@ -230,6 +230,7 @@
     <Content Include="AdminLogout.aspx" />
     <Content Include="Admin\AcceptedOrRejectedRequest.aspx" />
     <Content Include="Admin\AccidentialReports_Admin.aspx" />
+    <Content Include="Admin\ActionForCinemaVideo_Talkies_Admin.aspx" />
     <Content Include="Admin\Action_InProcessLift_Return.aspx" />
     <Content Include="Admin\Action_InProcess_Lift.aspx" />
     <Content Include="Admin\AddContractorDetails.aspx" />
@@ -254,6 +255,7 @@
     <Content Include="Admin\Division.aspx" />
     <Content Include="Admin\InProcessRequest.aspx" />
     <Content Include="Admin\InspectionDetails.aspx" />
+    <Content Include="Admin\Inspection_Cinema_Talkies_Admin.aspx" />
     <Content Include="Admin\IntimationForHistory.aspx" />
     <Content Include="Admin\IntimationHistoryForAdmin.aspx" />
     <Content Include="Admin\IntimationHistoryForLift.aspx" />
@@ -267,6 +269,7 @@
     <Content Include="Admin\NoticeForDisconnection.aspx" />
     <Content Include="Admin\Pending_Licence_Approval_Cei.aspx" />
     <Content Include="Admin\Pending_Licence_Approval_Cei_List.aspx" />
+    <Content Include="Admin\PeriodicInspection_Cinema_Talkies_Admin.aspx" />
     <Content Include="Admin\PeriodicReturnedIntimationForHistory.aspx" />
     <Content Include="Admin\Projects.aspx" />
     <Content Include="Admin\RegistrationDetailsAll.aspx" />
@@ -2346,6 +2349,13 @@
     <Compile Include="Admin\AccidentialReports_Admin.aspx.designer.cs">
       <DependentUpon>AccidentialReports_Admin.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\ActionForCinemaVideo_Talkies_Admin.aspx.cs">
+      <DependentUpon>ActionForCinemaVideo_Talkies_Admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\ActionForCinemaVideo_Talkies_Admin.aspx.designer.cs">
+      <DependentUpon>ActionForCinemaVideo_Talkies_Admin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Action_InProcessLift_Return.aspx.cs">
       <DependentUpon>Action_InProcessLift_Return.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2528,6 +2538,13 @@
     <Compile Include="Admin\InspectionDetails.aspx.designer.cs">
       <DependentUpon>InspectionDetails.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Inspection_Cinema_Talkies_Admin.aspx.cs">
+      <DependentUpon>Inspection_Cinema_Talkies_Admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Inspection_Cinema_Talkies_Admin.aspx.designer.cs">
+      <DependentUpon>Inspection_Cinema_Talkies_Admin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\IntimationForHistory.aspx.cs">
       <DependentUpon>IntimationForHistory.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2618,6 +2635,13 @@
     </Compile>
     <Compile Include="Admin\Pending_Licence_Approval_Cei_List.aspx.designer.cs">
       <DependentUpon>Pending_Licence_Approval_Cei_List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\PeriodicInspection_Cinema_Talkies_Admin.aspx.cs">
+      <DependentUpon>PeriodicInspection_Cinema_Talkies_Admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\PeriodicInspection_Cinema_Talkies_Admin.aspx.designer.cs">
+      <DependentUpon>PeriodicInspection_Cinema_Talkies_Admin.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\PeriodicReturnedIntimationForHistory.aspx.cs">
       <DependentUpon>PeriodicReturnedIntimationForHistory.aspx</DependentUpon>

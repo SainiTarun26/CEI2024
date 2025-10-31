@@ -57,11 +57,21 @@ namespace CEIHaryana.Admin
                     Control ctrl = e.CommandSource as Control;
                     GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
                     Label lblID = (Label)row.FindControl("lblID");
+                    Label lblInstallationFor = (Label)row.FindControl("lblInstallationType");
+
                     string id = lblID.Text;
                     Session["InProcessInspectionId"] = id;
                     if (e.CommandName == "Select")
                     {
-                        Response.Redirect("/Admin/ActionInprocessInspection.aspx", false);
+                        if (lblInstallationFor.Text == "Cinema_Videos Talkies")
+                        {
+                            Response.Redirect("/Admin/ActionForCinemaVideo_Talkies_Admin.aspx", false);
+                            return;
+                        }
+                        else
+                        {
+                            Response.Redirect("/Admin/ActionInprocessInspection.aspx", false);
+                        }
                     }
                 }
             }

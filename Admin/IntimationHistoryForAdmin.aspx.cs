@@ -108,7 +108,16 @@ namespace CEIHaryana.Admin
                     {
                         if (lblInstallationFor.Text == "Cinema_Videos Talkies")
                         {
-                            Response.Redirect("/Admin/CinemaInspectionDetails.aspx", false);
+                            if (lblTypeOfInspection.Text.Trim() == "New")
+                            {
+                                Response.Redirect("/Admin/Inspection_Cinema_Talkies_Admin.aspx", false);
+                                return;
+                            }
+                            else if (lblTypeOfInspection.Text.Trim() == "Periodic")
+                            {
+                                Response.Redirect("/Admin/PeriodicInspection_Cinema_Talkies_Admin.aspx", false);
+                                return;
+                            }
                         }
                         else
                         {
