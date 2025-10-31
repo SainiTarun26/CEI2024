@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Contractor/ContractorRenewalMaster.Master" AutoEventWireup="true" CodeBehind="Contractor_Licence_Renewal.aspx.cs" Inherits="CEIHaryana.Contractor.Contractor_Licence_Renewal" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <%--<link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
+    <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -17,7 +17,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     <link href="ScriptCalendar/jquery-ui.css" rel="stylesheet" type="text/css" />
    <script type="text/javascript" src="ScriptCalender/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="ScriptCalender/jquery-ui.min.js"></script>--%>
+    <script type="text/javascript" src="ScriptCalender/jquery-ui.min.js"></script>
 
     <!-- Favicon -->
 <link rel="shortcut icon" type="image/png" href="/images/favicon.png" />
