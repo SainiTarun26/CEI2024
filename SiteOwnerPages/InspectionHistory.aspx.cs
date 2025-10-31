@@ -31,7 +31,13 @@ namespace CEIHaryana.SiteOwnerPages
             {
             }
         }
-
+        protected string ConvertDate(string date)
+        {
+            string D1;
+            string[] str = date.Split('/');
+            D1 = str[2] + "-" + str[1] + "-" + str[0];
+            return D1;
+        }
         public void BindGrid()
         {
             string LoginID = string.Empty;
@@ -143,8 +149,9 @@ namespace CEIHaryana.SiteOwnerPages
                         
                             if (lblType.Text != "Lift" && lblType.Text != "Escalator" && lblType.Text != "Lift/Escalator" && lblType.Text != "MultiLift" && lblType.Text != "MultiEscalator")
                             {
-                                if (ApproveDate != null && DateTime.TryParse(ApproveDate, out DateTime lblApproveDate))
+                                if (ApproveDate != null)
                                 {
+                                    DateTime lblApproveDate = DateTime.Parse(ConvertDate(ApproveDate));
                                     DateTime comparisonDate = DateTime.Parse("2024-11-16");
 
                                     if (lblApproveDate <= comparisonDate)
