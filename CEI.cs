@@ -16117,6 +16117,10 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
         }
 
         #endregion
+        public DataTable GetApplicationStatus()
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetApplicationStatus");
+        }
     }
 }
 

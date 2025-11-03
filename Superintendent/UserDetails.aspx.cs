@@ -25,6 +25,7 @@ namespace CEIHaryana.Superintendent
                 {
                     if (Convert.ToString(Session["SuperidentId"]) != null && Convert.ToString(Session["SuperidentId"]) != string.Empty)
                     {
+                        BindApplicationStatus();
                         string Id = Session["SuperidentId"].ToString();
                         DataTable ds = new DataTable();
                         ds = CEI.GETActiveSuperident(Id);
@@ -73,7 +74,12 @@ namespace CEIHaryana.Superintendent
             {
                 string District = ddlDistrict.SelectedItem.ToString();
                 string Category = ddlcategory.SelectedItem.ToString();
-                string Status = ddlApplicationStatus.SelectedItem.ToString();
+                string Status = ddlApplicationStatus.SelectedValue;
+                if (Status == "0" || string.IsNullOrEmpty(Status))
+                {
+                    Status = null; 
+                }
+                //string Status = ddlApplicationStatus.SelectedItem.ToString();
                 DataTable ds = new DataTable();
                 ds = CEI.BindDataForSuperident(Category, District, Status, txtName.Text.Trim());
                 if (ds.Rows.Count > 0)
@@ -144,7 +150,7 @@ namespace CEIHaryana.Superintendent
                     {
                         foreach (DataRow rows in dt.Rows)
                         {
-                            string fileUrl = "https://uat.ceiharyana.com" + rows["DocumentPath"].ToString();
+                            string fileUrl = "https://ceiharyana.com" + rows["DocumentPath"].ToString();
 
                             using (var client = new System.Net.WebClient())
                             {
@@ -393,5 +399,21 @@ namespace CEIHaryana.Superintendent
             Name.Visible = false;
             GridBind();
         }
+
+        private void BindApplicationStatus()
+        {
+            DataTable dt = CEI.GetApplicationStatus();
+
+            ddlApplicationStatus.DataSource = dt;
+            ddlApplicationStatus.DataTextField = "ApplicationStatus";
+            ddlApplicationStatus.DataValueField = "ApplicationStatus";
+            ddlApplicationStatus.DataBind();
+
+            // Add a default option at the top
+            ddlApplicationStatus.Items.Insert(0, new ListItem("Select", "0"));
+
+            ddlApplicationStatus.SelectedValue = "0";
+        }
+
     }
 }

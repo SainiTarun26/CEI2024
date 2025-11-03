@@ -205,10 +205,9 @@
                                 <div style="display: flex; align-items: center; gap: 10px;">
                                     <asp:Label ID="Label5" runat="server" Text="Search Value:" />
                                     <asp:DropDownList ID="ddlApplicationStatus" runat="server" AutoPostBack="true" class="form-control  select-form select2" Style="width: 100% !important; padding-top: 3px; font-size: 16px !important; height: 30px; width: 85% !important;">
-                                        <asp:ListItem Text="Select" Value="0"></asp:ListItem>
-                                        <asp:ListItem Text="Submit" Value="1"></asp:ListItem>
-                                        <asp:ListItem Text="InProcess" Value="2"></asp:ListItem>
-                                    </asp:DropDownList>
+                                      <%--  <asp:ListItem Text="Select" Value="0"></asp:ListItem>--%>
+                                     
+                          </asp:DropDownList>
                                 </div>
                             </asp:Panel>
                         </div>
