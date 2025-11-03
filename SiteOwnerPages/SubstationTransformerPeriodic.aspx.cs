@@ -30,6 +30,7 @@ namespace CEIHaryana.SiteOwnerPages
         {
             if (!IsPostBack)
             {
+                yearofmanufacturingbind();
                 //Session["VoltageLevel"] = "Above 650 V and up to 11 KV";
                 ddlPrimaryVoltage();
                 ddlSecondarVoltage();
@@ -53,6 +54,20 @@ namespace CEIHaryana.SiteOwnerPages
 
             }
         }
+        #region navneet year of manufacturing
+        protected void yearofmanufacturingbind()
+        {
+            int currentYear = DateTime.Now.Year;
+
+            for (int i = 0; i < 20; i++)
+            {
+                int year = currentYear - i;
+                ddlyearOfManufacturing.Items.Add(new ListItem(year.ToString(), year.ToString()));
+            }
+
+            ddlyearOfManufacturing.Items.Insert(0, new ListItem("--Select Year--", "0"));
+        }
+        #endregion
         private void ddlPrimaryVoltage()
         {
             string Volts = string.Empty;
@@ -170,7 +185,7 @@ namespace CEIHaryana.SiteOwnerPages
                 SecondaryVoltage = ddlSecondaryVoltage.SelectedValue.ToString().Trim();
                 _SecondaryVoltage = SecondaryVoltage.Substring(0, SecondaryVoltage.Length - 6);
 
-                int returnresult = CEI.InsertSubstationData_Existing_HavingPreviousReport(IdUpdate, count, IntimationId, txtTransformerSerialNumber.Text, ddltransformerCapacity.SelectedItem.ToString(), txtTransformerCapacity.Text, ddltransformerType.SelectedItem.ToString(), txtManufacturingyear.Text.Trim(),
+                int returnresult = CEI.InsertSubstationData_Existing_HavingPreviousReport(IdUpdate, count, IntimationId, txtTransformerSerialNumber.Text, ddltransformerCapacity.SelectedItem.ToString(), txtTransformerCapacity.Text, ddltransformerType.SelectedItem.ToString(), ddlyearOfManufacturing.SelectedItem.ToString(),
                     _PrimaryVoltage, _SecondaryVoltage, txtMake.Text.ToString(),
                     txtLastInspectionIssueDate.Text.ToString(), ApplicantType, VoltageLevel, District, Division,
                     Inspectiontype,

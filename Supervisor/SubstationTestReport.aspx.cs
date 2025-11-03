@@ -32,6 +32,7 @@ namespace CEIHaryana.Supervisor
                 {
                     if (!IsPostBack)
                     {
+                        yearofmanufacturingbind();
                         var master = (MasterPage)Master;
                         var loginTypeLabel = (Label)master.FindControl("LoginType");
                         if (loginTypeLabel != null)
@@ -128,6 +129,20 @@ namespace CEIHaryana.Supervisor
                 Response.Redirect("/SupervisorLogout.aspx");
             }
         }
+        #region navneet year of manufacturing
+        protected void yearofmanufacturingbind()
+        {
+            int currentYear = DateTime.Now.Year;
+
+            for (int i = 0; i < 20; i++)
+            {
+                int year = currentYear - i;
+                ddlyearOfManufacturing.Items.Add(new ListItem(year.ToString(), year.ToString()));
+            }
+
+            ddlyearOfManufacturing.Items.Insert(0, new ListItem("--Select Year--", "0"));
+        }
+        #endregion
         protected void BtnBack_Click(object sender, EventArgs e)
         {
             if (Session["TestReportHistory"] != null)
@@ -1139,7 +1154,7 @@ namespace CEIHaryana.Supervisor
                         _SecondaryVoltage = SecondaryVoltage.Substring(0, SecondaryVoltage.Length - 6);
                         //
 
-                        CEI.InsertSubstationData(IdUpdate, count, TestReportId, IntimationId, txtTransformerSerialNumber.Text, ddltransformerCapacity.SelectedItem.ToString(), txtTransformerCapacity.Text, ddltransformerType.SelectedItem.ToString(), txtManufacturingyear.Text,
+                        CEI.InsertSubstationData(IdUpdate, count, TestReportId, IntimationId, txtTransformerSerialNumber.Text, ddltransformerCapacity.SelectedItem.ToString(), txtTransformerCapacity.Text, ddltransformerType.SelectedItem.ToString(), ddlyearOfManufacturing.SelectedItem.ToString(),
                           _PrimaryVoltage, _SecondaryVoltage, txtOilCapacity.Text, txtOilBDV.Text, txtHTsideInsulation.Text, txtLTSideInsulation.Text,
                            txtLowestValue.Text, ddlLghtningArrestor.SelectedItem.ToString(), txtLightningArrestor.Text, ddlHTType.SelectedItem.ToString(), ddlEarthingsubstation.SelectedItem.ToString(),
                            ddlSubstationEarthing1.SelectedItem.ToString(), txtSubstationEarthing1.Text, ddlUsedFor1.SelectedItem.ToString(), txtOtherEarthing1.Text, ddlSubstationEarthing2.SelectedItem.ToString(),
