@@ -331,60 +331,11 @@ namespace CEIHaryana.Superintendent
         }
 
         protected void btnSearch_Click(object sender, EventArgs e)
-        {
-            if (ddlcategory.SelectedValue != "0")
-            {
-                if (ddlSearchBy.SelectedValue != "0")
-                {
-                    if (ddlSearchBy.SelectedValue == "1")
-                    {
-
-
-                        if (ddlDistrict.SelectedItem.ToString() == "Select")
-                        {
-                            ddlDistrict.Focus();
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('Please Select District by to proceed.');", true);
-                            return;
-                        }
-                    }
-                    else if (ddlSearchBy.SelectedValue == "2")
-                    {
-                        ddlDistrict.SelectedValue = "0";
-                        if (ddlApplicationStatus.SelectedItem.ToString() == "Select")
-                        {
-                            ddlApplicationStatus.Focus();
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('Please Select Status by to proceed.');", true);
-                            return;
-                        }
-
-                    }
-                    else if (ddlSearchBy.SelectedValue == "3")
-                    {
-
-                        if (string.IsNullOrWhiteSpace(txtName.Text))
-                        {
-                            txtName.Focus();
-                            ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('Please Enter the name  to proceed.');", true);
-                            return;
-
-                        }
-                    }
-
+        {        
+               
+                                           
                     GridBind();
-                }
-                else
-                {
-                    ddlSearchBy.Focus();
-                    ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('Please Select Search by to proceed.');", true);
-                    return;
-                }
-            }
-            else
-            {
-                ddlcategory.Focus();
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "erroralert", "alert('Please Select Category to proceed.');", true);
-                return;
-            }
+              
         }
 
         protected void btnReset_Click(object sender, EventArgs e)
