@@ -34,7 +34,8 @@ namespace CEIHaryana.SiteOwnerPages
 
         string CombinedInstallationId = string.Empty;
         protected decimal totalAmount = 0;
-        int intSubTotalIndex = 1, dblSubTotalCapacity = 0, dblGrandTotalCapacity = 0, highestOfficerDesignation = 0;
+        int intSubTotalIndex = 1, highestOfficerDesignation = 0;
+        decimal dblSubTotalCapacity = 0, dblGrandTotalCapacity = 0;
         decimal dblSubTotalAmount = 0, dblGrandTotalAmount = 0;
         double dblSubHighestVoltage = 0, dblHighestVoltage = 0;
 
@@ -537,8 +538,8 @@ namespace CEIHaryana.SiteOwnerPages
 
                     // Check and parse Capacity
                     object capacityObj = DataBinder.Eval(e.Row.DataItem, "Capacity");
-                    int dblCapacity = 0;
-                    if (capacityObj != null && int.TryParse(capacityObj.ToString(), out dblCapacity))
+                    decimal dblCapacity = 0;
+                    if (capacityObj != null && decimal.TryParse(capacityObj.ToString(), out dblCapacity))
                     {
                         dblSubTotalCapacity += dblCapacity;
                         dblGrandTotalCapacity += dblCapacity;
@@ -571,7 +572,8 @@ namespace CEIHaryana.SiteOwnerPages
 
                     Label lblMaxAmount = (Label)e.Row.FindControl("lblMaxAmount");
 
-                    lblTotalCapacity.Text = "Total Capacity: " + dblGrandTotalCapacity.ToString("N0") + "KVA";
+                    //lblTotalCapacity.Text = "Total Capacity: " + dblGrandTotalCapacity.ToString("N0") + "KVA";
+                    lblTotalCapacity.Text = "Total Capacity: " + dblGrandTotalCapacity + "KVA";
                     lblMaxVoltage.Text = "Max Voltage: " + dblHighestVoltage.ToString("N0");
 
                     lblMaxAmount.Text = "Total Amount: " + dblGrandTotalAmount.ToString("N0");
@@ -671,7 +673,10 @@ namespace CEIHaryana.SiteOwnerPages
 
             // Create a cell for the subtotal capacity
             cell = new TableCell();
-            cell.Text = string.Format("{0:0}", dblSubTotalCapacity);
+            //cell.Text = string.Format("{0:0}", dblSubTotalCapacity);
+
+            cell.Text = string.Format("{0:N2}", dblSubTotalCapacity);
+
             cell.Font.Bold = true;
             cell.HorizontalAlign = HorizontalAlign.Left;
             cell.CssClass = "SubTotalRowStyle";
