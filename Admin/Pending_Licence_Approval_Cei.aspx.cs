@@ -85,7 +85,7 @@ namespace CEIHaryana.Admin
                     GridView1.DataSource = ds;
                     GridView1.DataBind();
                     hdnLicenceType.Value = ds.Tables[0].Rows[0]["LicenceType"].ToString();
-                    hdnCategory.Value = ds.Tables[0].Rows[0]["Categary"].ToString();                   
+                    hdnCategory.Value = ds.Tables[0].Rows[0]["Categary"].ToString();
                 }
                 else
                 {
@@ -240,7 +240,7 @@ namespace CEIHaryana.Admin
             public string Message { get; set; }
         }
 
-        public LicencePrecheckResult PrecheckBeforeApproval(string applicationId,string actionTaken)
+        public LicencePrecheckResult PrecheckBeforeApproval(string applicationId, string actionTaken)
         {
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
             {
@@ -277,58 +277,66 @@ namespace CEIHaryana.Admin
         #region kalpana preview pages 24-oct-2025
         protected void btnPreview_Click(object sender, EventArgs e)
         {
-            string applicationId = ucLicenceDetails.ApplicationId;
-            string LicenceType = hdnLicenceType.Value;
-            string Category = hdnCategory.Value;
-
-
-            int result = CEI.Insert_Licence_CeiApprovalRejection_ForPreview(applicationId, Session["AdminId"].ToString());
-
-            if (result == 1)
+            try
             {
-                string actionText = ddlReview.SelectedItem.Text;
-                string message = $"Application {actionText} successfully.";
-                ScriptManager.RegisterStartupScript(this, GetType(), "successMessage", $"alert('{message}'); window.location='Pending_Licence_Approval_Cei_List.aspx';", true);
-                
-            }
-            else
-            {
-                ScriptManager.RegisterStartupScript(this, GetType(), "errorMessage", "alert('Failed to save . Please try again later.');", true);
-                
-            }
+                string applicationId = ucLicenceDetails.ApplicationId;
+                string LicenceType = hdnLicenceType.Value;
+                string Category = hdnCategory.Value;
 
-            Session["Application_Id"] = applicationId;
 
-            if (!string.IsNullOrEmpty(LicenceType) && hdnLicenceType.Value == "New")
-            {
-                switch (Category)
+                int result = CEI.Insert_Licence_CeiApprovalRejection_ForPreview(applicationId, Session["AdminId"].ToString());
+
+                if (result == 1)
                 {
-                    case "Contractor":
-                        Response.Redirect("/Previewpages/Contractor_Licence_New_CertificatePreview.aspx", false);
-                        break;
-                    case "Supervisor":
-                        Response.Redirect("/Previewpages/Certificate_of_CompetencyPreview.aspx", false);
-                        break;
-                    case "Wireman":
-                        Response.Redirect("/Previewpages/Certificate_of_wireman_PermitPreview.aspx", false);
-                        break;
+                    string actionText = ddlReview.SelectedItem.Text;
+                    string message = $"Application {actionText} successfully.";
+                    ScriptManager.RegisterStartupScript(this, GetType(), "successMessage", $"alert('{message}'); window.location='Pending_Licence_Approval_Cei_List.aspx';", true);
+
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this, GetType(), "errorMessage", "alert('Failed to save . Please try again later.');", true);
+
+                }
+
+                Session["Application_Id"] = applicationId;
+
+                if (!string.IsNullOrEmpty(LicenceType) && hdnLicenceType.Value == "New")
+                {
+                    switch (Category)
+                    {
+                        case "Contractor":
+                            Response.Redirect("/Previewpages/Contractor_Licence_New_CertificatePreview.aspx", false);
+                            break;
+                        case "Supervisor":
+                            Response.Redirect("/Previewpages/Certificate_of_CompetencyPreview.aspx", false);
+                            break;
+                        case "Wireman":
+                            Response.Redirect("/Previewpages/Certificate_of_wireman_PermitPreview.aspx", false);
+                            break;
+                    }
+                }
+                else if (!string.IsNullOrEmpty(LicenceType) && hdnLicenceType.Value == "Renewal")
+                {
+                    switch (Category)
+                    {
+                        case "Contractor":
+                            Response.Redirect("/Previewpages/ContractorLicenceRenewalPreview.aspx", false);
+                            break;
+                        case "Supervisor":
+
+                            Response.Redirect("/Previewpages/CertificateOfCompetencyRenewalPreview.aspx", false);
+                            break;
+                        case "Wireman":
+                            Response.Redirect("/Previewpages/CertificateOfWiremanPermitRenewalPreview.aspx", false);
+                            break;
+                    }
                 }
             }
-            else if (!string.IsNullOrEmpty(LicenceType) && hdnLicenceType.Value == "Renewal")
+            catch (Exception ex)
             {
-                switch (Category)
-                {
-                    case "Contractor":
-                        Response.Redirect("/Previewpages/ContractorLicenceRenewalPreview.aspx", false);
-                        break;
-                    case "Supervisor":
-
-                        Response.Redirect("/Previewpages/CertificateOfCompetencyRenewalPreview.aspx", false);
-                        break;
-                    case "Wireman":
-                        Response.Redirect("/Previewpages/CertificateOfWiremanPermitRenewalPreview.aspx", false);
-                        break;
-                }
+                ScriptManager.RegisterStartupScript(this, GetType(), "exceptionMessage", "alert('" + ex.Message.ToString() + "');", true);
+                return;
             }
 
         }
