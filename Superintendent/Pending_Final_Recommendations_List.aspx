@@ -16,6 +16,14 @@
     <script src="https://kit.fontawesome.com/57676f1d80.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
+                input#ContentPlaceHolder1_btnSearch {
+    height: 30px;
+    padding: 0px 10px 0px 10px;
+}
+        input#ContentPlaceHolder1_btnReset {
+    height: 30px;
+    padding: 0px 10px 0px 10px;
+}
         .headercolor {
             background-color: #9292cc;
         }
@@ -115,24 +123,79 @@
                     </div>
                     <div class="col-sm-6 col-md-6"></div>
                 </div>
-                <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
-                    <div class="row" style="margin-bottom: -25px !important;">
-                        <div class="col-4">
-                            <div class="form-group row">
-                                <label for="search" class="col-sm-3 col-form-label" style="margin-top: -6px;">Search:</label>
-                                <div class="col-sm-9" style="margin-left: -35px;">
-                                    <asp:TextBox ID="txtSearch" runat="server" PlaceHolder="Auto Search" class="form-control" Font-Size="12px" onkeydown="return SearchOnEnter(event);" onkeyup="Search_Gridview(this)"></asp:TextBox><br />
-                                </div>
-                            </div>
-                        </div>
-                        <%--   <div class="col-md-8" style="display: flex; place-content: end; place-items: baseline;">
-                            <asp:RadioButtonList ID="RadioButtonList1" AutoPostBack="true" runat="server" RepeatDirection="Horizontal" OnSelectedIndexChanged="RadioButtonList1_SelectedIndexChanged">
-                                <asp:ListItem Text="New Inspection" Value="0" Selected="True"></asp:ListItem>
-                                <asp:ListItem Text="Periodic Inspection" Value="1"></asp:ListItem>
-                            </asp:RadioButtonList>
-                             </div>--%>
-                    </div>
-                    <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%"
+                  
+                      <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
+
+      <asp:HiddenField ID="hdnId" runat="server" />
+      <div class="row" style="margin-bottom: 15px;">
+          <div class="col-md-3">
+              <asp:Panel ID="Panel3" runat="server">
+                  <div style="display: flex; align-items: center; gap: 10px;">
+                      <asp:Label ID="Label3" runat="server" Text="Category:" AssociatedControlID="ddlcategory" Style="margin-bottom: 0px; font-size: 16px;" />
+                      <asp:DropDownList class="form-control  select-form select2" runat="server" AutoPostBack="true" ID="ddlcategory" selectionmode="Multiple" Style="width: 100% !important; height:30px;font-size:16px;padding: 0px 0px 0px 5px;">
+                          <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                          <asp:ListItem Text="Contractor" Value="1"></asp:ListItem>
+                          <asp:ListItem Text="Supervisor" Value="2"></asp:ListItem>
+                          <asp:ListItem Text="Wireman" Value="3"></asp:ListItem>
+                      </asp:DropDownList>
+
+                  </div>
+              </asp:Panel>
+          </div>
+
+          <div class="col-md-4">
+              <asp:Panel ID="Panel2" runat="server">
+                  <div style="display: flex; align-items: center; gap: 10px;">
+                      <asp:Label ID="Label2" runat="server" Text="Search By:" />
+                      <asp:DropDownList ID="ddlSearchBy" runat="server" AutoPostBack="true" class="form-control  select-form select2" OnSelectedIndexChanged="ddlSearchBy_SelectedIndexChanged" Style="width: 75% !important; padding-top: 3px; font-size: 16px !important; height: 30px;">
+                          <asp:ListItem Text="Select" Value="0"></asp:ListItem>
+                          <asp:ListItem Text="District" Value="1"></asp:ListItem>
+                          <asp:ListItem Text="Status" Value="2"></asp:ListItem>
+                          <asp:ListItem Text="Name" Value="3"></asp:ListItem>
+                      </asp:DropDownList>
+                  </div>
+              </asp:Panel>
+          </div>
+          <div class="col-md-3" id="district" runat="server" visible="false">
+              <asp:Panel ID="Panel1" runat="server">
+                  <div style="display: flex; align-items: center; gap: 10px;">
+                      <asp:Label ID="Label1" runat="server" Text="Search Value:" />
+                      <asp:DropDownList ID="ddlDistrict" runat="server" AutoPostBack="true" class="form-control  select-form select2" Style="width: 100% !important; padding-top: 3px; font-size: 16px !important;">
+                      </asp:DropDownList>
+                  </div>
+              </asp:Panel>
+          </div>
+          <div class="col-md-3" id="AppStatus" runat="server" visible="false">
+              <asp:Panel ID="Panel5" runat="server">
+                  <div style="display: flex; align-items: center; gap: 10px;">
+                      <asp:Label ID="Label5" runat="server" Text="Search Value:" />
+                      <asp:DropDownList ID="ddlApplicationStatus" runat="server" AutoPostBack="true" class="form-control  select-form select2" Style="width: 100% !important; padding-top: 3px; font-size: 16px !important; height: 30px; width: 85% !important;">
+                        <%--  <asp:ListItem Text="Select" Value="0"></asp:ListItem>--%>
+                       
+            </asp:DropDownList>
+                  </div>
+              </asp:Panel>
+          </div>
+
+          <div class="col-md-3" id="Name" runat="server" visible="false">
+              <asp:Panel ID="Panel4" runat="server">
+                  <div style="display: flex; align-items: center; gap: 10px;">
+                      <asp:Label ID="Label4" runat="server" Text="Search Value:" />
+                      <asp:TextBox CssClass="form-control" ID="txtName" runat="server" autocomplete="off" AutoPostBack="true"
+                          TabIndex="1" MaxLength="200"
+                          Style="width: calc(100% - 40px);">
+                      </asp:TextBox>
+                  </div>
+              </asp:Panel>
+          </div>
+          <div class="col-md-3">
+              <asp:Button ID="btnSearch" Text="Search" runat="server" class="btn btn-primary mr-2" OnClick="btnSearch_Click" />
+              <asp:Button ID="btnReset" Text="Reset" runat="server" class="btn btn-primary mr-2" OnClick="btnReset_Click" />
+
+          </div>
+          </div>
+
+                      <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" runat="server" Width="100%"
                         AutoGenerateColumns="false" OnRowCommand="GridView1_RowCommand" BorderWidth="1px" BorderColor="#dbddff">
                         <Columns>
                             <asp:TemplateField HeaderText="ApplicationId" Visible="False">

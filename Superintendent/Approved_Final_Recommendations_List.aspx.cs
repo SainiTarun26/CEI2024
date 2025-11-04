@@ -22,6 +22,8 @@ namespace CEIHaryana.Superintendent
                 {
                     if (Convert.ToString(Session["SuperidentId"]) != null || Convert.ToString(Session["SuperidentId"]) != string.Empty)
                     {
+                        BindDistrict();
+                        BindApplicationStatus();
                         GridBind();
                     }
                     else
@@ -38,12 +40,39 @@ namespace CEIHaryana.Superintendent
                 return;
             }
         }
+        private void BindDistrict()
+        {
+            try
+            {
+                DataSet dsDistrict = new DataSet();
+                dsDistrict = CEI.GetddlDistrict();
+                ddlDistrict.DataSource = dsDistrict;
+                ddlDistrict.DataTextField = "AreaCovered";
+                ddlDistrict.DataValueField = "Id";
+                ddlDistrict.DataBind();
+                ddlDistrict.Items.Insert(0, new ListItem("Select", "0"));
+                dsDistrict.Clear();
+            }
+            catch
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('An Error Occured');", true);
+            }
+        }
         public void GridBind()
         {
             try
             {
+                string District = ddlDistrict.SelectedItem.ToString();
+                string Category = ddlcategory.SelectedItem.ToString();
+                string Status = ddlApplicationStatus.SelectedValue;
+                if (Status == "0" || string.IsNullOrEmpty(Status))
+                {
+                    Status = null;
+                }
+
                 DataSet ds = new DataSet();
-                ds = CEI.Licence_Sup_Recommended_FinalRecommendationList();
+               
+                ds = CEI.Licence_Sup_Recommended_FinalRecommendationList(Category, District, Status, txtName.Text.Trim());
 
                 if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                 {
@@ -120,6 +149,78 @@ namespace CEIHaryana.Superintendent
                 }
 
             }
+        }
+
+
+        protected void ddlSearchBy_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlSearchBy.SelectedValue == "1")
+            {
+                district.Visible = true;
+                ddlApplicationStatus.SelectedValue = "0";
+                txtName.Text = "";
+                Name.Visible = false;
+                AppStatus.Visible = false;
+            }
+            else if (ddlSearchBy.SelectedValue == "2")
+            {
+                ddlApplicationStatus.SelectedValue = "0";
+                txtName.Text = "";
+                Name.Visible = false;
+                district.Visible = false;
+                AppStatus.Visible = true;
+            }
+            else if (ddlSearchBy.SelectedValue == "3")
+            {
+                ddlDistrict.SelectedValue = "0";
+                ddlApplicationStatus.SelectedValue = "0";
+                district.Visible = false;
+                AppStatus.Visible = false;
+                Name.Visible = true;
+            }
+            else
+            {
+                ddlDistrict.SelectedValue = "0";
+                ddlApplicationStatus.SelectedValue = "0";
+                ddlSearchBy.SelectedValue = "0";
+                txtName.Text = "";
+                district.Visible = false;
+                AppStatus.Visible = false;
+                Name.Visible = false;
+            }
+        }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            GridBind();
+        }
+
+        protected void btnReset_Click(object sender, EventArgs e)
+        {
+            ddlcategory.SelectedValue = "0";
+            ddlDistrict.SelectedValue = "0";
+            ddlApplicationStatus.SelectedValue = "0";
+            ddlSearchBy.SelectedValue = "0";
+            txtName.Text = "";
+            district.Visible = false;
+            AppStatus.Visible = false;
+            Name.Visible = false;
+            GridBind();
+        }
+
+        private void BindApplicationStatus()
+        {
+            DataTable dt = CEI.GetApplicationStatus();
+
+            ddlApplicationStatus.DataSource = dt;
+            ddlApplicationStatus.DataTextField = "ApplicationStatus";
+            ddlApplicationStatus.DataValueField = "ApplicationStatus";
+            ddlApplicationStatus.DataBind();
+
+            // Add a default option at the top
+            ddlApplicationStatus.Items.Insert(0, new ListItem("Select", "0"));
+
+            ddlApplicationStatus.SelectedValue = "0";
         }
     }
 }

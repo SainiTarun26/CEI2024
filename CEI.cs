@@ -13875,11 +13875,10 @@ string DocumentPath, string Utrn, string challandate, int? DocumentSubID, string
         }
 
         //18-aug
-        public DataSet Licence_Sup_Pending_FinalRecommendationList()
+        public DataSet Licence_Sup_Pending_FinalRecommendationList(string Category = null, string District = null, string Status = null, string Name = null)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_Get_PendingLicence_LetterIssued_Applications");
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_Get_PendingLicence_LetterIssued_Applications", Category == "Select" ? (object)DBNull.Value : Category, District == "Select" ? (object)DBNull.Value : District, Status == "Select" ? (object)DBNull.Value : Status, string.IsNullOrWhiteSpace(Name) ? (object)DBNull.Value : Name);
         }
-
         public int Insert_Licence_SupFinalRecommendation(string applicationId, string remarks, string actionTaken, string actionTakenBy, string savePathMom)
         {
             int result = 0;
@@ -13906,9 +13905,9 @@ string DocumentPath, string Utrn, string challandate, int? DocumentSubID, string
             return result;
         }
 
-        public DataSet Licence_Sup_Recommended_FinalRecommendationList()
+        public DataSet Licence_Sup_Recommended_FinalRecommendationList(string Category = null, string District = null, string Status = null, string Name = null)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_Get_Sup_LetterVerified_Applications_List");
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_Get_Sup_LetterVerified_Applications_List", Category == "Select" ? (object)DBNull.Value : Category, District == "Select" ? (object)DBNull.Value : District, Status == "Select" ? (object)DBNull.Value : Status, string.IsNullOrWhiteSpace(Name) ? (object)DBNull.Value : Name);
         }
         //19-Aug
         public DataSet GetCommitteeList()
