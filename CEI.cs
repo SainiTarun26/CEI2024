@@ -3466,14 +3466,6 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_BindOfficerDashboardDaughnutChart", LoginId);
         }
-        public DataSet InProcessRequest(string Id)
-        {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInProcessRequest", Id);
-        }
-        public DataSet NewRequestRecieved(string Id)
-        {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_NewRequestReceived", Id);
-        }
        
         public DataSet TotalRequest(string Id)
         {
@@ -3483,11 +3475,6 @@ InstallationType3, string TypeOfInstallation3, string InstallationType4, string 
         #region forAdmin    
         //By neeraj 27-Feb-2025
         
-
-        public DataSet InProcessRequestInspectionForAdmin(string LoginId, string Division = null, string InstallationType = null)
-        {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetProcessRequestForAdmin", LoginId, string.IsNullOrEmpty(Division) ? (object)DBNull.Value : Division, string.IsNullOrEmpty(InstallationType) ? (object)DBNull.Value : InstallationType);
-        }        
 
         //
         public DataSet AcceptedOrRejectedRequestInspectionForAdmin(string LoginId)
@@ -8593,12 +8580,7 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "SP_ToDeleteCart_Industry", CartId);
         }
-        //27-Jan Neeraj
-        public DataSet NeWRequestInspectionForAdmin(string LoginId, string Division = null, string InstallationType = null)
-        {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_NewRequestReceivedForAdmin", LoginId, string.IsNullOrEmpty(Division) ? (object)DBNull.Value : Division, string.IsNullOrEmpty(InstallationType) ? (object)DBNull.Value : InstallationType);
-        }
-        //
+        
         public DataSet GetVerifyCertificateDetails(string MemoNo)
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetVerifyCertificateDetails", MemoNo);
@@ -16121,6 +16103,26 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetApplicationStatus");
         }
+
+        #region global search(Kalpana(03/11/2025))
+        public DataSet InProcessRequestInspectionForAdmin(string LoginId, string Division = null, string InstallationType = null, string searchText = null)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetProcessRequestForAdmin", LoginId, string.IsNullOrEmpty(Division) ? (object)DBNull.Value : Division, string.IsNullOrEmpty(InstallationType) ? (object)DBNull.Value : InstallationType, string.IsNullOrEmpty(searchText) ? (object)DBNull.Value : searchText);
+        }
+
+        public DataSet NeWRequestInspectionForAdmin(string LoginId, string Division = null, string InstallationType = null, string searchText = null)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_NewRequestReceivedForAdmin", LoginId, string.IsNullOrEmpty(Division) ? (object)DBNull.Value : Division, string.IsNullOrEmpty(InstallationType) ? (object)DBNull.Value : InstallationType, string.IsNullOrEmpty(searchText) ? (object)DBNull.Value : searchText);
+        }
+        public DataSet InProcessRequest(string Id, string searchText = null)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetInProcessRequest", Id, string.IsNullOrEmpty(searchText) ? (object)DBNull.Value : searchText);
+        }
+        public DataSet NewRequestRecieved(string Id, string searchText = null)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_NewRequestReceived", Id, string.IsNullOrEmpty(searchText) ? (object)DBNull.Value : searchText);
+        }
+        #endregion
     }
 }
 

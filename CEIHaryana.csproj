@@ -254,6 +254,7 @@
     <Content Include="Admin\DistrictData.aspx" />
     <Content Include="Admin\Division.aspx" />
     <Content Include="Admin\InProcessRequest.aspx" />
+    <Content Include="Admin\InProcessRequest.aspx.cs.txt" />
     <Content Include="Admin\InspectionDetails.aspx" />
     <Content Include="Admin\Inspection_Cinema_Talkies_Admin.aspx" />
     <Content Include="Admin\IntimationForHistory.aspx" />
@@ -266,8 +267,10 @@
     <Content Include="Admin\LiftInspectionDetails.aspx" />
     <Content Include="Admin\NewApplications_Licence.aspx" />
     <Content Include="Admin\NewRequestInspectionForAdmin.aspx" />
+    <Content Include="Admin\NewRequestInspectionForAdmin.aspx.cs.txt" />
     <Content Include="Admin\NoticeForDisconnection.aspx" />
     <Content Include="Admin\Pending_Licence_Approval_Cei.aspx" />
+    <Content Include="Admin\Pending_Licence_Approval_Cei.aspx.cs.txt" />
     <Content Include="Admin\Pending_Licence_Approval_Cei_List.aspx" />
     <Content Include="Admin\PeriodicInspection_Cinema_Talkies_Admin.aspx" />
     <Content Include="Admin\PeriodicReturnedIntimationForHistory.aspx" />
@@ -2030,6 +2033,7 @@
     <Content Include="Officers\InProcessInspection.aspx" />
     <Content Include="Officers\InProcessInspection_Lift_Escalator.aspx" />
     <Content Include="Officers\InProcessRequest.aspx" />
+    <Content Include="Officers\InProcessRequest.aspx.cs.txt" />
     <Content Include="Officers\InProcess_Returned_Inspection_Lift_Escalator.aspx" />
     <Content Include="Officers\Inspection.aspx" />
     <Content Include="Officers\InspectionDetails.aspx" />
@@ -2040,6 +2044,7 @@
     <Content Include="Officers\LiftInspectionDetails.aspx" />
     <Content Include="Officers\Lift_EscelatorApprovaldata.aspx" />
     <Content Include="Officers\NewApplications.aspx" />
+    <Content Include="Officers\NewApplications.aspx.cs.txt" />
     <Content Include="Officers\OfficerDashboard.aspx" />
     <Content Include="Officers\PendingPhysicalVerification_DetailView.aspx" />
     <Content Include="Officers\PendingPhysicalVerification_Gridview.aspx" />
