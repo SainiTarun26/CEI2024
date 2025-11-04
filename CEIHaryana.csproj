@@ -1872,6 +1872,7 @@
     <Content Include="Image\Image\ImageToDelete-removebg-preview.png" />
     <Content Include="Image\Image\ImageToDelete.jpeg" />
     <Content Include="Image\Image\refresh.png" />
+    <Content Include="Image\Image\Sample_QR.jpg" />
     <Content Include="Industry\CeiTrackApiDetailsPost_DefaultMethodTesting.aspx" />
     <Content Include="Industry\Industry.aspx" />
     <Content Include="Industry\IndustryServices.aspx" />

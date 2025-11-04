@@ -291,7 +291,7 @@
                                 <div class="col-sm-3 d-flex justify-content-start">
                                     <div style="width: 150px; height: 150px; border: 2px solid black; display: flex; align-items: center; justify-content: center;">
                                         <span style="font-size: 12px;">
-                                            <asp:Image ID="imgQRCode" runat="server" /></span>
+                                            <asp:Image ID="imgQRCode" runat="server" ImageUrl="../Image/Image/Sample_QR.png"/></span>
                                     </div>
                                 </div>
 
@@ -341,7 +341,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important; font-size: 16px; text-align: center;">No. 
-                                        <asp:Label Style="font-weight: bold;" ID="lblCertificateNo" runat="server"></asp:Label>
+                                        <asp:Label Style="font-weight: bold;" ID="lblCertificateNo" Text="XXXXX" runat="server"></asp:Label>
 
                                     </h6>
 
@@ -410,7 +410,7 @@
 
                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 16px; font-weight: 700;">Signatures of Contractor</h6>
                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 16px; font-weight: 700;">Dated:
-                                        <asp:Label ID="lblApprovedDate" runat="server" Style="font-weight: 500; font-size: 16px !important;"></asp:Label></h6>
+                                        <asp:Label ID="lblApprovedDate" Text="XX-XX-XXXX" runat="server" Style="font-weight: 500; font-size: 16px !important;"></asp:Label></h6>
 
                                 </div>
                                 <div class="col-9" style="text-align: end">
@@ -421,7 +421,7 @@
 
                                 </div>
                                 <div id="RegistationId" runat="server" visible="false">
-                                    <asp:Label ID="lblRegistationId" runat="server" Style="font-weight: 500; font-size: 16px !important;"></asp:Label>
+                                    <asp:Label ID="lblRegistationId" runat="server" Text="XXXXX" Style="font-weight: 500; font-size: 16px !important;"></asp:Label>
                                 </div>
                             </div>
                             <div class="row" style="margin-top: 35px;">

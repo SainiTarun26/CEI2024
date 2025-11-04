@@ -290,7 +290,7 @@
                                 <div class="col-sm-3 d-flex justify-content-start">
                                     <div style="width: 150px; height: 150px; border: 2px solid black; display: flex; align-items: center; justify-content: center;">
                                         <span style="font-size: 12px;">
-                                            <asp:Image ID="imgQRCode" runat="server" /></span>
+                                            <asp:Image ID="imgQRCode" runat="server"  ImageUrl="../Image/Image/Sample_QR.png"/></span>
                                     </div>
                                 </div>
 
@@ -312,7 +312,7 @@
                             <div class="row">
                                 <div class="col-6">
                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 15PX;">No. 
-                                                                                    <asp:Label ID="lblCertificateNo" runat="server" Text="" Style="font-size: 16px !important;"></asp:Label>
+                                                                                    <asp:Label ID="lblCertificateNo" runat="server" Text="XXXXX" Style="font-size: 16px !important;"></asp:Label>
 
 
                                     </h6>
@@ -365,7 +365,7 @@ qualifications and experience as certained by the Screening Committee, found eli
                                 <div class="col-3" style="margin-top: auto;">
 
                                     <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 0px !important; font-size: 18px; font-weight: 700;">Dated:
-                                        <asp:Label ID="lblApprovedDate" runat="server" Style="font-weight: 500; font-size: 16px !important;"></asp:Label></h6>
+                                        <asp:Label ID="lblApprovedDate" runat="server" Text="XX-XX-XXXX" Style="font-weight: 500; font-size: 16px !important;"></asp:Label></h6>
 
                                 </div>
                                 <div class="col-9" style="text-align: end">

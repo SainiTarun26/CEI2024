@@ -44,16 +44,16 @@ namespace CEIHaryana.Previewpages
                 dt = CEI.GetCertificateDataCon_Sup_WirForPreview(ApplicationId);
                 if (dt.Rows.Count > 0)
                 {
-                    dt.Rows[0]["QRCode"] = GenerateQrCode("Certificate_No = " + dt.Rows[0]["Certificate_No"].ToString());
-                    lblRegistationId.Text = dt.Rows[0]["RegistationId"].ToString();
-                    lblCertificateNo.Text = dt.Rows[0]["LicenceNo"].ToString();
+                   // dt.Rows[0]["QRCode"] = GenerateQrCode("Certificate_No = " + dt.Rows[0]["Certificate_No"].ToString());
+                   // lblRegistationId.Text = dt.Rows[0]["RegistationId"].ToString();
+                   // lblCertificateNo.Text = dt.Rows[0]["LicenceNo"].ToString();
                     lblName.Text = dt.Rows[0]["Name"].ToString();
-                    lblApprovedDate.Text = dt.Rows[0]["ApprovedDate"].ToString();
+                   // lblApprovedDate.Text = dt.Rows[0]["ApprovedDate"].ToString();
                     Image.ImageUrl = "data:image/jpeg;base64," + Convert.ToBase64String((byte[])dt.Rows[0]["Signature"]);
                     myImage.ImageUrl = dt.Rows[0]["ContractorSignatureDocPath"].ToString();
                     imgPhoto.ImageUrl = dt.Rows[0]["ApplicantImageDocPath"].ToString();
                     lblAuthorizedUpto.Text = dt.Rows[0]["Votagelevel"].ToString();
-                    imgQRCode.ImageUrl = "data:image/jpeg;base64," + Convert.ToBase64String((byte[])dt.Rows[0]["QRCode"]);
+                    //imgQRCode.ImageUrl = "data:image/jpeg;base64," + Convert.ToBase64String((byte[])dt.Rows[0]["QRCode"]);
                     //lblWEF.Text = dt.Rows[0]["WitheffectDate"].ToString();
                     lblValidUpto.Text = dt.Rows[0]["ExpiryDate"].ToString();
                 }
