@@ -326,262 +326,277 @@
                             </div>
                         </div>
                     </div>
-               <nav class="sidebar sidebar-offcanvas" id="sidebar" style="background-color: #263247;">
-    <ul class="nav" id="sidebar-accordion">
-        <li class="nav-item">
-            <a class="nav-link" href="/Admin/AdminMaster.aspx">
-                <i class="icon-grid menu-icon"></i>
-                <span class="menu-title">Dashboard</span>
-            </a>
-        </li>
+                    <nav class="sidebar sidebar-offcanvas" id="sidebar" style="background-color: #263247;">
+                        <ul class="nav" id="sidebar-accordion">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Admin/AdminMaster.aspx">
+                                    <i class="icon-grid menu-icon"></i>
+                                    <span class="menu-title">Dashboard</span>
+                                </a>
+                            </li>
 
-        <!-- Licence -->
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic7" aria-expanded="false" aria-controls="ui-basic7">
-                <span class="menu-title">Licence</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="ui-basic7" data-parent="#sidebar-accordion">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a class="nav-link" href="/Admin/NewApplications_Licence.aspx">NewApplcations</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/Admin/Pending_Licence_Approval_Cei_List.aspx">InProcess Licence</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/Admin/Approved_Licence_Approval_Cei_List.aspx">Application History</a></li>
-                </ul>
-            </div>
-        </li>
+                            <!-- Licence -->
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="collapse" href="#ui-basic7" aria-expanded="false" aria-controls="ui-basic7">
+                                    <span class="menu-title">Licence</span>
+                                    <i class="menu-arrow"></i>
+                                </a>
+                                <div class="collapse" id="ui-basic7" data-parent="#sidebar-accordion">
+                                    <ul class="nav flex-column sub-menu">
+                                        <li class="nav-item"><a class="nav-link" href="/Admin/NewApplications_Licence.aspx">NewApplcations</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="/Admin/Pending_Licence_Approval_Cei_List.aspx">InProcess Licence</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="/Admin/Approved_Licence_Approval_Cei_List.aspx">Application History</a></li>
+                                    </ul>
+                                </div>
+                            </li>
 
-        <!-- Staff Details -->
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-                <span class="menu-title">Staff Details</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="ui-basic" data-parent="#sidebar-accordion">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a class="nav-link" href="/Admin/StaffDetailsData.aspx?category=Contractor">Contractor</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/Admin/StaffDetailsData.aspx?category=Supervisor">Supervisor</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/Admin/StaffDetailsData.aspx?category=Wireman">Wireman</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/Admin/StaffDetailsData.aspx?category=SiteOwner">Site Owner</a></li>
-                </ul>
-            </div>
-        </li>
+                            <!-- Staff Details -->
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                                    <span class="menu-title">Staff Details</span>
+                                    <i class="menu-arrow"></i>
+                                </a>
+                                <div class="collapse" id="ui-basic" data-parent="#sidebar-accordion">
+                                    <ul class="nav flex-column sub-menu">
+                                        <li class="nav-item"><a class="nav-link" href="/Admin/StaffDetailsData.aspx?category=Contractor">Contractor</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="/Admin/StaffDetailsData.aspx?category=Supervisor">Supervisor</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="/Admin/StaffDetailsData.aspx?category=Wireman">Wireman</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="/Admin/StaffDetailsData.aspx?category=SiteOwner">Site Owner</a></li>
+                                    </ul>
+                                </div>
+                            </li>
 
-        <!-- Add Staff Details -->
-        <li class="nav-item" id="StaffDetails" runat="server" visible="false">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic1">
-                <span class="menu-title">Add Staff Details</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="ui-basic1" data-parent="#sidebar-accordion">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a class="nav-link" href="/Admin/AddContractorDetails.aspx">Add Contractor</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/Admin/AddSupervisorDetails.aspx">Add Supervisor</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/Admin/AddWiremanDetails.aspx">Add Wireman</a></li>
-                </ul>
-            </div>
-        </li>
+                            <!-- Add Staff Details -->
+                            <li class="nav-item" id="StaffDetails" runat="server" visible="false">
+                                <a class="nav-link" data-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic1">
+                                    <span class="menu-title">Add Staff Details</span>
+                                    <i class="menu-arrow"></i>
+                                </a>
+                                <div class="collapse" id="ui-basic1" data-parent="#sidebar-accordion">
+                                    <ul class="nav flex-column sub-menu">
+                                        <li class="nav-item"><a class="nav-link" href="/Admin/AddContractorDetails.aspx">Add Contractor</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="/Admin/AddSupervisorDetails.aspx">Add Supervisor</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="/Admin/AddWiremanDetails.aspx">Add Wireman</a></li>
+                                    </ul>
+                                </div>
+                            </li>
 
-        <!-- Print Forms -->
-        <li class="nav-item" id="Printforms" runat="server" visible="false">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic3" aria-expanded="false" aria-controls="ui-basic3">
-                <span class="menu-title">Print Forms</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="ui-basic3" data-parent="#sidebar-accordion">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a class="nav-link" href="/UserPages/FormPrintContractor.aspx">Contractor</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/UserPages/FormPrintSupervisor.aspx">Supervisor</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/UserPages/FormPrintWiremen.aspx">Wireman</a></li>
-                </ul>
-            </div>
-        </li>
+                            <!-- Print Forms -->
+                            <li class="nav-item" id="Printforms" runat="server" visible="false">
+                                <a class="nav-link" data-toggle="collapse" href="#ui-basic3" aria-expanded="false" aria-controls="ui-basic3">
+                                    <span class="menu-title">Print Forms</span>
+                                    <i class="menu-arrow"></i>
+                                </a>
+                                <div class="collapse" id="ui-basic3" data-parent="#sidebar-accordion">
+                                    <ul class="nav flex-column sub-menu">
+                                        <li class="nav-item"><a class="nav-link" href="/UserPages/FormPrintContractor.aspx">Contractor</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="/UserPages/FormPrintSupervisor.aspx">Supervisor</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="/UserPages/FormPrintWiremen.aspx">Wireman</a></li>
+                                    </ul>
+                                </div>
+                            </li>
 
-        <!-- Work Intimations -->
-        <li class="nav-item">
-            <a class="nav-link" href="/Admin/Projects.aspx">
-                <span class="menu-title">Work Intimations</span>
-            </a>
-        </li>
+                            <!-- Work Intimations -->
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Admin/Projects.aspx">
+                                    <span class="menu-title">Work Intimations</span>
+                                </a>
+                            </li>
 
-        <!-- Test Report History -->
-        <li class="nav-item">
-            <a class="nav-link" href="/Admin/TestReportHistoryFromSupervisor.aspx">
-                <span class="menu-title">Test Report History</span>
-            </a>
-        </li>
+                            <!-- Test Report History -->
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Admin/TestReportHistoryFromSupervisor.aspx">
+                                    <span class="menu-title">Test Report History</span>
+                                </a>
+                            </li>
 
-        <!-- Inspections -->
-        <li class="nav-item" id="NewInspectionTab" runat="server" visible="false">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic8" aria-expanded="false" aria-controls="ui-basic8">
-                <span class="menu-title">Inspections</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="ui-basic8" data-parent="#sidebar-accordion">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a class="nav-link" href="/Admin/IntimationHistoryForAdmin.aspx">New</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/Admin/ActionInspectioHistrory.aspx">InProcess</a></li>
-                </ul>
-            </div>
-        </li>
+                            <!-- Inspections -->
+                            <li class="nav-item" id="NewInspectionTab" runat="server" visible="false">
+                                <a class="nav-link" data-toggle="collapse" href="#ui-basic8" aria-expanded="false" aria-controls="ui-basic8">
+                                    <span class="menu-title">Inspections</span>
+                                    <i class="menu-arrow"></i>
+                                </a>
+                                <div class="collapse" id="ui-basic8" data-parent="#sidebar-accordion">
+                                    <ul class="nav flex-column sub-menu">
+                                        <li class="nav-item"><a class="nav-link" href="/Admin/IntimationHistoryForAdmin.aspx">New</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="/Admin/ActionInspectioHistrory.aspx">InProcess</a></li>
+                                    </ul>
+                                </div>
+                            </li>
 
-        <!-- Consolidated Report -->
-        <li class="nav-item" id="ConsolidatedReport" runat="server" visible="false">
-            <a class="nav-link" href="/Admin/Consolidated_Report.aspx">
-                <span class="menu-title">Consolidated Report</span>
-            </a>
-        </li>
+                            <!-- Consolidated Report -->
+                            <li class="nav-item" id="ConsolidatedReport" runat="server" visible="false">
+                                <a class="nav-link" href="/Admin/Consolidated_Report.aspx">
+                                    <span class="menu-title">Consolidated Report</span>
+                                </a>
+                            </li>
 
-        <!-- Upload Signature -->
-        <li class="nav-item">
-            <a class="nav-link" href="/Admin/UploadSignature.aspx">
-                <span class="menu-title">Upload Signature</span>
-            </a>
-        </li>
+                            <%--<!-- Upload Signature -->
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/Admin/UploadSignature.aspx">
+                                        <span class="menu-title">Upload Signature</span>
+                                    </a>
+                                </li>--%>
 
-        <!-- SLD -->
-        <li class="nav-item" id="SLDRequest" runat="server" visible="false">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic5" aria-expanded="false" aria-controls="ui-basic5">
-                <span class="menu-title">SLD</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="ui-basic5" data-parent="#sidebar-accordion">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a class="nav-link" href="/Admin/SldApproval.aspx">Request Recevied</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/Admin/SldApprovalRequest.aspx">Approval Request</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/Admin/SLDHistory.aspx">History</a></li>
-                </ul>
-            </div>
-        </li>
+                            <!-- CEI Staff -->
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="collapse" href="#ui-ceiStaff" aria-expanded="false" aria-controls="ui-ceiStaff">
+                                    <span class="menu-title">CEI Staff</span>
+                                    <i class="menu-arrow"></i>
+                                </a>
+                                <div class="collapse" id="ui-ceiStaff" data-parent="#sidebar-accordion">
+                                    <ul class="nav flex-column sub-menu">
+                                        <li class="nav-item"><a class="nav-link" href="/Admin/AddStaff.aspx">New</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="/Admin/UploadSignature.aspx">Upload Signature</a></li>
+                                    </ul>
+                                </div>
+                            </li>
 
-        <!-- Change Staff -->
-        <li class="nav-item" id="ChangeStaffTab" runat="server" visible="true">
-            <a class="nav-link" href="/Admin/ChangeStaff.aspx">
-                <span class="menu-title">Change Staff</span>
-            </a>
-        </li>
 
-        <!-- Transfer -->
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic4" aria-expanded="false" aria-controls="ui-basic4">
-                <span class="menu-title">Transfer</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="ui-basic4" data-parent="#sidebar-accordion">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a class="nav-link" href="/Admin/Transfer_Inspections_ToDifferentStaff_ByAdmin.aspx">Inspections</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/Admin/Xen_To_XenLiftTransfer_ByAdmin.aspx">Lift Inspections</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/Admin/Transfer_Sld_ToDifferentStaff_ByAdmin.aspx">Slds</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/Admin/TransferRequestReport.aspx">Request Report</a></li>
-                </ul>
-            </div>
-        </li>
+                            <!-- SLD -->
+                            <li class="nav-item" id="SLDRequest" runat="server" visible="false">
+                                <a class="nav-link" data-toggle="collapse" href="#ui-basic5" aria-expanded="false" aria-controls="ui-basic5">
+                                    <span class="menu-title">SLD</span>
+                                    <i class="menu-arrow"></i>
+                                </a>
+                                <div class="collapse" id="ui-basic5" data-parent="#sidebar-accordion">
+                                    <ul class="nav flex-column sub-menu">
+                                        <li class="nav-item"><a class="nav-link" href="/Admin/SldApproval.aspx">Request Recevied</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="/Admin/SldApprovalRequest.aspx">Approval Request</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="/Admin/SLDHistory.aspx">History</a></li>
+                                    </ul>
+                                </div>
+                            </li>
 
-        <!-- Search by CAF Id -->
-        <li class="nav-item">
-            <a class="nav-link" href="/Admin/TotalRequestInspectionForAdmin_SearchWithCafId.aspx">
-                <span class="menu-title">Search By CAF Id</span>
-            </a>
-        </li>
+                            <!-- Change Staff -->
+                            <li class="nav-item" id="ChangeStaffTab" runat="server" visible="true">
+                                <a class="nav-link" href="/Admin/ChangeStaff.aspx">
+                                    <span class="menu-title">Change Staff</span>
+                                </a>
+                            </li>
 
-        <!-- Utility Master -->
-        <li class="nav-item" id="UtilityMasterTab" runat="server" visible="false">
-            <a class="nav-link" href="/Admin/UtilityMaster.aspx">
-                <span class="menu-title">Utility Master</span>
-            </a>
-        </li>
+                            <!-- Transfer -->
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="collapse" href="#ui-basic4" aria-expanded="false" aria-controls="ui-basic4">
+                                    <span class="menu-title">Transfer</span>
+                                    <i class="menu-arrow"></i>
+                                </a>
+                                <div class="collapse" id="ui-basic4" data-parent="#sidebar-accordion">
+                                    <ul class="nav flex-column sub-menu">
+                                        <li class="nav-item"><a class="nav-link" href="/Admin/Transfer_Inspections_ToDifferentStaff_ByAdmin.aspx">Inspections</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="/Admin/Xen_To_XenLiftTransfer_ByAdmin.aspx">Lift Inspections</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="/Admin/Transfer_Sld_ToDifferentStaff_ByAdmin.aspx">Slds</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="/Admin/TransferRequestReport.aspx">Request Report</a></li>
+                                    </ul>
+                                </div>
+                            </li>
 
-        <!-- Wing Master -->
-        <li class="nav-item" id="WingMasterTab" runat="server" visible="false">
-            <a class="nav-link" href="/Admin/WingMaster.aspx">
-                <span class="menu-title">Wing Master</span>
-            </a>
-        </li>
+                            <!-- Search by CAF Id -->
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Admin/TotalRequestInspectionForAdmin_SearchWithCafId.aspx">
+                                    <span class="menu-title">Search By CAF Id</span>
+                                </a>
+                            </li>
 
-        <!-- Zone Master -->
-        <li class="nav-item" id="ZoneMasterTab" runat="server" visible="false">
-            <a class="nav-link" href="/Admin/ZoneMaster.aspx">
-                <span class="menu-title">Zone Master</span>
-            </a>
-        </li>
+                            <!-- Utility Master -->
+                            <li class="nav-item" id="UtilityMasterTab" runat="server" visible="false">
+                                <a class="nav-link" href="/Admin/UtilityMaster.aspx">
+                                    <span class="menu-title">Utility Master</span>
+                                </a>
+                            </li>
 
-        <!-- Circle Master -->
-        <li class="nav-item" id="CircleMasterTab" runat="server" visible="false">
-            <a class="nav-link" href="/Admin/CircleMaster.aspx">
-                <span class="menu-title">Circle Master</span>
-            </a>
-        </li>
+                            <!-- Wing Master -->
+                            <li class="nav-item" id="WingMasterTab" runat="server" visible="false">
+                                <a class="nav-link" href="/Admin/WingMaster.aspx">
+                                    <span class="menu-title">Wing Master</span>
+                                </a>
+                            </li>
 
-        <!-- Division Master -->
-        <li class="nav-item" id="DivisionMasterTab" runat="server" visible="false">
-            <a class="nav-link" href="/Admin/Division.aspx">
-                <span class="menu-title">Division Master</span>
-            </a>
-        </li>
+                            <!-- Zone Master -->
+                            <li class="nav-item" id="ZoneMasterTab" runat="server" visible="false">
+                                <a class="nav-link" href="/Admin/ZoneMaster.aspx">
+                                    <span class="menu-title">Zone Master</span>
+                                </a>
+                            </li>
 
-        <!-- Sub Division Master -->
-        <li class="nav-item" id="SubDivisionMasterTab" runat="server" visible="false">
-            <a class="nav-link" href="/Admin/SubDivisionMaster.aspx">
-                <span class="menu-title">Sub Division Master</span>
-            </a>
-        </li>
+                            <!-- Circle Master -->
+                            <li class="nav-item" id="CircleMasterTab" runat="server" visible="false">
+                                <a class="nav-link" href="/Admin/CircleMaster.aspx">
+                                    <span class="menu-title">Circle Master</span>
+                                </a>
+                            </li>
 
-        <!-- Accidential Reports -->
-        <li class="nav-item" id="Li1" runat="server">
-            <a class="nav-link" href="/Admin/AccidentialReports_Admin.aspx">
-                <span class="menu-title">Accidential Reports</span>
-            </a>
-        </li>
+                            <!-- Division Master -->
+                            <li class="nav-item" id="DivisionMasterTab" runat="server" visible="false">
+                                <a class="nav-link" href="/Admin/Division.aspx">
+                                    <span class="menu-title">Division Master</span>
+                                </a>
+                            </li>
 
-        <!-- CESE -->
-        <li class="nav-item" id="CESE" runat="server" visible="false">
-            <a class="nav-link" href="/Admin/CESE_Registration.aspx">
-                <span class="menu-title">CESE Registration</span>
-            </a>
-        </li>
+                            <!-- Sub Division Master -->
+                            <li class="nav-item" id="SubDivisionMasterTab" runat="server" visible="false">
+                                <a class="nav-link" href="/Admin/SubDivisionMaster.aspx">
+                                    <span class="menu-title">Sub Division Master</span>
+                                </a>
+                            </li>
 
-        <!-- Disconnection -->
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#ui-basic6" aria-expanded="false" aria-controls="ui-basic6">
-                <span class="menu-title">Disconnection</span>
-                <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="ui-basic6" data-parent="#sidebar-accordion">
-                <ul class="nav flex-column sub-menu">
-                    <li class="nav-item"><a class="nav-link" href="/Admin/NoticeForDisconnection.aspx">Notice</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/Admin/DisconnectionRequest.aspx">Status Of Notice</a></li>
-                </ul>
-            </div>
-        </li>
+                            <!-- Accidential Reports -->
+                            <li class="nav-item" id="Li1" runat="server">
+                                <a class="nav-link" href="/Admin/AccidentialReports_Admin.aspx">
+                                    <span class="menu-title">Accidential Reports</span>
+                                </a>
+                            </li>
 
-        <!-- Committee -->
-        <li class="nav-item">
-            <a class="nav-link" href="/Admin/Committee_Details.aspx">
-                <span class="menu-title">Committee</span>
-            </a>
-        </li>
+                            <!-- CESE -->
+                            <li class="nav-item" id="CESE" runat="server" visible="false">
+                                <a class="nav-link" href="/Admin/CESE_Registration.aspx">
+                                    <span class="menu-title">CESE Registration</span>
+                                </a>
+                            </li>
 
-        <!-- Termination / Suspension -->
-        <li class="nav-item" id="TerminationOrSuspension" runat="server" visible="false">
-            <a class="nav-link" href="/Admin/Suspend_Terminate.aspx">
-                <span class="menu-title">Termination / Suspension</span>
-            </a>
-        </li>
+                            <!-- Disconnection -->
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="collapse" href="#ui-basic6" aria-expanded="false" aria-controls="ui-basic6">
+                                    <span class="menu-title">Disconnection</span>
+                                    <i class="menu-arrow"></i>
+                                </a>
+                                <div class="collapse" id="ui-basic6" data-parent="#sidebar-accordion">
+                                    <ul class="nav flex-column sub-menu">
+                                        <li class="nav-item"><a class="nav-link" href="/Admin/NoticeForDisconnection.aspx">Notice</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="/Admin/DisconnectionRequest.aspx">Status Of Notice</a></li>
+                                    </ul>
+                                </div>
+                            </li>
 
-        <!-- Upgradation Request -->
-        <li class="nav-item" id="UpgradationRequest" runat="server" visible="false">
-            <a class="nav-link" href="/Admin/Contractor_Supervisor_Upgradation_Details.aspx">
-                <span class="menu-title">Upgradation Requests</span>
-            </a>
-        </li>
+                            <!-- Committee -->
+                            <li class="nav-item">
+                                <a class="nav-link" href="/Admin/Committee_Details.aspx">
+                                    <span class="menu-title">Committee</span>
+                                </a>
+                            </li>
 
-        <!-- Upgradation History -->
-        <li class="nav-item" id="UpgradationHistory" runat="server" visible="false">
-            <a class="nav-link" href="/Admin/UpgradationRequestHistory.aspx">
-                <span class="menu-title">Upgradation Requests History</span>
-            </a>
-        </li>
-    </ul>
-</nav>
+                            <!-- Termination / Suspension -->
+                            <li class="nav-item" id="TerminationOrSuspension" runat="server" visible="false">
+                                <a class="nav-link" href="/Admin/Suspend_Terminate.aspx">
+                                    <span class="menu-title">Termination / Suspension</span>
+                                </a>
+                            </li>
+
+                            <!-- Upgradation Request -->
+                            <li class="nav-item" id="UpgradationRequest" runat="server" visible="false">
+                                <a class="nav-link" href="/Admin/Contractor_Supervisor_Upgradation_Details.aspx">
+                                    <span class="menu-title">Upgradation Requests</span>
+                                </a>
+                            </li>
+
+                            <!-- Upgradation History -->
+                            <li class="nav-item" id="UpgradationHistory" runat="server" visible="false">
+                                <a class="nav-link" href="/Admin/UpgradationRequestHistory.aspx">
+                                    <span class="menu-title">Upgradation Requests History</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
 
                     <div class="main-panel">
                         <div class="card" id="PageDetails">

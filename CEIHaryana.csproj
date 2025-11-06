@@ -234,6 +234,7 @@
     <Content Include="Admin\Action_InProcess_Lift.aspx" />
     <Content Include="Admin\AddContractorDetails.aspx" />
     <Content Include="Admin\AddRemoveStaff.aspx" />
+    <Content Include="Admin\AddStaff.aspx" />
     <Content Include="Admin\AddSupervisorDetails.aspx" />
     <Content Include="Admin\AddWiremanDetails.aspx" />
     <Content Include="Admin\AdminDashboard.aspx" />
@@ -2373,6 +2374,13 @@
     </Compile>
     <Compile Include="Admin\AddRemoveStaff.aspx.designer.cs">
       <DependentUpon>AddRemoveStaff.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\AddStaff.aspx.cs">
+      <DependentUpon>AddStaff.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\AddStaff.aspx.designer.cs">
+      <DependentUpon>AddStaff.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\AddSupervisorDetails.aspx.cs">
       <DependentUpon>AddSupervisorDetails.aspx</DependentUpon>

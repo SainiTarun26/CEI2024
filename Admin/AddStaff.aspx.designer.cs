@@ -11,7 +11,7 @@ namespace CEIHaryana.Admin
 {
 
 
-    public partial class UploadSignature
+    public partial class AddStaff
     {
 
         /// <summary>
@@ -87,13 +87,13 @@ namespace CEIHaryana.Admin
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
 
         /// <summary>
-        /// txtName control.
+        /// staffName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtName;
+        protected global::System.Web.UI.WebControls.TextBox staffName;
 
         /// <summary>
         /// RequiredFieldValidator2 control.
@@ -105,13 +105,13 @@ namespace CEIHaryana.Admin
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator2;
 
         /// <summary>
-        /// txtEmail control.
+        /// staffEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEmail;
+        protected global::System.Web.UI.WebControls.TextBox staffEmail;
 
         /// <summary>
         /// RequiredFieldValidator9 control.

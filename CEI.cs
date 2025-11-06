@@ -15968,6 +15968,11 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetStatusOfNewLicenceRequest", UserId);
         }
+
+        public DataSet AddStaff(string divisionName, string staffUserId, byte[] signatureBytes, string fileExtensionFormat, string staffName, string email)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Add_Staff", divisionName, staffUserId, signatureBytes, fileExtensionFormat, staffName, email);
+        }
         #endregion
     }
 }
