@@ -14775,14 +14775,11 @@ string dbPathCompetency, string dbPathMedicalCertificate, string userId)
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "GetRenewalHistory", userId);
         }
-        public DataSet InspectionModal(string LoginId, string searchText)
-        {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InspectionForAdmin", LoginId, searchText);
-        }
-        public DataSet InspectionModalforofficer(string LoginId, string searchText)
-        {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_TotalRequestOfInspection", LoginId, searchText);
-        }
+        //public DataSet InspectionModal(string LoginId, string searchText)
+        //{
+        //    return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InspectionForAdmin", LoginId, searchText);
+        //}
+    
 
 
         public DataSet TotalRequestInspectionForAdmin(string LoginId, string Division = null, string InstallationType = null, string searchText = null)
@@ -16122,6 +16119,17 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_NewRequestReceived", Id, string.IsNullOrEmpty(searchText) ? (object)DBNull.Value : searchText);
         }
         #endregion
+
+
+      
+        public DataSet InspectionModalforofficer(string LoginId, string searchText)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_TotalRequestOfInspection", LoginId, searchText);
+        }
+        public DataSet InspectionModal(string LoginId, string searchText)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InspectionForAdmin", LoginId, searchText);
+        }
     }
 }
 
