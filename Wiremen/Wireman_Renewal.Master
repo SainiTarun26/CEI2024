@@ -347,7 +347,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a id="A1" runat="server" visible="true" class="nav-link" href="/UserPages/Get_UserCurrent_Licence.aspx">
+                                <a id="A1" runat="server" visible="true" class="nav-link" href="/Wiremen/Renewal_Certificate_Wiremen.aspx">
                                     <i class="icon-grid menu-icon"></i>
                                     <span class="menu-title">Renewal Certificate
                                     </span>
