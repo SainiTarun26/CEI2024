@@ -10,7 +10,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Title Page-->
 <title>Dashboard</title>
+     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
+ <link rel="stylesheet" href="/css2/style.css" />
+ <!-- CSS -->
+ <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
+ <link rel="stylesheet" href="/css2/style.css" />
+ <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+ <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+ <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet" />
+ <link href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
 
+ <!-- JS (correct order) -->
+ <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+ <script src="https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+ <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
+ <script src="https://kit.fontawesome.com/57676f1d80.js" crossorigin="anonymous"></script>
 <!-- Fontfaces CSS-->
 <link href="/Dashboard_Css/css/font-face.css" rel="stylesheet" media="all">
 <link href="/Dashboard_Css/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
