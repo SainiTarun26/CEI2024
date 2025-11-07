@@ -318,7 +318,7 @@ nav#navbar.navbar-mobile {
        <tr>
            <td rowspan="5">Wireman</td>
            <td>New</td>
-           <td>240/- Rs for One Year</td>
+           <td>240/- Rs for One Year (The new license will be issued for period of one year only.)</td>
        </tr>
        <tr>
            <td>Renewal</td>
@@ -327,27 +327,33 @@ nav#navbar.navbar-mobile {
        </tr>
        <tr>
            <td></td>
-           <td>60/- Rs After 14 days Upto 30 days</td>
+            <td>540/- Rs for Five years</td>
+          
+       </tr>
+       <tr>
+            <td>Late Fee</td>
+            <td>60/- Rs After 14 days Upto 30 days</td>
+           
        </tr>
        <tr>
            <td></td>
-           <td>120/- Rs More then 30 up to 365,Annually late fees</td>
-       </tr>
-       <tr>
-           <td></td>
-           <td>540/- Rs for Five years</td>
+          <td>120/- Rs More then 30 up to 365, Annually late fees</td>
        </tr>
 
        <!-- Supervisor -->
        <tr>
            <td rowspan="6">Supervisor</td>
            <td>New</td>
-           <td>480/- Rs for One Year</td>
+           <td>480/- Rs for One Year (The new license will be issued for period of one year only.)</td>
        </tr>
        <tr>
            <td>Renewal</td>
            <td>240/- Rs for One Year</td>
        </tr>
+                                                                       <tr>
+     <td></td>
+     <td>1140/- Rs For five years</td>
+ </tr>
        <tr>
            <td>Late Fee</td>
            <td>120/- Rs After 14 days Upto 30 days</td>
@@ -356,10 +362,7 @@ nav#navbar.navbar-mobile {
            <td></td>
            <td>240/- Rs More then 30 up to 365</td>
        </tr>
-       <tr>
-           <td></td>
-           <td>1140/- Rs For five years</td>
-       </tr>
+      
        <tr>
            <td>Upgradation Fee</td>
            <td>Nil/-</td>
@@ -369,11 +372,11 @@ nav#navbar.navbar-mobile {
        <tr>
            <td rowspan="5">Contractor</td>
            <td>New</td>
-           <td>4020/- Rs for One Year</td>
+           <td>4020/- Rs for One Year (The new license will be issued for period of one year only.)</td>
        </tr>
        <tr>
            <td>Renewal</td>
-           <td>6300/- Rs for Five Year</td>
+           <td>6300/- Rs for Five Year (The new license will be Renewed for period of five years only.)</td>
        </tr>
        <tr>
            <td>Late Fee</td>
