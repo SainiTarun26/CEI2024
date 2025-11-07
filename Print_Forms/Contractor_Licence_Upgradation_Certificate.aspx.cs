@@ -90,7 +90,8 @@ namespace CEIHaryana.Print_Forms
                     String UserID = dt.Rows[0]["RegistationId"].ToString();
                     GetPartnerDetails(UserID);
                     String CertificateNo = lblCertificateNo.Text;
-                    GetTeamDetails(CertificateNo);
+                    //GetTeamDetails(CertificateNo); //Commented By Aslam on 7 Nov 2025
+                    GetTeamDetails(UserID);
 
                     string CandidateImg = dt.Rows[0]["Image"].ToString();
                     imgPhoto.ImageUrl = CandidateImg;
