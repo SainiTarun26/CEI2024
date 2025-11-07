@@ -15,6 +15,18 @@ namespace CEIHaryana.Supervisor
         CEI CEI = new CEI();
         string userID = "";
         string Category = "";
+
+        protected void Page_PreInit(object sender, EventArgs e)
+        {
+            if (Convert.ToString(Session["Renwal"]) != "" && Convert.ToString(Session["Renwal"]) != null)
+            {
+                this.Page.MasterPageFile = "~/Supervisor/Supervisor_Renewal.Master";
+            }
+            else
+            {
+                this.Page.MasterPageFile = "~/Supervisor/Supervisor.Master";
+            }
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -82,7 +94,7 @@ namespace CEIHaryana.Supervisor
             }
             else if (e.CommandName == "Reapply")
             {
-                Session["Renwal"] = "No";
+                Session["Reapply"] = "Yes";
                 Response.Redirect("~/Supervisor/Renewal_Certificate_Competency.aspx");
             }
             else if (e.CommandName == "ViewVerificationLetter")

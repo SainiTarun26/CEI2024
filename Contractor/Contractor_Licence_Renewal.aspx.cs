@@ -45,7 +45,7 @@ namespace CEIHaryana.Contractor
                         userID = Session["ContractorID"].ToString();
                         HdnUserId.Value = userID;
                         HdnUserType.Value = "Contractor";
-                        if (Convert.ToString(Session["Renwal"]).Trim() == "Yes")
+                        if (Convert.ToString(Session["Reapply"]).Trim() != "Yes")
                         {
                             GetRenewalData(userID);
                         }
@@ -541,7 +541,7 @@ namespace CEIHaryana.Contractor
                                     }
 
                                     tran.Commit();
-
+                                    Session["Reapply"] = "";
                                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Application submitted successfully!')", true);
                                     Response.Redirect("/Contractor/RenewalHistoryContractor.aspx", false);
                                     resetfeild();

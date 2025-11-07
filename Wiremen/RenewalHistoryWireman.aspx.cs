@@ -14,6 +14,18 @@ namespace CEIHaryana.Wiremen
         CEI CEI = new CEI();
         string userID = "";
         string Category = "";
+        protected void Page_PreInit(object sender, EventArgs e)
+        {
+            if (Convert.ToString(Session["Renwal"]) != "" && Convert.ToString(Session["Renwal"]) != null)
+            {
+                this.Page.MasterPageFile = "~/Wiremen/Wireman_Renewal.Master";
+
+            }
+            else
+            {
+                this.Page.MasterPageFile = "~/Wiremen/Wiremen.Master";
+            }
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -80,7 +92,7 @@ namespace CEIHaryana.Wiremen
             }
             else if (e.CommandName == "Reapply")
             {
-                Session["Renwal"] = "No";
+                Session["Reapply"] = "Yes"; 
                 Response.Redirect("~/Wiremen/Renewal_Certificate_Wiremen.aspx");
             }
             else if (e.CommandName == "ViewVerificationLetter")

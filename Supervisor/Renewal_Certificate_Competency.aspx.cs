@@ -32,6 +32,7 @@ namespace CEIHaryana.Supervisor
             }
             else
             {
+                Session["double_Clickbutton"] = "1";
                 this.Page.MasterPageFile = "~/Supervisor/Supervisor.Master";
             }
         }
@@ -52,7 +53,7 @@ namespace CEIHaryana.Supervisor
                         userID = Session["SupervisorID"].ToString();
                         HdnUserId.Value = userID;
                         HdnUserType.Value = "Supervisor";
-                        if (Convert.ToString(Session["Renwal"]).Trim() == "Yes")
+                        if (Convert.ToString(Session["Reapply"]).Trim() != "Yes")
                         {
                             GetRenewalData(userID);
                         }
@@ -280,7 +281,7 @@ namespace CEIHaryana.Supervisor
                                         tran.Commit();
                                         Session["double_Clickbutton"] = "";
                                         Session["double_Clickbutton"] = null;
-
+                                        Session["Reapply"] = "";
                                         ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Data Added Successfully !!!')", true);
                                         Response.Redirect("/Supervisor/RenewalHistory.aspx", false);
                                         resetfeilds();

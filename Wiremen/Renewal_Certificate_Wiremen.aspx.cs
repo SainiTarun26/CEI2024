@@ -56,7 +56,7 @@ namespace CEIHaryana.Wiremen
                         userID = Session["WiremanId"].ToString();
                         HdnUserId.Value = userID;
                         HdnUserType.Value = "Wireman";
-                        if (Convert.ToString(Session["Renwal"]).Trim()== "Yes")
+                        if (Convert.ToString(Session["Reapply"]).Trim() != "Yes")
                         {
                             GetRenewalData(userID);
                         }
@@ -276,7 +276,7 @@ namespace CEIHaryana.Wiremen
 
 
                                     tran.Commit();
-
+                                    Session["Reapply"] = "";
                                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alert('Documents Added Successfully !!!')", true);
                                     Response.Redirect("/Wiremen/RenewalHistoryWireman.aspx", false);
                                     resetfeilds();

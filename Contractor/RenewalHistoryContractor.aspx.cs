@@ -92,7 +92,7 @@ namespace CEIHaryana.Contractor
             }
             else if (e.CommandName == "Reapply")
             {
-                Session["Renwal"] = "No";
+                Session["Reapply"] = "Yes";
                 Response.Redirect("~/Contractor/Contractor_Licence_Renewal.aspx"); 
             }
             else if (e.CommandName == "ViewVerificationLetter")
