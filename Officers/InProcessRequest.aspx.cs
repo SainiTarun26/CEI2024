@@ -40,8 +40,9 @@ namespace CEIHaryana.Officers
 
             string LoginID = string.Empty;
             LoginID = Session["StaffID"].ToString();
+            string searchText = txtSearch.Text.Trim();
             DataSet ds = new DataSet();
-            ds = CEI.InProcessRequest(LoginID);
+            ds = CEI.InProcessRequest(LoginID, searchText);
 
             GridView1.DataSource = ds;
             GridView1.DataBind();
@@ -217,8 +218,13 @@ namespace CEIHaryana.Officers
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "alert", "alert('Siteowner has not uploaded the PAN card yet!');", true);
             }
         }
+
         #endregion
 
-
+        protected void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            string searchText = txtSearch.Text.Trim();
+            GridBind();
+        }
     }
 }
