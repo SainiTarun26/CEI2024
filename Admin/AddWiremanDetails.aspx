@@ -356,6 +356,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <asp:HiddenField ID="hdnId" runat="server" />
+                                    <asp:HiddenField ID="HdnUValue" runat="server" />
                                 </div>
                             </div>
                         </ContentTemplate>
@@ -440,13 +441,13 @@
             var currentValue = inputField.value;
 
             if (inputId === '<%= txtCertifacateOld.ClientID %>' && currentValue.length > 0 && currentValue.length < 4) {
-            alert("Old Certificate must be more than 4 characters long.");
-            setTimeout(function() { inputField.focus(); }, 0);
-            return false;
-        }
+                alert("Old Certificate must be more than 4 characters long.");
+                setTimeout(function () { inputField.focus(); }, 0);
+                return false;
+            }
 
-        if (inputId === '<%= txtCertificateNew.ClientID %>' && currentValue.length > 0 && currentValue.length < 4) {
-            alert("New Certificate  must be more than 4 characters long.");
+            if (inputId === '<%= txtCertificateNew.ClientID %>' && currentValue.length > 0 && currentValue.length < 4) {
+                alert("New Certificate  must be more than 4 characters long.");
                 setTimeout(function () { inputField.focus(); }, 0);
                 return false;
             }
@@ -505,7 +506,7 @@
     </script>
     <script type="text/javascript">
         function ValidatePincode() {
-           
+
             var Pin1 = document.getElementById("<%=txtPincode.ClientID %>");
             Pincode = Pin1.value;
             var lblPinError = document.getElementById("lblPinError");
@@ -557,7 +558,7 @@
             // Set the max attribute of the txtDateofIntialissue TextBox to today's date
             document.getElementById('<%=txtAge.ClientID %>').setAttribute('max', today);
         }
-       </script>
+    </script>
     <script>
         function disableFutureDates() {
             // Get today's date in yyyy-mm-dd format
@@ -565,7 +566,7 @@
             // Set the max attribute of the txtDateofIntialissue TextBox to today's date
             document.getElementById('<%=txtDateInitialIssue.ClientID %>').setAttribute('max', today);
         }
-     </script>
+    </script>
 
     <script type="text/javascript">
         function validateDates() {
@@ -592,5 +593,5 @@
             }
         }
 
- </script>
+    </script>
 </asp:Content>

@@ -45,6 +45,8 @@ namespace CEI_PRoject.Admin
                         {
                             REID = Session["ID"].ToString();
                             hdnId.Value = REID;
+                            //Added By Aslam On 4 Nov 2025
+                            HdnUValue.Value = null;
                             btnSubmit.Text = "Update";
                             BtnReset.Visible = false;
                             update();
@@ -195,6 +197,9 @@ namespace CEI_PRoject.Admin
             string dp_Id16 = ds.Tables[0].Rows[0]["BranchDistrictoffirm"].ToString();
             string dp_Id17 = ds.Tables[0].Rows[0]["BranchPinCode"].ToString();
             string BranchState = ds.Tables[0].Rows[0]["BranchState"].ToString();
+            //Added By Aslam On 4 Nov 2025
+            HdnUValue.Value = ds.Tables[0].Rows[0]["UserID"].ToString();
+
             txtName.Text = dp_Id;
             txtFatherName.Text = dp_Id1;
             txtRegisteredOffice.Text = dp_Id18;
@@ -224,10 +229,18 @@ namespace CEI_PRoject.Admin
             txtVoltageLevelWithEffect.Text = DateTime.Parse(dp_Id13).ToString("yyyy-MM-dd");
             txtLicenceOld.Text = dp_Id14;
             txtLicenceNew.Text = dp_Id15;
-            if (txtLicenceNew.Text.Length > 0)
-                Page.Session["OldUserID"] = txtLicenceNew.Text + "|New";
+
+            //Added By Aslam On 4 Nov 2025
+            if (Convert.ToString(HdnUValue.Value) != null && Convert.ToString(HdnUValue.Value) != "")
+                Page.Session["OldUserID"] = HdnUValue.Value;
             else
-                Page.Session["OldUserID"] = txtLicenceOld.Text + "|Old";
+                Page.Session["OldUserID"] = "";
+
+            //Changed By Aslam On 4 Nov 2025
+            //if (txtLicenceNew.Text.Length > 0)
+            //    Page.Session["OldUserID"] = txtLicenceNew.Text + "|New";
+            //else
+            //    Page.Session["OldUserID"] = txtLicenceOld.Text + "|Old";
 
             if (ddlDistrict.SelectedValue == ddlDistrict1.SelectedValue &&
                 txtRegisteredOffice.Text == txtBranchOffice.Text)
@@ -293,6 +306,9 @@ namespace CEI_PRoject.Admin
             {
                 if (Page.IsValid)
                 {
+                    //Added By Aslam On 4 Nov 2025
+                    UserId = null;
+                    NewUserID = null;
                     if (btnSubmit.Text == "Update")
                     {
                         REID = hdnId.Value;
@@ -305,51 +321,68 @@ namespace CEI_PRoject.Admin
                             return;
                         }
 
-
+                        //Added By Aslam On 4 Nov 2025  
                         if (Convert.ToString(Session["OldUserID"]) != "" && Convert.ToString(Session["OldUserID"]) != null)
                         {
-                            string MySession = Session["OldUserID"].ToString();
-                            string[] str = MySession.Split('|');
-                            UserId = str[0];
-                            if (str[1] == "New")
+                            UserId = Session["OldUserID"].ToString();
+                        }
+                        else
+                        {
+                            if (txtLicenceNew.Text.Length > 0)
                             {
-                                if (UserId == txtLicenceNew.Text)
-                                {
-                                    NewUserID = "";
-                                }
-                                else
-                                {
-                                   // NewUserID = txtLicenceNew.Text;
-                                    if (txtLicenceNew.Text != null && txtLicenceNew.Text != "")
-                                        NewUserID = txtLicenceNew.Text;
-                                    else
-                                        NewUserID = txtLicenceOld.Text;
-                                }
+                                NewUserID = txtLicenceNew.Text.Trim();
                             }
                             else
                             {
-                                if (txtLicenceNew.Text.Length > 0)
-                                {
-                                    NewUserID = txtLicenceNew.Text;
-                                }
-                                else
-                                {
-                                    if (UserId == txtLicenceOld.Text)
-                                    {
-                                        NewUserID = "";
-                                    }
-                                    else
-                                    {
-                                        NewUserID = txtLicenceOld.Text;
-                                    }
-                                }
+                                NewUserID = txtLicenceOld.Text.Trim();
                             }
                         }
 
-                        
+                        //Changed By Aslam On 4 Nov 2025  
+                        //if (Convert.ToString(Session["OldUserID"]) != "" && Convert.ToString(Session["OldUserID"]) != null)
+                        //{
+                        //    string MySession = Session["OldUserID"].ToString();
+                        //    string[] str = MySession.Split('|');
+                        //    UserId = str[0];
+                        //    if (str[1] == "New")
+                        //    {
+                        //        if (UserId == txtLicenceNew.Text)
+                        //        {
+                        //            NewUserID = "";
+                        //        }
+                        //        else
+                        //        {
+                        //           // NewUserID = txtLicenceNew.Text;
+                        //            if (txtLicenceNew.Text != null && txtLicenceNew.Text != "")
+                        //                NewUserID = txtLicenceNew.Text;
+                        //            else
+                        //                NewUserID = txtLicenceOld.Text;
+                        //        }
+                        //    }
+                        //    else
+                        //    {
+                        //        if (txtLicenceNew.Text.Length > 0)
+                        //        {
+                        //            NewUserID = txtLicenceNew.Text;
+                        //        }
+                        //        else
+                        //        {
+                        //            if (UserId == txtLicenceOld.Text)
+                        //            {
+                        //                NewUserID = "";
+                        //            }
+                        //            else
+                        //            {
+                        //                NewUserID = txtLicenceOld.Text;
+                        //            }
+                        //        }
+                        //    }
+                        //}
 
 
-                        
+
+
+
 
                         Createdby = Session["AdminID"].ToString();
                         if (Createdby == null || Createdby == "")

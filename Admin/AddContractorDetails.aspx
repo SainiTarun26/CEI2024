@@ -468,6 +468,7 @@
 
                     <div class="col-md-4">
                         <asp:HiddenField ID="hdnId" runat="server" />
+                           <asp:HiddenField ID="HdnUValue" runat="server" />
 
                     </div>
                 </div>
@@ -483,7 +484,7 @@
     <script type="text/javascript">
         function validateBothEmpty(source, args) {
             var textBox1Value = document.getElementById('<%= txtLicenceOld.ClientID %>').value;
-     var textBox2Value = document.getElementById('<%= txtLicenceNew.ClientID %>').value;
+            var textBox2Value = document.getElementById('<%= txtLicenceNew.ClientID %>').value;
 
             // Check if both textboxes are empty
             if (textBox1Value.trim() === '' && textBox2Value.trim() === '') {
@@ -528,12 +529,12 @@
             var currentValue = inputField.value;
 
             if (inputId === '<%= txtLicenceOld.ClientID %>' && currentValue.length > 0 && currentValue.length < 4) {
-            alert("Licence Old must be more than 4 characters long.");
-            setTimeout(function() { inputField.focus(); }, 0);
-            return false;
-        }
+                alert("Licence Old must be more than 4 characters long.");
+                setTimeout(function () { inputField.focus(); }, 0);
+                return false;
+            }
 
-        if (inputId === '<%= txtLicenceNew.ClientID %>' && currentValue.length > 0 && currentValue.length < 4) {
+            if (inputId === '<%= txtLicenceNew.ClientID %>' && currentValue.length > 0 && currentValue.length < 4) {
                 alert("Licence New must be more than 4 characters long.");
                 setTimeout(function () { inputField.focus(); }, 0);
                 return false;
@@ -565,10 +566,10 @@
         function validateForm() {
 
             var emptyFields = [];
-            
+
             var CertifacateOld = document.getElementById('<%= txtLicenceOld.ClientID %>').value;
             var CertificateNew = document.getElementById('<%= txtLicenceNew.ClientID %>').value;
-           
+
 
             if (CertifacateOld.trim() === '' && CertificateNew.trim() === '') {
                 emptyFields.push('Certificate No.(Old or New)');
@@ -731,10 +732,10 @@
             // Clear the values of textboxes and dropdown
             txtBranchOffice.value = '';
             ddlBranchState.selectedIndex = 0; // Set the dropdown to its default value
-           // ddlDistrict1.selectedIndex = 0;
+            // ddlDistrict1.selectedIndex = 0;
             txtPinCode1.value = '';
             checkBox1.checked = false;
         }
-  </script>
+    </script>
     </asp:Content>
 

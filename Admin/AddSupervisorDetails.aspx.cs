@@ -55,6 +55,9 @@ namespace CEI_PRoject.Admin
                         {
                             string REID = Session["ID"].ToString();
                             hdnId.Value = REID;
+                            //Added By Aslam On 4 Nov 2025
+                            HdnUValue.Value = null;
+
                             btnSubmit.Text = "Update";
                             BtnReset.Visible = false;
                             GetDetails();
@@ -187,10 +190,19 @@ namespace CEI_PRoject.Admin
             string dp_Id13 = ds.Tables[0].Rows[0]["voltageWithEffect"].ToString();
             CertificateOld.Text = ds.Tables[0].Rows[0]["CertificateOld"].ToString();
             CertificateNew.Text = ds.Tables[0].Rows[0]["CertificateNew"].ToString();
-            if (CertificateNew.Text.Length > 0)
-                Page.Session["PreviousUserID"] = CertificateNew.Text + "|New";
+            //Added By Aslam On 4 Nov 2025
+            HdnUValue.Value = ds.Tables[0].Rows[0]["UserID"].ToString();
+            //Added By Aslam On 4 Nov 2025
+            //if (CertificateNew.Text.Length > 0)
+            //    Page.Session["PreviousUserID"] = CertificateNew.Text + "|New";
+            //else
+            //    Page.Session["PreviousUserID"] = CertificateOld.Text + "|Old";
+
+            if (Convert.ToString(HdnUValue.Value) != null && Convert.ToString(HdnUValue.Value) != "")
+                Page.Session["PreviousUserID"] = HdnUValue.Value;
             else
-                Page.Session["PreviousUserID"] = CertificateOld.Text + "|Old";
+                Page.Session["PreviousUserID"] = "";
+
             string dp_Id16 = ds.Tables[0].Rows[0]["Qualification"].ToString();
             string dp_Id17 = ds.Tables[0].Rows[0]["AnyContractor"].ToString();
             string dp_Id18 = ds.Tables[0].Rows[0]["ContractorID"].ToString();
@@ -247,6 +259,9 @@ namespace CEI_PRoject.Admin
                 string dob = txtAge.Text.Trim();
 
                 REID = hdnId.Value;
+                //Added By Aslam On 4 Nov 2025
+                UserId = null;
+                NewUserID = null;
                 string checkExistOrNot = string.Concat(name, fathersname, dob);
                 if (txtQualification.Visible == true)
                 {
@@ -267,6 +282,24 @@ namespace CEI_PRoject.Admin
                 {
                     UserId = CertificateOld.Text.Trim();
                 }
+
+                //Added By Aslam On 4 Nov 2025
+                if (Convert.ToString(Session["PreviousUserID"]) != "" && Convert.ToString(Session["PreviousUserID"]) != null)
+                {
+                    UserId = Session["PreviousUserID"].ToString();
+                }
+                else
+                {
+                    if (CertificateNew.Text.Length > 0)
+                    {
+                        NewUserID = CertificateNew.Text.Trim();
+                    }
+                    else
+                    {
+                        NewUserID = CertificateOld.Text.Trim();
+                    }
+                }
+
                 if (btnSubmit.Text.Trim() == "Submit")
                 {
                     DataSet ds1 = new DataSet();
@@ -289,48 +322,48 @@ namespace CEI_PRoject.Admin
                         return;
                     }
 
-
-                    if (Convert.ToString(Session["PreviousUserID"]) != "" && Convert.ToString(Session["PreviousUserID"]) != null)
-                    {
-                        string MySession = Session["PreviousUserID"].ToString();
-                        string[] str = MySession.Split('|');
-                        UserId = str[0];
-                        if (str[1] == "New")
-                        {
-                            if (UserId == CertificateNew.Text)
-                            {
-                                NewUserID = "";
-                            }
-                            else
-                            {
-                                //NewUserID = CertificateNew.Text;
-                                if (CertificateNew.Text != null && CertificateNew.Text != "")
-                                    //NewUserID = "S-" + CertificateNew.Text;
-                                    NewUserID = CertificateNew.Text;
-                                else
-                                    NewUserID = CertificateOld.Text;
-                            }
-                        }
-                        else
-                        {
-                            if (CertificateNew.Text.Length > 0)
-                            {
-                                //NewUserID = "S-" + CertificateNew.Text;
-                                NewUserID =  CertificateNew.Text;
-                            }
-                            else
-                            {
-                                if (UserId == CertificateOld.Text)
-                                {
-                                    NewUserID = "";
-                                }
-                                else
-                                {
-                                    NewUserID = CertificateOld.Text;
-                                }
-                            }
-                        }
-                    }
+                    //Commented By Aslam On 4 Nov 2025
+                    //if (Convert.ToString(Session["PreviousUserID"]) != "" && Convert.ToString(Session["PreviousUserID"]) != null)
+                    //{
+                    //    string MySession = Session["PreviousUserID"].ToString();
+                    //    string[] str = MySession.Split('|');
+                    //    UserId = str[0];
+                    //    if (str[1] == "New")
+                    //    {
+                    //        if (UserId == CertificateNew.Text)
+                    //        {
+                    //            NewUserID = "";
+                    //        }
+                    //        else
+                    //        {
+                    //            //NewUserID = CertificateNew.Text;
+                    //            if (CertificateNew.Text != null && CertificateNew.Text != "")
+                    //                //NewUserID = "S-" + CertificateNew.Text;
+                    //                NewUserID = CertificateNew.Text;
+                    //            else
+                    //                NewUserID = CertificateOld.Text;
+                    //        }
+                    //    }
+                    //    else
+                    //    {
+                    //        if (CertificateNew.Text.Length > 0)
+                    //        {
+                    //            //NewUserID = "S-" + CertificateNew.Text;
+                    //            NewUserID =  CertificateNew.Text;
+                    //        }
+                    //        else
+                    //        {
+                    //            if (UserId == CertificateOld.Text)
+                    //            {
+                    //                NewUserID = "";
+                    //            }
+                    //            else
+                    //            {
+                    //                NewUserID = CertificateOld.Text;
+                    //            }
+                    //        }
+                    //    }
+                    //}
 
 
                 }

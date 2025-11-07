@@ -358,6 +358,7 @@
                         </div>
                         <div class="col-md-4">
                             <asp:HiddenField ID="hdnId" runat="server" />
+                            <asp:HiddenField ID="HdnUValue" runat="server" />
                         </div>
                     </div>
 
@@ -487,7 +488,7 @@
                 return false;
             }
 
-            if ((char === '-' || char === '_' || char === '/'  || char === ' ') && currentValue.length === 0) {
+            if ((char === '-' || char === '_' || char === '/' || char === ' ') && currentValue.length === 0) {
                 event.preventDefault();
                 return false;
             }
@@ -510,12 +511,12 @@
             var currentValue = inputField.value;
 
             if (inputId === '<%= CertificateOld.ClientID %>' && currentValue.length > 0 && currentValue.length < 4) {
-            alert("Old Certificate must be more than  4 characters long.");
-            setTimeout(function() { inputField.focus(); }, 0);
-            return false;
-        }
+                alert("Old Certificate must be more than  4 characters long.");
+                setTimeout(function () { inputField.focus(); }, 0);
+                return false;
+            }
 
-        if (inputId === '<%= CertificateNew.ClientID %>' && currentValue.length > 0 && currentValue.length < 4) {
+            if (inputId === '<%= CertificateNew.ClientID %>' && currentValue.length > 0 && currentValue.length < 4) {
                 alert("New Certificate must be more than 4 characters long.");
                 setTimeout(function () { inputField.focus(); }, 0);
                 return false;
@@ -531,7 +532,7 @@
     </script>
 
     <script type="text/javascript">
-        function validateForm() {           
+        function validateForm() {
             var emptyFields = [];
 
             var CertifacateOld = document.getElementById('<%= CertificateOld.ClientID %>').value
@@ -627,7 +628,7 @@
             // Set the max attribute of the txtDateofIntialissue TextBox to today's date
             document.getElementById('<%=DateofIntialissue.ClientID %>').setAttribute('max', today);
         }
-      </script>
+    </script>
      <script>
          function disableFutureDatesForDOB() {
              // Get today's date in yyyy-mm-dd format
