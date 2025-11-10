@@ -134,8 +134,8 @@ namespace CEIHaryana.Supervisor
             txtexpirydate.Text = dt.Rows[0]["DateofExpiry"].ToString();
             int yearDiff = Convert.ToInt32(dt.Rows[0]["YearDifference"]);
             if (yearDiff >= 5)
-            {                
-                ScriptManager.RegisterStartupScript( this, this.GetType(), "alertAndRedirect", "alert('Your licence has expired for more than 5 years. Please apply for a new licence.'); window.location='/AdminLogout.aspx';", true );
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "alertAndRedirect", "alert('Your licence has expired for more than 5 years. Please apply for a new licence.'); window.location='/AdminLogout.aspx';", true);
                 return;
             }
             ddlRenewalTimeibind(yearDiff);
@@ -182,6 +182,7 @@ namespace CEIHaryana.Supervisor
             ddlRenewalTime.DataTextField = "Year";
             ddlRenewalTime.DataValueField = "Year";
             ddlRenewalTime.DataBind();
+            ddlRenewalTime.Items.Insert(0, new ListItem("--Select Year--", "0"));
             dtyear.Clear();
         }
 

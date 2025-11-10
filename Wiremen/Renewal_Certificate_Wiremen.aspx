@@ -599,7 +599,7 @@ Please Select
                                 Renewal Time 
                             </label>
                             <asp:DropDownList ID="ddlRenewalTime" CssClass="form-control" runat="server" OnSelectedIndexChanged="ddlRenewalTime_SelectedIndexChanged" AutoPostBack="true">
-                               
+                                  <asp:ListItem Value="0" Text="Select"></asp:ListItem>
                             </asp:DropDownList>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" InitialValue="0" ControlToValidate="ddlRenewalTime" ValidationGroup="Submit" ForeColor="Red">Please select</asp:RequiredFieldValidator>
 

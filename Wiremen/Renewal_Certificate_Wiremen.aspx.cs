@@ -186,6 +186,7 @@ namespace CEIHaryana.Wiremen
             ddlRenewalTime.DataTextField = "Year";
             ddlRenewalTime.DataValueField = "Year";
             ddlRenewalTime.DataBind();
+            ddlRenewalTime.Items.Insert(0, new ListItem("--Select Year--", "0"));
             dtyear.Clear();
         }
         protected void btnNext_Click(object sender, EventArgs e)
