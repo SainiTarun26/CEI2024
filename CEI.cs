@@ -15540,9 +15540,9 @@ string SupervisorName, string SupervisorLicenseNumber, DateTime SupervisorLicens
 
 
 
-        public DataSet GetDistrictForLiftRenewal_PeriodicIndustryLift(string SiteOwnerId)
+        public DataSet GetDistrictForLiftRenewal_PeriodicIndustryLift(string SiteOwnerId, string District)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetDistrictForLiftRenewal_PeriodicIndustryLift", SiteOwnerId);
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetDistrictForLiftRenewal_PeriodicIndustryLift", SiteOwnerId, District);
         }
 
 
