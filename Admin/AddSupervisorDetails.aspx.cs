@@ -25,6 +25,11 @@ namespace CEI_PRoject.Admin
             {
                 if (!IsPostBack)
                 {
+                    if (string.IsNullOrEmpty(Request.Url.Query))
+                    {
+                        Session.Remove("PreviousUserID");
+                    }
+
                     var master = (MasterPage)Master;
                     var loginTypeLabel = (Label)master.FindControl("LoginType");
                     if (loginTypeLabel != null)
