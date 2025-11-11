@@ -42,22 +42,23 @@ namespace CEIHaryana.Industry_Master.SiteOwnerPages
                         }
 
                         String UserId = Convert.ToString(Session["SiteOwnerId_PeriodicIndustryLift"]);
+                        String districtFetch = Convert.ToString(Session["district_PeriodicIndustryLift"]);
                         HdnUserID.Value = UserId;
                         Session["RegistrationNosessionPass_PeriodicIndustryLift"] = null;
                         Session["InstallTypePass_PeriodicIndustryLift"] = null;
                         Session["ReturnedValue_PeriodicIndustryLift"] = "Treys";
-                        BindDistrict(UserId);
+                        BindDistrict(UserId, districtFetch);
                     }
                 }
             }
             catch
             { }
         }
-        private void BindDistrict(string UserId)
+        private void BindDistrict(string UserId,string districtname)
         {
             try
             {
-                DataSet dsDistrict = CEI.GetDistrictForLiftRenewal_PeriodicIndustryLift(UserId);
+                DataSet dsDistrict = CEI.GetDistrictForLiftRenewal_PeriodicIndustryLift(UserId, districtname);
                 ddlDistrict.DataSource = dsDistrict;
                 ddlDistrict.DataTextField = "ApplicantDistrict";
                 ddlDistrict.DataValueField = "ApplicantDistrict";
