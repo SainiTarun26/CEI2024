@@ -50,13 +50,13 @@
         }
 
         input#txtInstallationType {
-            font-size: 25px !important;
+            font-size: 24px !important;
             font-weight: 700;
             text-align: end;
         }
 
         input#txtTestReportId {
-            font-size: 25px !important;
+            font-size: 24px !important;
             font-weight: 700;
             text-align: initial;
             border-bottom: 0px solid !important;
@@ -69,7 +69,7 @@
 
         .form-control {
             margin-left: 0px !important;
-            font-size: 16px !important;
+            font-size: 15px !important;
             height: 30px;
             border-bottom: 1px solid !important;
             border: 0px solid black;
@@ -78,7 +78,7 @@
         }
 
         label {
-            font-size: 18px;
+            font-size: 17px;
             margin-top: 5px;
             font-weight: 600;
         }
@@ -87,12 +87,12 @@
             color: #010101;
             margin-bottom: 1.2rem;
             text-transform: capitalize;
-             font-size: 18PX;
+             font-size: 17PX;
             font-weight: 600;
         }
 
         u {
-            font-size: 22px;
+            font-size: 21px;
         }
 
         input#txtInstallationType {
@@ -100,12 +100,12 @@
         }
 
         p {
-            font-size: 20px;
+            font-size: 19px;
             text-align: justify;
         }
 
         li {
-             font-size: 20PX;
+             font-size: 19PX;
         }
 
         .col-2 {
@@ -114,13 +114,13 @@
 
         textarea {
             font-weight: bold;
-            font-size: 22px;
+            font-size: 21px;
             border: none !important;
         }
 
         input {
             border: none;
-             font-size: 18PX;
+             font-size: 17PX;
         }
 
         hr {
@@ -139,15 +139,15 @@
         }
 
         span {
-            font-size: 18px !important;
+            font-size: 17px !important;
         }
 
         table.table {
-            font-size: 17px;
+            font-size: 16px;
         }
 
         span#txtSD {
-            font-size: 35px !important;
+            font-size: 34px !important;
             padding-right: 70px;
         }
 /*
@@ -158,11 +158,11 @@
         th {
             width: 1% !important;
             text-align: center;
-            font-size: 18px;
+            font-size: 17px;
         }
 
         td {
-            font-size: 18px;
+            font-size: 17px;
             /*  text-align: center;*/
         }
         td {
@@ -228,11 +228,11 @@
                 <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
                     <div class="col-12" style="text-align: end; margin-top: auto; margin-bottom: auto;">
                         <asp:Button ID="btnPrint" Text="Print" runat="server" class="btn btn-primary mr-2"
-                            Style="margin-top: 5px; margin-bottom: -40px;  font-size: 18PX; padding-left: 25px; padding-right: 25px; position: fixed; margin-left: -100px; z-index: 50;" OnClientClick="printDiv('printableDiv');" />
+                            Style="margin-top: 5px; margin-bottom: -40px;  font-size: 17PX; padding-left: 25px; padding-right: 25px; position: fixed; margin-left: -100px; z-index: 50;" OnClientClick="printDiv('printableDiv');" />
                     </div>
                     <div class="col-12" style="text-align: initial; margin-top: auto; margin-bottom: auto;">
                         <asp:Button ID="btnBack" Text="Back" runat="server" class="btn btn-primary mr-2"
-                            Style="margin-top: 5px; margin-bottom: -40px;  font-size: 18PX; padding-left: 25px; padding-right: 25px; position: fixed; z-index: 50;" />
+                            Style="margin-top: 5px; margin-bottom: -40px;  font-size: 17PX; padding-left: 25px; padding-right: 25px; position: fixed; z-index: 50;" />
                     </div>
                     <div class="card-body">
                         <div id="printableDiv">
@@ -249,24 +249,24 @@
 
     <!-- Center Text -->
     <div style="text-align: center;">
-        <h6 style="font-weight: 700; margin-bottom: 0; font-size: 18px;">
+        <h6 style="font-weight: 700; margin-bottom: 0; font-size: 17px;">
             Office of the
         </h6>
         <asp:Label ID="lblAddress1" runat="server" 
             Text="Chief Electrical Inspector to Govt., Haryana" 
-            Style="font-weight: 700; font-size: 24px;">
+            Style="font-weight: 700; font-size: 23px;">
         </asp:Label><br />
         <asp:Label ID="lblAdress2" runat="server" 
             Text="SCO 117-118, Sector-17-B, Chandigarh (E-mail: cei_goh@yahoo.com)" 
-            Style="font-weight: 700; font-size: 24px;">
+            Style="font-weight: 700; font-size: 23px;">
         </asp:Label><br />
         <asp:Label ID="lblAdress3" runat="server" 
             Text="Telephone No. 0172-2704090, Fax No. 0172-2710171"
-            Style="font-weight: 700; font-size: 24px;">
+            Style="font-weight: 700; font-size: 23px;">
         </asp:Label><br />
         <asp:Label ID="lblEmail" runat="server" 
             Text="Website: www.ceiharyana.in" 
-            Style="font-weight: 700; font-size: 24px;">
+            Style="font-weight: 700; font-size: 23px;">
         </asp:Label><br />
     </div>
 </div>
@@ -278,11 +278,11 @@
                             <hr />
                             <div class="row" style="margin-bottom: 15PX;">
                                 <div class="col-sm-12" style="text-align: center; padding-top: 8px; padding-bottom: 8px; border-radius: 10px;">
-                                    <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;  font-size: 18PX; text-align: center;">FORM D
+                                    <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;  font-size: 17PX; text-align: center;">FORM D
                                     </h6>
-                                    <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;  font-size: 18PX; text-align: center;">[See rule 4 (2)]
+                                    <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;  font-size: 17PX; text-align: center;">[See rule 4 (2)]
                                     </h6>
-                                    <h6 runat="server" id="txtLift" class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;  font-size: 18PX; text-align: center; text-decoration: underline;">Registration of Lift
+                                    <h6 runat="server" id="txtLift" class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;  font-size: 17PX; text-align: center; text-decoration: underline;">Registration of Lift
                                     </h6>
                                     <%--   <h6 runat="server" id="txtEscalator"  class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;  font-size: 18PX; text-align: center; text-decoration: underline;">Registration of Escalator--%>
                                     </h6>
@@ -325,7 +325,7 @@
                             </div>
                             <div class="row" style="margin-bottom: 15PX;">
                                 <div class="col-sm-12" style="text-align: center; padding-top: 8px; padding-bottom: 8px; border-radius: 10px;">
-                                    <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;  font-size: 18PX; text-align: center; text-decoration: underline;">PARTICULARS
+                                    <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;  font-size: 17PX; text-align: center; text-decoration: underline;">PARTICULARS
                                     </h6>
                                 </div>
                             </div>
@@ -532,7 +532,7 @@
                                                                                 <br />
                                                                                 <br />
     <h3 style="text-align: center;text-decoration:underline;">Instructions</h3> <br />
-    <ul style="font-size: 16px;
+    <ul style="font-size: 15px;
     line-height: 1.6;
     padding-left: 60px;
     padding-right: 60px;
@@ -567,11 +567,7 @@
 <br />
 <br />
 <br /><br />
-<br />
-<br />
-<br />
-<br />
-<br />
+
 
 </div>
 
