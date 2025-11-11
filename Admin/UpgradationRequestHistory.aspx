@@ -14,6 +14,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
     <style type="text/css">
+        input#btnSearch {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+    border-radius: 5px;
+    padding: 10px !important;
+}
         .btn-primary, .wizard > .actions a {
     color: #fff !important;
     background-color: #4B49AC;
@@ -181,7 +188,7 @@
                     </div>
                     <div style="margin-top: 3%">
                         <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" AutoPostBack="true" runat="server" Width="100%" AutoGenerateColumns="false"
-                            AllowPaging="true" BorderWidth="1px" BorderColor="#dbddff" OnRowDataBound="GridView1_RowDataBound" OnRowCommand="GridView1_RowCommand">
+                            AllowPaging="true" PageSize="50" OnPageIndexChanging="GridView1_PageIndexChanging" BorderWidth="1px" BorderColor="#dbddff" OnRowDataBound="GridView1_RowDataBound" OnRowCommand="GridView1_RowCommand">
                             <PagerStyle CssClass="pagination-ys" />
                             <Columns>
       <asp:TemplateField HeaderText="SNo">
@@ -199,23 +206,16 @@
           </ItemTemplate>
       </asp:TemplateField>
     
-<%-- <asp:BoundField DataField="ApplicationID" HeaderText="Application ID">
+ <asp:BoundField DataField="ApplicationID" HeaderText="Application ID">
      <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
      <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems itemstylecss" />
- </asp:BoundField>--%>
-                                  <asp:TemplateField HeaderText="Application ID">
-      <HeaderStyle HorizontalAlign="Left" Width="25%" CssClass="headercolor" />
-      <ItemStyle HorizontalAlign="Left" Width="25%" />
-      <ItemTemplate>
-          <asp:LinkButton ID="LnkBtnViewDetails" runat="server" AutoPostBack="true" CommandArgument=' <%#Eval("ApplicationID") %> ' CommandName="Select"><%#Eval("ApplicationID") %></asp:LinkButton>
-      </ItemTemplate>
-  </asp:TemplateField>
+ </asp:BoundField>
 
       <asp:BoundField DataField="ApplicationType" HeaderText="Application Type">
           <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
           <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems itemstylecss" />
       </asp:BoundField>
-      <asp:BoundField DataField="Name" HeaderText="Name">
+      <asp:BoundField DataField="Name" HeaderText="Supervisor Name">
           <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
           <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems itemstylecss" />
       </asp:BoundField>
@@ -252,10 +252,6 @@
         </asp:LinkButton>
     </ItemTemplate>
 </asp:TemplateField>
-                                 <asp:BoundField DataField="RejectReason" HeaderText="Reject Reason">
-     <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
-     <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems" />
- </asp:BoundField>
   </Columns>
                             <FooterStyle BackColor="White" ForeColor="#000066" />
                             <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
