@@ -389,7 +389,7 @@
                             <label for="Name">
                                 Value<samp style="color: red">* </samp>
                             </label>
-                            <asp:TextBox class="form-control" ReadOnly="false" ID="txtCapacity" MaxLength="6" onkeydown="return preventEnterSubmit(event)" onkeypress="return isNumberKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
+                            <asp:TextBox class="form-control" ReadOnly="false" ID="txtCapacity" MaxLength="9" onkeydown="return preventEnterSubmit(event)" onkeypress="return isDecimalKey(event);" placeholder="" autocomplete="off" TabIndex="2" runat="server" Style="margin-left: 18px"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="rvfCapacity" runat="server" ForeColor="Red" ControlToValidate="txtCapacity" ValidationGroup="Submit" ErrorMessage="Please Enter Capacity"></asp:RequiredFieldValidator>
 
                         </div>
