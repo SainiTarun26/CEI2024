@@ -15,13 +15,13 @@
     <link rel="stylesheet" href="/Assets/css/vertical-layout-light/style.css" />
     <link rel="shortcut icon" href="images/favicon.png" />
     <!-- Core CSS -->
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
 
-<!-- Core JS -->
-<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+    <!-- Core JS -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
 
-     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <%--  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />--%>
 
@@ -196,6 +196,7 @@
                                             </asp:TemplateField>
 
                                             <asp:TemplateField HeaderText="Owner Name">
+                                                <ItemStyle CssClass="break-text-10" />
                                                 <ItemTemplate>
                                                     <asp:Label ID="lblOwnerName" runat="server"
                                                         Text='<%# Eval("OwnerName") %>'
@@ -204,13 +205,15 @@
                                             </asp:TemplateField>
 
                                             <asp:TemplateField HeaderText="Contractor Name">
+                                                <ItemStyle CssClass="break-text-10" />
                                                 <ItemTemplate>
                                                     <asp:Label ID="lblContractorName" runat="server"
                                                         Text='<%# Eval("ContractorName") %>'
                                                         Style="word-break: break-word;"></asp:Label>
                                                 </ItemTemplate>
                                             </asp:TemplateField>
-
+                                            <asp:BoundField DataField="Installationfor" HeaderText="Installation Type" />
+                                            <asp:BoundField DataField="UserType" HeaderText="Users Type" />
                                             <asp:BoundField DataField="RequestDate" HeaderText="Request Date" />
                                             <asp:BoundField DataField="RequestStatus" HeaderText="Status" />
 
@@ -700,10 +703,44 @@
         // Reopen modal automatically if hdnOpenModal is true after postback
         $(document).ready(function () {
             var shouldOpen = $('#<%= hdnOpenModal.ClientID %>').val();
-             if (shouldOpen === 'true') {
-                 $('#searchModal').modal('show');
-             }
-         });
+            if (shouldOpen === 'true') {
+                $('#searchModal').modal('show');
+            }
+        });
     </script>
+
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function () {
+            const elements = document.querySelectorAll('.break-text-10');
+
+            elements.forEach(function (element) {
+                let text = element.innerText;
+                let formattedText = '';
+                let currentIndex = 0;
+
+                while (currentIndex < text.length) {
+                    // Get a 30-character substring
+                    let chunk = text.slice(currentIndex, currentIndex + 30);
+
+                    // Find the nearest whitespace in this chunk
+                    let breakIndex = chunk.lastIndexOf(" ");
+
+                    // If a whitespace is found, break at that whitespace
+                    if (breakIndex !== -1) {
+                        formattedText += chunk.slice(0, breakIndex) + '<br>';
+                        currentIndex += breakIndex + 1; // Move past the whitespace
+                    } else {
+                        // If no whitespace is found, break at the 30-character limit
+                        formattedText += chunk + '<br>';
+                        currentIndex += 30;
+                    }
+                }
+
+                // Apply the formatted text with <br> to the element's innerHTML
+                element.innerHTML = formattedText.trim(); // Remove any trailing <br>
+            });
+        });
+    </script>
+
 </body>
 </html>
