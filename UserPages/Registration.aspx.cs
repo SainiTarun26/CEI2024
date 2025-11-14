@@ -31,7 +31,7 @@ namespace CEIHaryana.UserPages
                     //ddlBindDistrict();
                 }
             }
-            catch
+            catch(Exception ex)
             {
                 Response.Redirect("/AdminLogout.aspx", false);
             }

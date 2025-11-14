@@ -178,8 +178,8 @@ namespace CEIHaryana.UserPages
                     }
 
                     int TotalAmount = 2520;
-                    CEI.InsertContChallanDetails(TotalAmount, txtGRNNO.Text, txttransactionDate.Text, HdnUserId.Value);
-
+                    CEI.InsertContChallanDetails(TotalAmount, txtGRNNO.Text, txttransactionDate.Text, HdnUserId.Value);                    
+                    
                     Response.Redirect("/UserPages/Contractor_Declaration.aspx", false);
 
                 }

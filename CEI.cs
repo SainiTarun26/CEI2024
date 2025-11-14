@@ -1,5 +1,6 @@
 ﻿using CEIHaryana.Contractor;
 using CEIHaryana.Model.Industry;
+using CEIHaryana.UserPages;
 using iTextSharp.text.pdf.parser;
 using Newtonsoft.Json;
 using Pipelines.Sockets.Unofficial.Arenas;
@@ -16130,6 +16131,19 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InspectionForAdmin", LoginId, searchText);
         }
+
+        #region New License Application After Documentation
+        /// <summary>
+        /// Insert New Licence Application From CEI By using Registration No
+        /// </summary>
+        /// <param name="Type"></param>
+        /// <param name="RegistrationNo"></param>
+        /// <returns></returns>
+        public DataSet InsertNewLicenceApplicationFromCEIByRegistrationNo(string Type, string RegistrationNo)
+        {
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_Insert_Licence_Application_NewRegistration", Type, RegistrationNo);
+        }
+        #endregion
     }
 }
 

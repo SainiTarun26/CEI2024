@@ -11,7 +11,7 @@ namespace CEIHaryana.UserPages
 {
     public partial class Contractor_Declaration : System.Web.UI.Page
     {
-       // Created by neha on 27-June-2025
+        // Created by neha on 27-June-2025
         CEI CEI = new CEI();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -23,9 +23,9 @@ namespace CEIHaryana.UserPages
                     {
                         //if (Convert.ToString(Session["TempUniqueId"]) != null && Convert.ToString(Session["TempUniqueId"]) != "")
                         //{
-                            string UserID = Session["ContractorID"].ToString();
-                            HdnUserId.Value = UserID;
-                            string ID = Convert.ToString(Session["TempUniqueId"]);
+                        string UserID = Session["ContractorID"].ToString();
+                        HdnUserId.Value = UserID;
+                        string ID = Convert.ToString(Session["TempUniqueId"]);
                         //}
                         //else
                         //{
@@ -44,7 +44,7 @@ namespace CEIHaryana.UserPages
             }
         }
 
-        
+
         protected void btnNext_Click(object sender, EventArgs e)
         {
             if (Convert.ToString(HdnUserId.Value) != null && Convert.ToString(HdnUserId.Value) != "")
@@ -56,8 +56,10 @@ namespace CEIHaryana.UserPages
                     //string tempUniqueId = Session["TempUniqueId"]?.ToString();
 
                     if (!string.IsNullOrEmpty(UserID))
-                    {                      
-                           CEI.ToSaveDocdataofContNewregistration( UserID, "Contractor");                       
+                    {
+                        CEI.ToSaveDocdataofContNewregistration(UserID, "Contractor");
+                        CEI.InsertNewLicenceApplicationFromCEIByRegistrationNo("New", UserID);
+
                     }
 
                     Session["TempUniqueId"] = "";
