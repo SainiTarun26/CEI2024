@@ -11756,18 +11756,18 @@ string DocumentPath, string Utrn, string challandate, int? DocumentSubID, string
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "SP_GetFreshLicenceApplicationForCEI", Categary, string.IsNullOrEmpty(RegistrtaiionNo) ? null : RegistrtaiionNo, string.IsNullOrEmpty(Name) ? null : Name);
         }
 
-        public void InsertNewLicenceApplicationFromCEI(string Type, string RegistrationNo, string CommitteeId, string Categary, string CreatedBy, SqlTransaction transaction)
-        {
-            SqlCommand cmd = new SqlCommand("sp_Insert_Licence_Application", transaction.Connection, transaction);
-            cmd.CommandType = CommandType.StoredProcedure;
-            //cmd.Parameters.AddWithValue("@ApplicationId", ApplicationID);
-            cmd.Parameters.AddWithValue("@Type", Type);
-            cmd.Parameters.AddWithValue("@RegistrationNo", RegistrationNo);
-            cmd.Parameters.AddWithValue("@CommitteeId", CommitteeId);
-            cmd.Parameters.AddWithValue("@Categary", Categary);
-            cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
-            cmd.ExecuteNonQuery();
-        }
+        //public void InsertNewLicenceApplicationFromCEI(string Type, string RegistrationNo, string CommitteeId, string Categary, string CreatedBy, SqlTransaction transaction)
+        //{
+        //    SqlCommand cmd = new SqlCommand("sp_Insert_Licence_Application", transaction.Connection, transaction);
+        //    cmd.CommandType = CommandType.StoredProcedure;
+        //    //cmd.Parameters.AddWithValue("@ApplicationId", ApplicationID);
+        //    cmd.Parameters.AddWithValue("@Type", Type);
+        //    cmd.Parameters.AddWithValue("@RegistrationNo", RegistrationNo);
+        //    cmd.Parameters.AddWithValue("@CommitteeId", CommitteeId);
+        //    cmd.Parameters.AddWithValue("@Categary", Categary);
+        //    cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+        //    cmd.ExecuteNonQuery();
+        //}
         #region Navneet commitee updates 25-June-2025
         public void DeleteCommitteeAtAdminEnd(string CommitteeId)
         {
@@ -16130,6 +16130,24 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
         {
             return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_InspectionForAdmin", LoginId, searchText);
         }
+
+        #region Licenc changes for cei Aslam(11-14-2025)
+        public DataTable GetPendingScrutinyApplicationsForCei(string Categary, string RegistrtaiionNo, String Name)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetPendingScrutiny_Applications_ForCei", Categary, string.IsNullOrEmpty(RegistrtaiionNo) ? null : RegistrtaiionNo, string.IsNullOrEmpty(Name) ? null : Name);
+        }
+
+
+        public void InsertNewLicenceApplicationFromCEI(string ApplicationID, string CommitteeId, string CreatedBy, SqlTransaction transaction)
+        {
+            SqlCommand cmd = new SqlCommand("sp_Insert_Licence_Application", transaction.Connection, transaction);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@ApplicationId", ApplicationID);
+            cmd.Parameters.AddWithValue("@CommitteeId", CommitteeId);
+            cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
+            cmd.ExecuteNonQuery();
+        }
+        #endregion
     }
 }
 

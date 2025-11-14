@@ -265,6 +265,7 @@
     <Content Include="Admin\LiftEscalatorData.aspx" />
     <Content Include="Admin\LiftInspectionDetails.aspx" />
     <Content Include="Admin\NewApplications_Licence.aspx" />
+    <Content Include="Admin\NewApplications_Licence_Pending_Scrutiny.aspx" />
     <Content Include="Admin\NewRequestInspectionForAdmin.aspx" />
     <Content Include="Admin\NoticeForDisconnection.aspx" />
     <Content Include="Admin\Pending_Licence_Approval_Cei.aspx" />
@@ -2608,6 +2609,13 @@
     </Compile>
     <Compile Include="Admin\NewApplications_Licence.aspx.designer.cs">
       <DependentUpon>NewApplications_Licence.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\NewApplications_Licence_Pending_Scrutiny.aspx.cs">
+      <DependentUpon>NewApplications_Licence_Pending_Scrutiny.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\NewApplications_Licence_Pending_Scrutiny.aspx.designer.cs">
+      <DependentUpon>NewApplications_Licence_Pending_Scrutiny.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\NewRequestInspectionForAdmin.aspx.cs">
       <DependentUpon>NewRequestInspectionForAdmin.aspx</DependentUpon>

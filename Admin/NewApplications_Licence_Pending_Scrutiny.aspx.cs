@@ -14,9 +14,8 @@ using CEIHaryana.UserPages;
 
 namespace CEIHaryana.Admin
 {
-    public partial class NewApplications_Licence : System.Web.UI.Page
+    public partial class NewApplications_Licence_Pending_Scrutiny : System.Web.UI.Page
     {
-        //page created by aslam
         CEI cei = new CEI();
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -35,8 +34,7 @@ namespace CEIHaryana.Admin
                             ForWardToCommittee.Visible = false;
                         }
                         GridViewBind(null, null, null);
-                        BindCommittee();
-                        CommitteeGridViewBind();
+
                         Page.Session["double_Clickbutton"] = "1";
                     }
                     else
@@ -44,11 +42,9 @@ namespace CEIHaryana.Admin
                         Response.Redirect("LogOut.aspx", false);
                     }
                 }
-
             }
             catch (Exception ex)
             {
-
                 throw;
             }
         }
@@ -56,7 +52,7 @@ namespace CEIHaryana.Admin
         private void GridViewBind(string Categary, string RegistrationNo, string Name)
         {
             DataTable dt = new DataTable();
-            dt = cei.GetNewLicenceApplicationForCEI(Categary, RegistrationNo, Name);
+            dt = cei.GetPendingScrutinyApplicationsForCei(Categary, RegistrationNo, Name);
             if (dt.Rows.Count > 0 && dt != null)
             {
                 GridView1.DataSource = dt;
@@ -134,7 +130,6 @@ namespace CEIHaryana.Admin
 
         protected void ddlSearchBy_SelectedIndexChanged(object sender, EventArgs e)
         {
-
             if (ddlSearchBy.SelectedValue != "0")
             {
                 Name_Registration.Visible = true;
@@ -168,20 +163,7 @@ namespace CEIHaryana.Admin
                             try
                             {
                                 conn.Open();
-                                //transaction = conn.BeginTransaction();
-                                //commented by aslma string CommitteeID = txtCommittee.Text;
-                                string CommitteeID = ddlCommittee.SelectedItem.Value;
-                                if (CommitteeID == "" || CommitteeID == null)
-                                {
-                                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Alert", "alert('No committe active pls activate the commite');", true);
-                                    return;
-                                }
-                                //if (GridViewCommittee.Rows.Count >0)
-                                //{
-                                //    GridViewRow row = GridViewCommittee.Rows[0];
-                                //    Label lblCommitteeID = (Label)row.FindControl("lblCommitteeID");
-                                //    CommitteeID = lblCommitteeID.Text;
-                                //}
+
                                 foreach (GridViewRow row in GridView1.Rows)
                                 {
                                     string ApplicationID, Category, RegistrationNo = "";
@@ -192,26 +174,23 @@ namespace CEIHaryana.Admin
                                         try
                                         {
                                             transaction = conn.BeginTransaction();
-                                            //Label lblApplicationID = (Label)row.FindControl("lblApplicationID");
-                                            //ApplicationID = lblApplicationID.Text;
                                             Label lblCategory = (Label)row.FindControl("lblCategory");
                                             Category = lblCategory.Text;
                                             Label lblApplicationType = (Label)row.FindControl("lblApplicationType");
                                             Label lblApplicationIdval = (Label)row.FindControl("lblApplicationID");
                                             if (lblApplicationType.Text.Trim() == "New")
                                             {
-
                                                 Label lblRegistrationNo = (Label)row.FindControl("lblRegistrationNo");
                                                 RegistrationNo = lblRegistrationNo.Text;
                                             }
                                             else
                                             {
-
                                                 Label lblRegistrationNo = (Label)row.FindControl("lblId");
                                                 RegistrationNo = lblRegistrationNo.Text;
                                             }
 
-                                            cei.InsertNewLicenceApplicationFromCEI(lblApplicationIdval.Text.Trim(), CommitteeID, CreatedBy, transaction);
+                                            cei.Insert_LicenceForwardApplicationToSup(lblApplicationIdval.Text.Trim(),CreatedBy, transaction);
+                                            //cei.InsertNewLicenceApplicationFromCEI(lblApplicationType.Text.Trim(), RegistrationNo, CommitteeID, Category, CreatedBy, transaction);
                                             transaction.Commit();
                                             Session["double_Clickbutton"] = "";
                                             Session["double_Clickbutton"] = null;
@@ -225,7 +204,7 @@ namespace CEIHaryana.Admin
                                     }
                                 }
 
-                                ScriptManager.RegisterStartupScript(this, GetType(), "Success", "alert('Application Forwarded Successfully!');  window.location.href='/Admin/NewApplications_Licence.aspx';", true);
+                                ScriptManager.RegisterStartupScript(this, GetType(), "Success", "alert('Application Forwarded To SuperIntendent!');  window.location.href='/Admin/NewApplications_Licence_Pending_Scrutiny.aspx';", true);
                             }
                             catch (Exception ex)
                             {
@@ -256,28 +235,6 @@ namespace CEIHaryana.Admin
             }
         }
 
-        private void CommitteeGridViewBind()
-        {
-            DataTable dt = new DataTable();
-            dt = cei.GetCommitteeDetails();
-            if (dt.Rows.Count > 0 && dt != null)
-            {
-                ddlCommittee.SelectedValue = dt.Rows[0]["CommitteeID"].ToString();
-                //txtCommittee.Text = dt.Rows[0]["CommitteeID"].ToString();
-                //GridViewCommittee.DataSource =  dt;
-                //GridViewCommittee.DataBind();
-            }
-            else
-            {
-                //GridViewCommittee.DataSource = null;
-                //GridViewCommittee.DataBind();
-            }
-        }
-
-        protected void lnkShowCreate_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("/Admin/Committee_Details.aspx", false);
-        }
         protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
 
@@ -288,24 +245,19 @@ namespace CEIHaryana.Admin
                 Label Categary = (Label)row.FindControl("lblCategory");
                 Label lblApplicationType = (Label)row.FindControl("lblApplicationType");
                 Label lblId = (Label)row.FindControl("lblId");
-                //LinkButton lnkRegNo= row.FindControl("LinkRegistrationNo") as LinkButton;
-                //string RegNo = lnkRegNo.Text;
                 string RegNo = e.CommandArgument.ToString();
                 Session["NewApplicationRegistrationNo"] = "";
                 Session["NewApplication_Contractor_RegNo"] = "";
-                //lblApplicationType added by navneet 
                 if (lblApplicationType.Text.Trim() == "New")
                 {
                     if (Categary.Text == "Wireman" || Categary.Text == "Supervisor")
                     {
                         Session["NewApplicationRegistrationNo"] = RegNo;
-                        // Response.Redirect("/UserPages/New_Registration_Information.aspx", false);
                         Response.Write("<script>window.open('/UserPages/New_Registration_Information.aspx','_blank');</script>");
                     }
                     else if (Categary.Text == "Contractor")
                     {
                         Session["NewApplication_Contractor_RegNo"] = RegNo;
-                        //Response.Redirect("/UserPages/New_Registration_Information_Contractor.aspx", false);
                         Response.Write("<script>window.open('/UserPages/New_Registration_Information_Contractor.aspx','_blank');</script>");
 
                     }
@@ -317,7 +269,6 @@ namespace CEIHaryana.Admin
                         Session["NewApplicationRegistrationNo"] = lblId.Text.Trim();
 
                         Response.Write("<script>window.open('/UserPages/Certificate_Renewal_Details_Preview.aspx','_blank');</script>");
-                        // Response.Redirect("/UserPages/Certificate_Renewal_Details_Preview.aspx", false);
                     }
                     else
                     {
@@ -327,8 +278,6 @@ namespace CEIHaryana.Admin
 
                     }
                 }
-
-
             }
             else if (e.CommandName == "Download")
             {
@@ -369,7 +318,6 @@ namespace CEIHaryana.Admin
                                 }
                                 catch (Exception ex)
                                 {
-                                    // Log error if file missing
                                 }
                             }
                         }
@@ -452,179 +400,12 @@ namespace CEIHaryana.Admin
 
 
                 }
-
-
             }
         }
 
         protected void CheckBox1_CheckedChanged(object sender, EventArgs e)
         {
             Session["double_Clickbutton"] = "1";
-        }
-        #region aslam dropdown of committee
-        public void BindCommittee()
-        {
-            DataSet ds = new DataSet();
-            ds = cei.GetCommitteeList();
-            ddlCommittee.DataSource = ds;
-            ddlCommittee.DataTextField = "CommitteeName";
-            ddlCommittee.DataValueField = "CommitteeID";
-            ddlCommittee.DataBind();
-            ddlCommittee.Items.Insert(0, new ListItem("Select", "0"));
-            ds.Clear();
-        }
-        #endregion
-
-        #region navneet return 9-sept-2025
-
-        protected void btnReturn_Click(object sender, EventArgs e)
-        {
-            int selectedCount = 0;
-            foreach (GridViewRow row in GridView1.Rows)
-            {
-                CheckBox cb = (CheckBox)row.FindControl("CheckBox1");
-                if (cb != null && cb.Checked)
-                {
-                    selectedCount++;
-                    if (selectedCount > 1)
-                    {
-                        
-                        break;
-                    }
-                }
-            }
-            if (selectedCount == 1)
-            {
-                foreach (GridViewRow row in GridView1.Rows)
-                {
-                    CheckBox cb = (CheckBox)row.FindControl("CheckBox1");
-                    if (cb != null && cb.Checked)
-                    {
-
-                        Label lblApplicationType = (Label)row.FindControl("lblApplicationType");
-                        Label lblRegistrationNo;
-                        //if (lblApplicationType.Text.Trim() == "New")
-                        //{
-                        if (lblApplicationType.Text.Trim() == "New")
-                        {
-                            lblRegistrationNo = (Label)row.FindControl("lblRegistrationNo");
-                        }
-                        else
-                        {
-                            lblRegistrationNo = (Label)row.FindControl("lblId");
-                        }
-                            cei.UpdatestatusOfReturnLicenseapplication("Return", lblApplicationType.Text, txtReason.Text, lblRegistrationNo.Text);
-                            GridViewBind(null, null, null);
-
-                            ScriptManager.RegisterStartupScript(this, GetType(), "UploadError",
-                                  "alert('Record Returned successfully);", true);
-                        //}
-                        //else
-                        //{
-                        //    ScriptManager.RegisterStartupScript(this, GetType(), "UploadError",
-                        //  "alert('Only New License applications can be Returned. Renew will be rejected');", true);
-                        //    return;
-                        //}
-
-                        Response.Redirect("/Admin/NewApplications_Licence.aspx", false);
-
-                    }
-                    
-                }
-            }
-            else
-            {
-                ScriptManager.RegisterStartupScript(this, GetType(), "UploadError",
-                          "alert('You will only able to return 1 at a time');", true);
-                return;
-
-            }
-            
-        }
-
-        protected void btnReJect_Click(object sender, EventArgs e)
-        {
-            int selectedCount = 0;
-            foreach (GridViewRow row in GridView1.Rows)
-            {
-                CheckBox cb = (CheckBox)row.FindControl("CheckBox1");
-                if (cb != null && cb.Checked)
-                {
-                    selectedCount++;
-                    if (selectedCount > 1)
-                    {
-                       
-                        break;
-                    }
-                }
-            }
-            if (selectedCount == 1)
-            {
-                foreach (GridViewRow row in GridView1.Rows)
-                {
-                    CheckBox cb = (CheckBox)row.FindControl("CheckBox1");
-                    if (cb != null && cb.Checked)
-                    {
-
-                        Label lblApplicationType = (Label)row.FindControl("lblApplicationType");
-                        Label lblRegistrationNo;
-                        if (lblApplicationType.Text.Trim() == "New")
-                        {
-
-                            lblRegistrationNo = (Label)row.FindControl("lblRegistrationNo");
-                            cei.UpdatestatusOfReturnLicenseapplication("Rejected", "New", txtReason.Text, lblRegistrationNo.Text);
-                        }
-                        else
-                        {
-
-                            lblRegistrationNo = (Label)row.FindControl("lblId");
-                            cei.UpdatestatusOfReturnLicenseapplication("Rejected", "ReNew", txtReason.Text, lblRegistrationNo.Text);
-                        }
-
-                        ScriptManager.RegisterStartupScript(this, GetType(), "UploadError",
-                              "alert('Record Rejected successfully');", true);
-                        GridViewBind(null, null, null);
-                        Response.Redirect("/Admin/NewApplications_Licence.aspx",false);
-
-                    }
-                }
-            }
-            else
-            {
-                ScriptManager.RegisterStartupScript(this, GetType(), "UploadError",
-                      "alert('You will only able to Reject 1 at a time');", true);
-                return;
-            }
-        }
-
-
-        #endregion
-
-        protected void ddlAction_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (ddlAction.SelectedValue == "3")
-            {
-                ForwardCommiitte1.Visible = false;
-                ForwardCommiitte2.Visible = false;
-                Reason.Visible = true;
-                btnReJect.Visible = true;
-            }
-            else if (ddlAction.SelectedValue == "2")
-            {
-                ForwardCommiitte1.Visible = false;
-                ForwardCommiitte2.Visible = false;
-                Reason.Visible = true;
-                btnReturn.Visible = true;
-
-            }
-            else
-            {
-                ForwardCommiitte1.Visible = true;
-                ForwardCommiitte2.Visible = true;
-                Reason.Visible = false;
-                btnReturn.Visible = false;
-                btnReJect.Visible = false;
-            }
         }
     }
 }
