@@ -48,7 +48,7 @@ namespace CEIHaryana.Superintendent
             if (dt.Rows.Count > 0)
             {
                 txtStatus.Text = dt.Rows[0]["ApplicationStatus"].ToString();
-                if (txtStatus.Text != "Submit")
+                if (txtStatus.Text != "Scrutiny")
                 {
                     SupComment.Visible = false;
                       btnSubmit.Visible = false;
@@ -145,7 +145,7 @@ namespace CEIHaryana.Superintendent
 
                     if (x > 0)
                     {
-                        string script = $"alert('Remarks has been submit Succesfully!!.'); window.location='UserDetails.aspx';";
+                        string script = $"alert('Application scrutinized successfully.!!.'); window.location='UserDetails.aspx';";
                         ScriptManager.RegisterStartupScript(this, this.GetType(), "SuccessScript", script, true);
                     }
                     else

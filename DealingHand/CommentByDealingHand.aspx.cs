@@ -52,7 +52,7 @@ namespace CEIHaryana.DealingHand
             if (dt.Rows.Count > 0)
             {
                 txtStatus.Text = dt.Rows[0]["ApplicationStatus"].ToString();
-                if(txtStatus.Text != "Submit")
+                if(txtStatus.Text == "Scrutiny")
                 {
                     Status.Visible = true;
                 }

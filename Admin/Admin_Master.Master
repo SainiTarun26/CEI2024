@@ -15,122 +15,122 @@
     <link rel="stylesheet" href="/Assets/css/vertical-layout-light/style.css" />
     <link rel="shortcut icon" href="images/favicon.png" />
 
-   <%-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>--%>
-  <%--  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <%-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>--%>
+    <%--  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />--%>
 
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <style type="text/css">
-.fade {
-    transition: opacity .15s linear;
-    width: 100% !important;
-}
+        .fade {
+            transition: opacity .15s linear;
+            width: 100% !important;
+        }
 
-.modal {
-    z-index: 1060 !important;
-}
+        .modal {
+            z-index: 1060 !important;
+        }
 
-.modal-backdrop {
-    z-index: 1050 !important;
-    height: 100% !important;
-}
+        .modal-backdrop {
+            z-index: 1050 !important;
+            height: 100% !important;
+        }
 
-div#PageDetails {
-    margin: 15px 18px 15px 18px;
-    padding: 10px 20px;
-    margin-bottom: -25px;
-    background: #639fc2;
-    color: white;
-    font-weight: 600;
-}
+        div#PageDetails {
+            margin: 15px 18px 15px 18px;
+            padding: 10px 20px;
+            margin-bottom: -25px;
+            background: #639fc2;
+            color: white;
+            font-weight: 600;
+        }
 
-svg {
-    margin-right: 10px;
-}
+        svg {
+            margin-right: 10px;
+        }
 
-span.menu-title {
-    color: #F9F9F9 !important;
-}
+        span.menu-title {
+            color: #F9F9F9 !important;
+        }
 
-::before {
-    color: #382c2c;
-}
+        ::before {
+            color: #382c2c;
+        }
 
-img {
-    height: 55px !important;
-    width: 222px;
-    margin-left: 8px !important;
-    max-width: 126% !important;
-}
+        img {
+            height: 55px !important;
+            width: 222px;
+            margin-left: 8px !important;
+            max-width: 126% !important;
+        }
 
-.avatar {
-    width: 60px !important;
-}
+        .avatar {
+            width: 60px !important;
+        }
 
-nav.navbar.col-lg-12.col-12.p-0.fixed-top.d-flex.flex-row {
-    box-shadow: 0px 5px 21px -5px #CDD1E1;
-}
+        nav.navbar.col-lg-12.col-12.p-0.fixed-top.d-flex.flex-row {
+            box-shadow: 0px 5px 21px -5px #CDD1E1;
+        }
 
-body {
-    -moz-transform: scale(0.5, 0.5); /* Moz-browsers */
-    zoom: 0.5; /* Other non-webkit browsers */
-    zoom: 90%; /* Webkit browsers */
-}
+        body {
+            -moz-transform: scale(0.5, 0.5); /* Moz-browsers */
+            zoom: 0.5; /* Other non-webkit browsers */
+            zoom: 90%; /* Webkit browsers */
+        }
 
-.sidebar .nav .nav-item .nav-link i {
-    color: inherit;
-    font-size: 20px;
-    margin-top: -5px;
-    margin-bottom: -5px;
-    margin-right: 10px;
-}
+        .sidebar .nav .nav-item .nav-link i {
+            color: inherit;
+            font-size: 20px;
+            margin-top: -5px;
+            margin-bottom: -5px;
+            margin-right: 10px;
+        }
 
-input#btnLogout {
-    background: blue;
-    color: white;
-    padding: 2px 10px 1px 10px;
-    border-radius: 5px;
-}
+        input#btnLogout {
+            background: blue;
+            color: white;
+            padding: 2px 10px 1px 10px;
+            border-radius: 5px;
+        }
 
-input#btnLogout:hover {
-    background: #4b49ac;
-    color: white;
-    padding: 2px 10px 1px 10px;
-    border-radius: 5px;
-    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, 
-                rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-}
+            input#btnLogout:hover {
+                background: #4b49ac;
+                color: white;
+                padding: 2px 10px 1px 10px;
+                border-radius: 5px;
+                box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+            }
 
-.dropdown-menu.dropdown-menu-right.navbar-dropdown.show {
-    margin-top: -10px;
-}
+        .dropdown-menu.dropdown-menu-right.navbar-dropdown.show {
+            margin-top: -10px;
+        }
 
-button.navbar-toggler.navbar-toggler-right.d-lg-none.align-self-center {
-    background: red;
-    padding: 1px 5px 4px 5px;
-    border-radius: 5px;
-}
+        button.navbar-toggler.navbar-toggler-right.d-lg-none.align-self-center {
+            background: red;
+            padding: 1px 5px 4px 5px;
+            border-radius: 5px;
+        }
 
-.d-flex.align-items-center {
-    padding-right: 15px;
-    margin-top: -2px;
-}
+        .d-flex.align-items-center {
+            padding-right: 15px;
+            margin-top: -2px;
+        }
 
-.modal-dialog {
-    max-width: 75%;
-    margin-left: 20%;
-}
-.modal-backdrop.show {
-    opacity: .5;
-    DISPLAY: NONE;
-}
-</style>
+        .modal-dialog {
+            max-width: 75%;
+            margin-left: 20%;
+        }
+
+        .modal-backdrop.show {
+            opacity: .5;
+            DISPLAY: NONE;
+        }
+    </style>
 
 </head>
 <body>
     <form id="form1" runat="server">
-          <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        <asp:ContentPlaceHolder ID="MainContent" runat="server" />
         <div>
             <div class="container-scroller">
                 <!-- partial:partials/_navbar.html -->
@@ -140,8 +140,8 @@ button.navbar-toggler.navbar-toggler-right.d-lg-none.align-self-center {
                             <img src="../Assets/Add%20a%20heading%20(1).png" /></a>
                     </div>
 
-                         <asp:HiddenField ID="hdnOpenModal" runat="server" Value="false" />
-                  <%--  <asp:ScriptManager ID="ScriptManager1" runat="server" />--%>
+                    <asp:HiddenField ID="hdnOpenModal" runat="server" Value="false" />
+                    <%--  <asp:ScriptManager ID="ScriptManager1" runat="server" />--%>
                     <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
                         <!-- 🔍 Search Section Added -->
                         <div class="d-flex align-items-center me-3">
@@ -151,7 +151,7 @@ button.navbar-toggler.navbar-toggler-right.d-lg-none.align-self-center {
                                 CssClass="btn btn-primary"
                                 Style="background-color: #4b49ac; border-color: #4b49ac; height: 32px; padding: 0 12px; font-size: 14px;" OnClick="btnSearch_Click"
                                 OnClientClick="openModal(); return false;" OnClientClick="openModal();" />--%>
-                                    <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="btn btn-primary" OnClick="btnSearch_Click" />
+                            <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="btn btn-primary" OnClick="btnSearch_Click" />
                         </div>
 
                         <!-- Existing profile dropdown (unchanged) -->
@@ -180,567 +180,568 @@ button.navbar-toggler.navbar-toggler-right.d-lg-none.align-self-center {
                                 </div>
                             </li>
                         </ul>
-                        </div>
-                        <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
-                            <span class="icon-menu"></span>
-                        </button>
-                   </nav>
                     </div>
-                    
-                    </div>
-                                 <!-- Modal Backdrop -->
-<div id="searchModal" 
-     style="display:none; position:fixed; top:0; left:0; width:100%; height:100%;
-            background-color:rgba(0,0,0,0.6); z-index:1000; overflow:auto; padding-top:60px;">
+                    <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+                        <span class="icon-menu"></span>
+                    </button>
+                </nav>
+            </div>
 
-    <!-- Modal Content -->
-    <div style="background-color:#fff; margin:auto; border-radius:10px; padding:25px; 
-                width:90%; max-width:1350px; box-shadow:0 4px 20px rgba(0,0,0,0.3);margin-top:4%;">
+        </div>
+        <!-- Modal Backdrop -->
+        <div id="searchModal"
+            style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); z-index: 1000; overflow: auto; padding-top: 60px;">
 
-       <%-- <h3 style="text-align:center; margin-bottom:20px; color:#004085; font-family:'Segoe UI', sans-serif;">
+            <!-- Modal Content -->
+            <div style="background-color: #fff; margin: auto; border-radius: 10px; padding: 25px; width: 90%; max-width: 1350px; box-shadow: 0 4px 20px rgba(0,0,0,0.3); margin-top: 4%;">
+
+                <%-- <h3 style="text-align:center; margin-bottom:20px; color:#004085; font-family:'Segoe UI', sans-serif;">
             Inspection Details
         </h3>--%>
 
-        <div class="table-responsive" style="max-height:60vh; overflow:auto; border:1px solid #dee2e6; border-radius:8px;">
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false"
-                CssClass="table table-bordered"
-                OnRowCommand="GridView1_RowCommand"
-                HeaderStyle-BackColor="#006699"
-                HeaderStyle-ForeColor="White"
-                HeaderStyle-HorizontalAlign="Center"
-                RowStyle-ForeColor="#000066"
-                Font-Names="Segoe UI" Font-Size="13px"
-                GridLines="Both" BorderColor="#dee2e6" BorderWidth="1px">
+                <div class="table-responsive" style="max-height: 60vh; overflow: auto; border: 1px solid #dee2e6; border-radius: 8px;">
+                    <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false"
+                        CssClass="table table-bordered"
+                        OnRowCommand="GridView1_RowCommand"
+                        HeaderStyle-BackColor="#006699"
+                        HeaderStyle-ForeColor="White"
+                        HeaderStyle-HorizontalAlign="Center"
+                        RowStyle-ForeColor="#000066"
+                        Font-Names="Segoe UI" Font-Size="13px"
+                        GridLines="Both" BorderColor="#dee2e6" BorderWidth="1px" Width="100%">
 
-                <Columns>
-                    <asp:TemplateField HeaderText="Id" Visible="False">
-                        <ItemTemplate>
-                            <asp:Label ID="lblID" runat="server" Text='<%#Eval("InspectionId") %>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
+                        <Columns>
+                            <asp:TemplateField HeaderText="Id" Visible="False">
+                                <ItemTemplate>
+                                    <asp:Label ID="lblID" runat="server" Text='<%#Eval("InspectionId") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
 
-                    <asp:TemplateField HeaderText="Id" Visible="False">
-                        <ItemTemplate>
-                            <asp:Label ID="lblApplicantFor" runat="server" Text='<%#Eval("ApplicantFor") %>'></asp:Label>
-                            <asp:Label ID="lblApproval" runat="server" Text='<%#Eval("ApplicationStatus") %>'></asp:Label>
-                            <asp:Label ID="lblInstallationFor" runat="server" Text='<%#Eval("Installationfor") %>'></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Id" Visible="False">
+                                <ItemTemplate>
+                                    <asp:Label ID="lblApplicantFor" runat="server" Text='<%#Eval("ApplicantFor") %>'></asp:Label>
+                                    <asp:Label ID="lblApproval" runat="server" Text='<%#Eval("ApplicationStatus") %>'></asp:Label>
+                                    <asp:Label ID="lblInstallationFor" runat="server" Text='<%#Eval("Installationfor") %>'></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
 
-                    <asp:TemplateField HeaderText="SNo">
-                        <ItemTemplate>
-                            <%# Container.DataItemIndex + 1 %>
-                        </ItemTemplate>
-                    </asp:TemplateField>
+                            <asp:TemplateField HeaderText="SNo">
+                                <ItemTemplate>
+                                    <%# Container.DataItemIndex + 1 %>
+                                </ItemTemplate>
+                            </asp:TemplateField>
 
-                    <asp:TemplateField HeaderText="Inspection Id">
-                        <ItemTemplate>
-                            <asp:LinkButton ID="LinkButton4" runat="server" 
-                                CommandArgument='<%#Eval("InspectionId") %>'
-                                CommandName="Select"
-                                Style="color:#007bff; text-decoration:none; font-weight:500;">
+                            <asp:TemplateField HeaderText="Inspection Id">
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="LinkButton4" runat="server"
+                                        CommandArgument='<%#Eval("InspectionId") %>'
+                                        CommandName="Select"
+                                        Style="color: #007bff; text-decoration: none; font-weight: 500;">
                                 <%#Eval("InspectionId") %>
-                            </asp:LinkButton>
-                        </ItemTemplate>
-                    </asp:TemplateField>
+                                    </asp:LinkButton>
+                                </ItemTemplate>
+                            </asp:TemplateField>
 
-                    <asp:TemplateField HeaderText="Owner Name">
-                        <ItemTemplate>
-                            <asp:Label ID="lblOwnerName" runat="server" 
-                                Text='<%# Eval("OwnerName") %>' 
-                                Style="word-break:break-word;"></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Owner Name">
+                                <ItemStyle CssClass="break-text-10" />
+                                <ItemTemplate>
+                                    <asp:Label ID="lblOwnerName" runat="server"
+                                        Text='<%# Eval("OwnerName") %>'
+                                        Style="word-break: break-word;"></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
 
-                    <asp:TemplateField HeaderText="Contractor Name">
-                        <ItemTemplate>
-                            <asp:Label ID="lblContractorName" runat="server" 
-                                Text='<%# Eval("ContractorName") %>' 
-                                Style="word-break:break-word;"></asp:Label>
-                        </ItemTemplate>
-                    </asp:TemplateField>
+                            <asp:TemplateField HeaderText="Contractor Name">
+                                <ItemStyle CssClass="break-text-10" />
+                                <ItemTemplate>
+                                    <asp:Label ID="lblContractorName" runat="server"
+                                        Text='<%# Eval("ContractorName") %>'
+                                        Style="word-break: break-word;"></asp:Label>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                            <asp:BoundField DataField="Installationfor" HeaderText="Installation Type" />
+                            <asp:BoundField DataField="UserType" HeaderText="Users Type" />
+                            <asp:BoundField DataField="RequestDate" HeaderText="Request Date" />
+                            <asp:BoundField DataField="RequestStatus" HeaderText="Status" />
 
-                    <asp:BoundField DataField="RequestDate" HeaderText="Request Date" />
-                    <asp:BoundField DataField="RequestStatus" HeaderText="Status" />
+                            <asp:TemplateField HeaderText="Inspection Type">
+                                <ItemTemplate>
+                                    <%# Eval("TypeOfInspection") %>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+                        </Columns>
+                    </asp:GridView>
+                </div>
 
-                    <asp:TemplateField HeaderText="Inspection Type">
-                        <ItemTemplate>
-                            <%# Eval("TypeOfInspection") %>
-                        </ItemTemplate>
-                    </asp:TemplateField>
-                </Columns>
-            </asp:GridView>
+                <!-- Close Button -->
+                <div style="text-align: right; margin-top: 15px;">
+                    <button type="button" onclick="closeModal();"
+                        style="padding: 8px 18px; background-color: #6c757d; border: none; color: white; border-radius: 6px; cursor: pointer; font-family: 'Segoe UI';">
+                        Close
+                    </button>
+                </div>
+            </div>
         </div>
 
-        <!-- Close Button -->
-        <div style="text-align:right; margin-top:15px;">
-            <button type="button" onclick="closeModal();" 
-                    style="padding:8px 18px; background-color:#6c757d; border:none; color:white; 
-                           border-radius:6px; cursor:pointer; font-family:'Segoe UI';">
-                Close
-            </button>
-        </div>
-    </div>
-</div>
-
-                <div class="page-body-wrapper">
-                    <div class="theme-setting-wrapper">
-                        <div id="theme-settings" class="settings-panel">
-                            <i class="settings-close ti-close"></i>
-                            <p class="settings-heading">SIDEBAR SKINS</p>
-                            <div class="sidebar-bg-options selected" id="sidebar-light-theme">
-                                <div class="img-ss rounded-circle bg-light border mr-3"></div>
-                                Light
-                            </div>
-                            <div class="sidebar-bg-options" id="sidebar-dark-theme">
-                                <div class="img-ss rounded-circle bg-dark border mr-3"></div>
-                                Dark
-                            </div>
-                            <p class="settings-heading mt-2">HEADER SKINS</p>
-                            <div class="color-tiles mx-0 px-4">
-                                <div class="tiles success"></div>
-                                <div class="tiles warning"></div>
-                                <div class="tiles danger"></div>
-                                <div class="tiles info"></div>
-                                <div class="tiles dark"></div>
-                                <div class="tiles default"></div>
-                            </div>
-                        </div>
+        <div class="page-body-wrapper">
+            <div class="theme-setting-wrapper">
+                <div id="theme-settings" class="settings-panel">
+                    <i class="settings-close ti-close"></i>
+                    <p class="settings-heading">SIDEBAR SKINS</p>
+                    <div class="sidebar-bg-options selected" id="sidebar-light-theme">
+                        <div class="img-ss rounded-circle bg-light border mr-3"></div>
+                        Light
                     </div>
-                    <div id="right-sidebar" class="settings-panel">
-                        <i class="settings-close ti-close"></i>
-                        <ul class="nav nav-tabs border-top" id="setting-panel" role="tablist">
-                            <li class="nav-item">
-                                <a class="nav-link active" id="todo-tab" data-toggle="tab" href="#todo-section" role="tab" aria-controls="todo-section" aria-expanded="true">TO DO LIST</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="chats-tab" data-toggle="tab" href="#chats-section" role="tab" aria-controls="chats-section">CHATS</a>
-                            </li>
-                        </ul>
-                        <div class="tab-content" id="setting-content">
-                            <div class="tab-pane fade show active scroll-wrapper" id="todo-section" role="tabpanel" aria-labelledby="todo-section">
-                                <div class="add-items d-flex px-3 mb-0">
-                                    <form class="form w-100">
-                                        <div class="form-group d-flex">
-                                            <input type="text" class="form-control todo-list-input" placeholder="Add To-do">
-                                            <button type="submit" class="add btn btn-primary todo-list-add-btn" id="add-task">Add</button>
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="list-wrapper px-3">
-                                    <ul class="d-flex flex-column-reverse todo-list">
-                                        <li>
-                                            <div class="form-check">
-                                                <label class="form-check-label">
-                                                    <input class="checkbox" type="checkbox">
-                                                    Team review meeting at 3.00 PM
-                                                </label>
-                                            </div>
-                                            <i class="remove ti-close"></i>
-                                        </li>
-                                        <li>
-                                            <div class="form-check">
-                                                <label class="form-check-label">
-                                                    <input class="checkbox" type="checkbox">
-                                                    Prepare for presentation
-                                                </label>
-                                            </div>
-                                            <i class="remove ti-close"></i>
-                                        </li>
-                                        <li>
-                                            <div class="form-check">
-                                                <label class="form-check-label">
-                                                    <input class="checkbox" type="checkbox">
-                                                    Resolve all the low priority tickets due today
-                                                </label>
-                                            </div>
-                                            <i class="remove ti-close"></i>
-                                        </li>
-                                        <li class="completed">
-                                            <div class="form-check">
-                                                <label class="form-check-label">
-                                                    <input class="checkbox" type="checkbox" checked>
-                                                    Schedule meeting for next week
-                                                </label>
-                                            </div>
-                                            <i class="remove ti-close"></i>
-                                        </li>
-                                        <li class="completed">
-                                            <div class="form-check">
-                                                <label class="form-check-label">
-                                                    <input class="checkbox" type="checkbox" checked>
-                                                    Project review
-                                                </label>
-                                            </div>
-                                            <i class="remove ti-close"></i>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <h4 class="px-3 text-muted mt-5 font-weight-light mb-0">Events</h4>
-                                <div class="events pt-4 px-3">
-                                    <div class="wrapper d-flex mb-2">
-                                        <i class="ti-control-record text-primary mr-2"></i>
-                                        <span>Feb 11 2018</span>
-                                    </div>
-                                    <p class="mb-0 font-weight-thin text-gray">Creating component page build a js</p>
-                                    <p class="text-gray mb-0">The total number of sessions</p>
-                                </div>
-                                <div class="events pt-4 px-3">
-                                    <div class="wrapper d-flex mb-2">
-                                        <i class="ti-control-record text-primary mr-2"></i>
-                                        <span>Feb 7 2018</span>
-                                    </div>
-                                    <p class="mb-0 font-weight-thin text-gray">Meeting with Alisa</p>
-                                    <p class="text-gray mb-0 ">Call Sarah Graves</p>
-                                </div>
-                            </div>
-                            <div class="tab-pane fade" id="chats-section" role="tabpanel" aria-labelledby="chats-section">
-                                <div class="d-flex align-items-center justify-content-between border-bottom">
-                                    <p class="settings-heading border-top-0 mb-3 pl-3 pt-0 border-bottom-0 pb-0">Friends</p>
-                                    <small class="settings-heading border-top-0 mb-3 pt-0 border-bottom-0 pb-0 pr-3 font-weight-normal">See All</small>
-                                </div>
-                                <ul class="chat-list">
-                                    <li class="list active">
-                                        <div class="profile">
-                                            <img src="images/faces/face1.jpg" alt="image"><span class="online"></span>
-                                        </div>
-                                        <div class="info">
-                                            <p>Thomas Douglas</p>
-                                            <p>Available</p>
-                                        </div>
-                                        <small class="text-muted my-auto">19 min</small>
-                                    </li>
-                                    <li class="list">
-                                        <div class="profile">
-                                            <img src="images/faces/face2.jpg" alt="image"><span class="offline"></span>
-                                        </div>
-                                        <div class="info">
-                                            <div class="wrapper d-flex">
-                                                <p>Catherine</p>
-                                            </div>
-                                            <p>Away</p>
-                                        </div>
-                                        <div class="badge badge-success badge-pill my-auto mx-2">4</div>
-                                        <small class="text-muted my-auto">23 min</small>
-                                    </li>
-                                    <li class="list">
-                                        <div class="profile">
-                                            <img src="images/faces/face3.jpg" alt="image"><span class="online"></span>
-                                        </div>
-                                        <div class="info">
-                                            <p>Daniel Russell</p>
-                                            <p>Available</p>
-                                        </div>
-                                        <small class="text-muted my-auto">14 min</small>
-                                    </li>
-                                    <li class="list">
-                                        <div class="profile">
-                                            <img src="images/faces/face4.jpg" alt="image"><span class="offline"></span>
-                                        </div>
-                                        <div class="info">
-                                            <p>James Richardson</p>
-                                            <p>Away</p>
-                                        </div>
-                                        <small class="text-muted my-auto">2 min</small>
-                                    </li>
-                                    <li class="list">
-                                        <div class="profile">
-                                            <img src="images/faces/face5.jpg" alt="image"><span class="online"></span>
-                                        </div>
-                                        <div class="info">
-                                            <p>Madeline Kennedy</p>
-                                            <p>Available</p>
-                                        </div>
-                                        <small class="text-muted my-auto">5 min</small>
-                                    </li>
-                                    <li class="list">
-                                        <div class="profile">
-                                            <img src="images/faces/face6.jpg" alt="image"><span class="online"></span>
-                                        </div>
-                                        <div class="info">
-                                            <p>Sarah Graves</p>
-                                            <p>Available</p>
-                                        </div>
-                                        <small class="text-muted my-auto">47 min</small>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+                    <div class="sidebar-bg-options" id="sidebar-dark-theme">
+                        <div class="img-ss rounded-circle bg-dark border mr-3"></div>
+                        Dark
                     </div>
-                    <nav class="sidebar sidebar-offcanvas" id="sidebar" style="background-color: #263247;">
-                        <ul class="nav" id="sidebar-accordion">
-                            <li class="nav-item">
-                                <a class="nav-link" href="/Admin/AdminMaster.aspx">
-                                    <i class="icon-grid menu-icon"></i>
-                                    <span class="menu-title">Dashboard</span>
-                                </a>
-                            </li>
-
-                            <!-- Licence -->
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="collapse" href="#ui-basic7" aria-expanded="false" aria-controls="ui-basic7">
-                                    <span class="menu-title">Licence</span>
-                                    <i class="menu-arrow"></i>
-                                </a>
-                                <div class="collapse" id="ui-basic7" data-parent="#sidebar-accordion">
-                                    <ul class="nav flex-column sub-menu">
-                                        <li class="nav-item"><a class="nav-link" href="/Admin/NewApplications_Licence.aspx">NewApplcations</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="/Admin/Pending_Licence_Approval_Cei_List.aspx">InProcess Licence</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="/Admin/Approved_Licence_Approval_Cei_List.aspx">Application History</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-
-                            <!-- Staff Details -->
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-                                    <span class="menu-title">Staff Details</span>
-                                    <i class="menu-arrow"></i>
-                                </a>
-                                <div class="collapse" id="ui-basic" data-parent="#sidebar-accordion">
-                                    <ul class="nav flex-column sub-menu">
-                                        <li class="nav-item"><a class="nav-link" href="/Admin/StaffDetailsData.aspx?category=Contractor">Contractor</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="/Admin/StaffDetailsData.aspx?category=Supervisor">Supervisor</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="/Admin/StaffDetailsData.aspx?category=Wireman">Wireman</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="/Admin/StaffDetailsData.aspx?category=SiteOwner">Site Owner</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-
-                            <!-- Add Staff Details -->
-                            <li class="nav-item" id="StaffDetails" runat="server" visible="false">
-                                <a class="nav-link" data-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic1">
-                                    <span class="menu-title">Add Staff Details</span>
-                                    <i class="menu-arrow"></i>
-                                </a>
-                                <div class="collapse" id="ui-basic1" data-parent="#sidebar-accordion">
-                                    <ul class="nav flex-column sub-menu">
-                                        <li class="nav-item"><a class="nav-link" href="/Admin/AddContractorDetails.aspx">Add Contractor</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="/Admin/AddSupervisorDetails.aspx">Add Supervisor</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="/Admin/AddWiremanDetails.aspx">Add Wireman</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-
-                            <!-- Print Forms -->
-                            <li class="nav-item" id="Printforms" runat="server" visible="false">
-                                <a class="nav-link" data-toggle="collapse" href="#ui-basic3" aria-expanded="false" aria-controls="ui-basic3">
-                                    <span class="menu-title">Print Forms</span>
-                                    <i class="menu-arrow"></i>
-                                </a>
-                                <div class="collapse" id="ui-basic3" data-parent="#sidebar-accordion">
-                                    <ul class="nav flex-column sub-menu">
-                                        <li class="nav-item"><a class="nav-link" href="/UserPages/FormPrintContractor.aspx">Contractor</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="/UserPages/FormPrintSupervisor.aspx">Supervisor</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="/UserPages/FormPrintWiremen.aspx">Wireman</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-
-                            <!-- Work Intimations -->
-                            <li class="nav-item">
-                                <a class="nav-link" href="/Admin/Projects.aspx">
-                                    <span class="menu-title">Work Intimations</span>
-                                </a>
-                            </li>
-
-                            <!-- Test Report History -->
-                            <li class="nav-item">
-                                <a class="nav-link" href="/Admin/TestReportHistoryFromSupervisor.aspx">
-                                    <span class="menu-title">Test Report History</span>
-                                </a>
-                            </li>
-
-                            <!-- Inspections -->
-                            <li class="nav-item" id="NewInspectionTab" runat="server" visible="false">
-                                <a class="nav-link" data-toggle="collapse" href="#ui-basic8" aria-expanded="false" aria-controls="ui-basic8">
-                                    <span class="menu-title">Inspections</span>
-                                    <i class="menu-arrow"></i>
-                                </a>
-                                <div class="collapse" id="ui-basic8" data-parent="#sidebar-accordion">
-                                    <ul class="nav flex-column sub-menu">
-                                        <li class="nav-item"><a class="nav-link" href="/Admin/IntimationHistoryForAdmin.aspx">New</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="/Admin/ActionInspectioHistrory.aspx">InProcess</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-
-                            <!-- Consolidated Report -->
-                            <li class="nav-item" id="ConsolidatedReport" runat="server" visible="false">
-                                <a class="nav-link" href="/Admin/Consolidated_Report.aspx">
-                                    <span class="menu-title">Consolidated Report</span>
-                                </a>
-                            </li>
-
-                            <!-- Upload Signature -->
-                            <li class="nav-item">
-                                <a class="nav-link" href="/Admin/UploadSignature.aspx">
-                                    <span class="menu-title">Upload Signature</span>
-                                </a>
-                            </li>
-
-                            <!-- SLD -->
-                            <li class="nav-item" id="SLDRequest" runat="server" visible="false">
-                                <a class="nav-link" data-toggle="collapse" href="#ui-basic5" aria-expanded="false" aria-controls="ui-basic5">
-                                    <span class="menu-title">SLD</span>
-                                    <i class="menu-arrow"></i>
-                                </a>
-                                <div class="collapse" id="ui-basic5" data-parent="#sidebar-accordion">
-                                    <ul class="nav flex-column sub-menu">
-                                        <li class="nav-item"><a class="nav-link" href="/Admin/SldApproval.aspx">Request Recevied</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="/Admin/SldApprovalRequest.aspx">Approval Request</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="/Admin/SLDHistory.aspx">History</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-
-                            <!-- Change Staff -->
-                            <li class="nav-item" id="ChangeStaffTab" runat="server" visible="true">
-                                <a class="nav-link" href="/Admin/ChangeStaff.aspx">
-                                    <span class="menu-title">Change Staff</span>
-                                </a>
-                            </li>
-
-                            <!-- Transfer -->
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="collapse" href="#ui-basic4" aria-expanded="false" aria-controls="ui-basic4">
-                                    <span class="menu-title">Transfer</span>
-                                    <i class="menu-arrow"></i>
-                                </a>
-                                <div class="collapse" id="ui-basic4" data-parent="#sidebar-accordion">
-                                    <ul class="nav flex-column sub-menu">
-                                        <li class="nav-item"><a class="nav-link" href="/Admin/Transfer_Inspections_ToDifferentStaff_ByAdmin.aspx">Inspections</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="/Admin/Xen_To_XenLiftTransfer_ByAdmin.aspx">Lift Inspections</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="/Admin/Transfer_Sld_ToDifferentStaff_ByAdmin.aspx">Slds</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="/Admin/TransferRequestReport.aspx">Request Report</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-
-                            <!-- Search by CAF Id -->
-                            <li class="nav-item">
-                                <a class="nav-link" href="/Admin/TotalRequestInspectionForAdmin_SearchWithCafId.aspx">
-                                    <span class="menu-title">Search By CAF Id</span>
-                                </a>
-                            </li>
-
-                            <!-- Utility Master -->
-                            <li class="nav-item" id="UtilityMasterTab" runat="server" visible="false">
-                                <a class="nav-link" href="/Admin/UtilityMaster.aspx">
-                                    <span class="menu-title">Utility Master</span>
-                                </a>
-                            </li>
-
-                            <!-- Wing Master -->
-                            <li class="nav-item" id="WingMasterTab" runat="server" visible="false">
-                                <a class="nav-link" href="/Admin/WingMaster.aspx">
-                                    <span class="menu-title">Wing Master</span>
-                                </a>
-                            </li>
-
-                            <!-- Zone Master -->
-                            <li class="nav-item" id="ZoneMasterTab" runat="server" visible="false">
-                                <a class="nav-link" href="/Admin/ZoneMaster.aspx">
-                                    <span class="menu-title">Zone Master</span>
-                                </a>
-                            </li>
-
-                            <!-- Circle Master -->
-                            <li class="nav-item" id="CircleMasterTab" runat="server" visible="false">
-                                <a class="nav-link" href="/Admin/CircleMaster.aspx">
-                                    <span class="menu-title">Circle Master</span>
-                                </a>
-                            </li>
-
-                            <!-- Division Master -->
-                            <li class="nav-item" id="DivisionMasterTab" runat="server" visible="false">
-                                <a class="nav-link" href="/Admin/Division.aspx">
-                                    <span class="menu-title">Division Master</span>
-                                </a>
-                            </li>
-
-                            <!-- Sub Division Master -->
-                            <li class="nav-item" id="SubDivisionMasterTab" runat="server" visible="false">
-                                <a class="nav-link" href="/Admin/SubDivisionMaster.aspx">
-                                    <span class="menu-title">Sub Division Master</span>
-                                </a>
-                            </li>
-
-                            <!-- Accidential Reports -->
-                            <li class="nav-item" id="Li1" runat="server">
-                                <a class="nav-link" href="/Admin/AccidentialReports_Admin.aspx">
-                                    <span class="menu-title">Accidential Reports</span>
-                                </a>
-                            </li>
-
-                            <!-- CESE -->
-                            <li class="nav-item" id="CESE" runat="server" visible="false">
-                                <a class="nav-link" href="/Admin/CESE_Registration.aspx">
-                                    <span class="menu-title">CESE Registration</span>
-                                </a>
-                            </li>
-
-                            <!-- Disconnection -->
-                            <li class="nav-item">
-                                <a class="nav-link" data-toggle="collapse" href="#ui-basic6" aria-expanded="false" aria-controls="ui-basic6">
-                                    <span class="menu-title">Disconnection</span>
-                                    <i class="menu-arrow"></i>
-                                </a>
-                                <div class="collapse" id="ui-basic6" data-parent="#sidebar-accordion">
-                                    <ul class="nav flex-column sub-menu">
-                                        <li class="nav-item"><a class="nav-link" href="/Admin/NoticeForDisconnection.aspx">Notice</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="/Admin/DisconnectionRequest.aspx">Status Of Notice</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-
-                            <!-- Committee -->
-                            <li class="nav-item">
-                                <a class="nav-link" href="/Admin/Committee_Details.aspx">
-                                    <span class="menu-title">Committee</span>
-                                </a>
-                            </li>
-
-                            <!-- Termination / Suspension -->
-                            <li class="nav-item" id="TerminationOrSuspension" runat="server" visible="false">
-                                <a class="nav-link" href="/Admin/Suspend_Terminate.aspx">
-                                    <span class="menu-title">Termination / Suspension</span>
-                                </a>
-                            </li>
-
-                            <!-- Upgradation Request -->
-                            <li class="nav-item" id="UpgradationRequest" runat="server" visible="false">
-                                <a class="nav-link" href="/Admin/Contractor_Supervisor_Upgradation_Details.aspx">
-                                    <span class="menu-title">Upgradation Requests</span>
-                                </a>
-                            </li>
-
-                            <!-- Upgradation History -->
-                            <li class="nav-item" id="UpgradationHistory" runat="server" visible="false">
-                                <a class="nav-link" href="/Admin/UpgradationRequestHistory.aspx">
-                                    <span class="menu-title">Upgradation Requests History</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                    <div class="main-panel">
-                        <div class="card" id="PageDetails">
-                            <div class="row">
-                                <div class="col-sm-9">
-                                    <asp:Label ID="LoginType" runat="server" Text="Admin"></asp:Label><%--<span id="Slash">></span>--%>
-                                    <%--  <asp:Label ID="PageName" runat="server" Text="Work Intimation"></asp:Label>--%>
-                                </div>
-                                <div class="col-sm-3" style="text-align: end;">
-                                    <asp:Label ID="PersonDetails" runat="server"></asp:Label>
-                                </div>
-                            </div>
-                        </div>
-                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-                        </asp:ContentPlaceHolder>
+                    <p class="settings-heading mt-2">HEADER SKINS</p>
+                    <div class="color-tiles mx-0 px-4">
+                        <div class="tiles success"></div>
+                        <div class="tiles warning"></div>
+                        <div class="tiles danger"></div>
+                        <div class="tiles info"></div>
+                        <div class="tiles dark"></div>
+                        <div class="tiles default"></div>
                     </div>
                 </div>
-                <asp:HiddenField ID="HiddenField1" runat="server" Value="false" />
             </div>
+            <div id="right-sidebar" class="settings-panel">
+                <i class="settings-close ti-close"></i>
+                <ul class="nav nav-tabs border-top" id="setting-panel" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="todo-tab" data-toggle="tab" href="#todo-section" role="tab" aria-controls="todo-section" aria-expanded="true">TO DO LIST</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="chats-tab" data-toggle="tab" href="#chats-section" role="tab" aria-controls="chats-section">CHATS</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="setting-content">
+                    <div class="tab-pane fade show active scroll-wrapper" id="todo-section" role="tabpanel" aria-labelledby="todo-section">
+                        <div class="add-items d-flex px-3 mb-0">
+                            <form class="form w-100">
+                                <div class="form-group d-flex">
+                                    <input type="text" class="form-control todo-list-input" placeholder="Add To-do">
+                                    <button type="submit" class="add btn btn-primary todo-list-add-btn" id="add-task">Add</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="list-wrapper px-3">
+                            <ul class="d-flex flex-column-reverse todo-list">
+                                <li>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input class="checkbox" type="checkbox">
+                                            Team review meeting at 3.00 PM
+                                        </label>
+                                    </div>
+                                    <i class="remove ti-close"></i>
+                                </li>
+                                <li>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input class="checkbox" type="checkbox">
+                                            Prepare for presentation
+                                        </label>
+                                    </div>
+                                    <i class="remove ti-close"></i>
+                                </li>
+                                <li>
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input class="checkbox" type="checkbox">
+                                            Resolve all the low priority tickets due today
+                                        </label>
+                                    </div>
+                                    <i class="remove ti-close"></i>
+                                </li>
+                                <li class="completed">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input class="checkbox" type="checkbox" checked>
+                                            Schedule meeting for next week
+                                        </label>
+                                    </div>
+                                    <i class="remove ti-close"></i>
+                                </li>
+                                <li class="completed">
+                                    <div class="form-check">
+                                        <label class="form-check-label">
+                                            <input class="checkbox" type="checkbox" checked>
+                                            Project review
+                                        </label>
+                                    </div>
+                                    <i class="remove ti-close"></i>
+                                </li>
+                            </ul>
+                        </div>
+                        <h4 class="px-3 text-muted mt-5 font-weight-light mb-0">Events</h4>
+                        <div class="events pt-4 px-3">
+                            <div class="wrapper d-flex mb-2">
+                                <i class="ti-control-record text-primary mr-2"></i>
+                                <span>Feb 11 2018</span>
+                            </div>
+                            <p class="mb-0 font-weight-thin text-gray">Creating component page build a js</p>
+                            <p class="text-gray mb-0">The total number of sessions</p>
+                        </div>
+                        <div class="events pt-4 px-3">
+                            <div class="wrapper d-flex mb-2">
+                                <i class="ti-control-record text-primary mr-2"></i>
+                                <span>Feb 7 2018</span>
+                            </div>
+                            <p class="mb-0 font-weight-thin text-gray">Meeting with Alisa</p>
+                            <p class="text-gray mb-0 ">Call Sarah Graves</p>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="chats-section" role="tabpanel" aria-labelledby="chats-section">
+                        <div class="d-flex align-items-center justify-content-between border-bottom">
+                            <p class="settings-heading border-top-0 mb-3 pl-3 pt-0 border-bottom-0 pb-0">Friends</p>
+                            <small class="settings-heading border-top-0 mb-3 pt-0 border-bottom-0 pb-0 pr-3 font-weight-normal">See All</small>
+                        </div>
+                        <ul class="chat-list">
+                            <li class="list active">
+                                <div class="profile">
+                                    <img src="images/faces/face1.jpg" alt="image"><span class="online"></span>
+                                </div>
+                                <div class="info">
+                                    <p>Thomas Douglas</p>
+                                    <p>Available</p>
+                                </div>
+                                <small class="text-muted my-auto">19 min</small>
+                            </li>
+                            <li class="list">
+                                <div class="profile">
+                                    <img src="images/faces/face2.jpg" alt="image"><span class="offline"></span>
+                                </div>
+                                <div class="info">
+                                    <div class="wrapper d-flex">
+                                        <p>Catherine</p>
+                                    </div>
+                                    <p>Away</p>
+                                </div>
+                                <div class="badge badge-success badge-pill my-auto mx-2">4</div>
+                                <small class="text-muted my-auto">23 min</small>
+                            </li>
+                            <li class="list">
+                                <div class="profile">
+                                    <img src="images/faces/face3.jpg" alt="image"><span class="online"></span>
+                                </div>
+                                <div class="info">
+                                    <p>Daniel Russell</p>
+                                    <p>Available</p>
+                                </div>
+                                <small class="text-muted my-auto">14 min</small>
+                            </li>
+                            <li class="list">
+                                <div class="profile">
+                                    <img src="images/faces/face4.jpg" alt="image"><span class="offline"></span>
+                                </div>
+                                <div class="info">
+                                    <p>James Richardson</p>
+                                    <p>Away</p>
+                                </div>
+                                <small class="text-muted my-auto">2 min</small>
+                            </li>
+                            <li class="list">
+                                <div class="profile">
+                                    <img src="images/faces/face5.jpg" alt="image"><span class="online"></span>
+                                </div>
+                                <div class="info">
+                                    <p>Madeline Kennedy</p>
+                                    <p>Available</p>
+                                </div>
+                                <small class="text-muted my-auto">5 min</small>
+                            </li>
+                            <li class="list">
+                                <div class="profile">
+                                    <img src="images/faces/face6.jpg" alt="image"><span class="online"></span>
+                                </div>
+                                <div class="info">
+                                    <p>Sarah Graves</p>
+                                    <p>Available</p>
+                                </div>
+                                <small class="text-muted my-auto">47 min</small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <nav class="sidebar sidebar-offcanvas" id="sidebar" style="background-color: #263247;">
+                <ul class="nav" id="sidebar-accordion">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Admin/AdminMaster.aspx">
+                            <i class="icon-grid menu-icon"></i>
+                            <span class="menu-title">Dashboard</span>
+                        </a>
+                    </li>
+
+                    <!-- Licence -->
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#ui-basic7" aria-expanded="false" aria-controls="ui-basic7">
+                            <span class="menu-title">Licence</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="ui-basic7" data-parent="#sidebar-accordion">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"><a class="nav-link" href="/Admin/NewApplications_Licence_Pending_Scrutiny.aspx">NewApplcations</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/Admin/NewApplications_Licence.aspx">Forwarded By Superintendent</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/Admin/Pending_Licence_Approval_Cei_List.aspx">InProcess Licence</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/Admin/Approved_Licence_Approval_Cei_List.aspx">Application History</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- Staff Details -->
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                            <span class="menu-title">Staff Details</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="ui-basic" data-parent="#sidebar-accordion">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"><a class="nav-link" href="/Admin/StaffDetailsData.aspx?category=Contractor">Contractor</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/Admin/StaffDetailsData.aspx?category=Supervisor">Supervisor</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/Admin/StaffDetailsData.aspx?category=Wireman">Wireman</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/Admin/StaffDetailsData.aspx?category=SiteOwner">Site Owner</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- Add Staff Details -->
+                    <li class="nav-item" id="StaffDetails" runat="server" visible="false">
+                        <a class="nav-link" data-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic1">
+                            <span class="menu-title">Add Staff Details</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="ui-basic1" data-parent="#sidebar-accordion">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"><a class="nav-link" href="/Admin/AddContractorDetails.aspx">Add Contractor</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/Admin/AddSupervisorDetails.aspx">Add Supervisor</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/Admin/AddWiremanDetails.aspx">Add Wireman</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- Print Forms -->
+                    <li class="nav-item" id="Printforms" runat="server" visible="false">
+                        <a class="nav-link" data-toggle="collapse" href="#ui-basic3" aria-expanded="false" aria-controls="ui-basic3">
+                            <span class="menu-title">Print Forms</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="ui-basic3" data-parent="#sidebar-accordion">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"><a class="nav-link" href="/UserPages/FormPrintContractor.aspx">Contractor</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/UserPages/FormPrintSupervisor.aspx">Supervisor</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/UserPages/FormPrintWiremen.aspx">Wireman</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- Work Intimations -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Admin/Projects.aspx">
+                            <span class="menu-title">Work Intimations</span>
+                        </a>
+                    </li>
+
+                    <!-- Test Report History -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Admin/TestReportHistoryFromSupervisor.aspx">
+                            <span class="menu-title">Test Report History</span>
+                        </a>
+                    </li>
+
+                    <!-- Inspections -->
+                    <li class="nav-item" id="NewInspectionTab" runat="server" visible="false">
+                        <a class="nav-link" data-toggle="collapse" href="#ui-basic8" aria-expanded="false" aria-controls="ui-basic8">
+                            <span class="menu-title">Inspections</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="ui-basic8" data-parent="#sidebar-accordion">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"><a class="nav-link" href="/Admin/IntimationHistoryForAdmin.aspx">New</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/Admin/ActionInspectioHistrory.aspx">InProcess</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- Consolidated Report -->
+                    <li class="nav-item" id="ConsolidatedReport" runat="server" visible="false">
+                        <a class="nav-link" href="/Admin/Consolidated_Report.aspx">
+                            <span class="menu-title">Consolidated Report</span>
+                        </a>
+                    </li>
+
+                    <!-- Upload Signature -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Admin/UploadSignature.aspx">
+                            <span class="menu-title">Upload Signature</span>
+                        </a>
+                    </li>
+
+                    <!-- SLD -->
+                    <li class="nav-item" id="SLDRequest" runat="server" visible="false">
+                        <a class="nav-link" data-toggle="collapse" href="#ui-basic5" aria-expanded="false" aria-controls="ui-basic5">
+                            <span class="menu-title">SLD</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="ui-basic5" data-parent="#sidebar-accordion">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"><a class="nav-link" href="/Admin/SldApproval.aspx">Request Recevied</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/Admin/SldApprovalRequest.aspx">Approval Request</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/Admin/SLDHistory.aspx">History</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- Change Staff -->
+                    <li class="nav-item" id="ChangeStaffTab" runat="server" visible="true">
+                        <a class="nav-link" href="/Admin/ChangeStaff.aspx">
+                            <span class="menu-title">Change Staff</span>
+                        </a>
+                    </li>
+
+                    <!-- Transfer -->
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#ui-basic4" aria-expanded="false" aria-controls="ui-basic4">
+                            <span class="menu-title">Transfer</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="ui-basic4" data-parent="#sidebar-accordion">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"><a class="nav-link" href="/Admin/Transfer_Inspections_ToDifferentStaff_ByAdmin.aspx">Inspections</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/Admin/Xen_To_XenLiftTransfer_ByAdmin.aspx">Lift Inspections</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/Admin/Transfer_Sld_ToDifferentStaff_ByAdmin.aspx">Slds</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/Admin/TransferRequestReport.aspx">Request Report</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- Search by CAF Id -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Admin/TotalRequestInspectionForAdmin_SearchWithCafId.aspx">
+                            <span class="menu-title">Search By CAF Id</span>
+                        </a>
+                    </li>
+
+                    <!-- Utility Master -->
+                    <li class="nav-item" id="UtilityMasterTab" runat="server" visible="false">
+                        <a class="nav-link" href="/Admin/UtilityMaster.aspx">
+                            <span class="menu-title">Utility Master</span>
+                        </a>
+                    </li>
+
+                    <!-- Wing Master -->
+                    <li class="nav-item" id="WingMasterTab" runat="server" visible="false">
+                        <a class="nav-link" href="/Admin/WingMaster.aspx">
+                            <span class="menu-title">Wing Master</span>
+                        </a>
+                    </li>
+
+                    <!-- Zone Master -->
+                    <li class="nav-item" id="ZoneMasterTab" runat="server" visible="false">
+                        <a class="nav-link" href="/Admin/ZoneMaster.aspx">
+                            <span class="menu-title">Zone Master</span>
+                        </a>
+                    </li>
+
+                    <!-- Circle Master -->
+                    <li class="nav-item" id="CircleMasterTab" runat="server" visible="false">
+                        <a class="nav-link" href="/Admin/CircleMaster.aspx">
+                            <span class="menu-title">Circle Master</span>
+                        </a>
+                    </li>
+
+                    <!-- Division Master -->
+                    <li class="nav-item" id="DivisionMasterTab" runat="server" visible="false">
+                        <a class="nav-link" href="/Admin/Division.aspx">
+                            <span class="menu-title">Division Master</span>
+                        </a>
+                    </li>
+
+                    <!-- Sub Division Master -->
+                    <li class="nav-item" id="SubDivisionMasterTab" runat="server" visible="false">
+                        <a class="nav-link" href="/Admin/SubDivisionMaster.aspx">
+                            <span class="menu-title">Sub Division Master</span>
+                        </a>
+                    </li>
+
+                    <!-- Accidential Reports -->
+                    <li class="nav-item" id="Li1" runat="server">
+                        <a class="nav-link" href="/Admin/AccidentialReports_Admin.aspx">
+                            <span class="menu-title">Accidential Reports</span>
+                        </a>
+                    </li>
+
+                    <!-- CESE -->
+                    <li class="nav-item" id="CESE" runat="server" visible="false">
+                        <a class="nav-link" href="/Admin/CESE_Registration.aspx">
+                            <span class="menu-title">CESE Registration</span>
+                        </a>
+                    </li>
+
+                    <!-- Disconnection -->
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="collapse" href="#ui-basic6" aria-expanded="false" aria-controls="ui-basic6">
+                            <span class="menu-title">Disconnection</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="ui-basic6" data-parent="#sidebar-accordion">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"><a class="nav-link" href="/Admin/NoticeForDisconnection.aspx">Notice</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/Admin/DisconnectionRequest.aspx">Status Of Notice</a></li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    <!-- Committee -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Admin/Committee_Details.aspx">
+                            <span class="menu-title">Committee</span>
+                        </a>
+                    </li>
+
+                    <!-- Termination / Suspension -->
+                    <li class="nav-item" id="TerminationOrSuspension" runat="server" visible="false">
+                        <a class="nav-link" href="/Admin/Suspend_Terminate.aspx">
+                            <span class="menu-title">Termination / Suspension</span>
+                        </a>
+                    </li>
+
+                    <!-- Upgradation Request -->
+                    <li class="nav-item" id="UpgradationRequest" runat="server" visible="false">
+                        <a class="nav-link" href="/Admin/Contractor_Supervisor_Upgradation_Details.aspx">
+                            <span class="menu-title">Upgradation Requests</span>
+                        </a>
+                    </li>
+
+                    <!-- Upgradation History -->
+                    <li class="nav-item" id="UpgradationHistory" runat="server" visible="false">
+                        <a class="nav-link" href="/Admin/UpgradationRequestHistory.aspx">
+                            <span class="menu-title">Upgradation Requests History</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="main-panel">
+                <div class="card" id="PageDetails">
+                    <div class="row">
+                        <div class="col-sm-9">
+                            <asp:Label ID="LoginType" runat="server" Text="Admin"></asp:Label><%--<span id="Slash">></span>--%>
+                            <%--  <asp:Label ID="PageName" runat="server" Text="Work Intimation"></asp:Label>--%>
+                        </div>
+                        <div class="col-sm-3" style="text-align: end;">
+                            <asp:Label ID="PersonDetails" runat="server"></asp:Label>
+                        </div>
+                    </div>
+                </div>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </div>
+        <asp:HiddenField ID="HiddenField1" runat="server" Value="false" />
+        </div>
         </div>
     </form>
     <script src="/Assets/js/js/vendor.bundle.base.js"></script>
@@ -774,10 +775,42 @@ button.navbar-toggler.navbar-toggler-right.d-lg-none.align-self-center {
         // Reopen modal automatically if hdnOpenModal is true after postback
         $(document).ready(function () {
             var shouldOpen = $('#<%= hdnOpenModal.ClientID %>').val();
-        if (shouldOpen === 'true') {
-            $('#searchModal').modal('show');
-        }
-    });
+            if (shouldOpen === 'true') {
+                $('#searchModal').modal('show');
+            }
+        });
+    </script>
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function () {
+            const elements = document.querySelectorAll('.break-text-10');
+
+            elements.forEach(function (element) {
+                let text = element.innerText;
+                let formattedText = '';
+                let currentIndex = 0;
+
+                while (currentIndex < text.length) {
+                    // Get a 30-character substring
+                    let chunk = text.slice(currentIndex, currentIndex + 30);
+
+                    // Find the nearest whitespace in this chunk
+                    let breakIndex = chunk.lastIndexOf(" ");
+
+                    // If a whitespace is found, break at that whitespace
+                    if (breakIndex !== -1) {
+                        formattedText += chunk.slice(0, breakIndex) + '<br>';
+                        currentIndex += breakIndex + 1; // Move past the whitespace
+                    } else {
+                        // If no whitespace is found, break at the 30-character limit
+                        formattedText += chunk + '<br>';
+                        currentIndex += 30;
+                    }
+                }
+
+                // Apply the formatted text with <br> to the element's innerHTML
+                element.innerHTML = formattedText.trim(); // Remove any trailing <br>
+            });
+        });
     </script>
 </body>
 </html>
