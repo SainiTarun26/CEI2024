@@ -123,6 +123,22 @@
     <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=1.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.IO.RecyclableMemoryStream.1.4.1\lib\net46\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Microsoft.ReportViewer.WebForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.13.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -2899,6 +2915,7 @@
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="CEI.cs" />
+    <Compile Include="CEIHaryanaDBLive_NewTestDataSet1.Designer.cs" />
     <Compile Include="ChangePassword.aspx.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -6024,6 +6041,13 @@
     <Content Include="Contractor\ContractorRenewalMaster.Master" />
     <Content Include="GuestAdmin\GuestAdmin.Master" />
     <Content Include="Industry_Master\PeriodicLiftInstallation.Master" />
+    <Content Include="CEIHaryanaDBLive_NewTestDataSet.xsc">
+      <DependentUpon>CEIHaryanaDBLive_NewTestDataSet.xsd</DependentUpon>
+    </Content>
+    <None Include="CEIHaryanaDBLive_NewTestDataSet.xsd" />
+    <Content Include="CEIHaryanaDBLive_NewTestDataSet.xss">
+      <DependentUpon>CEIHaryanaDBLive_NewTestDataSet.xsd</DependentUpon>
+    </Content>
     <None Include="packages.config" />
     <Content Include="Supervisor\Supervisor.Master" />
     <Content Include="TestReport\TestReport.Master" />
@@ -6052,6 +6076,7 @@
     <Content Include="README.md" />
     <Content Include="Superintendent\Superintendent.Master" />
     <Content Include="Supervisor\Supervisor_Renewal.Master" />
+    <Content Include="rdlc\Verificationletter.rdlc" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
