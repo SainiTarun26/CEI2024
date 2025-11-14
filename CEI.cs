@@ -16148,6 +16148,15 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
             cmd.Parameters.AddWithValue("@CreatedBy", CreatedBy);
             cmd.ExecuteNonQuery();
         }
+
+        public void Insert_LicenceForwardApplicationToSup(string ApplicationID, string CreatedBy, SqlTransaction transaction)
+        {
+            SqlCommand cmd = new SqlCommand("sp_Licence_Forward_Application_ToSup", transaction.Connection, transaction);
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.Parameters.AddWithValue("@ApplicationId", ApplicationID);
+            cmd.Parameters.AddWithValue("@ActionTakenBy", CreatedBy);
+            cmd.ExecuteNonQuery();
+        }
         #endregion
 
         #region New License Application After Documentation
