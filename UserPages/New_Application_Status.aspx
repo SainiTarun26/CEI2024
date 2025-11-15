@@ -1000,6 +1000,7 @@
                                                                         <asp:Label ID="lblID" runat="server" Text='<%#Eval("CreatedBy") %>'></asp:Label>
                                                                         <asp:Label ID="lblCategory" runat="server" Text='<%#Eval("Category") %>'></asp:Label>
                                                                         <asp:Label ID="lblStatus" runat="server" Text='<%#Eval("Status") %>'></asp:Label>
+                                                                        <asp:Label ID="lblActiveStatus" runat="server" Text='<%#Eval("IsLatest") %>'></asp:Label>
                                                                     </ItemTemplate>
                                                                 </asp:TemplateField>
                                                                 <%--<asp:TemplateField HeaderText="Application No." HeaderStyle-CssClass="headercolor" ItemStyle-HorizontalAlign="Center">
