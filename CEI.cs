@@ -13948,10 +13948,12 @@ string DocumentPath, string Utrn, string challandate, int? DocumentSubID, string
         {
             DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_AddXenVerifiedLetter", registrationId, userid, XenVerifiedLetterPath);
         }
-        public void UpdateXenVerificationstatus(string registrationId, string userid, string XenAdvisedCorrection, string XenRecomendation, string RejectionRemarks_XEN, string XenCorrectionNote, string PhysicalVerificationDate, string PhysicalVerificationTime, string PhysicalVerificationPlace, string ApplicationStatus)
+        public void UpdateXenVerificationstatus(string registrationId, string userid, string XenAdvisedCorrection, string XenRecomendation, string RejectionRemarks_XEN, string XenCorrectionNote, string PhysicalVerificationDate, string PhysicalVerificationTime, string PhysicalVerificationPlace, string ApplicationStatus, string XenVerifiedLetterPath)
         {
-            DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_UpdateXenVerificationstatus", registrationId, userid, XenAdvisedCorrection, XenRecomendation, RejectionRemarks_XEN, XenCorrectionNote, PhysicalVerificationDate, PhysicalVerificationTime, PhysicalVerificationPlace, ApplicationStatus);
+            DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_UpdateXenVerificationstatus", registrationId, userid, XenAdvisedCorrection, XenRecomendation, RejectionRemarks_XEN, XenCorrectionNote, PhysicalVerificationDate, PhysicalVerificationTime, PhysicalVerificationPlace, ApplicationStatus, XenVerifiedLetterPath);
         }
+
+
         //18-Aug-2025
         public DataTable GetVenueforOfficer()
         {
@@ -16156,6 +16158,62 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
             cmd.Parameters.AddWithValue("@ApplicationId", ApplicationID);
             cmd.Parameters.AddWithValue("@ActionTakenBy", CreatedBy);
             cmd.ExecuteNonQuery();
+        }
+        #endregion
+
+
+        #region navneet sent email verification letter to user via email
+        public void SentLetterViaEmail(string Email, string link)
+        {
+            try
+            {
+
+                MailMessage mailMessage = new MailMessage();
+                mailMessage.From = new MailAddress("ceiharyana58@gmail.com");
+                mailMessage.To.Add(Email); mailMessage.Subject = "Document Verification and Clarification of Shortcomings for  License Registration";
+
+                mailMessage.IsBodyHtml = true;
+                mailMessage.SubjectEncoding = Encoding.UTF8;
+                mailMessage.BodyEncoding = Encoding.UTF8;
+                mailMessage.SubjectEncoding = Encoding.UTF8;
+
+                // ---- HTML BODY ----
+                string htmlBody = $@"
+<html>
+<body>
+<p>Dear Customer,</p>
+
+<p>We are pleased to inform you that your request for Document Verification and 
+Clarification of Shortcomings for License Registration has been received.<br/>
+You are requested to come with all your documents for verification.</p>
+
+<p>Thank you for choosing our services. If you have any questions or need further 
+assistance, please feel free to contact our support team.</p>
+
+<p>To know more details about the verification process, click the link below:</p>
+
+<p><a href='{link}' style=""color:blue;text-decoration:underline;"" target=""_blank"">Click here</a></p>
+
+<p>Best regards,<br/>CEI Haryana</p>
+</body>
+</html>";
+                mailMessage.Body = htmlBody;
+
+                // ⭐ REQUIRED FOR CLICKABLE LINKS IN OUTLOOK / GMAIL
+                AlternateView htmlView = AlternateView.CreateAlternateViewFromString(htmlBody, Encoding.UTF8, "text/html");
+                mailMessage.AlternateViews.Add(htmlView);
+                SmtpClient smtpClient = new SmtpClient("smtp.gmail.com");
+                smtpClient.Port = 587;
+                smtpClient.UseDefaultCredentials = false;
+                smtpClient.EnableSsl = true;
+                smtpClient.DeliveryMethod = SmtpDeliveryMethod.Network;
+                smtpClient.Credentials = new NetworkCredential("ceiharyana58@gmail.com", "hztpndeqdowygdim");
+                smtpClient.Send(mailMessage);
+            }
+            catch (Exception)
+            {
+
+            }
         }
         #endregion
 

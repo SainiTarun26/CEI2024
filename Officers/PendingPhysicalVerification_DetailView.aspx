@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Officers/Officers.Master" AutoEventWireup="true" CodeBehind="PendingPhysicalVerification_DetailView.aspx.cs" Inherits="CEIHaryana.Officers.PendingPhysicalVerification_DetailView" %>
 <%@ Register Src="~/UserCPages/LicenceHeaderDetails.ascx" TagPrefix="uc" TagName="LicenceDetails" %>
 
+<%@ Register Assembly="Microsoft.ReportViewer.WebForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"
+    Namespace="Microsoft.Reporting.WebForms" TagPrefix="rsweb" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
@@ -29,16 +31,16 @@
     <!-- Bootstrap JavaScript Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
 
-     <script type="text/javascript">
+     <%--<script type="text/javascript">
          function alertWithRedirectdata() {
              if (confirm('Details Added Sucessfully')) {
                  window.location.href = "/Officers/PhysicalVerification_Letter_Request.aspx";
              } else {
              }
          }
-     </script>
+     </script>--%>
      <script type="text/javascript">
-         function alertWithRedirectdata2() {
+         function alertWithRedirectdata() {
              if (confirm('Details Added Sucessfully')) {
                  window.location.href = "/Officers/PendingPhysicalVerification_Gridview.aspx";
              } else {
@@ -445,14 +447,15 @@
                 <div class="col-md-4"></div>
                 <div class="col-md-4" style="text-align: center;">
 
-                    <asp:Button ID="btnSubmit" Text="Proceed" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" OnClick="btnSubmit_Click" />
+                    <asp:Button ID="btnSubmit" Text="Submit" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" OnClick="btnSubmit_Click" />
                 </div>
             </div>
+           
             <div class="row" id="AcceptedLabel" runat="server">
                 <div class="col-md-12" style="text-align: center;">
-                    <label>
-                        To Generate Appointment Letter Kindly Proceed.
-                    </label>
+                        
+<rsweb:ReportViewer ID="ReportViewer1" runat="server" Visible="false" />
+                    
                 </div>
             </div>
         </div>
