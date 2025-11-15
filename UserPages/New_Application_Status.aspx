@@ -999,14 +999,14 @@
                                                                     <ItemTemplate>
                                                                         <asp:Label ID="lblID" runat="server" Text='<%#Eval("CreatedBy") %>'></asp:Label>
                                                                         <asp:Label ID="lblCategory" runat="server" Text='<%#Eval("Category") %>'></asp:Label>
-                                                                        <asp:Label ID="lblStatus" runat="server" Text='<%#Eval("ApplicationStatus") %>'></asp:Label>
+                                                                        <asp:Label ID="lblStatus" runat="server" Text='<%#Eval("Status") %>'></asp:Label>
                                                                     </ItemTemplate>
                                                                 </asp:TemplateField>
-                                                                <asp:TemplateField HeaderText="Application No." HeaderStyle-CssClass="headercolor" ItemStyle-HorizontalAlign="Center">
+                                                                <%--<asp:TemplateField HeaderText="Application No." HeaderStyle-CssClass="headercolor" ItemStyle-HorizontalAlign="Center">
                                                                     <ItemTemplate>
                                                                         <%# Eval("CreatedBy") %>
                                                                     </ItemTemplate>
-                                                                </asp:TemplateField>
+                                                                </asp:TemplateField>--%>
 
                                                                 <asp:TemplateField HeaderText="Application Id." HeaderStyle-CssClass="headercolor" ItemStyle-HorizontalAlign="Center">
                                                                     <ItemTemplate>
@@ -1055,7 +1055,7 @@
                                                                     </ItemTemplate>
                                                                 </asp:TemplateField>
 
-                                                                <asp:TemplateField HeaderStyle-CssClass="headercolor" ItemStyle-HorizontalAlign="Center">
+                                                                <asp:TemplateField HeaderText="Print" HeaderStyle-CssClass="headercolor" ItemStyle-HorizontalAlign="Center">
                                                                     <ItemTemplate>
 
                                                                         <asp:LinkButton ID="lnkPrint" runat="server" CommandName="ViewUser" CssClass="btn btn-link" ToolTip="View Details">
@@ -1071,15 +1071,15 @@
                                                                         </asp:LinkButton>
                                                                     </ItemTemplate>
 
-                                                                </asp:TemplateField>
-
+                                                                </asp:TemplateField>                                                                
                                                                 <asp:TemplateField HeaderStyle-CssClass="headercolor" ItemStyle-HorizontalAlign="Center">
                                                                     <ItemTemplate>
                                                                         <asp:LinkButton ID="lnkReapply" runat="server" CommandName="Reapply" CssClass="btn btn-link">
-                                                                          Reapply
+                                                                         Reapply
                                                                         </asp:LinkButton>
                                                                     </ItemTemplate>
                                                                 </asp:TemplateField>
+
                                                                 <asp:TemplateField HeaderText="Reason" HeaderStyle-CssClass="headercolor" ItemStyle-HorizontalAlign="Center">
                                                                     <ItemTemplate>
                                                                         <%# Eval("ReasonOfReturnOrReject") %>

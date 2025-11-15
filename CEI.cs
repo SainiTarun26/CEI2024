@@ -16159,16 +16159,37 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
         }
         #endregion
 
-        #region New License Application After Documentation
+        #region New License Application for new changes
         /// <summary>
         /// Insert New Licence Application From CEI By using Registration No
         /// </summary>
-        /// <param name="Type"></param>
-        /// <param name="RegistrationNo"></param>
+        /// <param name="type"></param>
+        /// <param name="registrationNo"></param>
+        /// <param name="status"></param>
         /// <returns></returns>
-        public DataSet InsertNewLicenceApplicationFromCEIByRegistrationNo(string Type, string RegistrationNo)
+        public DataSet InsertNewLicenceApplicationFromCEIByRegistrationNo(string type, string registrationNo, string status)
         {
-            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_Insert_Licence_Application_NewRegistration", Type, RegistrationNo);
+            return DBTask.ExecuteDataset(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_Insert_Licence_Application_NewRegistration", type, registrationNo, status);
+        }
+
+        /// <summary>
+        /// Get User Application Grid Data By User Id
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public static DataTable GetUserApplicationGridDataByUserId(string userId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetGridUserApplicationDetails", userId);
+        }
+
+        /// <summary>
+        /// Get Application Status By UserId
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public DataTable GetApplicationStatusByUserId(string userId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetApplicationStatus_NewApplication", userId);
         }
         #endregion
     }

@@ -2375,6 +2375,13 @@ namespace CEIHaryana.UserPages
                             ////{
                             //// CEI.ToSaveDocumentsdataofNewregistration(UniqueNumber, HdnUserId.Value, HdnUserType.Value);
                             CEI.ToSaveDocumentsdataofNewregistration(HdnUserId.Value);
+                            DataTable dt = CEI.GetApplicationStatusByUserId(UserID);
+                            string CurrentStatus = "";
+                            if (dt != null && dt.Rows.Count > 0)
+                            {
+                                CurrentStatus = dt.Rows[0]["ApplicationStatus"].ToString();
+                            }
+                            CEI.InsertNewLicenceApplicationFromCEIByRegistrationNo("New", HdnUserId.Value, CurrentStatus);
                             ////Session["TempUniqueId"] = "";
                             ////Session["TempUniqueId"] = null;
                             // ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);

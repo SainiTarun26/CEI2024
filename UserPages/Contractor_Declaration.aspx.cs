@@ -58,7 +58,14 @@ namespace CEIHaryana.UserPages
                     if (!string.IsNullOrEmpty(UserID))
                     {
                         CEI.ToSaveDocdataofContNewregistration(UserID, "Contractor");
-                        CEI.InsertNewLicenceApplicationFromCEIByRegistrationNo("New", UserID);
+                        DataTable dt = CEI.GetApplicationStatusByUserId(UserID);
+                        string CurrentStatus = "";
+                        if (dt != null && dt.Rows.Count > 0)
+                        {
+                            CurrentStatus = dt.Rows[0]["ApplicationStatus"].ToString();
+                        }
+
+                        CEI.InsertNewLicenceApplicationFromCEIByRegistrationNo("New", UserID, CurrentStatus);
 
                     }
 

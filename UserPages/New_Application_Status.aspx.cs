@@ -52,7 +52,8 @@ namespace CEIHaryana.UserPages
 
         private void BindGridData(string UserID)
         {
-            DataTable dt = CEI.GetUserGridData(UserID);
+            //DataTable dt = CEI.GetUserGridData(UserID);
+            DataTable dt = CEI.GetUserApplicationGridDataByUserId(UserID);
             if (dt.Rows.Count > 0)
             {
                 string filePath = dt.Rows[0]["LetterPath"].ToString();
@@ -151,6 +152,30 @@ namespace CEIHaryana.UserPages
                             Response.Redirect("~/UserPages/Update_Contractor_Application_Form.aspx");
                         }
                     }
+
+                    else if (e.CommandName == "Reapply")
+                    {
+
+                        if (category == "Supervisor")
+                        {
+                            Session["InsertedCategory"] = "Supervisor";
+                            Session["UserIdForEdit"] = idValue;
+                            Session["SupervisorID"] = idValue;
+                            Response.Redirect("~/UserPages/Update_Supervisor_Qualification.aspx");
+                        }
+                        else if (category == "Wireman")
+                        {
+                            Session["InsertedCategory"] = "Wireman";
+                            Session["UserIdForEdit"] = idValue;
+                            Session["WiremanId"] = idValue;
+                            Response.Redirect("~/UserPages/Update_Wireman_Qualification.aspx");
+                        }
+                        else if (category == "Contractor")
+                        {
+                            Session["ContractorID"] = idValue;
+                            Response.Redirect("~/UserPages/Update_Contractor_Application_Form.aspx");
+                        }
+                    }
                 }
             }
         }
@@ -168,8 +193,8 @@ namespace CEIHaryana.UserPages
         {
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
-                string status = DataBinder.Eval(e.Row.DataItem, "ApplicationStatus")?.ToString();
-
+                //string status = DataBinder.Eval(e.Row.DataItem, "ApplicationStatus")?.ToString();
+                string status = DataBinder.Eval(e.Row.DataItem, "Status")?.ToString();
 
                 Label lblID = e.Row.FindControl("lblID") as Label;
 
