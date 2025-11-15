@@ -2375,7 +2375,7 @@ namespace CEIHaryana.UserPages
                             ////{
                             //// CEI.ToSaveDocumentsdataofNewregistration(UniqueNumber, HdnUserId.Value, HdnUserType.Value);
                             CEI.ToSaveDocumentsdataofNewregistration(HdnUserId.Value);
-                            DataTable dt = CEI.GetApplicationStatusByUserId(UserID);
+                            DataTable dt = CEI.GetApplicationStatusByUserId(HdnUserId.Value);
                             string CurrentStatus = "";
                             if (dt != null && dt.Rows.Count > 0)
                             {
