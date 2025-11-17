@@ -14737,9 +14737,15 @@ string dbPathCompetency, string dbPathMedicalCertificate, string userId)
         #endregion
 
         #region navneet Return licenses new 
-        public void UpdatestatusOfReturnLicenseapplication(string Status,string type, string ReasonOfReturnOrReject, string CreatedBy)
+        //public void UpdatestatusOfReturnLicenseapplication(string Status,string type, string ReasonOfReturnOrReject, string CreatedBy)
+        //{
+        //     DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_UpdatestatusOfReturnLicenseapplication", Status, type, ReasonOfReturnOrReject, CreatedBy);
+
+        //}
+
+        public void UpdatestatusOfReturnLicenseapplication(string Status, string type, string ReasonOfReturnOrReject, string CreatedBy, string applicationid)
         {
-             DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_UpdatestatusOfReturnLicenseapplication", Status, type, ReasonOfReturnOrReject, CreatedBy);
+            DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_UpdatestatusOfReturnLicenseapplication", Status, type, ReasonOfReturnOrReject, CreatedBy, applicationid);
 
         }
         #endregion
