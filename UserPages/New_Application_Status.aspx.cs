@@ -207,9 +207,8 @@ namespace CEIHaryana.UserPages
                     HdnID.Value = lblID.Text.Trim();
                 }
 
-                if (active.Text == "0")
+                if (active.Text == "0" || status == "Submit")
                 {
-                    //GridView1.Columns[13].Visible = false;
                     lnk.Enabled = false;       // disable
                     lnk.ForeColor = System.Drawing.Color.Gray;   // visual hint (optional)
                 }
@@ -226,29 +225,6 @@ namespace CEIHaryana.UserPages
                 }
             }
         }
-
-        //protected void GridView1_RowDataBound(object sender, GridViewRowEventArgs e)
-        //{
-        //    if (e.Row.RowType == DataControlRowType.DataRow)
-        //    {
-        //        // Get row data
-        //        string status = DataBinder.Eval(e.Row.DataItem, "Status").ToString();
-
-        //        // Find LinkButton
-        //        LinkButton lnk = (LinkButton)e.Row.FindControl("lnkView");
-
-        //        // Condition to enable/disable button
-        //        if (status == "Inactive")
-        //        {
-        //            lnk.Enabled = false;       // disable
-        //            lnk.ForeColor = System.Drawing.Color.Gray;   // visual hint (optional)
-        //        }
-        //        else
-        //        {
-        //            lnk.Enabled = true;        // enable
-        //        }
-        //    }
-        //}
 
         protected void btnEdit_Click(object sender, EventArgs e)
         {
