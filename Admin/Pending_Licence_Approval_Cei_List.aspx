@@ -94,6 +94,9 @@
             text-align: center;
         }
 
+        .sidebar .nav.sub-menu {
+            padding: 0.25rem 0 0 2.07rem !important;
+        }
         /* input#ContentPlaceHolder1_RadioButtonList2_1 {
             margin-left: 15px;
             margin-right: 5px !important;

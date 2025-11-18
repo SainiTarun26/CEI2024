@@ -688,6 +688,10 @@ text-decoration: underline;
           div#firstcapsule {
     padding-bottom: 0px;
 }
+
+        .sidebar .nav.sub-menu {
+            padding: 0.25rem 0 0 2.07rem !important;    
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">

@@ -16249,6 +16249,25 @@ assistance, please feel free to contact our support team.</p>
         {
             return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetApplicationStatus_NewApplication", userId);
         }
+
+        /// <summary>
+        /// Bind Data For Scrutiny Details
+        /// </summary>
+        /// <param name="Category"></param>
+        /// <param name="District"></param>
+        /// <param name="Status"></param>
+        /// <param name="Name"></param>
+        /// <returns></returns>
+        public DataTable BindDataForScrutinyDetails(string Category = null, string District = null, string Status = null, string Name = null)
+        {
+            return DBTask.ExecuteDataTable(
+         ConfigurationManager.ConnectionStrings["DBConnection"].ToString(),
+         "sp_GetDetailsForScrutiny",
+         Category == "Select" ? (object)DBNull.Value : Category,
+         District == "Select" ? (object)DBNull.Value : District,
+         Status == "Select" ? (object)DBNull.Value : Status,
+         string.IsNullOrWhiteSpace(Name) ? (object)DBNull.Value : Name);
+        }
         #endregion
     }
 }

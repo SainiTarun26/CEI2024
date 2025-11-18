@@ -16,10 +16,10 @@
     <script src="https://kit.fontawesome.com/57676f1d80.js" crossorigin="anonymous"></script>
 
     <!-- Example for Font Awesome 4.x -->
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 
-<!-- Or Font Awesome 5+ -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <!-- Or Font Awesome 5+ -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
 
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -102,6 +102,9 @@
             text-align: center;
         }
 
+        .sidebar .nav.sub-menu {
+            padding: 0.25rem 0 0 2.07rem !important;
+        }
         /* input#ContentPlaceHolder1_RadioButtonList2_1 {
             margin-left: 15px;
             margin-right: 5px !important;
@@ -115,7 +118,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="content-wrapper">
 
-             <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
+        <div class="card" style="box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; border-radius: 5px !important">
             <div class="card-body">
                 <div class="row ">
                     <div class="col-sm-4 col-md-4">
@@ -148,8 +151,8 @@
                                 <ItemTemplate>
                                     <asp:Label ID="lblApplicationId" runat="server" Text='<%#Eval("ApplicationId") %>'></asp:Label>
                                     <asp:Label ID="lblgetCategory" runat="server" Text='<%#Eval("Categary") %>'></asp:Label>
-  <asp:Label ID="lblLicenceType" runat="server" Text='<%#Eval("LicenceType") %>'></asp:Label>
-                              
+                                    <asp:Label ID="lblLicenceType" runat="server" Text='<%#Eval("LicenceType") %>'></asp:Label>
+
                                 </ItemTemplate>
                             </asp:TemplateField>
 
@@ -223,7 +226,7 @@
                                         CommandName="Print"
                                         CommandArgument='<%# Container.DataItemIndex %>'
                                         Visible='<%# Eval("ApplicationStatus").ToString() == "Approved" %>' />
-                                   <%--Changed by navneet on 26-June-2025 <asp:LinkButton runat="server" ID="lnkBtn" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;"
+                                    <%--Changed by navneet on 26-June-2025 <asp:LinkButton runat="server" ID="lnkBtn" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;"
                                         Text="<i class='fa fa-print' style='color:white !important;'></i>" CssClass='greenButton btn-primary' CommandName="Print" CommandArgument="<%# Container.DataItemIndex %>" />--%>
                                 </ItemTemplate>
                             </asp:TemplateField>

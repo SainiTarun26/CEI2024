@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Superintendent/Superintendent.Master" AutoEventWireup="true" CodeBehind="UserDetails.aspx.cs" Inherits="CEIHaryana.Superintendent.UserDetails" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Superintendent/Superintendent.Master" AutoEventWireup="true" CodeBehind="ScrutinyDetails.aspx.cs" Inherits="CEIHaryana.Superintendent.ScrutinyDetails" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
@@ -308,22 +308,6 @@
 
                                 <ItemStyle HorizontalAlign="center" Width="15%" CssClass="break-text" />
                             </asp:BoundField>
-<%--                            Commented By Aslam on 16 sep 2025 because its not required here. .--%> 
-                          <%--  <asp:TemplateField HeaderText="">
-                                <HeaderStyle Width="10%" CssClass="headercolor" />
-                                <ItemStyle Width="10%" />
-                                <ItemTemplate>
-                                    <asp:LinkButton
-                                        ID="LinkButton1"
-                                        runat="server"
-                                        CssClass="greenButton btn-primary"
-                                        Style="padding: 5px; font-size: 18px; border-radius: 3px;"
-                                        CommandName="Print"
-                                        CommandArgument='<%# Container.DataItemIndex %>'>
-                                 <i class="fas fa-eye"></i> 
-                                    </asp:LinkButton>
-                                </ItemTemplate>
-                            </asp:TemplateField>--%>
                             
                                     <asp:TemplateField HeaderText="Download">
                                         <HeaderStyle Width="10%" CssClass="headercolor" />

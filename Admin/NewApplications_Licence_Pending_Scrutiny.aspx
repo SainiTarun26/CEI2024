@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin_Master.Master" AutoEventWireup="true" CodeBehind="NewApplications_Licence_Pending_Scrutiny.aspx.cs" Inherits="CEIHaryana.Admin.NewApplications_Licence_Pending_Scrutiny" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="shortcut icon" type="image/png" href="/css2/style.min.css" />
     <link rel="stylesheet" href="/css2/style.css" />
@@ -16,8 +17,6 @@
     <script src="https://kit.fontawesome.com/57676f1d80.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
-       
-
         .fade {
             transition: opacity 0.15s linear;
             width: 110% !important;
@@ -238,12 +237,17 @@
         span#ContentPlaceHolder1_lblData {
             font-size: 20px;
         }
-       input#ContentPlaceHolder1_Button1{
-           font-size: 13px;
-   /* margin-top: 28px;*/
-    padding-top: 3px !important;
-    padding-bottom: 3px !important;
-       }
+
+        input#ContentPlaceHolder1_Button1 {
+            font-size: 15px;
+            /* margin-top: 28px;*/
+            padding-top: 5px !important;
+            padding-bottom: 5px !important;
+        }
+
+        .sidebar .nav.sub-menu {
+            padding: 0.25rem 0 0 2.07rem !important;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -405,7 +409,7 @@
                                         <HeaderStyle HorizontalAlign="right" Width="15%" CssClass="headercolor" />
                                         <ItemStyle HorizontalAlign="right" Width="15%" />
                                     </asp:BoundField>
-                                    
+
                                     <asp:TemplateField HeaderText="Voltagelevel">
                                         <HeaderStyle HorizontalAlign="Left" Width="10%" CssClass="headercolor" />
                                         <ItemStyle HorizontalAlign="Left" Width="10%" CssClass="text-wrap" />
@@ -420,7 +424,7 @@
                                             <asp:Label ID="lblApplicationType" runat="server" Text='<%# Eval("ApplicationType") %>' CssClass="text-wrap"></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    
+
                                     <asp:TemplateField HeaderText="Download">
                                         <HeaderStyle Width="10%" CssClass="headercolor" />
                                         <ItemStyle Width="10%" CssClass="text-wrap" />
@@ -444,7 +448,7 @@
                     </div>
                     <div class="row" id="ForWardToCommittee" runat="server" visible="false" style="margin-top: 35px; margin-left: 0px;">
 
-                        <div class="col-md-12" style="margin-top: 0px !important;text-align:center;" runat="server" id="ForwardCommiitte2">
+                        <div class="col-md-12" style="margin-top: 0px !important; text-align: center;" runat="server" id="ForwardCommiitte2">
                             <label>&nbsp;</label>
                             <asp:Button ID="Button1" Text="Forward To Superintendent" OnClick="Button1_Click" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" />
                             <label>&nbsp;</label>

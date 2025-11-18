@@ -245,6 +245,10 @@
     padding-top: 3px !important;
     padding-bottom: 3px !important;
        }
+
+        .sidebar .nav.sub-menu {
+            padding: 0.25rem 0 0 2.07rem !important;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -254,7 +258,7 @@
                 <div class="row ">
                     <div class="col-md-4 col-md-4">
                         <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 20px !important;">
-                            <asp:Label ID="lblData" runat="server">New Applications</asp:Label></h6>
+                            <asp:Label ID="lblData" runat="server">Scrutinized Applications</asp:Label></h6>
                     </div>
                     <div class="col-md-6 col-md-6"></div>
                     <div class="col-md-2 col-md-2">
@@ -449,7 +453,7 @@
 
                     </div>
                     <div class="row" id="ForWardToCommittee" runat="server" visible="false" style="margin-top: 35px; margin-left: 0px;">
-                        <div class="div-4" style="width:9%;">
+                        <div class="div-4" style="width: 9%;margin-right: 15px;;">
                             <%-- <asp:Label ID="Label1" runat="server" Text="Commettiee Id.:" />--%>
                             <label>Action:</label>
                             <%--                                <asp:TextBox CssClass="form-control" ReadOnly="true" ID="txtCommittee" runat="server" autocomplete="off"
@@ -466,7 +470,7 @@
                         </div>
                         <div class="div-4" runat="server" id="ForwardCommiitte1">
                             <%-- <asp:Label ID="Label1" runat="server" Text="Commettiee Id.:" />--%>
-                            <label>Commettiee Id.:</label>
+                            <label>Select Commettiee</label>
                             <%--                                <asp:TextBox CssClass="form-control" ReadOnly="true" ID="txtCommittee" runat="server" autocomplete="off"
                                     TabIndex="1" MaxLength="200"
                                     Style="width: calc(100% - 40px);">

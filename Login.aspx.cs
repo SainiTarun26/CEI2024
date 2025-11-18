@@ -521,7 +521,7 @@ namespace CEIHaryana
                                     Session["logintype"] = "Superintendent";
                                     Response.Cookies["SuperidentId"].Value = txtUserID.Text;
                                     Response.Cookies["logintype"].Value = "Superintendent";
-                                    Response.Redirect("Superintendent/UserDetails.aspx", false);
+                                    Response.Redirect("Superintendent/ScrutinyDetails.aspx", false);
                                 }
                                 else
                                 {
@@ -529,7 +529,7 @@ namespace CEIHaryana
                                     Session["logintype"] = "Superintendent";
                                     Response.Cookies["SuperidentId"].Value = txtUserID.Text;
                                     Response.Cookies["logintype"].Value = "Superintendent";
-                                    Response.Redirect("Superintendent/UserDetails.aspx", false);
+                                    Response.Redirect("Superintendent/ScrutinyDetails.aspx", false);
                                 }
                             }
                             else

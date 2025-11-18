@@ -385,6 +385,13 @@
                     <nav class="sidebar sidebar-offcanvas" id="sidebar" style="background-color: #263247;">
                         <ul class="nav">
 
+                            <li class="nav-item" id="Li3" runat="server">
+                                <a class="nav-link" href="/Superintendent/ScrutinyDetails.aspx">
+                                    <i class="icon-grid menu-icon"></i>
+                                    <span class="menu-title">Application for Scrutiny</span>
+                                </a>
+                            </li>
+
                             <li class="nav-item" id="Sup" runat="server">
                                 <a class="nav-link" href="/Superintendent/UserDetails.aspx">
                                     <i class="icon-grid menu-icon"></i>

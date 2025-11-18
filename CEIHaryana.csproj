@@ -2221,6 +2221,7 @@
     <Content Include="Superintendent\CommentForRequest.aspx" />
     <Content Include="Superintendent\Pending_Final_Recommendations.aspx" />
     <Content Include="Superintendent\Pending_Final_Recommendations_List.aspx" />
+    <Content Include="Superintendent\ScrutinyDetails.aspx" />
     <Content Include="Superintendent\Sup_LicenceFinal_DetailView.aspx" />
     <Content Include="Superintendent\UserDetails.aspx" />
     <Content Include="SupervisorLogout.aspx" />
@@ -5060,6 +5061,13 @@
     </Compile>
     <Compile Include="Superintendent\Pending_Final_Recommendations_List.aspx.designer.cs">
       <DependentUpon>Pending_Final_Recommendations_List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Superintendent\ScrutinyDetails.aspx.cs">
+      <DependentUpon>ScrutinyDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Superintendent\ScrutinyDetails.aspx.designer.cs">
+      <DependentUpon>ScrutinyDetails.aspx</DependentUpon>
     </Compile>
     <Compile Include="Superintendent\Superintendent.Master.cs">
       <DependentUpon>Superintendent.Master</DependentUpon>

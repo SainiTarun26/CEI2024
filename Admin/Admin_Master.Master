@@ -484,8 +484,8 @@
                         </a>
                         <div class="collapse" id="ui-basic7" data-parent="#sidebar-accordion">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"><a class="nav-link" href="/Admin/NewApplications_Licence_Pending_Scrutiny.aspx">NewApplcations</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/Admin/NewApplications_Licence.aspx">Forwarded By Superintendent</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/Admin/NewApplications_Licence_Pending_Scrutiny.aspx">New Applcations</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/Admin/NewApplications_Licence.aspx">Scrutinized Applcations</a></li>
                                 <li class="nav-item"><a class="nav-link" href="/Admin/Pending_Licence_Approval_Cei_List.aspx">InProcess Licence</a></li>
                                 <li class="nav-item"><a class="nav-link" href="/Admin/Approved_Licence_Approval_Cei_List.aspx">Application History</a></li>
                             </ul>
