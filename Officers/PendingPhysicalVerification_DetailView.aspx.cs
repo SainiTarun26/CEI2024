@@ -54,10 +54,11 @@ namespace CEIHaryana.Officers
             string fileName = $"{Application_Id}_Letter_{timestamp}.pdf";
             string folderPath = Server.MapPath("~/Attachment/VerificationDocuments/");
             string filePath = Path.Combine(folderPath, fileName);
+            string path = "";
+            path = "/Attachment/" + "VerificationDocuments" + "/";
 
             if (!Directory.Exists(folderPath))
                 Directory.CreateDirectory(folderPath);
-
             ReportViewer1.ProcessingMode = ProcessingMode.Local;
             ReportViewer1.LocalReport.ReportPath = Server.MapPath("~/rdlc/Verificationletter.rdlc");
 
@@ -85,7 +86,7 @@ namespace CEIHaryana.Officers
             //Response.Flush();
             //HttpContext.Current.ApplicationInstance.CompleteRequest();
 
-            return filePath;
+            return path + fileName;
         }
 
         private DataSet GetData(string appid)
@@ -156,9 +157,11 @@ namespace CEIHaryana.Officers
 
                 if (RadioButtonList1.SelectedValue == "Accept")
                 {
-                    CEI.UpdateXenVerificationstatus(ucLicenceDetails.ApplicationId, StaffID, ddlcorrection.SelectedItem.Text, RadioButtonList1.SelectedValue, txtRemarks.Text, txtCorrectionRemarks.Text, txtDate.Text, txtTime.Text, ddlvenue.SelectedValue, "Ready For Issue Letter", filePath);
+                    CEI.UpdateXenVerificationstatus(ucLicenceDetails.ApplicationId, StaffID, ddlcorrection.SelectedItem.Text, RadioButtonList1.SelectedValue, txtRemarks.Text, txtCorrectionRemarks.Text, txtDate.Text, txtTime.Text, ddlvenue.SelectedValue, "Letter Issued");
 
                     filePath = bindrdlc();
+                    CEI.AddXenVerifiedLetter(ucLicenceDetails.ApplicationId, StaffID, filePath);
+
                     string redirectpath = "https://uat.ceiharyana.com" + filePath;
                     CEI.SentLetterViaEmail(EmailId, redirectpath);
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
@@ -166,7 +169,7 @@ namespace CEIHaryana.Officers
                 }
                 else
                 {
-                    CEI.UpdateXenVerificationstatus(ucLicenceDetails.ApplicationId, StaffID, ddlcorrection.SelectedItem.Text, RadioButtonList1.SelectedValue.ToString(), txtRemarks.Text, txtCorrectionRemarks.Text, null, null, null, "Verified", null);
+                    CEI.UpdateXenVerificationstatus(ucLicenceDetails.ApplicationId, StaffID, ddlcorrection.SelectedItem.Text, RadioButtonList1.SelectedValue.ToString(), txtRemarks.Text, txtCorrectionRemarks.Text, null, null, null, "Verified");
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "showalert", "alertWithRedirectdata();", true);
                 }
             }
