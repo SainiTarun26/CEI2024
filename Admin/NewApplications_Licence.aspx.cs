@@ -488,7 +488,7 @@ namespace CEIHaryana.Admin
                     selectedCount++;
                     if (selectedCount > 1)
                     {
-                        
+
                         break;
                     }
                 }
@@ -502,6 +502,7 @@ namespace CEIHaryana.Admin
                     {
 
                         Label lblApplicationType = (Label)row.FindControl("lblApplicationType");
+                        Label lblApplicationID = (Label)row.FindControl("lblApplicationID");
                         Label lblRegistrationNo;
                         //if (lblApplicationType.Text.Trim() == "New")
                         //{
@@ -513,11 +514,11 @@ namespace CEIHaryana.Admin
                         {
                             lblRegistrationNo = (Label)row.FindControl("lblId");
                         }
-                            cei.UpdatestatusOfReturnLicenseapplication("Return", lblApplicationType.Text, txtReason.Text, lblRegistrationNo.Text);
-                            GridViewBind(null, null, null);
+                        cei.UpdatestatusOfReturnLicenseapplication("Return", lblApplicationType.Text, txtReason.Text, lblRegistrationNo.Text, lblApplicationID.Text);
+                        GridViewBind(null, null, null);
 
-                            ScriptManager.RegisterStartupScript(this, GetType(), "UploadError",
-                                  "alert('Record Returned successfully);", true);
+                        ScriptManager.RegisterStartupScript(this, GetType(), "UploadError",
+                              "alert('Record Returned successfully);", true);
                         //}
                         //else
                         //{
@@ -529,7 +530,7 @@ namespace CEIHaryana.Admin
                         Response.Redirect("/Admin/NewApplications_Licence.aspx", false);
 
                     }
-                    
+
                 }
             }
             else
@@ -539,7 +540,7 @@ namespace CEIHaryana.Admin
                 return;
 
             }
-            
+
         }
 
         protected void btnReJect_Click(object sender, EventArgs e)
@@ -553,7 +554,7 @@ namespace CEIHaryana.Admin
                     selectedCount++;
                     if (selectedCount > 1)
                     {
-                       
+
                         break;
                     }
                 }
@@ -567,24 +568,25 @@ namespace CEIHaryana.Admin
                     {
 
                         Label lblApplicationType = (Label)row.FindControl("lblApplicationType");
+                        Label lblApplicationID = (Label)row.FindControl("lblApplicationID");
                         Label lblRegistrationNo;
                         if (lblApplicationType.Text.Trim() == "New")
                         {
 
                             lblRegistrationNo = (Label)row.FindControl("lblRegistrationNo");
-                            cei.UpdatestatusOfReturnLicenseapplication("Rejected", "New", txtReason.Text, lblRegistrationNo.Text);
+                            cei.UpdatestatusOfReturnLicenseapplication("Rejected", "New", txtReason.Text, lblRegistrationNo.Text, lblApplicationID.Text);
                         }
                         else
                         {
 
                             lblRegistrationNo = (Label)row.FindControl("lblId");
-                            cei.UpdatestatusOfReturnLicenseapplication("Rejected", "ReNew", txtReason.Text, lblRegistrationNo.Text);
+                            cei.UpdatestatusOfReturnLicenseapplication("Rejected", "ReNew", txtReason.Text, lblRegistrationNo.Text, lblApplicationID.Text);
                         }
 
                         ScriptManager.RegisterStartupScript(this, GetType(), "UploadError",
                               "alert('Record Rejected successfully');", true);
                         GridViewBind(null, null, null);
-                        Response.Redirect("/Admin/NewApplications_Licence.aspx",false);
+                        Response.Redirect("/Admin/NewApplications_Licence.aspx", false);
 
                     }
                 }

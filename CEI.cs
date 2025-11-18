@@ -13948,9 +13948,14 @@ string DocumentPath, string Utrn, string challandate, int? DocumentSubID, string
         {
             DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_AddXenVerifiedLetter", registrationId, userid, XenVerifiedLetterPath);
         }
-        public void UpdateXenVerificationstatus(string registrationId, string userid, string XenAdvisedCorrection, string XenRecomendation, string RejectionRemarks_XEN, string XenCorrectionNote, string PhysicalVerificationDate, string PhysicalVerificationTime, string PhysicalVerificationPlace, string ApplicationStatus, string XenVerifiedLetterPath)
+        //public void UpdateXenVerificationstatus(string registrationId, string userid, string XenAdvisedCorrection, string XenRecomendation, string RejectionRemarks_XEN, string XenCorrectionNote, string PhysicalVerificationDate, string PhysicalVerificationTime, string PhysicalVerificationPlace, string ApplicationStatus, string XenVerifiedLetterPath)
+        //{
+        //    DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_UpdateXenVerificationstatus", registrationId, userid, XenAdvisedCorrection, XenRecomendation, RejectionRemarks_XEN, XenCorrectionNote, PhysicalVerificationDate, PhysicalVerificationTime, PhysicalVerificationPlace, ApplicationStatus, XenVerifiedLetterPath);
+        //}
+
+        public void UpdateXenVerificationstatus(string registrationId, string userid, string XenAdvisedCorrection, string XenRecomendation, string RejectionRemarks_XEN, string XenCorrectionNote, string PhysicalVerificationDate, string PhysicalVerificationTime, string PhysicalVerificationPlace, string ApplicationStatus)
         {
-            DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_UpdateXenVerificationstatus", registrationId, userid, XenAdvisedCorrection, XenRecomendation, RejectionRemarks_XEN, XenCorrectionNote, PhysicalVerificationDate, PhysicalVerificationTime, PhysicalVerificationPlace, ApplicationStatus, XenVerifiedLetterPath);
+            DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_UpdateXenVerificationstatus", registrationId, userid, XenAdvisedCorrection, XenRecomendation, RejectionRemarks_XEN, XenCorrectionNote, PhysicalVerificationDate, PhysicalVerificationTime, PhysicalVerificationPlace, ApplicationStatus);
         }
 
 
@@ -14737,9 +14742,15 @@ string dbPathCompetency, string dbPathMedicalCertificate, string userId)
         #endregion
 
         #region navneet Return licenses new 
-        public void UpdatestatusOfReturnLicenseapplication(string Status,string type, string ReasonOfReturnOrReject, string CreatedBy)
+        //public void UpdatestatusOfReturnLicenseapplication(string Status,string type, string ReasonOfReturnOrReject, string CreatedBy)
+        //{
+        //     DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_UpdatestatusOfReturnLicenseapplication", Status, type, ReasonOfReturnOrReject, CreatedBy);
+
+        //}
+
+        public void UpdatestatusOfReturnLicenseapplication(string Status, string type, string ReasonOfReturnOrReject, string CreatedBy, string applicationid)
         {
-             DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_UpdatestatusOfReturnLicenseapplication", Status, type, ReasonOfReturnOrReject, CreatedBy);
+            DBTask.ExecuteNonQuery(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_UpdatestatusOfReturnLicenseapplication", Status, type, ReasonOfReturnOrReject, CreatedBy, applicationid);
 
         }
         #endregion
