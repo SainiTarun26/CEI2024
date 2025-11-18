@@ -468,13 +468,13 @@ namespace CEIHaryana
                                     {
                                         Session["logintype"] = "Wireman";
                                         Session["WiremanId"] = txtUserID.Text;
-                                        Response.Redirect("/Wiremen/WiremenDashboard.aspx", false);
+                                        Response.Redirect("/UserPages/Get_UserCurrent_Licence.aspx", false);
                                     }
                                     else
                                     {
                                         Session["logintype"] = "Wireman";
                                         Session["WiremanId"] = txtUserID.Text;
-                                        Response.Redirect("/Wiremen/WiremenDashboard.aspx", false);
+                                        Response.Redirect("/UserPages/Get_UserCurrent_Licence.aspx", false);
                                     }
                                 }
                             }

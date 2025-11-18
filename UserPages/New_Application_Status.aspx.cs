@@ -187,12 +187,14 @@ namespace CEIHaryana.UserPages
                 {
                     lnk.Enabled = false;       // disable
                     lnk.ForeColor = System.Drawing.Color.Gray;   // visual hint (optional)
+                    lnk.Visible = false;
                 }
 
                 if (status == "Return"|| status == "Rejected")
                 {
                     GridView1.Columns[12].Visible = true;
                     GridView1.Columns[13].Visible = true;
+                    lnk.Visible = true;
                 }
                 else
                 {
