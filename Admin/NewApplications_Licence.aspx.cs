@@ -455,6 +455,17 @@ namespace CEIHaryana.Admin
 
 
             }
+            else if (e.CommandName == "ViewApplication")
+            {
+                Label lblApplicationId = (Label)row.FindControl("lblApplicationId");
+                string applicationId = lblApplicationId?.Text;
+                Session["Application_Id"] = applicationId;
+                if (e.CommandName == "ViewApplication")
+                {
+                    Response.Redirect("Licence_Approval_DetailsView_Cei.aspx", false);
+                    return;
+                }
+            }
         }
 
         protected void CheckBox1_CheckedChanged(object sender, EventArgs e)
