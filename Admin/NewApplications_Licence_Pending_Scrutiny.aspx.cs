@@ -57,11 +57,13 @@ namespace CEIHaryana.Admin
             {
                 GridView1.DataSource = dt;
                 GridView1.DataBind();
+                ForwardCommiitte2.Visible = true;
             }
             else
             {
                 GridView1.DataSource = null;
                 GridView1.DataBind();
+                ForwardCommiitte2.Visible = false;
             }
         }
 
@@ -121,11 +123,12 @@ namespace CEIHaryana.Admin
 
         protected void btnReset_Click(object sender, EventArgs e)
         {
-            txtName.Text = "";
-            ddlSearchBy.SelectedIndex = 0;
-            ddlcategory.SelectedIndex = 0;
-            GridView1.DataSource = null;
-            GridView1.DataBind();
+            //txtName.Text = "";
+            //ddlSearchBy.SelectedIndex = 0;
+            //ddlcategory.SelectedIndex = 0;
+            //GridView1.DataSource = null;
+            //GridView1.DataBind();
+            Response.Redirect("NewApplications_Licence_Pending_Scrutiny.aspx", false);
         }
 
         protected void ddlSearchBy_SelectedIndexChanged(object sender, EventArgs e)
@@ -399,6 +402,17 @@ namespace CEIHaryana.Admin
                     Response.End();
 
 
+                }
+            }
+            else if (e.CommandName == "ViewApplication")
+            {
+                Label lblApplicationId = (Label)row.FindControl("lblApplicationId");
+                string applicationId = lblApplicationId?.Text;
+                Session["Application_Id"] = applicationId;
+                if (e.CommandName == "ViewApplication")
+                {
+                    Response.Redirect("Licence_Approval_DetailsView_Cei.aspx", false);
+                    return;
                 }
             }
         }

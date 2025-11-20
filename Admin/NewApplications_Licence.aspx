@@ -17,8 +17,6 @@
     <script src="https://kit.fontawesome.com/57676f1d80.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
-       
-
         .fade {
             transition: opacity 0.15s linear;
             width: 110% !important;
@@ -239,15 +237,49 @@
         span#ContentPlaceHolder1_lblData {
             font-size: 20px;
         }
-       input#ContentPlaceHolder1_Button1{
-           font-size: 13px;
-    margin-top: 28px;
-    padding-top: 3px !important;
-    padding-bottom: 3px !important;
-       }
+
+        input#ContentPlaceHolder1_Button1 {
+            font-size: 13px;
+            margin-top: 28px;
+            padding-top: 3px !important;
+            padding-bottom: 3px !important;
+        }
 
         .sidebar .nav.sub-menu {
             padding: 0.25rem 0 0 2.07rem !important;
+        }
+
+        /* Full-screen background overlay */
+        .popup-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.45);
+            z-index: 999999;
+        }
+
+        /* Popup box centered */
+        .popup-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 25px;
+            width: 800px;
+            max-width: 90%;
+            min-height: 120px;
+            border-radius: 10px;
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+            font-size: 15px;
+        }
+
+        .hoverPopupTrigger {
+            cursor: pointer;
+            color: #007bff;
         }
     </style>
 </asp:Content>
@@ -354,6 +386,7 @@
                                         <ItemTemplate>
                                             <asp:Label ID="lblRegistrationNo" runat="server" Text='<%#Eval("UserId") %>'></asp:Label>
                                             <asp:Label ID="lblId" runat="server" Text='<%# Eval("NId") %>' CssClass="text-wrap"></asp:Label>
+                                            <asp:Label ID="lblApplicationID" runat="server" Text='<%# Eval("Id") %>' CssClass="text-wrap"></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="SNo">
@@ -368,7 +401,7 @@
                                         <HeaderStyle HorizontalAlign="Left" Width="25%" CssClass="headercolor" />
                                         <ItemStyle HorizontalAlign="Left" Width="25%" CssClass="text-wrap" />
                                         <ItemTemplate>
-                                            <asp:Label ID="lblApplicationID" runat="server" Text='<%# Eval("Id") %>' CssClass="text-wrap"></asp:Label>
+                                            <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("Id") %> ' CommandName="ViewApplication"><%#Eval("Id") %></asp:LinkButton>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Name">
@@ -400,10 +433,22 @@
                                         <HeaderStyle HorizontalAlign="Center" Width="12%" CssClass="headercolor" />
                                         <ItemStyle HorizontalAlign="Center" Width="12%" />
                                     </asp:BoundField>
-                                    <asp:BoundField DataField="ApplicationStatus" HeaderText="Status">
-                                        <HeaderStyle HorizontalAlign="Center" Width="15%" CssClass="headercolor" />
-                                        <ItemStyle HorizontalAlign="Center" Width="15%" />
-                                    </asp:BoundField>
+
+
+                                    <asp:TemplateField HeaderText="Status">
+                                        <HeaderStyle Width="10%" CssClass="headercolor" />
+                                        <ItemStyle Width="10%" CssClass="text-wrap" />
+
+                                        <ItemTemplate>
+                                            <span class="hoverPopupTrigger"
+                                                data-comment='<%# Eval("SuperintendentReviewComment") %>'>
+                                                <%# Eval("ApplicationStatus") %>
+                                                 </span>
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+
+
+
                                     <asp:TemplateField HeaderText="PhoneNo">
                                         <HeaderStyle HorizontalAlign="Left" Width="25%" CssClass="headercolor" />
                                         <ItemStyle HorizontalAlign="Left" Width="25%" CssClass="text-wrap" />
@@ -415,7 +460,7 @@
                                         <HeaderStyle HorizontalAlign="right" Width="15%" CssClass="headercolor" />
                                         <ItemStyle HorizontalAlign="right" Width="15%" />
                                     </asp:BoundField>
-                                    
+
                                     <asp:TemplateField HeaderText="Voltagelevel">
                                         <HeaderStyle HorizontalAlign="Left" Width="10%" CssClass="headercolor" />
                                         <ItemStyle HorizontalAlign="Left" Width="10%" CssClass="text-wrap" />
@@ -430,7 +475,7 @@
                                             <asp:Label ID="lblApplicationType" runat="server" Text='<%# Eval("ApplicationType") %>' CssClass="text-wrap"></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
-                                    
+
                                     <asp:TemplateField HeaderText="Download">
                                         <HeaderStyle Width="10%" CssClass="headercolor" />
                                         <ItemStyle Width="10%" CssClass="text-wrap" />
@@ -453,7 +498,7 @@
 
                     </div>
                     <div class="row" id="ForWardToCommittee" runat="server" visible="false" style="margin-top: 35px; margin-left: 0px;">
-                        <div class="div-4" style="width: 9%;margin-right: 15px;;">
+                        <div class="div-4" style="width: 9%; margin-right: 15px;">
                             <%-- <asp:Label ID="Label1" runat="server" Text="Commettiee Id.:" />--%>
                             <label>Action:</label>
                             <%--                                <asp:TextBox CssClass="form-control" ReadOnly="true" ID="txtCommittee" runat="server" autocomplete="off"
@@ -486,19 +531,25 @@
                             <label>&nbsp;</label>
 
                         </div>
-                        <div class="div-4" runat="server" id="Reason" visible="false" style="width:20%;">
+                        <div class="div-4" runat="server" id="Reason" visible="false" style="width: 20%;">
                             <label>Reason:</label>
                             <asp:TextBox ID="txtReason" TextMode="MultiLine" class="form-control" runat="server" MaxLength="200"></asp:TextBox>
                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtReason" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Please enter</asp:RequiredFieldValidator>
 
                         </div>
-                        <div class="div-4" runat="server" id="Returnreject" style="padding:2.5%;">
+                        <div class="div-4" runat="server" id="Returnreject" style="padding: 2.5%;">
                             <asp:Button ID="btnReturn" Text="Return" Visible="false" OnClick="btnReturn_Click" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" />
                             <asp:Button ID="btnReJect" Text="Reject" Visible="false" OnClick="btnReJect_Click" runat="server" ValidationGroup="Submit" class="btn btn-primary mr-2" />
 
                         </div>
                     </div>
                 </div>
+                <div id="screenPopup" class="popup-overlay">
+                    <div class="popup-content">
+                        <div id="popupText"></div>
+                    </div>
+                </div>
+
                 <div class="row">
                     <div class="col-md-12" style="text-align: center;">
                     </div>
@@ -529,4 +580,24 @@
             }
         }
     </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const popup = document.getElementById("screenPopup");
+            const popupText = document.getElementById("popupText");
+            // Show popup on hover
+            document.querySelectorAll(".hoverPopupTrigger").forEach(el => {
+                el.addEventListener("mouseenter", function () {
+                    popupText.innerHTML = this.getAttribute("data-comment");
+                    popup.style.display = "block";
+                });
+                // Hide when mouse leaves element OR popup
+                el.addEventListener("mouseleave", function () {
+                    popup.style.display = "none";
+                });
+            });
+
+        });
+</script>
+
 </asp:Content>

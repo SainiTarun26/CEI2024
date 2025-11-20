@@ -61,11 +61,13 @@ namespace CEIHaryana.Admin
             {
                 GridView1.DataSource = dt;
                 GridView1.DataBind();
+                ForwardCommiitte2.Visible = true;
             }
             else
             {
                 GridView1.DataSource = null;
                 GridView1.DataBind();
+                ForwardCommiitte2.Visible = false;
             }
         }
 
@@ -454,6 +456,17 @@ namespace CEIHaryana.Admin
                 }
 
 
+            }
+            else if (e.CommandName == "ViewApplication")
+            {
+                Label lblApplicationId = (Label)row.FindControl("lblApplicationId");
+                string applicationId = lblApplicationId?.Text;
+                Session["Application_Id"] = applicationId;
+                if (e.CommandName == "ViewApplication")
+                {
+                    Response.Redirect("Licence_Approval_DetailsView_Cei.aspx", false);
+                    return;
+                }
             }
         }
 
