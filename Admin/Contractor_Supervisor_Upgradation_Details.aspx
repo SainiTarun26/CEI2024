@@ -283,7 +283,7 @@
                             <%-- Add GridView Contractor Here --%>
                             <div class="col-md-12" style="margin-top: 3%">
                                 <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView3" AutoPostBack="true" runat="server" Width="100%" AutoGenerateColumns="false"
-                                    AllowPaging="true" PageSize="100" BorderWidth="1px" BorderColor="#dbddff" OnRowCommand="GridView3_RowCommand" OnPageIndexChanging="GridView3_PageIndexChanging">
+                                    AllowPaging="true" BorderWidth="1px" BorderColor="#dbddff" OnRowCommand="GridView3_RowCommand">
                                     <PagerStyle CssClass="pagination-ys" />
                                     <Columns>
                                         <asp:TemplateField HeaderText="SNo">
@@ -300,27 +300,27 @@
                                                 <asp:Label ID="lblApplicationID" runat="server" Text='<%#Eval("ApplicationID") %>'></asp:Label>
                                             </ItemTemplate>
                                         </asp:TemplateField>
-                                        <asp:TemplateField HeaderText="App. ID">
-                                            <HeaderStyle HorizontalAlign="Left" CssClass="GridViewRowHeader headercolor" />
-                                            <ItemStyle HorizontalAlign="Left"/>
+                                        <asp:TemplateField HeaderText="Application ID">
+                                            <HeaderStyle HorizontalAlign="Left" Width="25%" CssClass="headercolor" />
+                                            <ItemStyle HorizontalAlign="Left" Width="25%" />
                                             <ItemTemplate>
                                                 <asp:LinkButton ID="LinkButton1" runat="server" AutoPostBack="true" CommandArgument=' <%#Eval("ApplicationID") %> ' CommandName="Select"><%#Eval("ApplicationID") %></asp:LinkButton>
                                             </ItemTemplate>
                                         </asp:TemplateField>
 
-                                        <asp:BoundField DataField="ApplicationType" HeaderText="App. Type">
+                                        <asp:BoundField DataField="ApplicationType" HeaderText="Application Type">
                                             <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
                                             <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems itemstylecss" />
                                         </asp:BoundField>
                                         <asp:BoundField DataField="Name" HeaderText="Supervisor Name">
-                                            <HeaderStyle HorizontalAlign="Left" CssClass="GridViewRowHeader headercolor" />
-                                            <ItemStyle HorizontalAlign="Left" CssClass="GridViewRowItems itemstylecss" />
+                                            <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
+                                            <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems itemstylecss" />
                                         </asp:BoundField>
-                                        <asp:BoundField DataField="LicenceLevelAppliedFor" HeaderText="Applied Voltage">
+                                        <asp:BoundField DataField="LicenceLevelAppliedFor" HeaderText="Voltage Level for which applied">
                                             <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
                                             <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems " />
                                         </asp:BoundField>
-                                        <asp:BoundField DataField="CurrentLicenceVoltageLevel" HeaderText="Current Voltage">
+                                        <asp:BoundField DataField="CurrentLicenceVoltageLevel" HeaderText="Current Voltage Level">
                                             <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
                                             <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems " />
                                         </asp:BoundField>
@@ -328,21 +328,23 @@
                                             <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
                                             <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems " />
                                         </asp:BoundField>
-                                        <asp:BoundField DataField="NewCertificate" HeaderText="New Certificate">
-                                            <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
-                                            <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems " />
-                                        </asp:BoundField>
+                                        
+                                        <asp:TemplateField HeaderText="New Certificate">
+                                            <ItemTemplate>
+                                                <asp:Label ID="lblNewCertificate" runat="server" Text='<%#Eval("NewCertificate") %>'></asp:Label>
+                                            </ItemTemplate>
+                                        </asp:TemplateField>
                                         <asp:BoundField DataField="CreatedDate" HeaderText="Request Date">
                                             <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
                                             <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems" />
                                         </asp:BoundField>
-                                        <asp:BoundField DataField="ApplicationStatus" HeaderText="Status">
+                                        <asp:BoundField DataField="ApplicationStatus" HeaderText="Application Status">
                                             <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
                                             <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems" />
                                         </asp:BoundField>
                                         <asp:TemplateField HeaderText="Download">
                                             <HeaderStyle Width="10%" CssClass="headercolor" />
-                                            <ItemStyle Width="10%" CssClass="text-wrap" HorizontalAlign="center" />
+                                            <ItemStyle Width="10%" CssClass="text-wrap" />
                                             <ItemTemplate>
                                                 <asp:LinkButton ID="LinkDownload" runat="server" CommandArgument=' <%#Eval("Id") %> ' CommandName="Download">Download</asp:LinkButton>
                                             </ItemTemplate>
@@ -351,7 +353,7 @@
                                     </Columns>
 
                                     <FooterStyle BackColor="White" ForeColor="#000066" />
-                                    <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />
+                                    <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
                                     <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
                                     <RowStyle ForeColor="#000066" />
                                     <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
