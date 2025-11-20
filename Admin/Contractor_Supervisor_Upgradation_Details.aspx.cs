@@ -183,5 +183,15 @@ namespace CEIHaryana.Admin
                 GetSubmittedUpgradationApplications(null);
             }
         }
+
+        protected void GridView3_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            try
+            {
+                GridView3.PageIndex = e.NewPageIndex;
+                GetSubmittedUpgradationApplications(null);
+            }
+            catch { }
+        }
     }
 }

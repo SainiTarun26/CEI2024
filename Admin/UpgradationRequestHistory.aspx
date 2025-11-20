@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin/Admin_Master.Master" AutoEventWireup="true" CodeBehind="UpgradationRequestHistory.aspx.cs" Inherits="CEIHaryana.Admin.UpgradationRequestHistory" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script src="https://kit.fontawesome.com/57676f1d80.js" crossorigin="anonymous"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,25 +9,27 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.2/jquery.modal.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.2/jquery.modal.min.css" />
     <!-- Make sure this is in your <head> or Master Page -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="..." crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="..." crossorigin="anonymous" />
 
     <!-- jQuery Modal -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
     <style type="text/css">
         input#btnSearch {
-    color: #fff;
-    background-color: #007bff;
-    border-color: #007bff;
-    border-radius: 5px;
-    padding: 10px !important;
-}
+            color: #fff;
+            background-color: #007bff;
+            border-color: #007bff;
+            border-radius: 5px;
+            padding: 10px !important;
+        }
+
         .btn-primary, .wizard > .actions a {
-    color: #fff !important;
-    background-color: #4B49AC;
-    border-color: #4B49AC;
-    padding: 5px !important;
-}
+            color: #fff !important;
+            background-color: #4B49AC;
+            border-color: #4B49AC;
+            padding: 5px !important;
+        }
+
         a.close-modal {
             width: 0px !important;
         }
@@ -191,68 +194,73 @@
                             AllowPaging="true" PageSize="50" OnPageIndexChanging="GridView1_PageIndexChanging" BorderWidth="1px" BorderColor="#dbddff" OnRowDataBound="GridView1_RowDataBound" OnRowCommand="GridView1_RowCommand">
                             <PagerStyle CssClass="pagination-ys" />
                             <Columns>
-      <asp:TemplateField HeaderText="SNo">
-          <HeaderStyle Width="5%" CssClass="headercolor" />
-          <ItemStyle Width="5%" />
-          <ItemTemplate>
-              <%#Container.DataItemIndex+1 %>
-          </ItemTemplate>
-      </asp:TemplateField>
-      <asp:TemplateField HeaderText="Id" Visible="False">
-          <ItemTemplate>
-              <asp:Label ID="lblID" runat="server" Text='<%#Eval("Id") %>'></asp:Label>
-                   <asp:Label ID="lblType" runat="server" Text='<%#Eval("ApplicationType") %>'></asp:Label>
-                 <asp:Label ID="lblApplicationID" runat="server" Text='<%#Eval("ApplicationID") %>'></asp:Label>
-          </ItemTemplate>
-      </asp:TemplateField>
-    
- <asp:BoundField DataField="ApplicationID" HeaderText="Application ID">
-     <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
-     <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems itemstylecss" />
- </asp:BoundField>
+                                <asp:TemplateField HeaderText="SNo">
+                                    <HeaderStyle Width="5%" CssClass="headercolor" />
+                                    <ItemStyle Width="5%" />
+                                    <ItemTemplate>
+                                        <%#Container.DataItemIndex+1 %>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Id" Visible="False">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblID" runat="server" Text='<%#Eval("Id") %>'></asp:Label>
+                                        <asp:Label ID="lblType" runat="server" Text='<%#Eval("ApplicationType") %>'></asp:Label>
+                                        <asp:Label ID="lblApplicationID" runat="server" Text='<%#Eval("ApplicationID") %>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
 
-      <asp:BoundField DataField="ApplicationType" HeaderText="Application Type">
-          <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
-          <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems itemstylecss" />
-      </asp:BoundField>
-      <asp:BoundField DataField="Name" HeaderText="Supervisor Name">
-          <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
-          <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems itemstylecss" />
-      </asp:BoundField>
-      <asp:BoundField DataField="LicenceLevelAppliedFor" HeaderText="Voltage Level for which applied">
+                                <asp:BoundField DataField="ApplicationID" HeaderText="App. ID">
+                                    <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
+                                    <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems itemstylecss" />
+                                </asp:BoundField>
+
+                                <asp:BoundField DataField="ApplicationType" HeaderText="App. Type">
+                                    <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
+                                    <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems itemstylecss" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="Name" HeaderText="Supervisor Name">
+                                    <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
+                                    <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems itemstylecss" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="LicenceLevelAppliedFor" HeaderText="Applied Voltage">
+                                    <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
+                                    <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems " />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="CurrentLicenceVoltageLevel" HeaderText="Current Voltage">
+                                    <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
+                                    <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems " />
+                                </asp:BoundField>
+                                <%--      <asp:BoundField DataField="OldCertificate" HeaderText="Old certificate">
           <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
           <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems " />
-      </asp:BoundField>
-      <asp:BoundField DataField="CurrentLicenceVoltageLevel" HeaderText="Current Voltage Level">
-          <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
-          <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems " />
-      </asp:BoundField>
-      <asp:BoundField DataField="OldCertificate" HeaderText="Old certificate">
-          <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
-          <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems " />
-      </asp:BoundField>
-      <asp:BoundField DataField="NewCertificate" HeaderText="New Certificate">
-          <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
-          <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems " />
-      </asp:BoundField>
-      <asp:BoundField DataField="CreatedDate" HeaderText="Request Date">
-          <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
-          <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems" />
-      </asp:BoundField>
-      <asp:BoundField DataField="ApplicationStatus" HeaderText="Application Status">
-          <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
-          <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems" />
-      </asp:BoundField>
+      </asp:BoundField>--%>
+                                <asp:BoundField DataField="NewCertificate" HeaderText="Certificate No.">
+                                    <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
+                                    <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems " />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="CreatedDate" HeaderText="Request Date">
+                                    <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
+                                    <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems" />
+                                </asp:BoundField>
+
+                                <asp:BoundField DataField="ApprovedDate" HeaderText="Approve Date">
+                                    <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
+                                    <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems" />
+                                </asp:BoundField>
+                                <asp:BoundField DataField="ApplicationStatus" HeaderText="Status">
+                                    <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
+                                    <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems itemstylecss" />
+                                </asp:BoundField>
                                 <asp:TemplateField>
-    <HeaderStyle Width="10%" CssClass="headercolor" />
-    <ItemStyle Width="10%" />
-    <ItemTemplate>
-        <asp:LinkButton ID="LinkButton1" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;" runat="server" Visible="false"
-            Text="<i class='fa fa-print' style='color:white !important;'></i>" CssClass='greenButton btn-primary' CommandName="Print" CommandArgument="<%# Container.DataItemIndex %>">
-        </asp:LinkButton>
-    </ItemTemplate>
-</asp:TemplateField>
-  </Columns>
+                                    <HeaderStyle Width="10%" CssClass="headercolor" />
+                                    <ItemStyle Width="10%" />
+                                    <ItemTemplate>
+                                        <asp:LinkButton ID="LinkButton1" Style="padding: 0px 5px 0px 5px; font-size: 18px; border-radius: 3px;" runat="server" Visible="false"
+                                            Text="<i class='fa fa-print' style='color:white !important;'></i>" CssClass='greenButton btn-primary' CommandName="Print" CommandArgument="<%# Container.DataItemIndex %>">
+                                        </asp:LinkButton>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                            </Columns>
                             <FooterStyle BackColor="White" ForeColor="#000066" />
                             <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" HorizontalAlign="Center" />
                             <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Center" />
