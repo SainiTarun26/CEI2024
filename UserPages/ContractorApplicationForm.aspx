@@ -1647,6 +1647,7 @@
                                                                                                                 <asp:ListItem Text="Select" Value="0"></asp:ListItem>
                                                                                                                 <asp:ListItem Text="Director" Value="1"></asp:ListItem>
                                                                                                                 <asp:ListItem Text="Partner" Value="2"></asp:ListItem>
+                                                                                                                <asp:ListItem Text="Proprietor" Value="3"></asp:ListItem>
                                                                                                             </asp:DropDownList>
                                                                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator21" runat="server" ControlToValidate="ddlAuthority" InitialValue="0" CssClass="validation_required" ErrorMessage="Required" ValidationGroup="ModalSubmit" ForeColor="Red"></asp:RequiredFieldValidator>
                                                                                                         </div>
@@ -1821,7 +1822,7 @@
                                                                     <div class="col-md-4">
                                                                         <div class="form-group">
                                                                             <label id="Lbl1" runat="server" visible="true">
-                                                                                Name Of Proprietary Concern<samp style="color: red">* </samp>
+                                                                                Name Of Proprietary Concern Firm<samp style="color: red">* </samp>
                                                                             </label>
                                                                             <label id="Lbl2" runat="server" visible="false">
                                                                                 Name Of Company(Limited)<samp style="color: red">* </samp>
@@ -1835,7 +1836,7 @@
                                                                             <label id="lb5" runat="server" visible="false">
                                                                                 Name of Registered Society<samp style="color: red">* </samp>
                                                                             </label>
-                                                                            <asp:TextBox class="form-control" ID="txtNameOfCompany" autocomplete="off" TabIndex="4" runat="server" MaxLength="100"> </asp:TextBox>
+                                                                            <asp:TextBox class="form-control" ID="txtNameOfCompany" placeholder="kindly enter the firm name to be displayed on certificate" autocomplete="off" TabIndex="4" runat="server" MaxLength="100"> </asp:TextBox>
                                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator29" runat="server" ControlToValidate="txtNameOfCompany" ErrorMessage="RequiredFieldValidator" ValidationGroup="Submit" ForeColor="Red">Required</asp:RequiredFieldValidator>
                                                                         </div>
                                                                     </div>
@@ -1856,7 +1857,7 @@
                                                                     <div class="col-md-4">
                                                                         <div class="form-group">
                                                                             <label>
-                                                                                Business Address<samp style="color: red">* </samp>
+                                                                                Business Address(Add Complete Address To Print On Licence)<samp style="color: red">* </samp>
                                                                             </label>
                                                                             <asp:TextBox class="form-control" ID="txtBusinessAddress" TabIndex="6" autocomplete="off" runat="server" MaxLength="250"> </asp:TextBox>
                                                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator28" runat="server" ControlToValidate="txtBusinessAddress" ErrorMessage="Required" ValidationGroup="Submit" ForeColor="Red"></asp:RequiredFieldValidator>
@@ -2035,7 +2036,7 @@
                                                             </div>
                                                             <div class="row" style="margin-top: -10px !important; margin-bottom: 10PX; font-size: 20PX;">
                                                                 <div class="col-md-12">
-                                                                    <h3 class="card-title" style="margin-top: 50px; font-size: 21px;">Partner/Directors Details
+                                                                    <h3 class="card-title" style="margin-top: 50px; font-size: 21px;">Partner/Directors/Proprietor Details
                                                                     </h3>
                                                                 </div>
                                                             </div>
@@ -2044,7 +2045,7 @@
                                                                     <div class="col-md-4">
                                                                         <div class="form-group">
                                                                             <label for="Gender">
-                                                                                Whether the company have Partner/Director<samp style="color: red">* </samp>
+                                                                                Whether the company have Partner/Director/Proprietor<samp style="color: red">* </samp>
                                                                             </label>
                                                                             <asp:DropDownList class="select-form select2" Style="border: 1px solid #ced4da; border-radius: 5px;" AutoPostBack="true"
                                                                                 ID="DdlPartnerOrDirector" runat="server" OnSelectedIndexChanged="DdlPartnerOrDirector_SelectedIndexChanged" TabIndex="22" Enabled="true">
