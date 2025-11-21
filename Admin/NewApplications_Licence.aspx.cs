@@ -61,11 +61,13 @@ namespace CEIHaryana.Admin
             {
                 GridView1.DataSource = dt;
                 GridView1.DataBind();
+                ForwardCommiitte2.Visible = true;
             }
             else
             {
                 GridView1.DataSource = null;
                 GridView1.DataBind();
+                ForwardCommiitte2.Visible = false;
             }
         }
 

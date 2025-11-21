@@ -257,7 +257,7 @@
                 <div class="row ">
                     <div class="col-md-4 col-md-4">
                         <h6 class="card-title fw-semibold mb-4" style="margin-bottom: 20px !important;">
-                            <asp:Label ID="lblData" runat="server">Pending Applications For Scrutiny</asp:Label></h6>
+                            <asp:Label ID="lblData" runat="server">New Applications For Scrutiny</asp:Label></h6>
                     </div>
                     <div class="col-md-6 col-md-6"></div>
                     <div class="col-md-2 col-md-2">
@@ -352,6 +352,7 @@
                                         <ItemTemplate>
                                             <asp:Label ID="lblRegistrationNo" runat="server" Text='<%#Eval("UserId") %>'></asp:Label>
                                             <asp:Label ID="lblId" runat="server" Text='<%# Eval("NId") %>' CssClass="text-wrap"></asp:Label>
+                                            <asp:Label ID="lblApplicationID" runat="server" Text='<%# Eval("Id") %>' CssClass="text-wrap"></asp:Label>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="SNo">
@@ -366,7 +367,7 @@
                                         <HeaderStyle HorizontalAlign="Left" Width="25%" CssClass="headercolor" />
                                         <ItemStyle HorizontalAlign="Left" Width="25%" CssClass="text-wrap" />
                                         <ItemTemplate>
-                                            <asp:Label ID="lblApplicationID" runat="server" Text='<%# Eval("Id") %>' CssClass="text-wrap"></asp:Label>
+                                            <asp:LinkButton ID="LinkButton4" runat="server" CommandArgument=' <%#Eval("Id") %> ' CommandName="ViewApplication"><%#Eval("Id") %></asp:LinkButton>
                                         </ItemTemplate>
                                     </asp:TemplateField>
                                     <asp:TemplateField HeaderText="Name">

@@ -1048,6 +1048,12 @@
                                                                         <%# Eval("Status") %>
                                                                     </ItemTemplate>
                                                                 </asp:TemplateField>
+                                                                <asp:TemplateField HeaderText="Submit Date" HeaderStyle-CssClass="headercolor" ItemStyle-HorizontalAlign="Center">
+                                                                    <ItemTemplate>
+                                                                        <%# Eval("SubmitResubmitDate") %>
+                                                                    </ItemTemplate>
+                                                                </asp:TemplateField>
+
                                                                 <asp:TemplateField HeaderText="Application Details" HeaderStyle-CssClass="headercolor" ItemStyle-HorizontalAlign="Center">
                                                                     <ItemTemplate>
                                                                         <asp:LinkButton ID="lnkViewDetails" runat="server" CommandName="ViewDetails" CssClass="btn btn-link" ToolTip="View Details">
@@ -1072,7 +1078,7 @@
                                                                         </asp:LinkButton>
                                                                     </ItemTemplate>
 
-                                                                </asp:TemplateField>                                                                
+                                                                </asp:TemplateField>
                                                                 <asp:TemplateField HeaderStyle-CssClass="headercolor" ItemStyle-HorizontalAlign="Center">
                                                                     <ItemTemplate>
                                                                         <asp:LinkButton ID="lnkReapply" runat="server" CommandName="Reapply" CssClass="btn btn-link">
