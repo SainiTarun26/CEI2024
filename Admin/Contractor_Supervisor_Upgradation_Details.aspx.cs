@@ -51,13 +51,13 @@ namespace CEIHaryana.Admin
             dt.Dispose();
         }
 
-       
+
 
         protected void ddlUserType_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ddlUserType.SelectedItem.Text == "Supervisor")
             {
-                
+
                 GetSubmittedUpgradationApplications(ddlUserType.SelectedItem.Text);
 
             }
@@ -92,46 +92,79 @@ namespace CEIHaryana.Admin
                 string RegNo = e.CommandArgument.ToString();
                 Label Categary = (Label)row.FindControl("lblType");
                 Label lblApplicationID = (Label)row.FindControl("lblApplicationID");
+                Label lblNewCertificate = (Label)row.FindControl("lblNewCertificate");
 
-                DataTable dt = CEI.GetUpgradationOSupervisorRecordsDataAtAdmin(Convert.ToInt32(RegNo));
 
                 using (MemoryStream memoryStream = new MemoryStream())
                 {
                     using (ZipArchive zip = new ZipArchive(memoryStream, ZipArchiveMode.Create, true))
                     {
-                        // Collect file URLs safely
-                        List<string> fileUrls = new List<string>();
-
-                        if (dt.Rows.Count > 0)
+                        if (Categary.Text.Trim() != "Contractor")
                         {
-                            if (!string.IsNullOrEmpty(dt.Rows[0]["CerificateOfCompetency"]?.ToString()))
-                                fileUrls.Add("https://uat.ceiharyana.com" + dt.Rows[0]["CerificateOfCompetency"]);
 
-                            if (!string.IsNullOrEmpty(dt.Rows[0]["CertificateOfExperience"]?.ToString()))
-                                fileUrls.Add("https://uat.ceiharyana.com" + dt.Rows[0]["CertificateOfExperience"]);
+                            DataTable dt = CEI.GetUpgradationOSupervisorRecordsDataAtAdmin(Convert.ToInt32(RegNo));
+                            // Collect file URLs safely
+                            List<string> fileUrls = new List<string>();
 
-                            if (!string.IsNullOrEmpty(dt.Rows[0]["CertificateOfMedical"]?.ToString()))
-                                fileUrls.Add("https://uat.ceiharyana.com" + dt.Rows[0]["CertificateOfMedical"]);
-                        }
-
-                        using (var client = new System.Net.WebClient())
-                        {
-                            foreach (string fileUrl in fileUrls)
+                            if (dt.Rows.Count > 0)
                             {
-                                try
-                                {
-                                    byte[] fileBytes = client.DownloadData(fileUrl);
-                                    string fileName = Path.GetFileName(fileUrl);
+                                if (!string.IsNullOrEmpty(dt.Rows[0]["CerificateOfCompetency"]?.ToString()))
+                                    fileUrls.Add("https://ceiharyana.com" + dt.Rows[0]["CerificateOfCompetency"]);
 
-                                    ZipArchiveEntry entry = zip.CreateEntry(fileName, CompressionLevel.Fastest);
-                                    using (var entryStream = entry.Open())
+                                if (!string.IsNullOrEmpty(dt.Rows[0]["CertificateOfExperience"]?.ToString()))
+                                    fileUrls.Add("https://ceiharyana.com" + dt.Rows[0]["CertificateOfExperience"]);
+
+                                if (!string.IsNullOrEmpty(dt.Rows[0]["CertificateOfMedical"]?.ToString()))
+                                    fileUrls.Add("https://ceiharyana.com" + dt.Rows[0]["CertificateOfMedical"]);
+                            }
+
+
+                            using (var client = new System.Net.WebClient())
+                            {
+                                foreach (string fileUrl in fileUrls)
+                                {
+                                    try
                                     {
-                                        entryStream.Write(fileBytes, 0, fileBytes.Length);
+                                        byte[] fileBytes = client.DownloadData(fileUrl);
+                                        string fileName = Path.GetFileName(fileUrl);
+
+                                        ZipArchiveEntry entry = zip.CreateEntry(fileName, CompressionLevel.Fastest);
+                                        using (var entryStream = entry.Open())
+                                        {
+                                            entryStream.Write(fileBytes, 0, fileBytes.Length);
+                                        }
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        // log download error
                                     }
                                 }
-                                catch (Exception ex)
+                            }
+                        }
+                        else
+                        {
+                            DataTable dts = CEI.GetUpgradationOfContractorDocumentsAtAdmin(lblNewCertificate.Text.Trim());
+                            foreach (DataRow rows in dts.Rows)
+                            {
+                                string fileUrl = "https://ceiharyana.com" + rows["DocumentPath"].ToString();
+
+                                using (var client = new System.Net.WebClient())
                                 {
-                                    // log download error
+                                    try
+                                    {
+                                        byte[] fileBytes = client.DownloadData(fileUrl);
+                                        string fileName = Path.GetFileName(fileUrl);
+
+                                        ZipArchiveEntry entry = zip.CreateEntry(fileName, CompressionLevel.Fastest);
+                                        using (var entryStream = entry.Open())
+                                        {
+                                            entryStream.Write(fileBytes, 0, fileBytes.Length);
+                                        }
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        // Log error if file missing
+                                    }
                                 }
                             }
                         }
@@ -182,6 +215,16 @@ namespace CEIHaryana.Admin
             {
                 GetSubmittedUpgradationApplications(null);
             }
+        }
+
+        protected void GridView3_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            try
+            {
+                GridView3.PageIndex = e.NewPageIndex;
+                GetSubmittedUpgradationApplications(null);
+            }
+            catch { }
         }
     }
 }

@@ -45,7 +45,7 @@ namespace CEIHaryana.Previewpages
                 if (dt.Rows.Count > 0)
                 {
                    // dt.Rows[0]["QRCode"] = GenerateQrCode("Certificate_No = " + dt.Rows[0]["Certificate_No"].ToString());
-                   // lblRegistationId.Text = dt.Rows[0]["RegistationId"].ToString();
+                    lblRegistationId.Text = dt.Rows[0]["RegistationId"].ToString();
                    // lblCertificateNo.Text = dt.Rows[0]["LicenceNo"].ToString();
                     lblName.Text = dt.Rows[0]["Name"].ToString();
                    // lblApprovedDate.Text = dt.Rows[0]["ApprovedDate"].ToString();
@@ -106,7 +106,7 @@ namespace CEIHaryana.Previewpages
         public void GetSupervisiorWiremanDetails()
         {
             DataTable dt = new DataTable();
-            dt = CEI.GetSupWiremanDetails(lblRegistationId.Text);
+            dt = CEI.GetSupWiremanDetails_PreviewNew(lblRegistationId.Text);
             if (dt.Rows.Count > 0)
             {
                 lblSup1.Text = dt.Rows[0]["Name"].ToString();

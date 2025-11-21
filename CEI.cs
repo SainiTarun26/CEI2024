@@ -16003,6 +16003,11 @@ string SerialNo, string TypeOfLift, string TypeOfControl, string Capacity, Decim
             return result;
         }
 
+        public DataTable GetSupWiremanDetails_PreviewNew(string RegistrationId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetSup_WiremanDetails_PreviewNew", RegistrationId);
+        }
+
         #endregion
         #region aslam cinema admin approval
 
