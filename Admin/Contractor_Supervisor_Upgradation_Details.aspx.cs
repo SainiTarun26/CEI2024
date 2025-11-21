@@ -51,13 +51,13 @@ namespace CEIHaryana.Admin
             dt.Dispose();
         }
 
-       
+
 
         protected void ddlUserType_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ddlUserType.SelectedItem.Text == "Supervisor")
             {
-                
+
                 GetSubmittedUpgradationApplications(ddlUserType.SelectedItem.Text);
 
             }
@@ -93,7 +93,7 @@ namespace CEIHaryana.Admin
                 Label Categary = (Label)row.FindControl("lblType");
                 Label lblApplicationID = (Label)row.FindControl("lblApplicationID");
                 Label lblNewCertificate = (Label)row.FindControl("lblNewCertificate");
-               
+
 
                 using (MemoryStream memoryStream = new MemoryStream())
                 {
@@ -215,6 +215,16 @@ namespace CEIHaryana.Admin
             {
                 GetSubmittedUpgradationApplications(null);
             }
+        }
+
+        protected void GridView3_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            try
+            {
+                GridView3.PageIndex = e.NewPageIndex;
+                GetSubmittedUpgradationApplications(null);
+            }
+            catch { }
         }
     }
 }
