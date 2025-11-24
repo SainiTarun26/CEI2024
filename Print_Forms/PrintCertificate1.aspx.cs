@@ -28,6 +28,7 @@ namespace CEIHaryana.Print_Forms
                         else if (Session["SiteOwnerId"] != null)
                         {
                             GetData();
+                            abandonsession();
                         }
                         else if (Session["AdminId"] != null)
                         {
@@ -56,7 +57,13 @@ namespace CEIHaryana.Print_Forms
                     ID = Session["InspectionId"].ToString();
 
                 }
+                string url = ID + "&name=" + "Print_Forms/PrintCertificate1.aspx";
 
+                byte[] qrBytes = CEI.GenerateQrCode(url);
+
+                string base64Image = Convert.ToBase64String(qrBytes);
+
+                imgQR.ImageUrl = "data:image/png;base64," + base64Image;
                 DataSet ds = new DataSet();
                 ds = CEI.PrintSubstrationTransformer(ID);
                 lblAddress1.Text = ds.Tables[0].Rows[0]["Header1"].ToString();
@@ -162,5 +169,16 @@ namespace CEIHaryana.Print_Forms
         //{
         //    Response.Redirect("/Officers/InProcessInspection.aspx", false);
         //}
+
+        #region navneet for qr scanning
+        public void abandonsession()
+        {
+            if (Convert.ToString(Session["SiteOwnerId"]) == "12345")
+            {
+                Session["SiteOwnerId"] = "";
+                Session["InspectionId"] = "";
+            }
+        }
+        #endregion
     }
 }

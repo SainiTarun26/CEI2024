@@ -4,12 +4,14 @@ using CEIHaryana.UserPages;
 using iTextSharp.text.pdf.parser;
 using Newtonsoft.Json;
 using Pipelines.Sockets.Unofficial.Arenas;
+using QRCoder;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -16283,6 +16285,26 @@ assistance, please feel free to contact our support team.</p>
          District == "Select" ? (object)DBNull.Value : District,
          Status == "Select" ? (object)DBNull.Value : Status,
          string.IsNullOrWhiteSpace(Name) ? (object)DBNull.Value : Name);
+        }
+        #endregion
+
+        #region QR changes by navneet(24-11-2025)
+        public byte[] GenerateQrCode(string qrmsg)
+        {
+            string url = "https://uat.ceiharyana.com/ScannedDocuments/ValidateCertificate.aspx?ID=" + qrmsg;
+            QRCodeGenerator qrGenerator = new QRCodeGenerator();
+            QRCodeGenerator.QRCode qrCode = qrGenerator.CreateQrCode(url, QRCodeGenerator.ECCLevel.Q);
+            System.Web.UI.WebControls.Image imgBarCode = new System.Web.UI.WebControls.Image();
+            using (Bitmap bitMap = qrCode.GetGraphic(20))
+            {
+                using (MemoryStream ms = new MemoryStream())
+                {
+
+                    bitMap.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                    byte[] byteImage = ms.ToArray();
+                    return byteImage;
+                }
+            }
         }
         #endregion
     }

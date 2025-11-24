@@ -23,6 +23,7 @@ namespace CEIHaryana.Print_Forms
                 else if (Session["SiteOwnerId"] != null)
                 {
                     GetData();
+                    abandonsession();
                 }
                 else if (Session["AdminId"] != null)
                 {
@@ -57,6 +58,13 @@ namespace CEIHaryana.Print_Forms
                     ID = Session["InspectionIdNew"].ToString();
 
                 }
+                string url = ID + "&name=" + "Print_Forms/PeriodicApprovalCertificate.aspx";
+
+                byte[] qrBytes = CEI.GenerateQrCode(url);
+
+                string base64Image = Convert.ToBase64String(qrBytes);
+
+                imgQR.ImageUrl = "data:image/png;base64," + base64Image;
                 DataTable dt = new DataTable();
                 dt = CEI.GetCertificateData(ID);
                 if (dt.Rows.Count>0) 
@@ -198,6 +206,16 @@ namespace CEIHaryana.Print_Forms
             }
         }
 
-        
+        #region navneet for qr scanning
+        public void abandonsession()
+        {
+            if (Convert.ToString(Session["SiteOwnerId"]) == "12345")
+            {
+                Session["SiteOwnerId"] = "";
+                Session["InspectionId"] = "";
+            }
+        }
+        #endregion
+
     }
 }
