@@ -16285,6 +16285,13 @@ assistance, please feel free to contact our support team.</p>
          string.IsNullOrWhiteSpace(Name) ? (object)DBNull.Value : Name);
         }
         #endregion
+
+        #region navneet renewal document history
+        public DataTable GetRenewaViewlData(string userId)
+        {
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "sp_GetRenewalViewDocuments", userId);
+        }
+        #endregion
     }
 }
 

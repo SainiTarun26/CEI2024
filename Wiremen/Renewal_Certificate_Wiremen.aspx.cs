@@ -94,6 +94,29 @@ namespace CEIHaryana.Wiremen
                 //throw;
             }
         }
+        public void viewdocuments(string RenewalId)
+        {
+            DataTable dt = new DataTable();
+            dt = CEI.GetRenewaViewlData(RenewalId);
+            if (dt.Rows.Count > 0)
+            {
+                Previousdcmt1.Visible = true;
+                Previousdcmt2.Visible = true;
+                Previousdcmt3.Visible = true;
+                Previousdcmt4.Visible = true;
+                Previousdcmt5.Visible = true;
+                Previousdcmt6.Visible = true;
+                Previousdcmt7.Visible = true;
+                lnkCertificate.CommandArgument = dt.Rows[0]["CertificateCompetency"].ToString();
+                lnkChallan.CommandArgument = dt.Rows[0]["TreasuryChallan"].ToString();
+                LinkButton1.CommandArgument = dt.Rows[0]["Fitness"].ToString();
+                LinkButton2.CommandArgument = dt.Rows[0]["Undertaking"].ToString();
+                LinkButton3.CommandArgument = dt.Rows[0]["WorkingStatus"].ToString();
+                LinkButton4.CommandArgument = dt.Rows[0]["Candidateimage"].ToString();
+                LinkButton5.CommandArgument = dt.Rows[0]["CandidateSignature"].ToString();
+            }
+        }
+
         public void GetSupervisorDetails(string userID)
         {
             //string UserID = Session["SupervisorID"].ToString();
@@ -174,6 +197,12 @@ namespace CEIHaryana.Wiremen
                 txtLicenseno.ReadOnly = true;
                 txtaddressofEmployer.Text = dt.Rows[0]["ContractorAddress"].ToString();
                 txtaddressofEmployer.ReadOnly = true;
+            }
+
+            if (Convert.ToString(Session["RegistrationNo"]) != null && Convert.ToString(Session["RegistrationNo"]) != "")
+            {
+                string RenewalId = Session["RegistrationNo"].ToString();
+                viewdocuments(RenewalId);
             }
         }
 

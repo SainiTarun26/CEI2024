@@ -712,7 +712,7 @@ Please Select
                 <div class="card-body" style="box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; padding: 25px; margin-bottom: 25px; border-radius: 10px; margin-top: 10px;">
 
                     <div class="row">
-                        <table class="table table-bordered table-striped">
+                                                <table class="table table-bordered table-striped">
                             <tbody>
                                 <tr>
                                     <td style="margin-top: auto; margin-bottom: auto;">Certificate of Competency/Wireman Permit. <span style="color: red;">★</span>
@@ -725,20 +725,23 @@ Please Select
                                                 (PLEASE UPLOAD PDF ONLY NO MORE THAN 1MB)
                                             </label>
                                             <%--<div class="input-group col-xs-12">
-                                               <asp:TextBox ID="CertificateofCompetency" runat="server" CssClass="form-control file-upload-info"
-                                                   Enabled="false" placeholder="Upload Document" Style="width: 85%;"></asp:TextBox>
-                                               <span class="input-group-append">
-                                                   <asp:Button ID="btnCertificate" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="CertificateDialog(); return false;" TabIndex="16" />
-                                                   <input type="file" id="Certificate" name="Certificate" accept=".pdf" style="display: none;" runat="server" onchange="CertificateDialogName()" />
-                                               </span>
-                                               <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="CertificateofCompetency" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
-                                           </div>--%>
+                                                <asp:TextBox ID="CertificateofCompetency" runat="server" CssClass="form-control file-upload-info"
+                                                    Enabled="false" placeholder="Upload Document" Style="width: 85%;"></asp:TextBox>
+                                                <span class="input-group-append">
+                                                    <asp:Button ID="btnCertificate" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="CertificateDialog(); return false;" TabIndex="16" />
+                                                    <input type="file" id="Certificate" name="Certificate" accept=".pdf" style="display: none;" runat="server" onchange="CertificateDialogName()" />
+                                                </span>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="CertificateofCompetency" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
+                                            </div>--%>
                                             <input type="file" id="Certificate" name="Certificate" accept=".pdf" runat="server" class="form-control" />
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator29" runat="server" ControlToValidate="Certificate" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
 
                                         </div>
                                     </td>
-
+                                    <td style="text-align: center;" id="Previousdcmt1" runat="server" visible="false">
+                                        <asp:LinkButton ID="lnkCertificate" runat="server" OnClick="lnkCertificate_click">View Document</asp:LinkButton>
+                                        <%--  <asp:FileUpload ID="FileUpload2" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />--%>
+                                    </td>
 
                                 </tr>
                                 <tr>
@@ -752,24 +755,28 @@ Please Select
                                                 (PLEASE UPLOAD PDF ONLY NO MORE THAN 1MB)
                                             </label>
                                             <%--  <div class="input-group col-xs-12">
-                                               <asp:TextBox ID="txtChallan" runat="server" CssClass="form-control file-upload-info"
-                                                   Enabled="false" placeholder="Upload Document" Style="width: 85%;"></asp:TextBox>
-                                               <span class="input-group-append">
-                                                   <asp:Button ID="Button2" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="ChallanDialog(); return false;" TabIndex="16" />
-                                                   <input type="file" id="Challan" name="EquipCertificateInput" accept=".pdf" style="display: none;" runat="server" onchange="ChallanDialogName()" />
-                                               </span>
-                                               <asp:RequiredFieldValidator ID="RequiredFieldValidator" runat="server" ControlToValidate="txtChallan" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
-                                           </div>--%>
+                                                <asp:TextBox ID="txtChallan" runat="server" CssClass="form-control file-upload-info"
+                                                    Enabled="false" placeholder="Upload Document" Style="width: 85%;"></asp:TextBox>
+                                                <span class="input-group-append">
+                                                    <asp:Button ID="Button2" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="ChallanDialog(); return false;" TabIndex="16" />
+                                                    <input type="file" id="Challan" name="EquipCertificateInput" accept=".pdf" style="display: none;" runat="server" onchange="ChallanDialogName()" />
+                                                </span>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator" runat="server" ControlToValidate="txtChallan" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
+                                            </div>--%>
                                             <input type="file" id="Challan" name="Challan" accept=".pdf" runat="server" class="form-control" />
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator28" runat="server" ControlToValidate="Challan" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
 
                                         </div>
                                     </td>
+                                    <td style="text-align: center;" id="Previousdcmt2" runat="server" visible="false">
+                                        <asp:LinkButton ID="lnkChallan" runat="server" OnClick="lnkCertificate_click">View Document</asp:LinkButton>
+                                        <%--  <asp:FileUpload ID="FileUpload2" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />--%>
+                                    </td>
                                 </tr>
 
                                 <tr runat="server" visible="false" id="MedicalCertificate">
                                     <td style="margin-top: auto; margin-bottom: auto;">A Medical Fitness Certificate issued from Government/Government Approved Hospital, in case he is above
-                                    <br />
+                                     <br />
                                         55 years of age on the date of submission of application.<span style="color: red;">★</span>
 
                                     </td>
@@ -780,24 +787,28 @@ Please Select
                                                 (PLEASE UPLOAD PDF ONLY NO MORE THAN 1MB)
                                             </label>
                                             <%--   <div class="input-group col-xs-12">
-                                               <asp:TextBox ID="txtMedicalFitness" runat="server" CssClass="form-control file-upload-info"
-                                                   Enabled="false" placeholder="Upload Document" Style="width: 85%;"></asp:TextBox>
-                                               <span class="input-group-append">
-                                                   <asp:Button ID="btnMedicalFitness" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="MedicalDialog(); return false;" TabIndex="16" />
-                                                   <input type="file" id="MedicalFitness" name="MedicalFitness" accept=".pdf" style="display: none;" runat="server" onchange="MedicalDialogName()" />
-                                               </span>
-                                               <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtMedicalFitness" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
-                                           </div>--%>
+                                                <asp:TextBox ID="txtMedicalFitness" runat="server" CssClass="form-control file-upload-info"
+                                                    Enabled="false" placeholder="Upload Document" Style="width: 85%;"></asp:TextBox>
+                                                <span class="input-group-append">
+                                                    <asp:Button ID="btnMedicalFitness" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="MedicalDialog(); return false;" TabIndex="16" />
+                                                    <input type="file" id="MedicalFitness" name="MedicalFitness" accept=".pdf" style="display: none;" runat="server" onchange="MedicalDialogName()" />
+                                                </span>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="txtMedicalFitness" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
+                                            </div>--%>
                                             <input type="file" id="MedicalFitness" name="MedicalFitness" accept=".pdf" runat="server" class="form-control" />
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="MedicalFitness" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
 
                                         </div>
                                     </td>
+                                    <td style="text-align: center;" id="Previousdcmt3" runat="server" visible="false">
+                                        <asp:LinkButton ID="LinkButton1" runat="server" OnClick="lnkCertificate_click">View Document</asp:LinkButton>
+                                        <%--  <asp:FileUpload ID="FileUpload2" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />--%>
+                                    </td>
                                 </tr>
 
                                 <tr runat="server" visible="true">
                                     <td style="margin-top: auto; margin-bottom: auto;">Undertaking for delay or non-working during cancel period, in case of expiry of the Certificate/Permit.
-                                    <span style="color: red;">★</span>
+                                     <span style="color: red;">★</span>
                                     </td>
                                     <td>
 
@@ -808,24 +819,28 @@ Please Select
 
                                             <input type="file" name="img[]" class="file-upload-default" />
                                             <%--   <div class="input-group col-xs-12">
-                                               <asp:TextBox ID="txtUndertaking" runat="server" CssClass="form-control file-upload-info"
-                                                   Enabled="false" placeholder="Upload Document" Style="width: 85%;"></asp:TextBox>
-                                               <span class="input-group-append">
-                                                   <asp:Button ID="btnUndertaking" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="UndertakingDialog(); return false;" TabIndex="16" />
-                                                   <input type="file" id="Undertaking" name="Undertaking" accept=".pdf" style="display: none;" runat="server" onchange="UndertakingDialogName()" />
-                                               </span>
-                                               <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtUndertaking" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
-                                           </div>--%>
+                                                <asp:TextBox ID="txtUndertaking" runat="server" CssClass="form-control file-upload-info"
+                                                    Enabled="false" placeholder="Upload Document" Style="width: 85%;"></asp:TextBox>
+                                                <span class="input-group-append">
+                                                    <asp:Button ID="btnUndertaking" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="UndertakingDialog(); return false;" TabIndex="16" />
+                                                    <input type="file" id="Undertaking" name="Undertaking" accept=".pdf" style="display: none;" runat="server" onchange="UndertakingDialogName()" />
+                                                </span>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="txtUndertaking" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
+                                            </div>--%>
                                             <input type="file" id="Undertaking" name="Undertaking" accept=".pdf" runat="server" class="form-control" />
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="Undertaking" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
 
                                         </div>
                                     </td>
+                                    <td style="text-align: center;" id="Previousdcmt4" runat="server" visible="false">
+                                        <asp:LinkButton ID="LinkButton2" runat="server" OnClick="lnkCertificate_click">View Document</asp:LinkButton>
+                                        <%--  <asp:FileUpload ID="FileUpload2" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />--%>
+                                    </td>
                                 </tr>
 
                                 <tr runat="server" visible="true">
                                     <td style="margin-top: auto; margin-bottom: auto;">Present working Status.
-                                    <span style="color: red;">★</span>
+                                     <span style="color: red;">★</span>
                                     </td>
                                     <td>
 
@@ -836,18 +851,22 @@ Please Select
 
                                             <input type="file" name="img[]" class="file-upload-default" />
                                             <%--  <div class="input-group col-xs-12">
-                                               <asp:TextBox ID="txtPresentworkingStatus" runat="server" CssClass="form-control file-upload-info"
-                                                   Enabled="false" placeholder="Upload Document" Style="width: 85%;"></asp:TextBox>
-                                               <span class="input-group-append">
-                                                   <asp:Button ID="btnPresentworkingStatus" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="StatusDialog(); return false;" TabIndex="16" />
-                                                   <input type="file" id="PresentworkingStatus" name="Undertaking" accept=".pdf" style="display: none;" runat="server" onchange="StatusDialogName()" />
-                                               </span>
-                                               <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtPresentworkingStatus" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
-                                           </div>--%>
+                                                <asp:TextBox ID="txtPresentworkingStatus" runat="server" CssClass="form-control file-upload-info"
+                                                    Enabled="false" placeholder="Upload Document" Style="width: 85%;"></asp:TextBox>
+                                                <span class="input-group-append">
+                                                    <asp:Button ID="btnPresentworkingStatus" runat="server" CssClass="file-upload-browse btn btn-primary" Text="Upload" OnClientClick="StatusDialog(); return false;" TabIndex="16" />
+                                                    <input type="file" id="PresentworkingStatus" name="Undertaking" accept=".pdf" style="display: none;" runat="server" onchange="StatusDialogName()" />
+                                                </span>
+                                                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="txtPresentworkingStatus" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
+                                            </div>--%>
                                             <input type="file" id="PresentworkingStatus" name="PresentworkingStatus" accept=".pdf" runat="server" class="form-control" />
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="PresentworkingStatus" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
 
                                         </div>
+                                    </td>
+                                    <td style="text-align: center;" id="Previousdcmt5" runat="server" visible="false">
+                                        <asp:LinkButton ID="LinkButton3" runat="server" OnClick="lnkCertificate_click" >View Document</asp:LinkButton>
+                                        <%--  <asp:FileUpload ID="FileUpload2" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />--%>
                                     </td>
                                 </tr>
 
@@ -875,6 +894,10 @@ Please Select
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator35" runat="server" ControlToValidate="CandidateImage" ValidationGroup="Submit" ForeColor="Red">Please Upload Image</asp:RequiredFieldValidator>
 
                                         </div>
+                                    </td>
+                                    <td style="text-align: center;" id="Previousdcmt6" runat="server" visible="false">
+                                        <asp:LinkButton ID="LinkButton4" runat="server" OnClick="lnkCertificate_click" >View Document</asp:LinkButton>
+                                        <%--  <asp:FileUpload ID="FileUpload2" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />--%>
                                     </td>
                                 </tr>
 
@@ -906,6 +929,10 @@ Please Select
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator36" runat="server" ControlToValidate="CandidateSignature" ValidationGroup="Submit" ForeColor="Red">Please Upload Image</asp:RequiredFieldValidator>
 
                                         </div>
+                                    </td>
+                                    <td style="text-align: center;" id="Previousdcmt7" runat="server" visible="false">
+                                        <asp:LinkButton ID="LinkButton5" runat="server" OnClick="lnkCertificate_click" >View Document</asp:LinkButton>
+                                        <%--  <asp:FileUpload ID="FileUpload2" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />--%>
                                     </td>
                                 </tr>
                             </tbody>

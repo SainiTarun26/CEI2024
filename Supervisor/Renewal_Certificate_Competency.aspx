@@ -743,7 +743,10 @@ Please Select
 
                                         </div>
                                     </td>
-
+                                    <td style="text-align: center;" id="Previousdcmt1" runat="server" visible="false">
+                                        <asp:LinkButton ID="lnkCertificate" runat="server" OnClick="lnkCertificate_click">View Document</asp:LinkButton>
+                                        <%--  <asp:FileUpload ID="FileUpload2" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />--%>
+                                    </td>
 
                                 </tr>
                                 <tr>
@@ -769,6 +772,10 @@ Please Select
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator28" runat="server" ControlToValidate="Challan" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
 
                                         </div>
+                                    </td>
+                                    <td style="text-align: center;" id="Previousdcmt2" runat="server" visible="false">
+                                        <asp:LinkButton ID="lnkChallan" runat="server" OnClick="lnkCertificate_click">View Document</asp:LinkButton>
+                                        <%--  <asp:FileUpload ID="FileUpload2" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />--%>
                                     </td>
                                 </tr>
 
@@ -798,6 +805,10 @@ Please Select
 
                                         </div>
                                     </td>
+                                    <td style="text-align: center;" id="Previousdcmt3" runat="server" visible="false">
+                                        <asp:LinkButton ID="LinkButton1" runat="server" OnClick="lnkCertificate_click">View Document</asp:LinkButton>
+                                        <%--  <asp:FileUpload ID="FileUpload2" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />--%>
+                                    </td>
                                 </tr>
 
                                 <tr runat="server" visible="true">
@@ -825,6 +836,10 @@ Please Select
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="Undertaking" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
 
                                         </div>
+                                    </td>
+                                    <td style="text-align: center;" id="Previousdcmt4" runat="server" visible="false">
+                                        <asp:LinkButton ID="LinkButton2" runat="server" OnClick="lnkCertificate_click">View Document</asp:LinkButton>
+                                        <%--  <asp:FileUpload ID="FileUpload2" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />--%>
                                     </td>
                                 </tr>
 
@@ -854,6 +869,10 @@ Please Select
 
                                         </div>
                                     </td>
+                                    <td style="text-align: center;" id="Previousdcmt5" runat="server" visible="false">
+                                        <asp:LinkButton ID="LinkButton3" runat="server" OnClick="lnkCertificate_click" >View Document</asp:LinkButton>
+                                        <%--  <asp:FileUpload ID="FileUpload2" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />--%>
+                                    </td>
                                 </tr>
 
                                 <tr id="Tr1" runat="server" visible="true">
@@ -880,6 +899,10 @@ Please Select
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator35" runat="server" ControlToValidate="CandidateImage" ValidationGroup="Submit" ForeColor="Red">Please Upload Image</asp:RequiredFieldValidator>
 
                                         </div>
+                                    </td>
+                                    <td style="text-align: center;" id="Previousdcmt6" runat="server" visible="false">
+                                        <asp:LinkButton ID="LinkButton4" runat="server" OnClick="lnkCertificate_click" >View Document</asp:LinkButton>
+                                        <%--  <asp:FileUpload ID="FileUpload2" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />--%>
                                     </td>
                                 </tr>
 
@@ -911,6 +934,10 @@ Please Select
                                             <asp:RequiredFieldValidator ID="RequiredFieldValidator36" runat="server" ControlToValidate="CandidateSignature" ValidationGroup="Submit" ForeColor="Red">Please Upload Image</asp:RequiredFieldValidator>
 
                                         </div>
+                                    </td>
+                                    <td style="text-align: center;" id="Previousdcmt7" runat="server" visible="false">
+                                        <asp:LinkButton ID="LinkButton5" runat="server" OnClick="lnkCertificate_click" >View Document</asp:LinkButton>
+                                        <%--  <asp:FileUpload ID="FileUpload2" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />--%>
                                     </td>
                                 </tr>
                             </tbody>

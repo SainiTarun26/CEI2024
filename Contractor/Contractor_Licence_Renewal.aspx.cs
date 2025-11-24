@@ -84,7 +84,56 @@ namespace CEIHaryana.Contractor
                 //throw;
             }
         }
+        public void viewdocuments(string RenewalId)
+        {
+            DataTable dt = new DataTable();
+            dt = CEI.GetRenewaViewlData(RenewalId);
+            if (dt.Rows.Count > 0)
+            {
+                Previousdcmt1.Visible = true;
+                Previousdcmt2.Visible = true;
+                Previousdcmt3.Visible = true;
+                Previousdcmt4.Visible = true;
+                Previousdcmt5.Visible = true;
+                Previousdcmt6.Visible = true;
+                Previousdcmt7.Visible = true;
+                Previousdcmt8.Visible = true;
+                Previousdcmt9.Visible = true;
+                Previousdcmt10.Visible = true;
+                lnkLicence.CommandArgument = dt.Rows[0]["ContractorLicense"].ToString();
+                lnkCertificate.CommandArgument = dt.Rows[0]["CertificateCompetency"].ToString();
+                LinkButton2.CommandArgument = dt.Rows[0]["IncomeTaxReturns"].ToString();
+                LinkButton3.CommandArgument = dt.Rows[0]["CalibrationCertificate"].ToString();
+                LinkButton4.CommandArgument = dt.Rows[0]["WorksExecuted"].ToString();
+                LinkButton5.CommandArgument = dt.Rows[0]["Annexure"].ToString();
+                LinkButton7.CommandArgument = dt.Rows[0]["TreasuryChallan"].ToString();
+                LinkButton6.CommandArgument = dt.Rows[0]["CopyOfFormE"].ToString();
+                LinkButton8.CommandArgument = dt.Rows[0]["CandidateImage"].ToString();
+                LinkButton9.CommandArgument = dt.Rows[0]["CandidateSignature"].ToString();
+                LinkButton10.CommandArgument = dt.Rows[0]["AuthorizationLetter"].ToString();
+                if (LinkButton10.CommandArgument.ToString()!=""& LinkButton10.CommandArgument.ToString() != null)
+                {
+                    Previousdcmt11.Visible=true;
+                }
+                LinkButton11.CommandArgument = dt.Rows[0]["OtherDocument"].ToString(); 
+                if (LinkButton11.CommandArgument.ToString() != "" & LinkButton11.CommandArgument.ToString() != null)
+                {
+                   Previousdcmt12.Visible = true;
+                }
+            }
+        }
+        protected void lnkCertificate_click(object sender, EventArgs e)
+        {
+            LinkButton lnk = (LinkButton)sender;
+            string filePath = lnk.CommandArgument;
 
+            if (!string.IsNullOrEmpty(filePath))
+            {
+                // Redirect to open the document in a new tab
+                string script = $"window.open('{ResolveUrl(filePath)}', '_blank');";
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "openDoc", script, true);
+            }
+        }
         public void GetDetails(string userID)
         {
             DataTable dt = new DataTable();

@@ -83,9 +83,10 @@ namespace CEIHaryana.Contractor
         {
             Control ctrl = e.CommandSource as Control;
             GridViewRow row = ctrl.Parent.NamingContainer as GridViewRow;
+            string RegNo;
             if (e.CommandName == "Select")
             {
-                string RegNo = e.CommandArgument.ToString();
+                 RegNo = e.CommandArgument.ToString();
 
                 Session["NewApplicationRegistrationNo"] = RegNo;
                 Response.Write("<script>window.open('/UserPages/Contractor_Renewal_Details_Preview.aspx','_blank');</script>");
@@ -93,6 +94,8 @@ namespace CEIHaryana.Contractor
             else if (e.CommandName == "Reapply")
             {
                 Session["Reapply"] = "Yes";
+                RegNo = e.CommandArgument.ToString();
+                Session["RegistrationNo"] = RegNo;
                 Response.Redirect("~/Contractor/Contractor_Licence_Renewal.aspx"); 
             }
             else if (e.CommandName == "ViewVerificationLetter")

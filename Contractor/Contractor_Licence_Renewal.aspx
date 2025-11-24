@@ -815,6 +815,10 @@ input#ContentPlaceHolder1_rblChangeAddress_1 {
                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator8" runat="server" ControlToValidate="Licence" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
                                             </div>
                                         </td>
+                                        <td style="text-align: center;" id="Previousdcmt1" runat="server" visible="false">
+                                            <asp:LinkButton ID="lnkLicence" runat="server" OnClick="lnkCertificate_click">View Document</asp:LinkButton>
+                                            <%--  <asp:FileUpload ID="FileUpload2" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />--%>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td style="width: 60%; white-space: nowrap; vertical-align: middle;">Certificate of Competency and Wireman Permit, who are working with the Firm/Company alongwith
@@ -845,6 +849,10 @@ input#ContentPlaceHolder1_rblChangeAddress_1 {
 
                                             </div>
                                         </td>
+                                        <td style="text-align: center;" id="Previousdcmt2" runat="server" visible="false">
+                                            <asp:LinkButton ID="lnkCertificate" runat="server" OnClick="lnkCertificate_click">View Document</asp:LinkButton>
+                                            <%--  <asp:FileUpload ID="FileUpload2" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />--%>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td style="width: 60%; white-space: nowrap; vertical-align: middle;">Income Tax Returns and Balance Sheet as specified in the conditions. (<span style="color: red; display: inline; padding: 0;">★</span>)
@@ -871,6 +879,10 @@ input#ContentPlaceHolder1_rblChangeAddress_1 {
                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server" ControlToValidate="IncomeTax" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
 
                                             </div>
+                                        </td>
+                                        <td style="text-align: center;" id="Previousdcmt3" runat="server" visible="false">
+                                            <asp:LinkButton ID="LinkButton2" runat="server" OnClick="lnkCertificate_click">View Document</asp:LinkButton>
+                                            <%--  <asp:FileUpload ID="FileUpload2" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />--%>
                                         </td>
                                     </tr>
                                     <tr>
@@ -899,7 +911,11 @@ equipments. (<span style="color: red; display: inline; padding: 0;">★</span>)
 
                                             </div>
                                         </td>
-
+                                        
+                                        <td style="text-align: center;" id="Previousdcmt4" runat="server" visible="false">
+                                            <asp:LinkButton ID="LinkButton3" runat="server" OnClick="lnkCertificate_click">View Document</asp:LinkButton>
+                                            <%--  <asp:FileUpload ID="FileUpload2" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />--%>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td style="width: 60%; white-space: nowrap; vertical-align: middle;">Details of works executed annually on the basis of Electrical Contractor License (<span style="color: red; display: inline; padding: 0;">★</span>)
@@ -925,6 +941,10 @@ equipments. (<span style="color: red; display: inline; padding: 0;">★</span>)
 
                                             </div>
                                         </td>
+                                        <td style="text-align: center;" id="Previousdcmt5" runat="server" visible="false">
+                                            <asp:LinkButton ID="LinkButton4" runat="server" OnClick="lnkCertificate_click">View Document</asp:LinkButton>
+                                            <%--  <asp:FileUpload ID="FileUpload2" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />--%>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td style="width: 60%; white-space: nowrap; vertical-align: middle;">Copy of Annexure III. (<span style="color: red; display: inline; padding: 0;">★</span>)
@@ -949,6 +969,10 @@ equipments. (<span style="color: red; display: inline; padding: 0;">★</span>)
                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator5" runat="server" ControlToValidate="AnnexureIII" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
 
                                             </div>
+                                        </td>
+                                        <td style="text-align: center;" id="Previousdcmt6" runat="server" visible="false">
+                                            <asp:LinkButton ID="LinkButton5" runat="server" OnClick="lnkCertificate_click">View Document</asp:LinkButton>
+                                            <%--  <asp:FileUpload ID="FileUpload2" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />--%>
                                         </td>
                                     </tr>
                                     <tr>
@@ -977,6 +1001,10 @@ equipments. (<span style="color: red; display: inline; padding: 0;">★</span>)
 
                                             </div>
                                         </td>
+                                        <td style="text-align: center;" id="Previousdcmt7" runat="server" visible="false">
+                                            <asp:LinkButton ID="LinkButton6" runat="server" OnClick="lnkCertificate_click">View Document</asp:LinkButton>
+                                            <%--  <asp:FileUpload ID="FileUpload2" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />--%>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td style="width: 60%; white-space: nowrap; vertical-align: middle;">Deposited Treasury Challan of fees, for the purpose.
@@ -1002,6 +1030,10 @@ Head of A/c: 0043-51-800-99-51—Other Receipt. (<span style="color: red; displa
                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator7" runat="server" ControlToValidate="Challan" ValidationGroup="Submit" ForeColor="Red">Please Upload</asp:RequiredFieldValidator>
 
                                             </div>
+                                        </td>
+                                        <td style="text-align: center;" id="Previousdcmt8" runat="server" visible="false">
+                                            <asp:LinkButton ID="LinkButton7" runat="server" OnClick="lnkCertificate_click">View Document</asp:LinkButton>
+                                            <%--  <asp:FileUpload ID="FileUpload2" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />--%>
                                         </td>
                                     </tr>
 
@@ -1030,6 +1062,10 @@ Head of A/c: 0043-51-800-99-51—Other Receipt. (<span style="color: red; displa
                                                 <asp:RequiredFieldValidator ID="RequiredFieldValidator35" runat="server" ControlToValidate="CandidateImage" ValidationGroup="Submit" ForeColor="Red">Please Upload Image</asp:RequiredFieldValidator>
 
                                             </div>
+                                        </td>
+                                        <td style="text-align: center;" id="Previousdcmt9" runat="server" visible="false">
+                                            <asp:LinkButton ID="LinkButton8" runat="server" OnClick="lnkCertificate_click">View Document</asp:LinkButton>
+                                            <%--  <asp:FileUpload ID="FileUpload2" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />--%>
                                         </td>
                                     </tr>
 
@@ -1062,6 +1098,10 @@ Head of A/c: 0043-51-800-99-51—Other Receipt. (<span style="color: red; displa
 
                                             </div>
                                         </td>
+                                        <td style="text-align: center;" id="Previousdcmt10" runat="server" visible="false">
+                                            <asp:LinkButton ID="LinkButton9" runat="server" OnClick="lnkCertificate_click">View Document</asp:LinkButton>
+                                            <%--  <asp:FileUpload ID="FileUpload2" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />--%>
+                                        </td>
                                     </tr>
 
                                     <tr>
@@ -1079,6 +1119,10 @@ Head of A/c: 0043-51-800-99-51—Other Receipt. (<span style="color: red; displa
 
                                             </div>
                                         </td>
+                                        <td style="text-align: center;" id="Previousdcmt11" runat="server" visible="false">
+                                            <asp:LinkButton ID="LinkButton10" runat="server" OnClick="lnkCertificate_click">View Document</asp:LinkButton>
+                                            <%--  <asp:FileUpload ID="FileUpload2" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />--%>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td style="width: 60%; white-space: nowrap; vertical-align: middle;">Other Document
@@ -1094,6 +1138,10 @@ Head of A/c: 0043-51-800-99-51—Other Receipt. (<span style="color: red; displa
                                                 <input type="file" id="OtherDocument" name="OtherDocument" accept=".pdf" runat="server" class="form-control" />
 
                                             </div>
+                                        </td>
+                                        <td style="text-align: center;" id="Previousdcmt12" runat="server" visible="false">
+                                            <asp:LinkButton ID="LinkButton11" runat="server" OnClick="lnkCertificate_click">View Document</asp:LinkButton>
+                                            <%--  <asp:FileUpload ID="FileUpload2" runat="server" CssClass="form-control" Style="margin-left: 18px; padding: 0px; font-size: 15px; height: 28px !important;" accept=".pdf" />--%>
                                         </td>
                                     </tr>
                                 </tbody>

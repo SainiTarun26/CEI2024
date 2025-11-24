@@ -267,7 +267,7 @@
                             </asp:BoundField>
                             <asp:TemplateField HeaderStyle-CssClass="headercolor" ItemStyle-HorizontalAlign="Center">
                                 <ItemTemplate>
-                                    <asp:LinkButton ID="lnkReapply" runat="server" CommandName="Reapply" CssClass="btn btn-link">
+                                    <asp:LinkButton ID="lnkReapply" CommandArgument=' <%#Eval("Id") %> ' runat="server" CommandName="Reapply" CssClass="btn btn-link">
             Reapply
                                     </asp:LinkButton>
                                 </ItemTemplate>
