@@ -183,7 +183,7 @@ namespace CEIHaryana.UserPages
                     HdnID.Value = lblID.Text.Trim();
                 }
 
-                if (active.Text == "0" || status == "Submit")
+                if (active.Text == "0" || status == "Submit" || status == "Resubmit")
                 {
                     lnk.Enabled = false;       // disable
                     lnk.ForeColor = System.Drawing.Color.Gray;   // visual hint (optional)
