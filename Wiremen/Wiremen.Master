@@ -331,7 +331,7 @@
                     <nav class="sidebar sidebar-offcanvas" id="sidebar" style="background-color: #263247;">
                         <ul class="nav">
                             <li class="nav-item">
-                                <a class="nav-link" href="/UserPages/Get_UserCurrent_Licence.aspx">
+                                <a class="nav-link" href="//Wiremen/WiremenDashboard.aspx">
                                     <i class="icon-grid menu-icon"></i>
                                     <span class="menu-title">Dashboard</span>
                                 </a>
