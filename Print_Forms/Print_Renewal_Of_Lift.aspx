@@ -277,7 +277,7 @@
                             </div>
                             <hr />
                             <div class="row" style="margin-bottom: 15PX;">
-                                <div class="col-sm-12" style="text-align: center; padding-top: 8px; padding-bottom: 8px; border-radius: 10px;">
+                                <div class="col-sm-9" style="text-align: center; padding-top: 8px; padding-bottom: 8px; border-radius: 10px;">
                                     <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;  font-size: 17PX; text-align: center;">FORM D
                                     </h6>
                                     <h6 class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;  font-size: 17PX; text-align: center;">[See rule 4 (2)]
@@ -285,8 +285,14 @@
                                     <h6 runat="server" id="txtLift" class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;  font-size: 17PX; text-align: center; text-decoration: underline;">Registration of Lift
                                     </h6>
                                     <%--   <h6 runat="server" id="txtEscalator"  class="card-title fw-semibold mb-4" style="font-weight: 700; margin-bottom: 0px !important;  font-size: 18PX; text-align: center; text-decoration: underline;">Registration of Escalator--%>
-                                    </h6>
+                                
                                 </div>
+                                
+                                <div class="col-2">
+                                    <asp:Image ID="imgQR" runat="server" Height="100px" Width="100px" />
+
+                                </div>
+                                    </h6>
                             </div>
                             <div class="row">
     <div class="col-12">

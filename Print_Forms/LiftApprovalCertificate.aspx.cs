@@ -25,6 +25,7 @@ namespace CEIHaryana.Print_Forms
                          if (Session["SiteOwnerId"] != null || Convert.ToString(Session["SiteOwnerId"]) != string.Empty)
                         {
                             GetData();
+                            abandonsession();
                         }
                         else if (Session["AdminId"] != null || Convert.ToString(Session["AdminId"]) != string.Empty)
                         {
@@ -69,6 +70,13 @@ namespace CEIHaryana.Print_Forms
 
                 }
                 ID = Session["LiftTestReportID"].ToString();
+                string url = InspectionId + "&name=" + "Print_Forms/LiftApprovalCertificate.aspx" + "&LiftTestReportID="+ID;
+
+                byte[] qrBytes = CEI.GenerateQrCode(url);
+
+                string base64Image = Convert.ToBase64String(qrBytes);
+
+                imgQR.ImageUrl = "data:image/png;base64," + base64Image;
                 DataTable dt = new DataTable();
                 dt = CEI.GetLiftCertificateData(InspectionId, ID);
                 if (dt.Rows.Count > 0)
@@ -217,7 +225,17 @@ namespace CEIHaryana.Print_Forms
             }
         }
 
-
+        #region navneet for qr scanning
+        public void abandonsession()
+        {
+            if (Convert.ToString(Session["SiteOwnerId"]) == "12345")
+            {
+                Session["SiteOwnerId"] = "";
+                Session["InspectionId"] = "";
+                Session["LiftTestReportID"] = "";
+            }
+        }
+        #endregion
 
     }
 }

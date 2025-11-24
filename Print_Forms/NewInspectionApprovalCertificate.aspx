@@ -209,11 +209,15 @@
                                 <div class="col-1">
                                     <p>To</p>
                                 </div>
-                                <div class="col-2">
+                                <div class="col-9">
                                     <br />
                                     <asp:TextBox ID="TxtName" runat="server" Columns="80" Style="font-weight:700;"></asp:TextBox>
                                     <asp:TextBox ID="TextAdress" runat="server" Columns="80" Style="font-weight:700;"></asp:TextBox>
                                     <asp:TextBox ID="TextLocation" runat="server" Columns="70" Style="font-weight:700;"></asp:TextBox>
+                                </div>
+                                <div class="col-2">
+                                    <asp:Image ID="imgQR" runat="server" Height="100px" Width="100px" />
+
                                 </div>
                             </div>
                            <br/>
