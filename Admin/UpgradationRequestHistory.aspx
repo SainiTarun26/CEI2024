@@ -167,6 +167,13 @@
         .ReturnedRowColor {
             background-color: #f9c7c7 !important;
         }
+       
+        input#ContentPlaceHolder1_txtsearch {
+    height: 30px;
+}
+        input#ContentPlaceHolder1_btnSearch {
+    height: 30px;
+}
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
@@ -189,7 +196,22 @@
                         <br />
                         <div class="col-md-3"></div>
                     </div>
-                    <div style="margin-top: 3%">
+                            <div class="row" style="margin-bottom: 15px;margin-top: 2%;">
+            <div class="col-md-3">
+                <asp:Panel ID="Panel3" runat="server">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <asp:Label ID="Label3" runat="server" Text="Search:" Style="margin-bottom: 0px; font-size: 13px;" />
+                     <asp:TextBox CssClass="form-control" ID="txtsearch" runat="server" autocomplete="off" TabIndex="1"  Font-Size="15px"></asp:TextBox>
+                         </div>
+                </asp:Panel>
+            </div>
+
+            <div class="col-md-3">
+                <asp:Button ID="btnSearch" Text="Search" runat="server" ValidationGroup="Search" class="btn btn-primary mr-2" OnClick="btnSearch_Click" style="border-radius:8px !important;" />           
+            </div>
+
+        </div>
+                    <div style="margin-top: 1%">
                         <asp:GridView class="table-responsive table table-striped table-hover" ID="GridView1" AutoPostBack="true" runat="server" Width="100%" AutoGenerateColumns="false"
                             AllowPaging="true" PageSize="50" OnPageIndexChanging="GridView1_PageIndexChanging" BorderWidth="1px" BorderColor="#dbddff" OnRowDataBound="GridView1_RowDataBound" OnRowCommand="GridView1_RowCommand">
                             <PagerStyle CssClass="pagination-ys" />
@@ -230,7 +252,7 @@
                                     <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
                                     <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems " />
                                 </asp:BoundField>
-                                <%--      <asp:BoundField DataField="OldCertificate" HeaderText="Old certificate">
+                                <%--<asp:BoundField DataField="OldCertificate" HeaderText="Old certificate">
           <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
           <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems " />
       </asp:BoundField>--%>
@@ -242,7 +264,6 @@
                                     <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
                                     <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems" />
                                 </asp:BoundField>
-
                                 <asp:BoundField DataField="ApprovedDate" HeaderText="Approve Date">
                                     <HeaderStyle HorizontalAlign="center" CssClass="GridViewRowHeader headercolor" />
                                     <ItemStyle HorizontalAlign="center" CssClass="GridViewRowItems" />

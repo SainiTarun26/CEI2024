@@ -14413,9 +14413,9 @@ string DocumentPath, string Utrn, string challandate, int? DocumentSubID, string
                  ApplicationID, rejectReason, ActionBy, ContractorID);
         }
 
-        public DataTable GetAllUpgradationRequestApprovedOrRejected()
+        public DataTable GetAllUpgradationRequestApprovedOrRejected(string searchText = null)
         {
-            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetAllUpgradationRequestApprovedOrRejected");
+            return DBTask.ExecuteDataTable(ConfigurationManager.ConnectionStrings["DBConnection"].ToString(), "Sp_GetAllUpgradationRequestApprovedOrRejected", string.IsNullOrEmpty(searchText) ? (object)DBNull.Value : searchText);
         }
 
         public DataTable GetContractorDetailsForUpgApprovedRequest(string ApplicationId)

@@ -27,7 +27,8 @@ namespace CEIHaryana.Admin
         private void GetAllUpgradationRequestApprovedOrRejected()
         {
             DataTable dt = new DataTable();
-            dt = CEI.GetAllUpgradationRequestApprovedOrRejected();
+            string searchText = txtsearch.Text.Trim();
+            dt = CEI.GetAllUpgradationRequestApprovedOrRejected(searchText);
             if (dt.Rows.Count > 0)
             {
                 GridView1.DataSource = dt;
@@ -83,27 +84,28 @@ namespace CEIHaryana.Admin
                     {
                         Response.Redirect("/Print_Forms/Contractor_Licence_Upgradation_Certificate.aspx",false);
                     }
-                }
-                else if (e.CommandName == "Select")
-                {
-                    Label lblID = (Label)row.FindControl("lblID");
-                    Label lblType = (Label)row.FindControl("lblType");
-                    Label lblApplicationID = (Label)row.FindControl("lblApplicationID");
-                    Session["id"] = lblID.Text;
-                    if (lblType.Text == "Supervisor")
-                    {
-                        Response.Redirect("/UserPages/Supervisor_Upgradation.aspx", false);
-                    }
-                    else if (lblType.Text == "Contractor")
-                    {
-                        Response.Redirect("/UserPages/Contractor_Upgradation.aspx", false);
-                    }
-                }
+                }        
             }
             catch (Exception ex)
             {
                 ScriptManager.RegisterStartupScript(this, GetType(), "aleert", "alert('" + ex.Message + "');", true);
             }
+        }
+
+        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            try
+            {
+                GridView1.PageIndex = e.NewPageIndex;
+                GetAllUpgradationRequestApprovedOrRejected();
+            }
+            catch { }
+        }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            GetAllUpgradationRequestApprovedOrRejected();
+
         }
     }
 }
