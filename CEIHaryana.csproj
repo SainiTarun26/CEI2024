@@ -2129,6 +2129,7 @@
     <Content Include="Procedure_for_Electrical _Installation.aspx" />
     <Content Include="Procedure_for_grant_of_approval.aspx" />
     <Content Include="Procedure_For_Registration_Lift_Exclator.aspx" />
+    <Content Include="ScannedDocuments\ValidateCertificate.aspx" />
     <Content Include="ScriptCalendar\jquery-1.11.0.min.js" />
     <Content Include="ScriptCalendar\jquery-ui.css" />
     <Content Include="ScriptCalendar\jquery-ui.min.js" />
@@ -4432,6 +4433,13 @@
       <DependentUpon>Procedure_For_Registration_Lift_Exclator.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScannedDocuments\ValidateCertificate.aspx.cs">
+      <DependentUpon>ValidateCertificate.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ScannedDocuments\ValidateCertificate.aspx.designer.cs">
+      <DependentUpon>ValidateCertificate.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SiteOwnerLogout.aspx.cs">
       <DependentUpon>SiteOwnerLogout.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
