@@ -31,7 +31,7 @@ namespace CEIHaryana.ScannedDocuments
             {
                 Session["LiftTestReportID"] = Convert.ToString(Request.QueryString["LiftTestReportID"]);
             }
-            string url = "https://localhost:44393/" + name;
+            string url = "https://uat.ceiharyana.com/" + name;
             Response.Redirect(url, false);
         }
     }
